@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incorporate123 — Project Scope Overview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        .header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #999;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Stats Hero */
+        .stats-hero {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .stat-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+        }
+
+        .stat-card.accent {
+            background: #2563eb;
+        }
+
+        .stat-card.accent .stat-number {
+            color: #fff;
+        }
+
+        .stat-card.accent .stat-label {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Section */
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: #333;
+        }
+
+        /* Phase Breakdown */
+        .phase-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .phase-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 28px;
+            border-left: 4px solid #2563eb;
+            position: relative;
+        }
+
+        .phase-card.seo { border-left-color: #7c3aed; }
+        .phase-card.dev { border-left-color: #059669; }
+        .phase-card.launch { border-left-color: #dc2626; }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .phase-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .phase-meta {
+            text-align: right;
+        }
+
+        .phase-hours {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .phase-card.seo .phase-hours { color: #7c3aed; }
+        .phase-card.dev .phase-hours { color: #059669; }
+        .phase-card.launch .phase-hours { color: #dc2626; }
+
+        .phase-duration {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .task-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            padding: 6px 10px;
+            background: #fff;
+            border-radius: 6px;
+        }
+
+        .task-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ccc;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .task-hours {
+            color: #888;
+            font-size: 11px;
+            white-space: nowrap;
+            margin-left: auto;
+            padding-left: 8px;
+        }
+
+        /* Page Inventory */
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .page-column h4 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 14px;
+            border-radius: 6px 6px 0 0;
+            color: #fff;
+        }
+
+        .page-column.pillar h4 { background: #2563eb; }
+        .page-column.cluster h4 { background: #7c3aed; }
+        .page-column.comparison h4 { background: #f59e0b; }
+        .page-column.package h4 { background: #10b981; }
+
+        .page-list {
+            list-style: none;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .page-list li {
+            padding: 8px 14px;
+            font-size: 13px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .page-list li:last-child {
+            border-bottom: none;
+        }
+
+        .page-list li .url {
+            display: block;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 10px;
+            color: #999;
+            margin-top: 1px;
+        }
+
+        /* Deliverable Counter */
+        .deliverable-counter {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .deliverable-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .deliverable-count {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2563eb;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .deliverable-desc {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .deliverable-desc strong {
+            display: block;
+            color: #1a1a1a;
+            font-size: 14px;
+        }
+
+        /* Template Complexity */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .template-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .template-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .template-count {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .template-features {
+            list-style: none;
+        }
+
+        .template-features li {
+            font-size: 12px;
+            color: #555;
+            padding: 2px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .template-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ccc;
+        }
+
+        /* Investment Summary */
+        .investment-bar {
+            display: flex;
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .investment-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 0 8px;
+        }
+
+        .investment-legend {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .legend-amount {
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Highlight callout */
+        .callout {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: #2563eb; }
+
+        /* Redirect visualization */
+        .redirect-viz {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 8px;
+            align-items: start;
+            margin: 16px 0;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .redirect-viz .col-header {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+        }
+
+        .redirect-old {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 11px;
+            color: #dc2626;
+            text-decoration: line-through;
+            padding: 3px 0;
+        }
+
+        .redirect-arrow {
+            color: #ccc;
+            font-size: 12px;
+            padding: 3px 0;
+            text-align: center;
+        }
+
+        .redirect-new {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 11px;
+            color: #059669;
+            padding: 3px 0;
+        }
+
+        /* Work multiplier */
+        .multiplier {
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .multiplier h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        .multiplier-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2px;
+        }
+
+        .multiplier-cell {
+            padding: 12px 8px;
+            font-size: 12px;
+        }
+
+        .multiplier-header {
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .multiplier-row-header {
+            background: rgba(255,255,255,0.05);
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .multiplier-value {
+            background: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .multiplier-total {
+            margin-top: 24px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .multiplier-total strong {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .stats-hero { grid-template-columns: repeat(3, 1fr); }
+            .page-grid { grid-template-columns: repeat(2, 1fr); }
+            .task-list { grid-template-columns: 1fr; }
+            .template-grid { grid-template-columns: 1fr; }
+            .deliverable-counter { grid-template-columns: 1fr; }
+            .investment-legend { grid-template-columns: 1fr; }
+            .multiplier-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .stats-hero { grid-template-columns: repeat(2, 1fr); }
+            .page-grid { grid-template-columns: 1fr; }
+        }
+        /* Print / PDF styles */
+        @media print {
+            .stats-hero, .multiplier, .section, .phase-card, .callout, .investment-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .multiplier {
+                page-break-before: always;
+                break-before: page;
+            }
+            .multiplier-grid {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .phase-card {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin-bottom: 20px;
+            }
+            h2, h3 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            .investment-bar, .investment-legend {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Incorporate123 — Project Scope Overview</h1>
+    <p>Complete Website Redesign & Redevelopment · BIT Studios · February 2026</p>
+</div>
+
+<div class="container">
+
+    <!-- Stats Hero -->
+    <div class="stats-hero">
+        <div class="stat-card accent">
+            <div class="stat-number">71+</div>
+            <div class="stat-label">Total Pages</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Custom Templates</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">170</div>
+            <div class="stat-label">301 Redirects</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">71</div>
+            <div class="stat-label">SEO Page Specs</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Project Phases</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">436+</div>
+            <div class="stat-label">Total Hours</div>
+        </div>
+    </div>
+
+    <!-- The Work Multiplier -->
+    <div class="multiplier">
+        <h3>Every Page Touches Every Phase</h3>
+        <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-bottom: 20px;">71 pages × 7 work streams = the true scope of this project</p>
+        <div class="multiplier-grid">
+            <div class="multiplier-cell multiplier-header">Work Stream</div>
+            <div class="multiplier-cell multiplier-header">Pillar (4)</div>
+            <div class="multiplier-cell multiplier-header">Cluster (24)</div>
+            <div class="multiplier-cell multiplier-header">Package (8)</div>
+            <div class="multiplier-cell multiplier-header">Other (35)</div>
+
+            <div class="multiplier-cell multiplier-row-header">Wireframe</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+
+            <div class="multiplier-cell multiplier-row-header">Visual Design</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+
+            <div class="multiplier-cell multiplier-row-header">SEO Spec</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+
+            <div class="multiplier-cell multiplier-row-header">CMS Build</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+
+            <div class="multiplier-cell multiplier-row-header">Content Entry</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+
+            <div class="multiplier-cell multiplier-row-header">Redirect Map</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+
+            <div class="multiplier-cell multiplier-row-header">QA Testing</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+            <div class="multiplier-cell multiplier-value">✓</div>
+        </div>
+        <div class="multiplier-total">
+            That's <strong>71 pages × 7 work streams = 497 individual deliverable touches</strong>
+        </div>
+    </div>
+
+    <!-- Complete Page Inventory -->
+    <div class="section">
+        <h2>Complete Page Inventory (71+ Pages)</h2>
+        
+        <div class="page-grid">
+            <div class="page-column pillar">
+                <h4>Pillar Pages (4)</h4>
+                <ul class="page-list">
+                    <li>Business Privacy ★<span class="url">/privacy/</span></li>
+                    <li>Asset Protection<span class="url">/asset-protection/</span></li>
+                    <li>Company Formation<span class="url">/formation/</span></li>
+                    <li>Compliance<span class="url">/compliance/</span></li>
+                </ul>
+            </div>
+
+            <div class="page-column cluster">
+                <h4>Cluster Pages (24)</h4>
+                <ul class="page-list">
+                    <li>Anonymous LLC<span class="url">/anonymous-llc/</span></li>
+                    <li>Anonymous Corporation<span class="url">/anonymous-corporation/</span></li>
+                    <li>Nominee Services<span class="url">/nominee-services/</span></li>
+                    <li>Wyoming Privacy<span class="url">/wyoming-privacy/</span></li>
+                    <li>Nevada Privacy<span class="url">/nevada-privacy/</span></li>
+                    <li>CA Private Inc.<span class="url">/california-private-inc/</span></li>
+                    <li>FL Private Inc.<span class="url">/florida-private-inc/</span></li>
+                    <li>BOI Reporting<span class="url">/beneficial-ownership/</span></li>
+                    <li>Nevada Asset Protection<span class="url">/nevada-asset-protection/</span></li>
+                    <li>Wyoming Asset Protection<span class="url">/wyoming-asset-protection/</span></li>
+                    <li>Investment Holding LLC<span class="url">/investment-holding-llc/</span></li>
+                    <li>Charging Order Protection<span class="url">/charging-order-protection/</span></li>
+                    <li>Wyoming LLC<span class="url">/wyoming-llc/</span></li>
+                    <li>Wyoming Corporation<span class="url">/wyoming-corporation/</span></li>
+                    <li>Nevada LLC<span class="url">/nevada-llc/</span></li>
+                    <li>Nevada Corporation<span class="url">/nevada-corporation/</span></li>
+                    <li>Shelf Companies<span class="url">/shelf-companies/</span></li>
+                    <li>LLC vs Corporation<span class="url">/llc-vs-corporation/</span></li>
+                    <li>Registered Agent<span class="url">/registered-agent/</span></li>
+                    <li>Wyoming RA<span class="url">/wyoming-registered-agent/</span></li>
+                    <li>Nevada RA<span class="url">/nevada-registered-agent/</span></li>
+                    <li>Annual Reports<span class="url">/annual-reports/</span></li>
+                    <li>Foreign Registration<span class="url">/foreign-state-registration/</span></li>
+                    <li>Domestication<span class="url">/domestication/</span></li>
+                </ul>
+            </div>
+
+            <div class="page-column comparison">
+                <h4>Comparison Pages (6)</h4>
+                <ul class="page-list">
+                    <li>Best State for Privacy<span class="url">/best-state-for-privacy/</span></li>
+                    <li>WY vs NV Privacy<span class="url">/wyoming-vs-nevada-privacy/</span></li>
+                    <li>Best State for AP<span class="url">/best-state-for-asset-protection/</span></li>
+                    <li>WY vs NV for AP<span class="url">/wyoming-vs-nevada-ap/</span></li>
+                    <li>Wyoming vs Nevada<span class="url">/wyoming-vs-nevada/</span></li>
+                    <li>Shelf vs New<span class="url">/shelf-vs-new-formation/</span></li>
+                </ul>
+            </div>
+
+            <div class="page-column package">
+                <h4>Package Pages (8)</h4>
+                <ul class="page-list">
+                    <li>Wyoming Gold<span class="url">/wyoming-private-inc/</span></li>
+                    <li>Wyoming Silver<span class="url">/wyoming-incorporation/</span></li>
+                    <li>Nevada Gold<span class="url">/nevada-private-inc/</span></li>
+                    <li>Nevada Silver<span class="url">/nevada-incorporation/</span></li>
+                    <li>Nevada Bronze<span class="url">/nevada-basic-inc/</span></li>
+                    <li>California Private<span class="url">/california-private-inc/</span></li>
+                    <li>Florida Private<span class="url">/florida-private-inc/</span></li>
+                    <li>Shelf Companies<span class="url">/shelf-companies/</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="margin-top: 16px; font-size: 13px; color: #888; text-align: center;">Plus: 4 State Hubs, Homepage, 9+ Utility Pages (About, Contact, FAQ, Blog, Testimonials, Login, Privacy Policy, Terms, Offshore)</p>
+    </div>
+
+    <!-- Template Complexity -->
+    <div class="section">
+        <h2>Template Complexity — Not Simple Pages</h2>
+        <p style="margin-bottom: 20px; color: #666; font-size: 14px;">Each template is a custom interactive design, not a basic content page. The package template alone has more interactivity than many full websites.</p>
+        
+        <div class="template-grid">
+            <div class="template-card">
+                <div class="template-name">Homepage</div>
+                <div class="template-count">1 page</div>
+                <ul class="template-features">
+                    <li>Hero with dual CTA paths</li>
+                    <li>3 pillar navigation blocks</li>
+                    <li>Direct-to-package secondary CTAs</li>
+                    <li>Testimonial carousel</li>
+                    <li>Trust signals section</li>
+                </ul>
+            </div>
+            <div class="template-card" style="border: 2px solid #dc2626;">
+                <div class="template-name" style="color: #dc2626;">Package Detail ⚡</div>
+                <div class="template-count">8–10 pages · Most complex template</div>
+                <ul class="template-features">
+                    <li>3-tier pricing comparison grid</li>
+                    <li>Interactive tooltip system (hover info)</li>
+                    <li>Add-on configurator with live pricing</li>
+                    <li>Progressive disclosure (scanner vs reader)</li>
+                    <li>Dual CTA (LLC vs Corporation pricing)</li>
+                    <li>Testimonials + FAQ section</li>
+                </ul>
+            </div>
+            <div class="template-card">
+                <div class="template-name">Pillar Page</div>
+                <div class="template-count">4 pages</div>
+                <ul class="template-features">
+                    <li>Long-form educational content</li>
+                    <li>Progressive disclosure sections</li>
+                    <li>Cluster navigation grid</li>
+                    <li>Inline package CTAs</li>
+                    <li>FAQ accordions</li>
+                </ul>
+            </div>
+            <div class="template-card">
+                <div class="template-name">Comparison Page</div>
+                <div class="template-count">6 pages</div>
+                <ul class="template-features">
+                    <li>Side-by-side comparison tables</li>
+                    <li>Decision-focused content blocks</li>
+                    <li>Dual package CTAs</li>
+                    <li>Responsive table → card on mobile</li>
+                </ul>
+            </div>
+            <div class="template-card">
+                <div class="template-name">Cluster Page</div>
+                <div class="template-count">24+ pages</div>
+                <ul class="template-features">
+                    <li>Focused topic content</li>
+                    <li>FAQ accordion</li>
+                    <li>Related cluster links</li>
+                    <li>Package CTA blocks</li>
+                    <li>Schema markup integration</li>
+                </ul>
+            </div>
+            <div class="template-card">
+                <div class="template-name">Checkout Flow</div>
+                <div class="template-count">Multi-step process</div>
+                <ul class="template-features">
+                    <li>Package + add-on configuration</li>
+                    <li>Entity type selection with pricing</li>
+                    <li>Client & entity detail forms</li>
+                    <li>Stripe/PayPal integration</li>
+                    <li>Order confirmation + admin emails</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deliverable Count -->
+    <div class="section">
+        <h2>Total Deliverable Count</h2>
+
+        <div class="deliverable-counter">
+            <div class="deliverable-item">
+                <div class="deliverable-count">16+</div>
+                <div class="deliverable-desc"><strong>Wireframe Layouts</strong>8 template types × desktop + mobile</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">16+</div>
+                <div class="deliverable-desc"><strong>High-Fidelity Mockups</strong>8 template types × desktop + mobile</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">71</div>
+                <div class="deliverable-desc"><strong>SEO Page Specifications</strong>Individual keyword, meta, schema per page</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">170</div>
+                <div class="deliverable-desc"><strong>301 Redirect Mappings</strong>Every current URL → new destination</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">8</div>
+                <div class="deliverable-desc"><strong>CMS Templates</strong>Custom coded with unique interactions</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">111</div>
+                <div class="deliverable-desc"><strong>FAQ Items Consolidated</strong>From scattered Learning Center → organized</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">6</div>
+                <div class="deliverable-desc"><strong>Schema Markup Types</strong>Organization, Service, FAQ, Product, etc.</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">46+</div>
+                <div class="deliverable-desc"><strong>Internal Link Relationships</strong>Pillar → Cluster → Comparison → Package</div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-count">1</div>
+                <div class="deliverable-desc"><strong>Complete Design System</strong>Colors, type, spacing, components, specs</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase Breakdown -->
+    <div class="section">
+        <h2>Phase-by-Phase Task Breakdown</h2>
+
+        <div class="phase-grid">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-name">Phase 1: Discovery & Strategy</div>
+                    <div class="phase-meta"><div class="phase-hours">36 hrs</div><div class="phase-duration">1–2 weeks</div></div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item"><div class="task-dot"></div>Crawl & inventory ~171 URLs<div class="task-hours">7h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Map 129 pages → 71 new<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Competitive analysis (5 competitors)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>User journey mapping<div class="task-hours">4h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Discovery report<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Initial redirect mapping (~170)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Stakeholder meetings & alignment<div class="task-hours">4h</div></div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-name">Phase 2: UX Design</div>
+                    <div class="phase-meta"><div class="phase-hours">53 hrs</div><div class="phase-duration">2–3 weeks</div></div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item"><div class="task-dot"></div>Information architecture<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Homepage wireframe (D+M)<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Pillar page wireframe (D+M)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Cluster page wireframe (D+M)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Package page wireframe (D+M)<div class="task-hours">7h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Comparison wireframe (D+M)<div class="task-hours">4h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>State hub wireframe (D+M)<div class="task-hours">4h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Checkout flow wireframe<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Resource/FAQ wireframe<div class="task-hours">3h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Navigation & interaction design<div class="task-hours">4h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Client review (2 rounds)<div class="task-hours">4h</div></div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-name">Phase 3: Visual Design</div>
+                    <div class="phase-meta"><div class="phase-hours">65 hrs</div><div class="phase-duration">2–3 weeks</div></div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item"><div class="task-dot"></div>Design system creation<div class="task-hours">10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Homepage mockup (D+M)<div class="task-hours">7h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Pillar page mockup (D+M)<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Cluster page mockup (D+M)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Package page mockup (D+M)<div class="task-hours">8h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Comparison page mockup<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>State hub mockup<div class="task-hours">4h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Checkout flow mockup<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Component library<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Design specifications<div class="task-hours">3h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Client review (2 rounds)<div class="task-hours">5h</div></div>
+                </div>
+            </div>
+
+            <div class="phase-card seo">
+                <div class="phase-header">
+                    <div class="phase-name">Phase 4: SEO Strategy & Implementation</div>
+                    <div class="phase-meta"><div class="phase-hours">126 hrs</div><div class="phase-duration">5–7 weeks</div></div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item"><div class="task-dot"></div>Technical SEO audit<div class="task-hours">10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Keyword research: Privacy (11 pages)<div class="task-hours">10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Keyword research: Asset Protection (7)<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Keyword research: Formation (9)<div class="task-hours">7h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Keyword research: Compliance (7)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Keyword research: Packages + Hubs<div class="task-hours">7h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>On-page specs: 71 individual pages<div class="task-hours">26h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Schema markup (6 types × 8 templates)<div class="task-hours">10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Internal linking map (46+ relationships)<div class="task-hours">12h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>301 redirect finalization (~170 URLs)<div class="task-hours">10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Content brief templates<div class="task-hours">7h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Pre-launch SEO QA (staging)<div class="task-hours">10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Post-launch monitoring setup<div class="task-hours">6h</div></div>
+                </div>
+            </div>
+
+            <div class="phase-card dev">
+                <div class="phase-header">
+                    <div class="phase-name">Phase 5: Development (WordPress or Payload CMS)</div>
+                    <div class="phase-meta"><div class="phase-hours">120–180 hrs</div><div class="phase-duration">3–4 weeks</div></div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item"><div class="task-dot"></div>CMS setup & configuration<div class="task-hours">5–8h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Homepage template<div class="task-hours">10–14h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Pillar page template<div class="task-hours">10–12h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Cluster page template<div class="task-hours">7–10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Package page template ⚡<div class="task-hours">14–19h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Comparison page template<div class="task-hours">7–10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>State hub template<div class="task-hours">6–8h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Resource/FAQ template<div class="task-hours">7–10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Utility page template<div class="task-hours">5–6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Checkout flow (multi-step)<div class="task-hours">14–22h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Payment integration<div class="task-hours">10–14h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Responsive (all templates)<div class="task-hours">12–17h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Content entry (~71 pages)<div class="task-hours">14–19h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Performance optimization<div class="task-hours">7–10h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Analytics & tracking<div class="task-hours">5–7h</div></div>
+                </div>
+            </div>
+
+            <div class="phase-card launch">
+                <div class="phase-header">
+                    <div class="phase-name">Phase 6: Testing & Launch</div>
+                    <div class="phase-meta"><div class="phase-hours">36 hrs</div><div class="phase-duration">1–2 weeks</div></div>
+                </div>
+                <div class="task-list">
+                    <div class="task-item"><div class="task-dot"></div>Cross-browser testing (4 browsers)<div class="task-hours">6h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Mobile testing (iOS + Android)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Checkout & payment testing<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>301 redirect implementation<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Content QA (all 71+ pages)<div class="task-hours">5h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Performance verification<div class="task-hours">2h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>SEO pre-launch checklist<div class="task-hours">2h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Staging client review<div class="task-hours">3h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Launch execution<div class="task-hours">1h</div></div>
+                    <div class="task-item"><div class="task-dot"></div>Post-launch monitoring (1–2 wks)<div class="task-hours">2h</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,867 @@
+import type { ClusterContent } from "@/lib/types";
+
+export const clusterPages: ClusterContent[] = [
+  // ==================== PRIVACY PILLAR ====================
+  {
+    slug: "anonymous-llc",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Anonymous LLC Formation",
+    description: "Form an LLC with no public ties to your name. Wyoming and Nevada allow formation without disclosing members — combined with our nominee services, your identity is fully protected.",
+    readingTime: "8 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is an Anonymous LLC?",
+        content: "An anonymous LLC is a limited liability company formed in a state that does not require public disclosure of its members or managers. Wyoming and Nevada are the two states with the strongest anonymity protections — neither requires member names on any publicly filed document. When combined with our year-round nominee services, your personal information never appears on any state filing, at formation or any time afterward. This is fundamentally different from states like California, New York, or Texas, which require disclosure of members, managers, or organizers on public filings.",
+      },
+      {
+        id: "how-it-works",
+        type: "text",
+        title: "How Anonymous LLC Formation Works",
+        content: "We file your Articles of Organization with the state using our nominee directors and officers — their names appear on the public record, not yours. Your operating agreement (a private document) identifies you as the actual member/owner. Combined with offshore record storage, even the operating agreement is held outside U.S. jurisdiction. The result: no public database, state filing, or domestic document connects your name to the entity.",
+      },
+      {
+        id: "who-benefits",
+        type: "audience",
+        title: "Who Benefits from Anonymous LLCs?",
+        content: "Anonymous LLCs serve a wide range of legitimate business purposes:",
+        items: [
+          { title: "Real Estate Investors", description: "Protect property ownership information from public records. Tenants and opposing parties can't discover your personal assets." },
+          { title: "High-Net-Worth Individuals", description: "Shield business activities from public scrutiny. Prevent competitors, litigants, or bad actors from mapping your holdings." },
+          { title: "Business Owners Seeking Privacy", description: "Keep your name off state databases that data brokers and public records sites scrape and publish." },
+          { title: "International Clients", description: "Form U.S. entities without personal information appearing in American public records." },
+        ],
+      },
+      {
+        id: "wyoming-advantage",
+        type: "differentiator",
+        title: "The Wyoming Advantage",
+        content: "Wyoming is our top recommendation for anonymous LLCs. The state offers the strongest combination of privacy statutes, charging order protection (including single-member LLCs), and the lowest annual maintenance costs. Nevada is a solid alternative, especially if you plan to physically operate there.",
+        items: [
+          { title: "No Public Member Disclosure", description: "Wyoming does not require member or manager names on any publicly filed document.", icon: "EyeOff" },
+          { title: "Strongest Charging Order Protection", description: "Wyoming protects single-member LLCs — the only state to do so explicitly.", icon: "ShieldCheck" },
+          { title: "Lowest Annual Costs", description: "Wyoming's annual report fee is just $60, compared to $350+ in Nevada.", icon: "DollarSign" },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "anon-faq-1", question: "Is an anonymous LLC legal?", answer: "Yes. Anonymous LLCs are completely legal. They simply take advantage of state laws (like Wyoming's) that don't require public disclosure of LLC members or managers. There's nothing illegal about forming a business entity that protects your personal information from public records.", category: "privacy" },
+      { id: "anon-faq-2", question: "Can the government still find out who owns the LLC?", answer: "Yes. The IRS knows who owns the LLC through tax filings, and FinCEN's Beneficial Ownership Information (BOI) database records true owners. Anonymous LLCs protect you from public records searches, not from lawful government inquiry.", category: "privacy" },
+      { id: "anon-faq-3", question: "Do I need to live in Wyoming to form an anonymous LLC there?", answer: "No. You can form a Wyoming LLC regardless of where you live. If your LLC does business in your home state, you may need to foreign register there.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "Nominee Services", href: "/privacy/nominee-services" },
+      { title: "Offshore Privacy", href: "/privacy/offshore-privacy" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+      { title: "WY vs NV Comparison", href: "/compare/wyoming-vs-nevada-llc" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+    crossPillarCTA: { pillar: "asset", title: "Also Interested in Asset Protection?", description: "Anonymous LLCs are often the first step in an asset protection strategy. Learn how charging order protection adds another layer.", href: "/asset-protection" },
+  },
+  {
+    slug: "nominee-services",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Year-Round Nominee Services",
+    description: "Our Gold packages include nominee directors and officers listed on ALL public filings year-round — not just at formation. Your name never appears on any state record.",
+    readingTime: "7 min read",
+    sections: [
+      {
+        id: "what-are-nominees",
+        type: "text",
+        title: "What Are Nominee Services?",
+        content: "A nominee is a person who appears on your company's public filings in place of your personal information. Nominee directors and nominee officers are listed on state records as the company's leadership, while you maintain full control through private legal agreements. The key distinction: our year-round nominee service keeps nominees listed on ALL filings — initial formation, annual reports, amendments, and any other state filings — for continuous privacy throughout the year.",
+      },
+      {
+        id: "year-round-vs-day",
+        type: "comparison",
+        title: "'Year-Round' vs. 'Nominee for a Day'",
+        content: "Many formation companies advertise nominee services but only provide them at the moment of filing. After the initial formation, the nominee is removed and your personal information appears on subsequent filings. This is called 'nominee for a day' — it provides a false sense of security. Our year-round nominee service is fundamentally different: nominees remain on every filing, every report, and every amendment throughout the entire year.",
+      },
+      {
+        id: "how-nominees-work",
+        type: "text",
+        title: "How Our Nominee Services Work",
+        content: "When you choose a Gold package, we assign professional nominees who are listed as directors and officers on your entity's formation documents and all subsequent state filings. You execute a private nominee agreement that establishes you as the true beneficial owner with full control. The nominee has no actual authority over your business — they serve solely as a privacy shield on public records. All control, decision-making, and financial authority remain with you.",
+      },
+    ],
+    faqs: [
+      { id: "nom-faq-1", question: "Do nominees have any control over my business?", answer: "No. Nominees have no actual authority. A private nominee agreement establishes that they serve solely as a privacy shield on public records. All control, decision-making, and financial authority remain with you.", category: "privacy" },
+      { id: "nom-faq-2", question: "What's the difference between nominee directors and nominee officers?", answer: "Nominee directors appear on corporate governance filings. Nominee officers (president, secretary, treasurer) appear on operational filings. Our Gold packages include both for complete coverage.", category: "privacy" },
+    ],
+    sidebarLinks: [
+      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+      { title: "Offshore Privacy", href: "/privacy/offshore-privacy" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+      { title: "Gold vs Silver", href: "/compare/gold-vs-silver-wyoming" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+  },
+  {
+    slug: "private-incorporation",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Private Incorporation",
+    description: "Privacy-first business formation in Wyoming, Nevada, California, and Florida. Our nominee structure ensures your personal information stays off public filings in every state.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is Private Incorporation?",
+        content: "Private incorporation is the process of forming a business entity — LLC or Corporation — with maximum privacy protections. This means choosing a formation state with strong privacy statutes, using nominee services to keep your name off public filings, and storing corporate records outside U.S. jurisdiction. Our private incorporation service is available in Wyoming, Nevada, California, and Florida.",
+      },
+      {
+        id: "state-options",
+        type: "audience",
+        title: "Available States",
+        content: "We offer private incorporation in four states, each with a tailored approach:",
+        items: [
+          { title: "Wyoming", description: "Our #1 recommendation. Strongest privacy statutes, lowest costs, best asset protection. Direct formation with nominees." },
+          { title: "Nevada", description: "Strong privacy, established business court, no state income tax. Ideal if operating physically in Nevada." },
+          { title: "California", description: "WY/NV nominee formation + California foreign registration. Full privacy with California compliance." },
+          { title: "Florida", description: "WY/NV nominee formation + Florida foreign registration. Privacy-first approach for Florida businesses." },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "pi-faq-1", question: "Can I incorporate privately in any state?", answer: "We offer private incorporation in Wyoming, Nevada, California, and Florida. For CA and FL, we use a WY/NV nominee structure with foreign registration in the target state.", category: "privacy" },
+    ],
+    sidebarLinks: [
+      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+      { title: "Nominee Services", href: "/privacy/nominee-services" },
+      { title: "State Comparison", href: "/compare/wyoming-vs-nevada-llc" },
+    ],
+    relatedPackages: ["wyoming-gold", "california-private", "florida-private"],
+  },
+  {
+    slug: "offshore-privacy",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Offshore Record Storage",
+    description: "Corporate documents stored outside U.S. jurisdiction. Domestic subpoenas and court orders typically cannot compel production of documents held in foreign jurisdictions.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is Offshore Record Storage?",
+        content: "Offshore record storage means your corporate documents — operating agreement, meeting minutes, member registry, and other sensitive records — are physically stored in a jurisdiction outside the United States. This adds a significant layer of privacy protection because domestic subpoenas and court orders typically do not have the authority to compel production of documents held in foreign jurisdictions.",
+      },
+      {
+        id: "what-is-stored",
+        type: "text",
+        title: "What Documents Are Stored Offshore?",
+        content: "We store all non-public corporate records offshore: your operating agreement (which names the true members), meeting minutes, member/officer registry, financial records authorization, and any other documents that could reveal beneficial ownership. Only the bare minimum required by the formation state remains domestic — and those documents use nominee names, not yours.",
+      },
+    ],
+    faqs: [
+      { id: "off-faq-1", question: "Is offshore record storage legal?", answer: "Yes. There is no U.S. law requiring corporate records to be stored domestically. Offshore storage is a legitimate privacy strategy used by businesses and individuals worldwide.", category: "privacy" },
+    ],
+    sidebarLinks: [
+      { title: "Nominee Services", href: "/privacy/nominee-services" },
+      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+  },
+  {
+    slug: "boi-reporting",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "BOI Reporting Compliance",
+    description: "The Corporate Transparency Act requires most entities to report beneficial owners to FinCEN. We handle the filing while maintaining maximum privacy within the legal framework.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is BOI Reporting?",
+        content: "The Corporate Transparency Act (CTA) requires most LLCs and corporations to file Beneficial Ownership Information (BOI) reports with the Financial Crimes Enforcement Network (FinCEN). These reports identify the true beneficial owners of entities — the individuals who ultimately own or control the company. This is a federal requirement separate from state-level filings.",
+      },
+      {
+        id: "our-approach",
+        type: "text",
+        title: "Our Approach to BOI Compliance",
+        content: "We help you file your BOI report accurately and on time. While BOI reporting does require disclosure to FinCEN, this database is NOT publicly accessible — it's a confidential federal database accessible only to law enforcement and financial institutions under specific circumstances. Your privacy on public state filings (through nominees and anonymous LLC formation) remains fully intact.",
+      },
+    ],
+    faqs: [
+      { id: "boi-faq-1", question: "Does BOI reporting eliminate anonymous LLCs?", answer: "No. BOI reports go to a confidential FinCEN database — NOT public records. Your anonymous LLC formation, nominees, and offshore storage continue to protect your privacy from public searches, data brokers, and casual inquiries.", category: "privacy" },
+    ],
+    sidebarLinks: [
+      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+      { title: "Nominee Services", href: "/privacy/nominee-services" },
+      { title: "Compliance Overview", href: "/compliance" },
+    ],
+    relatedPackages: ["wyoming-gold"],
+  },
+
+  // ==================== ASSET PROTECTION PILLAR ====================
+  {
+    slug: "charging-order-protection",
+    pillar: "asset",
+    pillarLabel: "Asset Protection",
+    title: "Charging Order Protection",
+    description: "The strongest domestic shield for LLC assets. A charging order limits creditors to a lien on distributions — they cannot seize LLC assets, force distributions, or take over management.",
+    readingTime: "7 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is Charging Order Protection?",
+        content: "A charging order is a court order that entitles a creditor to receive distributions from an LLC, IF and WHEN those distributions are made. Critically, a charging order does NOT give the creditor the ability to seize LLC assets, force the LLC to make distributions, participate in LLC management, or access LLC bank accounts. In states with strong charging order protection (like Wyoming), this is the exclusive remedy available to a creditor — meaning they have no other legal avenue to reach your LLC's assets.",
+      },
+      {
+        id: "wyoming-strongest",
+        type: "differentiator",
+        title: "Wyoming: The Gold Standard",
+        content: "Wyoming offers the strongest charging order protection in the United States for several reasons:",
+        items: [
+          { title: "Single-Member LLC Protection", description: "Wyoming is the only state that explicitly extends charging order protection to single-member LLCs. Most states weaken or eliminate this protection for single-member entities.", icon: "ShieldCheck" },
+          { title: "Exclusive Remedy", description: "Wyoming statute makes the charging order the exclusive remedy — creditors have no alternative legal path to your LLC assets.", icon: "Gavel" },
+          { title: "No Foreclosure on Membership Interest", description: "Unlike some states, Wyoming does not allow creditors to foreclose on your membership interest in the LLC.", icon: "Lock" },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "cop-faq-1", question: "Does charging order protection work for single-member LLCs?", answer: "In Wyoming, yes — it's the only state that explicitly protects single-member LLCs. In most other states, courts have weakened or eliminated charging order protection for single-member entities.", category: "asset" },
+    ],
+    sidebarLinks: [
+      { title: "Wyoming Asset Protection", href: "/asset-protection/wyoming" },
+      { title: "Investment Holding LLC", href: "/asset-protection/investment-holding-llc" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+    ],
+    relatedPackages: ["wyoming-gold"],
+    crossPillarCTA: { pillar: "privacy", title: "Add Privacy to Your Protection", description: "Combine asset protection with anonymous LLC formation and year-round nominees for complete shielding.", href: "/privacy" },
+  },
+  {
+    slug: "wyoming",
+    pillar: "asset",
+    pillarLabel: "Asset Protection",
+    title: "Wyoming Asset Protection",
+    description: "Wyoming offers the strongest domestic asset protection for LLC owners. Charging order protection, no state income tax, and the most business-friendly statutes in the country.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "why-wyoming",
+        type: "text",
+        title: "Why Wyoming for Asset Protection?",
+        content: "Wyoming has established itself as the premier state for LLC-based asset protection. The combination of the strongest charging order protection (including single-member LLCs), no state income tax, no franchise tax, minimal annual fees, and strong privacy statutes makes it the top choice for individuals with $500K+ in assets who want domestic protection.",
+      },
+      {
+        id: "strategies",
+        type: "audience",
+        title: "Wyoming Asset Protection Strategies",
+        content: "Common structures our clients use for Wyoming-based asset protection:",
+        items: [
+          { title: "Single Wyoming LLC", description: "Ideal for individual asset protection. Wyoming's single-member charging order protection makes this viable." },
+          { title: "Parent-Subsidiary Structure", description: "Wyoming parent LLC owns subsidiaries in operating states. Parent provides umbrella protection." },
+          { title: "Investment Holding LLC", description: "Separate investment assets (stocks, crypto, real estate) from operational business risk." },
+          { title: "Real Estate Series LLC", description: "Each property in its own series cell, isolated from other properties' liabilities." },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "wyap-faq-1", question: "How much should I have in assets before considering protection?", answer: "We recommend formal asset protection structures for individuals with $500,000 or more in personal or business assets. But the right time to set up protection is BEFORE you need it.", category: "asset" },
+    ],
+    sidebarLinks: [
+      { title: "Charging Order Protection", href: "/asset-protection/charging-order-protection" },
+      { title: "Investment Holding LLC", href: "/asset-protection/investment-holding-llc" },
+      { title: "Wyoming State Hub", href: "/states/wyoming" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "nevada",
+    pillar: "asset",
+    pillarLabel: "Asset Protection",
+    title: "Nevada Asset Protection",
+    description: "Nevada's strong charging order statutes and dedicated business court make it a solid choice for asset protection, especially for those operating in Nevada.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "nevada-overview",
+        type: "text",
+        title: "Nevada Asset Protection Overview",
+        content: "Nevada has long been recognized as a business-friendly state with strong asset protection statutes. While Wyoming has surpassed Nevada for single-member LLC protection, Nevada remains an excellent choice for multi-member LLCs, clients who physically operate in Nevada, and those who value Nevada's established business court system and decades of favorable case law.",
+      },
+      {
+        id: "vs-wyoming",
+        type: "comparison",
+        title: "Nevada vs. Wyoming for Asset Protection",
+        content: "Both states offer strong charging order protection, but they differ in important ways. Wyoming explicitly protects single-member LLCs, while Nevada's protection is stronger for multi-member entities. Wyoming has lower annual costs ($60 vs $350+). Nevada offers a more established business court system. For most clients, we recommend Wyoming — but Nevada is the better choice if you plan to physically operate there.",
+      },
+    ],
+    faqs: [
+      { id: "nvap-faq-1", question: "Is Nevada or Wyoming better for asset protection?", answer: "Wyoming is generally better due to single-member LLC protection and lower costs. Nevada is better if you physically operate there or prefer its established business court.", category: "asset" },
+    ],
+    sidebarLinks: [
+      { title: "Charging Order Protection", href: "/asset-protection/charging-order-protection" },
+      { title: "Wyoming vs Nevada", href: "/compare/wyoming-vs-nevada-llc" },
+      { title: "Nevada State Hub", href: "/states/nevada" },
+    ],
+    relatedPackages: ["nevada-gold", "nevada-silver"],
+  },
+  {
+    slug: "investment-holding-llc",
+    pillar: "asset",
+    pillarLabel: "Asset Protection",
+    title: "Investment Holding LLC",
+    description: "Separate your investment assets — stocks, real estate, cryptocurrency — from operational business risk using a dedicated holding LLC.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is an Investment Holding LLC?",
+        content: "An investment holding LLC is an entity whose sole purpose is to hold investment assets — stocks, bonds, real estate, cryptocurrency, or other investments. By separating investment assets from operational business activities, you create a legal barrier between the two. If your operating business faces a lawsuit or creditor claim, your investment assets held in a separate LLC are shielded by charging order protection.",
+      },
+      {
+        id: "how-it-works",
+        type: "text",
+        title: "How the Structure Works",
+        content: "You form a Wyoming LLC specifically to hold investment assets. This LLC has no operational activities — it doesn't sell products, provide services, or hire employees. It simply owns assets. Combined with Wyoming's charging order protection, creditors of your operating business or personal creditors cannot reach the assets held within this LLC.",
+      },
+    ],
+    faqs: [
+      { id: "ihlc-faq-1", question: "Can I use one LLC for both operations and investments?", answer: "You can, but it defeats the purpose of asset separation. Having a dedicated holding LLC creates a legal barrier between your operational risk and your investment assets.", category: "asset" },
+    ],
+    sidebarLinks: [
+      { title: "Charging Order Protection", href: "/asset-protection/charging-order-protection" },
+      { title: "Real Estate Protection", href: "/asset-protection/real-estate" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+    ],
+    relatedPackages: ["wyoming-gold"],
+  },
+  {
+    slug: "real-estate",
+    pillar: "asset",
+    pillarLabel: "Asset Protection",
+    title: "Real Estate Asset Protection",
+    description: "Protect rental properties and real estate investments with LLC structures that isolate each property's liability and keep ownership private.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "why-protect",
+        type: "text",
+        title: "Why Protect Real Estate with an LLC?",
+        content: "Real estate investors face unique liability risks: tenant lawsuits, slip-and-fall claims, property damage disputes, and more. Without proper entity structuring, a single lawsuit from one property could put all of your personal assets and other properties at risk. An LLC creates a legal barrier between each property and your personal assets.",
+      },
+      {
+        id: "strategies",
+        type: "audience",
+        title: "Real Estate LLC Strategies",
+        content: "Common approaches our clients use for real estate protection:",
+        items: [
+          { title: "One LLC Per Property", description: "Each property in its own LLC. Maximum isolation — a lawsuit on one property can't reach others." },
+          { title: "Series LLC", description: "Wyoming Series LLC with each property in a separate 'series cell.' Similar isolation with simpler administration." },
+          { title: "Parent-Subsidiary", description: "Wyoming parent LLC owns subsidiary LLCs in each state where properties are located." },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "re-faq-1", question: "Do I need a separate LLC for each property?", answer: "It depends on your risk tolerance. Each property in its own LLC provides maximum isolation. A Series LLC offers similar protection with simpler administration. We can help you decide.", category: "asset" },
+    ],
+    sidebarLinks: [
+      { title: "Investment Holding LLC", href: "/asset-protection/investment-holding-llc" },
+      { title: "Wyoming Asset Protection", href: "/asset-protection/wyoming" },
+      { title: "Charging Order Protection", href: "/asset-protection/charging-order-protection" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+
+  // ==================== FORMATION PILLAR ====================
+  {
+    slug: "wyoming-llc",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Wyoming LLC Formation",
+    description: "America's most business-friendly state for LLC formation. All-inclusive packages include state filing fees, registered agent, corporate minutes, and annual report filing.",
+    readingTime: "7 min read",
+    sections: [
+      {
+        id: "why-wyoming",
+        type: "text",
+        title: "Why Form a Wyoming LLC?",
+        content: "Wyoming is consistently ranked as the #1 state for LLC formation. It offers no state income tax, the strongest charging order protection (including single-member LLCs), no public member disclosure, the lowest annual fees ($60 annual report), and fast formation (2-3 business days). Whether you're forming for privacy, asset protection, or simply to start a business, Wyoming delivers the best combination of benefits at the lowest cost.",
+      },
+      {
+        id: "whats-included",
+        type: "text",
+        title: "What's Included in Every Wyoming LLC Package",
+        content: "Every Wyoming LLC package includes state filing fees, registered agent for one year, corporate minutes maintenance, annual report filing, Certificate of Good Standing, and corporate seal. Gold packages add year-round nominee directors and officers, offshore record storage, and a custom operating agreement. There are no hidden fees — the price you see is the price you pay.",
+      },
+    ],
+    faqs: [
+      { id: "wyllc-faq-1", question: "How long does Wyoming LLC formation take?", answer: "Standard formation takes 2-3 business days after we submit your filing. Rush filing (24-hour processing) is available as an add-on for $199.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "Wyoming Corporation", href: "/formation/wyoming-corporation" },
+      { title: "Wyoming State Hub", href: "/states/wyoming" },
+      { title: "WY vs NV Comparison", href: "/compare/wyoming-vs-nevada-llc" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "nevada-llc",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Nevada LLC Formation",
+    description: "Strong privacy statutes, no state income tax, and a dedicated business court. All-inclusive Nevada LLC formation with every fee included.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "why-nevada",
+        type: "text",
+        title: "Why Form a Nevada LLC?",
+        content: "Nevada has been a premier state for business formation for decades. It offers no state income tax, strong privacy statutes (no public member disclosure), a dedicated business court, and well-established business law precedents. Our Reno office provides a real Nevada business address and in-person support. Nevada LLC packages include all state filing fees, business license, registered agent, and compliance services.",
+      },
+      {
+        id: "costs",
+        type: "text",
+        title: "Understanding Nevada Costs",
+        content: "Nevada has higher state fees than Wyoming: $425 initial filing fee, $200/year business license, and $150+ annual list filing. All of these are included in our package prices — no surprises. While more expensive than Wyoming, Nevada offers a more established business court system and decades of favorable business law precedents.",
+      },
+    ],
+    faqs: [
+      { id: "nvllc-faq-1", question: "Is Nevada or Wyoming better for an LLC?", answer: "Wyoming is better for most clients due to lower costs and stronger single-member protection. Nevada is better if you operate physically in Nevada or prefer its established business court.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "Nevada Corporation", href: "/formation/nevada-corporation" },
+      { title: "Nevada State Hub", href: "/states/nevada" },
+      { title: "WY vs NV Comparison", href: "/compare/wyoming-vs-nevada-llc" },
+    ],
+    relatedPackages: ["nevada-gold", "nevada-silver", "nevada-bronze"],
+  },
+  {
+    slug: "wyoming-corporation",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Wyoming Corporation",
+    description: "Corporate formation in Wyoming with close-knit statutes. Ideal for businesses planning to raise capital, issue stock, or establish a formal board structure.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "overview",
+        type: "text",
+        title: "Wyoming Corporation Formation",
+        content: "A Wyoming corporation (C-Corp or S-Corp election) is the right choice if you plan to raise capital through stock issuance, go public, or need a formal board of directors structure. Wyoming's corporate statutes are close-knit and business-friendly, with strong director/officer liability protections and no state income tax. All our corporate packages include nominee directors and officers (Gold), registered agent, and full compliance services.",
+      },
+    ],
+    faqs: [
+      { id: "wycorp-faq-1", question: "LLC or Corporation — which should I choose?", answer: "Most small business owners benefit from an LLC. Corporations are better for raising capital, going public, or needing a formal board. See our LLC vs. Corporation comparison for details.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "Wyoming LLC", href: "/formation/wyoming-llc" },
+      { title: "LLC vs Corporation", href: "/compare/llc-vs-corporation" },
+      { title: "Wyoming State Hub", href: "/states/wyoming" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "nevada-corporation",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Nevada Corporation",
+    description: "Nevada corporate formation with dedicated business court and strong liability protections for directors and officers.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "overview",
+        type: "text",
+        title: "Nevada Corporation Formation",
+        content: "Nevada corporations benefit from the state's dedicated business court, strong director/officer liability protections, no state income tax, and decades of established corporate law precedents. Our Nevada corporate packages include all state filing fees, business license, registered agent, and compliance services. Gold packages add nominee directors and officers and offshore record storage.",
+      },
+    ],
+    faqs: [
+      { id: "nvcorp-faq-1", question: "Why choose Nevada over Delaware for a corporation?", answer: "Delaware is the gold standard for VC-backed C-Corps. Nevada is better for closely held corporations, small businesses, and companies that value privacy. Nevada also has no state income tax.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "Nevada LLC", href: "/formation/nevada-llc" },
+      { title: "LLC vs Corporation", href: "/compare/llc-vs-corporation" },
+      { title: "Nevada State Hub", href: "/states/nevada" },
+    ],
+    relatedPackages: ["nevada-gold", "nevada-silver"],
+  },
+  {
+    slug: "shelf-companies",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Shelf Companies",
+    description: "Pre-aged entities with established formation dates. Clean histories, no prior liabilities. Immediate availability for business needs requiring entity age.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is a Shelf Company?",
+        content: "A shelf company (also called an 'aged company' or 'shelf corporation') is a business entity that was formed at some point in the past but has never conducted any business activity. These entities have been maintained in good standing and are available for immediate purchase. The primary benefit: an established formation date without the wait.",
+      },
+      {
+        id: "why-use",
+        type: "audience",
+        title: "Why Use a Shelf Company?",
+        content: "Shelf companies serve several legitimate business purposes:",
+        items: [
+          { title: "Contract Requirements", description: "Some contracts require vendors to have been in business for a minimum number of years." },
+          { title: "Business Credit", description: "Entity age can be a factor in establishing business credit profiles." },
+          { title: "Licensing", description: "Certain licenses or permits may require an entity to have existed for a specified period." },
+          { title: "Immediate Availability", description: "No waiting for state formation processing — the entity is already formed and in good standing." },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "shelf-faq-1", question: "Do shelf companies have any prior liabilities?", answer: "No. All our shelf companies come with clean histories — no prior business activity, no debts, no liens, and no liabilities. We guarantee a clean slate.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "Wyoming LLC", href: "/formation/wyoming-llc" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+    ],
+    relatedPackages: ["shelf-companies"],
+  },
+
+  // ==================== COMPLIANCE PILLAR ====================
+  {
+    slug: "registered-agent",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Registered Agent Service",
+    description: "Professional registered agent service in Wyoming and Nevada. Receive legal documents and state correspondence — included in every package.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is a Registered Agent?",
+        content: "Every LLC and corporation in every U.S. state must designate a registered agent — a person or company authorized to receive legal documents (service of process), state correspondence, and official notices on behalf of your entity. The registered agent must have a physical address in the state of formation (PO boxes are not accepted) and be available during business hours. Our registered agent service is included in every package for the first year.",
+      },
+    ],
+    faqs: [
+      { id: "ra-faq-1", question: "Can I be my own registered agent?", answer: "Technically yes, but it's not recommended. You'd need a physical address in the formation state and be available during business hours. Using a professional registered agent protects your privacy and ensures you never miss important legal documents.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+      { title: "Corporate Minutes", href: "/compliance/corporate-minutes" },
+      { title: "Virtual Office", href: "/compliance/virtual-office" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "annual-reports",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Annual Report Filing",
+    description: "Timely preparation and filing of state annual reports. Avoid penalties, late fees, and administrative dissolution — included in Silver and Gold packages.",
+    readingTime: "4 min read",
+    sections: [
+      {
+        id: "what-are",
+        type: "text",
+        title: "What Are Annual Reports?",
+        content: "Annual reports (called 'Annual List' in Nevada) are required state filings that confirm your entity's current information — registered agent, officers, directors, and business address. Both Wyoming and Nevada require annual filings. Failure to file results in penalties, late fees, and eventually administrative dissolution of your entity. We prepare and file your annual report as part of our Silver and Gold packages.",
+      },
+    ],
+    faqs: [
+      { id: "ar-faq-1", question: "What happens if I miss my annual report?", answer: "You'll face late fees and penalties. If you continue to miss filings, the state will administratively dissolve your entity, meaning it loses its legal status. We make sure this never happens.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Registered Agent", href: "/compliance/registered-agent" },
+      { title: "Corporate Minutes", href: "/compliance/corporate-minutes" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "corporate-minutes",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Corporate Minutes Maintenance",
+    description: "Professional minute book preparation and maintenance. Protect your corporate veil with proper documentation — included in Silver and Gold packages.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-are",
+        type: "text",
+        title: "What Are Corporate Minutes?",
+        content: "Corporate minutes are formal records of decisions made by your LLC's members (or corporation's board of directors). They document meetings, resolutions, and significant business decisions. Maintaining proper minutes is essential for preserving your limited liability protection — without them, a court might 'pierce the corporate veil' and hold you personally liable for business debts. Other formation companies charge $400-500/year extra for this service. We include it in every Silver and Gold package.",
+      },
+    ],
+    faqs: [
+      { id: "cm-faq-1", question: "What happens if I don't maintain corporate minutes?", answer: "Without proper minutes, you risk 'piercing the corporate veil' — a court ruling that treats your LLC as a personal alter ego, eliminating your liability protection. We maintain your minutes to prevent this.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Registered Agent", href: "/compliance/registered-agent" },
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "virtual-office",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Virtual Office & Mail Forwarding",
+    description: "Professional Reno, NV business address with mail forwarding. Separate from your registered agent address — used for business correspondence.",
+    readingTime: "4 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is a Virtual Office?",
+        content: "A virtual office provides a professional business address without the cost of physical office space. Our Reno, Nevada location at 1795 Meadow Wood Lane, Suite 100 gives your business a real street address (not a PO box) that can be used for business cards, website, correspondence, and state filings. Mail is received at our office and forwarded to your designated address.",
+      },
+    ],
+    faqs: [
+      { id: "vo-faq-1", question: "Is the virtual office the same as the registered agent?", answer: "No. Registered agent is a legal requirement for receiving legal documents. A virtual office is an optional business address for correspondence, marketing, and operations. They serve different purposes.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Registered Agent", href: "/compliance/registered-agent" },
+      { title: "Foreign Registration", href: "/compliance/foreign-registration" },
+    ],
+    relatedPackages: ["wyoming-gold"],
+  },
+  {
+    slug: "foreign-registration",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Foreign Registration",
+    description: "Register your entity to do business in another state. Required when your LLC operates outside its formation state. Available as an add-on for $149.",
+    readingTime: "4 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is Foreign Registration?",
+        content: "Foreign registration (or 'qualification to do business') is the process of registering your LLC or corporation in a state where it was NOT formed but where it conducts business. For example, if you form a Wyoming LLC but operate in California, you need to foreign register in California. This gives your entity legal authority to do business in that state while maintaining the benefits of your formation state.",
+      },
+      {
+        id: "when-needed",
+        type: "text",
+        title: "When Is Foreign Registration Needed?",
+        content: "You generally need foreign registration if your LLC has a physical presence in another state (office, employees, warehouse), regularly conducts business transactions in that state, or solicits business from residents of that state. Passively holding assets (like real estate) may also trigger requirements. Rules vary by state — we can advise on your specific situation.",
+      },
+    ],
+    faqs: [
+      { id: "fr-faq-1", question: "Does foreign registration affect my privacy?", answer: "Foreign registration shows your entity name in the registering state, but uses your formation state's filing details. With our nominee structure in Wyoming/Nevada, your personal information stays off all filings — both in the formation state and the foreign registration state.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Registered Agent", href: "/compliance/registered-agent" },
+      { title: "California State Hub", href: "/states/california" },
+      { title: "Florida State Hub", href: "/states/florida" },
+    ],
+    relatedPackages: ["california-private", "florida-private"],
+  },
+
+  // ==================== NEW ENTRIES ====================
+  {
+    slug: "wyoming-privacy",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Wyoming Privacy Protections",
+    description: "Wyoming leads the nation in business privacy. No public member disclosure, full nominee compatibility, and offshore storage support make it the top choice for privacy-conscious business owners.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "why-wyoming-leads",
+        type: "text",
+        title: "Why Wyoming Leads in Privacy",
+        content: "Wyoming's privacy advantage begins with its statutes: the state does not require LLCs or corporations to disclose members, managers, or beneficial owners on any publicly filed document. This isn't a loophole — it's deliberate legislative design. Wyoming has consistently updated its business statutes to prioritize owner privacy while maintaining compliance with federal requirements like BOI reporting. Combined with the lowest annual fees in the country ($60/year), Wyoming delivers the most privacy per dollar of any U.S. state.",
+      },
+      {
+        id: "privacy-features",
+        type: "differentiator",
+        title: "Privacy Features",
+        content: "Wyoming's privacy protections work at multiple levels to keep your personal information off public records:",
+        items: [
+          { title: "No Public Disclosure", description: "Wyoming does not require member or manager names on Articles of Organization, annual reports, or any other publicly filed document. Your identity is private from day one.", icon: "EyeOff" },
+          { title: "Nominee Compatibility", description: "Wyoming's statutes fully support nominee directors and officers. Our Gold package places professional nominees on all filings year-round — not just at formation.", icon: "UserCheck" },
+          { title: "Offshore Storage Compatible", description: "Wyoming imposes no requirement to store corporate records domestically. Your operating agreement, member registry, and meeting minutes can be held outside U.S. jurisdiction.", icon: "Globe" },
+        ],
+      },
+      {
+        id: "wy-vs-others",
+        type: "comparison",
+        title: "Wyoming Privacy vs Other States",
+        content: "Most states require some form of public disclosure — California mandates a Statement of Information listing managers, Florida publishes annual report details, and even Nevada (while strong on privacy) charges significantly more for equivalent protections. Wyoming is unique in combining the strongest privacy statutes with the lowest costs. For clients who don't need a physical presence in another state, Wyoming is the clear choice.",
+      },
+    ],
+    faqs: [
+      { id: "wyp-faq-1", question: "Does Wyoming report my information to any public database?", answer: "No. Wyoming does not require LLC member or manager names on any publicly filed document. With our nominee services, the only names on public filings are our professional nominees — never yours.", category: "privacy" },
+      { id: "wyp-faq-2", question: "Can someone find out I own a Wyoming LLC?", answer: "Not through public state filings. With a Gold package (nominees + offshore storage), no public record or domestic document connects your name to the entity. Federal BOI reporting goes to a confidential FinCEN database, not public records.", category: "privacy" },
+      { id: "wyp-faq-3", question: "Do I need to live in Wyoming to benefit from its privacy laws?", answer: "No. You can form a Wyoming LLC regardless of where you live. If you conduct business in your home state, you may need to foreign register there, but your Wyoming formation filings remain private.", category: "privacy" },
+    ],
+    sidebarLinks: [
+      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+      { title: "Nominee Services", href: "/privacy/nominee-services" },
+      { title: "WY vs NV Privacy", href: "/compare/wyoming-vs-nevada-privacy" },
+      { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+    ],
+    relatedPackages: ["wyoming-gold"],
+    crossPillarCTA: { pillar: "asset", title: "Combine Privacy with Asset Protection", description: "Wyoming's privacy statutes pair perfectly with the strongest charging order protection in the country. Protect your identity and your assets.", href: "/asset-protection" },
+  },
+  {
+    slug: "nevada-privacy",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Nevada Privacy Protections",
+    description: "Nevada offers strong business privacy with no public member disclosure, established business court protections, and 25+ years of favorable privacy precedent. Ideal for businesses operating in Nevada.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "nv-privacy-overview",
+        type: "text",
+        title: "Nevada Privacy Overview",
+        content: "Nevada has been a privacy-friendly state for business formation for over two decades. Like Wyoming, Nevada does not require public disclosure of LLC members or managers on formation documents or annual filings. The state's long history of business-friendly legislation means decades of favorable court precedent supporting entity privacy. Our Reno office provides an additional advantage: a real Nevada business address and in-person support for clients who want a local presence.",
+      },
+      {
+        id: "nv-business-court",
+        type: "text",
+        title: "Business Court Privacy Benefits",
+        content: "Nevada's dedicated business court provides privacy-related advantages beyond formation. Business disputes handled in the business court benefit from judges experienced in entity law, efficient case resolution that limits public exposure, and precedent that respects entity privacy structures. For clients who anticipate potential business disputes, Nevada's established court system offers a layer of procedural privacy that newer courts in other states have not yet developed.",
+      },
+      {
+        id: "nv-vs-wy",
+        type: "comparison",
+        title: "Nevada vs. Wyoming for Privacy",
+        content: "Both Nevada and Wyoming offer equivalent privacy statutes — neither requires public member disclosure, both support nominee services, and both are compatible with offshore record storage. The primary differences are cost and physical presence. Wyoming's annual fees are $60/year vs. Nevada's $350+/year. However, Nevada is the better choice if you physically operate in the state, want a Reno business address, or prefer the credibility of Nevada's long-established business reputation. See our detailed comparison for a full breakdown.",
+      },
+    ],
+    faqs: [
+      { id: "nvp-faq-1", question: "Is Nevada as private as Wyoming?", answer: "For public filings, yes — both states offer equivalent privacy protections with no member disclosure required. The difference is cost: Nevada's annual state fees are significantly higher ($350+/year vs. Wyoming's $60/year).", category: "privacy" },
+      { id: "nvp-faq-2", question: "Does having a Reno office help with privacy?", answer: "Yes. Our Reno office provides a real business address separate from your personal address. Combined with nominee services, all public-facing information points to our office, not to you.", category: "privacy" },
+      { id: "nvp-faq-3", question: "Should I choose Nevada over Wyoming for privacy?", answer: "Choose Nevada if you physically operate there or want a local presence. Otherwise, Wyoming provides equivalent privacy at lower cost. Both states are excellent for privacy-first formation.", category: "privacy" },
+    ],
+    sidebarLinks: [
+      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+      { title: "WY vs NV Privacy", href: "/compare/wyoming-vs-nevada-privacy" },
+      { title: "Nevada Gold LLC", href: "/packages/nevada-gold" },
+    ],
+    relatedPackages: ["nevada-gold"],
+  },
+  {
+    slug: "wyoming-registered-agent",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Wyoming Registered Agent Service",
+    description: "Professional registered agent service at our Cheyenne, Wyoming address. Receive legal documents and state correspondence reliably — included in every Wyoming package.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-is-wy-ra",
+        type: "text",
+        title: "What Is a Wyoming Registered Agent?",
+        content: "Every Wyoming LLC and corporation must designate a registered agent with a physical address in Wyoming. The registered agent receives service of process (legal documents), state correspondence, annual report notices, and other official communications on behalf of your entity. Wyoming law requires the registered agent to be available at a physical street address during normal business hours — PO boxes are not permitted. Our Cheyenne office fulfills this requirement for all Wyoming-formed entities.",
+      },
+      {
+        id: "cheyenne-matters",
+        type: "text",
+        title: "Why a Cheyenne Presence Matters",
+        content: "Having a registered agent physically located in Cheyenne — Wyoming's capital — provides direct proximity to the Secretary of State's office. This means faster processing of filed documents, immediate response to state inquiries, and reliable receipt of time-sensitive legal notices. Many online services use third-party agents with no real presence in the state. Our office is staffed and operational, ensuring your entity stays in good standing and never misses a critical filing or legal notice.",
+      },
+      {
+        id: "included-in-all",
+        type: "differentiator",
+        title: "Included in All Wyoming Packages",
+        content: "Wyoming registered agent service is included in every formation package — Silver, Gold, and Shelf Companies. There is no additional charge for the first year.",
+        items: [
+          { title: "Legal Document Handling", description: "We receive service of process and forward it to you immediately via email and physical mail. You never miss a critical legal deadline.", icon: "FileText" },
+          { title: "State Correspondence", description: "Annual report notices, compliance reminders, and state communications are received at our office and forwarded to you promptly.", icon: "Mail" },
+          { title: "Privacy Shield", description: "Our Cheyenne address appears on public filings as the registered agent address — not your home or personal office address.", icon: "ShieldCheck" },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "wyra-faq-1", question: "What happens after the first year of registered agent service?", answer: "Registered agent service renews annually as part of your package renewal. Silver renewals are $325/year and Gold renewals are $525/year — registered agent is included in both.", category: "compliance" },
+      { id: "wyra-faq-2", question: "Can I use my own Wyoming address as registered agent?", answer: "If you have a physical Wyoming address and are available during business hours, technically yes. But using a professional registered agent protects your privacy (your home address won't appear on public filings) and ensures reliability.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Registered Agent Overview", href: "/compliance/registered-agent" },
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+      { title: "Wyoming State Hub", href: "/states/wyoming" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+  },
+  {
+    slug: "nevada-registered-agent",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Nevada Registered Agent Service",
+    description: "Professional registered agent service at our Reno, Nevada office. In-state presence, reliable legal document handling, and compliance support — included in every Nevada package.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-is-nv-ra",
+        type: "text",
+        title: "What Is a Nevada Registered Agent?",
+        content: "Every Nevada LLC and corporation is required by state law to maintain a registered agent with a physical street address in Nevada. The registered agent receives service of process, state correspondence from the Nevada Secretary of State, and official notices including annual list reminders and business license renewals. Nevada is strict about this requirement — failure to maintain a registered agent results in revocation of your entity's right to transact business in the state.",
+      },
+      {
+        id: "reno-advantage",
+        type: "text",
+        title: "The Reno Office Advantage",
+        content: "Our registered agent service operates from our physical office at 1795 Meadow Wood Lane, Suite 100, Reno, NV. Unlike national services that contract with third parties, we own and staff our office. This means in-person document receipt with immediate digital forwarding, a real business address that clients can also use for correspondence (with our Virtual Office add-on), local knowledge of Nevada compliance requirements, and direct relationships with the Nevada Secretary of State's office. For clients who choose Nevada specifically, having a real Reno presence adds credibility and reliability.",
+      },
+      {
+        id: "nv-requirements",
+        type: "text",
+        title: "Nevada Registered Agent Requirements",
+        content: "Nevada requires all business entities to list a registered agent on their initial formation filing and annual list. The registered agent must have a physical Nevada address (no PO boxes), be available during normal business hours, and consent to serve in the role. If your registered agent resigns or becomes unavailable, you have 30 days to appoint a replacement or risk administrative dissolution. Our service handles all of this automatically — you never need to worry about compliance gaps.",
+      },
+    ],
+    faqs: [
+      { id: "nvra-faq-1", question: "Is the Reno office a real physical location?", answer: "Yes. Our office at 1795 Meadow Wood Lane, Suite 100, Reno, NV is a fully staffed physical location. We have been operating from Reno for over 25 years.", category: "compliance" },
+      { id: "nvra-faq-2", question: "Can I use the Reno address for my business correspondence too?", answer: "Yes — with our Virtual Office add-on ($149/year). This gives you a professional Reno business address for business cards, websites, and correspondence, separate from the registered agent function.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Registered Agent Overview", href: "/compliance/registered-agent" },
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+      { title: "Nevada State Hub", href: "/states/nevada" },
+    ],
+    relatedPackages: ["nevada-gold", "nevada-silver", "nevada-bronze"],
+  },
+  {
+    slug: "domestication",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Entity Domestication",
+    description: "Move your LLC or corporation from one state to another without dissolving and reforming. Preserve your entity's history, EIN, contracts, and bank accounts while gaining a new state's protections.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "what-is-domestication",
+        type: "text",
+        title: "What Is Domestication?",
+        content: "Domestication is the legal process of moving an existing LLC or corporation from one state to another. Unlike dissolving in the old state and reforming in the new one, domestication preserves your entity's formation date, EIN, contracts, bank accounts, and operating history. The entity is treated as if it had always been formed in the new state. This is the preferred method for moving to Wyoming or Nevada to take advantage of stronger privacy statutes, better asset protection, or lower annual costs.",
+      },
+      {
+        id: "when-needed",
+        type: "audience",
+        title: "When You Need Domestication",
+        content: "Domestication is the right move when your current formation state no longer serves your needs:",
+        items: [
+          { title: "Seeking Stronger Privacy", description: "Moving from a disclosure state (like California or New York) to Wyoming or Nevada for anonymous LLC protection and nominee compatibility." },
+          { title: "Better Asset Protection", description: "Moving to Wyoming for single-member LLC charging order protection that your current state doesn't provide." },
+          { title: "Reducing Annual Costs", description: "Entities formed in high-fee states (Nevada, Delaware, California) can save hundreds per year by domesticating to Wyoming." },
+          { title: "Changing Business Strategy", description: "Your business has evolved and a different formation state better aligns with your operational needs, client base, or growth plans." },
+        ],
+      },
+      {
+        id: "the-process",
+        type: "text",
+        title: "The Domestication Process",
+        content: "The domestication process typically takes 2-4 weeks and involves several steps: filing a Plan of Domestication with both the departing and receiving states, updating your operating agreement or bylaws to comply with the new state's laws, filing Articles of Domestication in the new state, filing a Certificate of Transfer or withdrawal in the old state, and updating your registered agent to one located in the new state. We handle the entire process — you provide authorization and we manage all filings, agent appointments, and compliance updates. Your entity's EIN, bank accounts, and contracts remain unaffected.",
+      },
+    ],
+    faqs: [
+      { id: "dom-faq-1", question: "Does domestication change my EIN or require new bank accounts?", answer: "No. Domestication preserves your entity's EIN, bank accounts, contracts, and operating history. The IRS treats the domesticated entity as the same legal entity — just in a new state.", category: "compliance" },
+      { id: "dom-faq-2", question: "Can any state domesticate to Wyoming?", answer: "Most states allow outbound domestication, and Wyoming accepts inbound domestication from all states. A few states have restrictions or additional requirements. Contact us with your specific state and we'll confirm the process.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Foreign Registration", href: "/compliance/foreign-registration" },
+      { title: "Wyoming LLC", href: "/formation/wyoming-llc" },
+      { title: "Nevada LLC", href: "/formation/nevada-llc" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+  },
+];

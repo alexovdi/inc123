@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Template Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#faf8f3;--parch:#f3efe6;--warm:#fffdf9;
+  --ink:#1a1613;--ink2:#3d3530;--ink3:#7a706a;--ink4:#b0a99f;
+  --rule:#ddd7cc;--ruleL:#ece8df;
+  --t1:#1e3a5f;--t1s:#e6edf5;--t1b:#b3c7de;
+  --t2:#2955a3;--t2s:#e8eef8;--t2b:#a8c0e6;
+  --t3:#0f7c8c;--t3s:#e0f4f6;--t3b:#9edce4;
+  --t4:#c33;--t4s:#fce8e8;--t4b:#f5b3b3;
+  --t5:#b5720a;--t5s:#faf0dd;--t5b:#f0d49a;
+  --t6:#1d7a3f;--t6s:#e4f4ea;--t6b:#a5dbb8;
+  --t7:#7a3dac;--t7s:#f1e8f9;--t7b:#d0b3e8;
+  --t8:#d35c1a;--t8s:#fdeee2;--t8b:#f5c8a0;
+  --t9:#666;--t9s:#f0eeeb;--t9b:#ccc8c2;
+  --priv:#2955a3;--asset:#1d7a3f;--form:#b5720a;--comp:#7a3dac;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;height:100vh;overflow:hidden;}
+
+/* ═══ TOP BAR ═══ */
+.topbar{height:50px;border-bottom:2px solid var(--ink);display:flex;align-items:center;padding:0 1.5rem;gap:1rem;background:var(--cream);z-index:10;}
+.topbar h1{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.02em;}
+.topbar .sep{width:1px;height:22px;background:var(--rule);}
+.topbar .meta{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--ink3);letter-spacing:.06em;}
+.topbar .totals{margin-left:auto;display:flex;gap:.75rem;}
+.topbar .tot{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--ink3);}
+.topbar .tot strong{color:var(--ink);font-size:.75rem;}
+
+/* ═══ SPLIT ═══ */
+.split{display:flex;height:calc(100vh - 50px);}
+
+/* LEFT NAV */
+.left{width:260px;min-width:260px;border-right:1px solid var(--rule);background:var(--warm);overflow-y:auto;padding:.75rem 0;flex-shrink:0;}
+.left-heading{font-family:'IBM Plex Mono',monospace;font-size:.52rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);padding:0 .85rem .5rem;}
+.tpl-btn{display:flex;align-items:center;gap:.55rem;width:100%;padding:.55rem .85rem;border:none;background:none;cursor:pointer;text-align:left;border-left:3px solid transparent;transition:all .12s;font-family:inherit;}
+.tpl-btn:hover{background:var(--parch);}
+.tpl-btn.active{background:var(--parch);border-left-color:var(--ink);}
+.tpl-btn .tnum{font-family:'Fraunces',serif;font-size:.95rem;font-weight:700;width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0;}
+.tpl-btn .tinfo{flex:1;min-width:0;}
+.tpl-btn .tname{font-size:.74rem;font-weight:600;color:var(--ink);display:block;line-height:1.2;}
+.tpl-btn .tmeta{font-family:'IBM Plex Mono',monospace;font-size:.52rem;color:var(--ink4);display:flex;gap:.5rem;margin-top:.1rem;}
+.complexity-bar{display:flex;gap:1.5px;align-items:center;}
+.complexity-bar .cb{width:3.5px;height:8px;border-radius:1.5px;background:var(--ruleL);}
+.complexity-bar .cb.on{background:currentColor;}
+
+/* RIGHT */
+.right{flex:1;overflow-y:auto;padding:0;}
+.right-inner{max-width:960px;padding:1.25rem 1.75rem 3rem;}
+
+/* Detail header */
+.detail-head{margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:2px solid var(--rule);}
+.dh-top{display:flex;align-items:center;gap:.65rem;margin-bottom:.5rem;}
+.dh-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0;}
+.detail-head h2{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;}
+.dh-badge{font-family:'IBM Plex Mono',monospace;font-size:.52rem;font-weight:600;padding:.22rem .6rem;border-radius:5px;margin-left:auto;letter-spacing:.04em;white-space:nowrap;}
+.dh-desc{font-size:.82rem;color:var(--ink3);line-height:1.55;max-width:680px;}
+
+/* Two-col grid */
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;}
+.detail-box{background:var(--warm);border:1px solid var(--rule);border-radius:9px;padding:.85rem;}
+.detail-box h4{font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.5rem;}
+.detail-box ul{list-style:none;}
+.detail-box li{font-size:.74rem;color:var(--ink2);padding:.22rem 0 .22rem .85rem;position:relative;line-height:1.4;}
+.detail-box li::before{content:'\2022';position:absolute;left:0;color:var(--ink4);}
+.comp-tags{display:flex;flex-wrap:wrap;gap:.25rem;}
+.comp-tag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;padding:.18rem .45rem;border-radius:4px;}
+
+/* Pages */
+.pages-head{font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);margin-bottom:.5rem;padding-top:.85rem;border-top:1px solid var(--rule);}
+.page-list{display:flex;flex-wrap:wrap;gap:.35rem;}
+.pg{display:flex;align-items:center;gap:.35rem;padding:.35rem .55rem;border-radius:7px;border:1.5px solid var(--rule);background:var(--warm);transition:all .15s;cursor:default;position:relative;}
+.pg:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.05);}
+.pg .pg-num{font-family:'Fraunces',serif;font-size:.55rem;font-weight:700;width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0;}
+.pg .pg-name{font-size:.66rem;font-weight:600;color:var(--ink);line-height:1.2;}
+.pg .pg-url{font-family:'IBM Plex Mono',monospace;font-size:.48rem;color:var(--ink4);}
+.pg .pg-pri{position:absolute;top:-4px;right:-4px;width:13px;height:13px;border-radius:50%;font-family:'IBM Plex Mono',monospace;font-size:.4rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--warm);}
+.pg-pri.p1{background:#16a34a;color:white;}
+.pg-pri.p2{background:#d97706;color:white;}
+.pg.pil-priv{border-left:3px solid var(--priv);}
+.pg.pil-asset{border-left:3px solid var(--asset);}
+.pg.pil-form{border-left:3px solid var(--form);}
+.pg.pil-comp{border-left:3px solid var(--comp);}
+.flow-arrow{display:flex;align-items:center;color:var(--ink4);font-size:.7rem;padding:0 .05rem;}
+
+@media(max-width:860px){
+  body{overflow:auto;height:auto;}
+  .split{flex-direction:column;height:auto;}
+  .left{width:100%;min-width:0;overflow:visible;display:flex;flex-wrap:wrap;gap:0;padding:.4rem;border-right:none;border-bottom:1px solid var(--rule);}
+  .left-heading{width:100%;padding:.2rem .4rem;}
+  .tpl-btn{width:auto;flex:0 0 auto;padding:.35rem .5rem;border-left:none;border-bottom:2px solid transparent;border-radius:5px;}
+  .tpl-btn.active{border-bottom-color:var(--ink);background:var(--parch);}
+  .tpl-btn .tnum{width:20px;height:20px;font-size:.7rem;border-radius:4px;}
+  .tpl-btn .tmeta{display:none;}
+  .right-inner{padding:.85rem;}
+  .detail-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Incorporate123</h1>
+  <div class="sep"></div>
+  <div class="meta">TEMPLATE ARCHITECTURE · PHASE 2</div>
+  <div class="totals">
+    <div class="tot"><strong>9</strong> templates</div>
+    <div class="tot"><strong>~71</strong> pages</div>
+    <div class="tot"><strong>10–20</strong> prototypes</div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="left">
+    <div class="left-heading">Templates to Build</div>
+    <button class="tpl-btn active" data-t="1" onclick="show(1)"><div class="tnum" style="background:var(--t1)">1</div><div class="tinfo"><span class="tname">Homepage</span><span class="tmeta"><span>1 pg</span><span class="complexity-bar" style="color:var(--t1)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="2" onclick="show(2)"><div class="tnum" style="background:var(--t2)">2</div><div class="tinfo"><span class="tname">Pillar Pages</span><span class="tmeta"><span>4 pg</span><span class="complexity-bar" style="color:var(--t2)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="3" onclick="show(3)"><div class="tnum" style="background:var(--t3)">3</div><div class="tinfo"><span class="tname">Cluster Pages</span><span class="tmeta"><span>24+ pg</span><span class="complexity-bar" style="color:var(--t3)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb"></span><span class="cb"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="4" onclick="show(4)"><div class="tnum" style="background:var(--t4)">4</div><div class="tinfo"><span class="tname">Package Detail</span><span class="tmeta"><span>8 pg</span><span class="complexity-bar" style="color:var(--t4)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="5" onclick="show(5)"><div class="tnum" style="background:var(--t5)">5</div><div class="tinfo"><span class="tname">Comparison</span><span class="tmeta"><span>6 pg</span><span class="complexity-bar" style="color:var(--t5)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb"></span><span class="cb"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="6" onclick="show(6)"><div class="tnum" style="background:var(--t6)">6</div><div class="tinfo"><span class="tname">State Hubs</span><span class="tmeta"><span>4 pg</span><span class="complexity-bar" style="color:var(--t6)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb"></span><span class="cb"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="7" onclick="show(7)"><div class="tnum" style="background:var(--t7)">7</div><div class="tinfo"><span class="tname">Resource / FAQ</span><span class="tmeta"><span>2 pg</span><span class="complexity-bar" style="color:var(--t7)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb"></span><span class="cb"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="8" onclick="show(8)"><div class="tnum" style="background:var(--t8)">8</div><div class="tinfo"><span class="tname">Checkout Flow</span><span class="tmeta"><span>4 steps</span><span class="complexity-bar" style="color:var(--t8)"><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span><span class="cb on"></span></span></span></div></button>
+    <button class="tpl-btn" data-t="9" onclick="show(9)"><div class="tnum" style="background:var(--t9)">9</div><div class="tinfo"><span class="tname">Utility Pages</span><span class="tmeta"><span>16 pg</span><span class="complexity-bar" style="color:var(--t9)"><span class="cb on"></span><span class="cb"></span><span class="cb"></span><span class="cb"></span><span class="cb"></span></span></span></div></button>
+  </div>
+  <div class="right"><div class="right-inner" id="rc"></div></div>
+</div>
+
+<script>
+const T={
+1:{name:'Homepage',color:'--t1',count:'1 page',proto:'Full Prototype',
+desc:'The site entry point. Hero section with dual CTA, intent-based pillar navigation, featured package links with pricing, testimonial social proof, and trust signals. Sets the tone for the entire brand repositioning.',
+interactions:['Hero with dual CTA (Get Started / Schedule Consultation)','Pillar navigation cards — 4 cards with hover states','Featured package links with pricing preview — Gold, Silver, Bronze teasers','Testimonial carousel / rotation with client photos','Trust signals bar (25 years, BBB A+, Reno office)','Mega menu integration — hover reveals cluster grid'],
+components:['HeroSection','PillarNavCard','PackagePreviewCard','TestimonialCarousel','TrustBar','CTAButton','MegaMenu','MobileNav'],
+pages:[{n:'Homepage',u:'/',pri:1}]},
+
+2:{name:'Pillar Pages',color:'--t2',count:'4 pages',proto:'Full Prototype (each)',
+desc:'The four content hubs. Each educates visitors on one intent area and routes them to deeper cluster content. Pillar-specific color coding differentiates each. All four need individual prototypes because their cluster grids differ.',
+interactions:['Progressive disclosure — expandable sections','Cluster grid nav — cards linking to all child clusters','Inline CTAs between content sections','Breadcrumbs (Home > Pillar)','Sidebar nav showing all clusters in this pillar','Cross-pillar upsell CTAs','Pillar-specific color system (blue / green / amber / purple)'],
+components:['ProgressiveDisclosure','ClusterGrid','InlineCTA','Breadcrumbs','SidebarNav','CrossPillarCTA','PillarColorSystem'],
+pages:[{n:'Business Privacy',u:'/privacy/',pri:1,pil:'priv'},{n:'Asset Protection',u:'/asset-protection/',pri:1,pil:'asset'},{n:'Company Formation',u:'/formation/',pri:1,pil:'form'},{n:'Compliance',u:'/compliance/',pri:1,pil:'comp'}]},
+
+3:{name:'Cluster Pages',color:'--t3',count:'24+ pages',proto:'1 Representative Prototype',
+desc:'The workhorse template — used by 24+ pages across all four pillars. Long-form educational content with FAQ accordions, related links, and package CTAs. One prototype covers the pattern; content varies per page.',
+interactions:['Long-form content with heading nav / table of contents','FAQ accordion — expandable Q&A sections','Related links sidebar — sibling clusters + pillar + comparisons','Package CTA block at bottom','Cross-pillar contextual links','Breadcrumbs (Home > Pillar > Cluster)'],
+components:['ContentLayout','TableOfContents','FAQAccordion','RelatedLinks','PackageCTABlock','CrossPillarCTA','Breadcrumbs'],
+pages:[
+{n:'Anonymous LLC',u:'/anonymous-llc/',pri:1,pil:'priv'},{n:'Anon Corporation',u:'/anonymous-corporation/',pri:2,pil:'priv'},{n:'Nominee Services',u:'/nominee-services/',pri:1,pil:'priv'},{n:'WY Privacy',u:'/wyoming-privacy/',pri:1,pil:'priv'},{n:'NV Privacy',u:'/nevada-privacy/',pri:1,pil:'priv'},{n:'CA Private Inc.',u:'/california-private-inc/',pri:1,pil:'priv'},{n:'FL Private Inc.',u:'/florida-private-inc/',pri:1,pil:'priv'},{n:'BOI Reporting',u:'/beneficial-ownership-reporting/',pri:2,pil:'priv'},
+{n:'NV Asset Protection',u:'/nevada-asset-protection/',pri:1,pil:'asset'},{n:'WY Asset Protection',u:'/wyoming-asset-protection/',pri:1,pil:'asset'},{n:'Charging Order',u:'/charging-order-protection/',pri:1,pil:'asset'},{n:'Investment Hold LLC',u:'/investment-holding-llc/',pri:2,pil:'asset'},{n:'Real Estate AP',u:'/real-estate-asset-protection/',pri:2,pil:'asset'},{n:'LLC vs Living Trust',u:'/llc-vs-living-trust/',pri:2,pil:'asset'},
+{n:'Wyoming LLC',u:'/wyoming-llc/',pri:1,pil:'form'},{n:'Nevada LLC',u:'/nevada-llc/',pri:1,pil:'form'},{n:'WY Corporation',u:'/wyoming-corporation/',pri:2,pil:'form'},{n:'NV Corporation',u:'/nevada-corporation/',pri:2,pil:'form'},{n:'Shelf Companies',u:'/shelf-companies/',pri:1,pil:'form'},{n:'Series LLC',u:'/series-llc/',pri:2,pil:'form'},
+{n:'Registered Agent',u:'/registered-agent/',pri:1,pil:'comp'},{n:'WY Reg Agent',u:'/wyoming-registered-agent/',pri:2,pil:'comp'},{n:'NV Reg Agent',u:'/nevada-registered-agent/',pri:2,pil:'comp'},{n:'Annual Reports',u:'/annual-reports/',pri:2,pil:'comp'},{n:'Foreign Reg',u:'/foreign-state-registration/',pri:2,pil:'comp'},{n:'Domestication',u:'/domestication/',pri:2,pil:'comp'}]},
+
+4:{name:'Package Detail',color:'--t4',count:'8 pages',proto:'Full Prototype',
+desc:'The highest-complexity template. 3-tier pricing comparison, interactive tooltips, add-on configurator with live price updates, LLC/Corp toggle, and progressive disclosure. More interaction complexity than many entire websites.',
+interactions:['3-tier pricing grid (Bronze / Silver / Gold)','Interactive tooltips on every line item','Add-on configurator with live price update','LLC / Corporation toggle switch','Progressive disclosure for package details','Dual CTAs: Start Now + Schedule Consultation','"Also Consider" related packages sidebar','Mobile: stacked cards replace grid'],
+components:['PricingGrid','TooltipSystem','AddOnConfigurator','EntityToggle','ProgressiveDisclosure','DualCTA','RelatedPackages','PriceSummary'],
+pages:[{n:'WY Gold (Private)',u:'/wyoming-private-incorporation/',pri:1},{n:'WY Silver',u:'/wyoming-incorporation/',pri:1},{n:'NV Gold (Private)',u:'/nevada-private-incorporation/',pri:1},{n:'NV Silver',u:'/nevada-incorporation/',pri:1},{n:'NV Bronze (Basic)',u:'/nevada-basic-incorporation/',pri:1},{n:'CA Private',u:'/california-private-inc/',pri:1},{n:'FL Private',u:'/florida-private-inc/',pri:1},{n:'Shelf Companies',u:'/shelf-companies/',pri:1}]},
+
+5:{name:'Comparison Pages',color:'--t5',count:'6 pages',proto:'1 Representative Prototype',
+desc:'Decision-support tools. Side-by-side tables comparing states or entity types, with guided decision flow and dual CTAs routing to each option\'s package page.',
+interactions:['Side-by-side comparison table','Decision flow guidance ("If you need X, choose Y")','Dual CTAs per compared option','Mobile: stacked cards instead of table','Recommended option highlight badge','Back to pillar breadcrumbs'],
+components:['ComparisonTable','DecisionFlow','DualOptionCTA','MobileCards','RecommendBadge','Breadcrumbs'],
+pages:[{n:'Best State for Privacy',u:'/best-state-for-privacy/',pri:1,pil:'priv'},{n:'WY vs NV Privacy',u:'/wyoming-vs-nevada-privacy/',pri:1,pil:'priv'},{n:'Best State for AP',u:'/best-state-asset-protection/',pri:2,pil:'asset'},{n:'WY vs NV AP',u:'/wyoming-vs-nevada-asset-protection/',pri:2,pil:'asset'},{n:'LLC vs Corporation',u:'/llc-vs-corporation/',pri:1,pil:'form'},{n:'WY vs NV Formation',u:'/wyoming-vs-nevada/',pri:1,pil:'form'}]},
+
+6:{name:'State Hubs',color:'--t6',count:'4 pages',proto:'1 Representative Prototype',
+desc:'Cross-pillar geographic landing pages. Each aggregates all content for one state across all four pillars, serving geographic search intent.',
+interactions:['Cross-pillar content aggregation — 4 pillar sections','Dynamic linking organized by pillar color','State-specific trust signals','Package recommendations filtered to state','Quick-links to all state clusters and packages'],
+components:['PillarSection (×4)','StatePackageGrid','StateTrustSignals','PillarBadges','QuickLinks'],
+pages:[{n:'Wyoming Hub',u:'/wyoming/',pri:1},{n:'Nevada Hub',u:'/nevada/',pri:1},{n:'California Hub',u:'/california/',pri:2},{n:'Florida Hub',u:'/florida/',pri:2}]},
+
+7:{name:'Resource / FAQ',color:'--t7',count:'2 pages',proto:'1 Representative Prototype',
+desc:'Search-driven resource pages. FAQ Hub consolidates ~188 Learning Center items with live search/filter and pillar categorization. Compare All uses similar filterable layout.',
+interactions:['Search input with live filtering (188+ items)','Accordion system — expand/collapse answers','Category nav — filter by pillar topic','Related content suggestions','Rich-text answers with inline links'],
+components:['SearchFilter','FAQAccordion (bulk)','CategoryNav','RelatedContent','RichTextAnswer'],
+pages:[{n:'FAQ Hub',u:'/faq/',pri:1},{n:'Compare All Packages',u:'/compare-packages/',pri:1}]},
+
+8:{name:'Checkout Flow',color:'--t8',count:'4 steps',proto:'Full Multi-Step Prototype',
+desc:'The complete conversion path. 4-step flow from package config through payment to confirmation, with persistent order summary, form validation, and Stripe/PayPal integration.',
+interactions:['Multi-step progress indicator','Step 1: Package config + add-ons + entity type','Step 2: Entity details form with validation','Step 3: Payment gateway (Stripe / PayPal)','Step 4: Confirmation + next steps + portal access','Order summary persistent across all steps','Inline form validation with error messaging','Mobile-optimized form layout'],
+components:['StepIndicator','PackageConfigurator','EntityForm','PaymentGateway','OrderSummary','ConfirmationPage','FormValidation','SecureBadges'],
+pages:[{n:'1. Package Config',u:'/checkout/configure/',pri:1,flow:1},{n:'2. Entity Details',u:'/checkout/details/',pri:1,flow:1},{n:'3. Payment',u:'/checkout/payment/',pri:1,flow:1},{n:'4. Confirmation',u:'/checkout/confirmation/',pri:1,flow:1}]},
+
+9:{name:'Utility Pages',color:'--t9',count:'16 pages',proto:'1 Representative Prototype',
+desc:'The simplest template covering About, Contact, Legal, Testimonials, Blog, Login, and the Offshore hub. Standard content layout with contact form variant.',
+interactions:['Standard content layout with heading hierarchy','Contact form variant with consultation CTA','Legal page variant (minimal, no CTAs)','Offshore hub variant with sub-navigation','Blog listing with pillar category filtering','Testimonials grid layout'],
+components:['ContentLayout','ContactForm','LegalTemplate','OffshoreSubNav','BlogListing','TestimonialGrid'],
+pages:[{n:'About Us',u:'/about/',pri:1},{n:'Contact',u:'/contact/',pri:1},{n:'Blog',u:'/blog/',pri:2},{n:'Testimonials',u:'/testimonials/',pri:1},{n:'Client Login',u:'/login/',pri:1},{n:'Privacy Policy',u:'/privacy-policy/',pri:1},{n:'Terms',u:'/terms/',pri:1},{n:'Offshore Hub',u:'/offshore/',pri:1},{n:'Nevis',u:'/offshore/nevis/',pri:1},{n:'BVI',u:'/offshore/bvi/',pri:1},{n:'Panama',u:'/offshore/panama/',pri:1},{n:'Hong Kong',u:'/offshore/hong-kong/',pri:1},{n:'IRS Compliance',u:'/offshore/irs-compliance/',pri:1}]}
+};
+
+function show(t){
+  document.querySelectorAll('.tpl-btn').forEach(b=>b.classList.toggle('active',b.dataset.t==t));
+  const d=T[t],cv=d.color,rc=document.getElementById('rc');
+  let ph='';
+  if(d.pages[0]&&d.pages[0].flow){
+    ph=d.pages.map((p,i)=>{
+      const a=i<d.pages.length-1?'<span class="flow-arrow">\u2192</span>':'';
+      return `<div class="pg"><div class="pg-num" style="background:var(${cv})">${t}</div><div class="pg-info"><span class="pg-name">${p.n}</span><span class="pg-url">${p.u}</span></div><span class="pg-pri p${p.pri}">P${p.pri}</span></div>${a}`;
+    }).join('');
+  } else {
+    ph=d.pages.map(p=>{
+      const pc=p.pil?` pil-${p.pil}`:'';
+      return `<div class="pg${pc}"><div class="pg-num" style="background:var(${cv})">${t}</div><div class="pg-info"><span class="pg-name">${p.n}</span><span class="pg-url">${p.u}</span></div><span class="pg-pri p${p.pri}">P${p.pri}</span></div>`;
+    }).join('');
+  }
+  rc.innerHTML=`
+<div class="detail-head">
+  <div class="dh-top"><div class="dh-num" style="background:var(${cv})">${t}</div><h2>${d.name}</h2><div class="dh-badge" style="background:var(${cv}s);color:var(${cv});border:1px solid var(${cv}b);">${d.proto}</div></div>
+  <p class="dh-desc">${d.desc}</p>
+</div>
+<div class="detail-grid">
+  <div class="detail-box"><h4>Key Interactions to Build</h4><ul>${d.interactions.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+  <div class="detail-box"><h4>Components Required</h4><div class="comp-tags">${d.components.map(c=>`<span class="comp-tag" style="background:var(${cv}s);color:var(${cv});border:1px solid var(${cv}b);">${c}</span>`).join('')}</div></div>
+</div>
+<div class="pages-head">Pages Using This Template \u2014 ${d.count}</div>
+<div class="page-list">${ph}</div>`;
+  document.querySelector('.right').scrollTop=0;
+}
+document.addEventListener('DOMContentLoaded',()=>show(1));
+</script>
+</body>
+</html>

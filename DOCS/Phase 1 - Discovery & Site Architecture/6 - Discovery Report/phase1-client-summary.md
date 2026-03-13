@@ -1,0 +1,106 @@
+# Phase 1: Discovery & Strategy — Summary for Review
+
+**Incorporate123 Website Redesign**  
+Prepared by: BIT Studios | March 2026
+
+---
+
+## Overview
+
+Phase 1 answered one question: **What are we building, and why?** Before designing or developing anything, we needed to understand your current site inside and out, study the competitive landscape, and build a validated plan for the new website. This phase produced five formal deliverables across 36 hours of work over Weeks 1–2. Below is what each objective set out to accomplish, and what was produced.
+
+---
+
+---
+
+## What We Set Out to Accomplish — and What We Produced
+
+### Strategic Objectives
+
+**1. Reposition Incorporate123 from "Nevada incorporation company" to "Privacy, Asset Protection & Business Formation Specialists."**
+
+The current site organizes everything by geography — Nevada first, then Wyoming. This creates three problems: it misaligns with how people actually search (they search for "anonymous LLC" or "asset protection," not for states), it fragments your strongest differentiators across state-specific pages, and it buries privacy and nominee services instead of leading with them. The new architecture flips this entirely. Four content pillars — Business Privacy, Asset Protection, Company Formation, and Compliance — become the primary site organization, with state-specific content distributed as supporting pages underneath. The Positioning Framework document formalizes the messaging, differentiation, and target audience definitions that guide all content, design, and marketing going forward.
+
+**What was produced:** Positioning Framework document defining the strategic messaging shift, target audience profile (small business owners with $500K+ in assets who prioritize privacy over lowest price), and the differentiation points that set Incorporate123 apart.
+
+**2. Validate the four-pillar content architecture against actual site data and competitive landscape.**
+
+The four-pillar model was a strategic hypothesis that needed to be tested against two things: does your existing content actually fit into these four categories, and does the competitive landscape support this positioning? The Content Migration Map answered the first question — all 326 unique URLs mapped cleanly into the four pillars with no orphaned topics. The Competitive Analysis answered the second — no competitor organizes content around privacy and asset protection as primary pillars. NCH buries asset protection under a sub-page. Anderson segments by audience type instead of intent. Wyoming Corporate Services has a privacy page with a broken slug (/privacy-2-2/) but no supporting content cluster. The pillar/cluster model is validated on both fronts.
+
+**What was produced:** Content Migration Map confirming pillar assignment for every URL; Competitive Analysis confirming no competitor occupies this architectural approach.
+
+**3. Map the complete conversion flow: Education → Specifics → Comparison → Package → Conversion.**
+
+Visitors arrive with different levels of intent. Some are researching anonymous LLCs for the first time. Some know they want Wyoming but need help choosing a package. Some are ready to order immediately. The site architecture must serve all of them. We mapped five primary conversion journeys (privacy researcher, CA/FL resident, lawsuit-averse business owner, informed buyer, formation researcher) and six secondary journeys (returning client, offshore inquiry, shelf company buyer, state hub entry, BOI-concerned LLC owner, high-net-worth trust seeker). Each journey was traced from search entry through checkout, with every page along the path defined. The critical design principle: every page offers both a "learn more" path downward and a "ready to buy" shortcut, so researchers and buyers are both served.
+
+**What was produced:** User Journey flow diagrams for all 11 paths; navigation requirements document for the UX phase; CTA placement recommendations mapped to each journey stage.
+
+**4. Identify SEO authority opportunities in privacy and asset protection keywords where competitors have limited presence.**
+
+The competitive analysis revealed a striking gap: across the privacy and asset protection keywords most relevant to your business, tracked competitors hold very few ranking positions. The top results are dominated by legal publishers, law firms, and informational sites that educate but can't convert searchers into formation clients. This means you're not competing against entrenched formation companies for these queries — you're competing against content that can't close a sale. This is a preliminary signal, not a full SEO strategy. Comprehensive keyword research, volume analysis, and page-by-page targeting will happen during the SEO Strategy workstream (Weeks 3–8) once the architecture is approved.
+
+**What was produced:** Competitive Analysis report with SEO positioning findings and opportunity signals; full keyword research is scoped for the SEO workstream in Phase 2.
+
+**5. Ensure zero content loss during the consolidation from ~392 URLs to ~71 pages.**
+
+The site turned out to be 2.3x larger than estimated — 392 URLs across 23 template types, with 325 unique paths after removing duplicates. The Learning Center alone accounts for 242 URLs (62% of the site) with 188 FAQ items across 24 categories. Despite the scale, every single URL has been assigned a specific destination. Content is either preserved (~30 URLs migrating with minimal changes), enhanced (~25 URLs expanding significantly for the new architecture), consolidated (~249 URLs merging into parent pillar and cluster pages), or retired (~22 URLs that are outdated or broken, receiving redirects to the closest equivalent). No content is deleted — it's reorganized into locations where visitors are more likely to find and use it.
+
+**What was produced:** Content Migration Map with disposition for all 326 unique URLs; FAQ Consolidation plan distributing all 188 items to pillar/cluster FAQ sections; Gap Analysis identifying 33 new pages with no existing equivalent.
+
+---
+
+### Tactical Objectives
+
+**1. Crawl and inventory all existing URLs, categorizing content to preserve, consolidate, or retire.**
+
+We performed a comprehensive crawl of incorporate123.co on February 27, 2026. The results revealed significant complexity: 392 total URLs, 325 unique paths, 23 template types (vs. 15 estimated), 49 duplicate content groups, zero H1 tags across the entire site, 209 pages sharing one generic title tag, 64 pages missing meta descriptions, and 6 internal broken links returning 404 errors.
+
+**What was produced:** Site Audit spreadsheet with 7 worksheets — Audit Summary dashboard, URL Inventory (all 325 URLs with template classification, disposition, and SEO metadata), Template Map, FAQ Analysis, Duplicate Content report, Issues & 404s, and Top 50 highest-inlinked pages for redirect priority.
+
+**2. Map ~326 unique content pages to the new 71-page architecture with specific destinations.**
+
+Every URL has a defined destination. The breakdown by pillar: Business Privacy receives content from privacy services, nominee pages, and anonymous LLC-related FAQ items. Asset Protection receives charging order, investment holding, and Nevada AP content. Company Formation absorbs the bulk of state-specific formation and entity-type content. Compliance receives registered agent services, annual reports, and foreign registration content. Fourteen pages serve content relevant to multiple pillars and require cross-pillar linking to avoid silos.
+
+**What was produced:** Content Migration Map spreadsheet with 6 worksheets — Migration Summary, full Migration Map (all 326 URLs with current title, word count, inlinks, disposition, new URL, target pillar, content action), Gap Analysis (33 new pages), Cross-Pillar References (14 pages), FAQ Consolidation (24 categories mapped to pillar targets), and Draft Redirect Map (117 individual redirects plus 4 pattern-based bulk rules).
+
+**3. Create a preliminary 301 redirect plan for all current URLs to preserve domain authority.**
+
+Twenty-five years of accumulated domain authority, backlinks, and search rankings must survive the migration. The redirect plan maps every current URL to its new destination, with priority tiers based on inlink weight — the 10 highest-inlinked pages (1,450 down to 334 inlinks each) get precise, individually verified redirect targets. The bulk of Learning Center items follow pattern-based redirect rules. The plan also accounts for the domain migration from incorporate123.co to incorporate123.com, and the consolidation of 20+ owned domains via 301 redirects.
+
+**What was produced:** Draft Redirect Map covering 117 individual redirect rules plus 4 pattern-based rules for bulk content; priority URL list ranked by inlink weight; post-launch redirect verification plan. This draft is refined during development and finalized at launch.
+
+**4. Define primary user journeys for privacy, asset protection, and formation intents.**
+
+Five primary journeys mapped end-to-end with page-by-page paths, estimated path lengths, and target package conversions: Journey A (Privacy Researcher, 4–7 pages, targeting Wyoming/Nevada Gold at $1,275–$2,100), Journey B (CA/FL Resident, 2–3 pages, targeting CA/FL Private Package at $2,500–$3,200), Journey C (Lawsuit-Averse Owner, 4–6 pages, targeting Silver→Gold upsell), Journey D (Informed Buyer, 1–2 pages, targeting Silver or Bronze at $900–$1,575), Journey E (Formation Researcher, 3–5 pages, targeting Silver→Gold). Six secondary journeys cover returning clients, offshore inquiries, shelf company shoppers, state hub entries, BOI-concerned LLC owners, and high-net-worth trust seekers.
+
+**What was produced:** User Journey Mapping document with flow diagrams for all 11 journeys; navigation requirements specifying design patterns (contextual callout boxes, "Also Relevant" sidebar blocks, upgrade prompts with social proof, post-education navigation blocks); CTA placement recommendations per journey stage.
+
+**5. Produce a discovery report with strategic recommendations for client approval.**
+
+The Discovery Report is the capstone deliverable that synthesizes all findings into a single reference document. It includes the full audit results, competitive landscape analysis, content migration strategy, user journey definitions, positioning framework, risk assessment with mitigation strategies, and specific recommendations for design, SEO, content, and development.
+
+**What was produced:** Discovery Report document covering all Phase 1 findings, validated site architecture, 7 design recommendations, 4 content recommendations, and a risk assessment matrix addressing SEO ranking loss, content loss, domain migration, approval delays, Learning Center value preservation, competitor response, and the trust gap from zero reviews at launch.
+
+---
+
+## What This Unlocks
+
+Your approval of the site architecture is the gate that opens the next stage. Once confirmed, three workstreams begin:
+
+| What Happens Next | When |
+|-------------------|------|
+| UX & Interactive Prototyping — clickable prototype of the full site | Weeks 2–5 |
+| Visual Design & Design System — brand identity, typography, color | Weeks 2–5 |
+| SEO Strategy & Implementation — keyword targeting, schema markup | Weeks 3–8 |
+
+The prototype will be a real, clickable website you can review on any device — not static mockups. You'll approve sections as they're completed, and as each section is approved, development begins on that section immediately (Weeks 4–9). Testing and launch (Weeks 8–10) ramp up as development is completed. This rolling approval model is what keeps the 10-week timeline achievable.
+
+---
+
+## What We Need From You
+
+To move forward, we need your **review and approval of the site architecture** — the 71-page structure, four pillars, and URL strategy.
+
+---
+
+*Questions? We're happy to walk through any of these deliverables in detail.*

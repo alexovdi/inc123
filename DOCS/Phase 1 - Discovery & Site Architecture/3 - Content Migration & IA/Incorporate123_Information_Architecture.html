@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Information Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0f1a;
+    --surface: #141829;
+    --surface-2: #1a1f35;
+    --border: rgba(255,255,255,0.06);
+    --border-focus: rgba(255,255,255,0.12);
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+
+    --navy: #1e3a5f;
+    --privacy: #3b82f6;
+    --privacy-bg: rgba(59,130,246,0.08);
+    --privacy-border: rgba(59,130,246,0.2);
+    --privacy-glow: rgba(59,130,246,0.04);
+
+    --asset: #22c55e;
+    --asset-bg: rgba(34,197,94,0.08);
+    --asset-border: rgba(34,197,94,0.2);
+
+    --formation: #f59e0b;
+    --formation-bg: rgba(245,158,11,0.08);
+    --formation-border: rgba(245,158,11,0.2);
+
+    --compliance: #a855f7;
+    --compliance-bg: rgba(168,85,247,0.08);
+    --compliance-border: rgba(168,85,247,0.2);
+
+    --package: #ef4444;
+    --package-bg: rgba(239,68,68,0.06);
+    --package-border: rgba(239,68,68,0.18);
+
+    --state: #06b6d4;
+    --state-bg: rgba(6,182,212,0.08);
+    --state-border: rgba(6,182,212,0.2);
+
+    --utility: #64748b;
+    --utility-bg: rgba(100,116,139,0.08);
+    --utility-border: rgba(100,116,139,0.2);
+
+    --offshore: #ec4899;
+    --offshore-bg: rgba(236,72,153,0.08);
+    --offshore-border: rgba(236,72,153,0.2);
+
+    --checkout: #f97316;
+    --checkout-bg: rgba(249,115,22,0.06);
+    --checkout-border: rgba(249,115,22,0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 3rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--privacy);
+    background: var(--privacy-bg);
+    border: 1px solid var(--privacy-border);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    margin-bottom: 1.2rem;
+  }
+  .header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  .header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 700px;
+    line-height: 1.65;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+  }
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .stat .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .stat .num { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* ── FILTER CONTROLS ── */
+  .controls {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .filter-btn {
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--border-focus); color: var(--text); }
+  .filter-btn.active { border-color: var(--privacy); color: var(--privacy); background: var(--privacy-bg); }
+  .filter-btn[data-filter="privacy"].active { border-color: var(--privacy); color: var(--privacy); background: var(--privacy-bg); }
+  .filter-btn[data-filter="asset"].active { border-color: var(--asset); color: var(--asset); background: var(--asset-bg); }
+  .filter-btn[data-filter="formation"].active { border-color: var(--formation); color: var(--formation); background: var(--formation-bg); }
+  .filter-btn[data-filter="compliance"].active { border-color: var(--compliance); color: var(--compliance); background: var(--compliance-bg); }
+  .filter-btn[data-filter="package"].active { border-color: var(--package); color: var(--package); background: var(--package-bg); }
+  .filter-btn[data-filter="state"].active { border-color: var(--state); color: var(--state); background: var(--state-bg); }
+  .filter-btn[data-filter="utility"].active { border-color: var(--utility); color: var(--text); background: var(--utility-bg); }
+  .filter-btn[data-filter="offshore"].active { border-color: var(--offshore); color: var(--offshore); background: var(--offshore-bg); }
+  .filter-btn[data-filter="checkout"].active { border-color: var(--checkout); color: var(--checkout); background: var(--checkout-bg); }
+  .filter-btn[data-filter="all"].active { border-color: var(--privacy); color: var(--privacy); background: var(--privacy-bg); }
+
+  /* ── NAV STRUCTURE ── */
+  .nav-section {
+    max-width: 1400px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+  .nav-section h2 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem;
+  }
+  .nav-item {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: default;
+    transition: all 0.15s;
+  }
+  .nav-item.privacy { color: var(--privacy); background: var(--privacy-bg); border: 1px solid var(--privacy-border); }
+  .nav-item.asset { color: var(--asset); background: var(--asset-bg); border: 1px solid var(--asset-border); }
+  .nav-item.formation { color: var(--formation); background: var(--formation-bg); border: 1px solid var(--formation-border); }
+  .nav-item.package { color: var(--package); background: var(--package-bg); border: 1px solid var(--package-border); }
+  .nav-item.utility { color: var(--text-muted); background: var(--utility-bg); border: 1px solid var(--utility-border); }
+
+  /* ── MAIN GRID ── */
+  .main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* ── PILLAR SECTION ── */
+  .pillar-section {
+    margin-bottom: 2.5rem;
+    transition: opacity 0.3s;
+  }
+  .pillar-section.hidden { display: none; }
+
+  .pillar-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .pillar-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .pillar-header .pillar-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    margin-left: auto;
+  }
+
+  /* ── PAGE CARDS ── */
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 0.6rem;
+  }
+  .page-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    transition: all 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 3px 0 0 3px;
+  }
+  .page-card:hover {
+    border-color: var(--border-focus);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .page-card .card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .page-card .page-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .page-card .type-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .page-card .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+    word-break: break-all;
+  }
+  .page-card .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .page-card .meta-tag {
+    font-size: 0.62rem;
+    font-weight: 500;
+    padding: 0.18rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .page-card .meta-tag.p1 {
+    color: #22c55e;
+    background: rgba(34,197,94,0.06);
+    border-color: rgba(34,197,94,0.15);
+  }
+  .page-card .meta-tag.p2 {
+    color: #f59e0b;
+    background: rgba(245,158,11,0.06);
+    border-color: rgba(245,158,11,0.15);
+  }
+  .page-card .meta-tag.new {
+    color: #a855f7;
+    background: rgba(168,85,247,0.06);
+    border-color: rgba(168,85,247,0.15);
+  }
+  .page-card .meta-tag.existing {
+    color: var(--text-dim);
+  }
+
+  /* Pillar-specific card accents */
+  .pillar-section[data-pillar="privacy"] .page-card::before { background: var(--privacy); }
+  .pillar-section[data-pillar="privacy"] .type-badge { color: var(--privacy); background: var(--privacy-bg); border: 1px solid var(--privacy-border); }
+  .pillar-section[data-pillar="privacy"] .pillar-icon { background: var(--privacy-bg); border: 1px solid var(--privacy-border); }
+  .pillar-section[data-pillar="privacy"] .pillar-count { color: var(--privacy); background: var(--privacy-bg); border: 1px solid var(--privacy-border); }
+  .pillar-section[data-pillar="privacy"] .pillar-header h3 { color: var(--privacy); }
+
+  .pillar-section[data-pillar="asset"] .page-card::before { background: var(--asset); }
+  .pillar-section[data-pillar="asset"] .type-badge { color: var(--asset); background: var(--asset-bg); border: 1px solid var(--asset-border); }
+  .pillar-section[data-pillar="asset"] .pillar-icon { background: var(--asset-bg); border: 1px solid var(--asset-border); }
+  .pillar-section[data-pillar="asset"] .pillar-count { color: var(--asset); background: var(--asset-bg); border: 1px solid var(--asset-border); }
+  .pillar-section[data-pillar="asset"] .pillar-header h3 { color: var(--asset); }
+
+  .pillar-section[data-pillar="formation"] .page-card::before { background: var(--formation); }
+  .pillar-section[data-pillar="formation"] .type-badge { color: var(--formation); background: var(--formation-bg); border: 1px solid var(--formation-border); }
+  .pillar-section[data-pillar="formation"] .pillar-icon { background: var(--formation-bg); border: 1px solid var(--formation-border); }
+  .pillar-section[data-pillar="formation"] .pillar-count { color: var(--formation); background: var(--formation-bg); border: 1px solid var(--formation-border); }
+  .pillar-section[data-pillar="formation"] .pillar-header h3 { color: var(--formation); }
+
+  .pillar-section[data-pillar="compliance"] .page-card::before { background: var(--compliance); }
+  .pillar-section[data-pillar="compliance"] .type-badge { color: var(--compliance); background: var(--compliance-bg); border: 1px solid var(--compliance-border); }
+  .pillar-section[data-pillar="compliance"] .pillar-icon { background: var(--compliance-bg); border: 1px solid var(--compliance-border); }
+  .pillar-section[data-pillar="compliance"] .pillar-count { color: var(--compliance); background: var(--compliance-bg); border: 1px solid var(--compliance-border); }
+  .pillar-section[data-pillar="compliance"] .pillar-header h3 { color: var(--compliance); }
+
+  .pillar-section[data-pillar="package"] .page-card::before { background: var(--package); }
+  .pillar-section[data-pillar="package"] .type-badge { color: var(--package); background: var(--package-bg); border: 1px solid var(--package-border); }
+  .pillar-section[data-pillar="package"] .pillar-icon { background: var(--package-bg); border: 1px solid var(--package-border); }
+  .pillar-section[data-pillar="package"] .pillar-count { color: var(--package); background: var(--package-bg); border: 1px solid var(--package-border); }
+  .pillar-section[data-pillar="package"] .pillar-header h3 { color: var(--package); }
+
+  .pillar-section[data-pillar="state"] .page-card::before { background: var(--state); }
+  .pillar-section[data-pillar="state"] .type-badge { color: var(--state); background: var(--state-bg); border: 1px solid var(--state-border); }
+  .pillar-section[data-pillar="state"] .pillar-icon { background: var(--state-bg); border: 1px solid var(--state-border); }
+  .pillar-section[data-pillar="state"] .pillar-count { color: var(--state); background: var(--state-bg); border: 1px solid var(--state-border); }
+  .pillar-section[data-pillar="state"] .pillar-header h3 { color: var(--state); }
+
+  .pillar-section[data-pillar="utility"] .page-card::before { background: var(--utility); }
+  .pillar-section[data-pillar="utility"] .type-badge { color: var(--text-muted); background: var(--utility-bg); border: 1px solid var(--utility-border); }
+  .pillar-section[data-pillar="utility"] .pillar-icon { background: var(--utility-bg); border: 1px solid var(--utility-border); }
+  .pillar-section[data-pillar="utility"] .pillar-count { color: var(--text-muted); background: var(--utility-bg); border: 1px solid var(--utility-border); }
+  .pillar-section[data-pillar="utility"] .pillar-header h3 { color: var(--text-muted); }
+
+  .pillar-section[data-pillar="offshore"] .page-card::before { background: var(--offshore); }
+  .pillar-section[data-pillar="offshore"] .type-badge { color: var(--offshore); background: var(--offshore-bg); border: 1px solid var(--offshore-border); }
+  .pillar-section[data-pillar="offshore"] .pillar-icon { background: var(--offshore-bg); border: 1px solid var(--offshore-border); }
+  .pillar-section[data-pillar="offshore"] .pillar-count { color: var(--offshore); background: var(--offshore-bg); border: 1px solid var(--offshore-border); }
+  .pillar-section[data-pillar="offshore"] .pillar-header h3 { color: var(--offshore); }
+
+  .pillar-section[data-pillar="checkout"] .page-card::before { background: var(--checkout); }
+  .pillar-section[data-pillar="checkout"] .type-badge { color: var(--checkout); background: var(--checkout-bg); border: 1px solid var(--checkout-border); }
+  .pillar-section[data-pillar="checkout"] .pillar-icon { background: var(--checkout-bg); border: 1px solid var(--checkout-border); }
+  .pillar-section[data-pillar="checkout"] .pillar-count { color: var(--checkout); background: var(--checkout-bg); border: 1px solid var(--checkout-border); }
+  .pillar-section[data-pillar="checkout"] .pillar-header h3 { color: var(--checkout); }
+
+  /* ── LINKING SECTION ── */
+  .linking-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+  }
+  .linking-section h2 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.6rem;
+  }
+  .link-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .link-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .link-card p {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .link-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .link-arrow span {
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--border);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── ANIMATION ── */
+  .pillar-section { opacity: 0; transform: translateY(16px); animation: fadeUp 0.4s ease forwards; }
+  .pillar-section:nth-child(1) { animation-delay: 0.05s; }
+  .pillar-section:nth-child(2) { animation-delay: 0.1s; }
+  .pillar-section:nth-child(3) { animation-delay: 0.15s; }
+  .pillar-section:nth-child(4) { animation-delay: 0.2s; }
+  .pillar-section:nth-child(5) { animation-delay: 0.25s; }
+  .pillar-section:nth-child(6) { animation-delay: 0.3s; }
+  .pillar-section:nth-child(7) { animation-delay: 0.35s; }
+  .pillar-section:nth-child(8) { animation-delay: 0.4s; }
+  .pillar-section:nth-child(9) { animation-delay: 0.45s; }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    .header { padding: 2rem 1rem 1.5rem; }
+    .header h1 { font-size: 1.6rem; }
+    .controls, .main, .nav-section, .linking-section { padding-left: 1rem; padding-right: 1rem; }
+    .pages-grid { grid-template-columns: 1fr; }
+    .link-grid { grid-template-columns: 1fr; }
+    .nav-bar { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<div class="header">
+  <div class="header-badge">Phase 2 · UX & Design · Information Architecture</div>
+  <h1>Incorporate123 — Site Architecture</h1>
+  <p>Complete 71-page information architecture organized around four intent-based content pillars. Every page, URL, template type, priority level, and internal linking relationship documented for UX prototyping and development.</p>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="dot" style="background:var(--privacy)"></div><span class="num">4</span> Pillars</div>
+    <div class="stat"><div class="dot" style="background:var(--asset)"></div><span class="num">24</span> Cluster Pages</div>
+    <div class="stat"><div class="dot" style="background:var(--formation)"></div><span class="num">6</span> Comparisons</div>
+    <div class="stat"><div class="dot" style="background:var(--package)"></div><span class="num">8</span> Packages</div>
+    <div class="stat"><div class="dot" style="background:var(--state)"></div><span class="num">4</span> State Hubs</div>
+    <div class="stat"><div class="dot" style="background:var(--utility)"></div><span class="num">9+</span> Utility</div>
+    <div class="stat"><div class="dot" style="background:var(--offshore)"></div><span class="num">6</span> Offshore</div>
+    <div class="stat"><div class="dot" style="background:var(--checkout)"></div><span class="num">4</span> Checkout</div>
+    <div class="stat" style="border-color:var(--privacy-border)"><span class="num" style="color:var(--privacy)">~71</span> Total Pages</div>
+  </div>
+</div>
+
+<!-- ═══════ PRIMARY NAVIGATION ═══════ -->
+<div class="nav-section">
+  <h2>Primary Navigation Structure</h2>
+  <div class="nav-bar">
+    <div class="nav-item privacy">🔒 Privacy</div>
+    <div class="nav-item asset">🛡️ Asset Protection</div>
+    <div class="nav-item formation">🏢 Formation</div>
+    <div class="nav-item package">📦 Packages</div>
+    <div class="nav-item utility">ℹ️ About</div>
+    <div class="nav-item utility">📞 Contact</div>
+    <div class="nav-item utility" style="margin-left:auto; border-style:dashed;">🔑 Client Login</div>
+  </div>
+</div>
+
+<!-- ═══════ FILTER CONTROLS ═══════ -->
+<div class="controls">
+  <button class="filter-btn active" data-filter="all">All Pages</button>
+  <button class="filter-btn" data-filter="privacy">🔒 Privacy</button>
+  <button class="filter-btn" data-filter="asset">🛡️ Asset Protection</button>
+  <button class="filter-btn" data-filter="formation">🏢 Formation</button>
+  <button class="filter-btn" data-filter="compliance">⚖️ Compliance</button>
+  <button class="filter-btn" data-filter="package">📦 Packages</button>
+  <button class="filter-btn" data-filter="state">📍 State Hubs</button>
+  <button class="filter-btn" data-filter="utility">🔧 Utility</button>
+  <button class="filter-btn" data-filter="offshore">🌍 Offshore</button>
+  <button class="filter-btn" data-filter="checkout">🛒 Checkout</button>
+</div>
+
+<!-- ═══════ ARCHITECTURE GRID ═══════ -->
+<div class="main">
+
+  <!-- ── PILLAR 1: PRIVACY ── -->
+  <div class="pillar-section" data-pillar="privacy">
+    <div class="pillar-header">
+      <div class="pillar-icon">🔒</div>
+      <div>
+        <h3>Business Privacy</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">Lead Pillar · /privacy/ · 11 pages</div>
+      </div>
+      <div class="pillar-count">11 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Business Privacy</span><span class="type-badge">Pillar Hub</span></div>
+        <div class="url">/privacy/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Mega Menu Root</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Anonymous LLC</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/anonymous-llc/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">SEO: 720–1,100/mo</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Anonymous Corporation</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/anonymous-corporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nominee Services</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/nominee-services/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">Core Differentiator</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Privacy</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/wyoming-privacy/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Cross: Formation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Privacy</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/nevada-privacy/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Cross: Formation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">California Private Inc.</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/california-private-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Reorganize</span>
+          <span class="meta-tag">Dual-state structure</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Florida Private Inc.</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/florida-private-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Reorganize</span>
+          <span class="meta-tag">Dual-state structure</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">BOI / Corporate Transparency</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/beneficial-ownership-reporting/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Best State for Privacy</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/best-state-for-privacy/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">SEO: 390–590/mo</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">WY vs NV for Privacy</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/wyoming-vs-nevada-privacy/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Decision Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PILLAR 2: ASSET PROTECTION ── -->
+  <div class="pillar-section" data-pillar="asset">
+    <div class="pillar-header">
+      <div class="pillar-icon">🛡️</div>
+      <div>
+        <h3>Asset Protection</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">Secondary Pillar · /asset-protection/ · 9 pages</div>
+      </div>
+      <div class="pillar-count">9 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Asset Protection</span><span class="type-badge">Pillar Hub</span></div>
+        <div class="url">/asset-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Mega Menu Root</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Asset Protection</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/nevada-asset-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Reorganize</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Asset Protection</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/wyoming-asset-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Reorganize</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Charging Order Protection</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/charging-order-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New + LC Content</span>
+          <span class="meta-tag">Key Educator</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Investment Holding LLC</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/investment-holding-llc/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Real Estate Asset Protection</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/real-estate-asset-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">LLC vs Living Trust</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/llc-vs-living-trust/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Best State for AP</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/best-state-asset-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">WY vs NV for Asset Protection</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/wyoming-vs-nevada-asset-protection/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PILLAR 3: FORMATION ── -->
+  <div class="pillar-section" data-pillar="formation">
+    <div class="pillar-header">
+      <div class="pillar-icon">🏢</div>
+      <div>
+        <h3>Company Formation</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">Essential Pillar · /formation/ · 10 pages</div>
+      </div>
+      <div class="pillar-count">10 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Company Formation</span><span class="type-badge">Pillar Hub</span></div>
+        <div class="url">/formation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Mega Menu Root</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming LLC</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/wyoming-llc/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada LLC</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/nevada-llc/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Split</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Corporation</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/wyoming-corporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Corporation</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/nevada-corporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag existing">Existing – Split</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Shelf Companies</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/shelf-companies/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Series LLC</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/series-llc/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">LLC vs Corporation</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/llc-vs-corporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Decision Support</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">WY vs NV Formation</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/wyoming-vs-nevada/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Shelf vs New Entity</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/shelf-company-vs-new/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PILLAR 4: COMPLIANCE ── -->
+  <div class="pillar-section" data-pillar="compliance">
+    <div class="pillar-header">
+      <div class="pillar-icon">⚖️</div>
+      <div>
+        <h3>Compliance</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">Support Pillar · /compliance/ · 7 pages</div>
+      </div>
+      <div class="pillar-count">7 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Compliance</span><span class="type-badge">Pillar Hub</span></div>
+        <div class="url">/compliance/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Registered Agent Services</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/registered-agent/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Registered Agent</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/wyoming-registered-agent/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Registered Agent</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/nevada-registered-agent/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Annual Reports</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/annual-reports/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Foreign State Registration</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/foreign-state-registration/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Domestication</span><span class="type-badge">Cluster</span></div>
+        <div class="url">/domestication/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PACKAGE PAGES ── -->
+  <div class="pillar-section" data-pillar="package">
+    <div class="pillar-header">
+      <div class="pillar-icon">📦</div>
+      <div>
+        <h3>Package Pages — Conversion Endpoints</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">8 packages · 3-tier pricing (Bronze / Silver / Gold)</div>
+      </div>
+      <div class="pillar-count">8 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Gold (Private)</span><span class="type-badge">Gold</span></div>
+        <div class="url">/wyoming-private-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">$1,275–$2,100</span>
+          <span class="meta-tag">Primary: Privacy</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Silver</span><span class="type-badge">Silver</span></div>
+        <div class="url">/wyoming-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">Primary: Formation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Gold (Private)</span><span class="type-badge">Gold</span></div>
+        <div class="url">/nevada-private-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">Primary: Privacy</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Silver</span><span class="type-badge">Silver</span></div>
+        <div class="url">/nevada-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Bronze (Basic)</span><span class="type-badge">Bronze</span></div>
+        <div class="url">/nevada-basic-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">Entry-level</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">California Private</span><span class="type-badge">State Package</span></div>
+        <div class="url">/california-private-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">$2,500–$3,200</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Florida Private</span><span class="type-badge">State Package</span></div>
+        <div class="url">/florida-private-incorporation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">$2,500–$3,200</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Shelf Companies</span><span class="type-badge">Specialty</span></div>
+        <div class="url">/shelf-companies/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATE HUBS ── -->
+  <div class="pillar-section" data-pillar="state">
+    <div class="pillar-header">
+      <div class="pillar-icon">📍</div>
+      <div>
+        <h3>State Hub Pages — Cross-Pillar Geographic Landing</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">4 state hubs linking to all pillar content for each state</div>
+      </div>
+      <div class="pillar-count">4 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Wyoming Hub</span><span class="type-badge">State Hub</span></div>
+        <div class="url">/wyoming/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Links: Privacy, AP, Formation, Compliance for WY</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevada Hub</span><span class="type-badge">State Hub</span></div>
+        <div class="url">/nevada/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Links: Privacy, AP, Formation, Compliance for NV</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">California Hub</span><span class="type-badge">State Hub</span></div>
+        <div class="url">/california/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Florida Hub</span><span class="type-badge">State Hub</span></div>
+        <div class="url">/florida/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UTILITY PAGES ── -->
+  <div class="pillar-section" data-pillar="utility">
+    <div class="pillar-header">
+      <div class="pillar-icon">🔧</div>
+      <div>
+        <h3>Utility & Support Pages</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">Homepage, About, Contact, FAQ, Blog, Legal</div>
+      </div>
+      <div class="pillar-count">10 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Homepage</span><span class="type-badge">Homepage</span></div>
+        <div class="url">/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Redesign</span>
+          <span class="meta-tag">Hero + Pillar Nav + Trust</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">About Us</span><span class="type-badge">Utility</span></div>
+        <div class="url">/about/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+          <span class="meta-tag">25-year history, Reno office</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Contact</span><span class="type-badge">Utility</span></div>
+        <div class="url">/contact/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">FAQ Hub</span><span class="type-badge">Resource</span></div>
+        <div class="url">/faq/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag new">New Creation</span>
+          <span class="meta-tag">Consolidates 188 LC items</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Blog</span><span class="type-badge">Content Hub</span></div>
+        <div class="url">/blog/</div>
+        <div class="meta-row">
+          <span class="meta-tag p2">P2 Expansion</span>
+          <span class="meta-tag new">New Creation</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Compare All Packages</span><span class="type-badge">Comparison</span></div>
+        <div class="url">/compare-packages/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Redesign</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Testimonials</span><span class="type-badge">Social Proof</span></div>
+        <div class="url">/testimonials/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Enhance</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Client Login</span><span class="type-badge">Portal</span></div>
+        <div class="url">/login/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Privacy Policy</span><span class="type-badge">Legal</span></div>
+        <div class="url">/privacy-policy/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Terms of Service</span><span class="type-badge">Legal</span></div>
+        <div class="url">/terms/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OFFSHORE HUB ── -->
+  <div class="pillar-section" data-pillar="offshore">
+    <div class="pillar-header">
+      <div class="pillar-icon">🌍</div>
+      <div>
+        <h3>Offshore Hub — International Formation</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">Retained for SEO authority · De-emphasized in primary nav</div>
+      </div>
+      <div class="pillar-count">6 pages</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Offshore Hub</span><span class="type-badge">Hub Page</span></div>
+        <div class="url">/offshore/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Nevis LLC/Corp</span><span class="type-badge">Offshore</span></div>
+        <div class="url">/offshore/nevis/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">BVI Company</span><span class="type-badge">Offshore</span></div>
+        <div class="url">/offshore/bvi/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Panama Foundation</span><span class="type-badge">Offshore</span></div>
+        <div class="url">/offshore/panama/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Hong Kong Company</span><span class="type-badge">Offshore</span></div>
+        <div class="url">/offshore/hong-kong/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">IRS Compliance</span><span class="type-badge">Offshore</span></div>
+        <div class="url">/offshore/irs-compliance/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag existing">Existing – Preserve</span>
+          <span class="meta-tag">GILTI / PFIC reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHECKOUT FLOW ── -->
+  <div class="pillar-section" data-pillar="checkout">
+    <div class="pillar-header">
+      <div class="pillar-icon">🛒</div>
+      <div>
+        <h3>Checkout Flow — Multi-Step Conversion</h3>
+        <div style="font-size:0.72rem; color:var(--text-dim);">4-step flow: Configure → Details → Payment → Confirmation</div>
+      </div>
+      <div class="pillar-count">4 steps</div>
+    </div>
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Step 1: Package Configuration</span><span class="type-badge">Checkout</span></div>
+        <div class="url">/checkout/configure/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag">LLC/Corp toggle, add-ons</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Step 2: Entity Details</span><span class="type-badge">Checkout</span></div>
+        <div class="url">/checkout/details/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag">Company name, members, RA</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Step 3: Payment</span><span class="type-badge">Checkout</span></div>
+        <div class="url">/checkout/payment/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag">Payment gateway, order summary</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="card-top"><span class="page-name">Step 4: Confirmation</span><span class="type-badge">Checkout</span></div>
+        <div class="url">/checkout/confirmation/</div>
+        <div class="meta-row">
+          <span class="meta-tag p1">P1 Launch</span>
+          <span class="meta-tag">Receipt, next steps, portal access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════ INTERNAL LINKING ═══════ -->
+<div class="linking-section">
+  <h2>Internal Linking Architecture</h2>
+  <div class="link-grid">
+    <div class="link-card">
+      <h4>Pillar Pages → Clusters + Comparisons + Packages</h4>
+      <p>Each pillar hub links to all its clusters, comparison pages, and relevant packages. In-content links, sidebar navigation, and bottom CTAs.</p>
+      <div class="link-arrow">
+        <span style="background:var(--privacy-bg); color:var(--privacy); border:1px solid var(--privacy-border);">/privacy/</span>
+        → All 8 Privacy clusters + 2 comparisons + Gold packages
+      </div>
+    </div>
+    <div class="link-card">
+      <h4>Cluster Pages → Pillar + Siblings + Comparison + Package</h4>
+      <p>Every cluster links back to its parent pillar, to sibling clusters, relevant comparison pages, and the most relevant package. Breadcrumbs, sidebar, in-content, and bottom CTA.</p>
+      <div class="link-arrow">
+        <span style="background:var(--asset-bg); color:var(--asset); border:1px solid var(--asset-border);">/charging-order/</span>
+        → /asset-protection/ + /wyoming-asset-protection/ + Gold pkg
+      </div>
+    </div>
+    <div class="link-card">
+      <h4>Comparison Pages → Pillar + Compared Packages</h4>
+      <p>Comparison pages link back to the parent pillar and include dual CTAs routing to the compared options' package pages.</p>
+      <div class="link-arrow">
+        <span style="background:var(--formation-bg); color:var(--formation); border:1px solid var(--formation-border);">/wy-vs-nv/</span>
+        → /formation/ + /wyoming-incorporation/ + /nevada-incorporation/
+      </div>
+    </div>
+    <div class="link-card">
+      <h4>Package Pages → Related Packages + Parent Pillar</h4>
+      <p>"Also Consider..." sidebar with related packages. Comparison strip linking to comparison page. Trust section linking to testimonials.</p>
+      <div class="link-arrow">
+        <span style="background:var(--package-bg); color:var(--package); border:1px solid var(--package-border);">Gold Pkg</span>
+        → Silver, Bronze + /privacy/ + /wyoming-vs-nevada-privacy/
+      </div>
+    </div>
+    <div class="link-card">
+      <h4>State Hubs → All Pillar Content for That State</h4>
+      <p>Cross-pillar aggregation pages organized by pillar, linking to every piece of content for a given state.</p>
+      <div class="link-arrow">
+        <span style="background:var(--state-bg); color:var(--state); border:1px solid var(--state-border);">/wyoming/</span>
+        → WY Privacy + WY AP + WY LLC + WY Corp + WY RA + WY packages
+      </div>
+    </div>
+    <div class="link-card">
+      <h4>Cross-Pillar Links — Preventing Silos</h4>
+      <p>14 pages serve multiple pillars. Contextual CTAs surface cross-pillar content at natural decision points: "hiding ownership is your first line of defense."</p>
+      <div class="link-arrow">
+        <span style="background:var(--asset-bg); color:var(--asset); border:1px solid var(--asset-border);">AP Clusters</span>
+        → <span style="background:var(--privacy-bg); color:var(--privacy); border:1px solid var(--privacy-border);">Privacy Pillar</span>
+        30–40% upsell
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>BIT Studios</strong> · Incorporate123 Website Redesign · Phase 2: Information Architecture · March 2026 · Confidential
+</footer>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const sections = document.querySelectorAll('.pillar-section');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      sections.forEach(s => {
+        if (filter === 'all' || s.dataset.pillar === filter) {
+          s.classList.remove('hidden');
+          s.style.opacity = '0';
+          s.style.transform = 'translateY(16px)';
+          requestAnimationFrame(() => {
+            s.style.transition = 'opacity 0.3s, transform 0.3s';
+            s.style.opacity = '1';
+            s.style.transform = 'translateY(0)';
+          });
+        } else {
+          s.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

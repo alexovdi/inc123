@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting with David — Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1A2E;
+    --blue: #2563EB;
+    --blue-light: #EFF6FF;
+    --purple: #7C3AED;
+    --green: #059669;
+    --green-light: #ECFDF5;
+    --amber: #D97706;
+    --amber-light: #FFFBEB;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+    --teal: #0D9488;
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-300: #D1D5DB;
+    --gray-100: #F3F4F6;
+    --gray-50: #F9FAFB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--gray-700); background: white; font-size: 11px; line-height: 1.35; }
+  @media print {
+    @page { size: letter; margin: 0.28in; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { box-shadow: none !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  }
+  .page { max-width: 8.5in; margin: 0 auto; padding: 0.28in; }
+
+  /* HEADER */
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 8px; margin-bottom: 9px;
+  }
+  header .left h1 { font-size: 14px; font-weight: 700; color: white; }
+  header .left h1 span { color: #fbbf24; }
+  header .left p { color: #94A3B8; font-size: 8px; margin-top: 1px; }
+  header .right { text-align: right; }
+  header .badge {
+    display: inline-block; background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.3);
+    color: #fbbf24; font-size: 7px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 4px;
+  }
+  header .stats { color: #64748B; font-size: 7.5px; margin-top: 2px; font-family: 'JetBrains Mono', monospace; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .s-title {
+    font-size: 8px; font-weight: 700; color: var(--navy); text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 4px; padding-bottom: 2px;
+    border-bottom: 2px solid var(--navy); display: flex; align-items: center; gap: 4px;
+  }
+  .s-title .ico { font-size: 9px; }
+  .card { margin-bottom: 7px; }
+
+  /* OBJECTIVE */
+  .obj-box {
+    background: var(--amber-light); border: 1px solid #FDE68A; border-radius: 6px;
+    padding: 6px 10px; text-align: center;
+  }
+  .obj-box .main { font-weight: 700; font-size: 9.5px; color: var(--amber); }
+  .obj-box .sub { font-size: 7.5px; color: var(--gray-500); margin-top: 2px; }
+
+  /* AGENDA */
+  .agenda { width: 100%; border-collapse: collapse; }
+  .agenda th {
+    text-align: left; font-size: 6.5px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--gray-500); padding: 0 3px 2px; border-bottom: 1px solid var(--gray-300);
+  }
+  .agenda td { padding: 3.5px 3px; font-size: 8px; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
+  .agenda tr:last-child td { border-bottom: none; }
+  .time-pill {
+    font-family: 'JetBrains Mono', monospace; font-size: 6.5px; font-weight: 700;
+    color: white; padding: 1.5px 5px; border-radius: 8px; display: inline-block; min-width: 35px; text-align: center;
+  }
+  .time-pill.t1 { background: var(--blue); }
+  .time-pill.t2 { background: var(--teal); }
+  .time-pill.t3 { background: var(--purple); }
+  .time-pill.t4 { background: var(--green); }
+  .time-pill.t5 { background: var(--amber); }
+  .time-pill.t6 { background: var(--red); }
+  .topic-name { font-weight: 600; color: var(--gray-900); }
+  .talk-point { font-size: 7.5px; color: var(--teal); font-style: italic; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li { font-size: 7.5px; color: var(--gray-700); padding: 1.5px 0; display: flex; align-items: baseline; gap: 4px; }
+  .checklist .box { color: var(--blue); font-size: 9px; flex-shrink: 0; }
+
+  /* DECISIONS */
+  .dec-card {
+    padding: 4px 7px; border-radius: 5px; border-left: 3px solid;
+    margin-bottom: 3px;
+  }
+  .dec-card.d1 { background: #EFF6FF; border-color: var(--blue); }
+  .dec-card.d2 { background: #ECFDF5; border-color: var(--green); }
+  .dec-card.d3 { background: #F5F3FF; border-color: var(--purple); }
+  .dec-card.d4 { background: #FFFBEB; border-color: var(--amber); }
+  .dec-q { font-weight: 700; font-size: 8px; color: var(--gray-900); }
+  .dec-rec { font-size: 7.5px; color: var(--gray-700); margin-top: 1px; }
+  .dec-rec strong { color: var(--green); }
+  .dec-arg { font-size: 7px; color: var(--gray-500); font-style: italic; margin-top: 1px; }
+
+  /* OBJECTIONS */
+  .obj-grid { display: flex; flex-direction: column; gap: 3px; }
+  .obj-row { display: flex; gap: 5px; font-size: 7.5px; padding: 3px 6px; background: var(--gray-50); border-radius: 4px; }
+  .obj-q { font-weight: 700; color: var(--red); min-width: 0; flex: 1; }
+  .obj-a { color: var(--gray-700); flex: 1.4; }
+
+  /* KEY STATS */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+  }
+  .stat-item { background: var(--gray-50); border-radius: 4px; padding: 4px 6px; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--blue); }
+  .stat-lbl { font-size: 6.5px; color: var(--gray-500); }
+
+  /* PILLARS TO PRESENT */
+  .pillar-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .pillar-item { padding: 3px 6px; border-radius: 4px; border-left: 3px solid; }
+  .pillar-item.pi { background: #EFF6FF; border-color: var(--blue); }
+  .pillar-item.ap { background: #F5F3FF; border-color: var(--purple); }
+  .pillar-item.fo { background: #ECFDF5; border-color: var(--green); }
+  .pillar-item.co { background: #FFFBEB; border-color: var(--amber); }
+  .pillar-item .pname { font-weight: 700; font-size: 8px; }
+  .pillar-item.pi .pname { color: var(--blue); }
+  .pillar-item.ap .pname { color: var(--purple); }
+  .pillar-item.fo .pname { color: var(--green); }
+  .pillar-item.co .pname { color: var(--amber); }
+  .pillar-item .ppitch { font-size: 7px; color: var(--gray-500); }
+
+  /* POST-MEETING */
+  .post-list { list-style: none; }
+  .post-list li { font-size: 7.5px; color: var(--gray-700); padding: 1.5px 0; display: flex; align-items: baseline; gap: 3px; }
+  .post-list .num {
+    font-family: 'JetBrains Mono', monospace; font-size: 7px; font-weight: 700;
+    color: white; background: var(--navy); width: 13px; height: 13px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* SIGN-OFF */
+  .signoff-box {
+    background: var(--green-light); border: 1px solid #A7F3D0; border-radius: 6px;
+    padding: 5px 9px;
+  }
+  .signoff-head { font-weight: 700; font-size: 8.5px; color: var(--green); margin-bottom: 3px; }
+  .signoff-items { list-style: none; }
+  .signoff-items li { font-size: 7.5px; color: var(--gray-700); padding: 1px 0; display: flex; align-items: baseline; gap: 3px; }
+  .signoff-items .ck { color: var(--green); font-size: 9px; flex-shrink: 0; }
+
+  footer {
+    margin-top: 6px; padding-top: 4px; border-top: 1px solid var(--gray-300);
+    display: flex; justify-content: space-between; font-size: 6.5px; color: var(--gray-500);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="left">
+      <h1>MEETING WITH <span>DAVID</span></h1>
+      <p>Stakeholder Alignment &nbsp;|&nbsp; Phase 1 Milestone Gate &nbsp;|&nbsp; Incorporate123</p>
+    </div>
+    <div class="right">
+      <div class="badge">Facilitator Cheat Sheet</div>
+      <div class="stats">75 min · 6 agenda blocks · 4 decisions needed</div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- ════ LEFT COLUMN ════ -->
+    <div>
+
+      <!-- OBJECTIVE -->
+      <div class="card">
+        <div class="s-title"><span class="ico">◆</span> Meeting Objective</div>
+        <div class="obj-box">
+          <div class="main">Get David's formal sign-off on site architecture, migration plan & positioning</div>
+          <div class="sub">This is the Phase 1 gate. No design, dev, or SEO starts until approval is secured.</div>
+        </div>
+      </div>
+
+      <!-- AGENDA -->
+      <div class="card">
+        <div class="s-title"><span class="ico">▶</span> Agenda — 75 Minutes</div>
+        <table class="agenda">
+          <thead><tr><th>Time</th><th>Topic</th><th>Key Talking Point</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="time-pill t1">0–10</span></td>
+              <td><span class="topic-name">Strategic Opportunity</span></td>
+              <td><span class="talk-point">"No competitor combines modern UX + privacy expertise + transparent pricing + nominees. That's your white space."</span></td>
+            </tr>
+            <tr>
+              <td><span class="time-pill t2">10–25</span></td>
+              <td><span class="topic-name">Audit & Competitive Findings</span></td>
+              <td><span class="talk-point">"The site is 2.3× larger than estimated, but most is duplicated FAQ content. Consolidation is even more impactful."</span></td>
+            </tr>
+            <tr>
+              <td><span class="time-pill t3">25–45</span></td>
+              <td><span class="topic-name">Site Architecture Walkthrough</span></td>
+              <td><span class="talk-point">"Every page exists to move visitors toward a package." Walk pillars → clusters → comparison → packages.</span></td>
+            </tr>
+            <tr>
+              <td><span class="time-pill t4">45–55</span></td>
+              <td><span class="topic-name">Content Migration Plan</span></td>
+              <td><span class="talk-point">"Every URL has a mapped destination. Nothing is being deleted — it's being reorganized."</span></td>
+            </tr>
+            <tr>
+              <td><span class="time-pill t5">55–70</span></td>
+              <td><span class="topic-name">Open Decisions (×4)</span></td>
+              <td><span class="talk-point">Present each with BIT Studios recommendation. Document David's decisions in real time.</span></td>
+            </tr>
+            <tr>
+              <td><span class="time-pill t6">70–75</span></td>
+              <td><span class="topic-name">Approval & Next Steps</span></td>
+              <td><span class="talk-point">"You'll see clickable wireframes within the first week." Get signature on sign-off form.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KEY STATS TO PRESENT -->
+      <div class="card">
+        <div class="s-title"><span class="ico">●</span> Key Stats to Present</div>
+        <div class="stats-row">
+          <div class="stat-item"><div class="stat-val">326</div><div class="stat-lbl">Current URLs found</div></div>
+          <div class="stat-item"><div class="stat-val">71</div><div class="stat-lbl">New pages</div></div>
+          <div class="stat-item"><div class="stat-val">188</div><div class="stat-lbl">FAQ items mapped</div></div>
+          <div class="stat-item"><div class="stat-val">0</div><div class="stat-lbl">H1 tags on site (!)</div></div>
+        </div>
+        <div style="margin-top:4px; font-size:7.5px; color:var(--gray-500); text-align:center;">
+          Content disposition: <strong style="color:var(--green)">76% consolidate</strong> · 9% preserve · 8% enhance · 7% retire
+        </div>
+      </div>
+
+      <!-- PILLAR PITCHES -->
+      <div class="card">
+        <div class="s-title"><span class="ico">■</span> Pillar Revenue Pitches</div>
+        <div class="pillar-row">
+          <div class="pillar-item pi"><div class="pname">Privacy (11 pages)</div><div class="ppitch">"Lead pillar. Most visitors arrive here. Funnels to Gold packages."</div></div>
+          <div class="pillar-item ap"><div class="pname">Asset Protection (7)</div><div class="ppitch">"Cross-sell. Privacy visitors = 30-40% AP upsell potential."</div></div>
+          <div class="pillar-item fo"><div class="pname">Formation (9)</div><div class="ppitch">"Direct buyer path. Silver packages, clear upgrade to Gold."</div></div>
+          <div class="pillar-item co"><div class="pname">Compliance (5)</div><div class="ppitch">"Retention play. Returning clients for agent, reports, renewals."</div></div>
+        </div>
+      </div>
+
+      <!-- PRE-MEETING CHECKLIST -->
+      <div class="card">
+        <div class="s-title"><span class="ico">☑</span> Pre-Meeting Checklist</div>
+        <ul class="checklist">
+          <li><span class="box">☐</span> Discovery Report sent to David (2+ days in advance)</li>
+          <li><span class="box">☐</span> Presentation deck loaded & tested</li>
+          <li><span class="box">☐</span> Content Migration Map spreadsheet open for reference</li>
+          <li><span class="box">☐</span> Site Audit Workbook open for reference</li>
+          <li><span class="box">☐</span> Current incorporate123.co open in browser for live comparisons</li>
+          <li><span class="box">☐</span> Validated Site Architecture doc ready for walkthrough</li>
+          <li><span class="box">☐</span> Open Decisions doc printed (one copy for David to mark up)</li>
+          <li><span class="box">☐</span> Sign-Off Form printed or ready for e-signature</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ════ RIGHT COLUMN ════ -->
+    <div>
+
+      <!-- 4 DECISIONS -->
+      <div class="card">
+        <div class="s-title"><span class="ico">❓</span> Four Decisions Needed from David</div>
+
+        <div class="dec-card d1">
+          <div class="dec-q">1. Primary Domain: .co vs .com?</div>
+          <div class="dec-rec"><strong>Rec: Migrate to .com.</strong> Brand trust outweighs 1–3 month SEO dip.</div>
+          <div class="dec-arg">URLs already restructuring — domain change is essentially free. One disruption, not two. All 20+ secondary domains → redirect to primary.</div>
+        </div>
+        <div class="dec-card d2">
+          <div class="dec-q">2. Package Tiers: Gold / Silver / Bronze?</div>
+          <div class="dec-rec"><strong>Rec: Keep 3-tier.</strong> Gold = hero (privacy + nominees). Silver = entry. Bronze = NV price-sensitive.</div>
+          <div class="dec-arg">Conversion architecture depends on upgrade paths. Confirm: naming, included services per tier, offshore integration.</div>
+        </div>
+        <div class="dec-card d3">
+          <div class="dec-q">3. Compliance: Full pillar or distributed?</div>
+          <div class="dec-rec"><strong>Rec: Full pillar.</strong> 5 pages: hub, registered agent, annual reports, domestication, foreign reg.</div>
+          <div class="dec-arg">Retention play for returning clients. Easy to collapse later; hard to reorganize if distributed.</div>
+        </div>
+        <div class="dec-card d4">
+          <div class="dec-q">4. Domain Portfolio: 20+ domains — consolidate?</div>
+          <div class="dec-rec"><strong>Rec: All redirect to primary.</strong> No standalone content strategies.</div>
+          <div class="dec-arg">Multiple domains dilutes authority. One strong domain with 71 pages beats five weak ones. Check backlink profiles first.</div>
+        </div>
+      </div>
+
+      <!-- OBJECTION HANDLING -->
+      <div class="card">
+        <div class="s-title"><span class="ico">🛡</span> Objection Handling</div>
+        <div class="obj-grid">
+          <div class="obj-row">
+            <div class="obj-q">"326 → 71 pages? We're losing content."</div>
+            <div class="obj-a">"Like reorganizing a filing cabinet — papers are all there, just organized so people can find them."</div>
+          </div>
+          <div class="obj-row">
+            <div class="obj-q">"Will we lose Google rankings?"</div>
+            <div class="obj-a">"Temp dip is normal. 301 redirects transfer authority. Recovers 4–8 weeks. Long-term gains far outweigh."</div>
+          </div>
+          <div class="obj-row">
+            <div class="obj-q">"Domain change + URL restructure = risky"</div>
+            <div class="obj-a">"Actually better together. One disruption instead of two. Redirects handle both simultaneously."</div>
+          </div>
+          <div class="obj-row">
+            <div class="obj-q">"Is the Compliance pillar necessary?"</div>
+            <div class="obj-a">"It's your retention play. Returning clients need a home for renewals, agent, annual reports. Reduces churn."</div>
+          </div>
+          <div class="obj-row">
+            <div class="obj-q">"Competitors have thousands of reviews"</div>
+            <div class="obj-a">"Pre-launch Trustpilot + existing client reviews. 25yr track record, office photos, bio, guarantee. Target: 100+ in 6mo."</div>
+          </div>
+          <div class="obj-row">
+            <div class="obj-q">"Who writes all this new content?"</div>
+            <div class="obj-a">"You do — but not from scratch. We provide SEO specs, templates, content briefs for every page. You fill in your expertise."</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIGN-OFF ITEMS -->
+      <div class="card">
+        <div class="s-title"><span class="ico">✔</span> Approval Items (Get Verbal Yes on Each)</div>
+        <div class="signoff-box">
+          <div class="signoff-items">
+            <li><span class="ck">☐</span> Confirm four-pillar architecture (Privacy, AP, Formation, Compliance)</li>
+            <li><span class="ck">☐</span> Approve 326→71 consolidation plan + redirect strategy</li>
+            <li><span class="ck">☐</span> Confirm positioning: "Privacy, AP & Business Formation Specialists"</li>
+            <li><span class="ck">☐</span> Decide primary domain (.co vs .com)</li>
+            <li><span class="ck">☐</span> Authorize transition to Phase 2: UX & Prototyping</li>
+          </div>
+          <div style="margin-top:4px; font-size:7px; color:var(--gray-500); font-style:italic;">
+            If David wants to "think about it" → set 48hr max deadline. Project timeline depends on this gate.
+          </div>
+        </div>
+      </div>
+
+      <!-- POST-MEETING -->
+      <div class="card">
+        <div class="s-title"><span class="ico">→</span> Post-Meeting Actions</div>
+        <ul class="post-list">
+          <li><span class="num">1</span> Send signed approval form (or e-signature link)</li>
+          <li><span class="num">2</span> Document all decisions in writing, email David for confirmation</li>
+          <li><span class="num">3</span> Share final Discovery Report, Architecture, Migration Map, Positioning Framework</li>
+          <li><span class="num">4</span> Brief Irish on approved architecture + domain decision</li>
+          <li><span class="num">5</span> Begin UX prototyping sprint — homepage wireframe first</li>
+          <li><span class="num">6</span> Schedule first prototype review meeting (1 week from approval)</li>
+          <li><span class="num">7</span> If any decisions deferred → follow-up email with deadline + impact of delay</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>BIT Studios &nbsp;|&nbsp; Stakeholder Alignment Meeting &nbsp;|&nbsp; Confidential</span>
+    <span>Goal: Walk out with signed approval → UX starts within 24 hours</span>
+  </footer>
+
+</div>
+</body>
+</html>

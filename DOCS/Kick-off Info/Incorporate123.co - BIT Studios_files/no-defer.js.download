@@ -1,0 +1,97 @@
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelectorAll('.video_banner video').length > 0) {
+        document.body.addEventListener('click', handleVideoPlay);
+        document.body.addEventListener('touchstart', handleVideoPlay);
+
+        function handleVideoPlay() {
+            const videoElement = document.querySelector('video');
+            if (!videoElement.paused) {
+                // video is already playing so do nothing
+            } else {
+                // video is not playing
+                // so play video now
+                videoElement.play();
+            }
+        }
+    }
+});
+
+let number = document.getElementById('data_number').getAttribute('data-number');
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.phone_number').forEach(el => {
+        el.innerHTML = atob(number);
+    });
+    document.querySelectorAll('.phone_link').forEach(el => {
+        el.setAttribute('href', 'tel:'+atob(number));
+    });
+
+
+    //footer us
+    let footer_us_number = document.getElementById('footer_dallas_phone').getAttribute('data-number');
+    document.getElementById('footer_dallas_phone').innerHTML = atob(footer_us_number);
+    document.getElementById('footer_dallas_phone').setAttribute('href', 'tel:'+atob(footer_us_number));
+    document.getElementById('modal_us_number').innerHTML = atob(footer_us_number);
+    document.getElementById('modal_us_number').setAttribute('href', 'tel:'+atob(footer_us_number));
+    // footer uk
+    let footer_uk_number = document.getElementById('footer_london_phone').getAttribute('data-number');
+    document.getElementById('footer_london_phone').innerHTML = atob(footer_uk_number);
+    document.getElementById('footer_london_phone').setAttribute('href', 'tel:'+atob(footer_uk_number));
+    document.getElementById('modal_uk_number').innerHTML = atob(footer_uk_number);
+    document.getElementById('modal_uk_number').setAttribute('href', 'tel:'+atob(footer_uk_number));
+
+    document.querySelectorAll('.contact_phone__tel.london a').forEach(el => {
+        el.innerHTML = atob(footer_uk_number);
+        el.setAttribute('href', 'tel:'+atob(footer_uk_number));
+    });
+    document.querySelectorAll('.contact_phone__tel.dallas a').forEach(el => {
+        el.innerHTML = atob(footer_us_number);
+        el.setAttribute('href', 'tel:'+atob(footer_us_number));
+    });
+    document.querySelectorAll('.find_us_item.london .find_us_item__content-phone a').forEach(el => {
+        el.innerHTML = atob(footer_uk_number);
+        el.setAttribute('href', 'tel:'+atob(footer_uk_number));
+    });
+    document.querySelectorAll('.find_us_item.usa .find_us_item__content-phone a').forEach(el => {
+        el.innerHTML = atob(footer_us_number);
+        el.setAttribute('href', 'tel:'+atob(footer_us_number));
+    });
+
+
+    const jsonLd = {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "name": "BIT Studios",
+        "url": "http://localhost/",
+        "logo": "http://localhost/wp-content/themes/bit-studios/assets/images/logotype_header_blue.svg",
+        "image": "http://localhost/wp-content/themes/bit-studios/assets/images/logotype_header_blue.svg",
+        "description": "BIT Studios - Your Trusted Software Development Company. Agile, Innovative, User-centric Solutions. Custom Software, Mobile App, Web Development, IT Outsourcing, Cloud Apps & More. Since 1990.",
+        "telephone": atob(number),
+        "email": "info@bitstudios.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "700 Central Expy S #400",
+            "addressLocality": "Allen",
+            "addressRegion": "TX",
+            "postalCode":"75013",
+            "addressCountry": "USA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "33.094219225131965",
+            "longitude": "-96.68164385397861"
+        },
+        "openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00",
+        "priceRange": "$$",
+        "paymentAccepted": "Cash, Credit Card",
+        "sameAs": [
+            "https://x.com/bitstudios",
+            "https://www.linkedin.com/company/bit-studios",
+            "https://clutch.co/profile/bit-studios"
+        ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+});

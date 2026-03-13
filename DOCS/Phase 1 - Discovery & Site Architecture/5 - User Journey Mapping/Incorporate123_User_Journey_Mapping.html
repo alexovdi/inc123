@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — User Journey Mapping</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0e1117;
+    --surface: #161b22;
+    --surface-raised: #1c2129;
+    --border: #2d333b;
+    --border-accent: #3d444d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #6e7681;
+    --privacy: #58a6ff;
+    --privacy-bg: rgba(88,166,255,0.08);
+    --privacy-border: rgba(88,166,255,0.25);
+    --asset: #3fb950;
+    --asset-bg: rgba(63,185,80,0.08);
+    --asset-border: rgba(63,185,80,0.25);
+    --formation: #d29922;
+    --formation-bg: rgba(210,153,34,0.08);
+    --formation-border: rgba(210,153,34,0.25);
+    --compliance: #bc8cff;
+    --compliance-bg: rgba(188,140,255,0.08);
+    --compliance-border: rgba(188,140,255,0.25);
+    --conversion: #f97583;
+    --conversion-bg: rgba(249,117,131,0.08);
+    --conversion-border: rgba(249,117,131,0.25);
+    --cross: #79c0ff;
+    --secondary: #8b949e;
+    --highlight: #ffa657;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 48px 0 40px;
+    background: linear-gradient(180deg, rgba(88,166,255,0.04) 0%, transparent 100%);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .header-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .header p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 720px;
+  }
+  .header-badges {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .badge.privacy { color: var(--privacy); border-color: var(--privacy-border); background: var(--privacy-bg); }
+  .badge.asset { color: var(--asset); border-color: var(--asset-border); background: var(--asset-bg); }
+  .badge.formation { color: var(--formation); border-color: var(--formation-border); background: var(--formation-bg); }
+  .badge.compliance { color: var(--compliance); border-color: var(--compliance-border); background: var(--compliance-bg); }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ─── NAV ─── */
+  .toc {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14,17,23,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .toc-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 14px 16px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    color: var(--text);
+    border-bottom-color: var(--border-accent);
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-child { border-bottom: none; }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  h2 .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-right: 8px;
+  }
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 700px;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 36px 0 12px;
+    color: var(--text);
+  }
+
+  p { margin-bottom: 16px; color: var(--text-muted); font-size: 15px; }
+  strong { color: var(--text); font-weight: 600; }
+
+  /* ─── FLOW DIAGRAMS ─── */
+  .flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 24px 0;
+    overflow-x: auto;
+  }
+  .flow-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+  }
+
+  /* Horizontal flow */
+  .flow-h {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+  .flow-node {
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+    white-space: nowrap;
+    position: relative;
+  }
+  .flow-node small {
+    display: block;
+    font-weight: 400;
+    font-size: 11px;
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+  .flow-arrow {
+    width: 48px;
+    height: 2px;
+    background: var(--border-accent);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    border: 5px solid transparent;
+    border-left: 6px solid var(--border-accent);
+  }
+  .flow-arrow-label {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* Node colors */
+  .node-intent { background: var(--privacy-bg); border: 1px solid var(--privacy-border); color: var(--privacy); }
+  .node-pillar { background: var(--privacy-bg); border: 1px solid var(--privacy-border); color: var(--privacy); }
+  .node-cluster { background: rgba(88,166,255,0.12); border: 1px solid rgba(88,166,255,0.35); color: #79c0ff; }
+  .node-comparison { background: var(--formation-bg); border: 1px solid var(--formation-border); color: var(--formation); }
+  .node-package { background: var(--conversion-bg); border: 1px solid var(--conversion-border); color: var(--conversion); }
+  .node-convert { background: rgba(249,117,131,0.2); border: 1px solid rgba(249,117,131,0.5); color: #f97583; }
+  .node-search { background: rgba(139,148,158,0.1); border: 1px solid rgba(139,148,158,0.3); color: var(--text-muted); }
+  .node-homepage { background: rgba(255,166,87,0.1); border: 1px solid rgba(255,166,87,0.3); color: var(--highlight); }
+  .node-cross { background: var(--compliance-bg); border: 1px solid var(--compliance-border); color: var(--compliance); }
+  .node-asset { background: var(--asset-bg); border: 1px solid var(--asset-border); color: var(--asset); }
+  .node-formation { background: var(--formation-bg); border: 1px solid var(--formation-border); color: var(--formation); }
+  .node-compliance-c { background: var(--compliance-bg); border: 1px solid var(--compliance-border); color: var(--compliance); }
+
+  /* Vertical flow */
+  .flow-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .flow-v .flow-arrow {
+    width: 2px;
+    height: 32px;
+    background: var(--border-accent);
+  }
+  .flow-v .flow-arrow::after {
+    right: -4px;
+    top: auto;
+    bottom: 0;
+    border: 5px solid transparent;
+    border-top: 6px solid var(--border-accent);
+    border-left: 5px solid transparent;
+  }
+
+  /* Branching */
+  .flow-branch {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .flow-branch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .branch-connector {
+    width: 2px;
+    height: 20px;
+    background: var(--border-accent);
+  }
+
+  /* Journey cards */
+  .journey-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 24px 0;
+  }
+  .journey-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .journey-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .journey-card-header h4 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .journey-card-header .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+
+  /* Step list */
+  .steps {
+    list-style: none;
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 0 12px 48px;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-left: 2px solid var(--border);
+    margin-left: 16px;
+  }
+  .steps li:last-child { border-left-color: transparent; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: -9px;
+    top: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--surface-raised);
+    border: 2px solid var(--border-accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+  }
+  .steps li .step-page {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    display: block;
+    margin-top: 2px;
+  }
+  .steps li .step-cta {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--conversion-bg);
+    border: 1px solid var(--conversion-border);
+    color: var(--conversion);
+    font-weight: 500;
+  }
+  .steps li .step-cross {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--compliance-bg);
+    border: 1px solid var(--compliance-border);
+    color: var(--compliance);
+    font-weight: 500;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-weight: 600;
+    color: var(--text);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .url {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--privacy);
+    background: var(--privacy-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  /* CTA matrix */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .cta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .cta-card-stage {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .cta-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .cta-card p { font-size: 13px; margin-bottom: 8px; }
+  .cta-example {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--highlight);
+    background: rgba(255,166,87,0.08);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 8px;
+  }
+
+  /* Nav requirements */
+  .nav-req {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 12px 0;
+  }
+  .nav-req h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .nav-req p { font-size: 13px; margin-bottom: 6px; }
+  .nav-req .priority {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  .priority.critical { background: var(--conversion-bg); border: 1px solid var(--conversion-border); color: var(--conversion); }
+  .priority.high { background: var(--formation-bg); border: 1px solid var(--formation-border); color: var(--formation); }
+  .priority.medium { background: var(--privacy-bg); border: 1px solid var(--privacy-border); color: var(--privacy); }
+
+  /* Callouts */
+  .callout {
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .callout-insight {
+    background: var(--privacy-bg);
+    border: 1px solid var(--privacy-border);
+  }
+  .callout-insight strong { color: var(--privacy); }
+  .callout-decision {
+    background: var(--formation-bg);
+    border: 1px solid var(--formation-border);
+  }
+  .callout-decision strong { color: var(--formation); }
+  .callout-risk {
+    background: var(--conversion-bg);
+    border: 1px solid var(--conversion-border);
+  }
+  .callout-risk strong { color: var(--conversion); }
+
+  /* Footer */
+  .footer {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  /* Scroll padding for sticky nav */
+  [id] { scroll-margin-top: 56px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-meta">Task 4.4 · Discovery & Strategy Phase · Incorporate123 Redesign</div>
+    <h1>User Journey Mapping</h1>
+    <p>Primary visitor paths through the new intent-first architecture, from initial search through to package conversion. Informs navigation design, internal linking, and CTA placement for the UX phase.</p>
+    <div class="header-badges">
+      <span class="badge privacy">Privacy Journey</span>
+      <span class="badge asset">Asset Protection Journey</span>
+      <span class="badge formation">Formation Journey</span>
+      <span class="badge compliance">Compliance Journey</span>
+      <span class="badge">6 Secondary Journeys</span>
+      <span class="badge">42 CTA Placements</span>
+    </div>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#framework">Framework</a>
+    <a href="#privacy">Privacy Journey</a>
+    <a href="#asset">Asset Protection</a>
+    <a href="#formation">Formation</a>
+    <a href="#cross">Cross-Pillar</a>
+    <a href="#secondary">Secondary</a>
+    <a href="#nav-req">Navigation</a>
+    <a href="#ctas">CTAs</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: FRAMEWORK -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="framework">
+  <h2><span class="num">01</span> Primary Conversion Framework</h2>
+  <p class="section-subtitle">Every journey follows the same five-stage funnel. The visitor's intent determines which pillar they enter, but the progression is consistent: educate → deepen → compare → convert.</p>
+
+  <div class="flow">
+    <div class="flow-title">Universal Conversion Funnel</div>
+    <div class="flow-h">
+      <div class="flow-node node-search">
+        Search Intent
+        <small>Google / Direct / Referral</small>
+      </div>
+      <div class="flow-arrow"><span class="flow-arrow-label">lands on</span></div>
+      <div class="flow-node node-pillar">
+        Pillar Page
+        <small>Education · Awareness</small>
+      </div>
+      <div class="flow-arrow"><span class="flow-arrow-label">dives into</span></div>
+      <div class="flow-node node-cluster">
+        Cluster Page
+        <small>Specifics · Detail</small>
+      </div>
+      <div class="flow-arrow"><span class="flow-arrow-label">evaluates</span></div>
+      <div class="flow-node node-comparison">
+        Comparison
+        <small>Decision · Selection</small>
+      </div>
+      <div class="flow-arrow"><span class="flow-arrow-label">selects</span></div>
+      <div class="flow-node node-package">
+        Package Page
+        <small>Configuration · Price</small>
+      </div>
+      <div class="flow-arrow"><span class="flow-arrow-label">converts</span></div>
+      <div class="flow-node node-convert">
+        Checkout
+        <small>Conversion</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>Design Principle:</strong> Not every visitor follows all five stages. The architecture must support both linear progression (researcher who reads everything) and stage-skipping (buyer who knows what they want and jumps straight to packages). Every page must offer both a "learn more" path downward and a "ready to buy" shortcut to packages.
+  </div>
+
+  <h3>Stage Definitions</h3>
+  <table>
+    <tr>
+      <th>Stage</th>
+      <th>Page Types</th>
+      <th>Visitor Mindset</th>
+      <th>Primary Goal</th>
+    </tr>
+    <tr>
+      <td><strong>1. Intent Landing</strong></td>
+      <td>Homepage, Pillar pages, State hubs</td>
+      <td>"I have a problem — do you solve it?"</td>
+      <td>Validate relevance, build trust, orient visitor to correct path</td>
+    </tr>
+    <tr>
+      <td><strong>2. Deep Education</strong></td>
+      <td>Cluster pages (topic-specific)</td>
+      <td>"Tell me exactly how this works"</td>
+      <td>Build expertise authority, answer specific questions, surface related topics</td>
+    </tr>
+    <tr>
+      <td><strong>3. Decision Support</strong></td>
+      <td>Comparison pages, state-vs-state</td>
+      <td>"Which option is right for me?"</td>
+      <td>Help visitor self-select the correct state/entity/package combination</td>
+    </tr>
+    <tr>
+      <td><strong>4. Package Evaluation</strong></td>
+      <td>Package detail pages</td>
+      <td>"What do I get and what does it cost?"</td>
+      <td>Present clear value, differentiate tiers, drive add-on selection</td>
+    </tr>
+    <tr>
+      <td><strong>5. Conversion</strong></td>
+      <td>Checkout flow (3-4 steps)</td>
+      <td>"Let's do this"</td>
+      <td>Minimize friction, maintain confidence, complete purchase</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: PRIVACY JOURNEY -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="privacy">
+  <h2><span class="num">02</span> Privacy-Focused Journey</h2>
+  <p class="section-subtitle">The highest-value conversion path. Privacy seekers are the primary target audience — they prioritize anonymity, understand the value of proper structuring, and convert to Gold packages. This is the journey the entire site architecture is optimized around.</p>
+
+  <div class="flow">
+    <div class="flow-title">Primary Privacy Journey · Anonymous LLC → Wyoming Gold</div>
+    <div class="flow-v">
+      <div class="flow-node node-search" style="min-width:340px;">
+        🔍 Google: "anonymous LLC" / "how to form anonymous LLC" / "hide LLC ownership"
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-node node-pillar" style="min-width:340px;">
+        Privacy Pillar <span class="url">/privacy/</span>
+        <small>Education: what business privacy means, why it matters, how it works</small>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-branch">
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster">Anonymous LLC Guide<small>/anonymous-llc/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster">WY Privacy Cluster<small>/wyoming-privacy-llc/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster">NV Privacy Cluster<small>/nevada-privacy-llc/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster">Nominee Services<small>/nominee-services/</small></div>
+        </div>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-node node-comparison" style="min-width:340px;">
+        WY vs NV for Privacy Comparison <span class="url">/wyoming-vs-nevada-privacy/</span>
+        <small>Side-by-side: costs, statutes, anonymity level, nominee requirements</small>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-branch">
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-package">Wyoming Gold Package<small>/wyoming-private-incorporation/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-package">Nevada Gold Package<small>/nevada-private-incorporation/</small></div>
+        </div>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-node node-convert" style="min-width:340px;">
+        Checkout: Package config → Entity details → Payment → Confirmation
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--privacy)"></div>
+      <h4>Journey A: The Privacy Researcher</h4>
+      <span class="tag" style="background:var(--privacy-bg);border:1px solid var(--privacy-border);color:var(--privacy)">Full Funnel · 4–7 pages</span>
+    </div>
+    <p><strong>Persona:</strong> Small business owner with $500K+ assets. Heard about anonymous LLCs, wants to understand options before committing. Will read detailed content. Willing to pay premium for genuine privacy.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "how to form anonymous LLC"</strong> → lands on Privacy Pillar or Anonymous LLC cluster
+        <span class="step-page">/privacy/ or /anonymous-llc/</span>
+      </li>
+      <li>
+        <strong>Reads pillar overview</strong> → learns about nominee services, state privacy statutes, BOI requirements
+        <span class="step-cta">CTA: "Compare Wyoming vs Nevada for Privacy →"</span>
+      </li>
+      <li>
+        <strong>Clicks into Wyoming Privacy cluster</strong> → reads about WY Statute 17-29-302, no public ownership disclosure
+        <span class="step-page">/wyoming-privacy-llc/</span>
+        <span class="step-cta">CTA: "See How Our Nominees Protect Your Identity →"</span>
+      </li>
+      <li>
+        <strong>Reviews Nominee Services page</strong> → understands year-round vs "nominee for a day," Incorporate123's differentiator
+        <span class="step-page">/nominee-services/</span>
+        <span class="step-cross">Cross-pillar: "Also protects your assets →" links to Asset Protection</span>
+      </li>
+      <li>
+        <strong>Compares states on comparison page</strong> → side-by-side table helps choose Wyoming over Nevada for privacy
+        <span class="step-page">/wyoming-vs-nevada-privacy/</span>
+        <span class="step-cta">CTA: "Get Started with Wyoming Gold →"</span>
+      </li>
+      <li>
+        <strong>Reviews Wyoming Gold package</strong> → scans 3-tier pricing, reads progressive disclosure details, selects add-ons
+        <span class="step-page">/wyoming-private-incorporation/</span>
+        <span class="step-cta">CTA: "Start My Private LLC — $1,275" / "Schedule a Consultation"</span>
+      </li>
+      <li>
+        <strong>Enters checkout flow</strong> → Package config → Entity details → Payment → Confirmation
+        <span class="step-page">/checkout/</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--privacy)"></div>
+      <h4>Journey B: CA/FL Resident Seeking Privacy</h4>
+      <span class="tag" style="background:var(--privacy-bg);border:1px solid var(--privacy-border);color:var(--privacy)">Variant · State-specific</span>
+    </div>
+    <p><strong>Persona:</strong> California or Florida resident. Home state has public disclosure requirements. Needs WY/NV entity + foreign registration back in home state. Higher-value package ($2,500–$3,200).</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "California anonymous LLC" or "private LLC California"</strong>
+        <span class="step-page">→ Lands on Privacy Pillar or California State Hub</span>
+      </li>
+      <li>
+        <strong>Discovers the problem:</strong> CA requires public LLC disclosure. Solution: form in WY/NV, register foreign in CA
+        <span class="step-page">/privacy/ → /california-private-incorporation/</span>
+      </li>
+      <li>
+        <strong>Reads CA Private cluster</strong> → understands dual-state structure, ongoing compliance needs
+        <span class="step-cta">CTA: "See California Private Package Pricing →"</span>
+      </li>
+      <li>
+        <strong>Reviews CA Private package</strong> → all-inclusive: WY formation + nominees + CA foreign reg + registered agent
+        <span class="step-page">/california-private-incorporation/</span>
+        <span class="step-cta">CTA: "Protect Your California Business — $2,500"</span>
+      </li>
+      <li>
+        <strong>Checkout</strong>
+      </li>
+    </ol>
+  </div>
+
+  <div class="callout callout-decision">
+    <strong>UX Decision:</strong> The Privacy Pillar page must feature <em>both</em> a general "anonymous LLC" path and a "Which state are you in?" selector that routes CA/FL visitors directly to their state-specific privacy packages. This prevents CA/FL visitors from going through the full WY vs NV comparison only to discover they need a completely different package structure.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: ASSET PROTECTION JOURNEY -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="asset">
+  <h2><span class="num">03</span> Asset Protection Journey</h2>
+  <p class="section-subtitle">The second-highest value path. Asset protection visitors understand legal risk and want to shield assets from lawsuits. They're sophisticated buyers who often also need privacy — making cross-pillar linking critical on this journey.</p>
+
+  <div class="flow">
+    <div class="flow-title">Primary Asset Protection Journey · LLC Protection → Gold/Silver Package</div>
+    <div class="flow-v">
+      <div class="flow-node node-search" style="min-width:380px;">
+        🔍 Google: "LLC asset protection" / "protect business from lawsuits" / "charging order protection"
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-node node-asset" style="min-width:380px;">
+        Asset Protection Pillar <span class="url">/asset-protection/</span>
+        <small>Education: why LLCs protect assets, charging orders, state differences</small>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-branch">
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster" style="background:var(--asset-bg);border-color:var(--asset-border);color:var(--asset)">Charging Order<small>/charging-order-protection/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster" style="background:var(--asset-bg);border-color:var(--asset-border);color:var(--asset)">Wyoming AP<small>/wyoming-asset-protection/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster" style="background:var(--asset-bg);border-color:var(--asset-border);color:var(--asset)">Nevada AP<small>/nevada-asset-protection/</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-cluster" style="background:var(--asset-bg);border-color:var(--asset-border);color:var(--asset)">Investment Holding<small>/investment-holding-llc/</small></div>
+        </div>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-node node-comparison" style="min-width:380px;">
+        WY vs NV for Asset Protection <span class="url">/wyoming-vs-nevada-asset-protection/</span>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-branch">
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-package">WY Gold Package<small>if privacy also needed</small></div>
+        </div>
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-package">WY/NV Silver Package<small>if AP only, no privacy</small></div>
+        </div>
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-node node-convert" style="min-width:380px;">Checkout</div>
+    </div>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--asset)"></div>
+      <h4>Journey C: The Lawsuit-Averse Business Owner</h4>
+      <span class="tag" style="background:var(--asset-bg);border:1px solid var(--asset-border);color:var(--asset)">Full Funnel · 4–6 pages</span>
+    </div>
+    <p><strong>Persona:</strong> Real estate investor or business owner who has been sued or knows someone who has. Understands legal defense costs $30K–$100K minimum. Wants strongest possible LLC protection. May not initially realize they also want privacy.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "best state for LLC asset protection"</strong> → lands on AP Pillar
+        <span class="step-page">/asset-protection/</span>
+      </li>
+      <li>
+        <strong>Reads about charging order protection</strong> → learns WY/NV have strongest statutes
+        <span class="step-page">/charging-order-protection/</span>
+        <span class="step-cta">CTA: "Compare WY vs NV Protection →"</span>
+      </li>
+      <li>
+        <strong>Reads state-specific AP cluster</strong> → understands WY's sole remedy charging order provision
+        <span class="step-page">/wyoming-asset-protection/</span>
+        <span class="step-cross">Cross-pillar: "Most asset protection clients also add privacy — here's why →"</span>
+      </li>
+      <li>
+        <strong>Cross-pillar moment:</strong> Clicks through to Privacy Pillar or Nominee Services to learn about keeping ownership hidden from potential litigants
+        <span class="step-page">/nominee-services/ or /privacy/</span>
+      </li>
+      <li>
+        <strong>Returns to comparison or goes directly to Gold package</strong> (upsold from Silver intent to Gold via privacy cross-sell)
+        <span class="step-page">/wyoming-private-incorporation/</span>
+        <span class="step-cta">CTA: "Maximum Protection: Gold Package with Privacy →"</span>
+      </li>
+      <li>
+        <strong>Checkout</strong> — Gold package with potential add-ons (virtual office, additional entities)
+      </li>
+    </ol>
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>Cross-Sell Opportunity:</strong> Asset protection visitors who enter planning to buy Silver frequently upgrade to Gold once they understand that hiding asset ownership from potential plaintiffs (privacy) is a critical layer of asset protection strategy. Every AP cluster page must include a cross-pillar CTA that frames privacy as an <em>extension</em> of asset protection, not a separate service. Estimated upsell rate target: 30–40% of AP visitors converting to Gold instead of Silver.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: FORMATION JOURNEY -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="formation">
+  <h2><span class="num">04</span> Direct Formation Journey</h2>
+  <p class="section-subtitle">The broadest audience but lowest per-visitor value. These visitors know they need an LLC or corporation and are comparing providers. The goal is to convert informed buyers quickly while educating less-informed visitors into higher-value Privacy or AP journeys.</p>
+
+  <div class="flow">
+    <div class="flow-title">Formation Journey · Two Paths: Informed Buyer vs. Researcher</div>
+    <div class="flow-v">
+      <div class="flow-node node-search" style="min-width:400px;">
+        🔍 Google: "form Wyoming LLC" / "Nevada corporation" / "LLC vs corporation"
+      </div>
+      <div class="flow-arrow" style="width:2px;height:32px;"></div>
+      <div class="flow-branch">
+        <!-- Path A: Informed buyer -->
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-formation" style="min-width: 200px;">
+            <strong>Path A:</strong> Knows What They Want
+            <small>Skip education, go to package</small>
+          </div>
+          <div class="flow-arrow" style="width:2px;height:24px;"></div>
+          <div class="flow-node node-package" style="min-width: 200px;">
+            Package Page Directly
+            <small>via nav, homepage, or state hub</small>
+          </div>
+          <div class="flow-arrow" style="width:2px;height:24px;"></div>
+          <div class="flow-node node-convert">Checkout</div>
+        </div>
+        <!-- Path B: Researcher -->
+        <div class="flow-branch-item">
+          <div class="branch-connector"></div>
+          <div class="flow-node node-formation" style="min-width: 200px;">
+            <strong>Path B:</strong> Still Researching
+            <small>Needs education first</small>
+          </div>
+          <div class="flow-arrow" style="width:2px;height:24px;"></div>
+          <div class="flow-node node-cluster" style="background:var(--formation-bg);border-color:var(--formation-border);color:var(--formation);min-width:200px;">
+            Formation Clusters
+            <small>LLC vs Corp, WY LLC, NV LLC</small>
+          </div>
+          <div class="flow-arrow" style="width:2px;height:24px;"></div>
+          <div class="flow-node node-comparison" style="min-width:200px;">
+            WY vs NV Comparison
+            <small>/wyoming-vs-nevada/</small>
+          </div>
+          <div class="flow-arrow" style="width:2px;height:24px;"></div>
+          <div class="flow-node node-package" style="min-width:200px;">Silver or Bronze Package</div>
+          <div class="flow-arrow" style="width:2px;height:24px;"></div>
+          <div class="flow-node node-convert">Checkout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--formation)"></div>
+      <h4>Journey D: The Informed Buyer</h4>
+      <span class="tag" style="background:var(--formation-bg);border:1px solid var(--formation-border);color:var(--formation)">Short Path · 1–2 pages</span>
+    </div>
+    <p><strong>Persona:</strong> Has already decided on state and entity type. Comparing providers on price, inclusions, and trust. May have been referred by an accountant or attorney. Wants to get it done quickly.</p>
+    <ol class="steps">
+      <li>
+        <strong>Lands on Homepage or State Hub</strong> → sees direct package links in hero or state-specific CTA blocks
+        <span class="step-page">/ or /wyoming/ or /nevada/</span>
+        <span class="step-cta">CTA: "Wyoming LLC from $900" / "Nevada LLC from $1,000"</span>
+      </li>
+      <li>
+        <strong>Goes directly to package page</strong> → scans 3-tier pricing, verifies inclusions, selects tier and add-ons
+        <span class="step-page">/wyoming-incorporation/</span>
+        <span class="step-cross">Cross-sell: "Most clients add privacy protection for $375 more →"</span>
+      </li>
+      <li>
+        <strong>Checkout</strong> — Silver or Bronze package
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--formation)"></div>
+      <h4>Journey E: The Formation Researcher</h4>
+      <span class="tag" style="background:var(--formation-bg);border:1px solid var(--formation-border);color:var(--formation)">Full Funnel · 3–5 pages</span>
+    </div>
+    <p><strong>Persona:</strong> Knows they need a business entity but hasn't decided LLC vs Corp, Wyoming vs Nevada, or what level of services they need. Researching options before committing. Price-conscious but can be upsold on value.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "LLC vs corporation"</strong> → lands on Formation Pillar or LLC vs Corp comparison
+        <span class="step-page">/formation/ or /llc-vs-corporation/</span>
+      </li>
+      <li>
+        <strong>Reads entity comparison</strong> → decides on LLC (most common for privacy and AP)
+        <span class="step-cta">CTA: "Next: Choose Your State →"</span>
+      </li>
+      <li>
+        <strong>Reads WY vs NV formation comparison</strong> → compares fees, speed, annual costs
+        <span class="step-page">/wyoming-vs-nevada/</span>
+        <span class="step-cross">Cross-sell: "Need privacy? See why 70% of our clients add nominee services →"</span>
+      </li>
+      <li>
+        <strong>Selects state and views package</strong> → Silver package for formation-only, or upsells to Gold after cross-sell
+        <span class="step-page">/wyoming-incorporation/ or /wyoming-private-incorporation/</span>
+      </li>
+      <li>
+        <strong>Checkout</strong>
+      </li>
+    </ol>
+  </div>
+
+  <div class="callout callout-decision">
+    <strong>Strategic Note:</strong> Formation is where Incorporate123 competes directly with budget providers (ZenBusiness $0 + state fees, LegalZoom $0–$299). The formation journey must immediately differentiate on <em>what's included</em> (registered agent, company secretary, custom records, FREE EIN/bank account) rather than competing on base price. Every formation page should include a "What's Really Included" comparison showing Incorporate123's all-inclusive pricing vs. competitors' nickel-and-diming after checkout.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 5: CROSS-PILLAR -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="cross">
+  <h2><span class="num">05</span> Cross-Pillar Navigation</h2>
+  <p class="section-subtitle">The four-pillar architecture must not create four disconnected silos. Fourteen pages serve multiple pillars simultaneously. These cross-pillar moments are the highest-leverage points for upselling and for ensuring visitors discover the full scope of Incorporate123's services.</p>
+
+  <h3>Cross-Pillar Link Map</h3>
+  <table>
+    <tr>
+      <th>Origin Pillar</th>
+      <th>Trigger Content</th>
+      <th>Destination Pillar</th>
+      <th>CTA / Link Pattern</th>
+    </tr>
+    <tr>
+      <td style="color:var(--asset)">Asset Protection</td>
+      <td>Any AP cluster page discussing LLC ownership</td>
+      <td style="color:var(--privacy)">Privacy</td>
+      <td>"Hiding your ownership is the first layer of asset protection → Nominee Services"</td>
+    </tr>
+    <tr>
+      <td style="color:var(--formation)">Formation</td>
+      <td>Any formation page after entity type selection</td>
+      <td style="color:var(--privacy)">Privacy</td>
+      <td>"Most clients add privacy protection — only $375 more → Wyoming Gold"</td>
+    </tr>
+    <tr>
+      <td style="color:var(--privacy)">Privacy</td>
+      <td>Anonymous LLC page discussing why privacy matters</td>
+      <td style="color:var(--asset)">Asset Protection</td>
+      <td>"Privacy protects your identity. Asset protection protects your wealth →"</td>
+    </tr>
+    <tr>
+      <td style="color:var(--privacy)">Privacy</td>
+      <td>Nominee services page</td>
+      <td style="color:var(--compliance)">Compliance</td>
+      <td>"Your nominee is year-round — see what's included in annual compliance →"</td>
+    </tr>
+    <tr>
+      <td style="color:var(--formation)">Formation</td>
+      <td>LLC vs Corporation comparison</td>
+      <td style="color:var(--asset)">Asset Protection</td>
+      <td>"LLCs offer charging order protection that corporations don't →"</td>
+    </tr>
+    <tr>
+      <td style="color:var(--asset)">Asset Protection</td>
+      <td>Charging Order Protection page</td>
+      <td style="color:var(--formation)">Formation</td>
+      <td>"Ready to form your protected LLC? →"</td>
+    </tr>
+    <tr>
+      <td>All Pillars</td>
+      <td>Any cluster or comparison page</td>
+      <td style="color:var(--compliance)">Compliance</td>
+      <td>"Every package includes year-round registered agent + compliance →"</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-risk">
+    <strong>Anti-Pattern to Avoid:</strong> Cross-pillar links must feel like helpful recommendations, not random upsells. Each cross-pillar CTA should be placed at the content moment where the visitor naturally thinks "what else should I consider?" — typically after they've absorbed the core content of the current page and before the final package CTA. Never put cross-pillar CTAs above the primary conversion CTA on any page.
+  </div>
+
+  <h3>Cross-Pillar UX Patterns</h3>
+  <div class="cta-grid">
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--privacy)">Pattern 1</div>
+      <h4>Contextual Callout Box</h4>
+      <p>Inline within content body. Appears when a paragraph naturally introduces a cross-pillar concept. Styled as a distinct callout (not banner) so it reads as editorial recommendation.</p>
+      <div class="cta-example">💡 "Did you know? Privacy isn't just about anonymity — it's your first line of asset defense." → Link to AP Pillar</div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--asset)">Pattern 2</div>
+      <h4>"Also Relevant" Sidebar Block</h4>
+      <p>Persistent sidebar element on cluster pages. Shows 2–3 related pages from other pillars. Contextually generated per page, not a global widget.</p>
+      <div class="cta-example">Related Topics: Nominee Services · Charging Order Protection · LLC vs Corporation</div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--formation)">Pattern 3</div>
+      <h4>Upgrade Prompt on Package Pages</h4>
+      <p>On Silver/Bronze package pages, a styled comparison showing Gold package benefits. Framed as "Most clients choose Gold because…" social proof.</p>
+      <div class="cta-example">⬆ "70% of Wyoming clients add privacy protection" → Compare Silver vs Gold</div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--compliance)">Pattern 4</div>
+      <h4>Post-Education Navigation Block</h4>
+      <p>After the main content and FAQ section but before the footer. Shows "Where to go next" with pillar-aware suggestions based on current page context.</p>
+      <div class="cta-example">Next Steps: Compare States → | View Packages → | Schedule Consultation →</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6: SECONDARY JOURNEYS -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="secondary">
+  <h2><span class="num">06</span> Secondary Journeys</h2>
+  <p class="section-subtitle">Lower-volume but strategically important paths that the architecture must support. These visitors have specific needs that don't fit the primary pillar funnels.</p>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--compliance)"></div>
+      <h4>Journey F: Returning Client — Compliance Services</h4>
+      <span class="tag" style="background:var(--compliance-bg);border:1px solid var(--compliance-border);color:var(--compliance)">Returning · 1–2 pages</span>
+    </div>
+    <p><strong>Persona:</strong> Existing Incorporate123 client. Needs registered agent renewal, annual report filing, virtual office change, or additional entity. Knows the company, just needs to find the right service page or client login.</p>
+    <ol class="steps">
+      <li>
+        <strong>Returns to site via bookmark, email link, or direct URL</strong>
+        <span class="step-page">/</span>
+      </li>
+      <li>
+        <strong>Looks for Client Login or Compliance section</strong> — must be visible in header navigation (not buried in footer)
+        <span class="step-page">/login/ or /compliance/</span>
+        <span class="step-cta">Header CTA: "Client Login" (persistent, all pages)</span>
+      </li>
+      <li>
+        <strong>If compliance service needed:</strong> Finds Registered Agent, Annual Reports, or Virtual Office cluster under Compliance pillar
+        <span class="step-page">/registered-agent/ or /annual-reports/</span>
+        <span class="step-cross">Cross-sell: "Need an additional entity? Existing clients save on formation →"</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--secondary)"></div>
+      <h4>Journey G: Offshore Inquiry</h4>
+      <span class="tag" style="background:rgba(139,148,158,0.1);border:1px solid rgba(139,148,158,0.3);color:var(--secondary)">De-emphasized · Consultation funnel</span>
+    </div>
+    <p><strong>Persona:</strong> HNW individual or international business seeking Nevis LLC, BVI company, or Bahamas trust. Complex needs requiring consultation. High AOV ($2,000–$12,000+) but low volume.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "Nevis LLC" or "offshore company formation"</strong> → lands on Offshore page (retained for SEO, not in main nav)
+        <span class="step-page">/offshore/</span>
+      </li>
+      <li>
+        <strong>Reads offshore options</strong> → understands Nevis, BVI, and trust structures
+        <span class="step-cta">CTA: "Schedule Offshore Consultation" (phone/form, NOT self-service checkout)</span>
+      </li>
+      <li>
+        <strong>Consultation call</strong> → David or team handles complex structuring discussion
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--formation)"></div>
+      <h4>Journey H: Shelf Company Buyer</h4>
+      <span class="tag" style="background:var(--formation-bg);border:1px solid var(--formation-border);color:var(--formation)">Specialty · High intent</span>
+    </div>
+    <p><strong>Persona:</strong> Needs an aged entity immediately — for credit establishment, banking, contract requirements, or instant credibility. Willing to pay premium ($2,000–$12,000). Knows what they want; needs to see available inventory.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "buy aged LLC" or "shelf company Nevada/Wyoming"</strong> → lands on Shelf Companies page
+        <span class="step-page">/shelf-companies/</span>
+      </li>
+      <li>
+        <strong>Browses available inventory</strong> → filters by state, age, entity type
+        <span class="step-cta">CTA: "Purchase This Entity" (per listing) / "Request Custom Age"</span>
+      </li>
+      <li>
+        <strong>Checkout or consultation</strong> — depends on complexity and availability
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--highlight)"></div>
+      <h4>Journey I: State Hub Entry</h4>
+      <span class="tag" style="background:rgba(255,166,87,0.1);border:1px solid rgba(255,166,87,0.3);color:var(--highlight)">Geographic entry · Router page</span>
+    </div>
+    <p><strong>Persona:</strong> Searches for a state directly ("Wyoming LLC" or "Nevada incorporation"). Hasn't decided on intent yet. The State Hub page must quickly route them to the right pillar based on what they actually need.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "Wyoming LLC"</strong> → lands on Wyoming State Hub
+        <span class="step-page">/wyoming/</span>
+      </li>
+      <li>
+        <strong>State Hub presents intent-based routing:</strong> "Why Wyoming?" overview, then three clear paths
+        <span class="step-cta">CTA blocks: "Wyoming for Privacy →" / "Wyoming for Asset Protection →" / "Wyoming LLC Formation →"</span>
+      </li>
+      <li>
+        <strong>Clicks into relevant pillar</strong> → enters primary journey (A, C, or D/E) from step 2 onward
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--privacy)"></div>
+      <h4>Journey J: BOI Reporting Concerned Visitor</h4>
+      <span class="tag" style="background:var(--privacy-bg);border:1px solid var(--privacy-border);color:var(--privacy)">Topical · P2 page</span>
+    </div>
+    <p><strong>Persona:</strong> Existing LLC owner alarmed by new Beneficial Ownership Information reporting requirements. Searching for how to comply while maintaining privacy. May not be an existing client.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "BOI reporting LLC" or "beneficial ownership information requirements"</strong>
+        <span class="step-page">/boi-reporting/ (P2 expansion page)</span>
+      </li>
+      <li>
+        <strong>Reads BOI guide</strong> → understands requirements and how nominee services affect reporting
+        <span class="step-cross">Cross-sell: "Need nominee services to manage BOI compliance? →"</span>
+      </li>
+      <li>
+        <strong>Routes into Privacy journey</strong> → Nominee Services → Gold Package
+      </li>
+    </ol>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-card-header">
+      <div class="journey-dot" style="background:var(--asset)"></div>
+      <h4>Journey K: HNW / Trust Inquiry</h4>
+      <span class="tag" style="background:var(--asset-bg);border:1px solid var(--asset-border);color:var(--asset)">High value · Consultation funnel</span>
+    </div>
+    <p><strong>Persona:</strong> High-net-worth individual exploring LLC vs Trust for asset protection, or seeking international trust structures (Bahamas). Complex legal needs requiring consultation.</p>
+    <ol class="steps">
+      <li>
+        <strong>Searches "LLC vs trust asset protection"</strong> → lands on AP Pillar or LLC vs Trust comparison
+        <span class="step-page">/asset-protection/ or /llc-vs-trust/</span>
+      </li>
+      <li>
+        <strong>Reads comparison content</strong> → understands pros/cons of each structure
+        <span class="step-cta">CTA: "Complex asset protection needs? Schedule a consultation →"</span>
+      </li>
+      <li>
+        <strong>Consultation call</strong> → routed to appropriate package or offshore/trust discussion
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 7: NAVIGATION REQUIREMENTS -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="nav-req">
+  <h2><span class="num">07</span> Navigation Requirements for UX Phase</h2>
+  <p class="section-subtitle">Specific navigation design requirements derived from the journey maps. These feed directly into wireframing and information architecture decisions.</p>
+
+  <h3>Primary Navigation (Header)</h3>
+  <div class="nav-req">
+    <h4>Req N-1: Intent-First Main Navigation <span class="priority critical">Critical</span></h4>
+    <p>Main nav must lead with the four pillars by intent, not geography. Recommended structure: <strong>Privacy</strong> · <strong>Asset Protection</strong> · <strong>Formation</strong> · <strong>Packages</strong> · <strong>About</strong></p>
+    <p><strong>Rationale:</strong> Journeys A–E all begin with intent. Geographic entry (Journey I) is handled by state hubs and SEO landing pages, not primary navigation.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-2: Persistent Client Login <span class="priority critical">Critical</span></h4>
+    <p>Client Login link must be visible in the header on every page — either as a text link in the utility nav or a subtle button. Returning clients (Journey F) should never have to scroll to find login.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-3: Direct Package Access <span class="priority critical">Critical</span></h4>
+    <p>Informed buyers (Journey D) must reach package pages in one click from the header. A "Packages" or "Pricing" nav item should show all packages in a dropdown/mega menu organized by state and tier.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-4: Phone Number in Header <span class="priority high">High</span></h4>
+    <p>Consultation-oriented visitors (Journeys G, K) and prospects who want to talk before buying must see a phone number in the header. Mobile: tap-to-call. Desktop: visible with business hours.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-5: Mega Menu with Pillar Depth <span class="priority high">High</span></h4>
+    <p>Each pillar nav item should open a mega menu showing key cluster pages and comparison pages. This lets mid-journey visitors jump between stages without backtracking. Include a "Featured" or "Most Popular" highlight for the Anonymous LLC and WY Gold pages.</p>
+  </div>
+
+  <h3>Secondary Navigation (On-Page)</h3>
+  <div class="nav-req">
+    <h4>Req N-6: Breadcrumb Trail <span class="priority critical">Critical</span></h4>
+    <p>Every cluster, comparison, and package page must show breadcrumb navigation: Home → Pillar → Current Page. For cross-pillar pages, show the primary pillar path. Breadcrumbs reinforce the architecture for both users and search engines.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-7: "Where to Go Next" Block <span class="priority high">High</span></h4>
+    <p>Every content page (pillars, clusters, comparisons) must end with a contextual navigation block suggesting logical next steps. This block must be journey-aware: a privacy cluster page suggests comparison → package, while a formation cluster suggests privacy cross-sell → package.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-8: Pillar-Aware Sidebar <span class="priority medium">Medium</span></h4>
+    <p>Cluster pages should include a sidebar or "Related Topics" section showing other clusters within the same pillar, plus 1–2 cross-pillar links. Mobile: collapses to end-of-content block.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-9: State Hub as Router <span class="priority high">High</span></h4>
+    <p>State Hub pages (/wyoming/, /nevada/) must function as routing pages, not content pages. Primary UX: three clear intent-based paths (Privacy / Asset Protection / Formation) with brief "why this state" overview. Secondary: links to all state-relevant packages and compliance services.</p>
+  </div>
+
+  <h3>Mobile Navigation</h3>
+  <div class="nav-req">
+    <h4>Req N-10: Mobile Sticky CTA Bar <span class="priority critical">Critical</span></h4>
+    <p>Mobile must have a sticky bottom bar with two actions: primary CTA (context-dependent — "View Packages" on education pages, "Get Started" on package pages) and phone icon (tap-to-call). This supports both self-service and consultation funnels.</p>
+  </div>
+
+  <div class="nav-req">
+    <h4>Req N-11: Mobile Hamburger with Pillar Structure <span class="priority high">High</span></h4>
+    <p>Mobile menu must maintain the pillar-first structure, not flatten to an alphabetical list. Each pillar expands to show its clusters. Packages and Login should be above the fold in the mobile menu.</p>
+  </div>
+
+  <h3>Footer Navigation</h3>
+  <div class="nav-req">
+    <h4>Req N-12: Complete Footer Sitemap <span class="priority medium">Medium</span></h4>
+    <p>Footer should include all four pillar sections with their top cluster pages, all package pages, state hubs, and utility pages. Offshore content is included in the footer (not main nav) to maintain SEO without primary positioning.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 8: CTA PLACEMENT -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="ctas">
+  <h2><span class="num">08</span> CTA Placement Recommendations</h2>
+  <p class="section-subtitle">Specific CTA types, copy direction, and placement rules for each stage of the conversion funnel. Each CTA must balance moving visitors toward conversion without disrupting the education experience.</p>
+
+  <h3>CTA Framework by Funnel Stage</h3>
+
+  <div class="cta-grid">
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--privacy)">Stage 1 · Pillar Pages (Education)</div>
+      <h4>Soft CTAs + Direct Shortcut</h4>
+      <p><strong>Primary:</strong> Guide to next logical cluster page. Educational, not salesy. "Learn about anonymous LLCs →" or "How charging orders protect your assets →"</p>
+      <p><strong>Secondary:</strong> "Ready now?" shortcut to packages for visitors who skip education. Positioned as a subtle text link, not competing with primary flow.</p>
+      <p><strong>Placement:</strong> Primary CTA after each major content section. Shortcut CTA in a right-sidebar sticky block (desktop) or after the hero (mobile).</p>
+      <div class="cta-example">Primary: "Explore Anonymous LLC Options →"<br>Shortcut: "Already know what you need? View packages →"</div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--cross)">Stage 2 · Cluster Pages (Deep Education)</div>
+      <h4>Progression CTA + Cross-Pillar</h4>
+      <p><strong>Primary:</strong> Move toward comparison or package. "Compare Wyoming vs Nevada →" or "See Gold Package Details →"</p>
+      <p><strong>Cross-pillar:</strong> One contextual cross-pillar callout per page, placed mid-content where the topic naturally connects.</p>
+      <p><strong>Placement:</strong> Primary CTA after main content, before FAQ. Cross-pillar callout inline within content body. "Schedule Consultation" as tertiary option.</p>
+      <div class="cta-example">Primary: "Compare States for Privacy →"<br>Cross: "Also protects your assets — learn how →"<br>Tertiary: "Have questions? Talk to our team →"</div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--formation)">Stage 3 · Comparison Pages (Decision)</div>
+      <h4>Dual Package CTAs</h4>
+      <p><strong>Primary:</strong> Two competing package CTAs — one per state/option being compared. Must be equally weighted so the comparison feels objective, not biased.</p>
+      <p><strong>Below table:</strong> "Not sure? Schedule a free consultation" for visitors who need human guidance.</p>
+      <p><strong>Placement:</strong> Dual CTAs immediately after the comparison table (above the fold on desktop). Repeated at page bottom after supporting content.</p>
+      <div class="cta-example">"Get Started with Wyoming Gold — $1,275" | "Get Started with Nevada Gold — $1,800"<br>Below: "Need help deciding? Free 15-minute consultation →"</div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--conversion)">Stage 4 · Package Pages (Conversion)</div>
+      <h4>Strong Conversion CTAs</h4>
+      <p><strong>Primary:</strong> "Start My [Entity Type] — $[price]" with clear pricing. Must appear above the fold in the 3-tier comparison grid. Each tier gets its own CTA.</p>
+      <p><strong>Tier upgrade:</strong> Gold tier should be visually highlighted ("Most Popular" badge, different background color).</p>
+      <p><strong>Dual CTA:</strong> "Start Online" button + "Call to Order" for phone-preference visitors.</p>
+      <p><strong>Placement:</strong> Top of 3-tier grid (above fold), sticky on scroll (mobile), repeated after FAQ section.</p>
+      <div class="cta-example">Tier CTAs: "Start Silver — $900" · "Start Gold — $1,275 ★ Most Popular" · "Start Gold + VO — $1,675"<br>Secondary: "📞 Prefer to order by phone? Call (XXX) XXX-XXXX"</div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--highlight)">Homepage</div>
+      <h4>Intent Router + Direct Access</h4>
+      <p><strong>Hero:</strong> Three pillar CTAs as the primary action. "Business Privacy →" / "Asset Protection →" / "Company Formation →" with brief subtexts.</p>
+      <p><strong>Below hero:</strong> Direct package links for informed buyers. "Wyoming LLC from $900" / "Nevada LLC from $1,000" / "Private LLC from $1,275".</p>
+      <p><strong>Trust section:</strong> Social proof with "Get Started" CTA after testimonials.</p>
+      <div class="cta-example">Hero: Three intent-based pillar cards<br>Direct: Package price cards below fold<br>Trust: "25 years · 40,000+ entities · Get Started →"</div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-card-stage" style="color:var(--highlight)">State Hubs</div>
+      <h4>Intent Router (State-Specific)</h4>
+      <p><strong>Primary:</strong> Three intent paths specific to the state. "Wyoming for Privacy →" / "Wyoming for Asset Protection →" / "Wyoming LLC Formation →"</p>
+      <p><strong>Secondary:</strong> Quick-access package links for the state. "View Wyoming Packages →"</p>
+      <p><strong>Placement:</strong> Intent cards above fold. Package links and compliance services below.</p>
+      <div class="cta-example">"Why Wyoming?" → Three intent cards<br>"Wyoming Packages" → Silver · Gold · Gold+VO</div>
+    </div>
+  </div>
+
+  <h3>CTA Copy Principles</h3>
+  <table>
+    <tr>
+      <th>Principle</th>
+      <th>Do</th>
+      <th>Don't</th>
+    </tr>
+    <tr>
+      <td><strong>Specificity</strong></td>
+      <td>"Start My Wyoming LLC — $900"</td>
+      <td>"Get Started" / "Learn More"</td>
+    </tr>
+    <tr>
+      <td><strong>Action-Oriented</strong></td>
+      <td>"Protect Your Business Now →"</td>
+      <td>"Click Here" / "Submit"</td>
+    </tr>
+    <tr>
+      <td><strong>Value Framing</strong></td>
+      <td>"All-Inclusive: Formation + Agent + EIN"</td>
+      <td>"Starting at $900" (implies hidden costs)</td>
+    </tr>
+    <tr>
+      <td><strong>Urgency (Subtle)</strong></td>
+      <td>"Same-day filing available"</td>
+      <td>"Limited time offer!" / "Act now!"</td>
+    </tr>
+    <tr>
+      <td><strong>Trust Reinforcement</strong></td>
+      <td>"Join 40,000+ businesses protected"</td>
+      <td>"Buy now" without social proof</td>
+    </tr>
+    <tr>
+      <td><strong>Consultation Option</strong></td>
+      <td>"Questions? Free 15-min consultation"</td>
+      <td>No phone/consultation alternative</td>
+    </tr>
+  </table>
+
+  <h3>CTA Placement Rules</h3>
+  <table>
+    <tr>
+      <th>Rule</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><strong>Above-Fold Presence</strong></td>
+      <td>Every page must have at least one CTA visible without scrolling. On education pages this can be a subtle "View Packages" link; on package pages it must be the primary conversion button.</td>
+    </tr>
+    <tr>
+      <td><strong>Post-Content Repeat</strong></td>
+      <td>The primary CTA must repeat after the main content section and after the FAQ section. Visitors who read everything should find a conversion path waiting at the end.</td>
+    </tr>
+    <tr>
+      <td><strong>One Primary, One Secondary</strong></td>
+      <td>Each page has exactly one primary CTA style (strongest visual weight) and one secondary CTA style (text link or outlined button). Never show three competing CTA styles on one page.</td>
+    </tr>
+    <tr>
+      <td><strong>Cross-Pillar Below Primary</strong></td>
+      <td>Cross-pillar CTAs must always appear below or after the page's primary conversion CTA. The primary journey must never be interrupted by cross-sells.</td>
+    </tr>
+    <tr>
+      <td><strong>Mobile Priority</strong></td>
+      <td>On mobile, the sticky bottom CTA bar takes precedence. In-content CTAs can be less prominent since the sticky bar is always accessible.</td>
+    </tr>
+    <tr>
+      <td><strong>Consultation as Safety Net</strong></td>
+      <td>Every page with a self-service conversion CTA must also offer a "Talk to us" alternative. Phone number or consultation form. High-value prospects often prefer human contact before purchasing.</td>
+    </tr>
+  </table>
+</section>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <div class="container">
+    <p>Incorporate123 · User Journey Mapping · Task 4.4 · Discovery & Strategy Phase</p>
+    <p style="margin-top:4px;">BIT Studios · March 2026</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incorporate123 — Site Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF8; --ink: #18181B; --ink-2: #3F3F46; --ink-3: #71717A; --ink-4: #A1A1AA;
+            --line: #D4D4D8; --card: #FFFFFF; --anchor: 36px;
+            --prv: #2563EB; --prv-s: #EFF6FF; --prv-b: #BFDBFE; --prv-t: #1E40AF;
+            --ast: #7C3AED; --ast-s: #F5F3FF; --ast-b: #DDD6FE; --ast-t: #5B21B6;
+            --frm: #059669; --frm-s: #ECFDF5; --frm-b: #A7F3D0; --frm-t: #065F46;
+            --cmp-c: #D97706; --cmp-s: #FFFBEB; --cmp-b: #FDE68A; --cmp-t: #92400E;
+            --pkg: #E11D48; --pkg-s: #FFF1F2; --pkg-b: #FECDD3; --pkg-t: #9F1239;
+            --hub: #0891B2; --hub-s: #ECFEFF; --hub-b: #A5F3FC; --hub-t: #155E75;
+            --off: #475569; --off-s: #F8FAFC; --off-b: #CBD5E1; --off-t: #1E293B;
+            --utl: #71717A; --utl-s: #FAFAFA; --utl-b: #E4E4E7; --utl-t: #3F3F46;
+            --chk: #6D28D9; --chk-s: #FAF5FF; --chk-b: #DDD6FE; --chk-t: #4C1D95;
+            --cpr: #B45309;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: auto; }
+
+        /* HEADER */
+        .masthead { padding: 56px 0 48px; text-align: center; background: var(--ink); position: relative; overflow: hidden; }
+        .masthead::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 300px at 20% 50%, rgba(37,99,235,0.08), transparent), radial-gradient(ellipse 500px 400px at 80% 30%, rgba(124,58,237,0.06), transparent); }
+        .masthead-inner { position: relative; z-index: 1; }
+        .masthead-brand { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+        .masthead h1 { font-family: 'Instrument Serif', serif; font-size: 48px; font-weight: 400; color: #fff; margin: 12px 0 8px; letter-spacing: -1px; }
+        .masthead-sub { font-size: 15px; color: rgba(255,255,255,0.4); }
+        .masthead-stats { display: flex; justify-content: center; gap: 40px; margin-top: 32px; }
+        .masthead-stat { text-align: center; }
+        .masthead-stat .val { font-family: 'Instrument Serif', serif; font-size: 36px; color: #fff; line-height: 1; }
+        .masthead-stat .lbl { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 4px; }
+
+        .canvas { padding: 48px 32px 80px; }
+
+        /* ===== TREE SYSTEM ===== */
+        /* .tn = tree node (has children) — always display:flex horizontal */
+        .tn {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* .conn = horizontal connector line from card to children */
+        .conn {
+            width: 28px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .conn::after {
+            content: '';
+            position: absolute;
+            top: var(--anchor);
+            left: 0; right: 0;
+            height: 2px;
+            background: var(--_c, var(--line));
+        }
+
+        /* .kids = vertical stack of children */
+        .kids {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            position: relative;
+            padding-left: 14px;
+        }
+        /* Vertical rail */
+        .kids::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: var(--rt, var(--anchor));
+            bottom: var(--rb, var(--anchor));
+            width: 2px;
+            background: var(--_c, var(--line));
+        }
+
+        /* Horizontal tick from rail into each child */
+        .kids > .tn,
+        .kids > .leaf {
+            position: relative;
+        }
+        .kids > .tn::before,
+        .kids > .leaf::before {
+            content: '';
+            position: absolute;
+            left: -14px;
+            top: var(--anchor);
+            width: 13px;
+            height: 2px;
+            background: var(--_c, var(--line));
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            border-radius: 11px;
+            padding: 14px 16px;
+            border: 1.5px solid var(--line);
+            background: var(--card);
+            width: 240px;
+            flex-shrink: 0;
+            cursor: default;
+            transition: transform 0.12s, box-shadow 0.15s;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .card .badge { font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; display: inline-block; margin-bottom: 6px; }
+        .card .pg-name { font-weight: 600; font-size: 13.5px; line-height: 1.35; margin-bottom: 3px; }
+        .card .pg-url { font-family: 'Geist Mono', monospace; font-size: 9.5px; color: var(--ink-4); margin-bottom: 8px; display: block; }
+        .card .pg-desc { font-size: 10.5px; color: var(--ink-3); line-height: 1.5; }
+
+        /* Root */
+        .card.root {
+            background: var(--ink); border-color: var(--ink); color: #fff;
+            width: 280px; padding: 20px 22px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+        }
+        .card.root .pg-name { color: #fff; font-size: 20px; font-family: 'Instrument Serif', serif; font-weight: 400; }
+        .card.root .pg-url { color: rgba(255,255,255,0.3); }
+        .card.root .pg-desc { color: rgba(255,255,255,0.5); font-size: 11.5px; }
+        .card.root .badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
+
+        /* L1 */
+        .card.l1 { width: 260px; border-width: 2px; padding: 16px 18px; }
+        .card.l1 .pg-name { font-size: 15px; font-weight: 700; }
+        .card.l1 .pg-desc { font-size: 11px; }
+
+        /* L2 leaf */
+        .leaf .card { width: 230px; }
+
+        /* Comparison dashed */
+        .card.is-cmp { border-style: dashed; }
+        .card.is-cmp .badge { background: var(--cmp-s) !important; color: var(--cpr) !important; }
+
+        /* Template/system dotted */
+        .card.is-tpl { border-style: dotted; }
+
+        /* ===== COLOR SCOPES via CSS custom properties ===== */
+        .s-root { --_c: var(--line); }
+        .s-prv { --_c: var(--prv-b); }
+        .s-ast { --_c: var(--ast-b); }
+        .s-frm { --_c: var(--frm-b); }
+        .s-cmp { --_c: var(--cmp-b); }
+        .s-pkg { --_c: var(--pkg-b); }
+        .s-hub { --_c: var(--hub-b); }
+        .s-off { --_c: var(--off-b); }
+        .s-utl { --_c: var(--utl-b); }
+        .s-chk { --_c: var(--chk-b); }
+
+        /* L1 card colors */
+        .s-prv > .card { background: var(--prv-s); border-color: var(--prv-b); }
+        .s-prv > .card .badge { background: var(--prv-b); color: var(--prv-t); }
+        .s-ast > .card { background: var(--ast-s); border-color: var(--ast-b); }
+        .s-ast > .card .badge { background: var(--ast-b); color: var(--ast-t); }
+        .s-frm > .card { background: var(--frm-s); border-color: var(--frm-b); }
+        .s-frm > .card .badge { background: var(--frm-b); color: var(--frm-t); }
+        .s-cmp > .card { background: var(--cmp-s); border-color: var(--cmp-b); }
+        .s-cmp > .card .badge { background: var(--cmp-b); color: var(--cmp-t); }
+        .s-pkg > .card { background: var(--pkg-s); border-color: var(--pkg-b); }
+        .s-pkg > .card .badge { background: var(--pkg-b); color: var(--pkg-t); }
+        .s-hub > .card { background: var(--hub-s); border-color: var(--hub-b); }
+        .s-hub > .card .badge { background: var(--hub-b); color: var(--hub-t); }
+        .s-off > .card { background: var(--off-s); border-color: var(--off-b); }
+        .s-off > .card .badge { background: var(--off-b); color: var(--off-t); }
+        .s-utl > .card { background: var(--utl-s); border-color: var(--utl-b); }
+        .s-utl > .card .badge { background: var(--utl-b); color: var(--utl-t); }
+        .s-chk > .card { background: var(--chk-s); border-color: var(--chk-b); }
+        .s-chk > .card .badge { background: var(--chk-b); color: var(--chk-t); }
+
+        /* L2 children inherit section color */
+        .s-prv .leaf .card { border-color: var(--prv-b); }
+        .s-prv .leaf .card .badge { background: var(--prv-s); color: var(--prv-t); }
+        .s-ast .leaf .card { border-color: var(--ast-b); }
+        .s-ast .leaf .card .badge { background: var(--ast-s); color: var(--ast-t); }
+        .s-frm .leaf .card { border-color: var(--frm-b); }
+        .s-frm .leaf .card .badge { background: var(--frm-s); color: var(--frm-t); }
+        .s-cmp .leaf .card { border-color: var(--cmp-b); }
+        .s-cmp .leaf .card .badge { background: var(--cmp-s); color: var(--cmp-t); }
+        .s-pkg .leaf .card { border-color: var(--pkg-b); background: var(--pkg-s); }
+        .s-pkg .leaf .card .badge { background: var(--pkg-b); color: var(--pkg-t); }
+        .s-hub .leaf .card { border-color: var(--hub-b); background: var(--hub-s); }
+        .s-hub .leaf .card .badge { background: var(--hub-b); color: var(--hub-t); }
+        .s-off .leaf .card { border-color: var(--off-b); background: var(--off-s); }
+        .s-off .leaf .card .badge { background: var(--off-b); color: var(--off-t); }
+        .s-utl .leaf .card, .s-utl .tn > .card:not(.l1) { border-color: var(--utl-b); background: var(--utl-s); }
+        .s-utl .leaf .card .badge, .s-utl .tn > .card:not(.l1) .badge { background: var(--utl-b); color: var(--utl-t); }
+        .s-chk .leaf .card { border-color: var(--chk-b); background: var(--chk-s); }
+        .s-chk .leaf .card .badge { background: var(--chk-b); color: var(--chk-t); }
+
+        .foot { text-align: center; font-size: 11px; color: var(--ink-4); letter-spacing: 0.5px; padding: 40px 0 16px; }
+
+        @media print { .card:hover { transform: none; box-shadow: none; } body { background: #fff; } }
+    </style>
+</head>
+<body>
+
+<header class="masthead">
+    <div class="masthead-inner">
+        <div class="masthead-brand">Incorporate123</div>
+        <h1>Site Architecture</h1>
+        <p class="masthead-sub">Privacy, Asset Protection &amp; Business Formation Specialists</p>
+        <div class="masthead-stats">
+            <div class="masthead-stat"><div class="val">71+</div><div class="lbl">Pages</div></div>
+            <div class="masthead-stat"><div class="val">4</div><div class="lbl">Pillars</div></div>
+            <div class="masthead-stat"><div class="val">10</div><div class="lbl">Templates</div></div>
+            <div class="masthead-stat"><div class="val">325</div><div class="lbl">URLs Consolidated</div></div>
+        </div>
+    </div>
+</header>
+
+<div class="canvas">
+
+<!-- L0 → L1 → L2 (→ L3 for Blog) -->
+<div class="tn s-root">
+    <div class="card root"><div class="badge">Home</div><div class="pg-name">Homepage</div><span class="pg-url">/</span><div class="pg-desc">The front door. Hero section establishing Incorporate123 as Privacy, Asset Protection &amp; Business Formation Specialists. Four pillar CTAs for intent-based navigation, direct package links for ready-to-buy visitors, testimonials, trust signals (25 years, Reno office, year-round nominees). Must serve both researchers and ready buyers.</div></div>
+    <div class="conn"></div>
+    <div class="kids">
+
+        <!-- PRIVACY -->
+        <div class="tn s-prv">
+            <div class="card l1"><div class="badge">Pillar &middot; 11 pages</div><div class="pg-name">Business Privacy</div><span class="pg-url">/privacy/</span><div class="pg-desc">The lead pillar page. Educates visitors on why business ownership privacy matters, how public records expose owners to lawsuits and solicitation, and what tools exist to keep ownership anonymous. This is where most prospects will enter the site.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Anonymous LLC</div><span class="pg-url">/anonymous-llc/</span><div class="pg-desc">Deep dive on forming an LLC where the owner&rsquo;s name never appears in state records. How WY/NV enable this, year-round nominee service vs. competitors who only provide nominees &ldquo;for a day.&rdquo;</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Anonymous Corporation</div><span class="pg-url">/anonymous-corporation/</span><div class="pg-desc">Privacy via corporate structure. When a corporation makes more sense than an LLC for privacy, how nominee directors work, state-specific rules.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Nominee Services</div><span class="pg-url">/nominee-services/</span><div class="pg-desc">Incorporate123&rsquo;s core differentiator. What nominee officers, directors, and managers do, why year-round nominees matter, and the $525/year renewal advantage.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Wyoming Privacy</div><span class="pg-url">/wyoming-privacy/</span><div class="pg-desc">Wyoming-specific privacy advantages: no state income tax, no public ownership disclosure, strong charging order protection for single-member LLCs.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Nevada Privacy</div><span class="pg-url">/nevada-privacy/</span><div class="pg-desc">Nevada-specific privacy features: no state income tax, strong corporate veil, nominee officer allowances. Honest comparison vs. Wyoming.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">California Private Inc.</div><span class="pg-url">/california-private-incorporation/</span><div class="pg-desc">How CA residents form a WY entity and register as foreign entity in California for privacy while operating legally.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Florida Private Inc.</div><span class="pg-url">/florida-private-incorporation/</span><div class="pg-desc">Same concept as California. Wyoming formation + Florida foreign registration for privacy while operating locally.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">BOI Reporting</div><span class="pg-url">/beneficial-ownership-reporting/</span><div class="pg-desc">Corporate Transparency Act&rsquo;s BOI reporting requirements: who must file, what&rsquo;s disclosed, exemptions, and impact on privacy strategies.</div></div></div>
+                <div class="leaf"><div class="card is-cmp"><div class="badge">Comparison</div><div class="pg-name">Best State for Privacy</div><span class="pg-url">/best-state-for-privacy/</span><div class="pg-desc">Multi-state comparison: WY, NV, NM, DE. Side-by-side on disclosure, nominees, taxes, annual costs.</div></div></div>
+                <div class="leaf"><div class="card is-cmp"><div class="badge">Comparison</div><div class="pg-name">WY vs NV for Privacy</div><span class="pg-url">/wyoming-vs-nevada-privacy/</span><div class="pg-desc">Head-to-head. Cost differences, disclosure rules, charging order protection, and Inc123&rsquo;s recommendation.</div></div></div>
+            </div>
+        </div>
+
+        <!-- ASSET PROTECTION -->
+        <div class="tn s-ast">
+            <div class="card l1"><div class="badge">Pillar &middot; 7 pages</div><div class="pg-name">Asset Protection</div><span class="pg-url">/asset-protection/</span><div class="pg-desc">Educates on how proper entity structuring protects personal assets from business liabilities and judgments. Distinguishes asset protection from privacy. For owners/investors with $500K+ in assets.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Nevada Asset Protection</div><span class="pg-url">/nevada-asset-protection/</span><div class="pg-desc">Nevada&rsquo;s AP advantages: charging order as exclusive remedy, strong corporate veil statutes, LLC and corp protections.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Wyoming Asset Protection</div><span class="pg-url">/wyoming-asset-protection/</span><div class="pg-desc">Wyoming&rsquo;s AP advantages: single-member LLC charging order protection (unique among states), no income tax, low annual costs.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Investment Holding LLC</div><span class="pg-url">/investment-holding-llc/</span><div class="pg-desc">Using a WY/NV LLC as holding company for investments, real estate, or other assets. Why separating operating and holding entities matters.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Charging Order Protection</div><span class="pg-url">/charging-order-protection/</span><div class="pg-desc">How charging orders prevent creditors from seizing LLC assets. Single-member vs. multi-member protections by state. Why Wyoming leads.</div></div></div>
+                <div class="leaf"><div class="card is-cmp"><div class="badge">Comparison</div><div class="pg-name">Best State for AP</div><span class="pg-url">/best-state-for-asset-protection/</span><div class="pg-desc">Multi-state comparison: WY, NV, SD, DE. Charging order laws, trust protections, cost, compliance burden.</div></div></div>
+                <div class="leaf"><div class="card is-cmp"><div class="badge">Comparison</div><div class="pg-name">WY vs NV for AP</div><span class="pg-url">/wyoming-vs-nevada-asset-protection/</span><div class="pg-desc">Head-to-head. Single-member LLC differences, cost comparison, when each state is the better choice.</div></div></div>
+            </div>
+        </div>
+
+        <!-- FORMATION -->
+        <div class="tn s-frm">
+            <div class="card l1"><div class="badge">Pillar &middot; 9 pages</div><div class="pg-name">Company Formation</div><span class="pg-url">/formation/</span><div class="pg-desc">Fundamentals of forming a business entity: LLC vs. corporation, state selection, formation process, costs, and timeline. For entrepreneurs who haven&rsquo;t decided on type or state.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Wyoming LLC</div><span class="pg-url">/wyoming-llc/</span><div class="pg-desc">Complete guide: process, costs, state fees, timeline, what&rsquo;s included in Inc123&rsquo;s packages, ongoing requirements.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Wyoming Corporation</div><span class="pg-url">/wyoming-corporation/</span><div class="pg-desc">When a corp is better than an LLC, formation process, state fees, corporate compliance requirements.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Nevada LLC</div><span class="pg-url">/nevada-llc/</span><div class="pg-desc">NV LLC formation: process, costs including state business license, Commerce Tax considerations, Inc123&rsquo;s packages.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Nevada Corporation</div><span class="pg-url">/nevada-corporation/</span><div class="pg-desc">Advantages of Nevada&rsquo;s corporate statutes, director/officer protections, formation process, and costs.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Shelf Companies</div><span class="pg-url">/shelf-companies/</span><div class="pg-desc">Aged/shelf entities: pre-formed companies with history. Why someone would want one, pricing, what&rsquo;s included.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">LLC vs Corporation</div><span class="pg-url">/llc-vs-corporation/</span><div class="pg-desc">Side-by-side: liability protection, taxation, management, formalities, which is better for different business types.</div></div></div>
+                <div class="leaf"><div class="card is-cmp"><div class="badge">Comparison</div><div class="pg-name">Wyoming vs Nevada</div><span class="pg-url">/wyoming-vs-nevada/</span><div class="pg-desc">Comprehensive state comparison: costs, taxes, privacy, asset protection, compliance, annual renewal fees.</div></div></div>
+                <div class="leaf"><div class="card is-cmp"><div class="badge">Comparison</div><div class="pg-name">Shelf vs New Formation</div><span class="pg-url">/shelf-company-vs-new-formation/</span><div class="pg-desc">Aged entity vs. forming new: cost differences, timeline, credibility benefits, when each makes sense.</div></div></div>
+            </div>
+        </div>
+
+        <!-- COMPLIANCE -->
+        <div class="tn s-cmp">
+            <div class="card l1"><div class="badge">Pillar &middot; 7 pages</div><div class="pg-name">Compliance</div><span class="pg-url">/compliance/</span><div class="pg-desc">Ongoing compliance obligations after formation. Positions Inc123 as long-term partner. Covers registered agent, annual reports, and &ldquo;minimum necessary compliance&rdquo; philosophy.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Registered Agent Services</div><span class="pg-url">/registered-agent/</span><div class="pg-desc">What an RA does, why every entity needs one, Inc123&rsquo;s service includes mail forwarding, legal docs, compliance reminders.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Wyoming Registered Agent</div><span class="pg-url">/wyoming-registered-agent/</span><div class="pg-desc">WY-specific: state requirements, Inc123&rsquo;s Cheyenne presence, what&rsquo;s included in annual renewal.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Nevada Registered Agent</div><span class="pg-url">/nevada-registered-agent/</span><div class="pg-desc">NV-specific: state requirements, Inc123&rsquo;s Reno office, Commerce Tax and business license compliance support.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Annual Reports</div><span class="pg-url">/annual-reports/</span><div class="pg-desc">State-by-state reporting requirements for WY and NV entities. Deadlines, fees, what&rsquo;s filed, how Inc123 handles it.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Foreign State Registration</div><span class="pg-url">/foreign-state-registration/</span><div class="pg-desc">Registering a WY/NV entity to operate in another state. When required, process, costs, ongoing compliance.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Cluster</div><div class="pg-name">Domestication</div><span class="pg-url">/domestication/</span><div class="pg-desc">Moving an existing entity from one state to WY/NV without dissolving. Process, timeline, what changes, costs.</div></div></div>
+            </div>
+        </div>
+
+        <!-- PACKAGES -->
+        <div class="tn s-pkg">
+            <div class="card l1"><div class="badge">Packages &middot; 9 pages</div><div class="pg-name">Conversion Endpoints</div><span class="pg-url">/compare-packages/</span><div class="pg-desc">Master comparison table + 8 individual package pages. All pillar and cluster content funnels here. Tier comparison, add-on options, order CTAs.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Wyoming Gold (Private)</div><span class="pg-url">/wyoming-private-incorporation/</span><div class="pg-desc">Flagship. WY formation WITH year-round nominees, RA, all state filings. Maximum privacy.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Wyoming Silver</div><span class="pg-url">/wyoming-incorporation/</span><div class="pg-desc">WY formation WITHOUT nominees. LLC/Corp, registered agent, state filings.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Nevada Gold (Private)</div><span class="pg-url">/nevada-private-incorporation/</span><div class="pg-desc">NV formation WITH full nominee services. Anonymous ownership in Nevada.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Nevada Silver</div><span class="pg-url">/nevada-incorporation/</span><div class="pg-desc">NV formation WITHOUT nominees. Formation, RA, state filings.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Nevada Bronze</div><span class="pg-url">/nevada-basic-incorporation/</span><div class="pg-desc">Entry-level NV formation. Basic LLC or Corp with minimal add-ons.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">California Private</div><span class="pg-url">/california-private-incorporation/</span><div class="pg-desc">WY formation + CA foreign registration bundle for California residents.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Florida Private</div><span class="pg-url">/florida-private-incorporation/</span><div class="pg-desc">WY formation + FL foreign registration bundle for Florida residents.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Package</div><div class="pg-name">Shelf Companies</div><span class="pg-url">/shelf-companies/</span><div class="pg-desc">Pre-formed aged entities. Available inventory with formation dates, states, pricing.</div></div></div>
+            </div>
+        </div>
+
+        <!-- STATE HUBS -->
+        <div class="tn s-hub">
+            <div class="card l1"><div class="badge">State Hubs &middot; 4 pages</div><div class="pg-name">Geographic Pages</div><span class="pg-url">&mdash;</span><div class="pg-desc">Cross-pillar hub pages linking to ALL content for a given state. Serve geographic search intent (&ldquo;Wyoming LLC&rdquo;, &ldquo;Nevada incorporation&rdquo;).</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">State Hub</div><div class="pg-name">Wyoming</div><span class="pg-url">/wyoming/</span><div class="pg-desc">All WY content across every pillar: privacy, AP, LLC, corp, RA, packages.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">State Hub</div><div class="pg-name">Nevada</div><span class="pg-url">/nevada/</span><div class="pg-desc">All NV content: privacy, AP, LLC, corp, RA, shelf companies, packages.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">State Hub</div><div class="pg-name">California</div><span class="pg-url">/california/</span><div class="pg-desc">CA Private Inc package, foreign registration, WY/NV compliance in CA.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">State Hub</div><div class="pg-name">Florida</div><span class="pg-url">/florida/</span><div class="pg-desc">FL Private Inc package, foreign registration, compliance guidance.</div></div></div>
+            </div>
+        </div>
+
+        <!-- OFFSHORE -->
+        <div class="tn s-off">
+            <div class="card l1"><div class="badge">Offshore &middot; 6 pages</div><div class="pg-name">Offshore Hub</div><span class="pg-url">/offshore/</span><div class="pg-desc">International formation services. Positions offshore as legitimate business tool. De-emphasized in main nav but retained for SEO authority.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Offshore</div><div class="pg-name">Nevis LLC/Corp</div><span class="pg-url">/offshore/nevis/</span><div class="pg-desc">Nevis formation packages: LLC/corp options, AP trust structures, privacy features.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Offshore</div><div class="pg-name">BVI Company</div><span class="pg-url">/offshore/bvi/</span><div class="pg-desc">British Virgin Islands IBC formation: process, costs, use cases.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Offshore</div><div class="pg-name">Panama Foundation</div><span class="pg-url">/offshore/panama/</span><div class="pg-desc">Panama Private Interest Foundation: how it differs from LLCs/corps, privacy, use cases.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Offshore</div><div class="pg-name">Hong Kong Company</div><span class="pg-url">/offshore/hong-kong/</span><div class="pg-desc">HK company formation: trade advantages, banking access, tax treatment.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Offshore</div><div class="pg-name">IRS Compliance</div><span class="pg-url">/offshore/irs-compliance/</span><div class="pg-desc">US tax obligations for offshore owners: GILTI, PFIC, FBAR, Form 5471 reporting.</div></div></div>
+            </div>
+        </div>
+
+        <!-- UTILITY (Blog has L3 child) -->
+        <div class="tn s-utl">
+            <div class="card l1"><div class="badge">Utility &middot; 11 pages</div><div class="pg-name">Utility &amp; Support</div><span class="pg-url">&mdash;</span><div class="pg-desc">Site infrastructure: about, contact, FAQ, blog, testimonials, legal pages, and 404 error page.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Utility</div><div class="pg-name">About Us</div><span class="pg-url">/about/</span><div class="pg-desc">25-year history, David&rsquo;s expertise, Reno office, why experience matters. Trust-building.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Utility</div><div class="pg-name">Contact</div><span class="pg-url">/contact/</span><div class="pg-desc">Contact form, phone number, consultation CTA. Simple and direct.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Resource</div><div class="pg-name">FAQ Hub</div><span class="pg-url">/faq/</span><div class="pg-desc">Consolidated from 188 Learning Center FAQ items. Organized, searchable categories.</div></div></div>
+                <!-- Blog → Blog Post (L3) -->
+                <div class="tn">
+                    <div class="card"><div class="badge">Content</div><div class="pg-name">Blog</div><span class="pg-url">/blog/</span><div class="pg-desc">Post-launch content marketing hub. Long-tail keyword targeting, thought leadership.</div></div>
+                    <div class="conn"></div>
+                    <div class="kids">
+                        <div class="leaf"><div class="card is-tpl"><div class="badge">Template</div><div class="pg-name">Blog Post</div><span class="pg-url">/blog/{slug}</span><div class="pg-desc">Individual article template. Dynamic post-launch pages. Author, date, related posts, pillar CTAs, social sharing.</div></div></div>
+                    </div>
+                </div>
+                <div class="leaf"><div class="card"><div class="badge">Social Proof</div><div class="pg-name">Testimonials</div><span class="pg-url">/testimonials/</span><div class="pg-desc">Client success stories and reviews. Social proof for conversion.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Portal</div><div class="pg-name">Client Login</div><span class="pg-url">/login/</span><div class="pg-desc">Existing client portal. Entity management, documents, renewals.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Legal</div><div class="pg-name">Privacy Policy</div><span class="pg-url">/privacy-policy/</span><div class="pg-desc">Standard privacy policy. Required page.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Legal</div><div class="pg-name">Terms of Service</div><span class="pg-url">/terms/</span><div class="pg-desc">Terms governing website and services. Required page.</div></div></div>
+                <div class="leaf"><div class="card is-tpl"><div class="badge">Error</div><div class="pg-name">404 Page</div><span class="pg-url">/404</span><div class="pg-desc">Custom error page. Search, pillar nav links, contact CTA to recover lost visitors. Critical during ~170-redirect migration.</div></div></div>
+            </div>
+        </div>
+
+        <!-- CHECKOUT -->
+        <div class="tn s-chk">
+            <div class="card l1"><div class="badge">Checkout &middot; 4 steps</div><div class="pg-name">Purchase Flow</div><span class="pg-url">/checkout/</span><div class="pg-desc">Multi-step conversion flow with progress indicator, form validation, order summary persistence. Shared across all packages, dynamically populated.</div></div>
+            <div class="conn"></div>
+            <div class="kids">
+                <div class="leaf"><div class="card"><div class="badge">Step 1</div><div class="pg-name">Configure</div><span class="pg-url">/checkout/configure/</span><div class="pg-desc">Select LLC or Corp, choose add-ons (foreign reg, virtual office, expedited). Dynamic per package.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Step 2</div><div class="pg-name">Entity Details</div><span class="pg-url">/checkout/details/</span><div class="pg-desc">Proposed entity name, member/officer details, business purpose. Info needed to file with state.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Step 3</div><div class="pg-name">Payment</div><span class="pg-url">/checkout/payment/</span><div class="pg-desc">Stripe and/or PayPal via FreshBooks. Order summary, HK transaction processing note.</div></div></div>
+                <div class="leaf"><div class="card"><div class="badge">Step 4</div><div class="pg-name">Confirmation</div><span class="pg-url">/checkout/confirmation/</span><div class="pg-desc">Order confirmation with next steps, expected timeline, contact information.</div></div></div>
+            </div>
+        </div>
+
+    </div><!-- /L0 kids -->
+</div><!-- /root tn -->
+
+<div class="foot">Incorporate123 &middot; BIT Studios &middot; March 2026 &middot; 71+ Pages &middot; 10 Templates &middot; Confidential</div>
+</div>
+
+<script>
+// Calculate vertical rail positions: from anchor of first child to anchor of last child
+document.querySelectorAll('.kids').forEach(k => {
+    const items = Array.from(k.children).filter(c => c.classList.contains('leaf') || c.classList.contains('tn'));
+    if (items.length < 2) {
+        // Single child: just a dot, no rail needed
+        k.style.setProperty('--rt', '0px');
+        k.style.setProperty('--rb', '100%');
+        return;
+    }
+    const kR = k.getBoundingClientRect();
+    const anchor = 36;
+    const firstTop = items[0].getBoundingClientRect().top - kR.top + anchor;
+    const lastTop = items[items.length - 1].getBoundingClientRect().top - kR.top + anchor;
+    k.style.setProperty('--rt', firstTop + 'px');
+    k.style.setProperty('--rb', (kR.height - lastTop) + 'px');
+});
+</script>
+
+</body>
+</html>

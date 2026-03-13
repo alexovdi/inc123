@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Visual Site Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f3;
+    --parchment: #f3efe6;
+    --warm-white: #fffdf9;
+    --ink: #1a1613;
+    --ink-2: #3d3530;
+    --ink-3: #7a706a;
+    --ink-4: #b0a99f;
+    --rule: #ddd7cc;
+    --rule-light: #ece8df;
+
+    --privacy: #2955a3;
+    --privacy-soft: #e8eef8;
+    --asset: #1d7a3f;
+    --asset-soft: #e4f4ea;
+    --formation: #b5720a;
+    --formation-soft: #faf0dd;
+    --compliance: #7a3dac;
+    --compliance-soft: #f1e8f9;
+    --package: #c33;
+    --package-soft: #fce8e8;
+    --state: #0f7c8c;
+    --state-soft: #e0f4f6;
+    --offshore: #9e3060;
+    --offshore-soft: #f9e6ef;
+    --utility: #666;
+    --utility-soft: #f0eeeb;
+    --checkout: #d35c1a;
+    --checkout-soft: #fdeee2;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ═══ HEADER ═══ */
+  .hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 3rem 0;
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  .hero-brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .hero-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--ink-4);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-3);
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .hero-rule {
+    height: 3px;
+    background: var(--ink);
+    margin-bottom: 0;
+  }
+
+  /* ═══ VIEW TABS ═══ */
+  .view-tabs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .view-tab {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    background: none;
+    color: var(--ink-4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.15s;
+  }
+  .view-tab:hover { color: var(--ink-2); }
+  .view-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+  /* ═══ VIEW PANELS ═══ */
+  .view-panel { display: none; }
+  .view-panel.active { display: block; }
+
+  /* ═══════════════════════════════════════════════
+     VIEW 1: VISUAL NODE MAP
+     ═══════════════════════════════════════════════ */
+  .node-map {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+  }
+
+  .map-level {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .map-level::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* connector lines between levels */
+  .connector-row {
+    display: flex;
+    justify-content: center;
+    height: 28px;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .connector-row::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: repeating-linear-gradient(to bottom, var(--rule) 0, var(--rule) 4px, transparent 4px, transparent 8px);
+  }
+
+  .node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--rule);
+    background: var(--warm-white);
+    cursor: default;
+    transition: all 0.2s;
+    position: relative;
+    min-width: 110px;
+    max-width: 160px;
+    text-align: center;
+  }
+  .node:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26,22,19,0.08);
+    z-index: 10;
+  }
+  .node .node-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .node .node-url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.54rem;
+    color: var(--ink-4);
+    word-break: break-all;
+  }
+  .node .node-type {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.4rem;
+    border-radius: 3px;
+  }
+
+  /* Node color variants */
+  .node.home { border-color: var(--ink); background: var(--ink); }
+  .node.home .node-name { color: var(--cream); font-family: 'Fraunces', serif; font-size: 0.85rem; }
+  .node.home .node-url { color: var(--ink-4); }
+  .node.home .node-type { background: rgba(255,255,255,0.15); color: var(--cream); }
+
+  .node.privacy { border-color: var(--privacy); background: var(--privacy-soft); }
+  .node.privacy .node-type { background: var(--privacy); color: white; }
+  .node.privacy:hover { border-color: var(--privacy); box-shadow: 0 6px 20px rgba(41,85,163,0.12); }
+
+  .node.asset { border-color: var(--asset); background: var(--asset-soft); }
+  .node.asset .node-type { background: var(--asset); color: white; }
+  .node.asset:hover { box-shadow: 0 6px 20px rgba(29,122,63,0.12); }
+
+  .node.formation { border-color: var(--formation); background: var(--formation-soft); }
+  .node.formation .node-type { background: var(--formation); color: white; }
+  .node.formation:hover { box-shadow: 0 6px 20px rgba(181,114,10,0.12); }
+
+  .node.compliance { border-color: var(--compliance); background: var(--compliance-soft); }
+  .node.compliance .node-type { background: var(--compliance); color: white; }
+  .node.compliance:hover { box-shadow: 0 6px 20px rgba(122,61,172,0.12); }
+
+  .node.package { border-color: var(--package); background: var(--package-soft); }
+  .node.package .node-type { background: var(--package); color: white; }
+
+  .node.state { border-color: var(--state); background: var(--state-soft); }
+  .node.state .node-type { background: var(--state); color: white; }
+
+  .node.offshore { border-color: var(--offshore); background: var(--offshore-soft); }
+  .node.offshore .node-type { background: var(--offshore); color: white; }
+
+  .node.utility { border-color: var(--rule-light); background: var(--utility-soft); }
+  .node.utility .node-type { background: var(--utility); color: white; }
+
+  .node.checkout { border-color: var(--checkout); background: var(--checkout-soft); }
+  .node.checkout .node-type { background: var(--checkout); color: white; }
+
+  /* Priority indicator */
+  .node .pri {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.45rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--warm-white);
+  }
+  .pri.p1 { background: #16a34a; color: white; }
+  .pri.p2 { background: #d97706; color: white; }
+
+  /* Pillar group wrapper */
+  .pillar-cluster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    position: relative;
+  }
+  .cluster-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    max-width: 220px;
+    position: relative;
+  }
+  .cluster-group .node {
+    min-width: 90px;
+    max-width: 100px;
+    padding: 0.45rem 0.5rem;
+  }
+  .cluster-group .node .node-name { font-size: 0.62rem; }
+  .cluster-group .node .node-url { font-size: 0.48rem; }
+
+  .branch-line {
+    width: 1px;
+    height: 16px;
+    background: var(--rule);
+    margin: 0 auto;
+  }
+
+  /* Section dividers */
+  .map-divider {
+    max-width: 1400px;
+    margin: 0.5rem auto;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .map-divider::before, .map-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .map-divider span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    white-space: nowrap;
+  }
+
+  /* ═══════════════════════════════════════════════
+     VIEW 2: MATRIX / GRID VIEW
+     ═══════════════════════════════════════════════ */
+  .matrix-view {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 3rem 4rem;
+  }
+  .matrix-header {
+    display: grid;
+    grid-template-columns: 180px repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .matrix-header .mh-cell {
+    padding: 0.75rem 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 3px solid;
+  }
+  .mh-cell.privacy-h { color: var(--privacy); border-color: var(--privacy); background: var(--privacy-soft); }
+  .mh-cell.asset-h { color: var(--asset); border-color: var(--asset); background: var(--asset-soft); }
+  .mh-cell.formation-h { color: var(--formation); border-color: var(--formation); background: var(--formation-soft); }
+  .mh-cell.compliance-h { color: var(--compliance); border-color: var(--compliance); background: var(--compliance-soft); }
+
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 180px repeat(4, 1fr);
+    gap: 0;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .matrix-row:last-child { border-bottom: none; }
+  .matrix-label {
+    padding: 0.7rem 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    background: var(--parchment);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+  }
+  .matrix-cell {
+    padding: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    min-height: 48px;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+  .matrix-cell:nth-child(odd) { background: rgba(0,0,0,0.01); }
+  .mcell-chip {
+    font-size: 0.6rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid;
+    line-height: 1.2;
+    cursor: default;
+    transition: transform 0.15s;
+  }
+  .mcell-chip:hover { transform: scale(1.04); }
+  .mcell-chip.privacy-c { background: var(--privacy-soft); border-color: rgba(41,85,163,0.2); color: var(--privacy); }
+  .mcell-chip.asset-c { background: var(--asset-soft); border-color: rgba(29,122,63,0.2); color: var(--asset); }
+  .mcell-chip.formation-c { background: var(--formation-soft); border-color: rgba(181,114,10,0.2); color: var(--formation); }
+  .mcell-chip.compliance-c { background: var(--compliance-soft); border-color: rgba(122,61,172,0.2); color: var(--compliance); }
+  .mcell-chip.empty { border: 1px dashed var(--rule); color: var(--ink-4); background: none; font-style: italic; font-size: 0.55rem; }
+
+  /* ═══ LEGEND ═══ */
+  .legend {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--ink-3);
+  }
+  .legend-swatch {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* ═══ FOOTER ═══ */
+  .foot {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    border-top: 3px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+  }
+  .foot span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--ink-4);
+    letter-spacing: 0.04em;
+  }
+
+  @media(max-width:900px){
+    .hero { padding: 2rem 1.5rem 0; }
+    .hero h1 { font-size: 2.2rem; }
+    .view-tabs { padding: 0 1.5rem; }
+    .node-map { padding: 1.5rem 0.5rem; }
+    .matrix-view { padding: 1.5rem; overflow-x: auto; }
+    .matrix-header, .matrix-row { min-width: 700px; }
+    .legend { padding: 1rem 1.5rem; }
+    .foot { padding: 1.5rem; flex-direction: column; gap: 0.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-brand">BIT Studios \u00D7 Incorporate123</div>
+    <div class="hero-date">March 2026 \u00B7 Phase 2 Deliverable</div>
+  </div>
+  <h1>Visual Site Map</h1>
+  <p class="hero-sub">The complete 71-page architecture as an interactive diagram. Two views: a visual node map showing page hierarchy and relationships, and a pillar\u00D7type matrix showing content distribution.</p>
+  <div class="hero-rule"></div>
+</div>
+
+<div class="view-tabs">
+  <button class="view-tab active" onclick="switchView('map')">Node Map</button>
+  <button class="view-tab" onclick="switchView('matrix')">Pillar \u00D7 Type Matrix</button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     VIEW 1: VISUAL NODE MAP
+     ═══════════════════════════════════════════ -->
+<div class="view-panel active" id="view-map">
+<div class="node-map">
+
+  <!-- LEVEL 0: HOMEPAGE -->
+  <div class="map-level" style="margin-bottom:0.5rem;">
+    <div class="node home">
+      <span class="node-type">Root</span>
+      <span class="node-name">Homepage</span>
+      <span class="node-url">/</span>
+      <span class="pri p1">1</span>
+    </div>
+  </div>
+
+  <div class="map-divider"><span>Primary Navigation \u2014 4 Intent-Based Pillars</span></div>
+
+  <!-- LEVEL 1: PILLAR HUBS -->
+  <div class="map-level" style="gap:2rem; padding: 1.2rem 0;">
+    <div class="pillar-cluster">
+      <div class="node privacy" style="min-width:140px;">
+        <span class="node-type">Pillar</span>
+        <span class="node-name">Business Privacy</span>
+        <span class="node-url">/privacy/</span>
+        <span class="pri p1">1</span>
+      </div>
+      <div class="branch-line" style="background:var(--privacy);"></div>
+      <div class="cluster-group">
+        <div class="node privacy"><span class="node-name">Anonymous LLC</span><span class="node-url">/anonymous-llc/</span><span class="pri p1">1</span></div>
+        <div class="node privacy"><span class="node-name">Anon Corp</span><span class="node-url">/anonymous-corporation/</span><span class="pri p2">2</span></div>
+        <div class="node privacy"><span class="node-name">Nominee Svc</span><span class="node-url">/nominee-services/</span><span class="pri p1">1</span></div>
+        <div class="node privacy"><span class="node-name">WY Privacy</span><span class="node-url">/wyoming-privacy/</span><span class="pri p1">1</span></div>
+        <div class="node privacy"><span class="node-name">NV Privacy</span><span class="node-url">/nevada-privacy/</span><span class="pri p1">1</span></div>
+        <div class="node privacy"><span class="node-name">CA Private</span><span class="node-url">/california-private-incorporation/</span><span class="pri p1">1</span></div>
+        <div class="node privacy"><span class="node-name">FL Private</span><span class="node-url">/florida-private-incorporation/</span><span class="pri p1">1</span></div>
+        <div class="node privacy"><span class="node-name">BOI Report</span><span class="node-url">/beneficial-ownership-reporting/</span><span class="pri p2">2</span></div>
+      </div>
+      <div class="branch-line" style="background:var(--privacy); height:10px;"></div>
+      <div class="cluster-group">
+        <div class="node privacy" style="border-style:dashed;"><span class="node-name">Best State Privacy</span><span class="node-url">/best-state-for-privacy/</span><span class="pri p1">1</span></div>
+        <div class="node privacy" style="border-style:dashed;"><span class="node-name">WY vs NV Privacy</span><span class="node-url">/wyoming-vs-nevada-privacy/</span><span class="pri p1">1</span></div>
+      </div>
+    </div>
+
+    <div class="pillar-cluster">
+      <div class="node asset" style="min-width:140px;">
+        <span class="node-type">Pillar</span>
+        <span class="node-name">Asset Protection</span>
+        <span class="node-url">/asset-protection/</span>
+        <span class="pri p1">1</span>
+      </div>
+      <div class="branch-line" style="background:var(--asset);"></div>
+      <div class="cluster-group">
+        <div class="node asset"><span class="node-name">NV Asset Prot</span><span class="node-url">/nevada-asset-protection/</span><span class="pri p1">1</span></div>
+        <div class="node asset"><span class="node-name">WY Asset Prot</span><span class="node-url">/wyoming-asset-protection/</span><span class="pri p1">1</span></div>
+        <div class="node asset"><span class="node-name">Charging Order</span><span class="node-url">/charging-order-protection/</span><span class="pri p1">1</span></div>
+        <div class="node asset"><span class="node-name">Invest Hold</span><span class="node-url">/investment-holding-llc/</span><span class="pri p2">2</span></div>
+        <div class="node asset"><span class="node-name">Real Estate AP</span><span class="node-url">/real-estate-asset-protection/</span><span class="pri p2">2</span></div>
+        <div class="node asset"><span class="node-name">LLC vs Trust</span><span class="node-url">/llc-vs-living-trust/</span><span class="pri p2">2</span></div>
+      </div>
+      <div class="branch-line" style="background:var(--asset); height:10px;"></div>
+      <div class="cluster-group">
+        <div class="node asset" style="border-style:dashed;"><span class="node-name">Best State AP</span><span class="node-url">/best-state-asset-protection/</span><span class="pri p2">2</span></div>
+        <div class="node asset" style="border-style:dashed;"><span class="node-name">WY vs NV AP</span><span class="node-url">/wyoming-vs-nevada-asset-protection/</span><span class="pri p2">2</span></div>
+      </div>
+    </div>
+
+    <div class="pillar-cluster">
+      <div class="node formation" style="min-width:140px;">
+        <span class="node-type">Pillar</span>
+        <span class="node-name">Company Formation</span>
+        <span class="node-url">/formation/</span>
+        <span class="pri p1">1</span>
+      </div>
+      <div class="branch-line" style="background:var(--formation);"></div>
+      <div class="cluster-group">
+        <div class="node formation"><span class="node-name">WY LLC</span><span class="node-url">/wyoming-llc/</span><span class="pri p1">1</span></div>
+        <div class="node formation"><span class="node-name">NV LLC</span><span class="node-url">/nevada-llc/</span><span class="pri p1">1</span></div>
+        <div class="node formation"><span class="node-name">WY Corp</span><span class="node-url">/wyoming-corporation/</span><span class="pri p2">2</span></div>
+        <div class="node formation"><span class="node-name">NV Corp</span><span class="node-url">/nevada-corporation/</span><span class="pri p2">2</span></div>
+        <div class="node formation"><span class="node-name">Shelf Cos</span><span class="node-url">/shelf-companies/</span><span class="pri p1">1</span></div>
+        <div class="node formation"><span class="node-name">Series LLC</span><span class="node-url">/series-llc/</span><span class="pri p2">2</span></div>
+      </div>
+      <div class="branch-line" style="background:var(--formation); height:10px;"></div>
+      <div class="cluster-group">
+        <div class="node formation" style="border-style:dashed;"><span class="node-name">LLC vs Corp</span><span class="node-url">/llc-vs-corporation/</span><span class="pri p1">1</span></div>
+        <div class="node formation" style="border-style:dashed;"><span class="node-name">WY vs NV</span><span class="node-url">/wyoming-vs-nevada/</span><span class="pri p1">1</span></div>
+        <div class="node formation" style="border-style:dashed;"><span class="node-name">Shelf vs New</span><span class="node-url">/shelf-company-vs-new/</span><span class="pri p2">2</span></div>
+      </div>
+    </div>
+
+    <div class="pillar-cluster">
+      <div class="node compliance" style="min-width:140px;">
+        <span class="node-type">Pillar</span>
+        <span class="node-name">Compliance</span>
+        <span class="node-url">/compliance/</span>
+        <span class="pri p1">1</span>
+      </div>
+      <div class="branch-line" style="background:var(--compliance);"></div>
+      <div class="cluster-group">
+        <div class="node compliance"><span class="node-name">Reg Agent</span><span class="node-url">/registered-agent/</span><span class="pri p1">1</span></div>
+        <div class="node compliance"><span class="node-name">WY RA</span><span class="node-url">/wyoming-registered-agent/</span><span class="pri p2">2</span></div>
+        <div class="node compliance"><span class="node-name">NV RA</span><span class="node-url">/nevada-registered-agent/</span><span class="pri p2">2</span></div>
+        <div class="node compliance"><span class="node-name">Annual Rpts</span><span class="node-url">/annual-reports/</span><span class="pri p2">2</span></div>
+        <div class="node compliance"><span class="node-name">Foreign Reg</span><span class="node-url">/foreign-state-registration/</span><span class="pri p2">2</span></div>
+        <div class="node compliance"><span class="node-name">Domestication</span><span class="node-url">/domestication/</span><span class="pri p2">2</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-divider"><span>Conversion Endpoints</span></div>
+
+  <!-- LEVEL 2: PACKAGES -->
+  <div class="map-level" style="gap:0.5rem; padding: 1rem 0;">
+    <div class="node package"><span class="node-type">Gold</span><span class="node-name">WY Gold</span><span class="node-url">/wyoming-private-incorporation/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">Silver</span><span class="node-name">WY Silver</span><span class="node-url">/wyoming-incorporation/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">Gold</span><span class="node-name">NV Gold</span><span class="node-url">/nevada-private-incorporation/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">Silver</span><span class="node-name">NV Silver</span><span class="node-url">/nevada-incorporation/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">Bronze</span><span class="node-name">NV Bronze</span><span class="node-url">/nevada-basic-incorporation/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">State</span><span class="node-name">CA Private</span><span class="node-url">/california-private-inc/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">State</span><span class="node-name">FL Private</span><span class="node-url">/florida-private-inc/</span><span class="pri p1">1</span></div>
+    <div class="node package"><span class="node-type">Specialty</span><span class="node-name">Shelf Cos</span><span class="node-url">/shelf-companies/</span><span class="pri p1">1</span></div>
+  </div>
+
+  <div class="map-divider"><span>Checkout Flow</span></div>
+
+  <!-- LEVEL 3: CHECKOUT -->
+  <div class="map-level" style="gap:0.3rem; padding: 0.8rem 0;">
+    <div class="node checkout"><span class="node-type">Step 1</span><span class="node-name">Configure</span><span class="node-url">/checkout/configure/</span></div>
+    <div style="display:flex;align-items:center;color:var(--ink-4);font-size:0.8rem;">\u2192</div>
+    <div class="node checkout"><span class="node-type">Step 2</span><span class="node-name">Entity Details</span><span class="node-url">/checkout/details/</span></div>
+    <div style="display:flex;align-items:center;color:var(--ink-4);font-size:0.8rem;">\u2192</div>
+    <div class="node checkout"><span class="node-type">Step 3</span><span class="node-name">Payment</span><span class="node-url">/checkout/payment/</span></div>
+    <div style="display:flex;align-items:center;color:var(--ink-4);font-size:0.8rem;">\u2192</div>
+    <div class="node checkout"><span class="node-type">Step 4</span><span class="node-name">Confirmation</span><span class="node-url">/checkout/confirmation/</span></div>
+  </div>
+
+  <div class="map-divider"><span>Supporting Pages</span></div>
+
+  <!-- LEVEL 4: STATE HUBS + OFFSHORE + UTILITY -->
+  <div class="map-level" style="gap:0.5rem; padding: 1rem 0; flex-wrap: wrap;">
+    <div class="node state"><span class="node-type">State Hub</span><span class="node-name">Wyoming</span><span class="node-url">/wyoming/</span><span class="pri p1">1</span></div>
+    <div class="node state"><span class="node-type">State Hub</span><span class="node-name">Nevada</span><span class="node-url">/nevada/</span><span class="pri p1">1</span></div>
+    <div class="node state"><span class="node-type">State Hub</span><span class="node-name">California</span><span class="node-url">/california/</span><span class="pri p2">2</span></div>
+    <div class="node state"><span class="node-type">State Hub</span><span class="node-name">Florida</span><span class="node-url">/florida/</span><span class="pri p2">2</span></div>
+
+    <div style="width:20px;"></div>
+
+    <div class="node offshore"><span class="node-type">Hub</span><span class="node-name">Offshore</span><span class="node-url">/offshore/</span><span class="pri p1">1</span></div>
+    <div class="node offshore"><span class="node-name">Nevis</span><span class="node-url">/offshore/nevis/</span><span class="pri p1">1</span></div>
+    <div class="node offshore"><span class="node-name">BVI</span><span class="node-url">/offshore/bvi/</span><span class="pri p1">1</span></div>
+    <div class="node offshore"><span class="node-name">Panama</span><span class="node-url">/offshore/panama/</span><span class="pri p1">1</span></div>
+    <div class="node offshore"><span class="node-name">Hong Kong</span><span class="node-url">/offshore/hong-kong/</span><span class="pri p1">1</span></div>
+    <div class="node offshore"><span class="node-name">IRS Compl.</span><span class="node-url">/offshore/irs-compliance/</span><span class="pri p1">1</span></div>
+  </div>
+
+  <div class="map-level" style="gap:0.5rem; padding: 0.5rem 0; flex-wrap:wrap;">
+    <div class="node utility"><span class="node-name">About</span><span class="node-url">/about/</span></div>
+    <div class="node utility"><span class="node-name">Contact</span><span class="node-url">/contact/</span></div>
+    <div class="node utility"><span class="node-name">FAQ Hub</span><span class="node-url">/faq/</span></div>
+    <div class="node utility"><span class="node-name">Blog</span><span class="node-url">/blog/</span></div>
+    <div class="node utility"><span class="node-name">Compare All</span><span class="node-url">/compare-packages/</span></div>
+    <div class="node utility"><span class="node-name">Testimonials</span><span class="node-url">/testimonials/</span></div>
+    <div class="node utility"><span class="node-name">Login</span><span class="node-url">/login/</span></div>
+    <div class="node utility"><span class="node-name">Privacy Policy</span><span class="node-url">/privacy-policy/</span></div>
+    <div class="node utility"><span class="node-name">Terms</span><span class="node-url">/terms/</span></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     VIEW 2: MATRIX
+     ═══════════════════════════════════════════ -->
+<div class="view-panel" id="view-matrix">
+<div class="matrix-view">
+
+  <div class="matrix-header">
+    <div></div>
+    <div class="mh-cell privacy-h">🔒 Privacy (11)</div>
+    <div class="mh-cell asset-h">🛡️ Asset Prot. (9)</div>
+    <div class="mh-cell formation-h">🏢 Formation (10)</div>
+    <div class="mh-cell compliance-h">⚖️ Compliance (7)</div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Pillar Hub</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">/privacy/</span></div>
+    <div class="matrix-cell"><span class="mcell-chip asset-c">/asset-protection/</span></div>
+    <div class="matrix-cell"><span class="mcell-chip formation-c">/formation/</span></div>
+    <div class="matrix-cell"><span class="mcell-chip compliance-c">/compliance/</span></div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Wyoming Pages</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">WY Privacy</span></div>
+    <div class="matrix-cell"><span class="mcell-chip asset-c">WY Asset Prot</span></div>
+    <div class="matrix-cell"><span class="mcell-chip formation-c">WY LLC</span><span class="mcell-chip formation-c">WY Corp</span></div>
+    <div class="matrix-cell"><span class="mcell-chip compliance-c">WY Reg Agent</span></div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Nevada Pages</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">NV Privacy</span></div>
+    <div class="matrix-cell"><span class="mcell-chip asset-c">NV Asset Prot</span></div>
+    <div class="matrix-cell"><span class="mcell-chip formation-c">NV LLC</span><span class="mcell-chip formation-c">NV Corp</span></div>
+    <div class="matrix-cell"><span class="mcell-chip compliance-c">NV Reg Agent</span></div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Other States</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">CA Private</span><span class="mcell-chip privacy-c">FL Private</span></div>
+    <div class="matrix-cell"><span class="mcell-chip empty">\u2014</span></div>
+    <div class="matrix-cell"><span class="mcell-chip empty">\u2014</span></div>
+    <div class="matrix-cell"><span class="mcell-chip empty">\u2014</span></div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Topic Clusters</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">Anon LLC</span><span class="mcell-chip privacy-c">Anon Corp</span><span class="mcell-chip privacy-c">Nominee Svc</span><span class="mcell-chip privacy-c">BOI Report</span></div>
+    <div class="matrix-cell"><span class="mcell-chip asset-c">Charging Order</span><span class="mcell-chip asset-c">Invest Hold</span><span class="mcell-chip asset-c">Real Estate AP</span><span class="mcell-chip asset-c">LLC vs Trust</span></div>
+    <div class="matrix-cell"><span class="mcell-chip formation-c">Shelf Cos</span><span class="mcell-chip formation-c">Series LLC</span></div>
+    <div class="matrix-cell"><span class="mcell-chip compliance-c">Annual Rpts</span><span class="mcell-chip compliance-c">Foreign Reg</span><span class="mcell-chip compliance-c">Domestication</span></div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Comparisons</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">Best State Privacy</span><span class="mcell-chip privacy-c">WY vs NV Privacy</span></div>
+    <div class="matrix-cell"><span class="mcell-chip asset-c">Best State AP</span><span class="mcell-chip asset-c">WY vs NV AP</span></div>
+    <div class="matrix-cell"><span class="mcell-chip formation-c">LLC vs Corp</span><span class="mcell-chip formation-c">WY vs NV</span><span class="mcell-chip formation-c">Shelf vs New</span></div>
+    <div class="matrix-cell"><span class="mcell-chip empty">\u2014</span></div>
+  </div>
+
+  <div class="matrix-row">
+    <div class="matrix-label">Packages</div>
+    <div class="matrix-cell"><span class="mcell-chip privacy-c">WY Gold</span><span class="mcell-chip privacy-c">NV Gold</span><span class="mcell-chip privacy-c">CA Priv</span><span class="mcell-chip privacy-c">FL Priv</span></div>
+    <div class="matrix-cell"><span class="mcell-chip asset-c">Gold pkgs (shared)</span></div>
+    <div class="matrix-cell"><span class="mcell-chip formation-c">WY Silver</span><span class="mcell-chip formation-c">NV Silver</span><span class="mcell-chip formation-c">NV Bronze</span><span class="mcell-chip formation-c">Shelf</span></div>
+    <div class="matrix-cell"><span class="mcell-chip compliance-c">RA (bundled)</span></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ LEGEND ═══ -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--privacy);"></div>Privacy (11)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--asset);"></div>Asset Protection (9)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--formation);"></div>Formation (10)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--compliance);"></div>Compliance (7)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--package);"></div>Packages (8)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--state);"></div>State Hubs (4)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--offshore);"></div>Offshore (6)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--checkout);"></div>Checkout (4)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--utility);"></div>Utility (10)</div>
+  <div class="legend-item" style="margin-left:auto;"><div class="legend-swatch" style="background:#16a34a;border-radius:50%;width:14px;height:14px;"></div>P1 Launch</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#d97706;border-radius:50%;width:14px;height:14px;"></div>P2 Expansion</div>
+  <div class="legend-item"><div class="legend-swatch" style="border:1.5px dashed var(--rule);background:none;"></div>Comparison Page</div>
+</div>
+
+<footer class="foot">
+  <span>BIT Studios</span>
+  <span>Incorporate123 \u2014 Information Architecture</span>
+  <span>Confidential \u00B7 March 2026</span>
+</footer>
+
+<script>
+function switchView(view) {
+  document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('view-' + view).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

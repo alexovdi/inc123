@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Brand Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS Custom Properties — Full Color System
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --primary: #1e3a5f;
+  --primary-light: #2a4d7a;
+  --secondary: #2563eb;
+  --accent: #d97706;
+  --accent-hover: #b45309;
+
+  /* Pillar Identity Colors */
+  --pillar-privacy: #2563eb;
+  --pillar-privacy-soft: #dbeafe;
+  --pillar-privacy-mid: #93bbfd;
+
+  --pillar-asset: #16a34a;
+  --pillar-asset-soft: #dcfce7;
+  --pillar-asset-mid: #86efac;
+
+  --pillar-formation: #d97706;
+  --pillar-formation-soft: #fef3c7;
+  --pillar-formation-mid: #fcd34d;
+
+  --pillar-compliance: #9333ea;
+  --pillar-compliance-soft: #f3e8ff;
+  --pillar-compliance-mid: #c084fc;
+
+  /* Semantic / UI Colors */
+  --success: #16a34a;
+  --surface: #ffffff;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --footer-dark: #0f172a;
+
+  /* Typography */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --sidebar-width: 260px;
+  --section-gap: 80px;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--foreground);
+  background: var(--background);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--primary);
+  color: #cbd5e1;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+
+.sidebar-logo {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.sidebar-logo h1 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.sidebar-logo p {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.sidebar-nav {
+  padding: 16px 0;
+  flex: 1;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 9px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav a:hover {
+  color: #e2e8f0;
+  background: rgba(255,255,255,.04);
+}
+
+.sidebar-nav a.active {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+  border-left-color: var(--accent);
+}
+
+.sidebar-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Main Content */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Hero Header */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%);
+  color: #fff;
+  padding: 80px 64px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,235,.15) 0%, transparent 70%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: 20%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,119,6,.1) 0%, transparent 70%);
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hero h2 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #94a3b8;
+  max-width: 600px;
+}
+
+.hero-meta {
+  margin-top: 32px;
+  display: flex;
+  gap: 32px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+.hero-meta strong { color: #e2e8f0; font-weight: 600; }
+
+/* Content Area */
+.content {
+  max-width: 900px;
+  padding: 0 64px 120px;
+}
+
+section {
+  padding-top: var(--section-gap);
+}
+
+/* Section Headers */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--foreground);
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 640px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: var(--section-gap) 0 0;
+}
+
+/* ============================================================
+   Component: Pillar Cards
+   ============================================================ */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.pillar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  border-top: 4px solid var(--border);
+  transition: box-shadow 0.2s;
+}
+
+.pillar-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+
+.pillar-card.privacy { border-top-color: var(--pillar-privacy); }
+.pillar-card.asset { border-top-color: var(--pillar-asset); }
+.pillar-card.formation { border-top-color: var(--pillar-formation); }
+.pillar-card.compliance { border-top-color: var(--pillar-compliance); }
+
+.pillar-card .pillar-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.pillar-card.privacy .pillar-icon { background: var(--pillar-privacy-soft); color: var(--pillar-privacy); }
+.pillar-card.asset .pillar-icon { background: var(--pillar-asset-soft); color: var(--pillar-asset); }
+.pillar-card.formation .pillar-icon { background: var(--pillar-formation-soft); color: var(--pillar-formation); }
+.pillar-card.compliance .pillar-icon { background: var(--pillar-compliance-soft); color: var(--pillar-compliance); }
+
+.pillar-card h4 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pillar-card .pillar-tagline {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.pillar-card .pillar-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.pillar-card.privacy .pillar-cta { color: var(--pillar-privacy); }
+.pillar-card.asset .pillar-cta { color: var(--pillar-asset); }
+.pillar-card.formation .pillar-cta { color: var(--pillar-formation); }
+.pillar-card.compliance .pillar-cta { color: var(--pillar-compliance); }
+
+.pillar-card .pillar-trust {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.pillar-card .pillar-services {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Component: Color Swatches
+   ============================================================ */
+.swatch-group {
+  margin-bottom: 40px;
+}
+
+.swatch-group h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--foreground);
+}
+
+.swatch-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 140px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.swatch-color {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 10px;
+}
+
+.swatch-color span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+
+.swatch-info {
+  padding: 10px 12px;
+}
+
+.swatch-var {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+}
+
+.swatch-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-top: 2px;
+  display: block;
+}
+
+/* Extended palette row */
+.extended-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.extended-row .ext-label {
+  width: 110px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.extended-row .ext-swatch {
+  flex: 1;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.ext-swatch.light-text { color: #fff; }
+.ext-swatch.dark-text { color: var(--foreground); }
+
+/* ============================================================
+   Component: Usage Rules — Do / Don't
+   ============================================================ */
+.usage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.usage-card {
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  padding: 20px;
+  background: var(--surface);
+}
+
+.usage-card.correct { border-color: var(--success); }
+.usage-card.incorrect { border-color: #ef4444; }
+
+.usage-card .usage-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.usage-card.correct .usage-label { color: var(--success); }
+.usage-card.incorrect .usage-label { color: #ef4444; }
+
+.usage-card .usage-example {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--background);
+  text-align: center;
+}
+
+.usage-card .usage-note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* Mini buttons for usage examples */
+.mini-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: default;
+}
+
+.mini-card-example {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+  border-top: 3px solid var(--border);
+}
+
+/* ============================================================
+   Component: Type Specimens
+   ============================================================ */
+.type-specimen {
+  margin-bottom: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.type-specimen:last-child { border-bottom: none; }
+
+.type-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.type-meta span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--background);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.type-sample {
+  color: var(--foreground);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   Component: Voice Do/Don't
+   ============================================================ */
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.voice-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.voice-attr {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  padding-top: 14px;
+}
+
+.voice-do, .voice-dont {
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.voice-do {
+  background: #f0fdf4;
+  border-left: 3px solid var(--success);
+  color: #166534;
+}
+
+.voice-dont {
+  background: #fef2f2;
+  border-left: 3px solid #ef4444;
+  color: #991b1b;
+}
+
+/* ============================================================
+   Component: Messaging Cards
+   ============================================================ */
+.msg-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.msg-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  border-left: 4px solid;
+}
+
+.msg-card.do { border-left-color: var(--success); }
+.msg-card.dont { border-left-color: #ef4444; }
+
+.msg-card h5 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.msg-card.do h5 { color: var(--success); }
+.msg-card.dont h5 { color: #ef4444; }
+
+.msg-card p {
+  font-size: 14px;
+  color: var(--foreground);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Component: Trust Signal Cards
+   ============================================================ */
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.trust-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.trust-card .trust-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.trust-card h5 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.trust-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Component: Package Tier Cards
+   ============================================================ */
+.package-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+  align-items: start;
+}
+
+.package-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+.package-card.gold {
+  border: 2px solid var(--accent);
+  box-shadow: 0 8px 32px rgba(217,119,6,.12);
+  transform: scale(1.03);
+  z-index: 1;
+}
+
+.package-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.package-card h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.package-card .package-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.package-price {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--foreground);
+  margin-bottom: 6px;
+}
+
+.package-price strong {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.package-renewal {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.package-features {
+  list-style: none;
+  font-size: 13px;
+  color: var(--foreground);
+  line-height: 1.8;
+}
+
+.package-features li::before {
+  content: '✓ ';
+  color: var(--success);
+  font-weight: 700;
+}
+
+.package-all-inclusive {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--success);
+  background: #f0fdf4;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Component: Icon Grid
+   ============================================================ */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.icon-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 12px;
+  text-align: center;
+}
+
+.icon-item svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--foreground);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 10px;
+}
+
+.icon-item span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* ============================================================
+   Component: Competitive Quadrant
+   ============================================================ */
+.quadrant-wrapper {
+  margin-top: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 40px;
+}
+
+.quadrant-chart {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+.quadrant-chart .axis-x, .quadrant-chart .axis-y {
+  position: absolute;
+  background: var(--border);
+}
+
+.quadrant-chart .axis-x {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  left: 0;
+}
+
+.quadrant-chart .axis-y {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+}
+
+.axis-label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.axis-label.left { left: 0; top: 50%; transform: translateY(8px); }
+.axis-label.right { right: 0; top: 50%; transform: translateY(8px); }
+.axis-label.top { top: 0; left: 50%; transform: translateX(8px); }
+.axis-label.bottom { bottom: 0; left: 50%; transform: translateX(8px); }
+
+.q-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.q-dot .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--muted);
+  margin: 0 auto 6px;
+}
+
+.q-dot.highlight .dot {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(217,119,6,.2);
+}
+
+.q-dot .dot-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+
+.q-dot.highlight .dot-label {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.quadrant-caption {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ============================================================
+   Component: Progressive Disclosure
+   ============================================================ */
+.disclosure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.disclosure-col {
+  padding: 24px;
+}
+
+.disclosure-col:first-child {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.disclosure-col:last-child {
+  background: var(--background);
+}
+
+.disclosure-col h5 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.disclosure-item {
+  padding: 8px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+
+.disclosure-item:last-child { border-bottom: none; }
+
+.disclosure-item strong {
+  font-weight: 600;
+  color: var(--foreground);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.disclosure-item span { color: var(--muted); }
+
+/* ============================================================
+   Component: CTA Buttons
+   ============================================================ */
+.cta-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  align-items: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: default;
+  box-shadow: 0 2px 8px rgba(217,119,6,.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--secondary);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 2px solid var(--secondary);
+  cursor: default;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: default;
+}
+
+/* ============================================================
+   Component: Photography
+   ============================================================ */
+.photo-rules {
+  margin-top: 24px;
+}
+
+.photo-rule {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.photo-rule:last-child { border-bottom: none; }
+
+.photo-rule .pr-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.photo-rule h5 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.photo-rule p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   Sub-section heading
+   ============================================================ */
+.sub-heading {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--foreground);
+}
+
+.sub-desc {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   Component: Pillar Messaging Cards
+   ============================================================ */
+.pillar-msg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pillar-msg-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pillar-msg-header {
+  padding: 16px 20px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pillar-msg-header.privacy { background: var(--pillar-privacy); }
+.pillar-msg-header.asset { background: var(--pillar-asset); }
+.pillar-msg-header.formation { background: var(--pillar-formation); }
+.pillar-msg-header.compliance { background: var(--pillar-compliance); }
+
+.pillar-msg-body {
+  padding: 16px 20px;
+}
+
+.pillar-msg-body p {
+  font-size: 14px;
+  color: var(--foreground);
+  margin-bottom: 8px;
+  line-height: 1.55;
+}
+
+.pillar-msg-body .pmb-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   Component: Icon Sizing Rules
+   ============================================================ */
+.icon-size-row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.icon-size-item {
+  text-align: center;
+}
+
+.icon-size-item svg {
+  stroke: var(--foreground);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-size-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  display: block;
+}
+
+/* ============================================================
+   Component: Trust Signal Placement Rules
+   ============================================================ */
+.placement-rules {
+  margin-top: 24px;
+}
+
+.placement-rule {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  align-items: baseline;
+}
+
+.placement-rule:last-child { border-bottom: none; }
+
+.placement-rule .pr-where {
+  font-weight: 600;
+  color: var(--foreground);
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+.placement-rule .pr-what { color: var(--muted); }
+
+/* ============================================================
+   Component: Typography Rules
+   ============================================================ */
+.typo-rules {
+  margin-top: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.typo-rule-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.typo-rule-item:last-child { border-bottom: none; }
+
+.typo-rule-item .rule-icon { flex-shrink: 0; }
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+@media print {
+  .sidebar { display: none !important; }
+  .main { margin-left: 0 !important; }
+  .hero { padding: 40px 0; }
+  .content { padding: 0; max-width: 100%; }
+  body { background: #fff; color: #000; font-size: 12px; }
+
+  section { page-break-inside: avoid; }
+
+  * { box-shadow: none !important; }
+
+  .package-card.gold { transform: none; }
+
+  a[href]::after { content: ' (' attr(href) ')'; font-size: 10px; color: #666; }
+
+  .swatch-color span { color: #000 !important; text-shadow: none !important; }
+
+  .quadrant-wrapper, .pillar-card, .trust-card, .package-card, .icon-item {
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* ============================================================
+   Responsive (narrow windows)
+   ============================================================ */
+@media (max-width: 1100px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .hero { padding: 48px 32px; }
+  .content { padding: 0 32px 80px; }
+  .pillar-grid, .usage-grid, .msg-cards, .disclosure-grid, .pillar-msg-grid { grid-template-columns: 1fr; }
+  .package-grid { grid-template-columns: 1fr; }
+  .package-card.gold { transform: none; }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .icon-grid { grid-template-columns: repeat(3, 1fr); }
+  .voice-row { grid-template-columns: 1fr; }
+  .quadrant-chart { height: 400px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SIDEBAR
+     ============================================================ -->
+<div class="layout">
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <h1>Incorporate123</h1>
+    <p>Brand Guide</p>
+  </div>
+  <div class="sidebar-nav" id="sidebarNav">
+    <a href="#overview">Brand Overview</a>
+    <a href="#pillars">Content Pillars</a>
+    <a href="#colors">Color System</a>
+    <a href="#typography">Typography</a>
+    <a href="#voice">Voice &amp; Messaging</a>
+    <a href="#trust">Trust Architecture</a>
+    <a href="#packages">Package Tiers</a>
+    <a href="#icons">Iconography</a>
+    <a href="#photography">Photography</a>
+    <a href="#content-patterns">Content Patterns</a>
+    <a href="#positioning">Competitive Positioning</a>
+  </div>
+  <div class="sidebar-footer">
+    v1.0 — March 2026<br>
+    Prepared by BIT Studios
+  </div>
+</nav>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="main">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Brand Identity System</span>
+    <h2>Privacy, Asset Protection &amp; Business Formation Specialists</h2>
+    <p>The comprehensive brand guide for Incorporate123 — a 25-year privacy-focused business formation company occupying an uncontested market position at the intersection of modern UX, privacy expertise, transparent pricing, and nominee services.</p>
+    <div class="hero-meta">
+      <span><strong>Domain</strong> incorporate123.com</span>
+      <span><strong>Est.</strong> ~2000</span>
+      <span><strong>HQ</strong> Reno, Nevada</span>
+    </div>
+  </div>
+</header>
+
+<div class="content">
+
+<!-- ============================================================
+     1. BRAND OVERVIEW
+     ============================================================ -->
+<section id="overview">
+  <span class="section-label">01 — Brand Overview</span>
+  <h2 class="section-title">Who We Are</h2>
+  <p class="section-desc">
+    Incorporate123 is a deliberate repositioning from a geography-first "Nevada incorporation company" to a premium specialist in privacy, asset protection, and business formation. The company occupies a market position that no competitor has claimed.
+  </p>
+
+  <div class="usage-grid">
+    <div class="usage-card correct">
+      <div class="usage-label">✓ What Incorporate123 IS</div>
+      <div style="font-size:14px; line-height:1.8; color:var(--foreground);">
+        <strong style="display:block; margin-bottom:6px;">A 25-year privacy and formation specialist</strong>
+        Focused on Wyoming and Nevada. Premium but transparent — $1,275–$2,100 all-inclusive with no hidden fees. Expert-guided but self-service friendly. Privacy-first with year-round nominees, offshore records, and cryptocurrency accepted.
+      </div>
+    </div>
+    <div class="usage-card incorrect">
+      <div class="usage-label">✗ What Incorporate123 is NOT</div>
+      <div style="font-size:14px; line-height:1.8; color:var(--foreground);">
+        <strong style="display:block; margin-bottom:6px;">Not a budget filing service or a consultation-gated firm</strong>
+        Not ZenBusiness/LegalZoom territory ($0 filing). Not Anderson Advisors territory ($2,750+ with mandatory consults). Not a generic "all 50 states" formation mill.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     2. CONTENT PILLARS
+     ============================================================ -->
+<section id="pillars">
+  <span class="section-label">02 — Brand Architecture</span>
+  <h2 class="section-title">Four Content Pillars</h2>
+  <p class="section-desc">
+    The entire brand, site, and content strategy are organized around four pillars. Each carries its own identity color, messaging voice, and conversion path.
+  </p>
+
+  <div class="pillar-grid">
+    <!-- Privacy -->
+    <div class="pillar-card privacy">
+      <div class="pillar-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <h4>Business Privacy</h4>
+      <div class="pillar-tagline">"Privacy You Can't Get Elsewhere"</div>
+      <p class="pillar-services">Anonymous LLC · Nominee Services · Private Incorporation (WY/NV/CA/FL) · Offshore Privacy · BOI Reporting</p>
+      <span class="pillar-cta">Protect Your Privacy →</span>
+      <div class="pillar-trust">✦ Year-round nominees included — not "nominee for a day"</div>
+    </div>
+
+    <!-- Asset Protection -->
+    <div class="pillar-card asset">
+      <div class="pillar-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h4>Asset Protection</h4>
+      <div class="pillar-tagline">"Protect What You've Built"</div>
+      <p class="pillar-services">Charging Order Protection · WY/NV Asset Protection · Investment Holding LLC · Real Estate AP</p>
+      <span class="pillar-cta">Protect Your Assets →</span>
+      <div class="pillar-trust">✦ For individuals with $500K+ in assets</div>
+    </div>
+
+    <!-- Formation -->
+    <div class="pillar-card formation">
+      <div class="pillar-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+      </div>
+      <h4>Company Formation</h4>
+      <div class="pillar-tagline">"Expert Formation, All-Inclusive"</div>
+      <p class="pillar-services">Wyoming LLC · Nevada LLC · Wyoming Corporation · Nevada Corporation · Shelf Companies</p>
+      <span class="pillar-cta">Start Your Company →</span>
+      <div class="pillar-trust">✦ 25 years forming Wyoming and Nevada entities</div>
+    </div>
+
+    <!-- Compliance -->
+    <div class="pillar-card compliance">
+      <div class="pillar-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>
+      </div>
+      <h4>Compliance</h4>
+      <div class="pillar-tagline">"Ongoing Support, Not Just a Mailbox"</div>
+      <p class="pillar-services">Registered Agent · Annual Reports · Corporate Minutes · Virtual Office · Domestication · Foreign Registration</p>
+      <span class="pillar-cta">Stay Compliant →</span>
+      <div class="pillar-trust">✦ Full corporate minute maintenance included</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     3. COLOR SYSTEM
+     ============================================================ -->
+<section id="colors">
+  <span class="section-label">03 — Color System</span>
+  <h2 class="section-title">Color Palette</h2>
+  <p class="section-desc">
+    A structured color system built on CSS custom properties. Brand colors set the authority tone, pillar colors create navigational clarity, and semantic colors ensure UI consistency.
+  </p>
+
+  <!-- Brand Colors -->
+  <div class="swatch-group">
+    <h4>Brand Colors</h4>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1e3a5f;"><span>#1e3a5f</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--primary</span>
+          <span class="swatch-label">Deep Navy — Authority</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2563eb;"><span>#2563eb</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--secondary</span>
+          <span class="swatch-label">Bright Blue — Interactive</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#d97706;"><span>#d97706</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--accent</span>
+          <span class="swatch-label">Amber — Conversion CTAs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillar Identity Colors -->
+  <div class="swatch-group">
+    <h4>Pillar Identity Colors</h4>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2563eb;"><span>#2563eb</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--pillar-privacy</span>
+          <span class="swatch-label">Privacy — Blue</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#16a34a;"><span>#16a34a</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--pillar-asset</span>
+          <span class="swatch-label">Asset Protection — Green</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#d97706;"><span>#d97706</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--pillar-formation</span>
+          <span class="swatch-label">Formation — Amber</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#9333ea;"><span>#9333ea</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--pillar-compliance</span>
+          <span class="swatch-label">Compliance — Purple</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extended Palette -->
+  <div class="swatch-group">
+    <h4>Extended Palette (Soft → Mid → Full)</h4>
+    <div class="extended-row">
+      <span class="ext-label" style="color:var(--pillar-privacy);">Privacy</span>
+      <div class="ext-swatch dark-text" style="background:#dbeafe;">#dbeafe</div>
+      <div class="ext-swatch dark-text" style="background:#93bbfd;">#93bbfd</div>
+      <div class="ext-swatch light-text" style="background:#2563eb;">#2563eb</div>
+    </div>
+    <div class="extended-row">
+      <span class="ext-label" style="color:var(--pillar-asset);">Asset Protection</span>
+      <div class="ext-swatch dark-text" style="background:#dcfce7;">#dcfce7</div>
+      <div class="ext-swatch dark-text" style="background:#86efac;">#86efac</div>
+      <div class="ext-swatch light-text" style="background:#16a34a;">#16a34a</div>
+    </div>
+    <div class="extended-row">
+      <span class="ext-label" style="color:var(--pillar-formation);">Formation</span>
+      <div class="ext-swatch dark-text" style="background:#fef3c7;">#fef3c7</div>
+      <div class="ext-swatch dark-text" style="background:#fcd34d;">#fcd34d</div>
+      <div class="ext-swatch light-text" style="background:#d97706;">#d97706</div>
+    </div>
+    <div class="extended-row">
+      <span class="ext-label" style="color:var(--pillar-compliance);">Compliance</span>
+      <div class="ext-swatch dark-text" style="background:#f3e8ff;">#f3e8ff</div>
+      <div class="ext-swatch dark-text" style="background:#c084fc;">#c084fc</div>
+      <div class="ext-swatch light-text" style="background:#9333ea;">#9333ea</div>
+    </div>
+  </div>
+
+  <!-- Semantic Colors -->
+  <div class="swatch-group">
+    <h4>Semantic / UI Colors</h4>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#16a34a;"><span>#16a34a</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--success</span>
+          <span class="swatch-label">Success / Confirmation</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff; border-bottom:1px solid #e2e8f0;"><span style="color:#64748b;">#ffffff</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--surface</span>
+          <span class="swatch-label">Card / Section BG</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f8fafc; border-bottom:1px solid #e2e8f0;"><span style="color:#64748b;">#f8fafc</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--background</span>
+          <span class="swatch-label">Page Background</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0f172a;"><span>#0f172a</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--foreground</span>
+          <span class="swatch-label">Primary Text</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#64748b;"><span>#64748b</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--muted</span>
+          <span class="swatch-label">Secondary Text</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e2e8f0; border-bottom:1px solid #cbd5e1;"><span style="color:#64748b;">#e2e8f0</span></div>
+        <div class="swatch-info">
+          <span class="swatch-var">--border</span>
+          <span class="swatch-label">Dividers / Outlines</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Usage Rules -->
+  <h3 class="sub-heading">Color Usage Rules</h3>
+  <p class="sub-desc">Visual examples of correct and incorrect color application across UI elements.</p>
+
+  <div class="usage-grid">
+    <div class="usage-card correct">
+      <div class="usage-label">✓ Correct</div>
+      <div class="usage-example">
+        <span class="mini-btn" style="background:var(--accent); color:#fff;">Protect Your Privacy →</span>
+      </div>
+      <p class="usage-note">Amber accent used for primary conversion CTAs only.</p>
+    </div>
+    <div class="usage-card incorrect">
+      <div class="usage-label">✗ Incorrect</div>
+      <div class="usage-example">
+        <span class="mini-btn" style="background:var(--accent); color:#fff;">Learn More</span>
+      </div>
+      <p class="usage-note">Amber should never be used for non-CTA elements like informational links.</p>
+    </div>
+  </div>
+
+  <div class="usage-grid" style="margin-top:16px;">
+    <div class="usage-card correct">
+      <div class="usage-label">✓ Correct</div>
+      <div class="usage-example">
+        <div class="mini-card-example" style="border-top-color:var(--pillar-privacy);">
+          <div style="font-family:var(--font-display); font-size:15px; font-weight:600; margin-bottom:4px;">Anonymous LLC Formation</div>
+          <div style="font-size:13px; color:var(--muted);">Full privacy with year-round nominees.</div>
+        </div>
+      </div>
+      <p class="usage-note">Pillar color used for card top border accent, establishing context.</p>
+    </div>
+    <div class="usage-card incorrect">
+      <div class="usage-label">✗ Incorrect</div>
+      <div class="usage-example">
+        <div style="font-size:14px; color:var(--pillar-privacy); line-height:1.6;">
+          Anonymous LLC formation provides full privacy protection through year-round nominee services...
+        </div>
+      </div>
+      <p class="usage-note">Never use pillar colors for body text. Body text must remain --foreground or --muted.</p>
+    </div>
+  </div>
+
+  <div class="usage-grid" style="margin-top:16px;">
+    <div class="usage-card correct">
+      <div class="usage-label">✓ Correct</div>
+      <div class="usage-example">
+        <div style="background:var(--primary); padding:20px; border-radius:8px; color:#fff; text-align:center;">
+          <div style="font-family:var(--font-display); font-size:16px; font-weight:600;">Ready to Protect Your Privacy?</div>
+          <div style="font-size:12px; color:#94a3b8; margin-top:4px;">Deep navy for dark sections: differentiator, final CTA, footer.</div>
+        </div>
+      </div>
+      <p class="usage-note">Primary navy for dark authority sections, footer, and final CTA blocks.</p>
+    </div>
+    <div class="usage-card correct">
+      <div class="usage-label">✓ Correct</div>
+      <div class="usage-example">
+        <a href="#" style="color:var(--secondary); font-size:14px; font-weight:500; text-decoration:none; outline:2px solid var(--secondary); outline-offset:2px; padding:4px 8px; border-radius:4px;">Active nav item</a>
+      </div>
+      <p class="usage-note">Secondary blue for links, active nav states, and focus rings.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     4. TYPOGRAPHY
+     ============================================================ -->
+<section id="typography">
+  <span class="section-label">04 — Typography</span>
+  <h2 class="section-title">Type System</h2>
+  <p class="section-desc">
+    Three typefaces form the complete system: Outfit for display and headings (premium, modern), Inter for body copy (readability, professional), and JetBrains Mono for pricing, entity numbers, and legal references.
+  </p>
+
+  <!-- Type Specimens -->
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Display XL</span><span>48–56px</span><span>Weight 800</span><span>Outfit</span><span>Hero headlines only</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-display); font-size:52px; font-weight:800; line-height:1.08; letter-spacing:-0.03em;">
+      Privacy You Can't Get Elsewhere
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Display LG</span><span>36–40px</span><span>Weight 700</span><span>Outfit</span><span>Section headlines</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-display); font-size:38px; font-weight:700; line-height:1.12; letter-spacing:-0.025em;">
+      Protect What You've Built
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Display SM</span><span>24–28px</span><span>Weight 600</span><span>Outfit</span><span>Card titles, sub-sections</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-display); font-size:26px; font-weight:600; line-height:1.2; letter-spacing:-0.015em;">
+      Wyoming Anonymous LLC Formation
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Text XL</span><span>20px</span><span>Weight 500</span><span>Inter</span><span>Lead paragraphs, callouts</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-body); font-size:20px; font-weight:500; line-height:1.55;">
+      No competitor successfully combines modern UX, privacy expertise, transparent pricing, and nominee services.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Text LG</span><span>18px</span><span>Weight 400</span><span>Inter</span><span>Subheadlines, descriptions</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-body); font-size:18px; font-weight:400; line-height:1.6;">
+      Year-round nominee directors and officers included in every Gold package — not "nominee for a day" services that leave you exposed.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Text Base</span><span>16px</span><span>Weight 400</span><span>Inter</span><span>Body copy</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-body); font-size:16px; font-weight:400; line-height:1.65;">
+      Wyoming's charging order protection means that if you're sued personally, creditors cannot seize your LLC assets. They can only receive distributions — and only if you choose to make them.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Text SM</span><span>14px</span><span>Weight 500</span><span>Inter</span><span>Captions, labels, meta</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.55; color:var(--muted);">
+      Filed in 3–5 business days · Includes registered agent for one year · All state fees included
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Caption</span><span>12px</span><span>Weight 400</span><span>Inter</span><span>Legal text, fine print</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-body); font-size:12px; font-weight:400; line-height:1.5; color:var(--muted);">
+      Incorporate123 is not a law firm and does not provide legal advice. Consult a qualified attorney for legal questions specific to your situation.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Mono</span><span>16px</span><span>Weight 400</span><span>JetBrains Mono</span><span>Pricing, entity numbers</span>
+    </div>
+    <div class="type-sample" style="font-family:var(--font-mono); font-size:16px; font-weight:400; line-height:1.55;">
+      Wyoming Gold LLC — $1,275 &nbsp;|&nbsp; Annual Renewal — $525/yr &nbsp;|&nbsp; Entity #2024-001234567
+    </div>
+  </div>
+
+  <!-- Typography Rules -->
+  <h3 class="sub-heading">Typography Rules</h3>
+  <div class="typo-rules">
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Headlines: 8 words or fewer for scannability (serving the 80% who scan)</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Body copy: Short paragraphs, 3–5 sentences maximum</div>
+    <div class="typo-rule-item"><span class="rule-icon">✗</span> Never use ALL CAPS for body text — acceptable only for eyebrows and badges</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Pricing always uses the mono font (JetBrains Mono) for clarity</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Page H1s must be unique across the entire site (SEO requirement)</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     5. VOICE & MESSAGING
+     ============================================================ -->
+<section id="voice">
+  <span class="section-label">05 — Voice &amp; Messaging</span>
+  <h2 class="section-title">Brand Voice</h2>
+  <p class="section-desc">
+    Authoritative, educational, transparent, reassuring, and precise. The voice speaks from 25 years of specialized experience — never vague, never desperate, never competing on the wrong dimensions.
+  </p>
+
+  <!-- Voice Attributes: Do / Don't -->
+  <div class="voice-grid">
+    <div class="voice-row">
+      <div class="voice-attr">Authoritative</div>
+      <div class="voice-do"><strong>Do:</strong> Cite 25 years of experience. Reference specific statutes and structures.</div>
+      <div class="voice-dont"><strong>Don't:</strong> Vague claims like "best in the business" without evidence.</div>
+    </div>
+    <div class="voice-row">
+      <div class="voice-attr">Educational</div>
+      <div class="voice-do"><strong>Do:</strong> Explain why privacy matters. Teach the difference between privacy and asset protection.</div>
+      <div class="voice-dont"><strong>Don't:</strong> Assume visitors already understand nominees, charging orders, etc.</div>
+    </div>
+    <div class="voice-row">
+      <div class="voice-attr">Transparent</div>
+      <div class="voice-do"><strong>Do:</strong> Show all pricing upfront. Explain what's included and what's not.</div>
+      <div class="voice-dont"><strong>Don't:</strong> Hidden pricing, fine-print exclusions, or auto-renewal traps.</div>
+    </div>
+    <div class="voice-row">
+      <div class="voice-attr">Reassuring</div>
+      <div class="voice-do"><strong>Do:</strong> Emphasize 25-year track record, real office, ongoing support.</div>
+      <div class="voice-dont"><strong>Don't:</strong> Fear-based selling — "you'll get sued if you don't act now."</div>
+    </div>
+    <div class="voice-row">
+      <div class="voice-attr">Precise</div>
+      <div class="voice-do"><strong>Do:</strong> Use specific numbers: $1,275, 25 years, $525 annual renewal.</div>
+      <div class="voice-dont"><strong>Don't:</strong> Round numbers, "affordable," "competitive pricing."</div>
+    </div>
+  </div>
+
+  <!-- Messaging DOs and DON'Ts -->
+  <h3 class="sub-heading">Messaging DOs &amp; DON'Ts</h3>
+  <div class="msg-cards">
+    <div class="msg-card do">
+      <h5>✓ Do — Compete On</h5>
+      <p>
+        Privacy expertise — "25 years specializing in anonymous structures."<br><br>
+        Nominee depth — "year-round nominees, not 'nominee for a day'."<br><br>
+        Offshore capability — "nominees and records outside U.S. jurisdiction."<br><br>
+        All-inclusive value — "what others charge $5,000/year for, we include."<br><br>
+        Human service — "real experts, not automated forms."<br><br>
+        Always establish context before presenting benefits.
+      </p>
+    </div>
+    <div class="msg-card dont">
+      <h5>✗ Don't — Never Compete On</h5>
+      <p>
+        Price — "we're cheaper."<br><br>
+        Speed — "file in 5 minutes."<br><br>
+        Ease — "simple 3-step process."<br><br>
+        Breadth — "all 50 states."<br><br>
+        Fear — urgency pressure or scare tactics.<br><br>
+        Never lead with benefits before establishing relevance/context.
+      </p>
+    </div>
+  </div>
+
+  <!-- Pillar-Specific Messaging -->
+  <h3 class="sub-heading">Pillar-Specific Messaging</h3>
+  <div class="pillar-msg-grid">
+    <div class="pillar-msg-card">
+      <div class="pillar-msg-header privacy">Business Privacy</div>
+      <div class="pillar-msg-body">
+        <div class="pmb-label">Core Message</div>
+        <p><strong>"Privacy You Can't Get Elsewhere"</strong></p>
+        <div class="pmb-label">Primary CTA</div>
+        <p>Protect Your Privacy →</p>
+        <div class="pmb-label">Trust Element</div>
+        <p>"Year-round nominees included — not 'nominee for a day'"</p>
+      </div>
+    </div>
+    <div class="pillar-msg-card">
+      <div class="pillar-msg-header asset">Asset Protection</div>
+      <div class="pillar-msg-body">
+        <div class="pmb-label">Core Message</div>
+        <p><strong>"Protect What You've Built"</strong></p>
+        <div class="pmb-label">Primary CTA</div>
+        <p>Protect Your Assets →</p>
+        <div class="pmb-label">Trust Element</div>
+        <p>"For individuals with $500K+ in assets"</p>
+      </div>
+    </div>
+    <div class="pillar-msg-card">
+      <div class="pillar-msg-header formation">Company Formation</div>
+      <div class="pillar-msg-body">
+        <div class="pmb-label">Core Message</div>
+        <p><strong>"Expert Formation, All-Inclusive"</strong></p>
+        <div class="pmb-label">Primary CTA</div>
+        <p>Start Your Company →</p>
+        <div class="pmb-label">Trust Element</div>
+        <p>"25 years forming Wyoming and Nevada entities"</p>
+      </div>
+    </div>
+    <div class="pillar-msg-card">
+      <div class="pillar-msg-header compliance">Compliance</div>
+      <div class="pillar-msg-body">
+        <div class="pmb-label">Core Message</div>
+        <p><strong>"Ongoing Support, Not Just a Mailbox"</strong></p>
+        <div class="pmb-label">Primary CTA</div>
+        <p>Stay Compliant →</p>
+        <div class="pmb-label">Trust Element</div>
+        <p>"Full corporate minute maintenance included"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Language -->
+  <h3 class="sub-heading">Pricing Language Rules</h3>
+  <div class="typo-rules">
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Always say <strong>"all-inclusive"</strong> — never "starting at"</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Always show the renewal rate alongside the formation price</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Always frame value comparatively: "competitors charge $400–$5,000/year for nominee services alone"</div>
+    <div class="typo-rule-item"><span class="rule-icon">✗</span> Never apologize for premium pricing — position it as proof of included value</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     6. TRUST ARCHITECTURE
+     ============================================================ -->
+<section id="trust">
+  <span class="section-label">06 — Trust Architecture</span>
+  <h2 class="section-title">Trust Signal System</h2>
+  <p class="section-desc">
+    Incorporate123 launches with zero public reviews. The trust system compensates through authority signals, guarantees, accessibility, and privacy-aligned payment options.
+  </p>
+
+  <!-- Immediate Trust Signals -->
+  <h3 class="sub-heading">Immediate Trust Signals (At Launch)</h3>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <span class="trust-icon">⏳</span>
+      <h5>Trusted Since 2000</h5>
+      <p>25+ years of specialized experience. Displayed in hero section and header bar.</p>
+    </div>
+    <div class="trust-card">
+      <span class="trust-icon">📍</span>
+      <h5>Real Reno Office</h5>
+      <p>Professional photography of Kingsbury Executive Suites. Physical address visible.</p>
+    </div>
+    <div class="trust-card">
+      <span class="trust-icon">👤</span>
+      <h5>Founder Visibility</h5>
+      <p>David's bio, experience, and professional photo on the About page.</p>
+    </div>
+    <div class="trust-card">
+      <span class="trust-icon">🛡️</span>
+      <h5>30-Day Money-Back</h5>
+      <p>Guarantee badge on all package pages. Reduces purchase anxiety.</p>
+    </div>
+    <div class="trust-card">
+      <span class="trust-icon">₿</span>
+      <h5>Crypto Payments</h5>
+      <p>Bitcoin, Ethereum, XRP, Litecoin, Monero — signals privacy alignment.</p>
+    </div>
+    <div class="trust-card">
+      <span class="trust-icon">📞</span>
+      <h5>Phone Number Prominent</h5>
+      <p>Clickable in header and on every conversion page. Human access always available.</p>
+    </div>
+  </div>
+
+  <!-- Post-Launch Trust Building -->
+  <h3 class="sub-heading">Post-Launch Trust Building</h3>
+  <div class="typo-rules">
+    <div class="typo-rule-item"><span class="rule-icon">→</span> Trustpilot review program — target 100+ reviews in first 6 months</div>
+    <div class="typo-rule-item"><span class="rule-icon">→</span> Anonymized case studies — 3–5 published within first quarter</div>
+    <div class="typo-rule-item"><span class="rule-icon">→</span> Content authority — regular blog publishing for E-E-A-T signals</div>
+    <div class="typo-rule-item"><span class="rule-icon">→</span> BBB accreditation exploration</div>
+  </div>
+
+  <!-- Trust Signal Placement -->
+  <h3 class="sub-heading">Trust Signal Placement Rules</h3>
+  <div class="placement-rules">
+    <div class="placement-rule">
+      <span class="pr-where">Every Page</span>
+      <span class="pr-what">Phone number in header + footer</span>
+    </div>
+    <div class="placement-rule">
+      <span class="pr-where">Every Conversion Page</span>
+      <span class="pr-what">Trust badge strip (25 years, guarantee, phone, crypto)</span>
+    </div>
+    <div class="placement-rule">
+      <span class="pr-where">Every Package Page</span>
+      <span class="pr-what">Money-back guarantee badge + value comparison messaging</span>
+    </div>
+    <div class="placement-rule">
+      <span class="pr-where">Homepage</span>
+      <span class="pr-what">Full trust signals bar + testimonials / stats section</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     7. PACKAGE TIER SYSTEM
+     ============================================================ -->
+<section id="packages">
+  <span class="section-label">07 — Package Tiers</span>
+  <h2 class="section-title">Pricing &amp; Packages</h2>
+  <p class="section-desc">
+    Three tiers — Gold, Silver, Bronze — with Gold as the hero product. Gold is always highlighted, always recommended, and always displayed first or center.
+  </p>
+
+  <div class="package-grid">
+    <!-- Gold -->
+    <div class="package-card gold">
+      <div class="package-badge">Most Popular</div>
+      <h4>Gold Package</h4>
+      <div class="package-sub">Privacy — Full Anonymity</div>
+      <div class="package-price">Wyoming Gold: <strong>$1,275</strong></div>
+      <div class="package-price">Nevada Gold: <strong>$1,800</strong></div>
+      <div class="package-renewal">Renewal: $525/year — nominees included</div>
+      <ul class="package-features">
+        <li>Year-round nominee directors &amp; officers</li>
+        <li>Offshore record storage</li>
+        <li>Full compliance package</li>
+        <li>Registered agent included</li>
+        <li>Corporate minutes maintenance</li>
+        <li>All state filing fees included</li>
+      </ul>
+      <span class="package-all-inclusive">All-Inclusive</span>
+    </div>
+
+    <!-- Silver -->
+    <div class="package-card">
+      <h4>Silver Package</h4>
+      <div class="package-sub">Formation — No Privacy Features</div>
+      <div class="package-price">Wyoming Silver: <strong>$875</strong></div>
+      <div class="package-price">Nevada Silver: <strong>$1,275</strong></div>
+      <div class="package-renewal">Renewal: $325/year</div>
+      <ul class="package-features">
+        <li>Full entity formation</li>
+        <li>Registered agent included</li>
+        <li>Annual report filing</li>
+        <li>Corporate minutes</li>
+        <li>All state filing fees included</li>
+      </ul>
+      <span class="package-all-inclusive">All-Inclusive</span>
+      <div style="margin-top:14px; font-size:13px; color:var(--secondary); font-weight:500;">↑ Upgrade to Gold for full privacy</div>
+    </div>
+
+    <!-- Bronze -->
+    <div class="package-card">
+      <h4>Bronze Package</h4>
+      <div class="package-sub">Nevada Only — Budget Option</div>
+      <div class="package-price">Nevada Bronze: <strong style="font-size:22px;">Contact</strong></div>
+      <div class="package-renewal">Minimal-service entry point</div>
+      <ul class="package-features">
+        <li>Basic entity formation</li>
+        <li>State filing fees included</li>
+        <li>Registered agent available</li>
+      </ul>
+      <div style="margin-top:14px; font-size:13px; color:var(--muted); font-style:italic;">Exists for price-sensitive captures who may upgrade later</div>
+    </div>
+  </div>
+
+  <!-- Package Display Rules -->
+  <h3 class="sub-heading">Package Display Rules</h3>
+  <div class="typo-rules">
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Always show Gold first or highlighted center in 3-column layout</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Always show renewal rate alongside formation price</div>
+    <div class="typo-rule-item"><span class="rule-icon">✓</span> Always include "all-inclusive" badge</div>
+    <div class="typo-rule-item"><span class="rule-icon">✗</span> Never show Bronze as the default or recommended option</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     8. ICONOGRAPHY
+     ============================================================ -->
+<section id="icons">
+  <span class="section-label">08 — Iconography</span>
+  <h2 class="section-title">Icon System</h2>
+  <p class="section-desc">
+    Outline-style icons at three sizes — 16px inline, 24px standard, 40px feature blocks. Color inherits from context: pillar color on pillar pages, muted in body text, white on dark backgrounds.
+  </p>
+
+  <!-- Size examples -->
+  <h3 class="sub-heading">Icon Sizes</h3>
+  <div class="icon-size-row">
+    <div class="icon-size-item">
+      <svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <span class="icon-size-label">16px — Inline</span>
+    </div>
+    <div class="icon-size-item">
+      <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <span class="icon-size-label">24px — Standard</span>
+    </div>
+    <div class="icon-size-item">
+      <svg width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <span class="icon-size-label">40px — Feature</span>
+    </div>
+  </div>
+
+  <!-- Icon Assignments -->
+  <h3 class="sub-heading">Key Icon Assignments</h3>
+  <div class="icon-grid">
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <span>Privacy</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span>Asset Protection</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      <span>Formation</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      <span>Compliance</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Year-Round Nominees</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <span>Offshore Records</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <span>All-Inclusive Pricing</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Real Reno Office</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+      <span>25 Years Experience</span>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <span>Human Support</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     9. PHOTOGRAPHY DIRECTION
+     ============================================================ -->
+<section id="photography">
+  <span class="section-label">09 — Photography</span>
+  <h2 class="section-title">Photography Direction</h2>
+  <p class="section-desc">
+    Photography must reinforce the "real office, real people" trust narrative. Every image choice supports or undermines the brand's credibility.
+  </p>
+
+  <div class="photo-rules">
+    <div class="photo-rule">
+      <div class="pr-icon">🏢</div>
+      <div>
+        <h5>Office Photography</h5>
+        <p>Clean, professional shots of the Reno office (Kingsbury Executive Suites). No stock photos of generic office interiors. The real office is a trust signal.</p>
+      </div>
+    </div>
+    <div class="photo-rule">
+      <div class="pr-icon">👤</div>
+      <div>
+        <h5>Team Photography</h5>
+        <p>Professional headshot of David for the About page and trust signals. Approachable but authoritative — this is the face of 25 years of expertise.</p>
+      </div>
+    </div>
+    <div class="photo-rule">
+      <div class="pr-icon">🚫</div>
+      <div>
+        <h5>No Stock People</h5>
+        <p>Avoid generic diverse-team-in-conference-room stock photography. It undermines the "real office, real people" trust signal immediately.</p>
+      </div>
+    </div>
+    <div class="photo-rule">
+      <div class="pr-icon">🎨</div>
+      <div>
+        <h5>Abstract / Conceptual</h5>
+        <p>For hero sections and pillar headers, use abstract shield/lock/vault imagery or geometric privacy-themed graphics. Preferred over stock photography.</p>
+      </div>
+    </div>
+    <div class="photo-rule">
+      <div class="pr-icon">🔒</div>
+      <div>
+        <h5>Privacy Alignment</h5>
+        <p>Never use photos showing identifiable individuals as "clients." It directly contradicts the privacy positioning the entire brand is built on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     10. CONTENT PATTERNS
+     ============================================================ -->
+<section id="content-patterns">
+  <span class="section-label">10 — Content Patterns</span>
+  <h2 class="section-title">Content Strategy</h2>
+  <p class="section-desc">
+    An 80/20 progressive disclosure model: serve the majority who scan quickly, then reward the minority who research deeply. Every page follows this dual structure.
+  </p>
+
+  <!-- Progressive Disclosure -->
+  <h3 class="sub-heading">The 80/20 Progressive Disclosure Model</h3>
+  <div class="disclosure-grid">
+    <div class="disclosure-col">
+      <h5>👁️ For Scanners (80%)</h5>
+      <div class="disclosure-item"><strong>Headlines</strong> <span>Value prop in ≤8 words</span></div>
+      <div class="disclosure-item"><strong>Description</strong> <span>3–5 sentence overview</span></div>
+      <div class="disclosure-item"><strong>Comparison</strong> <span>Visual table</span></div>
+      <div class="disclosure-item"><strong>Pricing</strong> <span>Clear price + "all-inclusive"</span></div>
+      <div class="disclosure-item"><strong>FAQ</strong> <span>Top 3–5 questions</span></div>
+      <div class="disclosure-item"><strong>CTA</strong> <span>Prominent above fold</span></div>
+      <div class="disclosure-item"><strong>Trust</strong> <span>Badge strip</span></div>
+    </div>
+    <div class="disclosure-col">
+      <h5>🔍 For Researchers (20%)</h5>
+      <div class="disclosure-item"><strong>Headlines</strong> <span>Subheadlines with specifics</span></div>
+      <div class="disclosure-item"><strong>Description</strong> <span>Expandable full explanation</span></div>
+      <div class="disclosure-item"><strong>Comparison</strong> <span>Detailed prose below</span></div>
+      <div class="disclosure-item"><strong>Pricing</strong> <span>Itemized breakdown</span></div>
+      <div class="disclosure-item"><strong>FAQ</strong> <span>Accordion with 10–15 questions</span></div>
+      <div class="disclosure-item"><strong>CTA</strong> <span>Multiple at decision points</span></div>
+      <div class="disclosure-item"><strong>Trust</strong> <span>Full testimonials + case studies</span></div>
+    </div>
+  </div>
+
+  <!-- CTA Hierarchy -->
+  <h3 class="sub-heading">CTA Hierarchy</h3>
+  <p class="sub-desc">Three button levels — primary (amber, conversion), secondary (outline, alternative path), and ghost (safety net, "talk to us").</p>
+
+  <div class="cta-row">
+    <span class="btn-primary">Protect Your Privacy →</span>
+    <span class="btn-secondary">View Packages &amp; Pricing →</span>
+    <span class="btn-ghost">Talk to Us</span>
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="usage-grid">
+      <div class="usage-card correct">
+        <div class="usage-label">✓ Rule</div>
+        <div class="usage-example" style="text-align:left;">
+          <div style="font-size:14px; line-height:1.7; color:var(--foreground);">
+            <strong>One primary + one secondary per page.</strong> Every self-service CTA must have a "Talk to us" safety net nearby. Never three competing button styles in the same section.
+          </div>
+        </div>
+      </div>
+      <div class="usage-card incorrect">
+        <div class="usage-label">✗ Avoid</div>
+        <div class="usage-example" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <span class="btn-primary" style="font-size:12px; padding:8px 14px;">Get Started</span>
+          <span class="btn-primary" style="font-size:12px; padding:8px 14px; background:var(--secondary);">Learn More</span>
+          <span class="btn-primary" style="font-size:12px; padding:8px 14px; background:var(--pillar-asset);">Contact</span>
+        </div>
+        <p class="usage-note">Three competing primary-style buttons create decision paralysis and dilute conversion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     11. COMPETITIVE POSITIONING
+     ============================================================ -->
+<section id="positioning">
+  <span class="section-label">11 — Market Position</span>
+  <h2 class="section-title">Competitive Positioning</h2>
+  <p class="section-desc">
+    Incorporate123 occupies the premium-but-self-service quadrant that no competitor currently fills. This is the core strategic insight driving the entire brand.
+  </p>
+
+  <div class="quadrant-wrapper">
+    <div class="quadrant-chart">
+      <!-- Axes -->
+      <div class="axis-x"></div>
+      <div class="axis-y"></div>
+
+      <!-- Labels -->
+      <span class="axis-label left">Budget ($0)</span>
+      <span class="axis-label right">Premium ($5,000+)</span>
+      <span class="axis-label top">Consultation-Required</span>
+      <span class="axis-label bottom">Self-Service</span>
+
+      <!-- Competitors — bottom-left: Budget + Self-Service -->
+      <div class="q-dot" style="left:18%; top:72%;">
+        <div class="dot"></div>
+        <div class="dot-label">ZenBusiness</div>
+      </div>
+      <div class="q-dot" style="left:28%; top:68%;">
+        <div class="dot"></div>
+        <div class="dot-label">LegalZoom</div>
+      </div>
+      <div class="q-dot" style="left:14%; top:78%;">
+        <div class="dot"></div>
+        <div class="dot-label">Incfile</div>
+      </div>
+
+      <!-- Competitors — top-right: Premium + Consultation -->
+      <div class="q-dot" style="left:78%; top:24%;">
+        <div class="dot"></div>
+        <div class="dot-label">Anderson Advisors</div>
+      </div>
+      <div class="q-dot" style="left:68%; top:30%;">
+        <div class="dot"></div>
+        <div class="dot-label">NCH Inc</div>
+      </div>
+
+      <!-- Incorporate123 — bottom-right: Premium + Self-Service ← white space -->
+      <div class="q-dot highlight" style="left:74%; top:72%;">
+        <div class="dot"></div>
+        <div class="dot-label">Incorporate123</div>
+      </div>
+    </div>
+
+    <p class="quadrant-caption">
+      Incorporate123 occupies the premium-but-self-service quadrant that no competitor currently fills.
+    </p>
+  </div>
+</section>
+
+</div><!-- /.content -->
+</main><!-- /.main -->
+</div><!-- /.layout -->
+
+<!-- ============================================================
+     JavaScript — Sidebar Active State via IntersectionObserver
+     ============================================================ -->
+<script>
+(function() {
+  const nav = document.getElementById('sidebarNav');
+  if (!nav) return;
+
+  const links = nav.querySelectorAll('a[href^="#"]');
+  const sections = [];
+
+  links.forEach(function(link) {
+    const id = link.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  if (!sections.length) return;
+
+  var currentActive = null;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var match = sections.find(function(s) { return s.el === entry.target; });
+        if (match && match.id !== currentActive) {
+          links.forEach(function(l) { l.classList.remove('active'); });
+          match.link.classList.add('active');
+          currentActive = match.id;
+        }
+      }
+    });
+  }, {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(function(s) { observer.observe(s.el); });
+})();
+</script>
+
+</body>
+</html>

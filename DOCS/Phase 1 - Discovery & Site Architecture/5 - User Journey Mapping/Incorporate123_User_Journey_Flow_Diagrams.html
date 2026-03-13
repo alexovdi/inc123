@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — User Journey Flow Diagrams</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #555555;
+    --ink-muted: #999999;
+    --border: #e5e5e3;
+    --border-strong: #d4d4d2;
+
+    --privacy: #2563eb;
+    --privacy-soft: #dbeafe;
+    --privacy-mid: #93bbfd;
+    --privacy-glow: rgba(37,99,235,0.08);
+
+    --asset: #16a34a;
+    --asset-soft: #dcfce7;
+    --asset-mid: #86efac;
+    --asset-glow: rgba(22,163,74,0.08);
+
+    --formation: #d97706;
+    --formation-soft: #fef3c7;
+    --formation-mid: #fcd34d;
+    --formation-glow: rgba(217,119,6,0.08);
+
+    --compliance: #9333ea;
+    --compliance-soft: #f3e8ff;
+    --compliance-mid: #c4b5fd;
+    --compliance-glow: rgba(147,51,234,0.08);
+
+    --convert: #dc2626;
+    --convert-soft: #fee2e2;
+    --convert-mid: #fca5a5;
+
+    --search: #6b7280;
+    --search-soft: #f3f4f6;
+
+    --cross: #ec4899;
+    --cross-soft: #fce7f3;
+
+    --homepage: #f59e0b;
+    --homepage-soft: #fffbeb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 64px 44px;
+  }
+  .page-header-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--privacy);
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    max-width: 640px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+
+  /* ─── JOURNEY SECTION ─── */
+  .journey-section {
+    padding: 48px 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .journey-section:last-child { border-bottom: none; }
+
+  .journey-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .journey-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .journey-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .journey-stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .stat {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .stat strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* ─── FLOW DIAGRAM ─── */
+  .flow-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    overflow-x: auto;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .flow-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    pointer-events: none;
+  }
+
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-width: max-content;
+    padding: 4px 0;
+  }
+
+  /* Nodes */
+  .node {
+    position: relative;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 140px;
+    flex-shrink: 0;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+    border: 2px solid transparent;
+  }
+  .node:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  .node-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 3px;
+    opacity: 0.7;
+  }
+  .node-url {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.6;
+  }
+
+  /* Node types */
+  .n-search  { background: var(--search-soft); color: var(--search); border-color: #d1d5db; }
+  .n-home    { background: var(--homepage-soft); color: #b45309; border-color: #fcd34d; }
+
+  .n-priv    { background: var(--privacy-soft); color: var(--privacy); border-color: var(--privacy-mid); }
+  .n-priv-d  { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+
+  .n-asset   { background: var(--asset-soft); color: var(--asset); border-color: var(--asset-mid); }
+  .n-asset-d { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+
+  .n-form    { background: var(--formation-soft); color: #92400e; border-color: var(--formation-mid); }
+  .n-form-d  { background: #fffbeb; color: #a16207; border-color: #fde68a; }
+
+  .n-comp    { background: var(--compliance-soft); color: var(--compliance); border-color: var(--compliance-mid); }
+
+  .n-compare { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+
+  .n-pkg     { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+  .n-convert { background: #dc2626; color: #ffffff; border-color: #dc2626; border-radius: 10px; }
+  .n-convert:hover { box-shadow: 0 6px 20px rgba(220,38,38,0.2); }
+
+  .n-cross   { background: var(--cross-soft); color: #be185d; border-color: #fbcfe8; border-style: dashed; }
+
+  .n-consult { background: #f5f3ff; color: #7c3aed; border-color: #c4b5fd; border-radius: 30px; }
+
+  /* Arrows */
+  .arrow {
+    width: 44px;
+    height: 2px;
+    background: var(--border-strong);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -5px;
+    width: 0; height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid var(--border-strong);
+  }
+  .arrow-label {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Colored arrows */
+  .arrow-priv { background: var(--privacy-mid); }
+  .arrow-priv::after { border-left-color: var(--privacy-mid); }
+  .arrow-asset { background: var(--asset-mid); }
+  .arrow-asset::after { border-left-color: var(--asset-mid); }
+  .arrow-form { background: var(--formation-mid); }
+  .arrow-form::after { border-left-color: var(--formation-mid); }
+  .arrow-cross { background: #fbcfe8; }
+  .arrow-cross::after { border-left-color: #fbcfe8; }
+  .arrow-convert { background: var(--convert-mid); }
+  .arrow-convert::after { border-left-color: var(--convert-mid); }
+
+  /* Branch group */
+  .branch-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .branch-group::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 20%;
+    bottom: 20%;
+    width: 2px;
+    background: var(--border-strong);
+  }
+  .branch-node {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 120px;
+    transition: transform 0.2s;
+    cursor: default;
+    border: 2px solid transparent;
+  }
+  .branch-node:hover { transform: translateX(3px); }
+
+  /* Arrow to branch */
+  .arrow-branch {
+    width: 44px;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .arrow-branch::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--border-strong);
+  }
+  .arrow-branch::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: calc(50% - 6px);
+    width: 0; height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid var(--border-strong);
+  }
+
+  /* Arrow from branch */
+  .arrow-merge {
+    width: 44px;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .arrow-merge::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--border-strong);
+  }
+  .arrow-merge::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: calc(50% - 6px);
+    width: 0; height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid var(--border-strong);
+  }
+
+  /* CTA annotation */
+  .cta-note {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    font-weight: 500;
+    color: #b91c1c;
+    background: #fef2f2;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    border: 1px solid #fecaca;
+  }
+  .cta-note.cross {
+    color: #be185d;
+    background: var(--cross-soft);
+    border-color: #fbcfe8;
+  }
+
+  /* Sub-diagram label */
+  .diagram-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+
+  /* Key insight */
+  .insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+  .insight-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .insight strong { color: var(--ink); }
+  .insight-priv { background: var(--privacy-glow); border-left: 3px solid var(--privacy); }
+  .insight-asset { background: var(--asset-glow); border-left: 3px solid var(--asset); }
+  .insight-form { background: var(--formation-glow); border-left: 3px solid var(--formation); }
+  .insight-cross { background: rgba(236,72,153,0.06); border-left: 3px solid var(--cross); }
+
+  /* Multi-row flows */
+  .flow-multi {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .flow-multi .flow-row-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-muted);
+    padding-left: 4px;
+    margin-bottom: -14px;
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-muted);
+    text-align: right;
+    padding: 6px 0 0;
+  }
+
+  /* Footer */
+  .page-footer {
+    padding: 32px 64px;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 500;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Animation */
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .flow-wrap { animation: fadeSlideIn 0.5s ease-out; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-header, .journey-section { padding: 32px 24px; }
+    .flow-wrap { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="page-header">
+  <div class="page-header-eyebrow">Task 4.4 · Incorporate123 Redesign</div>
+  <h1>User Journey Flow Diagrams</h1>
+  <p>Visual mapping of primary visitor paths through the intent-first architecture. Each flow reads left-to-right from search intent through to conversion.</p>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#d1d5db"></div> Search Entry</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--privacy-soft);border:1px solid var(--privacy-mid)"></div> Privacy</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--asset-soft);border:1px solid var(--asset-mid)"></div> Asset Protection</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--formation-soft);border:1px solid var(--formation-mid)"></div> Formation</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--compliance-soft);border:1px solid var(--compliance-mid)"></div> Compliance</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fff7ed;border:1px solid #fed7aa"></div> Comparison</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fef2f2;border:1px solid #fecaca"></div> Package</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div> Conversion</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--cross-soft);border:1px dashed #fbcfe8"></div> Cross-Pillar</div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- JOURNEY A: PRIVACY RESEARCHER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--privacy)">Journey A</div>
+  <div class="journey-title">The Privacy Researcher</div>
+  <div class="journey-desc">Full-funnel journey for the primary target audience. Privacy seekers research anonymous LLCs, compare states, and convert to Gold packages. This is the journey the entire architecture is optimized around.</div>
+  <div class="journey-stats">
+    <span class="stat"><strong>4–7</strong> pages</span>
+    <span class="stat">Target: <strong>Wyoming/Nevada Gold</strong></span>
+    <span class="stat">AOV: <strong>$1,275–$2,100</strong></span>
+  </div>
+
+  <div class="flow-wrap" style="box-shadow: 0 0 0 1px var(--privacy-mid), 0 2px 12px var(--privacy-glow);">
+    <div class="diagram-label">Primary Privacy Flow</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"anonymous LLC"</span>
+        <span class="node-sub">"hide LLC ownership"</span>
+      </div>
+      <div class="arrow arrow-priv"><span class="arrow-label">lands on</span></div>
+      <div class="node n-priv">
+        Privacy Pillar
+        <span class="node-sub">Education &amp; overview</span>
+        <span class="node-url">/privacy/</span>
+      </div>
+      <div class="arrow arrow-priv"><span class="arrow-label">explores</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-priv-d">Anonymous LLC Guide<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/anonymous-llc/</span></div>
+        <div class="branch-node n-priv-d">WY Privacy Cluster<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/wyoming-privacy-llc/</span></div>
+        <div class="branch-node n-priv-d">NV Privacy Cluster<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/nevada-privacy-llc/</span></div>
+        <div class="branch-node n-priv-d">Nominee Services<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/nominee-services/</span></div>
+      </div>
+      <div class="arrow-merge"><span class="arrow-label">compares</span></div>
+      <div class="node n-compare">
+        WY vs NV Privacy
+        <span class="node-sub">Side-by-side comparison</span>
+        <span class="node-url">/wyoming-vs-nevada-privacy/</span>
+      </div>
+      <div class="arrow arrow-convert"><span class="arrow-label">selects</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-pkg">WY Gold — $1,275<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/wyoming-private-incorporation/</span></div>
+        <div class="branch-node n-pkg">NV Gold — $1,800<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/nevada-private-incorporation/</span></div>
+      </div>
+      <div class="arrow-merge arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Checkout
+        <span class="node-sub" style="opacity:0.9">Config → Details → Pay</span>
+      </div>
+    </div>
+    <div class="scroll-hint">← scroll →</div>
+  </div>
+
+  <div class="insight insight-priv">
+    <span class="insight-icon">💡</span>
+    <span><strong>Key design requirement:</strong> The Privacy Pillar must feature a "Which state are you in?" selector so CA/FL visitors route directly to their state-specific packages without going through the WY vs NV comparison first.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- JOURNEY B: CA/FL PRIVACY VARIANT -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--privacy)">Journey B</div>
+  <div class="journey-title">CA/FL Resident — State-Specific Privacy</div>
+  <div class="journey-desc">Variant path for California and Florida residents who need a WY/NV entity plus foreign registration back in their home state. Shorter funnel, higher package value.</div>
+  <div class="journey-stats">
+    <span class="stat"><strong>2–3</strong> pages</span>
+    <span class="stat">Target: <strong>CA/FL Private Package</strong></span>
+    <span class="stat">AOV: <strong>$2,500–$3,200</strong></span>
+  </div>
+
+  <div class="flow-wrap">
+    <div class="diagram-label">CA/FL Privacy Flow</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"California anonymous LLC"</span>
+        <span class="node-sub">"private LLC Florida"</span>
+      </div>
+      <div class="arrow arrow-priv"><span class="arrow-label">lands on</span></div>
+      <div class="node n-priv">
+        Privacy Pillar
+        <span class="node-sub">"Which state are you in?"</span>
+        <span class="node-url">/privacy/</span>
+      </div>
+      <div class="arrow arrow-priv"><span class="arrow-label">routes to</span></div>
+      <div class="node n-priv-d">
+        CA/FL Private Cluster
+        <span class="node-sub">Dual-state structure explained</span>
+        <span class="node-url">/california-private-incorporation/</span>
+      </div>
+      <div class="arrow arrow-convert"><span class="arrow-label">reviews</span></div>
+      <div class="node n-pkg">
+        CA/FL Private Package
+        <span class="node-sub">WY formation + foreign reg + nominees</span>
+        <span class="node-sub">$2,500–$3,200</span>
+      </div>
+      <div class="arrow arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Checkout
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- JOURNEY C: ASSET PROTECTION -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--asset)">Journey C</div>
+  <div class="journey-title">The Lawsuit-Averse Business Owner</div>
+  <div class="journey-desc">Asset protection visitors understand legal risk and want to shield assets. The critical design challenge: surfacing the cross-pillar moment where AP visitors discover they also need privacy, upgrading from Silver to Gold.</div>
+  <div class="journey-stats">
+    <span class="stat"><strong>4–6</strong> pages</span>
+    <span class="stat">Target: <strong>Gold Package</strong> (via cross-sell)</span>
+    <span class="stat">Upsell target: <strong>30–40%</strong> Silver→Gold</span>
+  </div>
+
+  <div class="flow-wrap" style="box-shadow: 0 0 0 1px var(--asset-mid), 0 2px 12px var(--asset-glow);">
+    <div class="diagram-label">Asset Protection Flow with Cross-Pillar Upsell</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"LLC asset protection"</span>
+        <span class="node-sub">"charging order protection"</span>
+      </div>
+      <div class="arrow arrow-asset"><span class="arrow-label">lands on</span></div>
+      <div class="node n-asset">
+        Asset Protection Pillar
+        <span class="node-sub">Why LLCs protect assets</span>
+        <span class="node-url">/asset-protection/</span>
+      </div>
+      <div class="arrow arrow-asset"><span class="arrow-label">deep dives</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-asset-d">Charging Order Protection<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/charging-order-protection/</span></div>
+        <div class="branch-node n-asset-d">Wyoming AP<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/wyoming-asset-protection/</span></div>
+        <div class="branch-node n-asset-d">Nevada AP<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/nevada-asset-protection/</span></div>
+        <div class="branch-node n-asset-d">Investment Holding LLC<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/investment-holding-llc/</span></div>
+      </div>
+      <div class="arrow-merge"><span class="arrow-label">discovers</span></div>
+      <div class="node n-cross" style="position:relative;">
+        ↗ Cross-Pillar Moment
+        <span class="node-sub">"Hide ownership from litigants"</span>
+        <span class="node-sub">→ Privacy / Nominee Services</span>
+        <span class="cta-note cross">30-40% UPGRADE HERE</span>
+      </div>
+      <div class="arrow arrow-cross"><span class="arrow-label">upgrades to</span></div>
+      <div class="node n-compare">
+        WY vs NV for AP
+        <span class="node-url">/wyoming-vs-nevada-asset-protection/</span>
+      </div>
+      <div class="arrow arrow-convert"><span class="arrow-label">selects</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-pkg" style="font-weight:700">WY/NV Gold ★<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">upsold with privacy</span></div>
+        <div class="branch-node n-pkg" style="opacity:0.6">WY/NV Silver<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">AP only, no privacy</span></div>
+      </div>
+      <div class="arrow-merge arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Checkout
+      </div>
+    </div>
+    <div class="scroll-hint">← scroll →</div>
+  </div>
+
+  <div class="insight insight-cross">
+    <span class="insight-icon">🔗</span>
+    <span><strong>Cross-pillar design:</strong> Every AP cluster page needs a contextual callout framing privacy as an <em>extension</em> of asset protection — "Hiding your ownership is your first line of defense." This is the single highest-leverage upsell point in the entire site architecture.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- JOURNEY D: INFORMED BUYER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--formation)">Journey D</div>
+  <div class="journey-title">The Informed Buyer — Direct to Package</div>
+  <div class="journey-desc">Already decided on state and entity type. Comparing providers on price, inclusions, and trust. Needs a fast path to packages with no friction. May have been referred by an accountant or attorney.</div>
+  <div class="journey-stats">
+    <span class="stat"><strong>1–2</strong> pages</span>
+    <span class="stat">Target: <strong>Silver or Bronze</strong></span>
+    <span class="stat">AOV: <strong>$900–$1,575</strong></span>
+  </div>
+
+  <div class="flow-wrap">
+    <div class="diagram-label">Informed Buyer — Shortcut Path</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search / Referral
+        <span class="node-sub">"Wyoming LLC formation"</span>
+        <span class="node-sub">Attorney/CPA referral</span>
+      </div>
+      <div class="arrow arrow-form"><span class="arrow-label">lands on</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-home">Homepage<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">"WY LLC from $900"</span></div>
+        <div class="branch-node n-form" style="color:#92400e">Wyoming State Hub<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/wyoming/</span></div>
+        <div class="branch-node n-form" style="color:#92400e">Nevada State Hub<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/nevada/</span></div>
+      </div>
+      <div class="arrow-merge arrow-form"><span class="arrow-label">1-click to</span></div>
+      <div class="node n-pkg" style="position:relative">
+        Package Page
+        <span class="node-sub">3-tier pricing · Add-ons</span>
+        <span class="node-url">/wyoming-incorporation/</span>
+        <span class="cta-note cross">CROSS-SELL: "Add privacy for $375"</span>
+      </div>
+      <div class="arrow arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Checkout
+      </div>
+    </div>
+  </div>
+
+  <div class="insight insight-form">
+    <span class="insight-icon">⚡</span>
+    <span><strong>Speed matters:</strong> Informed buyers must reach packages in one click from the homepage, state hubs, or header navigation. Every extra page in this path costs conversions.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- JOURNEY E: FORMATION RESEARCHER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--formation)">Journey E</div>
+  <div class="journey-title">The Formation Researcher</div>
+  <div class="journey-desc">Knows they need a business entity but hasn't decided LLC vs Corp or Wyoming vs Nevada. Needs the education funnel but can be upsold from Silver to Gold via privacy cross-sell during the comparison stage.</div>
+  <div class="journey-stats">
+    <span class="stat"><strong>3–5</strong> pages</span>
+    <span class="stat">Target: <strong>Silver</strong> (or Gold via cross-sell)</span>
+    <span class="stat">AOV: <strong>$900–$1,275</strong></span>
+  </div>
+
+  <div class="flow-wrap">
+    <div class="diagram-label">Formation Research Flow</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"LLC vs corporation"</span>
+        <span class="node-sub">"form Wyoming LLC"</span>
+      </div>
+      <div class="arrow arrow-form"><span class="arrow-label">lands on</span></div>
+      <div class="node n-form" style="color:#92400e">
+        Formation Pillar
+        <span class="node-sub">Entity types &amp; state options</span>
+        <span class="node-url">/formation/</span>
+      </div>
+      <div class="arrow arrow-form"><span class="arrow-label">explores</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-form-d">LLC vs Corporation<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/llc-vs-corporation/</span></div>
+        <div class="branch-node n-form-d">Wyoming LLC<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/wyoming-llc/</span></div>
+        <div class="branch-node n-form-d">Nevada LLC<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/nevada-llc/</span></div>
+      </div>
+      <div class="arrow-merge"><span class="arrow-label">compares</span></div>
+      <div class="node n-compare" style="position:relative">
+        WY vs NV Formation
+        <span class="node-sub">Fees · Speed · Annual costs</span>
+        <span class="node-url">/wyoming-vs-nevada/</span>
+        <span class="cta-note cross">CROSS-SELL: "70% add nominees"</span>
+      </div>
+      <div class="arrow arrow-convert"><span class="arrow-label">selects</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-pkg">Silver — $900+<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">formation only</span></div>
+        <div class="branch-node n-pkg" style="font-weight:700">Gold — $1,275+ ★<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">via cross-sell</span></div>
+      </div>
+      <div class="arrow-merge arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Checkout
+      </div>
+    </div>
+    <div class="scroll-hint">← scroll →</div>
+  </div>
+
+  <div class="insight insight-form">
+    <span class="insight-icon">🎯</span>
+    <span><strong>Differentiation strategy:</strong> This is where budget competitors dominate on price ($0 + fees). Every formation page must show a "What's Really Included" comparison — Incorporate123's all-inclusive pricing vs. competitors' base price + $200+ in add-ons after checkout.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- JOURNEY F-K: SECONDARY JOURNEYS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--ink-muted)">Journeys F–K</div>
+  <div class="journey-title">Secondary Journeys</div>
+  <div class="journey-desc">Lower-volume but strategically important paths. Each has distinct entry points and conversion targets.</div>
+
+  <!-- F: Returning Client -->
+  <div class="flow-wrap" style="margin-bottom:20px">
+    <div class="diagram-label">F · Returning Client — Compliance</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔁 Direct Visit
+        <span class="node-sub">Bookmark / email link</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">returns to</span></div>
+      <div class="node n-home">
+        Homepage
+        <span class="node-sub">Looks for Client Login</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">navigates</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-comp">Client Login<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/login/</span></div>
+        <div class="branch-node n-comp">Compliance Pillar<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">/compliance/</span></div>
+      </div>
+      <div class="arrow-merge"><span class="arrow-label">finds</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-comp">Registered Agent</div>
+        <div class="branch-node n-comp">Annual Reports</div>
+        <div class="branch-node n-comp">Virtual Office</div>
+      </div>
+      <div class="arrow-merge"></div>
+      <div class="node n-convert">
+        ✓ Renewal / Service
+      </div>
+    </div>
+  </div>
+
+  <!-- G: Offshore -->
+  <div class="flow-wrap" style="margin-bottom:20px">
+    <div class="diagram-label">G · Offshore Inquiry — Consultation Funnel</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"Nevis LLC" / "BVI company"</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">lands on</span></div>
+      <div class="node n-form" style="opacity:0.8;color:#92400e">
+        Offshore Page
+        <span class="node-sub">Not in main nav · SEO only</span>
+        <span class="node-url">/offshore/</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">reads options</span></div>
+      <div class="node n-consult" style="position:relative">
+        📞 Schedule Consultation
+        <span class="node-sub">Complex needs → human guidance</span>
+        <span class="cta-note">NOT self-service checkout</span>
+      </div>
+      <div class="arrow arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Custom Package
+        <span class="node-sub">$2K–$12K+</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H: Shelf Company -->
+  <div class="flow-wrap" style="margin-bottom:20px">
+    <div class="diagram-label">H · Shelf Company Buyer — High Intent</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"buy aged LLC"</span>
+        <span class="node-sub">"shelf company Wyoming"</span>
+      </div>
+      <div class="arrow arrow-form"><span class="arrow-label">lands on</span></div>
+      <div class="node n-form-d" style="color:#a16207">
+        Shelf Companies
+        <span class="node-sub">Browse inventory · Filter by age/state</span>
+        <span class="node-url">/shelf-companies/</span>
+      </div>
+      <div class="arrow arrow-convert"><span class="arrow-label">selects entity</span></div>
+      <div class="node n-pkg">
+        Entity Listing
+        <span class="node-sub">$2,000–$12,000</span>
+      </div>
+      <div class="arrow arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Purchase
+      </div>
+    </div>
+  </div>
+
+  <!-- I: State Hub -->
+  <div class="flow-wrap" style="margin-bottom:20px">
+    <div class="diagram-label">I · State Hub Entry — Intent Router</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"Wyoming LLC"</span>
+        <span class="node-sub">"Nevada incorporation"</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">lands on</span></div>
+      <div class="node n-home">
+        State Hub
+        <span class="node-sub">"Why Wyoming?" overview</span>
+        <span class="node-url">/wyoming/ or /nevada/</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">routes by intent</span></div>
+      <div class="branch-group">
+        <div class="branch-node n-priv">Privacy →<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">→ Journey A</span></div>
+        <div class="branch-node n-asset">Asset Protection →<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">→ Journey C</span></div>
+        <div class="branch-node n-form" style="color:#92400e">Formation →<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">→ Journey D/E</span></div>
+        <div class="branch-node n-pkg">View Packages →<span class="node-sub" style="display:inline;margin-left:4px;font-size:10px">direct shortcut</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J: BOI -->
+  <div class="flow-wrap" style="margin-bottom:20px">
+    <div class="diagram-label">J · BOI Reporting Concerned — Topical Entry</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"BOI reporting LLC"</span>
+        <span class="node-sub">"beneficial ownership"</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">lands on</span></div>
+      <div class="node n-priv-d">
+        BOI Reporting Guide
+        <span class="node-sub">Requirements &amp; impact</span>
+        <span class="node-url">/boi-reporting/</span>
+      </div>
+      <div class="arrow arrow-cross"><span class="arrow-label">cross-sell</span></div>
+      <div class="node n-cross">
+        ↗ Nominee Services
+        <span class="node-sub">Manage BOI compliance</span>
+        <span class="node-url">/nominee-services/</span>
+      </div>
+      <div class="arrow arrow-priv"><span class="arrow-label">routes to</span></div>
+      <div class="node n-pkg">
+        Gold Package
+        <span class="node-sub">With nominees included</span>
+      </div>
+      <div class="arrow arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Checkout
+      </div>
+    </div>
+  </div>
+
+  <!-- K: HNW Trust -->
+  <div class="flow-wrap">
+    <div class="diagram-label">K · HNW / Trust Inquiry — Consultation Funnel</div>
+    <div class="flow-row">
+      <div class="node n-search">
+        🔍 Search
+        <span class="node-sub">"LLC vs trust"</span>
+        <span class="node-sub">"asset protection trust"</span>
+      </div>
+      <div class="arrow arrow-asset"><span class="arrow-label">lands on</span></div>
+      <div class="node n-asset">
+        AP Pillar / LLC vs Trust
+        <span class="node-sub">Complex comparison content</span>
+        <span class="node-url">/llc-vs-trust/</span>
+      </div>
+      <div class="arrow"><span class="arrow-label">needs guidance</span></div>
+      <div class="node n-consult">
+        📞 Schedule Consultation
+        <span class="node-sub">Complex structuring needs</span>
+      </div>
+      <div class="arrow arrow-convert"></div>
+      <div class="node n-convert">
+        ✓ Custom Structure
+        <span class="node-sub">Offshore / Trust / Multi-entity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- CROSS-PILLAR MAP -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="journey-section">
+  <div class="journey-label" style="color:var(--cross)">Cross-Pillar</div>
+  <div class="journey-title">Cross-Pillar Link Architecture</div>
+  <div class="journey-desc">The connective tissue preventing four disconnected silos. Each arrow represents a contextual link that appears at the natural content moment where visitors think "what else should I consider?"</div>
+
+  <div class="flow-wrap" style="box-shadow: 0 0 0 1px #fbcfe8, 0 2px 12px rgba(236,72,153,0.06);">
+    <div class="diagram-label">Cross-Pillar Link Flows</div>
+    <div class="flow-multi">
+      <!-- AP → Privacy -->
+      <div>
+        <div class="flow-row-label">Highest-value cross-sell</div>
+        <div class="flow-row" style="margin-top:16px">
+          <div class="node n-asset" style="min-width:180px">Asset Protection<span class="node-sub">Any AP cluster page</span></div>
+          <div class="arrow arrow-cross"><span class="arrow-label">"hide ownership = defense"</span></div>
+          <div class="node n-cross">↗ Privacy Pillar<span class="node-sub">Nominee Services</span></div>
+          <div class="arrow arrow-convert"><span class="arrow-label">upgrades</span></div>
+          <div class="node n-pkg">Gold Package ★<span class="node-sub">Silver → Gold upsell</span></div>
+        </div>
+      </div>
+
+      <!-- Formation → Privacy -->
+      <div>
+        <div class="flow-row-label">Formation upsell</div>
+        <div class="flow-row" style="margin-top:16px">
+          <div class="node n-form" style="min-width:180px;color:#92400e">Formation<span class="node-sub">After entity selection</span></div>
+          <div class="arrow arrow-cross"><span class="arrow-label">"add privacy for $375"</span></div>
+          <div class="node n-cross">↗ Privacy Pillar<span class="node-sub">WY/NV Privacy Cluster</span></div>
+          <div class="arrow arrow-convert"><span class="arrow-label">upgrades</span></div>
+          <div class="node n-pkg">Gold Package ★<span class="node-sub">Silver → Gold upsell</span></div>
+        </div>
+      </div>
+
+      <!-- Privacy → AP -->
+      <div>
+        <div class="flow-row-label">Complementary service</div>
+        <div class="flow-row" style="margin-top:16px">
+          <div class="node n-priv" style="min-width:180px">Privacy<span class="node-sub">Anonymous LLC page</span></div>
+          <div class="arrow arrow-cross"><span class="arrow-label">"protect wealth too"</span></div>
+          <div class="node n-cross">↗ Asset Protection<span class="node-sub">Charging Order</span></div>
+          <div class="arrow"><span class="arrow-label">reinforces</span></div>
+          <div class="node n-pkg">Gold Package<span class="node-sub">Already privacy-focused</span></div>
+        </div>
+      </div>
+
+      <!-- Formation → AP -->
+      <div>
+        <div class="flow-row-label">Entity benefit awareness</div>
+        <div class="flow-row" style="margin-top:16px">
+          <div class="node n-form" style="min-width:180px;color:#92400e">Formation<span class="node-sub">LLC vs Corp comparison</span></div>
+          <div class="arrow arrow-cross"><span class="arrow-label">"LLCs offer charging orders"</span></div>
+          <div class="node n-cross">↗ Asset Protection<span class="node-sub">Charging Order page</span></div>
+          <div class="arrow"><span class="arrow-label">educates</span></div>
+          <div class="node n-asset-d">AP Clusters<span class="node-sub">Deeper research</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight insight-cross">
+    <span class="insight-icon">⚠️</span>
+    <span><strong>Placement rule:</strong> Cross-pillar CTAs always appear <em>below</em> the page's primary conversion CTA. The primary journey path must never be interrupted by cross-sells. Place them at the content moment where the visitor naturally wonders "what else should I consider?" — typically after core content absorption and before the final package CTA.</span>
+  </div>
+</section>
+
+<footer class="page-footer">
+  Incorporate123 · User Journey Flow Diagrams · Task 4.4 · BIT Studios · March 2026
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Project Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1A2E;
+    --blue: #2563EB;
+    --blue-light: #EFF6FF;
+    --purple: #7C3AED;
+    --purple-light: #F5F3FF;
+    --green: #059669;
+    --green-light: #ECFDF5;
+    --amber: #D97706;
+    --amber-light: #FFFBEB;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-300: #D1D5DB;
+    --gray-100: #F3F4F6;
+    --gray-50: #F9FAFB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--gray-700);
+    background: white;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  @media print {
+    @page { size: letter; margin: 0.35in; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { box-shadow: none !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  }
+
+  .page {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.35in;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: var(--navy);
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  header .left h1 {
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+  header .left p {
+    color: #94A3B8;
+    font-size: 9px;
+    margin-top: 2px;
+  }
+  header .right {
+    text-align: right;
+  }
+  header .right .label {
+    font-size: 8px;
+    font-weight: 700;
+    color: #38BDF8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  header .right .meta {
+    color: #64748B;
+    font-size: 8px;
+    margin-top: 2px;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* ── SECTIONS ── */
+  .section-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .section-title .icon {
+    font-size: 10px;
+  }
+
+  .card {
+    margin-bottom: 10px;
+  }
+
+  /* ── SHIFT BOX ── */
+  .shift-box {
+    background: var(--blue-light);
+    border: 1px solid #BFDBFE;
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .shift-side {
+    flex: 1;
+  }
+  .shift-label {
+    font-size: 8px;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .shift-from {
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--gray-700);
+    margin-top: 1px;
+  }
+  .shift-to {
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--green);
+    margin-top: 1px;
+  }
+  .shift-arrow {
+    font-size: 20px;
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+  .shift-sub {
+    text-align: center;
+    font-size: 8px;
+    color: var(--gray-500);
+    margin-top: 5px;
+  }
+
+  /* ── PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+  .pillar {
+    padding: 6px 8px;
+    border-radius: 5px;
+    border-left: 3px solid;
+  }
+  .pillar.privacy { background: #EFF6FF; border-color: var(--blue); }
+  .pillar.asset { background: #F5F3FF; border-color: var(--purple); }
+  .pillar.formation { background: #ECFDF5; border-color: var(--green); }
+  .pillar.compliance { background: #FFFBEB; border-color: var(--amber); }
+
+  .pillar .name {
+    font-weight: 700;
+    font-size: 9.5px;
+  }
+  .pillar.privacy .name { color: var(--blue); }
+  .pillar.asset .name { color: var(--purple); }
+  .pillar.formation .name { color: var(--green); }
+  .pillar.compliance .name { color: var(--amber); }
+
+  .pillar .desc {
+    font-size: 8px;
+    color: var(--gray-500);
+    margin-top: 1px;
+  }
+
+  /* ── NUMBERS GRID ── */
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+  }
+  .num-item {
+    background: var(--gray-50);
+    border-radius: 5px;
+    padding: 5px 7px;
+    text-align: center;
+  }
+  .num-item .val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .num-item .lbl {
+    font-size: 7.5px;
+    color: var(--gray-500);
+    line-height: 1.2;
+    margin-top: 1px;
+  }
+
+  /* ── AUDIENCE ── */
+  .audience-box {
+    background: var(--amber-light);
+    border: 1px solid #FDE68A;
+    border-radius: 6px;
+    padding: 7px 10px;
+  }
+  .audience-box .headline {
+    font-weight: 700;
+    font-size: 9.5px;
+    color: var(--gray-900);
+  }
+  .audience-box ul {
+    margin-top: 3px;
+    padding-left: 14px;
+  }
+  .audience-box li {
+    font-size: 8.5px;
+    color: var(--gray-700);
+    margin-bottom: 1px;
+  }
+
+  /* ── FLOW ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .flow-step {
+    flex: 1;
+    background: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 5px 2px;
+    border-radius: 5px;
+  }
+  .flow-step .step-name {
+    font-weight: 700;
+    font-size: 8.5px;
+    display: block;
+  }
+  .flow-step .step-type {
+    font-size: 7px;
+    opacity: 0.8;
+  }
+  .flow-arrow {
+    color: var(--gray-300);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ── SEO ── */
+  .seo-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .seo-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 9px;
+  }
+  .seo-tag {
+    font-weight: 700;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    min-width: 48px;
+    text-align: center;
+  }
+  .seo-tag.target { background: #D1FAE5; color: var(--green); }
+  .seo-tag.avoid { background: #FEE2E2; color: var(--red); }
+  .seo-tag.insight { background: #FEF3C7; color: var(--amber); }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tl-row {
+    display: flex;
+    align-items: center;
+    background: var(--gray-50);
+    border-radius: 5px;
+    padding: 5px 8px;
+    gap: 8px;
+  }
+  .tl-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    font-weight: 700;
+    color: white;
+    padding: 2px 7px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    min-width: 48px;
+    text-align: center;
+  }
+  .tl-badge.disc { background: var(--blue); }
+  .tl-badge.ux { background: var(--purple); }
+  .tl-badge.seo { background: var(--green); }
+  .tl-badge.dev { background: var(--amber); }
+  .tl-badge.launch { background: var(--red); }
+
+  .tl-info .tl-name {
+    font-weight: 700;
+    font-size: 9px;
+    color: var(--gray-900);
+  }
+  .tl-info .tl-desc {
+    font-size: 8px;
+    color: var(--gray-500);
+  }
+
+  /* ── COMPETITIVE ── */
+  .comp-box {
+    background: var(--green-light);
+    border: 1px solid #A7F3D0;
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .comp-headline {
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .comp-detail {
+    font-size: 8.5px;
+    color: var(--gray-700);
+    margin-bottom: 6px;
+  }
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+  }
+  .comp-item {
+    background: white;
+    border-radius: 4px;
+    padding: 4px 6px;
+  }
+  .comp-item .comp-label {
+    font-size: 7px;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .comp-item .comp-val {
+    font-size: 8px;
+    color: var(--gray-700);
+    margin-top: 1px;
+  }
+
+  /* ── DELIVERABLES ── */
+  .deliverables {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 8px;
+  }
+  .del-item {
+    font-size: 8.5px;
+    color: var(--gray-700);
+    padding: 2px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .del-item .check {
+    color: var(--green);
+    font-size: 9px;
+    flex-shrink: 0;
+  }
+
+  /* ── APPROVAL ── */
+  .approval-flow {
+    background: var(--blue-light);
+    border: 1px solid #BFDBFE;
+    border-radius: 6px;
+    padding: 6px 10px;
+    text-align: center;
+  }
+  .approval-flow .main {
+    font-weight: 700;
+    font-size: 9.5px;
+    color: var(--blue);
+    letter-spacing: 0.3px;
+  }
+  .approval-flow .sub {
+    font-size: 8px;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  /* ── CONTACTS + OUT OF SCOPE ── */
+  .info-row {
+    display: flex;
+    gap: 10px;
+  }
+  .info-half {
+    flex: 1;
+  }
+  .contact-item, .oos-item {
+    font-size: 8.5px;
+    color: var(--gray-700);
+    margin-bottom: 1px;
+  }
+  .contact-item strong {
+    color: var(--gray-900);
+  }
+  .oos-item {
+    color: var(--gray-500);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 10px;
+    padding-top: 6px;
+    border-top: 1px solid var(--gray-300);
+    display: flex;
+    justify-content: space-between;
+    font-size: 7.5px;
+    color: var(--gray-500);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="left">
+      <h1>INCORPORATE123</h1>
+      <p>Website Redesign & Redevelopment &nbsp;|&nbsp; BIT Studios &nbsp;|&nbsp; Feb–Apr 2026</p>
+    </div>
+    <div class="right">
+      <div class="label">Project Cheat Sheet</div>
+      <div class="meta">10 Weeks &nbsp;·&nbsp; 71+ Pages &nbsp;·&nbsp; 5 Workstreams</div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- ════ LEFT COLUMN ════ -->
+    <div class="col-left">
+
+      <!-- STRATEGIC SHIFT -->
+      <div class="card">
+        <div class="section-title"><span class="icon">◆</span> The Strategic Shift</div>
+        <div class="shift-box">
+          <div class="shift-side">
+            <div class="shift-label">From</div>
+            <div class="shift-from">"Nevada Incorporation Company"</div>
+          </div>
+          <div class="shift-arrow">→</div>
+          <div class="shift-side" style="text-align:right">
+            <div class="shift-label">To</div>
+            <div class="shift-to">"Privacy, Asset Protection &amp; Business Formation Specialists"</div>
+          </div>
+        </div>
+        <div class="shift-sub">Geography-first → Intent-first &nbsp;&nbsp;|&nbsp;&nbsp; Price competition → Expertise positioning</div>
+      </div>
+
+      <!-- 4 PILLARS -->
+      <div class="card">
+        <div class="section-title"><span class="icon">■</span> Four Content Pillars</div>
+        <div class="pillars">
+          <div class="pillar privacy">
+            <div class="name">Business Privacy</div>
+            <div class="desc">Anonymous LLCs, nominee services, privacy structures</div>
+          </div>
+          <div class="pillar asset">
+            <div class="name">Asset Protection</div>
+            <div class="desc">Charging order, holding LLCs, multi-entity strategies</div>
+          </div>
+          <div class="pillar formation">
+            <div class="name">Company Formation</div>
+            <div class="desc">LLC/Corp setup, state selection, registered agent</div>
+          </div>
+          <div class="pillar compliance">
+            <div class="name">Compliance</div>
+            <div class="desc">Annual reports, amendments, good standing, renewals</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY NUMBERS -->
+      <div class="card">
+        <div class="section-title"><span class="icon">●</span> Key Numbers</div>
+        <div class="numbers-grid">
+          <div class="num-item"><div class="val">~171</div><div class="lbl">Current URLs</div></div>
+          <div class="num-item"><div class="val">~71</div><div class="lbl">New Pages</div></div>
+          <div class="num-item"><div class="val">~170</div><div class="lbl">301 Redirects</div></div>
+          <div class="num-item"><div class="val">~129</div><div class="lbl">Pages Mapped</div></div>
+          <div class="num-item"><div class="val">~111</div><div class="lbl">FAQs Consolidated</div></div>
+          <div class="num-item"><div class="val">5</div><div class="lbl">Competitors Analyzed</div></div>
+        </div>
+      </div>
+
+      <!-- TARGET AUDIENCE -->
+      <div class="card">
+        <div class="section-title"><span class="icon">▲</span> Target Audience</div>
+        <div class="audience-box">
+          <div class="headline">Privacy-conscious entrepreneurs &amp; SBOs with $500K+ in assets</div>
+          <ul>
+            <li>Prioritize ownership anonymity over lowest price</li>
+            <li>Lawsuit-averse, research-oriented, willing to pay premium</li>
+            <li>Understand a single lawsuit costs $30K–$100K to defend</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CONVERSION FLOW -->
+      <div class="card">
+        <div class="section-title"><span class="icon">➜</span> Conversion Flow</div>
+        <div class="flow">
+          <div class="flow-step"><span class="step-name">Education</span><span class="step-type">Pillar</span></div>
+          <span class="flow-arrow">›</span>
+          <div class="flow-step"><span class="step-name">Specifics</span><span class="step-type">Cluster</span></div>
+          <span class="flow-arrow">›</span>
+          <div class="flow-step"><span class="step-name">Compare</span><span class="step-type">Comparison</span></div>
+          <span class="flow-arrow">›</span>
+          <div class="flow-step"><span class="step-name">Package</span><span class="step-type">Pricing</span></div>
+          <span class="flow-arrow">›</span>
+          <div class="flow-step" style="background:var(--green)"><span class="step-name">Convert</span><span class="step-type">Checkout</span></div>
+        </div>
+      </div>
+
+      <!-- SEO STRATEGY -->
+      <div class="card">
+        <div class="section-title"><span class="icon">⚡</span> SEO Sweet Spot</div>
+        <div class="seo-rows">
+          <div class="seo-row"><span class="seo-tag target">Target</span> Privacy keywords — anonymous LLC, nominee services, private incorporation</div>
+          <div class="seo-row"><span class="seo-tag avoid">Avoid</span> Generic formation terms dominated by budget providers (ZenBusiness etc.)</div>
+          <div class="seo-row"><span class="seo-tag insight">Insight</span> Only 5 of 50 privacy keyword slots held by competitors — wide open</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ════ RIGHT COLUMN ════ -->
+    <div class="col-right">
+
+      <!-- TIMELINE -->
+      <div class="card">
+        <div class="section-title"><span class="icon">⏱</span> Timeline — 10 Weeks</div>
+        <div class="timeline">
+          <div class="tl-row">
+            <span class="tl-badge disc">Wk 1–2</span>
+            <div class="tl-info"><div class="tl-name">Discovery & Strategy</div><div class="tl-desc">Foundation — architecture confirmed before design begins</div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-badge ux">Wk 2–5</span>
+            <div class="tl-info"><div class="tl-name">UX & Design</div><div class="tl-desc">Parallel prototype + visual design tracks</div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-badge seo">Wk 3–8</span>
+            <div class="tl-info"><div class="tl-name">SEO</div><div class="tl-desc">Specs roll out section-by-section as structure locks</div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-badge dev">Wk 4–9</span>
+            <div class="tl-info"><div class="tl-name">Development</div><div class="tl-desc">Starts with first approved designs</div></div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-badge launch">Wk 8–10</span>
+            <div class="tl-info"><div class="tl-name">Testing & Launch</div><div class="tl-desc">Full QA, redirect verification, go-live</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPETITIVE LANDSCAPE -->
+      <div class="card">
+        <div class="section-title"><span class="icon">⚔</span> Competitive Landscape</div>
+        <div class="comp-box">
+          <div class="comp-headline">The upper-right quadrant is EMPTY</div>
+          <div class="comp-detail">No competitor combines modern UX + privacy expertise + transparent pricing + genuine nominee services</div>
+          <div class="comp-grid">
+            <div class="comp-item">
+              <div class="comp-label">Budget Players</div>
+              <div class="comp-val">ZenBusiness — great UX, zero privacy capability</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Privacy Niche</div>
+              <div class="comp-val">NCH, WY Corp, ShieldCorp — relevant but dated sites</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Premium</div>
+              <div class="comp-val">Anderson — everything gated behind $2,750+ sales calls</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCOPE DELIVERABLES -->
+      <div class="card">
+        <div class="section-title"><span class="icon">☑</span> Scope Deliverables</div>
+        <div class="deliverables">
+          <div class="del-item"><span class="check">✓</span> 71+ pages, 8–10 custom templates</div>
+          <div class="del-item"><span class="check">✓</span> 4 pillars + 24 cluster pages</div>
+          <div class="del-item"><span class="check">✓</span> 6 comparison + 8 package pages</div>
+          <div class="del-item"><span class="check">✓</span> 71 individual SEO specs</div>
+          <div class="del-item"><span class="check">✓</span> ~170 URL 301 redirects mapped</div>
+          <div class="del-item"><span class="check">✓</span> Full checkout (Stripe/PayPal)</div>
+          <div class="del-item"><span class="check">✓</span> Complete content migration</div>
+          <div class="del-item"><span class="check">✓</span> CMS: WordPress or Payload</div>
+        </div>
+      </div>
+
+      <!-- APPROVAL PROCESS -->
+      <div class="card">
+        <div class="section-title"><span class="icon">✔</span> Approval Process</div>
+        <div class="approval-flow">
+          <div class="main">Prototype → Sign-off → Visual Design → Sign-off → Development</div>
+          <div class="sub">Feedback expected within 3–5 business days per review</div>
+        </div>
+      </div>
+
+      <!-- CONTACTS + OOS -->
+      <div class="card">
+        <div class="info-row">
+          <div class="info-half">
+            <div class="section-title"><span class="icon">☎</span> Key Contacts</div>
+            <div class="contact-item"><strong>Client:</strong> David (Incorporate123 owner)</div>
+            <div class="contact-item"><strong>BIT Studios:</strong> Alex (PM), Jeff (Boss), Irish (Team)</div>
+          </div>
+          <div class="info-half">
+            <div class="section-title"><span class="icon">⊘</span> Out of Scope</div>
+            <div class="oos-item">– Page copywriting (client-supplied from our SEO specs)</div>
+            <div class="oos-item">– Ongoing SEO, paid ads, social media, email</div>
+            <div class="oos-item">– Calculators, client portal, multi-language</div>
+            <div class="oos-item">– Hosting & ongoing maintenance</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>BIT Studios &nbsp;|&nbsp; Incorporate123.co Redesign &nbsp;|&nbsp; Confidential</span>
+    <span>bitstudios.com/incorporate123-co &nbsp;|&nbsp; Password: Inc123</span>
+  </footer>
+
+</div>
+</body>
+</html>

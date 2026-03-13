@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Template Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf8f3;
+  --parchment: #f3efe6;
+  --warm: #fffdf9;
+  --ink: #1a1613;
+  --ink2: #3d3530;
+  --ink3: #7a706a;
+  --ink4: #b0a99f;
+  --rule: #ddd7cc;
+  --ruleL: #ece8df;
+
+  /* 9 template colors */
+  --t1: #1e3a5f;  --t1s: #e6edf5;  --t1b: #b3c7de;
+  --t2: #2955a3;  --t2s: #e8eef8;  --t2b: #a8c0e6;
+  --t3: #0f7c8c;  --t3s: #e0f4f6;  --t3b: #9edce4;
+  --t4: #c33;     --t4s: #fce8e8;  --t4b: #f5b3b3;
+  --t5: #b5720a;  --t5s: #faf0dd;  --t5b: #f0d49a;
+  --t6: #1d7a3f;  --t6s: #e4f4ea;  --t6b: #a5dbb8;
+  --t7: #7a3dac;  --t7s: #f1e8f9;  --t7b: #d0b3e8;
+  --t8: #d35c1a;  --t8s: #fdeee2;  --t8b: #f5c8a0;
+  --t9: #666;     --t9s: #f0eeeb;  --t9b: #ccc8c2;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+/* ═══ HEADER ═══ */
+.hero{max-width:1400px;margin:0 auto;padding:3rem 3rem 0;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+.hero-brand{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);}
+.hero h1{font-family:'Fraunces',serif;font-size:3rem;font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-bottom:.6rem;}
+.hero h1 em{font-style:normal;position:relative;}
+.hero h1 em::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:8px;background:var(--t4b);opacity:.5;z-index:-1;}
+.hero-sub{font-size:.95rem;color:var(--ink3);max-width:620px;line-height:1.6;margin-bottom:1.5rem;}
+.hero-rule{height:3px;background:var(--ink);}
+
+/* ═══ TEMPLATE OVERVIEW STRIP ═══ */
+.tpl-strip{max-width:1400px;margin:0 auto;padding:1.5rem 3rem;border-bottom:1px solid var(--rule);}
+.tpl-strip h2{font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink4);margin-bottom:1rem;}
+.tpl-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:.5rem;}
+.tpl-card{border:1.5px solid var(--rule);border-radius:10px;padding:.7rem .6rem;background:var(--warm);text-align:center;cursor:pointer;transition:all .2s;position:relative;}
+.tpl-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(26,22,19,.08);}
+.tpl-card.active{border-width:2.5px;}
+.tpl-card .tnum{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;line-height:1;margin-bottom:.2rem;}
+.tpl-card .tname{font-size:.62rem;font-weight:600;line-height:1.2;margin-bottom:.3rem;}
+.tpl-card .tcount{font-family:'IBM Plex Mono',monospace;font-size:.55rem;color:var(--ink3);}
+.tpl-card .complexity{position:absolute;top:.4rem;right:.4rem;display:flex;gap:1px;}
+.complexity .bar{width:4px;height:10px;border-radius:2px;background:var(--ruleL);}
+.complexity .bar.filled{background:currentColor;}
+
+/* card colors */
+.tpl-card[data-t="1"]{border-color:var(--t1b);}.tpl-card[data-t="1"] .tnum{color:var(--t1);}.tpl-card[data-t="1"].active{border-color:var(--t1);background:var(--t1s);}
+.tpl-card[data-t="2"]{border-color:var(--t2b);}.tpl-card[data-t="2"] .tnum{color:var(--t2);}.tpl-card[data-t="2"].active{border-color:var(--t2);background:var(--t2s);}
+.tpl-card[data-t="3"]{border-color:var(--t3b);}.tpl-card[data-t="3"] .tnum{color:var(--t3);}.tpl-card[data-t="3"].active{border-color:var(--t3);background:var(--t3s);}
+.tpl-card[data-t="4"]{border-color:var(--t4b);}.tpl-card[data-t="4"] .tnum{color:var(--t4);}.tpl-card[data-t="4"].active{border-color:var(--t4);background:var(--t4s);}
+.tpl-card[data-t="5"]{border-color:var(--t5b);}.tpl-card[data-t="5"] .tnum{color:var(--t5);}.tpl-card[data-t="5"].active{border-color:var(--t5);background:var(--t5s);}
+.tpl-card[data-t="6"]{border-color:var(--t6b);}.tpl-card[data-t="6"] .tnum{color:var(--t6);}.tpl-card[data-t="6"].active{border-color:var(--t6);background:var(--t6s);}
+.tpl-card[data-t="7"]{border-color:var(--t7b);}.tpl-card[data-t="7"] .tnum{color:var(--t7);}.tpl-card[data-t="7"].active{border-color:var(--t7);background:var(--t7s);}
+.tpl-card[data-t="8"]{border-color:var(--t8b);}.tpl-card[data-t="8"] .tnum{color:var(--t8);}.tpl-card[data-t="8"].active{border-color:var(--t8);background:var(--t8s);}
+.tpl-card[data-t="9"]{border-color:var(--t9b);}.tpl-card[data-t="9"] .tnum{color:var(--t9);}.tpl-card[data-t="9"].active{border-color:var(--t9);background:var(--t9s);}
+
+/* ═══ DETAIL PANEL ═══ */
+.detail-panel{max-width:1400px;margin:0 auto;padding:0 3rem;overflow:hidden;transition:max-height .4s ease;}
+.detail-inner{padding:1.2rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.detail-inner h3{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem;grid-column:1/-1;}
+.detail-col h4{font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.5rem;}
+.detail-col ul{list-style:none;padding:0;}
+.detail-col li{font-size:.78rem;color:var(--ink2);padding:.25rem 0;padding-left:1rem;position:relative;line-height:1.45;}
+.detail-col li::before{content:'\2022';position:absolute;left:0;color:var(--ink4);}
+.detail-col .interaction-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;margin-right:.3rem;margin-bottom:.2rem;}
+
+/* ═══ MAIN SITE MAP ═══ */
+.sitemap{max-width:1400px;margin:0 auto;padding:2rem 3rem 4rem;}
+
+.tpl-section{margin-bottom:2rem;transition:opacity .3s;}
+.tpl-section.dimmed{opacity:.15;pointer-events:none;}
+.tpl-section.dimmed .section-header{opacity:1;}
+
+.section-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;padding-bottom:.6rem;border-bottom:2px solid var(--rule);}
+.section-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0;}
+.section-header h3{font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.section-header .section-meta{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--ink3);margin-left:auto;}
+.section-header .build-badge{font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;padding:.25rem .6rem;border-radius:5px;margin-left:.5rem;letter-spacing:.04em;}
+
+/* Page nodes in sitemap */
+.page-nodes{display:flex;flex-wrap:wrap;gap:.4rem;}
+.pnode{display:flex;align-items:center;gap:.4rem;padding:.45rem .65rem;border-radius:8px;border:1.5px solid var(--rule);background:var(--warm);transition:all .15s;cursor:default;position:relative;}
+.pnode:hover{transform:translateY(-1px);box-shadow:0 3px 12px rgba(0,0,0,.06);}
+.pnode .pnode-tpl{font-family:'Fraunces',serif;font-size:.7rem;font-weight:700;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0;}
+.pnode .pnode-info{display:flex;flex-direction:column;}
+.pnode .pnode-name{font-size:.7rem;font-weight:600;color:var(--ink);line-height:1.2;}
+.pnode .pnode-url{font-family:'IBM Plex Mono',monospace;font-size:.5rem;color:var(--ink4);}
+.pnode .pnode-pri{position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;font-family:'IBM Plex Mono',monospace;font-size:.42rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--warm);}
+.pnode-pri.p1{background:#16a34a;color:white;}
+.pnode-pri.p2{background:#d97706;color:white;}
+
+/* Pillar accent on nodes */
+.pnode.pillar-privacy{border-left:3px solid var(--t2);}
+.pnode.pillar-asset{border-left:3px solid var(--t6);}
+.pnode.pillar-formation{border-left:3px solid var(--t5);}
+.pnode.pillar-compliance{border-left:3px solid var(--t7);}
+
+/* ═══ FOOTER ═══ */
+.foot{max-width:1400px;margin:0 auto;padding:2rem 3rem;border-top:3px solid var(--ink);display:flex;justify-content:space-between;}
+.foot span{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--ink4);letter-spacing:.04em;}
+
+@media(max-width:1100px){
+  .tpl-grid{grid-template-columns:repeat(5,1fr);}
+}
+@media(max-width:768px){
+  .hero{padding:2rem 1.5rem 0;}
+  .hero h1{font-size:2rem;}
+  .tpl-strip,.sitemap,.detail-panel,.foot{padding-left:1.5rem;padding-right:1.5rem;}
+  .tpl-grid{grid-template-columns:repeat(3,1fr);}
+  .detail-inner{grid-template-columns:1fr;}
+  .page-nodes{flex-direction:column;}
+  .foot{flex-direction:column;gap:.3rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-brand">BIT Studios × Incorporate123 · Phase 2</div>
+    <div class="hero-brand">March 2026</div>
+  </div>
+  <h1>9 Templates,<br><em>71 Pages</em></h1>
+  <p class="hero-sub">Every page on the new site is built from one of 9 unique CMS templates. Click any template above to see its build requirements and which pages use it. Templates are ordered by build complexity.</p>
+  <div class="hero-rule"></div>
+</div>
+
+<!-- ═══ TEMPLATE OVERVIEW ═══ -->
+<div class="tpl-strip">
+  <h2>Unique Templates to Build (click to highlight)</h2>
+  <div class="tpl-grid">
+    <div class="tpl-card active" data-t="1" onclick="filterTemplate(1)">
+      <div class="complexity" style="color:var(--t1)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div></div>
+      <div class="tnum">1</div>
+      <div class="tname">Homepage</div>
+      <div class="tcount">1 page</div>
+    </div>
+    <div class="tpl-card" data-t="2" onclick="filterTemplate(2)">
+      <div class="complexity" style="color:var(--t2)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar"></div></div>
+      <div class="tnum">2</div>
+      <div class="tname">Pillar Pages</div>
+      <div class="tcount">4 pages</div>
+    </div>
+    <div class="tpl-card" data-t="3" onclick="filterTemplate(3)">
+      <div class="complexity" style="color:var(--t3)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar"></div><div class="bar"></div></div>
+      <div class="tnum">3</div>
+      <div class="tname">Cluster Pages</div>
+      <div class="tcount">24+ pages</div>
+    </div>
+    <div class="tpl-card" data-t="4" onclick="filterTemplate(4)">
+      <div class="complexity" style="color:var(--t4)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div></div>
+      <div class="tnum">4</div>
+      <div class="tname">Package Detail</div>
+      <div class="tcount">8 pages</div>
+    </div>
+    <div class="tpl-card" data-t="5" onclick="filterTemplate(5)">
+      <div class="complexity" style="color:var(--t5)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar"></div><div class="bar"></div></div>
+      <div class="tnum">5</div>
+      <div class="tname">Comparison</div>
+      <div class="tcount">6 pages</div>
+    </div>
+    <div class="tpl-card" data-t="6" onclick="filterTemplate(6)">
+      <div class="complexity" style="color:var(--t6)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar"></div><div class="bar"></div></div>
+      <div class="tnum">6</div>
+      <div class="tname">State Hubs</div>
+      <div class="tcount">4 pages</div>
+    </div>
+    <div class="tpl-card" data-t="7" onclick="filterTemplate(7)">
+      <div class="complexity" style="color:var(--t7)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar"></div><div class="bar"></div></div>
+      <div class="tnum">7</div>
+      <div class="tname">Resource / FAQ</div>
+      <div class="tcount">2 pages</div>
+    </div>
+    <div class="tpl-card" data-t="8" onclick="filterTemplate(8)">
+      <div class="complexity" style="color:var(--t8)"><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div><div class="bar filled"></div></div>
+      <div class="tnum">8</div>
+      <div class="tname">Checkout Flow</div>
+      <div class="tcount">4 steps</div>
+    </div>
+    <div class="tpl-card" data-t="9" onclick="filterTemplate(9)">
+      <div class="complexity" style="color:var(--t9)"><div class="bar filled"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+      <div class="tnum">9</div>
+      <div class="tname">Utility Pages</div>
+      <div class="tcount">7+ pages</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DETAIL PANEL ═══ -->
+<div class="detail-panel" id="detail-panel">
+  <div class="detail-inner" id="detail-content"></div>
+</div>
+
+<!-- ═══ SITEMAP BY TEMPLATE ═══ -->
+<div class="sitemap">
+
+  <!-- T1: HOMEPAGE -->
+  <div class="tpl-section" data-tpl="1">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t1)">1</div>
+      <div>
+        <h3>Homepage</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Hero, pillar navigation, package links, testimonials, trust signals</div>
+      </div>
+      <div class="section-meta">1 page</div>
+      <div class="build-badge" style="background:var(--t1s);color:var(--t1);border:1px solid var(--t1b);">Full Prototype</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t1)">1</div><div class="pnode-info"><span class="pnode-name">Homepage</span><span class="pnode-url">/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+  <!-- T2: PILLAR PAGES -->
+  <div class="tpl-section" data-tpl="2">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t2)">2</div>
+      <div>
+        <h3>Pillar Pages</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Progressive disclosure, cluster grid navigation, inline CTAs, pillar-specific color coding</div>
+      </div>
+      <div class="section-meta">4 pages</div>
+      <div class="build-badge" style="background:var(--t2s);color:var(--t2);border:1px solid var(--t2b);">Full Prototype (each)</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t2)">2</div><div class="pnode-info"><span class="pnode-name">Business Privacy</span><span class="pnode-url">/privacy/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t2)">2</div><div class="pnode-info"><span class="pnode-name">Asset Protection</span><span class="pnode-url">/asset-protection/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t2)">2</div><div class="pnode-info"><span class="pnode-name">Company Formation</span><span class="pnode-url">/formation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t2)">2</div><div class="pnode-info"><span class="pnode-name">Compliance</span><span class="pnode-url">/compliance/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+  <!-- T3: CLUSTER PAGES -->
+  <div class="tpl-section" data-tpl="3">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t3)">3</div>
+      <div>
+        <h3>Cluster Pages</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Long-form content, FAQ accordion, related links, cross-pillar nav, package CTAs</div>
+      </div>
+      <div class="section-meta">24+ pages</div>
+      <div class="build-badge" style="background:var(--t3s);color:var(--t3);border:1px solid var(--t3b);">1 Representative</div>
+    </div>
+    <div class="page-nodes">
+      <!-- Privacy clusters -->
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Anonymous LLC</span><span class="pnode-url">/anonymous-llc/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Anon Corporation</span><span class="pnode-url">/anonymous-corporation/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Nominee Services</span><span class="pnode-url">/nominee-services/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">WY Privacy</span><span class="pnode-url">/wyoming-privacy/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">NV Privacy</span><span class="pnode-url">/nevada-privacy/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">CA Private Inc.</span><span class="pnode-url">/california-private-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">FL Private Inc.</span><span class="pnode-url">/florida-private-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">BOI Reporting</span><span class="pnode-url">/beneficial-ownership-reporting/</span></div><span class="pnode-pri p2">P2</span></div>
+      <!-- Asset clusters -->
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">NV Asset Protection</span><span class="pnode-url">/nevada-asset-protection/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">WY Asset Protection</span><span class="pnode-url">/wyoming-asset-protection/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Charging Order</span><span class="pnode-url">/charging-order-protection/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Investment Hold LLC</span><span class="pnode-url">/investment-holding-llc/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Real Estate AP</span><span class="pnode-url">/real-estate-asset-protection/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">LLC vs Living Trust</span><span class="pnode-url">/llc-vs-living-trust/</span></div><span class="pnode-pri p2">P2</span></div>
+      <!-- Formation clusters -->
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Wyoming LLC</span><span class="pnode-url">/wyoming-llc/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Nevada LLC</span><span class="pnode-url">/nevada-llc/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">WY Corporation</span><span class="pnode-url">/wyoming-corporation/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">NV Corporation</span><span class="pnode-url">/nevada-corporation/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Shelf Companies</span><span class="pnode-url">/shelf-companies/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Series LLC</span><span class="pnode-url">/series-llc/</span></div><span class="pnode-pri p2">P2</span></div>
+      <!-- Compliance clusters -->
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Registered Agent</span><span class="pnode-url">/registered-agent/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">WY Reg Agent</span><span class="pnode-url">/wyoming-registered-agent/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">NV Reg Agent</span><span class="pnode-url">/nevada-registered-agent/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Annual Reports</span><span class="pnode-url">/annual-reports/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Foreign Reg</span><span class="pnode-url">/foreign-state-registration/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-compliance"><div class="pnode-tpl" style="background:var(--t3)">3</div><div class="pnode-info"><span class="pnode-name">Domestication</span><span class="pnode-url">/domestication/</span></div><span class="pnode-pri p2">P2</span></div>
+    </div>
+  </div>
+
+  <!-- T4: PACKAGE DETAIL -->
+  <div class="tpl-section" data-tpl="4">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t4)">4</div>
+      <div>
+        <h3>Package Detail Pages</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">3-tier pricing, tooltips, add-on configurator, LLC/Corp toggle, progressive disclosure</div>
+      </div>
+      <div class="section-meta">8 pages</div>
+      <div class="build-badge" style="background:var(--t4s);color:var(--t4);border:1px solid var(--t4b);">Full Prototype</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">WY Gold (Private)</span><span class="pnode-url">/wyoming-private-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">WY Silver</span><span class="pnode-url">/wyoming-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">NV Gold (Private)</span><span class="pnode-url">/nevada-private-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">NV Silver</span><span class="pnode-url">/nevada-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">NV Bronze (Basic)</span><span class="pnode-url">/nevada-basic-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">CA Private</span><span class="pnode-url">/california-private-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">FL Private</span><span class="pnode-url">/florida-private-incorporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t4)">4</div><div class="pnode-info"><span class="pnode-name">Shelf Companies</span><span class="pnode-url">/shelf-companies/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+  <!-- T5: COMPARISON -->
+  <div class="tpl-section" data-tpl="5">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t5)">5</div>
+      <div>
+        <h3>Comparison Pages</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Side-by-side tables, decision flow, dual CTAs, responsive mobile adaptation</div>
+      </div>
+      <div class="section-meta">6 pages</div>
+      <div class="build-badge" style="background:var(--t5s);color:var(--t5);border:1px solid var(--t5b);">1 Representative</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t5)">5</div><div class="pnode-info"><span class="pnode-name">Best State for Privacy</span><span class="pnode-url">/best-state-for-privacy/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-privacy"><div class="pnode-tpl" style="background:var(--t5)">5</div><div class="pnode-info"><span class="pnode-name">WY vs NV Privacy</span><span class="pnode-url">/wyoming-vs-nevada-privacy/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t5)">5</div><div class="pnode-info"><span class="pnode-name">Best State for AP</span><span class="pnode-url">/best-state-asset-protection/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-asset"><div class="pnode-tpl" style="background:var(--t5)">5</div><div class="pnode-info"><span class="pnode-name">WY vs NV AP</span><span class="pnode-url">/wyoming-vs-nevada-asset-protection/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t5)">5</div><div class="pnode-info"><span class="pnode-name">LLC vs Corporation</span><span class="pnode-url">/llc-vs-corporation/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode pillar-formation"><div class="pnode-tpl" style="background:var(--t5)">5</div><div class="pnode-info"><span class="pnode-name">WY vs NV Formation</span><span class="pnode-url">/wyoming-vs-nevada/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+  <!-- T6: STATE HUBS -->
+  <div class="tpl-section" data-tpl="6">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t6)">6</div>
+      <div>
+        <h3>State Hub Pages</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Cross-pillar aggregation, dynamic linking to all state content across 4 pillars</div>
+      </div>
+      <div class="section-meta">4 pages</div>
+      <div class="build-badge" style="background:var(--t6s);color:var(--t6);border:1px solid var(--t6b);">1 Representative</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t6)">6</div><div class="pnode-info"><span class="pnode-name">Wyoming Hub</span><span class="pnode-url">/wyoming/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t6)">6</div><div class="pnode-info"><span class="pnode-name">Nevada Hub</span><span class="pnode-url">/nevada/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t6)">6</div><div class="pnode-info"><span class="pnode-name">California Hub</span><span class="pnode-url">/california/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t6)">6</div><div class="pnode-info"><span class="pnode-name">Florida Hub</span><span class="pnode-url">/florida/</span></div><span class="pnode-pri p2">P2</span></div>
+    </div>
+  </div>
+
+  <!-- T7: RESOURCE/FAQ -->
+  <div class="tpl-section" data-tpl="7">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t7)">7</div>
+      <div>
+        <h3>Resource / FAQ</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Search/filter, accordion system for 188+ items, category navigation, related content</div>
+      </div>
+      <div class="section-meta">2 pages</div>
+      <div class="build-badge" style="background:var(--t7s);color:var(--t7);border:1px solid var(--t7b);">1 Representative</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t7)">7</div><div class="pnode-info"><span class="pnode-name">FAQ Hub</span><span class="pnode-url">/faq/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t7)">7</div><div class="pnode-info"><span class="pnode-name">Compare All Packages</span><span class="pnode-url">/compare-packages/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+  <!-- T8: CHECKOUT -->
+  <div class="tpl-section" data-tpl="8">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t8)">8</div>
+      <div>
+        <h3>Checkout Flow</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Multi-step form, step indicator, validation, payment gateway, order confirmation</div>
+      </div>
+      <div class="section-meta">4 steps</div>
+      <div class="build-badge" style="background:var(--t8s);color:var(--t8);border:1px solid var(--t8b);">Full Multi-Step</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t8)">8</div><div class="pnode-info"><span class="pnode-name">1. Package Config</span><span class="pnode-url">/checkout/configure/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div style="display:flex;align-items:center;color:var(--ink4);font-size:.75rem;">\u2192</div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t8)">8</div><div class="pnode-info"><span class="pnode-name">2. Entity Details</span><span class="pnode-url">/checkout/details/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div style="display:flex;align-items:center;color:var(--ink4);font-size:.75rem;">\u2192</div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t8)">8</div><div class="pnode-info"><span class="pnode-name">3. Payment</span><span class="pnode-url">/checkout/payment/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div style="display:flex;align-items:center;color:var(--ink4);font-size:.75rem;">\u2192</div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t8)">8</div><div class="pnode-info"><span class="pnode-name">4. Confirmation</span><span class="pnode-url">/checkout/confirmation/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+  <!-- T9: UTILITY -->
+  <div class="tpl-section" data-tpl="9">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--t9)">9</div>
+      <div>
+        <h3>Utility Pages</h3>
+        <div style="font-size:.7rem;color:var(--ink3);">Standard content + contact form variant + legal pages + offshore hub</div>
+      </div>
+      <div class="section-meta">16 pages</div>
+      <div class="build-badge" style="background:var(--t9s);color:var(--t9);border:1px solid var(--t9b);">1 Representative</div>
+    </div>
+    <div class="page-nodes">
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">About Us</span><span class="pnode-url">/about/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Contact</span><span class="pnode-url">/contact/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Blog</span><span class="pnode-url">/blog/</span></div><span class="pnode-pri p2">P2</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Testimonials</span><span class="pnode-url">/testimonials/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Client Login</span><span class="pnode-url">/login/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Privacy Policy</span><span class="pnode-url">/privacy-policy/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Terms of Service</span><span class="pnode-url">/terms/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Offshore Hub</span><span class="pnode-url">/offshore/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Nevis</span><span class="pnode-url">/offshore/nevis/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">BVI</span><span class="pnode-url">/offshore/bvi/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Panama</span><span class="pnode-url">/offshore/panama/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">Hong Kong</span><span class="pnode-url">/offshore/hong-kong/</span></div><span class="pnode-pri p1">P1</span></div>
+      <div class="pnode"><div class="pnode-tpl" style="background:var(--t9)">9</div><div class="pnode-info"><span class="pnode-name">IRS Compliance</span><span class="pnode-url">/offshore/irs-compliance/</span></div><span class="pnode-pri p1">P1</span></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="foot">
+  <span>BIT Studios × Incorporate123</span>
+  <span>9 Templates · 71 Pages · Phase 2 Information Architecture</span>
+  <span>Confidential · March 2026</span>
+</footer>
+
+<script>
+const templateData = {
+  1: {
+    name: 'Homepage',
+    interactions: ['Hero with dual CTA (Get Started / Schedule Consultation)', 'Pillar navigation cards with hover states', 'Featured package links with pricing preview', 'Testimonial carousel / rotation', 'Trust signals bar (25 years, BBB, reviews)', 'Mega menu integration point'],
+    components: ['HeroSection', 'PillarNavCard', 'PackagePreviewCard', 'TestimonialCarousel', 'TrustBar', 'CTAButton (primary + secondary)'],
+    color: '--t1'
+  },
+  2: {
+    name: 'Pillar Pages',
+    interactions: ['Progressive disclosure (show more / collapse)', 'Cluster grid navigation with pillar-colored cards', 'Inline CTAs between content sections', 'Breadcrumbs (Home > Pillar)', 'Sidebar nav showing all clusters', 'Cross-pillar upsell CTAs'],
+    components: ['ProgressiveDisclosure', 'ClusterGrid', 'InlineCTA', 'Breadcrumbs', 'SidebarNav', 'PillarColorSystem'],
+    color: '--t2'
+  },
+  3: {
+    name: 'Cluster Pages',
+    interactions: ['Long-form content with heading navigation', 'FAQ accordion (expandable sections)', 'Related links sidebar', 'Package CTA bottom block', 'Cross-pillar contextual links', 'Breadcrumbs (Home > Pillar > Cluster)'],
+    components: ['ContentLayout', 'FAQAccordion', 'RelatedLinks', 'PackageCTABlock', 'CrossPillarCTA', 'Breadcrumbs'],
+    color: '--t3'
+  },
+  4: {
+    name: 'Package Detail',
+    interactions: ['3-tier pricing comparison grid (Bronze/Silver/Gold)', 'Interactive tooltips on line items', 'Add-on configurator with live price update', 'LLC / Corporation toggle switch', 'Progressive disclosure for package details', 'Dual CTAs: Start Now + Schedule Consultation', '"Also Consider" related packages sidebar'],
+    components: ['PricingGrid', 'TooltipSystem', 'AddOnConfigurator', 'EntityToggle', 'ProgressiveDisclosure', 'DualCTA', 'RelatedPackages'],
+    color: '--t4'
+  },
+  5: {
+    name: 'Comparison Pages',
+    interactions: ['Side-by-side comparison table', 'Decision flow guidance ("If you need X, choose Y")', 'Dual CTAs per compared option', 'Mobile: stacked cards instead of table', 'Highlight recommended option', 'Back to pillar breadcrumb'],
+    components: ['ComparisonTable', 'DecisionFlow', 'DualOptionCTA', 'MobileComparisonCards', 'RecommendBadge', 'Breadcrumbs'],
+    color: '--t5'
+  },
+  6: {
+    name: 'State Hub Pages',
+    interactions: ['Cross-pillar content aggregation', 'Dynamic linking organized by pillar', 'State-specific trust signals', 'Package recommendations for that state', 'All 4 pillar sections in one page'],
+    components: ['PillarSection (×4)', 'StatePackageGrid', 'StateTrustSignals', 'PillarColorBadges', 'DynamicLinks'],
+    color: '--t6'
+  },
+  7: {
+    name: 'Resource / FAQ',
+    interactions: ['Search input with live filtering', 'Accordion system for 188+ FAQ items', 'Category navigation / pillar filter', 'Related content suggestions', 'Expandable answers with rich content'],
+    components: ['SearchFilter', 'FAQAccordion (bulk)', 'CategoryNav', 'RelatedContent', 'RichTextAnswer'],
+    color: '--t7'
+  },
+  8: {
+    name: 'Checkout Flow',
+    interactions: ['Multi-step progress indicator', 'Step 1: Package config + add-ons + entity type', 'Step 2: Entity details form with validation', 'Step 3: Payment gateway (Stripe/PayPal)', 'Step 4: Confirmation + next steps + portal access', 'Order summary persistence across steps', 'Form validation with inline error messaging'],
+    components: ['StepIndicator', 'PackageConfigurator', 'EntityForm', 'PaymentGateway', 'OrderSummary', 'ConfirmationPage', 'FormValidation'],
+    color: '--t8'
+  },
+  9: {
+    name: 'Utility Pages',
+    interactions: ['Standard content layout', 'Contact form variant with consultation CTA', 'Legal page variant (minimal)', 'Offshore hub variant with sub-navigation', 'Blog listing with pillar categories'],
+    components: ['ContentLayout', 'ContactForm', 'LegalTemplate', 'OffshoreSubNav', 'BlogListing'],
+    color: '--t9'
+  }
+};
+
+let activeTemplate = null;
+
+function filterTemplate(t) {
+  const cards = document.querySelectorAll('.tpl-card');
+  const sections = document.querySelectorAll('.tpl-section');
+
+  if (activeTemplate === t) {
+    // deselect — show all
+    activeTemplate = null;
+    cards.forEach(c => c.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('dimmed'));
+    document.getElementById('detail-panel').style.maxHeight = '0';
+    return;
+  }
+
+  activeTemplate = t;
+  cards.forEach(c => { c.classList.toggle('active', c.dataset.t == t); });
+  sections.forEach(s => { s.classList.toggle('dimmed', s.dataset.tpl != t); });
+
+  // show detail panel
+  const d = templateData[t];
+  const colorVar = d.color;
+  const panel = document.getElementById('detail-panel');
+  const content = document.getElementById('detail-content');
+
+  content.innerHTML = `
+    <h3 style="color:var(${colorVar})">Template ${t}: ${d.name}</h3>
+    <div class="detail-col">
+      <h4>Key Interactions to Build</h4>
+      <ul>${d.interactions.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>
+    <div class="detail-col">
+      <h4>Components Required</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;padding-top:.2rem;">
+        ${d.components.map(c => `<span class="interaction-tag" style="background:var(${colorVar}s,#f0f0f0);color:var(${colorVar});border:1px solid var(${colorVar}b,#ddd);">${c}</span>`).join('')}
+      </div>
+    </div>
+  `;
+  panel.style.maxHeight = '400px';
+}
+
+// Open template 1 detail on load
+document.addEventListener('DOMContentLoaded', () => { filterTemplate(1); });
+</script>
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incorporate123 — Privacy, Asset Protection & Business Formation Specialists</title>
+  <meta name="description" content="25 years forming anonymous LLCs and corporations in Wyoming and Nevada. Year-round nominee services, offshore records, and all-inclusive pricing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette */
+      --navy:       #0c1929;
+      --navy-mid:   #132238;
+      --navy-light: #1a2d47;
+      --navy-hover: #243b5a;
+      --gold:       #c8a55a;
+      --gold-light: #ddc07a;
+      --gold-dim:   rgba(200,165,90,0.15);
+      --blue:       #4a8eff;
+      --blue-dim:   rgba(74,142,255,0.12);
+      --green:      #3ecf8e;
+      --green-dim:  rgba(62,207,142,0.12);
+      --purple:     #a78bfa;
+      --purple-dim: rgba(167,139,250,0.12);
+      --amber:      #f0b429;
+      --white:      #ffffff;
+      --off-white:  #f0eee6;
+      --text:       #cad5e2;
+      --text-dim:   #7a8ba3;
+      --border:     rgba(255,255,255,0.06);
+      --border-light: rgba(255,255,255,0.1);
+      --surface:    #fafaf7;
+      --surface-alt:#f4f2ec;
+
+      /* Type */
+      --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-body:    'Outfit', system-ui, -apple-system, sans-serif;
+    }
+
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise Texture ── */
+    .grain::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 180px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .grain > * { position: relative; z-index: 2; }
+
+    /* ── Reveals ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: 80ms; }
+    .reveal.d2 { transition-delay: 160ms; }
+    .reveal.d3 { transition-delay: 240ms; }
+    .reveal.d4 { transition-delay: 320ms; }
+    .reveal.d5 { transition-delay: 400ms; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 600; border-radius: 10px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); cursor: pointer; text-decoration: none; border: none; line-height: 1; white-space: nowrap; }
+    .btn:active { transform: scale(0.97); }
+    .btn-gold { background: var(--gold); color: var(--navy); padding: 15px 28px; font-size: 15px; }
+    .btn-gold:hover { background: var(--gold-light); box-shadow: 0 8px 30px rgba(200,165,90,0.3); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); padding: 14px 28px; font-size: 15px; }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); transform: translateY(-1px); }
+    .btn-outline-dark { background: transparent; color: var(--navy); border: 1.5px solid rgba(12,25,41,0.2); padding: 14px 28px; font-size: 15px; }
+    .btn-outline-dark:hover { border-color: var(--navy); background: rgba(12,25,41,0.04); }
+    .btn-gold-sm { background: var(--gold); color: var(--navy); padding: 12px 22px; font-size: 13px; }
+    .btn-gold-sm:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-sm { padding: 12px 22px; font-size: 13px; }
+
+    /* ── Glass Card ── */
+    .glass { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .glass:hover { border-color: var(--border-light); background: rgba(255,255,255,0.05); }
+
+    /* ── Light Card ── */
+    .lcard { background: var(--white); border: 1px solid #e8e4da; border-radius: 16px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .lcard:hover { border-color: #d4cfc3; box-shadow: 0 16px 48px rgba(12,25,41,0.08); transform: translateY(-3px); }
+
+    /* ── Container ── */
+    .container { max-width: 1180px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+    @media (min-width: 768px) { .container { padding-left: 32px; padding-right: 32px; } }
+
+    /* ── Mega Menu ── */
+    .mega { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-4px); opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 60; }
+    .mega.open { display: block; opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── Mobile Drawer ── */
+    .mob-drawer { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .mob-drawer.open { max-height: 85vh; overflow-y: auto; }
+    .mob-acc { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+    .mob-acc.open { max-height: 400px; }
+
+    /* ── Sticky mobile CTA ── */
+    .stick-cta { transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .stick-cta.vis { transform: translateY(0); }
+
+    /* ── Carousel ── */
+    .carousel-track { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+
+    /* ── Glow effects ── */
+    .glow-gold { box-shadow: 0 0 60px rgba(200,165,90,0.15), 0 0 120px rgba(200,165,90,0.06); }
+    .glow-blue { box-shadow: 0 0 80px rgba(74,142,255,0.08); }
+
+    /* ── Dashed line ── */
+    .dash { background: repeating-linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15) 6px, transparent 6px, transparent 14px); height: 1px; }
+
+    /* ── Hero animated elements ── */
+    @keyframes orbit { 0% { transform: rotate(0deg) translateX(140px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(140px) rotate(-360deg); } }
+    @keyframes orbit2 { 0% { transform: rotate(120deg) translateX(180px) rotate(-120deg); } 100% { transform: rotate(480deg) translateX(180px) rotate(-480deg); } }
+    @keyframes orbit3 { 0% { transform: rotate(240deg) translateX(110px) rotate(-240deg); } 100% { transform: rotate(600deg) translateX(110px) rotate(-600deg); } }
+    @keyframes breathe { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .orbit-1 { animation: orbit 20s linear infinite; }
+    .orbit-2 { animation: orbit2 28s linear infinite; }
+    .orbit-3 { animation: orbit3 16s linear infinite; }
+    .breathe { animation: breathe 4s ease-in-out infinite; }
+
+    /* ── Pillar colors ── */
+    .pillar-blue { --pc: #4a8eff; --pbg: rgba(74,142,255,0.08); }
+    .pillar-green { --pc: #3ecf8e; --pbg: rgba(62,207,142,0.08); }
+    .pillar-amber { --pc: #f0b429; --pbg: rgba(240,180,41,0.08); }
+    .pillar-purple { --pc: #a78bfa; --pbg: rgba(167,139,250,0.08); }
+
+    /* ── Inline star ── */
+    .star-filled { fill: var(--gold); stroke: var(--gold); }
+
+    /* ── Section divider ── */
+    .sec-divide { height: 1px; background: linear-gradient(90deg, transparent, var(--border-light) 30%, var(--border-light) 70%, transparent); }
+
+    /* ── Responsive helpers ── */
+    @media (max-width: 1023px) { .lg-hide { display: none !important; } }
+    @media (min-width: 1024px) { .lg-show { display: none !important; } }
+    @media (max-width: 767px) { .md-hide { display: none !important; } }
+    @media (min-width: 768px) { .md-show { display: none !important; } }
+    @media (max-width: 639px) { .sm-hide { display: none !important; } }
+    @media (min-width: 640px) { .sm-show { display: none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- Skip nav -->
+<a href="#main" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--gold);color:var(--navy);padding:8px 16px;border-radius:0 0 8px 0;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to main content</a>
+
+<!-- ════════════════════════════════════════
+     UTILITY BAR
+     ════════════════════════════════════════ -->
+<div class="lg-show" style="display:none;"></div>
+<div class="lg-hide" style="background:var(--navy);border-bottom:1px solid var(--border);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:34px;font-size:12px;letter-spacing:0.03em;">
+    <a href="tel:+17755550123" style="color:var(--text-dim);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">
+      <i data-lucide="phone" style="width:12px;height:12px;"></i> (775) 555-0123
+    </a>
+    <span style="color:var(--text-dim);opacity:0.6;">Privacy, Asset Protection & Business Formation Specialists</span>
+    <a href="#" style="color:var(--text-dim);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'" aria-label="Client Login">Client Login →</a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════ -->
+<header id="site-header" style="position:sticky;top:0;z-index:50;background:rgba(12,25,41,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:60px;">
+    <!-- Logo -->
+    <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;" aria-label="Incorporate123 Home">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#b8923a);display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="shield" style="width:20px;height:20px;color:var(--navy);"></i>
+      </div>
+      <span style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--white);letter-spacing:-0.01em;">
+        Incorporate<span style="color:var(--gold);">123</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="lg-hide" style="display:flex;align-items:center;gap:2px;" aria-label="Primary navigation">
+      <div style="position:relative;" data-mega-wrap="privacy">
+        <button onclick="toggleMega('privacy')" class="nav-link" style="display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--text);background:none;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Privacy <i data-lucide="chevron-down" style="width:13px;height:13px;"></i></button>
+        <div class="mega" id="mega-privacy" style="min-width:520px;margin-top:8px;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:14px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+              <div>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;">Topics</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Anonymous LLC Formation</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Nominee Services</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Wyoming Private Incorporation</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Nevada Private Incorporation</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">California Private LLC</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Florida Private LLC</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Offshore Privacy</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">BOI Reporting</a>
+              </div>
+              <div>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;">Compare</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Wyoming vs Nevada Privacy</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Best State for Privacy</a>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;margin-top:20px;">Quick Links</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Gold Packages (Privacy) →</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Schedule Consultation →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;" data-mega-wrap="asset">
+        <button onclick="toggleMega('asset')" class="nav-link" style="display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--text);background:none;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Asset Protection <i data-lucide="chevron-down" style="width:13px;height:13px;"></i></button>
+        <div class="mega" id="mega-asset" style="min-width:480px;margin-top:8px;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:14px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+              <div>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;">Topics</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Charging Order Protection</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Wyoming Asset Protection</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Nevada Asset Protection</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Investment Holding LLC</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Real Estate AP</a>
+              </div>
+              <div>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;">Compare</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Wyoming vs Nevada AP</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Best State for AP</a>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;margin-top:20px;">Quick Links</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Gold Packages (AP) →</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Schedule Consultation →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;" data-mega-wrap="formation">
+        <button onclick="toggleMega('formation')" class="nav-link" style="display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--text);background:none;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Formation <i data-lucide="chevron-down" style="width:13px;height:13px;"></i></button>
+        <div class="mega" id="mega-formation" style="min-width:420px;margin-top:8px;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:14px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+              <div>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;">Topics</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Wyoming LLC</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Nevada LLC</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Wyoming Corporation</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:6px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Nevada Corporation</a>
+              </div>
+              <div>
+                <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:12px;">Quick Links</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Silver Packages →</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Compare All Packages →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;" data-mega-wrap="packages">
+        <button onclick="toggleMega('packages')" class="nav-link" style="display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--text);background:none;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Packages <i data-lucide="chevron-down" style="width:13px;height:13px;"></i></button>
+        <div class="mega" id="mega-packages" style="min-width:400px;margin-top:8px;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:14px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+              <div><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:10px;">Wyoming</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Gold (Privacy)</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Silver (Formation)</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Bronze</a>
+              </div>
+              <div><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:10px;">Nevada</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Gold (Privacy)</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Silver (Formation)</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Bronze</a>
+              </div>
+              <div><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:10px;">Other</p>
+                <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:5px 0;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text)'">Shelf Companies</a>
+                <a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:5px 0;font-weight:600;margin-top:10px;">Compare All →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;" data-mega-wrap="about">
+        <button onclick="toggleMega('about')" class="nav-link" style="display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--text);background:none;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">About <i data-lucide="chevron-down" style="width:13px;height:13px;"></i></button>
+        <div class="mega" id="mega-about" style="min-width:170px;margin-top:8px;left:auto;right:0;transform:none;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:14px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+            <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all 0.15s;" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">About Us</a>
+            <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all 0.15s;" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Contact</a>
+            <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all 0.15s;" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Testimonials</a>
+            <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all 0.15s;" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">FAQ</a>
+            <a href="#" style="display:block;font-size:13px;color:var(--text);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all 0.15s;" onmouseover="this.style.color='var(--white)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='var(--text)';this.style.background='none'">Blog</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right -->
+    <div style="display:flex;align-items:center;gap:8px;">
+      <a href="tel:+17755550123" class="lg-show" style="padding:8px;color:var(--text);text-decoration:none;" aria-label="Call us"><i data-lucide="phone" style="width:20px;height:20px;"></i></a>
+      <a href="#" class="lg-hide" style="font-size:13px;font-weight:500;color:var(--text-dim);text-decoration:none;padding:8px 12px;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--text-dim)'" aria-label="Client Login">Client Login</a>
+      <a href="#" class="btn btn-gold-sm sm-hide" aria-label="Get Started" style="font-size:13px;">Get Started</a>
+      <button id="ham-btn" onclick="toggleMobileNav()" class="lg-show" style="padding:8px;color:var(--white);background:none;border:none;cursor:pointer;display:none;" aria-label="Open menu">
+        <svg id="ico-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="ico-x" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mob-drawer" class="mob-drawer lg-show" style="border-top:1px solid var(--border);background:var(--navy-mid);display:none;">
+    <div style="padding:12px 20px 16px;">
+      <div id="mba-privacy" style="border-bottom:1px solid var(--border);">
+        <button onclick="toggleAcc('privacy')" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;color:var(--white);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer;font-family:var(--font-body);">Privacy <span id="chev-privacy" style="display:inline-flex;transition:transform 0.25s;"><i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--text-dim);"></i></span></button>
+        <div id="acc-privacy" class="mob-acc" style="padding-left:12px;"><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Anonymous LLC Formation</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Nominee Services</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Wyoming Private Incorporation</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Nevada Private Incorporation</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Offshore Privacy</a><div style="height:8px;"></div></div>
+      </div>
+      <div id="mba-asset" style="border-bottom:1px solid var(--border);">
+        <button onclick="toggleAcc('asset')" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;color:var(--white);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer;font-family:var(--font-body);">Asset Protection <span id="chev-asset" style="display:inline-flex;transition:transform 0.25s;"><i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--text-dim);"></i></span></button>
+        <div id="acc-asset" class="mob-acc" style="padding-left:12px;"><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Charging Order Protection</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Wyoming Asset Protection</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Nevada Asset Protection</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Investment Holding LLC</a><div style="height:8px;"></div></div>
+      </div>
+      <div id="mba-formation" style="border-bottom:1px solid var(--border);">
+        <button onclick="toggleAcc('formation')" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;color:var(--white);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer;font-family:var(--font-body);">Formation <span id="chev-formation" style="display:inline-flex;transition:transform 0.25s;"><i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--text-dim);"></i></span></button>
+        <div id="acc-formation" class="mob-acc" style="padding-left:12px;"><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Wyoming LLC</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Nevada LLC</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Wyoming Corporation</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Nevada Corporation</a><div style="height:8px;"></div></div>
+      </div>
+      <div style="border-bottom:1px solid var(--border);">
+        <button onclick="toggleAcc('packages')" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;color:var(--white);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer;font-family:var(--font-body);">Packages <span id="chev-packages" style="display:inline-flex;transition:transform 0.25s;"><i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--text-dim);"></i></span></button>
+        <div id="acc-packages" class="mob-acc" style="padding-left:12px;"><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">WY Gold (Privacy)</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">WY Silver (Formation)</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">NV Gold (Privacy)</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">NV Silver (Formation)</a><a href="#" style="display:block;font-size:13px;color:var(--gold);text-decoration:none;padding:6px 0;font-weight:600;">Compare All Packages →</a><div style="height:8px;"></div></div>
+      </div>
+      <div>
+        <button onclick="toggleAcc('about')" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;color:var(--white);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer;font-family:var(--font-body);">About <span id="chev-about" style="display:inline-flex;transition:transform 0.25s;"><i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--text-dim);"></i></span></button>
+        <div id="acc-about" class="mob-acc" style="padding-left:12px;"><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">About Us</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">Contact</a><a href="#" style="display:block;font-size:13px;color:var(--text-dim);text-decoration:none;padding:6px 0;">FAQ</a><div style="height:8px;"></div></div>
+      </div>
+      <div style="padding-top:16px;border-top:1px solid var(--border);margin-top:8px;display:flex;flex-direction:column;gap:10px;">
+        <a href="#" class="btn btn-gold" style="justify-content:center;" aria-label="Get Started">Get Started</a>
+        <a href="#" class="btn btn-outline btn-sm" style="justify-content:center;" aria-label="Client Login">Client Login</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ════════════════════════════════════════
+     1. HERO
+     ════════════════════════════════════════ -->
+<section id="hero" class="grain" style="position:relative;min-height:560px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 30% 50%, rgba(74,142,255,0.06) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 80% 30%, rgba(200,165,90,0.05) 0%, transparent 60%), linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);">
+  <div class="container" style="display:flex;align-items:center;min-height:560px;padding-top:48px;padding-bottom:48px;gap:40px;">
+    <!-- Text -->
+    <div style="flex:1;max-width:620px;" class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;border:1px solid var(--gold-dim);background:rgba(200,165,90,0.06);margin-bottom:28px;">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--gold);"></div>
+        <span style="font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase;">Trusted Since 2000 · Privacy Specialists</span>
+      </div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(34px,5vw,56px);font-weight:700;color:var(--white);line-height:1.1;letter-spacing:-0.02em;margin-bottom:24px;">
+        Privacy, Asset Protection &amp; Business Formation —
+        <span style="color:var(--gold);font-style:italic;">All&#8209;Inclusive, Nothing Hidden</span>
+      </h1>
+      <p style="font-size:17px;color:var(--text);line-height:1.7;margin-bottom:36px;max-width:520px;">
+        Year-round nominee services, offshore records, and expert formation in Wyoming and Nevada. 25 years of specialized experience protecting your privacy and assets.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px;">
+        <a href="#" class="btn btn-gold" aria-label="Protect Your Privacy">Protect Your Privacy <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+        <a href="#" class="btn btn-outline" aria-label="View Packages and Pricing">View Packages &amp; Pricing <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+      </div>
+      <!-- Trust Strip -->
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;">
+        <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);font-weight:500;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);"></i> 25 Years</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);font-weight:500;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);"></i> Real Reno Office</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);font-weight:500;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);"></i> All-Inclusive Pricing</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);font-weight:500;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);"></i> Money-Back Guarantee</span>
+      </div>
+    </div>
+    <!-- Visual -->
+    <div class="md-hide" style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;">
+      <div style="position:relative;width:380px;height:380px;">
+        <!-- Outer ring -->
+        <div class="breathe" style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(200,165,90,0.12);"></div>
+        <div style="position:absolute;inset:20px;border-radius:50%;border:1px solid rgba(200,165,90,0.08);"></div>
+        <!-- Inner glow -->
+        <div style="position:absolute;inset:50px;border-radius:50%;background:radial-gradient(circle, rgba(200,165,90,0.08) 0%, transparent 70%);"></div>
+        <!-- Shield center -->
+        <div style="position:absolute;inset:70px;border-radius:50%;background:linear-gradient(135deg,rgba(200,165,90,0.06),rgba(74,142,255,0.04));display:flex;align-items:center;justify-content:center;">
+          <div style="position:relative;">
+            <i data-lucide="shield" style="width:100px;height:100px;color:var(--gold);opacity:0.7;stroke-width:1;"></i>
+            <i data-lucide="lock" style="width:32px;height:32px;color:var(--blue);position:absolute;bottom:-4px;right:-12px;"></i>
+          </div>
+        </div>
+        <!-- Orbiting badges -->
+        <div class="orbit-1" style="position:absolute;top:50%;left:50%;width:0;height:0;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:10px;padding:8px 12px;white-space:nowrap;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--green);transform:translate(-50%,-50%);">
+            <i data-lucide="check-circle" style="width:13px;height:13px;"></i> Privacy Protected
+          </div>
+        </div>
+        <div class="orbit-2" style="position:absolute;top:50%;left:50%;width:0;height:0;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:10px;padding:8px 12px;white-space:nowrap;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--blue);transform:translate(-50%,-50%);">
+            <i data-lucide="globe" style="width:13px;height:13px;"></i> Offshore Records
+          </div>
+        </div>
+        <div class="orbit-3" style="position:absolute;top:50%;left:50%;width:0;height:0;">
+          <div style="background:var(--navy-mid);border:1px solid var(--border-light);border-radius:10px;padding:8px 12px;white-space:nowrap;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--gold);transform:translate(-50%,-50%);">
+            <i data-lucide="award" style="width:13px;height:13px;"></i> Est. 2000
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     2. PILLAR NAVIGATION
+     ════════════════════════════════════════ -->
+<section style="background:var(--surface);padding:80px 0;" class="grain">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:10px;">How Can We Help?</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);color:var(--navy);letter-spacing:-0.01em;margin-bottom:12px;">Choose Your Starting Point</h2>
+      <p style="font-size:16px;color:#6b7280;max-width:540px;margin:0 auto;line-height:1.6;">Whether you need privacy protection, asset shielding, or business formation — we specialize in all three.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+      <!-- Privacy -->
+      <a href="#" class="lcard reveal" style="padding:32px;display:flex;flex-direction:column;text-decoration:none;border-top:4px solid var(--blue);min-height:340px;" aria-label="Explore Privacy Solutions">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="shield" style="width:24px;height:24px;color:var(--blue);"></i>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:22px;color:var(--navy);margin-bottom:8px;">Business Privacy</h3>
+        <p style="font-size:14px;color:#6b7280;line-height:1.6;margin-bottom:20px;">Anonymous LLCs, year-round nominee services, offshore records custodian. Real privacy — not 'nominee for a day.'</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--blue);flex-shrink:0;"></i> Anonymous LLC Formation</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--blue);flex-shrink:0;"></i> Nominee Services</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--blue);flex-shrink:0;"></i> Wyoming/Nevada Private Incorporation</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--blue);flex-shrink:0;"></i> Offshore Privacy</li>
+        </ul>
+        <span style="font-size:14px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:6px;">Explore Privacy Solutions <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></span>
+      </a>
+      <!-- Asset Protection -->
+      <a href="#" class="lcard reveal d1" style="padding:32px;display:flex;flex-direction:column;text-decoration:none;border-top:4px solid var(--green);min-height:340px;" aria-label="Protect Your Assets">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--green-dim);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="vault" style="width:24px;height:24px;color:var(--green);"></i>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:22px;color:var(--navy);margin-bottom:8px;">Asset Protection</h3>
+        <p style="font-size:14px;color:#6b7280;line-height:1.6;margin-bottom:20px;">Charging order protection, holding structures, and multi-entity strategies for individuals with $500K+ in assets.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Charging Order Protection</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Wyoming/Nevada AP</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Investment Holding LLC</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Real Estate AP</li>
+        </ul>
+        <span style="font-size:14px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px;">Protect Your Assets <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></span>
+      </a>
+      <!-- Formation -->
+      <a href="#" class="lcard reveal d2" style="padding:32px;display:flex;flex-direction:column;text-decoration:none;border-top:4px solid var(--amber);min-height:340px;" aria-label="Start Your Company">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(240,180,41,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="building-2" style="width:24px;height:24px;color:var(--amber);"></i>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:22px;color:var(--navy);margin-bottom:8px;">Company Formation</h3>
+        <p style="font-size:14px;color:#6b7280;line-height:1.6;margin-bottom:20px;">Expert LLC and Corporation formation in Wyoming and Nevada. Everything included — registered agent, EIN, operating agreement, state fees.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--amber);flex-shrink:0;"></i> Wyoming LLC</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--amber);flex-shrink:0;"></i> Nevada LLC</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--amber);flex-shrink:0;"></i> Wyoming Corporation</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:5px 0;"><i data-lucide="chevron-right" style="width:14px;height:14px;color:var(--amber);flex-shrink:0;"></i> Nevada Corporation</li>
+        </ul>
+        <span style="font-size:14px;font-weight:600;color:var(--amber);display:flex;align-items:center;gap:6px;">Start Your Company <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     3. PACKAGES
+     ════════════════════════════════════════ -->
+<section class="grain" style="background:var(--navy);padding:80px 0;position:relative;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:10px;">Ready to Get Started?</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);color:var(--white);letter-spacing:-0.01em;margin-bottom:12px;">All-Inclusive Packages — See Exactly What's Included</h2>
+      <p style="font-size:16px;color:var(--text-dim);max-width:520px;margin:0 auto;">Transparent pricing with everything bundled. No hidden fees, no surprise add-ons.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+      <!-- Wyoming Gold -->
+      <a href="#" class="glass reveal" style="padding:28px;display:flex;flex-direction:column;text-decoration:none;position:relative;border-color:var(--gold) !important;box-shadow:0 0 40px rgba(200,165,90,0.08);" aria-label="View Wyoming Gold details">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;padding:4px 14px;border-radius:100px;letter-spacing:0.04em;white-space:nowrap;">MOST POPULAR</div>
+        <div style="display:flex;gap:6px;margin-bottom:14px;margin-top:4px;">
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.06);color:var(--text-dim);">Wyoming</span>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:var(--gold-dim);color:var(--gold);">Gold · Privacy</span>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:6px;">Wyoming Gold Package</h3>
+        <div style="margin-bottom:4px;"><span style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--white);">$1,275</span><span style="font-size:12px;color:var(--text-dim);margin-left:6px;">all-inclusive</span></div>
+        <p style="font-size:12px;color:var(--text-dim);margin-bottom:20px;">$525/year with nominees</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;">
+          <li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Year-Round Nominees</li>
+          <li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Registered Agent</li>
+          <li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> EIN Filing</li>
+          <li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Operating Agreement</li>
+        </ul>
+        <span style="font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px;">View Full Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></span>
+      </a>
+      <!-- Nevada Gold -->
+      <a href="#" class="glass reveal d1" style="padding:28px;display:flex;flex-direction:column;text-decoration:none;" aria-label="View Nevada Gold details">
+        <div style="display:flex;gap:6px;margin-bottom:14px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.06);color:var(--text-dim);">Nevada</span><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:var(--gold-dim);color:var(--gold);">Gold · Privacy</span></div>
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:6px;">Nevada Gold Package</h3>
+        <div style="margin-bottom:4px;"><span style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--white);">$1,800</span><span style="font-size:12px;color:var(--text-dim);margin-left:6px;">all-inclusive</span></div>
+        <p style="font-size:12px;color:var(--text-dim);margin-bottom:20px;">$525/year with nominees</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;"><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Year-Round Nominees</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Registered Agent</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> EIN Filing</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Operating Agreement</li></ul>
+        <span style="font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px;">View Full Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></span>
+      </a>
+      <!-- Wyoming Silver -->
+      <a href="#" class="glass reveal d2" style="padding:28px;display:flex;flex-direction:column;text-decoration:none;" aria-label="View Wyoming Silver details">
+        <div style="display:flex;gap:6px;margin-bottom:14px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.06);color:var(--text-dim);">Wyoming</span><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.04);color:var(--text-dim);">Silver · Formation</span></div>
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:6px;">Wyoming Silver Package</h3>
+        <div style="margin-bottom:4px;"><span style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--white);">$875</span><span style="font-size:12px;color:var(--text-dim);margin-left:6px;">all-inclusive</span></div>
+        <p style="font-size:12px;color:var(--text-dim);margin-bottom:20px;">$225/year</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;"><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Registered Agent</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> EIN Filing</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Operating Agreement</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> State Filing Fees</li></ul>
+        <span style="font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px;">View Full Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></span>
+      </a>
+      <!-- Nevada Silver -->
+      <a href="#" class="glass reveal d3" style="padding:28px;display:flex;flex-direction:column;text-decoration:none;" aria-label="View Nevada Silver details">
+        <div style="display:flex;gap:6px;margin-bottom:14px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.06);color:var(--text-dim);">Nevada</span><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.04);color:var(--text-dim);">Silver · Formation</span></div>
+        <h3 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:6px;">Nevada Silver Package</h3>
+        <div style="margin-bottom:4px;"><span style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--white);">$1,275</span><span style="font-size:12px;color:var(--text-dim);margin-left:6px;">all-inclusive</span></div>
+        <p style="font-size:12px;color:var(--text-dim);margin-bottom:20px;">$325/year</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;flex:1;"><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Registered Agent</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> EIN Filing</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> Operating Agreement</li><li style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);padding:5px 0;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--green);flex-shrink:0;"></i> State Filing Fees</li></ul>
+        <span style="font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px;">View Full Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></span>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:32px;" class="reveal"><a href="#" style="font-size:14px;font-weight:600;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Compare All Packages <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     4. DIFFERENTIATOR GRID
+     ════════════════════════════════════════ -->
+<section style="background:var(--surface);padding:80px 0;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);color:var(--navy);letter-spacing:-0.01em;margin-bottom:12px;">Why Clients Choose Incorporate123</h2>
+      <p style="font-size:16px;color:#6b7280;max-width:580px;margin:0 auto;">25 years of specialized privacy and formation expertise — not a budget filing service, not a $5,000 consultation.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px 40px;">
+      <div style="display:flex;gap:16px;" class="reveal"><div style="width:44px;height:44px;border-radius:12px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="clock" style="width:22px;height:22px;color:var(--gold);"></i></div><div><h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Year-Round Nominees Included</h3><p style="font-size:14px;color:#6b7280;line-height:1.6;">Not 'nominee for a day' — your nominees serve all year, every year. Included in Gold packages at no extra cost.</p></div></div>
+      <div style="display:flex;gap:16px;" class="reveal d1"><div style="width:44px;height:44px;border-radius:12px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="globe" style="width:22px;height:22px;color:var(--gold);"></i></div><div><h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Offshore Records Since 2012</h3><p style="font-size:14px;color:#6b7280;line-height:1.6;">Corporate records stored offshore for genuine privacy. Free with every Gold package — competitors charge $400–$5,000/year.</p></div></div>
+      <div style="display:flex;gap:16px;" class="reveal d2"><div style="width:44px;height:44px;border-radius:12px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="dollar-sign" style="width:22px;height:22px;color:var(--gold);"></i></div><div><h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">All-Inclusive Pricing</h3><p style="font-size:14px;color:#6b7280;line-height:1.6;">Formation, registered agent, EIN, operating agreement, and state fees — all bundled. No surprise add-ons at checkout.</p></div></div>
+      <div style="display:flex;gap:16px;" class="reveal d3"><div style="width:44px;height:44px;border-radius:12px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="map-pin" style="width:22px;height:22px;color:var(--gold);"></i></div><div><h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Real Reno Office</h3><p style="font-size:14px;color:#6b7280;line-height:1.6;">Not a P.O. box operation. Professional offices in Reno, Nevada with real staff and a physical address you can visit.</p></div></div>
+      <div style="display:flex;gap:16px;" class="reveal d4"><div style="width:44px;height:44px;border-radius:12px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="award" style="width:22px;height:22px;color:var(--gold);"></i></div><div><h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">25 Years of Specialization</h3><p style="font-size:14px;color:#6b7280;line-height:1.6;">Focused exclusively on Wyoming and Nevada privacy formation since 2000. Depth over breadth.</p></div></div>
+      <div style="display:flex;gap:16px;" class="reveal d5"><div style="width:44px;height:44px;border-radius:12px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i data-lucide="phone" style="width:22px;height:22px;color:var(--gold);"></i></div><div><h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Talk to a Real Person</h3><p style="font-size:14px;color:#6b7280;line-height:1.6;">Have questions? Call us directly. No chatbots, no offshore call centers, no sales pressure.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     5. TESTIMONIALS
+     ════════════════════════════════════════ -->
+<section class="grain" style="background:var(--navy);padding:64px 0;position:relative;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);color:var(--white);margin-bottom:8px;">Trusted by Business Owners Nationwide</h2>
+      <p style="font-size:14px;color:var(--text-dim);">Join hundreds of satisfied clients.</p>
+    </div>
+    <!-- Desktop -->
+    <div class="md-hide" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="glass reveal" style="padding:28px;display:flex;flex-direction:column;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;"><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p style="font-size:14px;color:var(--text);line-height:1.7;font-style:italic;flex:1;margin-bottom:20px;">"I needed true anonymity for my real estate holdings — not the 'nominee for a day' that other services offer. Incorporate123 set up year-round nominees and offshore records. Three years later, my privacy is airtight."</p>
+        <div style="border-top:1px solid var(--border);padding-top:16px;"><p style="font-size:14px;font-weight:600;color:var(--white);">Michael R.</p><p style="font-size:12px;color:var(--text-dim);">California · 2023 · Privacy &amp; Nominee Services</p></div>
+      </div>
+      <div class="glass reveal d1" style="padding:28px;display:flex;flex-direction:column;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;"><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p style="font-size:14px;color:var(--text);line-height:1.7;font-style:italic;flex:1;margin-bottom:20px;">"We formed our Wyoming LLC in under a week. Everything was included — registered agent, EIN, operating agreement. No hidden fees, no surprise charges at checkout. The all-inclusive pricing is exactly what they promise."</p>
+        <div style="border-top:1px solid var(--border);padding-top:16px;"><p style="font-size:14px;font-weight:600;color:var(--white);">Sarah K.</p><p style="font-size:12px;color:var(--text-dim);">Florida · 2024 · Wyoming LLC Formation</p></div>
+      </div>
+      <div class="glass reveal d2" style="padding:28px;display:flex;flex-direction:column;">
+        <div style="display:flex;gap:3px;margin-bottom:16px;"><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="16" height="16" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p style="font-size:14px;color:var(--text);line-height:1.7;font-style:italic;flex:1;margin-bottom:20px;">"I called with questions about asset protection and actually spoke to a real person who understood Nevada law. After dealing with chatbots and call centers at other services, this was a breath of fresh air."</p>
+        <div style="border-top:1px solid var(--border);padding-top:16px;"><p style="font-size:14px;font-weight:600;color:var(--white);">James T.</p><p style="font-size:12px;color:var(--text-dim);">Texas · 2024 · Responsive Support</p></div>
+      </div>
+    </div>
+    <!-- Mobile carousel -->
+    <div class="md-show" style="overflow:hidden;border-radius:16px;">
+      <div class="carousel-track" id="car-track" style="display:flex;">
+        <div style="min-width:100%;padding:0 4px;"><div class="glass" style="padding:24px;"><div style="display:flex;gap:3px;margin-bottom:14px;"><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p style="font-size:13px;color:var(--text);line-height:1.7;font-style:italic;min-height:100px;margin-bottom:16px;">"I needed true anonymity for my real estate holdings. Incorporate123 set up year-round nominees and offshore records. Three years later, my privacy is airtight."</p><div style="border-top:1px solid var(--border);padding-top:12px;"><p style="font-size:13px;font-weight:600;color:var(--white);">Michael R.</p><p style="font-size:11px;color:var(--text-dim);">California · 2023</p></div></div></div>
+        <div style="min-width:100%;padding:0 4px;"><div class="glass" style="padding:24px;"><div style="display:flex;gap:3px;margin-bottom:14px;"><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p style="font-size:13px;color:var(--text);line-height:1.7;font-style:italic;min-height:100px;margin-bottom:16px;">"We formed our Wyoming LLC in under a week. Everything was included. No hidden fees, no surprise charges. The all-inclusive pricing is exactly what they promise."</p><div style="border-top:1px solid var(--border);padding-top:12px;"><p style="font-size:13px;font-weight:600;color:var(--white);">Sarah K.</p><p style="font-size:11px;color:var(--text-dim);">Florida · 2024</p></div></div></div>
+        <div style="min-width:100%;padding:0 4px;"><div class="glass" style="padding:24px;"><div style="display:flex;gap:3px;margin-bottom:14px;"><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star-filled" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p style="font-size:13px;color:var(--text);line-height:1.7;font-style:italic;min-height:100px;margin-bottom:16px;">"I called with questions about asset protection and spoke to a real person who understood Nevada law. After chatbots at other services, this was a breath of fresh air."</p><div style="border-top:1px solid var(--border);padding-top:12px;"><p style="font-size:13px;font-weight:600;color:var(--white);">James T.</p><p style="font-size:11px;color:var(--text-dim);">Texas · 2024</p></div></div></div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:16px;" id="car-dots">
+        <button onclick="goSlide(0)" style="width:8px;height:8px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;padding:0;transition:background 0.2s;" aria-label="Slide 1"></button>
+        <button onclick="goSlide(1)" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;padding:0;transition:background 0.2s;" aria-label="Slide 2"></button>
+        <button onclick="goSlide(2)" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;padding:0;transition:background 0.2s;" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     6. TRUST SIGNALS BAR
+     ════════════════════════════════════════ -->
+<section style="background:var(--surface);border-top:1px solid #e8e4da;border-bottom:1px solid #e8e4da;">
+  <div class="container" style="padding-top:20px;padding-bottom:20px;">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;" class="trust-grid">
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#374151;"><i data-lucide="award" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;"></i> Trusted Since 2000</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#374151;"><i data-lucide="building-2" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;"></i> Real Reno Office</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#374151;"><i data-lucide="shield" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;"></i> 30-Day Money-Back Guarantee</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#374151;"><i data-lucide="phone" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;"></i> (775) 555-0123</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#374151;"><i data-lucide="bitcoin" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;"></i> Crypto Accepted</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#374151;"><i data-lucide="lock" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;"></i> Secure Checkout</div>
+    </div>
+  </div>
+  <style>@media(min-width:1024px){.trust-grid{grid-template-columns:repeat(6,1fr)!important;}}</style>
+</section>
+
+<!-- ════════════════════════════════════════
+     7. HOW IT WORKS
+     ════════════════════════════════════════ -->
+<section class="grain" style="background:var(--navy);padding:80px 0;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);color:var(--white);margin-bottom:12px;">How It Works</h2>
+      <p style="font-size:16px;color:var(--text-dim);max-width:480px;margin:0 auto;">From research to fully formed and protected — we handle the details.</p>
+    </div>
+    <!-- Desktop steps -->
+    <div class="md-hide" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;">
+      <div style="position:absolute;top:28px;left:12.5%;right:12.5%;" class="dash"></div>
+      <div style="text-align:center;padding:0 16px;position:relative;" class="reveal">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px;font-weight:800;font-family:var(--font-display);position:relative;z-index:2;box-shadow:0 4px 20px rgba(200,165,90,0.3);">1</div>
+        <i data-lucide="search" style="width:22px;height:22px;color:var(--gold);margin:0 auto 10px;display:block;"></i>
+        <h3 style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;">Choose Your Protection Level</h3>
+        <p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Explore our Privacy, Asset Protection, or Formation guides — or jump straight to packages if you already know what you need.</p>
+      </div>
+      <div style="text-align:center;padding:0 16px;position:relative;" class="reveal d1">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px;font-weight:800;font-family:var(--font-display);position:relative;z-index:2;box-shadow:0 4px 20px rgba(200,165,90,0.3);">2</div>
+        <i data-lucide="package" style="width:22px;height:22px;color:var(--gold);margin:0 auto 10px;display:block;"></i>
+        <h3 style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;">Select Your Package</h3>
+        <p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Pick the package that fits. Gold for full privacy, Silver for expert formation, Bronze for budget Nevada filing. Everything is all-inclusive.</p>
+      </div>
+      <div style="text-align:center;padding:0 16px;position:relative;" class="reveal d2">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px;font-weight:800;font-family:var(--font-display);position:relative;z-index:2;box-shadow:0 4px 20px rgba(200,165,90,0.3);">3</div>
+        <i data-lucide="file-text" style="width:22px;height:22px;color:var(--gold);margin:0 auto 10px;display:block;"></i>
+        <h3 style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;">We Handle the Filing</h3>
+        <p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Complete a short form with your entity details. We file with the state, obtain your EIN, prepare your operating agreement, and set up registered agent service.</p>
+      </div>
+      <div style="text-align:center;padding:0 16px;position:relative;" class="reveal d3">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px;font-weight:800;font-family:var(--font-display);position:relative;z-index:2;box-shadow:0 4px 20px rgba(200,165,90,0.3);">4</div>
+        <i data-lucide="check-circle" style="width:22px;height:22px;color:var(--gold);margin:0 auto 10px;display:block;"></i>
+        <h3 style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;">You're Protected</h3>
+        <p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Receive your formation documents, nominee confirmations, and ongoing compliance support. Your privacy and assets are secured.</p>
+      </div>
+    </div>
+    <!-- Mobile vertical -->
+    <div class="md-show" style="padding-left:44px;position:relative;">
+      <div style="position:absolute;left:19px;top:20px;bottom:20px;width:1px;background:var(--border);"></div>
+      <div style="margin-bottom:32px;position:relative;" class="reveal"><div style="position:absolute;left:-44px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;font-family:var(--font-display);z-index:2;box-shadow:0 4px 16px rgba(200,165,90,0.3);">1</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><i data-lucide="search" style="width:18px;height:18px;color:var(--gold);"></i><h3 style="font-size:15px;font-weight:700;color:var(--white);">Choose Your Protection Level</h3></div><p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Explore our Privacy, Asset Protection, or Formation guides — or jump straight to packages.</p></div>
+      <div style="margin-bottom:32px;position:relative;" class="reveal"><div style="position:absolute;left:-44px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;font-family:var(--font-display);z-index:2;box-shadow:0 4px 16px rgba(200,165,90,0.3);">2</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><i data-lucide="package" style="width:18px;height:18px;color:var(--gold);"></i><h3 style="font-size:15px;font-weight:700;color:var(--white);">Select Your Package</h3></div><p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Gold for full privacy, Silver for expert formation. Everything is all-inclusive.</p></div>
+      <div style="margin-bottom:32px;position:relative;" class="reveal"><div style="position:absolute;left:-44px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;font-family:var(--font-display);z-index:2;box-shadow:0 4px 16px rgba(200,165,90,0.3);">3</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><i data-lucide="file-text" style="width:18px;height:18px;color:var(--gold);"></i><h3 style="font-size:15px;font-weight:700;color:var(--white);">We Handle the Filing</h3></div><p style="font-size:13px;color:var(--text-dim);line-height:1.6;">We file with the state, obtain your EIN, prepare your operating agreement.</p></div>
+      <div style="position:relative;" class="reveal"><div style="position:absolute;left:-44px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;font-family:var(--font-display);z-index:2;box-shadow:0 4px 16px rgba(200,165,90,0.3);">4</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><i data-lucide="check-circle" style="width:18px;height:18px;color:var(--gold);"></i><h3 style="font-size:15px;font-weight:700;color:var(--white);">You're Protected</h3></div><p style="font-size:13px;color:var(--text-dim);line-height:1.6;">Your privacy and assets are secured with ongoing compliance support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     8. COMPLIANCE CALLOUT
+     ════════════════════════════════════════ -->
+<section style="background:var(--surface-alt);padding:48px 0;">
+  <div class="container">
+    <div class="reveal" style="background:var(--white);border-radius:16px;border-left:4px solid var(--purple);padding:32px 40px;display:flex;flex-wrap:wrap;align-items:center;gap:24px 48px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
+      <div style="flex:1;min-width:280px;">
+        <h2 style="font-family:var(--font-display);font-size:clamp(20px,2.5vw,26px);color:var(--navy);margin-bottom:8px;">Already Have an Entity? We Keep You Compliant.</h2>
+        <p style="font-size:14px;color:#6b7280;line-height:1.6;">Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#" class="btn" style="background:var(--purple);color:white;padding:13px 24px;font-size:14px;" aria-label="Explore Compliance Services">Explore Compliance Services <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a>
+        <a href="#" class="btn" style="border:1.5px solid var(--purple);color:var(--purple);background:transparent;padding:12px 24px;font-size:14px;" aria-label="Client Login">Client Login <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     9. FINAL CTA
+     ════════════════════════════════════════ -->
+<section class="grain" style="background:var(--navy);padding:80px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(200,165,90,0.04) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="container" style="text-align:center;position:relative;" class="reveal">
+    <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);color:var(--white);margin-bottom:14px;" class="reveal">Ready to Protect Your Privacy and Assets?</h2>
+    <p style="font-size:16px;color:var(--text-dim);max-width:480px;margin:0 auto 32px;" class="reveal">Start with a package, or schedule a free consultation to discuss your specific needs.</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:24px;" class="reveal">
+      <a href="#" class="btn btn-gold" aria-label="View Packages and Pricing">View Packages &amp; Pricing <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+      <a href="#" class="btn btn-outline" aria-label="Schedule a Consultation">Schedule a Consultation</a>
+    </div>
+    <a href="tel:+17755550123" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--text-dim);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--text-dim)'" class="reveal"><i data-lucide="phone" style="width:15px;height:15px;"></i> (775) 555-0123</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer style="background:#060e1a;color:var(--text-dim);">
+  <div class="container" style="padding-top:56px;padding-bottom:32px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px 40px;margin-bottom:48px;">
+      <div><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">Business Privacy</h4><ul style="list-style:none;padding:0;margin:0;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Anonymous LLC Formation</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nominee Services</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming Private Incorporation</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada Private Incorporation</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">California Private LLC</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Florida Private LLC</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Best State for Privacy</a></li><li><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming vs Nevada Privacy</a></li></ul></div>
+      <div><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">Asset Protection</h4><ul style="list-style:none;padding:0;margin:0 0 24px;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Charging Order Protection</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming Asset Protection</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada Asset Protection</a></li><li><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Investment Holding LLC</a></li></ul><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">Company Formation</h4><ul style="list-style:none;padding:0;margin:0;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming LLC</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada LLC</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming Corporation</a></li><li><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada Corporation</a></li></ul></div>
+      <div><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">Packages</h4><ul style="list-style:none;padding:0;margin:0 0 24px;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming Gold (Privacy)</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming Silver (Formation)</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada Gold (Privacy)</a></li><li><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada Silver (Formation)</a></li></ul><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">By State</h4><ul style="list-style:none;padding:0;margin:0;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Wyoming</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Nevada</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">California</a></li><li><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Florida</a></li></ul></div>
+      <div><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">Company</h4><ul style="list-style:none;padding:0;margin:0 0 24px;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">About Us</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Contact</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Testimonials</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Blog</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">FAQ</a></li><li><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Client Login</a></li></ul><h4 style="color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">Compliance</h4><ul style="list-style:none;padding:0;margin:0;"><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Registered Agent</a></li><li style="margin-bottom:10px;"><a href="#" style="font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'">Annual Reports</a></li><li><a href="#" style="font-size:13px;color:#4a5568;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#4a5568'">Offshore</a></li></ul></div>
+    </div>
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:12px;color:#4a5568;">
+        <span>© 2026 Incorporate123. All rights reserved.</span>
+        <a href="#" style="color:#4a5568;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--text-dim)'" onmouseout="this.style.color='#4a5568'">Privacy Policy</a>
+        <a href="#" style="color:#4a5568;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--text-dim)'" onmouseout="this.style.color='#4a5568'">Terms of Service</a>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div style="display:flex;gap:4px;">
+          <span style="padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.04);color:#4a5568;font-family:monospace;font-size:10px;font-weight:700;">VISA</span>
+          <span style="padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.04);color:#4a5568;font-family:monospace;font-size:10px;font-weight:700;">MC</span>
+          <span style="padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.04);color:#4a5568;font-family:monospace;font-size:10px;font-weight:700;">AMEX</span>
+          <span style="padding:2px 7px;border-radius:4px;background:var(--gold-dim);color:var(--gold);font-family:monospace;font-size:10px;font-weight:700;">BTC</span>
+          <span style="padding:2px 7px;border-radius:4px;background:var(--gold-dim);color:var(--gold);font-family:monospace;font-size:10px;font-weight:700;">ETH</span>
+          <span style="padding:2px 7px;border-radius:4px;background:var(--gold-dim);color:var(--gold);font-family:monospace;font-size:10px;font-weight:700;">XRP</span>
+          <span style="padding:2px 7px;border-radius:4px;background:var(--gold-dim);color:var(--gold);font-family:monospace;font-size:10px;font-weight:700;">LTC</span>
+          <span style="padding:2px 7px;border-radius:4px;background:var(--gold-dim);color:var(--gold);font-family:monospace;font-size:10px;font-weight:700;">XMR</span>
+        </div>
+        <span style="font-size:10px;color:#4a5568;">We accept cryptocurrency for your privacy</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;font-size:12px;color:#4a5568;">
+        <a href="tel:+17755550123" style="display:flex;align-items:center;gap:4px;color:#4a5568;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--text-dim)'" onmouseout="this.style.color='#4a5568'"><i data-lucide="phone" style="width:12px;height:12px;"></i> (775) 555-0123</a>
+        <span>Reno, Nevada</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     MOBILE STICKY CTA
+     ════════════════════════════════════════ -->
+<div id="stick-cta" class="stick-cta lg-hide" style="position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(12,25,41,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:10px 12px;display:flex;gap:8px;">
+  <a href="#" class="btn btn-gold" style="flex:4;justify-content:center;padding:14px 0;font-size:14px;" aria-label="Get Started">Get Started <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a>
+  <a href="tel:+17755550123" style="flex:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid var(--border);text-decoration:none;" aria-label="Call"><i data-lucide="phone" style="width:20px;height:20px;color:var(--gold);"></i></a>
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Init Lucide
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    try { lucide.createIcons(); } catch(e) { console.warn('Lucide:', e); }
+  }
+  initReveal();
+  initSticky();
+  startCarousel();
+});
+
+// ── Mega Menu ──
+let curMega = null;
+function toggleMega(k) {
+  document.querySelectorAll('.mega').forEach(p => { if (p.id !== 'mega-'+k) p.classList.remove('open'); });
+  const el = document.getElementById('mega-'+k);
+  if (!el) return;
+  if (curMega === k) { el.classList.remove('open'); curMega = null; }
+  else { el.classList.add('open'); curMega = k; }
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-mega-wrap]') && !e.target.closest('.mega')) {
+    document.querySelectorAll('.mega').forEach(p => p.classList.remove('open'));
+    curMega = null;
+  }
+});
+
+// ── Mobile Nav ──
+let mobOpen = false;
+function toggleMobileNav() {
+  mobOpen = !mobOpen;
+  document.getElementById('mob-drawer').classList.toggle('open', mobOpen);
+  document.getElementById('ico-menu').style.display = mobOpen ? 'none' : 'block';
+  document.getElementById('ico-x').style.display = mobOpen ? 'block' : 'none';
+  document.getElementById('ham-btn').setAttribute('aria-label', mobOpen ? 'Close menu' : 'Open menu');
+}
+
+// ── Mobile Accordion ──
+let curAcc = null;
+function toggleAcc(k) {
+  const body = document.getElementById('acc-'+k);
+  const chev = document.getElementById('chev-'+k);
+  if (curAcc === k) { body.classList.remove('open'); if(chev) chev.style.transform=''; curAcc = null; return; }
+  document.querySelectorAll('.mob-acc').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('[id^="chev-"]').forEach(c => c.style.transform = '');
+  body.classList.add('open');
+  if(chev) chev.style.transform = 'rotate(180deg)';
+  curAcc = k;
+}
+
+// ── Carousel ──
+let slide = 0;
+function goSlide(i) {
+  slide = i;
+  const t = document.getElementById('car-track');
+  if (t) t.style.transform = 'translateX(-'+(i*100)+'%)';
+  document.querySelectorAll('#car-dots button').forEach((d,idx) => {
+    d.style.background = idx===i ? 'var(--gold)' : 'rgba(255,255,255,0.2)';
+  });
+}
+function startCarousel() {
+  setInterval(() => { slide = (slide+1)%3; goSlide(slide); }, 6000);
+}
+
+// ── Scroll Reveal ──
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(el => obs.observe(el));
+}
+
+// ── Sticky CTA ──
+function initSticky() {
+  const hero = document.getElementById('hero');
+  const bar = document.getElementById('stick-cta');
+  if (!hero || !bar) return;
+  new IntersectionObserver(([e]) => {
+    bar.classList.toggle('vis', !e.isIntersecting);
+  }, { threshold: 0.05 }).observe(hero);
+}
+</script>
+
+</body>
+</html>

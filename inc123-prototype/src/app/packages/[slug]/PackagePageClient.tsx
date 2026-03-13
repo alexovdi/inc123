@@ -1,0 +1,378 @@
+"use client";
+
+import { useState, useCallback, useMemo } from "react";
+import { PackageLayout } from "@/design-system/layouts/PackageLayout";
+import {
+  Breadcrumbs,
+  PackageHero,
+  PricingGrid,
+  ValueComparisonCallout,
+  AddOnConfigurator,
+  RunningTotal,
+  ProgressiveDisclosure,
+  AlsoConsiderCards,
+  TrustSignals,
+  TestimonialCarousel,
+  Accordion,
+  AccordionItem,
+  CTABlock,
+  MoneyBackBadge,
+} from "@/design-system/components";
+import { faqItems } from "@/data/faq";
+import { testimonials } from "@/data/testimonials";
+import type { PackageTier, EntityType } from "@/lib/types";
+
+/* ------------------------------------------------
+   Props
+   ------------------------------------------------ */
+interface PackagePageClientProps {
+  pkg: PackageTier;
+  siblingPackages: PackageTier[];
+  alsoConsider: PackageTier[];
+}
+
+/* ------------------------------------------------
+   Trust signal items (reused from homepage pattern)
+   ------------------------------------------------ */
+const trustItems = [
+  { icon: "Clock", value: "25+ Years", label: "Trusted Since 2000" },
+  { icon: "MapPin", value: "Real Office", label: "Reno, Nevada" },
+  { icon: "ShieldCheck", value: "30-Day", label: "Money-Back Guarantee" },
+  { icon: "Phone", value: "(775) 313-4155", label: "Talk to a Specialist" },
+  { icon: "Bitcoin", value: "Crypto", label: "Accepted" },
+  { icon: "Lock", value: "Secure", label: "Checkout" },
+];
+
+/* ------------------------------------------------
+   Component
+   ------------------------------------------------ */
+export function PackagePageClient({
+  pkg,
+  siblingPackages,
+  alsoConsider,
+}: PackagePageClientProps) {
+  /* ---- Interactive state ---- */
+  const [entityType, setEntityType] = useState<EntityType>("llc");
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
+
+  const toggleAddOn = useCallback((id: string) => {
+    setSelectedAddOns((prev) =>
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]
+    );
+  }, []);
+
+  /* ---- Derived values ---- */
+  const currentPrice = pkg.prices[entityType];
+
+  const addOnTotal = useMemo(
+    () =>
+      selectedAddOns.reduce((sum, id) => {
+        const addOn = pkg.addOns.find((a) => a.id === id);
+        return sum + (addOn?.price ?? 0);
+      }, 0),
+    [selectedAddOns, pkg.addOns]
+  );
+
+  const grandTotal = currentPrice.formation + addOnTotal;
+
+  /* ---- Pricing grid tiers ---- */
+  const pricingTiers = useMemo(() => {
+    const allTiers = [pkg, ...siblingPackages];
+    // Sort: bronze -> silver -> gold
+    const tierOrder = { bronze: 0, silver: 1, gold: 2 };
+    allTiers.sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier]);
+
+    return allTiers.map((t) => ({
+      id: t.id,
+      name: t.name,
+      price: t.prices[entityType].formation,
+      period: "one-time",
+      description: t.description,
+      features: t.features,
+      badge: t.badge,
+      highlighted: t.highlighted,
+    }));
+  }, [pkg, siblingPackages, entityType]);
+
+  /* ---- FAQ items for this package ---- */
+  const packageFaqs = useMemo(() => {
+    // Combine package-category FAQs with formation FAQs
+    return faqItems.filter(
+      (faq) => faq.category === "packages" || faq.category === "formation"
+    );
+  }, []);
+
+  /* ---- Testimonials relevant to this package ---- */
+  const relevantTestimonials = useMemo(() => {
+    // Try to find testimonials matching this package's state or service
+    const matching = testimonials.filter(
+      (t) =>
+        t.serviceUsed.toLowerCase().includes(pkg.state.toLowerCase()) ||
+        t.serviceUsed.toLowerCase().includes(pkg.tier)
+    );
+    return matching.length >= 2 ? matching.slice(0, 3) : testimonials.slice(0, 3);
+  }, [pkg.state, pkg.tier]);
+
+  /* ---- Progressive disclosure sections ---- */
+  const disclosureSections = useMemo(
+    () => [
+      {
+        id: "what-is",
+        title: `What is a ${pkg.state} ${entityType === "llc" ? "LLC" : "Corporation"}?`,
+        summary: `A ${pkg.state} ${entityType === "llc" ? "LLC" : "Corporation"} is a business entity formed under ${pkg.state} state law. ${pkg.state} offers strong privacy protections, favorable tax treatment, and business-friendly legislation.`,
+        content: (
+          <div className="space-y-3 text-body text-muted">
+            <p>
+              {pkg.state} is one of the most popular states for business
+              formation due to its favorable legal environment. The state offers
+              strong charging order protection, no state income tax on business
+              earnings, and robust privacy statutes that protect business owners.
+            </p>
+            <p>
+              When you form a {entityType === "llc" ? "LLC" : "Corporation"} in{" "}
+              {pkg.state}, your entity benefits from the state&apos;s
+              business-friendly court system and well-established body of
+              corporate law. Combined with our nominee and offshore services,
+              this creates one of the strongest privacy structures available in
+              the United States.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "nominees",
+        title: "How Nominees Protect You",
+        summary:
+          "A nominee officer appears on all public state filings instead of your real name. Database searches, lawsuit discovery, and competitor research all find the nominee — not you.",
+        content: (
+          <div className="space-y-3 text-body text-muted">
+            <p>
+              Unlike competitors who only list a nominee name during the initial
+              filing (&quot;nominee for a day&quot;), our Gold packages include
+              year-round nominee directors and officers. This means the nominee
+              remains listed on ALL filings — initial formation, annual reports,
+              amendments, and any other state filings.
+            </p>
+            <p>
+              Our nominees are based offshore, outside U.S. jurisdiction. This
+              provides an additional privacy layer that domestic nominees
+              cannot offer. Combined with offshore record storage, your
+              corporate structure maintains maximum separation from public
+              disclosure requirements.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "after-formation",
+        title: "What Happens After Formation",
+        summary:
+          "After we file your entity, you receive your formation documents, EIN confirmation, and nominee setup within 5-10 business days (or 24 hours with expedited filing).",
+        content: (
+          <div className="space-y-3 text-body text-muted">
+            <p>
+              Once your entity is filed with the state, our team prepares your
+              complete formation package: Articles of Organization (or
+              Incorporation), Operating Agreement (or Bylaws), membership
+              certificates, organizational meeting minutes, and Certificate of
+              Good Standing.
+            </p>
+            <p>
+              For Gold packages, we also set up your year-round nominee
+              directors and officers, configure offshore record storage, and
+              initiate your registered agent service. You will receive email
+              confirmation at each step along with a clear timeline of
+              remaining deliverables.
+            </p>
+          </div>
+        ),
+      },
+    ],
+    [pkg.state, entityType]
+  );
+
+  /* ---- Also Consider cards ---- */
+  const alsoConsiderItems = useMemo(
+    () =>
+      alsoConsider.map((p) => ({
+        name: p.name,
+        state: p.state,
+        price: `$${p.prices.llc.formation.toLocaleString()}`,
+        href: `/packages/${p.id}`,
+      })),
+    [alsoConsider]
+  );
+
+  /* ---- Running total add-on items ---- */
+  const runningTotalAddOns = useMemo(
+    () =>
+      selectedAddOns
+        .map((id) => {
+          const addOn = pkg.addOns.find((a) => a.id === id);
+          if (!addOn) return null;
+          return { name: addOn.name, price: addOn.price };
+        })
+        .filter(Boolean) as { name: string; price: number }[],
+    [selectedAddOns, pkg.addOns]
+  );
+
+  return (
+    <PackageLayout packageName={pkg.name}>
+      <div className="space-y-12 lg:space-y-16">
+        {/* ---- Breadcrumbs ---- */}
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Packages", href: "/packages" },
+            { label: pkg.name, href: `/packages/${pkg.id}` },
+          ]}
+          pillar="privacy"
+        />
+
+        {/* ---- 1. PackageHero ---- */}
+        <PackageHero
+          packageName={pkg.name}
+          prices={pkg.prices}
+          badge={pkg.badge}
+          entityType={entityType}
+          onEntityTypeChange={setEntityType}
+          primaryCTA={{
+            label: `Start Now — $${currentPrice.formation.toLocaleString()}`,
+            href: `/checkout/configure?package=${pkg.id}&entity=${entityType}`,
+          }}
+          secondaryCTA={{
+            label: "Compare Packages",
+            href: "#pricing-grid",
+          }}
+        />
+
+        {/* ---- 2. PricingGrid ---- */}
+        <section id="pricing-grid" className="scroll-mt-24">
+          <PricingGrid
+            tiers={pricingTiers}
+            entityToggle={{
+              options: [
+                { value: "llc", label: "LLC" },
+                { value: "corp", label: "Corporation" },
+              ],
+              default: entityType,
+            }}
+            addOns={pkg.addOns.map((a) => ({
+              id: a.id,
+              name: a.name,
+              price: a.price,
+              description: a.description,
+              tooltip: a.tooltip,
+            }))}
+            onTierSelect={(selection) => {
+              // In the prototype, scroll to configurator
+              const el = document.getElementById("addon-configurator");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
+        </section>
+
+        {/* ---- 3. ValueComparisonCallout ---- */}
+        <ValueComparisonCallout
+          price={`$${currentPrice.formation.toLocaleString()} all-inclusive`}
+          valueStatement={`Total value of included services: $${Math.round(currentPrice.formation * 1.6).toLocaleString()}+ in Year 1`}
+          includedValue={`${pkg.name}: $${currentPrice.formation.toLocaleString()} all-inclusive. That includes ${pkg.features.filter((f) => f.status === "included").map((f) => f.name.toLowerCase()).join(", ")}. Annual renewal: $${currentPrice.renewal.toLocaleString()}/year.`}
+        />
+
+        {/* ---- 4. AddOnConfigurator + RunningTotal ---- */}
+        <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+          <div className="lg:col-span-2" id="addon-configurator">
+            <AddOnConfigurator
+              addOns={pkg.addOns}
+              selectedIds={selectedAddOns}
+              onToggle={toggleAddOn}
+              basePrice={currentPrice.formation}
+            />
+          </div>
+
+          <div className="mt-8 lg:mt-0">
+            <RunningTotal
+              tier={{
+                name: pkg.name,
+                price: currentPrice.formation,
+              }}
+              entityType={entityType === "llc" ? "LLC" : "Corporation"}
+              addOns={runningTotalAddOns}
+              total={grandTotal}
+              checkoutHref={`/checkout/configure?package=${pkg.id}&entity=${entityType}`}
+            />
+          </div>
+        </div>
+
+        {/* ---- 5. ProgressiveDisclosure ---- */}
+        <section>
+          <h2 className="font-display text-heading-lg font-bold text-foreground mb-6">
+            What You Need to Know
+          </h2>
+          <ProgressiveDisclosure
+            sections={disclosureSections}
+            expandAllButton
+          />
+        </section>
+
+        {/* ---- 6. AlsoConsiderCards ---- */}
+        <section>
+          <AlsoConsiderCards
+            packages={alsoConsiderItems}
+            heading="Also Consider"
+          />
+        </section>
+
+        {/* ---- 7. TrustSignals + MoneyBack + TestimonialCarousel ---- */}
+        <section className="space-y-8">
+          <TrustSignals items={trustItems} layout="compact" variant="subtle" />
+
+          <MoneyBackBadge variant="detailed" className="w-full" />
+
+          <TestimonialCarousel
+            testimonials={relevantTestimonials.map((t) => ({
+              quote: t.quote,
+              name: t.name,
+              businessType: t.businessType,
+              state: t.state,
+              serviceUsed: t.serviceUsed,
+              rating: t.rating,
+            }))}
+            autoPlay
+          />
+        </section>
+
+        {/* ---- 8. FAQAccordion ---- */}
+        <section>
+          <h2 className="font-display text-heading-lg font-bold text-foreground mb-6">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" variant="default">
+            {packageFaqs.map((faq) => (
+              <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
+                <p>{faq.answer}</p>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
+
+        {/* ---- 9. Final CTABlock ---- */}
+        <CTABlock
+          heading="Ready to Get Started?"
+          description={`${pkg.name} — $${currentPrice.formation.toLocaleString()} all-inclusive. ${pkg.description}`}
+          primaryCTA={{
+            label: `Order Now — $${currentPrice.formation.toLocaleString()}`,
+            href: `/checkout/configure?package=${pkg.id}&entity=${entityType}`,
+          }}
+          secondaryCTA={{
+            label: "Schedule a Consultation",
+            href: "/contact",
+          }}
+          trustSignal="(775) 313-4155 · Talk to a Specialist"
+          variant="dark"
+          layout="centered"
+        />
+      </div>
+    </PackageLayout>
+  );
+}
