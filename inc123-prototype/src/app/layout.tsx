@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   title: "Incorporate123 — Privacy, Asset Protection & Business Formation",
   description:
     "Privacy-focused business formation specialists. Wyoming & Nevada LLCs with year-round nominee services, offshore records, and all-inclusive pricing.",
+  metadataBase: new URL("https://incorporate123.co"),
 };
 
 export default function RootLayout({

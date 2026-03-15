@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "Asset Protection — Charging Order Protection, Holding Structures & Multi-Entity Strategies | Incorporate123",
   description:
     "Protect your assets with Wyoming and Nevada LLCs. Charging order protection, holding structures, and multi-entity strategies for individuals with $500K+ in assets. 25 years of expertise.",
+  alternates: { canonical: "https://incorporate123.co/asset-protection" },
 };
 
 const pillar = pillars[1]; // asset
@@ -50,7 +51,7 @@ export default function AssetProtectionPillarPage() {
             label: "View Gold Packages",
             href: "#packages",
           }}
-          trustSnippet="For individuals with $500K+ in assets — Wyoming's strongest protections"
+          trustSnippet={pillar.trustElement}
         />
       }
       sidebar={
@@ -95,10 +96,10 @@ export default function AssetProtectionPillarPage() {
                   <div className="space-y-4 text-body text-muted">
                     <p>
                       When someone wins a lawsuit against you personally, they
-                      can typically go after your personal assets: bank accounts,
-                      real estate, investments. But assets held inside a
-                      properly structured LLC are protected by the entity&apos;s
-                      legal separation from you as an individual.
+                      can typically go after your personal assets: bank
+                      accounts, real estate, investments. But assets held inside
+                      a properly structured LLC are protected by the
+                      entity&apos;s legal separation from you as an individual.
                     </p>
                     <p>
                       The strength of that protection depends heavily on which
@@ -228,6 +229,21 @@ export default function AssetProtectionPillarPage() {
               />
             ))}
           </div>
+
+          {/* Differentiator Callout */}
+          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-asset bg-pillar-asset/5 p-6">
+            <p className="text-body font-medium text-foreground">
+              &ldquo;Wyoming&rsquo;s charging order protection is the strongest
+              in the country &mdash; creditors cannot seize LLC assets, force
+              distributions, or take over management.&rdquo;
+            </p>
+            <p className="mt-2 text-body-sm text-muted">
+              Unlike states where courts can force LLC dissolution to satisfy a
+              judgment, Wyoming statute explicitly limits creditor remedies to a
+              charging order. Combined with our multi-entity strategies, your
+              assets stay compartmentalized and protected.
+            </p>
+          </aside>
         </section>
 
         {/* ------------------------------------------------

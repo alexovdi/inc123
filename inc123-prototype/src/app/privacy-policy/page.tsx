@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { CTABlock } from "@/design-system/components";
 import { Alert } from "@/design-system/primitives";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Incorporate123",
+  description:
+    "Incorporate123 privacy policy. How we collect, use, and protect your personal information.",
+  alternates: { canonical: "https://incorporate123.co/privacy-policy" },
+};
 
 export default function PrivacyPolicyPage() {
   return (
@@ -7,7 +15,9 @@ export default function PrivacyPolicyPage() {
       {/* Hero */}
       <section className="bg-primary py-section-y text-white">
         <div className="mx-auto max-w-content px-container-x">
-          <h1 className="font-display text-display font-bold">Privacy Policy</h1>
+          <h1 className="font-display text-display font-bold">
+            Privacy Policy
+          </h1>
           <p className="mt-2 text-lg text-white/80">
             How Incorporate123 collects, uses, and protects your information.
           </p>
@@ -28,11 +38,12 @@ export default function PrivacyPolicyPage() {
             <p className="mt-8 text-muted">Effective Date: January 1, 2025</p>
 
             <p className="mt-4 text-body leading-relaxed">
-              Incorporate123 (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;)
-              is committed to protecting the privacy of our clients and website
-              visitors. This Privacy Policy explains how we collect, use,
-              disclose, and safeguard your information when you visit our website
-              or use our business formation and compliance services.
+              Incorporate123 (&quot;we,&quot; &quot;us,&quot; or
+              &quot;our&quot;) is committed to protecting the privacy of our
+              clients and website visitors. This Privacy Policy explains how we
+              collect, use, disclose, and safeguard your information when you
+              visit our website or use our business formation and compliance
+              services.
             </p>
 
             {/* 1. Information We Collect */}
@@ -89,12 +100,8 @@ export default function PrivacyPolicyPage() {
                   Communicate with you about your orders, account status, and
                   annual compliance deadlines
                 </li>
-                <li>
-                  Provide customer support and respond to inquiries
-                </li>
-                <li>
-                  Improve our website, services, and customer experience
-                </li>
+                <li>Provide customer support and respond to inquiries</li>
+                <li>Improve our website, services, and customer experience</li>
                 <li>
                   Comply with legal obligations and enforce our terms of service
                 </li>
@@ -117,8 +124,8 @@ export default function PrivacyPolicyPage() {
               <ul className="mt-4 list-disc space-y-2 pl-6">
                 <li>
                   <strong>Essential cookies</strong> that enable core
-                  functionality such as page navigation, secure areas access, and
-                  shopping cart features
+                  functionality such as page navigation, secure areas access,
+                  and shopping cart features
                 </li>
                 <li>
                   <strong>Analytics cookies</strong> (such as Google Analytics)
@@ -165,8 +172,8 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
               <p className="mt-4 leading-relaxed">
-                We do not sell, rent, or trade your personal information to third
-                parties for their marketing purposes.
+                We do not sell, rent, or trade your personal information to
+                third parties for their marketing purposes.
               </p>
             </section>
 
@@ -179,9 +186,9 @@ export default function PrivacyPolicyPage() {
                 We implement industry-standard security measures to protect your
                 personal information, including SSL/TLS encryption for all data
                 transmitted between your browser and our servers, encrypted
-                storage for sensitive data, and regular security audits. However,
-                no method of electronic transmission or storage is 100% secure,
-                and we cannot guarantee absolute security.
+                storage for sensitive data, and regular security audits.
+                However, no method of electronic transmission or storage is 100%
+                secure, and we cannot guarantee absolute security.
               </p>
             </section>
 
@@ -194,9 +201,7 @@ export default function PrivacyPolicyPage() {
                 Depending on your jurisdiction, you may have the right to:
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-6">
-                <li>
-                  Access the personal information we hold about you
-                </li>
+                <li>Access the personal information we hold about you</li>
                 <li>
                   Request correction of inaccurate or incomplete information
                 </li>
@@ -204,9 +209,7 @@ export default function PrivacyPolicyPage() {
                   Request deletion of your personal data (subject to legal
                   retention requirements)
                 </li>
-                <li>
-                  Opt out of marketing communications at any time
-                </li>
+                <li>Opt out of marketing communications at any time</li>
                 <li>
                   Request a portable copy of your data in a commonly used format
                 </li>

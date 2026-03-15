@@ -23,11 +23,12 @@ export const metadata: Metadata = {
     "Compliance — Registered Agent, Annual Reports & Corporate Minutes | Incorporate123",
   description:
     "Keep your LLC or Corporation in good standing with year-round registered agent service, annual report filing, corporate minutes maintenance, and virtual office. Full compliance support from $325/year.",
+  alternates: { canonical: "https://incorporate123.co/compliance" },
 };
 
 const pillar = pillars[3]; // compliance
 const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
-const wySilver = packages.find((p) => p.id === "wyoming-silver")!;
+const nvGold = packages.find((p) => p.id === "nevada-gold")!;
 const complianceFaqs = faqItems.filter((f) => f.category === "compliance");
 
 export default function CompliancePillarPage() {
@@ -50,7 +51,7 @@ export default function CompliancePillarPage() {
             label: "View Packages",
             href: "#packages",
           }}
-          trustSnippet="Full corporate minute maintenance included — not just a mailbox"
+          trustSnippet={pillar.trustElement}
         />
       }
       sidebar={
@@ -96,10 +97,10 @@ export default function CompliancePillarPage() {
                     <p>
                       After your entity is formed, the state requires ongoing
                       maintenance to keep it active. Every state has different
-                      requirements, but the core obligations include: maintaining
-                      a registered agent, filing annual reports (Wyoming) or
-                      annual lists (Nevada), and keeping corporate records
-                      up to date.
+                      requirements, but the core obligations include:
+                      maintaining a registered agent, filing annual reports
+                      (Wyoming) or annual lists (Nevada), and keeping corporate
+                      records up to date.
                     </p>
                     <p>
                       Many business owners treat compliance as an afterthought —
@@ -238,6 +239,21 @@ export default function CompliancePillarPage() {
               />
             ))}
           </div>
+
+          {/* Differentiator Callout */}
+          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-compliance bg-pillar-compliance/5 p-6">
+            <p className="text-body font-medium text-foreground">
+              &ldquo;Full corporate minute maintenance included &mdash; not just
+              a registered agent mailbox. We keep your records current so courts
+              can&rsquo;t pierce the veil.&rdquo;
+            </p>
+            <p className="mt-2 text-body-sm text-muted">
+              Most providers offer registered agent service and call it
+              &ldquo;compliance.&rdquo; Incorporate123 includes annual report
+              filing, corporate minute book preparation and maintenance, and
+              proactive deadline tracking &mdash; the full picture.
+            </p>
+          </aside>
         </section>
 
         {/* ------------------------------------------------
@@ -314,12 +330,13 @@ export default function CompliancePillarPage() {
                 href: "/wyoming-private-incorporation",
               },
               {
-                name: wySilver.name,
-                price: `$${wySilver.prices.llc.formation.toLocaleString()}`,
+                name: nvGold.name,
+                price: `$${nvGold.prices.llc.formation.toLocaleString()}`,
                 period: "one-time",
-                description: wySilver.description,
-                highlighted: false,
-                href: "/wyoming-incorporation",
+                description: nvGold.description,
+                badge: nvGold.badge,
+                highlighted: true,
+                href: "/nevada-private-incorporation",
               },
             ]}
             consultationCTA={{

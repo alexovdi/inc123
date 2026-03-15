@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { blogPosts } from "@/data/blog";
 import { CTABlock } from "@/design-system/components";
 import { Link } from "@/design-system/primitives";
+
+export const metadata: Metadata = {
+  title:
+    "Blog — Business Privacy, Formation & Asset Protection Insights | Incorporate123",
+  description:
+    "Expert articles on anonymous LLCs, nominee services, asset protection, Wyoming and Nevada business formation, and ongoing compliance. Practical advice from 25 years of experience.",
+  alternates: { canonical: "https://incorporate123.co/blog" },
+};
 
 const pillarBgMap: Record<string, string> = {
   privacy: "bg-pillar-privacy/10 text-pillar-privacy",
@@ -52,7 +61,10 @@ export default function BlogPage() {
 
                 {/* Title */}
                 <h2 className="mt-3 font-display text-heading font-semibold text-foreground group-hover:text-secondary transition-colors">
-                  <Link href={post.href} className="after:absolute after:inset-0">
+                  <Link
+                    href={post.href}
+                    className="after:absolute after:inset-0"
+                  >
                     {post.title}
                   </Link>
                 </h2>

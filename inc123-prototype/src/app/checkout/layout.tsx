@@ -1,26 +1,16 @@
-"use client";
+import type { Metadata } from "next";
+import { CheckoutLayoutClient } from "./CheckoutLayoutClient";
 
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
-import { CheckoutProvider } from "./CheckoutContext";
+export const metadata: Metadata = {
+  title: "Checkout | Incorporate123",
+  description: "Complete your business formation package purchase.",
+  robots: { index: false, follow: false },
+};
 
-function CheckoutProviderWrapper({ children }: { children: React.ReactNode }) {
-  const searchParams = useSearchParams();
-  const initialPackage = searchParams.get("package") || "";
-
-  return (
-    <CheckoutProvider initialPackage={initialPackage}>
-      {children}
-    </CheckoutProvider>
-  );
-}
-
-export default function CheckoutAppLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <Suspense fallback={null}>
-      <CheckoutProviderWrapper>
-        {children}
-      </CheckoutProviderWrapper>
-    </Suspense>
-  );
+export default function CheckoutAppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <CheckoutLayoutClient>{children}</CheckoutLayoutClient>;
 }

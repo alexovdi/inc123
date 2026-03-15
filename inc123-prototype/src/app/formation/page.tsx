@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "Company Formation — Wyoming & Nevada LLC and Corporation Formation | Incorporate123",
   description:
     "Expert business formation in Wyoming and Nevada. All-inclusive pricing with registered agent, corporate minutes, and annual report filing. 25 years of experience. Packages from $875.",
+  alternates: { canonical: "https://incorporate123.co/formation" },
 };
 
 const pillar = pillars[2]; // formation
@@ -50,7 +51,7 @@ export default function FormationPillarPage() {
             label: "View Packages",
             href: "#packages",
           }}
-          trustSnippet="25 years forming Wyoming and Nevada entities — all-inclusive pricing"
+          trustSnippet={pillar.trustElement}
         />
       }
       sidebar={
@@ -103,17 +104,17 @@ export default function FormationPillarPage() {
                     </p>
                     <p>
                       The formation process involves filing Articles of
-                      Organization (for LLCs) or Articles of Incorporation
-                      (for Corporations) with your chosen state, designating a
+                      Organization (for LLCs) or Articles of Incorporation (for
+                      Corporations) with your chosen state, designating a
                       registered agent, and preparing governing documents like
                       an operating agreement or bylaws.
                     </p>
                     <p>
                       Where you form matters significantly. Wyoming and Nevada
                       are the two most business-friendly states in the U.S.,
-                      offering no state income tax, strong liability protections,
-                      low annual fees (Wyoming) or dedicated business courts
-                      (Nevada), and privacy-friendly statutes.
+                      offering no state income tax, strong liability
+                      protections, low annual fees (Wyoming) or dedicated
+                      business courts (Nevada), and privacy-friendly statutes.
                     </p>
                     <p>
                       Our all-inclusive packages handle every step: state filing
@@ -224,8 +225,8 @@ export default function FormationPillarPage() {
             Formation Services
           </h2>
           <p className="text-body text-muted mb-6">
-            Every entity type we form in Wyoming and Nevada — LLCs, Corporations,
-            and pre-aged shelf companies.
+            Every entity type we form in Wyoming and Nevada — LLCs,
+            Corporations, and pre-aged shelf companies.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {pillar.services.map((service, i) => (
@@ -239,6 +240,21 @@ export default function FormationPillarPage() {
               />
             ))}
           </div>
+
+          {/* Differentiator Callout */}
+          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-formation bg-pillar-formation/5 p-6">
+            <p className="text-body font-medium text-foreground">
+              &ldquo;All-inclusive means all-inclusive &mdash; state fees,
+              registered agent, corporate minutes, annual reports, and seal. No
+              hidden fees, no required upsells.&rdquo;
+            </p>
+            <p className="mt-2 text-body-sm text-muted">
+              Most formation providers advertise a low base price, then add fees
+              for every essential service. Incorporate123 packages include
+              everything you need from day one &mdash; the price you see is the
+              price you pay.
+            </p>
+          </aside>
         </section>
 
         {/* ------------------------------------------------

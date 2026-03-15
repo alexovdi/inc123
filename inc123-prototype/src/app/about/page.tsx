@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   AboutHero,
   FounderBio,
@@ -8,6 +9,14 @@ import {
   CTABlock,
 } from "@/design-system/components";
 import { aboutData } from "@/data/about";
+
+export const metadata: Metadata = {
+  title:
+    "About Incorporate123 — 25 Years of Business Formation Expertise | Incorporate123",
+  description:
+    "Founded in 2000, Incorporate123 is a Reno, NV-based business formation company specializing in privacy-focused LLCs, nominee services, and asset protection across Wyoming, Nevada, California, and Florida.",
+  alternates: { canonical: "https://incorporate123.co/about" },
+};
 
 export default function AboutPage() {
   const { hero, founder, timeline, philosophy, stats, office } = aboutData;

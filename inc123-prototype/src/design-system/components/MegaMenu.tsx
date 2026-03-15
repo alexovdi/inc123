@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect, type KeyboardEvent } from "react";
+import {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  type KeyboardEvent,
+} from "react";
 import { cn } from "@/design-system/utils/cn";
 import { Link, Icon } from "@/design-system/primitives";
 import type { NavPillar } from "@/lib/types";
@@ -87,7 +93,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
         case " ":
           e.preventDefault();
           setActiveIndex((prev) => (prev === index ? null : index));
-          setFocusedCluster(prev => prev === -1 ? 0 : prev);
+          setFocusedCluster((prev) => (prev === -1 ? 0 : prev));
           break;
         case "ArrowRight":
           e.preventDefault();
@@ -118,7 +124,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
           break;
       }
     },
-    [items, activeIndex]
+    [items, activeIndex],
   );
 
   /* -- Keyboard navigation inside panel ------------ */
@@ -147,7 +153,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
           break;
       }
     },
-    [activeIndex, items]
+    [activeIndex, items],
   );
 
   /* -- Focus cluster links via ref ----------------- */
@@ -168,10 +174,11 @@ function MegaMenu({ items, className }: MegaMenuProps) {
   }, [activeIndex, handlePanelKeyDown]);
 
   return (
-    <div
+    <nav
       ref={menuRef}
       className={cn("relative hidden lg:flex items-center gap-1", className)}
-      role="menubar"
+      role="navigation"
+      aria-label="Main navigation"
     >
       {items.map((item, index) => {
         const isOpen = activeIndex === index;
@@ -185,11 +192,13 @@ function MegaMenu({ items, className }: MegaMenuProps) {
           >
             {/* Trigger */}
             <button
-              ref={(el) => { triggerRefs.current[index] = el; }}
+              ref={(el) => {
+                triggerRefs.current[index] = el;
+              }}
               className={cn(
                 "inline-flex items-center gap-1.5 px-3 py-2 text-body-sm font-medium rounded-button transition-colors",
                 "text-foreground hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
-                isOpen && "text-secondary"
+                isOpen && "text-secondary",
               )}
               aria-expanded={isOpen}
               aria-haspopup="true"
@@ -206,7 +215,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
                 size="xs"
                 className={cn(
                   "transition-transform duration-200",
-                  isOpen && "rotate-180"
+                  isOpen && "rotate-180",
                 )}
               />
             </button>
@@ -216,7 +225,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
               <div
                 className={cn(
                   "absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50",
-                  "min-w-[28rem]"
+                  "min-w-[28rem]",
                 )}
                 onMouseEnter={cancelClose}
                 onMouseLeave={closePanel}
@@ -231,7 +240,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
                       variant="nav"
                       className={cn(
                         "text-heading-sm font-display font-semibold",
-                        pillarTextMap[item.pillar]
+                        pillarTextMap[item.pillar],
                       )}
                     >
                       {item.label}
@@ -246,13 +255,15 @@ function MegaMenu({ items, className }: MegaMenuProps) {
                     {item.clusters.map((cluster, ci) => (
                       <li key={cluster.href}>
                         <a
-                          ref={(el) => { clusterLinkRefs.current[ci] = el; }}
+                          ref={(el) => {
+                            clusterLinkRefs.current[ci] = el;
+                          }}
                           href={cluster.href}
                           role="menuitem"
                           className={cn(
                             "block px-3 py-2 rounded-button transition-colors",
                             "text-body-sm text-foreground hover:bg-muted/5",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary",
                           )}
                         >
                           <span className="font-medium">{cluster.title}</span>
@@ -279,10 +290,15 @@ function MegaMenu({ items, className }: MegaMenuProps) {
                           "block p-3 rounded-card transition-colors",
                           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary",
                           pillarSoftBgMap[item.pillar],
-                          "hover:opacity-90"
+                          "hover:opacity-90",
                         )}
                       >
-                        <span className={cn("font-medium text-body-sm", pillarTextMap[item.pillar])}>
+                        <span
+                          className={cn(
+                            "font-medium text-body-sm",
+                            pillarTextMap[item.pillar],
+                          )}
+                        >
                           {item.featuredLink.title}
                         </span>
                         <span className="block text-caption text-muted mt-0.5">
@@ -291,7 +307,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
                         <span
                           className={cn(
                             "inline-flex items-center gap-1 text-caption font-medium mt-1",
-                            pillarTextMap[item.pillar]
+                            pillarTextMap[item.pillar],
                           )}
                         >
                           Learn more
@@ -306,7 +322,7 @@ function MegaMenu({ items, className }: MegaMenuProps) {
           </div>
         );
       })}
-    </div>
+    </nav>
   );
 }
 

@@ -20,6 +20,7 @@
     --secondary: #1f2937;
     --accent: #374151;
     --accent-hover: #111827;
+    --accent-text: #1f2937;
     --link: #2563eb;
     --success: #4b5563;
     --destructive: #374151;
@@ -66,6 +67,7 @@
     --secondary: #2563eb;
     --accent: #d97706;
     --accent-hover: #b45309;
+    --accent-text: #92400e;
     --link: #2563eb;
     --success: #16a34a;
     --destructive: #dc2626;
@@ -115,6 +117,7 @@
   --color-link: var(--link);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-text: var(--accent-text);
   --color-success: var(--success);
   --color-destructive: var(--destructive);
   --color-warning: var(--warning);
@@ -186,10 +189,11 @@
   --radius-pill: 9999px;
 
   /* Shadows */
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
-  --shadow-dropdown: 0 10px 40px rgba(0,0,0,0.12);
-  --shadow-tooltip: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover:
+    0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --shadow-dropdown: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --shadow-tooltip: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   /* Animations */
   --animate-accordion-down: accordion-down 200ms ease-out;
@@ -199,23 +203,43 @@
 }
 
 @keyframes accordion-down {
-  from { height: 0; opacity: 0; }
-  to { height: var(--accordion-height); opacity: 1; }
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--accordion-height);
+    opacity: 1;
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--accordion-height); opacity: 1; }
-  to { height: 0; opacity: 0; }
+  from {
+    height: var(--accordion-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-right {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @layer base {
@@ -229,19 +253,54 @@
   }
 
   /* Base heading defaults — ensures hierarchy even without explicit classes */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 700;
     color: var(--foreground);
     line-height: 1.2;
   }
 
-  h1 { font-size: var(--font-size-display); letter-spacing: -0.01em; }
-  h2 { font-size: var(--font-size-heading-lg); }
-  h3 { font-size: var(--font-size-heading); }
-  h4 { font-size: var(--font-size-heading-sm); }
-  h5 { font-size: var(--font-size-body-lg); }
-  h6 { font-size: var(--font-size-body); font-weight: 600; }
+  h1 {
+    font-size: var(--font-size-display);
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: var(--font-size-heading-lg);
+  }
+  h3 {
+    font-size: var(--font-size-heading);
+  }
+  h4 {
+    font-size: var(--font-size-heading-sm);
+  }
+  h5 {
+    font-size: var(--font-size-body-lg);
+  }
+  h6 {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+  }
+}
+
+@layer base {
+  /* ============================================
+     Reduced Motion — disable/simplify animations
+     ============================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {

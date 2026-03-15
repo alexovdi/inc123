@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { CTABlock } from "@/design-system/components";
 import { Alert } from "@/design-system/primitives";
+
+export const metadata: Metadata = {
+  title: "Terms of Service | Incorporate123",
+  description:
+    "Incorporate123 terms of service. Read the terms governing use of our website and business formation services.",
+  alternates: { canonical: "https://incorporate123.co/terms" },
+};
 
 export default function TermsPage() {
   return (
@@ -7,7 +15,9 @@ export default function TermsPage() {
       {/* Hero */}
       <section className="bg-primary py-section-y text-white">
         <div className="mx-auto max-w-content px-container-x">
-          <h1 className="font-display text-display font-bold">Terms of Service</h1>
+          <h1 className="font-display text-display font-bold">
+            Terms of Service
+          </h1>
           <p className="mt-2 text-lg text-white/80">
             The terms and conditions governing your use of Incorporate123
             services.
@@ -70,21 +80,13 @@ export default function TermsPage() {
                   LLC and corporation formation in Wyoming, Nevada, California,
                   Florida, and other states
                 </li>
-                <li>
-                  Registered agent services and mail forwarding
-                </li>
+                <li>Registered agent services and mail forwarding</li>
                 <li>
                   Privacy-focused business structures including nominee services
                 </li>
-                <li>
-                  Annual report filing and compliance monitoring
-                </li>
-                <li>
-                  EIN (Employer Identification Number) procurement
-                </li>
-                <li>
-                  Operating agreement and corporate document preparation
-                </li>
+                <li>Annual report filing and compliance monitoring</li>
+                <li>EIN (Employer Identification Number) procurement</li>
+                <li>Operating agreement and corporate document preparation</li>
               </ul>
               <p className="mt-4 leading-relaxed">
                 Incorporate123 is not a law firm and does not provide legal

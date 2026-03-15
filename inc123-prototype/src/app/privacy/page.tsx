@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "Business Privacy — Anonymous LLCs, Nominee Services & Private Formation | Incorporate123",
   description:
     "Protect your business identity with year-round nominee services, offshore records, and anonymous LLC formation in Wyoming and Nevada. All-inclusive Gold packages from $1,275. 25 years of privacy expertise.",
+  alternates: { canonical: "https://incorporate123.co/privacy" },
 };
 
 const pillar = pillars[0]; // privacy
@@ -50,7 +51,7 @@ export default function PrivacyPillarPage() {
             label: "View Gold Packages",
             href: "#packages",
           }}
-          trustSnippet="25 Years · Year-Round Nominees · Offshore Records Included"
+          trustSnippet={pillar.trustElement}
           safetyNet="Have questions? Call (775) 313-4155"
         />
       }
@@ -99,15 +100,15 @@ export default function PrivacyPillarPage() {
                       certain information to be filed publicly. This typically
                       includes the names and addresses of members, managers,
                       officers, and directors. These filings — Articles of
-                      Organization, annual reports, and registered agent
-                      records — are searchable by anyone.
+                      Organization, annual reports, and registered agent records
+                      — are searchable by anyone.
                     </p>
                     <p>
                       Business privacy addresses this exposure through two
                       mechanisms: forming in a state that minimizes disclosure
                       requirements (Wyoming or Nevada), and using nominee
-                      officers and directors whose names appear on public records
-                      instead of yours.
+                      officers and directors whose names appear on public
+                      records instead of yours.
                     </p>
                     <p>
                       The critical difference is between formation-day privacy
@@ -157,11 +158,7 @@ export default function PrivacyPillarPage() {
               description="When your name appears on public LLC records, anyone — including litigious parties — can find your business assets. Anonymity is your first line of defense."
             >
               <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="Shield"
-                  size="sm"
-                  className="text-pillar-privacy"
-                />
+                <Icon name="Shield" size="sm" className="text-pillar-privacy" />
                 <span className="text-caption text-muted">
                   Asset visibility invites targeting
                 </span>
@@ -236,6 +233,20 @@ export default function PrivacyPillarPage() {
               />
             ))}
           </div>
+
+          {/* Differentiator Callout */}
+          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-privacy bg-pillar-privacy/5 p-6">
+            <p className="text-body font-medium text-foreground">
+              &ldquo;Year-round nominees, not &lsquo;nominee for a day&rsquo;
+              &mdash; your name never appears on any filing, at any time.&rdquo;
+            </p>
+            <p className="mt-2 text-body-sm text-muted">
+              Most providers list a nominee only at formation, then remove them.
+              Every Incorporate123 Gold package keeps nominees on{" "}
+              <strong>all</strong> public filings, 365 days a year &mdash;
+              formation, annual reports, and amendments.
+            </p>
+          </aside>
         </section>
 
         {/* ------------------------------------------------

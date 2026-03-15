@@ -13,18 +13,9 @@ import {
 } from "@/design-system/components";
 import { Button } from "@/design-system/primitives";
 import { packages } from "@/data/packages";
+import { FORMATION_STATES } from "@/data/checkout";
 import { useCheckout } from "../CheckoutContext";
 import type { EntityType } from "@/lib/types";
-
-/* ------------------------------------------------
-   State selection component (inline for checkout)
-   ------------------------------------------------ */
-const FORMATION_STATES = [
-  { value: "Wyoming", label: "Wyoming", abbr: "WY" },
-  { value: "Nevada", label: "Nevada", abbr: "NV" },
-  { value: "California", label: "California", abbr: "CA" },
-  { value: "Florida", label: "Florida", abbr: "FL" },
-];
 
 export default function CheckoutConfigurePage() {
   const router = useRouter();
@@ -33,13 +24,13 @@ export default function CheckoutConfigurePage() {
   // Filter packages by selected state
   const statePackages = useMemo(
     () => packages.filter((pkg) => pkg.state === state.selectedState),
-    [state.selectedState]
+    [state.selectedState],
   );
 
   // Get the currently selected package
   const selectedPackage = useMemo(
     () => packages.find((pkg) => pkg.id === state.selectedTier),
-    [state.selectedTier]
+    [state.selectedTier],
   );
 
   // Entity label for display (swap LLC ↔ Corp in package names)
@@ -59,7 +50,7 @@ export default function CheckoutConfigurePage() {
         badge: pkg.badge,
         highlighted: pkg.highlighted,
       })),
-    [statePackages, state.entityType, entityLabel]
+    [statePackages, state.entityType, entityLabel],
   );
 
   // Calculate pricing
@@ -75,7 +66,8 @@ export default function CheckoutConfigurePage() {
   const total = basePrice + addOnTotal;
 
   // Get add-ons for the selected package (or first package for the state)
-  const availableAddOns = selectedPackage?.addOns ?? statePackages[0]?.addOns ?? [];
+  const availableAddOns =
+    selectedPackage?.addOns ?? statePackages[0]?.addOns ?? [];
 
   // Selected add-on details for OrderSummary
   const selectedAddOnDetails = state.selectedAddOns

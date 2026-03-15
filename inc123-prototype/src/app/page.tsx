@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import NextLink from "next/link";
 import { Clock, Globe, DollarSign, MapPin, Award, Phone } from "lucide-react";
 
@@ -22,6 +23,78 @@ import {
   packageRenewals,
   trustSignalItems,
 } from "@/data/homepage";
+
+/* ------------------------------------------------
+   Metadata
+   ------------------------------------------------ */
+export const metadata: Metadata = {
+  title: "Incorporate123 — Privacy, Asset Protection & Business Formation",
+  description:
+    "Privacy-focused business formation specialists. Wyoming & Nevada LLCs with year-round nominee services, offshore records, and all-inclusive pricing. 25 years of expertise from Reno, NV.",
+  alternates: {
+    canonical: "https://incorporate123.co",
+  },
+};
+
+/* ------------------------------------------------
+   Organization + LocalBusiness Schema (JSON-LD)
+   ------------------------------------------------ */
+function OrganizationSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness"],
+    "@id": "https://incorporate123.co/#organization",
+    name: "Incorporate123",
+    url: "https://incorporate123.co",
+    logo: "https://incorporate123.co/logo.png",
+    description:
+      "Privacy-focused business formation specialists offering anonymous LLCs, nominee services, asset protection structures, and ongoing compliance in Wyoming, Nevada, California, and Florida. 25 years of expertise.",
+    foundingDate: "2000",
+    telephone: "(775) 313-4155",
+    email: "info@incorporate123.co",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "1795 Meadow Wood Lane, Suite 100",
+      addressLocality: "Reno",
+      addressRegion: "NV",
+      postalCode: "89502",
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 39.4806,
+      longitude: -119.7888,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+    sameAs: [],
+    priceRange: "$$",
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+    knowsAbout: [
+      "Anonymous LLC Formation",
+      "Nominee Services",
+      "Asset Protection",
+      "Business Privacy",
+      "Wyoming LLC",
+      "Nevada LLC",
+      "Offshore Records Custodian",
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
 /* ------------------------------------------------
    Differentiator icon map (spec v1.1)
@@ -57,6 +130,8 @@ export default function HomePage() {
 
   return (
     <>
+      <OrganizationSchema />
+
       {/* ==========================================
           Section 1: Hero
           ========================================== */}
