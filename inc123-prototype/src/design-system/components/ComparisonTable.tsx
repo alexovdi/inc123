@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback, type ReactNode } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  type ReactNode,
+} from "react";
 import { cn } from "@/design-system/utils/cn";
 import { Badge, Tooltip, Icon } from "@/design-system/primitives";
 
@@ -47,6 +53,7 @@ function ComparisonTable({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [hoveredColumn, setHoveredColumn] = useState<string | null>(null);
 
   const checkScroll = useCallback(() => {
     const el = scrollRef.current;
@@ -68,6 +75,10 @@ function ComparisonTable({
       window.removeEventListener("resize", checkScroll);
     };
   }, [checkScroll]);
+
+  /** Whether a column should be visually emphasised (highlight prop OR hover) */
+  const isEmphasised = (colId: string) =>
+    highlightColumn === colId || hoveredColumn === colId;
 
   return (
     <div className={cn("relative w-full", className)}>
@@ -95,9 +106,7 @@ function ComparisonTable({
           {/* Header */}
           <thead>
             <tr
-              className={cn(
-                stickyHeader && "sticky top-0 z-20 bg-background"
-              )}
+              className={cn(stickyHeader && "sticky top-0 z-20 bg-background")}
             >
               {/* Label column header */}
               <th className="sticky left-0 z-30 bg-background text-left p-4 font-display text-body-sm font-semibold text-muted border-b border-border min-w-[180px]">
@@ -109,10 +118,12 @@ function ComparisonTable({
                 <th
                   key={col.id}
                   className={cn(
-                    "text-center p-4 border-b border-border min-w-[150px]",
-                    highlightColumn === col.id &&
-                      "bg-secondary/5 border-b-secondary/20"
+                    "text-center p-4 border-b border-border min-w-[150px] transition-colors duration-150",
+                    isEmphasised(col.id) &&
+                      "bg-secondary/5 border-b-secondary/20",
                   )}
+                  onMouseEnter={() => setHoveredColumn(col.id)}
+                  onMouseLeave={() => setHoveredColumn(null)}
                 >
                   <div className="flex flex-col items-center gap-1">
                     {col.badge && (
@@ -149,14 +160,14 @@ function ComparisonTable({
               <tr
                 key={ri}
                 className={cn(
-                  ri % 2 === 0 ? "bg-primary/[0.02]" : "bg-transparent"
+                  ri % 2 === 0 ? "bg-primary/[0.02]" : "bg-transparent",
                 )}
               >
                 {/* Row label (sticky on mobile) */}
                 <td
                   className={cn(
                     "sticky left-0 z-10 p-4 text-body-sm font-medium text-foreground border-b border-border/50",
-                    ri % 2 === 0 ? "bg-primary/[0.02]" : "bg-background"
+                    ri % 2 === 0 ? "bg-primary/[0.02]" : "bg-background",
                   )}
                 >
                   {row.tooltip ? (
@@ -164,11 +175,7 @@ function ComparisonTable({
                       trigger={
                         <span className="inline-flex items-center gap-1.5 cursor-help border-b border-dashed border-muted/50">
                           {row.label}
-                          <Icon
-                            name="Info"
-                            size="xs"
-                            className="text-muted"
-                          />
+                          <Icon name="Info" size="xs" className="text-muted" />
                         </span>
                       }
                       content={row.tooltip}
@@ -185,9 +192,11 @@ function ComparisonTable({
                   <td
                     key={col.id}
                     className={cn(
-                      "text-center p-4 text-body-sm text-foreground border-b border-border/50",
-                      highlightColumn === col.id && "bg-secondary/5"
+                      "text-center p-4 text-body-sm text-foreground border-b border-border/50 transition-colors duration-150",
+                      isEmphasised(col.id) && "bg-secondary/5",
                     )}
+                    onMouseEnter={() => setHoveredColumn(col.id)}
+                    onMouseLeave={() => setHoveredColumn(null)}
                   >
                     {row.values[col.id] ?? "\u2014"}
                   </td>

@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import NextLink from "next/link";
-import { Phone, Mail, MapPin, Bitcoin } from "lucide-react";
+import { Phone, Mail, MapPin, Bitcoin, ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 
 interface FooterLink {
@@ -32,6 +35,95 @@ export interface SiteFooterProps {
   className?: string;
 }
 
+/* ------------------------------------------------
+   Footer Column Content (shared between mobile/desktop)
+   ------------------------------------------------ */
+function FooterColumnContent({ col }: { col: FooterColumn }) {
+  return (
+    <>
+      {/* Simple link list */}
+      {col.links && (
+        <ul className="space-y-2">
+          {col.links.map((link) => (
+            <li key={link.href}>
+              <NextLink
+                href={link.href}
+                className="text-caption text-white/60 transition-colors hover:text-white"
+              >
+                {link.label}
+              </NextLink>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Multi-section columns */}
+      {col.sections && (
+        <div className="space-y-5">
+          {col.sections.map((section) => (
+            <div key={section.heading}>
+              <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/50">
+                {section.heading}
+              </h4>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <NextLink
+                      href={link.href}
+                      className="text-caption text-white/60 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ------------------------------------------------
+   Mobile Accordion Item
+   ------------------------------------------------ */
+function FooterAccordionItem({ col }: { col: FooterColumn }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-white/10 last:border-b-0">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between py-4 text-left"
+      >
+        <h3 className="font-display text-body-sm font-semibold text-white/90">
+          {col.title}
+        </h3>
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 text-white/50 transition-transform duration-200",
+            isOpen && "rotate-180",
+          )}
+          aria-hidden="true"
+        />
+      </button>
+      <div
+        className={cn(
+          "overflow-hidden transition-[max-height,opacity] duration-200 ease-out",
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+        )}
+      >
+        <div className="pb-4">
+          <FooterColumnContent col={col} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function SiteFooter({
   columns,
   legal,
@@ -42,54 +134,22 @@ export function SiteFooter({
     <footer className={cn("bg-footer-dark text-white", className)}>
       {/* Main Footer — 4 Columns */}
       <div className="mx-auto max-w-wide px-container-x py-section-y-sm">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Desktop: grid layout */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {columns.map((col) => (
             <div key={col.title}>
               <h3 className="mb-4 font-display text-body-sm font-semibold text-white/90">
                 {col.title}
               </h3>
-
-              {/* Simple link list (Col 1: Privacy) */}
-              {col.links && (
-                <ul className="space-y-2">
-                  {col.links.map((link) => (
-                    <li key={link.href}>
-                      <NextLink
-                        href={link.href}
-                        className="text-caption text-white/60 transition-colors hover:text-white"
-                      >
-                        {link.label}
-                      </NextLink>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {/* Multi-section columns (Cols 2-4) */}
-              {col.sections && (
-                <div className="space-y-5">
-                  {col.sections.map((section) => (
-                    <div key={section.heading}>
-                      <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/50">
-                        {section.heading}
-                      </h4>
-                      <ul className="space-y-2">
-                        {section.links.map((link) => (
-                          <li key={link.href}>
-                            <NextLink
-                              href={link.href}
-                              className="text-caption text-white/60 transition-colors hover:text-white"
-                            >
-                              {link.label}
-                            </NextLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
+              <FooterColumnContent col={col} />
             </div>
+          ))}
+        </div>
+
+        {/* Mobile: accordion layout */}
+        <div className="sm:hidden">
+          {columns.map((col) => (
+            <FooterAccordionItem key={col.title} col={col} />
           ))}
         </div>
 

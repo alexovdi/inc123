@@ -44,8 +44,15 @@ export function PillarLayout({
       ) : (
         <div className={cn("border-t-4", pillarAccentMap[pillar])}>
           <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-            <p className={cn("text-body-sm font-semibold uppercase tracking-wider mb-2", pillarTextMap[pillar])}>
-              {pillar === "asset" ? "Asset Protection" : pillar.charAt(0).toUpperCase() + pillar.slice(1)}
+            <p
+              className={cn(
+                "text-body-sm font-semibold uppercase tracking-wider mb-2",
+                pillarTextMap[pillar],
+              )}
+            >
+              {pillar === "asset"
+                ? "Asset Protection"
+                : pillar.charAt(0).toUpperCase() + pillar.slice(1)}
             </p>
             <h1 className="font-display text-display-lg font-bold text-foreground mb-3">
               {title}
@@ -59,17 +66,21 @@ export function PillarLayout({
 
       {/* Content Area */}
       <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-        <div className={cn(
-          "flex gap-12",
-          sidebar ? "flex-col lg:flex-row" : ""
-        )}>
-          <main className={cn("flex-1 min-w-0", sidebar && "lg:max-w-[70%]")}>
+        <div
+          className={cn("flex gap-12", sidebar ? "flex-col lg:flex-row" : "")}
+        >
+          <main
+            className={cn(
+              "flex-1 min-w-0 order-2 lg:order-1",
+              sidebar && "lg:max-w-[70%]",
+            )}
+          >
             {children}
           </main>
           {sidebar && (
-            <aside className="w-full lg:w-[30%] shrink-0">
+            <div className="w-full lg:w-[30%] shrink-0 order-1 lg:order-2">
               {sidebar}
-            </aside>
+            </div>
           )}
         </div>
       </div>

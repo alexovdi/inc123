@@ -1,8 +1,14 @@
 "use client";
 
-import { useState, useCallback, useMemo, type ReactNode } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Button, Badge, Icon, Tooltip, Checkbox } from "@/design-system/primitives";
+import {
+  Button,
+  Badge,
+  Icon,
+  Tooltip,
+  Checkbox,
+} from "@/design-system/primitives";
 import { EntityTypeToggle } from "./EntityTypeToggle";
 
 /* ------------------------------------------------
@@ -68,7 +74,11 @@ function FeatureStatusIcon({ status }: { status: PricingFeature["status"] }) {
     case "not-included":
       return <Icon name="X" size="sm" className="text-muted" />;
     case "add-on":
-      return <Badge variant="warning" size="sm">Add-on</Badge>;
+      return (
+        <Badge variant="warning" size="sm">
+          Add-on
+        </Badge>
+      );
   }
 }
 
@@ -95,6 +105,12 @@ function FeatureRow({ feature }: { feature: PricingFeature }) {
 }
 
 /* ------------------------------------------------
+   Constants
+   ------------------------------------------------ */
+/** Number of features visible on mobile before "See all" toggle */
+const MOBILE_FEATURE_LIMIT = 5;
+
+/* ------------------------------------------------
    Component
    ------------------------------------------------ */
 function PricingGrid({
@@ -106,16 +122,26 @@ function PricingGrid({
 }: PricingGridProps) {
   const [entityType, setEntityType] = useState(entityToggle.default);
   const [selectedAddOns, setSelectedAddOns] = useState<Record<string, boolean>>(
-    {}
+    {},
   );
+  const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>(
+    {},
+  );
+
+  const toggleFeatureExpand = useCallback((tierId: string) => {
+    setExpandedTiers((prev) => ({ ...prev, [tierId]: !prev[tierId] }));
+  }, []);
 
   const toggleAddOn = useCallback((addOnId: string, checked: boolean) => {
     setSelectedAddOns((prev) => ({ ...prev, [addOnId]: checked }));
   }, []);
 
   const activeAddOnIds = useMemo(
-    () => Object.entries(selectedAddOns).filter(([, v]) => v).map(([k]) => k),
-    [selectedAddOns]
+    () =>
+      Object.entries(selectedAddOns)
+        .filter(([, v]) => v)
+        .map(([k]) => k),
+    [selectedAddOns],
   );
 
   const addOnTotal = useMemo(
@@ -124,7 +150,7 @@ function PricingGrid({
         const addOn = addOns.find((a) => a.id === id);
         return sum + (addOn?.price ?? 0);
       }, 0),
-    [activeAddOnIds, addOns]
+    [activeAddOnIds, addOns],
   );
 
   const handleTierSelect = useCallback(
@@ -136,7 +162,7 @@ function PricingGrid({
         total: tierPrice + addOnTotal,
       });
     },
-    [entityType, activeAddOnIds, addOnTotal, onTierSelect]
+    [entityType, activeAddOnIds, addOnTotal, onTierSelect],
   );
 
   return (
@@ -150,64 +176,104 @@ function PricingGrid({
         />
       </div>
 
-      {/* Tier columns */}
+      {/* Tier columns — Gold-first on mobile via CSS order */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {tiers.map((tier) => (
-          <div
-            key={tier.id}
-            className={cn(
-              "flex flex-col bg-surface rounded-card border p-6 transition-shadow",
-              tier.highlighted
-                ? "border-secondary shadow-card-hover md:scale-105 md:z-10 relative"
-                : "border-border shadow-card"
-            )}
-          >
-            {/* Header */}
-            <div className="text-center mb-6">
-              {tier.badge && (
-                <Badge
-                  variant={tier.highlighted ? "info" : "default"}
-                  size="sm"
-                  className="mb-2"
-                >
-                  {tier.badge}
-                </Badge>
+        {tiers.map((tier, index) => {
+          const isExpanded = !!expandedTiers[tier.id];
+          const hasMoreFeatures = tier.features.length > MOBILE_FEATURE_LIMIT;
+
+          return (
+            <div
+              key={tier.id}
+              className={cn(
+                "flex flex-col bg-surface rounded-card border p-6 transition-shadow",
+                tier.highlighted
+                  ? "border-secondary shadow-card-hover md:scale-105 md:z-10 relative"
+                  : "border-border shadow-card",
+                /* Mobile: highlighted (Gold) tier appears first */
+                tier.highlighted ? "order-first" : "order-none",
+                /* Desktop: restore natural column order (bronze=0, silver=1, gold=2) */
+                index === 0 && "md:order-1",
+                index === 1 && "md:order-2",
+                index === 2 && "md:order-3",
               )}
-              <h3 className="font-display text-heading-sm font-semibold text-foreground">
-                {tier.name}
-              </h3>
-              <p className="text-body-sm text-muted mt-1">{tier.description}</p>
-
-              {/* Price */}
-              <div className="mt-4">
-                <span className="font-mono text-heading-lg font-bold text-foreground">
-                  ${tier.price.toLocaleString()}
-                </span>
-                <span className="text-body-sm text-muted ml-1">
-                  /{tier.period}
-                </span>
-              </div>
-            </div>
-
-            {/* Features */}
-            <ul className="flex-1 space-y-3 mb-6">
-              {tier.features.map((feature, fi) => (
-                <li key={fi} className="flex items-start">
-                  <FeatureRow feature={feature} />
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <Button
-              variant={tier.highlighted ? "cta" : "primary"}
-              fullWidth
-              onClick={() => handleTierSelect(tier.id, tier.price)}
             >
-              Order Now
-            </Button>
-          </div>
-        ))}
+              {/* Header */}
+              <div className="text-center mb-6">
+                {tier.badge && (
+                  <Badge
+                    variant={tier.highlighted ? "info" : "default"}
+                    size="sm"
+                    className="mb-2"
+                  >
+                    {tier.badge}
+                  </Badge>
+                )}
+                <h3 className="font-display text-heading-sm font-semibold text-foreground">
+                  {tier.name}
+                </h3>
+                <p className="text-body-sm text-muted mt-1">
+                  {tier.description}
+                </p>
+
+                {/* Price */}
+                <div className="mt-4">
+                  <span className="font-mono text-heading-lg font-bold text-foreground">
+                    ${tier.price.toLocaleString()}
+                  </span>
+                  <span className="text-body-sm text-muted ml-1">
+                    /{tier.period}
+                  </span>
+                </div>
+              </div>
+
+              {/* Features — collapsed to first 5 on mobile, all visible on desktop */}
+              <ul className="flex-1 space-y-3 mb-6">
+                {tier.features.map((feature, fi) => (
+                  <li
+                    key={fi}
+                    className={cn(
+                      "flex items-start",
+                      /* On mobile: hide features beyond the limit unless expanded */
+                      fi >= MOBILE_FEATURE_LIMIT && !isExpanded
+                        ? "hidden md:flex"
+                        : "flex",
+                    )}
+                  >
+                    <FeatureRow feature={feature} />
+                  </li>
+                ))}
+              </ul>
+
+              {/* "See all features" toggle — mobile only */}
+              {hasMoreFeatures && (
+                <button
+                  type="button"
+                  onClick={() => toggleFeatureExpand(tier.id)}
+                  className="md:hidden text-body-sm font-medium text-secondary hover:text-secondary/80 mb-4 inline-flex items-center gap-1 mx-auto transition-colors"
+                >
+                  {isExpanded
+                    ? "Show fewer features"
+                    : `See all ${tier.features.length} features`}
+                  <Icon
+                    name={isExpanded ? "ChevronUp" : "ChevronDown"}
+                    size="sm"
+                    className="shrink-0"
+                  />
+                </button>
+              )}
+
+              {/* CTA */}
+              <Button
+                variant={tier.highlighted ? "cta" : "primary"}
+                fullWidth
+                onClick={() => handleTierSelect(tier.id, tier.price)}
+              >
+                Order Now
+              </Button>
+            </div>
+          );
+        })}
       </div>
 
       {/* Add-ons section */}
@@ -218,15 +284,6 @@ function PricingGrid({
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {addOns.map((addOn) => {
-              const label = (
-                <span className="inline-flex items-center gap-2">
-                  {addOn.name}
-                  <span className="font-mono text-body-sm text-muted">
-                    +${addOn.price}
-                  </span>
-                </span>
-              );
-
               const checkbox = (
                 <Checkbox
                   key={addOn.id}

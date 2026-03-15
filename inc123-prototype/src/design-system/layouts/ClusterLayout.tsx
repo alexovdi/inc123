@@ -53,7 +53,7 @@ export function ClusterLayout({
             href={pillarHref}
             className={cn(
               "mb-4 inline-flex items-center gap-1.5 text-body-sm font-medium transition-colors hover:underline",
-              pillarTextMap[pillar]
+              pillarTextMap[pillar],
             )}
           >
             <ArrowLeft className="h-4 w-4" />
@@ -63,25 +63,27 @@ export function ClusterLayout({
           <h1 className="font-display text-display font-bold text-foreground mb-3">
             {title}
           </h1>
-          <p className="text-body-lg text-muted max-w-narrow">
-            {description}
-          </p>
+          <p className="text-body-lg text-muted max-w-narrow">{description}</p>
         </div>
       )}
 
       {/* Content Area */}
       <div className="mx-auto max-w-content px-container-x pb-section-y">
-        <div className={cn(
-          "flex gap-12",
-          sidebar ? "flex-col lg:flex-row" : ""
-        )}>
-          <main className={cn("flex-1 min-w-0", sidebar && "lg:max-w-[70%]")}>
+        <div
+          className={cn("flex gap-12", sidebar ? "flex-col lg:flex-row" : "")}
+        >
+          <main
+            className={cn(
+              "flex-1 min-w-0 order-2 lg:order-1",
+              sidebar && "lg:max-w-[70%]",
+            )}
+          >
             {children}
           </main>
           {sidebar && (
-            <aside className="w-full lg:w-[30%] shrink-0">
+            <div className="w-full lg:w-[30%] shrink-0 order-1 lg:order-2">
               {sidebar}
-            </aside>
+            </div>
           )}
         </div>
       </div>
