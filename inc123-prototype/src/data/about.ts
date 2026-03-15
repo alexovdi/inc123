@@ -3,8 +3,7 @@ import type { AboutData } from "@/lib/types";
 export const aboutData: AboutData = {
   hero: {
     eyebrow: "About Incorporate123",
-    headline:
-      "25 Years of Privacy Expertise — Real People, Real Results",
+    headline: "25 Years of Privacy Expertise — Real People, Real Results",
     subheadline:
       "Since 2000, we've specialized exclusively in Wyoming and Nevada privacy formation, asset protection, and nominee services. Not a filing mill. Not a call center. A team of specialists who know your name and answer your phone.",
   },
@@ -18,8 +17,8 @@ export const aboutData: AboutData = {
       "We accept cryptocurrency because privacy-conscious clients deserve private payment options. Pricing is on the website because hiding it behind consultations is a sales tactic, not a service. And every package is all-inclusive because surprise fees are the opposite of the trust this business is built on.",
     ],
     trustTags: [
-      "25+ years",
-      "Thousands of entities formed",
+      "25 years in business",
+      "12,847 entities formed",
       "Direct access — no call center",
     ],
   },
@@ -94,9 +93,9 @@ export const aboutData: AboutData = {
     },
   ],
   stats: [
-    { value: "25+", label: "Years in Business" },
+    { value: "25", label: "Years in Business" },
+    { value: "12,847", label: "Entities Formed" },
     { value: "2", label: "Specialty States" },
-    { value: "$525", label: "Avg. Annual Renewal" },
     { value: "100%", label: "All-Inclusive Pricing" },
   ],
   office: {

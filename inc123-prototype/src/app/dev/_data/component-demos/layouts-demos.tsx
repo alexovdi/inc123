@@ -12,7 +12,13 @@ import {
 } from "@/design-system/layouts";
 import { siteNavigation, footerNavigation } from "@/data/navigation";
 
-function LayoutPreview({ label, children }: { label: string; children: React.ReactNode }) {
+function LayoutPreview({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       <p className="text-caption text-muted mb-2">{label}</p>
@@ -47,9 +53,7 @@ export function SiteFooterDemo() {
   return (
     <LayoutPreview label="Full site footer with navigation columns">
       <SiteFooter
-        pillars={footerNavigation.pillars}
-        packages={footerNavigation.packages}
-        utility={footerNavigation.utility}
+        columns={footerNavigation.columns}
         legal={footerNavigation.legal}
         company={footerNavigation.company}
       />

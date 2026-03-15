@@ -17,6 +17,9 @@ export interface ContactFormField {
   options?: string[];
   placeholder?: string;
   halfWidth?: boolean;
+  /** Show this field only when the field named by conditionalOn has a value in conditionalValues */
+  conditionalOn?: string;
+  conditionalValues?: string[];
 }
 
 export interface ContactFormProps {
@@ -63,7 +66,7 @@ function ContactForm({ fields, className }: ContactFormProps) {
 
       return undefined;
     },
-    [values, touched, submitted]
+    [values, touched, submitted],
   );
 
   const handleChange = useCallback((name: string, value: string) => {
@@ -97,7 +100,7 @@ function ContactForm({ fields, className }: ContactFormProps) {
         setSuccess(true);
       }, 1500);
     },
-    [fields, values]
+    [fields, values],
   );
 
   // Success state
@@ -130,11 +133,18 @@ function ContactForm({ fields, className }: ContactFormProps) {
     );
   }
 
+  // Filter out conditionally hidden fields
+  const visibleFields = fields.filter((field) => {
+    if (!field.conditionalOn || !field.conditionalValues) return true;
+    const depValue = values[field.conditionalOn] ?? "";
+    return field.conditionalValues.includes(depValue);
+  });
+
   // Group fields into rows based on halfWidth
   const rows: ContactFormField[][] = [];
   let currentRow: ContactFormField[] = [];
 
-  for (const field of fields) {
+  for (const field of visibleFields) {
     if (field.halfWidth) {
       currentRow.push(field);
       if (currentRow.length === 2) {
@@ -175,9 +185,7 @@ function ContactForm({ fields, className }: ContactFormProps) {
             <div
               key={rowIndex}
               className={cn(
-                row.length > 1
-                  ? "grid grid-cols-1 md:grid-cols-2 gap-5"
-                  : ""
+                row.length > 1 ? "grid grid-cols-1 md:grid-cols-2 gap-5" : "",
               )}
             >
               {row.map((field) => {
@@ -194,9 +202,7 @@ function ContactForm({ fields, className }: ContactFormProps) {
                       required={field.required}
                       error={error}
                       value={value}
-                      onChange={(e) =>
-                        handleChange(field.name, e.target.value)
-                      }
+                      onChange={(e) => handleChange(field.name, e.target.value)}
                       onBlur={() => handleBlur(field.name)}
                     />
                   );
@@ -212,9 +218,7 @@ function ContactForm({ fields, className }: ContactFormProps) {
                       error={error}
                       rows={5}
                       value={value}
-                      onChange={(e) =>
-                        handleChange(field.name, e.target.value)
-                      }
+                      onChange={(e) => handleChange(field.name, e.target.value)}
                       onBlur={() => handleBlur(field.name)}
                     />
                   );
@@ -224,16 +228,12 @@ function ContactForm({ fields, className }: ContactFormProps) {
                   <Input
                     key={field.name}
                     label={field.label}
-                    type={
-                      field.type as "text" | "email" | "tel"
-                    }
+                    type={field.type as "text" | "email" | "tel"}
                     placeholder={field.placeholder}
                     required={field.required}
                     error={error}
                     value={value}
-                    onChange={(e) =>
-                      handleChange(field.name, e.target.value)
-                    }
+                    onChange={(e) => handleChange(field.name, e.target.value)}
                     onBlur={() => handleBlur(field.name)}
                   />
                 );

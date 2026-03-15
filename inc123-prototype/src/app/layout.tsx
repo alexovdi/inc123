@@ -38,6 +38,12 @@ export default function RootLayout({
         className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}
         suppressHydrationWarning
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-3 focus:bg-white focus:text-primary"
+        >
+          Skip to main content
+        </a>
         <HeaderFooterWrapper>{children}</HeaderFooterWrapper>
       </body>
     </html>

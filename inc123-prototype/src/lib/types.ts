@@ -283,6 +283,8 @@ export interface ContactData {
     options?: string[];
     placeholder?: string;
     halfWidth?: boolean;
+    conditionalOn?: string;
+    conditionalValues?: string[];
   }>;
   quickLinks: Array<{
     icon: string;
@@ -324,4 +326,35 @@ export interface CheckoutTimelineStep {
   label: string;
   description: string;
   duration: string;
+}
+
+/** Offshore Jurisdictions */
+export interface OffshoreJurisdiction {
+  slug: string;
+  name: string;
+  description: string;
+  advantages: Array<{ icon: string; title: string; description: string }>;
+  sections: Array<{
+    id: string;
+    type: "text" | "comparison" | "audience" | "differentiator";
+    title: string;
+    content: string;
+    items?: Array<{ title: string; description: string; icon?: string }>;
+  }>;
+  faqs: Array<{
+    id: string;
+    question: string;
+    answer: string;
+    category: string;
+  }>;
+  relatedPackages: string[];
+}
+
+export interface OffshoreData {
+  hub: {
+    headline: string;
+    subheadline: string;
+    description: string;
+  };
+  jurisdictions: OffshoreJurisdiction[];
 }

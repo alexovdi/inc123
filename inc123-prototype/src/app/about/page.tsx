@@ -45,6 +45,7 @@ export default function AboutPage() {
         phone={office.phone}
         email={office.email}
         hours={office.hours}
+        showMap
       />
 
       {/* 7. CTA Block */}

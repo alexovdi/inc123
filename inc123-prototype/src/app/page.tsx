@@ -1,12 +1,5 @@
 import NextLink from "next/link";
-import {
-  Clock,
-  Globe,
-  DollarSign,
-  MapPin,
-  Award,
-  Phone,
-} from "lucide-react";
+import { Clock, Globe, DollarSign, MapPin, Award, Phone } from "lucide-react";
 
 import { Icon } from "@/design-system/primitives";
 import {
@@ -60,8 +53,7 @@ const homepagePackages = homepagePackageIds
    Page
    ------------------------------------------------ */
 export default function HomePage() {
-  const { hero, differentiators, howItWorks, complianceCallout } =
-    homepageData;
+  const { hero, differentiators, howItWorks, complianceCallout } = homepageData;
 
   return (
     <>
@@ -156,6 +148,7 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {homepagePackages.map((pkg) => {
               if (!pkg) return null;
+              const isGold = pkg.tier === "gold";
               return (
                 <PackagePreviewCard
                   key={pkg.id}
@@ -171,8 +164,13 @@ export default function HomePage() {
                   entityType="LLC"
                   cta={{
                     label: "View Full Details →",
-                    href: `/packages/${pkg.id}`,
+                    href: `/${pkg.flatSlug}`,
                   }}
+                  className={
+                    isGold
+                      ? "border-t-4 border-t-privacy shadow-card-hover"
+                      : undefined
+                  }
                 />
               );
             })}
@@ -188,7 +186,7 @@ export default function HomePage() {
               <Icon name="ArrowRight" size="sm" />
             </NextLink>
             <p className="text-body-sm text-muted">
-              Not sure which package? Call (775) xxx-xxxx for a free
+              Not sure which package? Call (775) 313-4155 for a free
               consultation.
             </p>
           </div>
@@ -326,7 +324,7 @@ export default function HomePage() {
               label: "Schedule a Consultation →",
               href: "/contact",
             }}
-            trustSignal="(775) xxx-xxxx — Call anytime"
+            trustSignal="(775) 313-4155 — Call anytime"
           />
         </div>
       </section>

@@ -63,7 +63,7 @@ const accordionTriggerVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 /* ------------------------------------------------
@@ -130,7 +130,7 @@ function Accordion({
   className,
 }: AccordionProps) {
   const [openItems, setOpenItems] = useState<Set<string>>(
-    () => new Set(defaultOpen)
+    () => new Set(defaultOpen),
   );
   const [itemIds, setItemIds] = useState<string[]>([]);
 
@@ -149,7 +149,7 @@ function Accordion({
         return next;
       });
     },
-    [type]
+    [type],
   );
 
   const registerItem = useCallback((id: string) => {
@@ -162,7 +162,14 @@ function Accordion({
 
   return (
     <AccordionContext.Provider
-      value={{ openItems, toggle, registerItem, unregisterItem, variant: variant ?? "default", itemIds }}
+      value={{
+        openItems,
+        toggle,
+        registerItem,
+        unregisterItem,
+        variant: variant ?? "default",
+        itemIds,
+      }}
     >
       <div
         className={cn(accordionVariants({ variant }), className)}
@@ -225,8 +232,7 @@ function AccordionItem({
         break;
       case "ArrowUp":
         e.preventDefault();
-        targetIndex =
-          (currentIndex - 1 + itemIds.length) % itemIds.length;
+        targetIndex = (currentIndex - 1 + itemIds.length) % itemIds.length;
         break;
       case "Home":
         e.preventDefault();
@@ -241,7 +247,7 @@ function AccordionItem({
     if (targetIndex !== null) {
       const targetId = itemIds[targetIndex];
       const targetButton = document.querySelector<HTMLButtonElement>(
-        `[data-accordion-trigger="${targetId}"]`
+        `[data-accordion-trigger="${targetId}"]`,
       );
       targetButton?.focus();
     }
@@ -249,6 +255,7 @@ function AccordionItem({
 
   return (
     <div
+      id={id}
       className={cn(accordionItemVariants({ variant }), className)}
       data-state={isOpen ? "open" : "closed"}
     >
@@ -277,7 +284,7 @@ function AccordionItem({
           <ChevronDown
             className={cn(
               "h-5 w-5 shrink-0 text-muted transition-transform duration-200",
-              isOpen && "rotate-180"
+              isOpen && "rotate-180",
             )}
             aria-hidden="true"
           />
@@ -303,7 +310,7 @@ function AccordionItem({
             "text-body text-muted",
             variant === "default" && "px-4 pb-4",
             variant === "flush" && "pb-4",
-            variant === "card" && "px-4 pb-4"
+            variant === "card" && "px-4 pb-4",
           )}
         >
           {children}

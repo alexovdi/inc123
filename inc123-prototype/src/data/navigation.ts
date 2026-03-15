@@ -207,88 +207,100 @@ export const siteNavigation: SiteNavigation = {
 };
 
 export const footerNavigation = {
-  pillars: [
+  columns: [
     {
       title: "Business Privacy",
       links: [
         { label: "Anonymous LLC", href: "/anonymous-llc" },
         { label: "Nominee Services", href: "/nominee-services" },
-        {
-          label: "Private Incorporation",
-          href: "/private-incorporation",
-        },
+        { label: "Private Incorporation", href: "/private-incorporation" },
         { label: "Offshore Privacy", href: "/offshore-privacy" },
       ],
     },
     {
-      title: "Asset Protection",
-      links: [
+      title: "Asset Protection & Formation",
+      sections: [
         {
-          label: "Charging Order Protection",
-          href: "/charging-order-protection",
+          heading: "Asset Protection",
+          links: [
+            {
+              label: "Charging Order Protection",
+              href: "/charging-order-protection",
+            },
+            { label: "Wyoming AP", href: "/wyoming-asset-protection" },
+            { label: "Nevada AP", href: "/nevada-asset-protection" },
+            {
+              label: "Investment Holding LLC",
+              href: "/investment-holding-llc",
+            },
+            { label: "Real Estate AP", href: "/real-estate" },
+          ],
         },
-        { label: "Wyoming AP", href: "/wyoming-asset-protection" },
-        { label: "Nevada AP", href: "/nevada-asset-protection" },
         {
-          label: "Investment Holding LLC",
-          href: "/investment-holding-llc",
+          heading: "Company Formation",
+          links: [
+            { label: "Wyoming LLC", href: "/wyoming-llc" },
+            { label: "Nevada LLC", href: "/nevada-llc" },
+            { label: "Wyoming Corp", href: "/wyoming-corporation" },
+            { label: "Nevada Corp", href: "/nevada-corporation" },
+            { label: "Shelf Companies", href: "/shelf-companies" },
+          ],
         },
-        { label: "Real Estate AP", href: "/real-estate" },
       ],
     },
     {
-      title: "Company Formation",
-      links: [
-        { label: "Wyoming LLC", href: "/wyoming-llc" },
-        { label: "Nevada LLC", href: "/nevada-llc" },
+      title: "Packages & States",
+      sections: [
         {
-          label: "Wyoming Corporation",
-          href: "/wyoming-corporation",
+          heading: "Packages",
+          links: [
+            { label: "Compare All Packages", href: "/packages" },
+            {
+              label: "Wyoming Gold LLC",
+              href: "/wyoming-private-incorporation",
+            },
+            { label: "Wyoming Silver LLC", href: "/wyoming-incorporation" },
+            { label: "Nevada Gold LLC", href: "/nevada-private-incorporation" },
+            { label: "Nevada Silver LLC", href: "/nevada-incorporation" },
+            { label: "Nevada Bronze LLC", href: "/nevada-basic-incorporation" },
+          ],
         },
-        { label: "Nevada Corporation", href: "/nevada-corporation" },
-        { label: "Shelf Companies", href: "/shelf-companies" },
-        { label: "Entity Tax Guide", href: "/entity-tax-guide" },
+        {
+          heading: "States",
+          links: [
+            { label: "Wyoming", href: "/wyoming" },
+            { label: "Nevada", href: "/nevada" },
+            { label: "California", href: "/california" },
+            { label: "Florida", href: "/florida" },
+          ],
+        },
       ],
     },
     {
-      title: "Compliance",
-      links: [
-        { label: "Registered Agent", href: "/registered-agent" },
-        { label: "Annual Reports", href: "/annual-reports" },
-        { label: "Corporate Minutes", href: "/corporate-minutes" },
-        { label: "Virtual Office", href: "/virtual-office" },
+      title: "Company & Compliance",
+      sections: [
         {
-          label: "Foreign Registration",
-          href: "/foreign-registration",
+          heading: "Company",
+          links: [
+            { label: "About Us", href: "/about" },
+            { label: "Contact", href: "/contact" },
+            { label: "FAQ", href: "/faq" },
+            { label: "Blog", href: "/blog" },
+            { label: "Testimonials", href: "/testimonials" },
+          ],
         },
         {
-          label: "2nd-Tier Filings",
-          href: "/second-tier-state-filings",
+          heading: "Compliance",
+          links: [
+            { label: "Registered Agent", href: "/registered-agent" },
+            { label: "Annual Reports", href: "/annual-reports" },
+            { label: "Corporate Minutes", href: "/corporate-minutes" },
+            { label: "Virtual Office", href: "/virtual-office" },
+            { label: "Foreign Registration", href: "/foreign-registration" },
+          ],
         },
-        {
-          label: "Shares & Records",
-          href: "/shares-corporate-records",
-        },
-        { label: "Tax Obligations", href: "/tax-obligations" },
       ],
     },
-  ],
-  packages: [
-    { label: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
-    { label: "Wyoming Silver LLC", href: "/wyoming-incorporation" },
-    { label: "Nevada Gold LLC", href: "/nevada-private-incorporation" },
-    { label: "Nevada Silver LLC", href: "/nevada-incorporation" },
-    { label: "Nevada Bronze LLC", href: "/nevada-basic-incorporation" },
-    { label: "CA Private LLC", href: "/california-private-incorporation" },
-    { label: "FL Private LLC", href: "/florida-private-incorporation" },
-    { label: "Shelf Companies", href: "/shelf-company-packages" },
-  ],
-  utility: [
-    { label: "About Us", href: "/about" },
-    { label: "Contact", href: "/contact" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Blog", href: "/blog" },
-    { label: "Testimonials", href: "/testimonials" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },

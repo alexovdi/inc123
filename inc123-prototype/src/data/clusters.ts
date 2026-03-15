@@ -279,6 +279,85 @@ export const clusterPages: ClusterContent[] = [
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
   },
+  {
+    slug: "anonymous-corporation",
+    pillar: "privacy",
+    pillarLabel: "Business Privacy",
+    title: "Anonymous Corporation Formation",
+    description:
+      "Form a corporation with full privacy protections — nominee directors and officers, offshore record storage, and no public disclosure of beneficial owners. Ideal for entrepreneurs who need corporate structure without personal exposure.",
+    readingTime: "6 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "How Anonymous Corporations Work",
+        content:
+          "An anonymous corporation is formed using nominee directors and officers whose names appear on all public filings — Articles of Incorporation, annual reports, and officer/director lists. Your identity as the beneficial owner is documented only in private agreements and corporate records stored offshore. Wyoming and Nevada are the two strongest states for anonymous corporate formation because neither requires disclosure of shareholders on any public filing. Combined with our year-round nominee services, your personal information never appears on any state record.",
+      },
+      {
+        id: "who-benefits",
+        type: "audience",
+        title: "Who Benefits from Anonymous Corporations?",
+        content:
+          "Anonymous corporations serve business owners who need corporate structure with privacy:",
+        items: [
+          {
+            title: "Privacy-Conscious Entrepreneurs",
+            description:
+              "Business owners who want the formal structure of a corporation — board of directors, stock issuance, corporate governance — without their names appearing on public filings.",
+          },
+          {
+            title: "Capital Raising with Privacy",
+            description:
+              "Founders who plan to raise investment capital or issue stock while keeping beneficial ownership information out of public databases and state records.",
+          },
+          {
+            title: "High-Profile Individuals",
+            description:
+              "Public figures, executives, and professionals who need a corporate entity but want to avoid personal information appearing in state business registries.",
+          },
+        ],
+      },
+      {
+        id: "wyoming-vs-nevada",
+        type: "comparison",
+        title: "Wyoming vs. Nevada for Anonymous Corporations",
+        content:
+          "Both states allow anonymous corporate formation, but they differ in cost and features. Wyoming offers lower annual fees ($60 annual report vs. $350+ in Nevada), no state income tax, and strong director liability protections. Nevada provides a dedicated business court, decades of corporate law precedents, and a well-established legal infrastructure for corporate disputes. For most clients, Wyoming is the better value — but Nevada is preferred if you plan to operate physically in the state or anticipate complex corporate litigation.",
+      },
+    ],
+    faqs: [
+      {
+        id: "anoncorp-faq-1",
+        question: "Should I use an LLC or a Corporation for privacy?",
+        answer:
+          "Both can be formed anonymously in Wyoming and Nevada. LLCs are simpler and offer better charging order protection for asset shielding. Corporations are better if you need to issue stock, establish a board of directors, or raise outside capital. Most privacy-focused clients choose an LLC unless they have a specific corporate need.",
+        category: "privacy",
+      },
+      {
+        id: "anoncorp-faq-2",
+        question: "Can you go public with an anonymous corporation?",
+        answer:
+          "If you take a corporation public through an IPO, SEC disclosure requirements will override state-level privacy protections. Beneficial ownership of publicly traded companies must be disclosed in SEC filings. However, anonymous corporations work well for private companies that issue stock to a limited number of investors without triggering public reporting requirements.",
+        category: "privacy",
+      },
+    ],
+    sidebarLinks: [
+      { title: "Anonymous LLC", href: "/anonymous-llc" },
+      { title: "Nominee Services", href: "/nominee-services" },
+      { title: "LLC vs Corporation", href: "/llc-vs-corporation" },
+      { title: "Wyoming Gold", href: "/wyoming-private-incorporation" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+    crossPillarCTA: {
+      pillar: "formation",
+      title: "Exploring Company Formation Options?",
+      description:
+        "Not sure whether an LLC or corporation is the right structure? Our formation guides break down the differences in liability, taxation, and management.",
+      href: "/formation",
+    },
+  },
 
   // ==================== ASSET PROTECTION PILLAR ====================
   {
@@ -779,6 +858,105 @@ export const clusterPages: ClusterContent[] = [
       { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
     ],
     relatedPackages: ["shelf-companies"],
+  },
+  {
+    slug: "series-llc",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Series LLC Formation",
+    description:
+      "A Wyoming Series LLC creates isolated liability cells within a single entity — ideal for real estate investors and multi-asset protection. Each series operates independently with its own assets, members, and liability shield.",
+    readingTime: "7 min read",
+    sections: [
+      {
+        id: "what-is",
+        type: "text",
+        title: "What Is a Series LLC?",
+        content:
+          "A Series LLC is a special form of limited liability company that allows you to create multiple internal 'series' or 'cells' within a single legal entity. Each series functions as its own compartment with separate assets, separate members (if desired), and — critically — separate liability. A lawsuit or debt against one series cannot reach the assets held in another series or in the parent LLC. Think of it as a filing cabinet: the cabinet is the parent LLC, and each drawer is an independent series with its own liability protection.",
+      },
+      {
+        id: "how-it-works",
+        type: "text",
+        title: "How Series LLCs Work",
+        content:
+          "The parent LLC is formed with the state and includes a 'series' provision in its Articles of Organization. From there, you create individual series through internal operating agreements — no additional state filings are required for each new series. Each series maintains its own books, bank accounts, and records. The key legal requirement is maintaining separation: each series must have clearly identified assets, separate accounting, and distinct records. When properly maintained, the liability shield between series is as strong as the shield between entirely separate LLCs.",
+      },
+      {
+        id: "use-cases",
+        type: "audience",
+        title: "Who Uses Series LLCs?",
+        content:
+          "Series LLCs are particularly valuable for owners of multiple assets who want liability isolation without the cost of forming separate entities:",
+        items: [
+          {
+            title: "Real Estate Investors",
+            description:
+              "Place each rental property in its own series. A slip-and-fall lawsuit at one property can't reach the equity in your other properties or personal assets.",
+          },
+          {
+            title: "Investment Holding Companies",
+            description:
+              "Separate investment portfolios, business interests, or intellectual property into individual series for clean liability boundaries.",
+          },
+          {
+            title: "Multi-Asset Owners",
+            description:
+              "Vehicles, equipment, real estate, and business operations can each sit in their own series — isolating risk across your entire portfolio.",
+          },
+        ],
+      },
+      {
+        id: "wyoming-advantage",
+        type: "differentiator",
+        title: "The Wyoming Advantage for Series LLCs",
+        content:
+          "Wyoming was one of the first states to adopt Series LLC legislation and has the most developed statutory framework. Wyoming Series LLCs benefit from the state's overall business-friendly environment: no state income tax, $60 annual report for the entire series structure (not per series), strongest charging order protection, and no public member disclosure. Creating new series costs nothing at the state level — you simply update your internal operating agreement.",
+        items: [
+          {
+            title: "One Annual Fee",
+            description:
+              "Wyoming charges a single $60 annual report fee for the parent LLC — individual series don't require separate annual filings.",
+            icon: "DollarSign",
+          },
+          {
+            title: "No Per-Series Filing",
+            description:
+              "New series are created through internal agreements, not state filings. Add series anytime without additional state fees or paperwork.",
+            icon: "FileText",
+          },
+          {
+            title: "Full Liability Isolation",
+            description:
+              "Wyoming's Series LLC statute explicitly provides that debts and obligations of one series are enforceable only against that series' assets.",
+            icon: "ShieldCheck",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        id: "series-faq-1",
+        question: "Are Series LLCs recognized in all states?",
+        answer:
+          "No. Not all states have Series LLC legislation, and recognition varies. However, a Wyoming Series LLC is a valid legal entity that can do business in other states through foreign registration. The key risk is that courts in states without Series LLC statutes have not yet tested whether they will honor the internal liability shields. For assets located in states that recognize Series LLCs (like Wyoming, Delaware, Illinois, Texas, and Nevada), the protection is well established.",
+        category: "formation",
+      },
+      {
+        id: "series-faq-2",
+        question:
+          "Is a Series LLC cheaper than forming multiple separate LLCs?",
+        answer:
+          "Significantly cheaper. Forming five separate Wyoming LLCs would cost five times the formation fee plus five annual reports ($300/year). A Series LLC with five series costs one formation fee and one $60 annual report. The savings increase with every additional series you create. The tradeoff: Series LLCs require disciplined record-keeping to maintain the liability separation between series.",
+        category: "formation",
+      },
+    ],
+    sidebarLinks: [
+      { title: "Wyoming LLC", href: "/wyoming-llc" },
+      { title: "Real Estate AP", href: "/real-estate" },
+      { title: "Investment Holding LLC", href: "/investment-holding-llc" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
   },
 
   // ==================== COMPLIANCE PILLAR ====================

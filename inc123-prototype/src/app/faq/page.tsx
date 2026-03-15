@@ -268,11 +268,31 @@ export default function FAQPage() {
     setActiveCategory(value);
   }, []);
 
+  // Whether the user is actively searching
+  const isSearching = searchQuery.trim().length > 0;
+
   // Active category display label for search context
   const activeCategoryLabel =
     activeCategory !== "all"
       ? categoryDisplayLabels[activeCategory as FAQCategory]
       : undefined;
+
+  // Result count text for display above accordion sections
+  const resultCountText = useMemo(() => {
+    if (!isSearching && activeCategory === "all") return null;
+
+    const total =
+      activeCategory !== "all"
+        ? (faqsByCategory[activeCategory as FAQCategory]?.length ??
+          faqItems.length)
+        : faqItems.length;
+
+    if (filteredFaqs.length === total) {
+      return `${filteredFaqs.length} question${filteredFaqs.length !== 1 ? "s" : ""}`;
+    }
+
+    return `${filteredFaqs.length} of ${total} questions`;
+  }, [isSearching, activeCategory, filteredFaqs.length, faqsByCategory]);
 
   return (
     <>
@@ -308,7 +328,14 @@ export default function FAQPage() {
       {/* 4. FAQ Accordion Sections */}
       <section className="py-section-y px-container-x">
         <div className="mx-auto max-w-[900px]">
-          {visibleCategories.length === 0 ? (
+          {/* Result count when filtering */}
+          {resultCountText && (
+            <p className="text-body-sm text-muted mb-6" aria-live="polite">
+              {resultCountText}
+            </p>
+          )}
+
+          {filteredFaqs.length === 0 ? (
             /* No results state */
             <div className="rounded-card border border-border bg-surface p-8 text-center">
               <p className="text-body-lg font-medium text-foreground">
@@ -325,7 +352,22 @@ export default function FAQPage() {
                 .
               </p>
             </div>
+          ) : isSearching ? (
+            /* Flat list when search is active */
+            <Accordion type="multiple" variant="default">
+              {filteredFaqs.map((faq) => (
+                <AccordionItem
+                  key={faq.id}
+                  id={faq.id}
+                  title={faq.question}
+                  badge={categoryDisplayLabels[faq.category as FAQCategory]}
+                >
+                  <p>{faq.answer}</p>
+                </AccordionItem>
+              ))}
+            </Accordion>
           ) : (
+            /* Grouped by category when not searching */
             <div className="flex flex-col gap-12">
               {visibleCategories.map((cat) => {
                 const items = filteredByCategory[cat];

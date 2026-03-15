@@ -22,7 +22,7 @@ export const homepageData: HomepageData = {
       "Money-Back Guarantee",
     ],
     eyebrow: "Trusted Since 2000 · Privacy Specialists",
-    safetyNet: "Have questions? Call (775) xxx-xxxx",
+    safetyNet: "Have questions? Call (775) 313-4155",
   },
   differentiators: [
     {
@@ -39,7 +39,7 @@ export const homepageData: HomepageData = {
     },
     {
       icon: "DollarSign",
-      title: "All-Inclusive Pricing",
+      title: "$1,275 All-Inclusive Pricing",
       description:
         "Formation, registered agent, EIN, operating agreement, and state fees — all bundled. No surprise add-ons at checkout.",
     },
@@ -175,6 +175,6 @@ export const trustSignalItems = [
   { icon: "Users", value: "Thousands", label: "Entities Formed" },
   { icon: "ShieldCheck", value: "30-Day", label: "Money-Back Guarantee" },
   { icon: "Phone", value: "(775)", label: "Call Anytime" },
-  { icon: "Bitcoin", value: "Crypto", label: "Payments for Privacy" },
+  { icon: "Bitcoin", value: "Crypto", label: "Crypto Payments for Privacy" },
   { icon: "Lock", value: "Secure", label: "Checkout" },
 ];

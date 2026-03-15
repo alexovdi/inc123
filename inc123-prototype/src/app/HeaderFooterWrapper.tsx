@@ -6,7 +6,11 @@ import { SiteFooter } from "@/design-system/layouts/SiteFooter";
 import { ThemeToggle } from "./ThemeToggle";
 import { siteNavigation, footerNavigation } from "@/data/navigation";
 
-export function HeaderFooterWrapper({ children }: { children: React.ReactNode }) {
+export function HeaderFooterWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const isCheckout = pathname?.startsWith("/checkout");
   const isDev = pathname?.startsWith("/dev");
@@ -14,12 +18,10 @@ export function HeaderFooterWrapper({ children }: { children: React.ReactNode })
   return (
     <>
       {!isCheckout && !isDev && <SiteHeader navigation={siteNavigation} />}
-      {isDev ? children : <main>{children}</main>}
+      {isDev ? children : <main id="main-content">{children}</main>}
       {!isCheckout && !isDev && (
         <SiteFooter
-          pillars={footerNavigation.pillars}
-          packages={footerNavigation.packages}
-          utility={footerNavigation.utility}
+          columns={footerNavigation.columns}
           legal={footerNavigation.legal}
           company={footerNavigation.company}
         />

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import NextLink from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, LogIn } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives";
 import type { SiteNavigation } from "@/lib/types";
@@ -29,16 +29,46 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
     <>
+      {/* Top Utility Bar (desktop only) */}
+      <div
+        className={cn(
+          "hidden w-full bg-primary text-white transition-all duration-200 lg:block",
+          scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100",
+        )}
+      >
+        <div className="mx-auto flex max-w-wide items-center justify-between px-container-x py-1.5 text-caption">
+          <a
+            href={`tel:${navigation.phone.replace(/[^+\d]/g, "")}`}
+            className="flex items-center gap-1.5 text-white/80 transition-colors hover:text-white"
+          >
+            <Phone className="h-3 w-3" />
+            <span>{navigation.phone}</span>
+          </a>
+          <span className="text-white/60">
+            25 Years of Privacy-Focused Business Formation
+          </span>
+          <NextLink
+            href="/login"
+            className="flex items-center gap-1.5 text-white/80 transition-colors hover:text-white"
+          >
+            <LogIn className="h-3 w-3" />
+            <span>Client Login</span>
+          </NextLink>
+        </div>
+      </div>
+
       <header
         className={cn(
           "sticky top-0 z-50 w-full bg-surface transition-all duration-200",
           scrolled ? "shadow-card py-2" : "py-4",
-          className
+          className,
         )}
       >
         <div className="mx-auto flex max-w-wide items-center justify-between px-container-x">
@@ -53,7 +83,10 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
           </NextLink>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+          <nav
+            className="hidden items-center gap-1 lg:flex"
+            aria-label="Main navigation"
+          >
             {navigation.main.map((item) => (
               <div
                 key={item.label}
@@ -65,7 +98,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                   href={item.href}
                   className={cn(
                     "inline-flex items-center px-3 py-2 text-body-sm font-medium text-foreground transition-colors hover:text-secondary",
-                    activeMenu === item.label && "text-secondary"
+                    activeMenu === item.label && "text-secondary",
                   )}
                 >
                   {item.label}
@@ -125,26 +158,10 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
             ))}
           </nav>
 
-          {/* Utility Nav */}
+          {/* CTA Button (right-aligned) */}
           <div className="hidden items-center gap-3 lg:flex">
-            <a
-              href={`tel:${navigation.phone.replace(/[^+\d]/g, "")}`}
-              className="flex items-center gap-1.5 text-body-sm text-muted hover:text-foreground transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              <span>{navigation.phone}</span>
-            </a>
-            {navigation.utility.map((item) => (
-              <NextLink
-                key={item.label}
-                href={item.href}
-                className="text-body-sm font-medium text-muted hover:text-foreground transition-colors"
-              >
-                {item.label}
-              </NextLink>
-            ))}
             <Button variant="cta" size="sm" asChild>
-              <NextLink href="/packages">Order Now</NextLink>
+              <NextLink href="/packages">Compare Packages</NextLink>
             </Button>
           </div>
 
@@ -154,7 +171,11 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </header>
@@ -174,7 +195,10 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
               <span className="font-display text-heading-sm font-bold text-primary">
                 Menu
               </span>
-              <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
+              <button
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+              >
                 <X className="h-6 w-6" />
               </button>
             </div>
@@ -246,7 +270,7 @@ function MobileNavSection({
         <span
           className={cn(
             "text-muted transition-transform",
-            open && "rotate-180"
+            open && "rotate-180",
           )}
         >
           ▾
@@ -264,7 +288,7 @@ function MobileNavSection({
               >
                 {cluster.title}
               </NextLink>
-            ))
+            )),
           )}
         </div>
       )}
