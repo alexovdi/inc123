@@ -27,6 +27,8 @@ const slugs = [
   "corporate-minutes",
   "virtual-office",
   "foreign-registration",
+  "second-tier-state-filings",
+  "shares-corporate-records",
 ];
 
 export function generateStaticParams() {

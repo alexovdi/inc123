@@ -48,7 +48,7 @@ export const clusterPages: ClusterContent[] = [
     ],
     faqs: [
       { id: "anon-faq-1", question: "Is an anonymous LLC legal?", answer: "Yes. Anonymous LLCs are completely legal. They simply take advantage of state laws (like Wyoming's) that don't require public disclosure of LLC members or managers. There's nothing illegal about forming a business entity that protects your personal information from public records.", category: "privacy" },
-      { id: "anon-faq-2", question: "Can the government still find out who owns the LLC?", answer: "Yes. The IRS knows who owns the LLC through tax filings, and FinCEN's Beneficial Ownership Information (BOI) database records true owners. Anonymous LLCs protect you from public records searches, not from lawful government inquiry.", category: "privacy" },
+      { id: "anon-faq-2", question: "Can the government still find out who owns the LLC?", answer: "Yes. The IRS knows who owns the LLC through tax filings. Anonymous LLCs protect you from public records searches — state filings, data brokers, and casual inquiries — not from lawful government inquiry.", category: "privacy" },
       { id: "anon-faq-3", question: "Do I need to live in Wyoming to form an anonymous LLC there?", answer: "No. You can form a Wyoming LLC regardless of where you live. If your LLC does business in your home state, you may need to foreign register there.", category: "formation" },
     ],
     sidebarLinks: [
@@ -166,37 +166,6 @@ export const clusterPages: ClusterContent[] = [
       { title: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
-  },
-  {
-    slug: "boi-reporting",
-    pillar: "privacy",
-    pillarLabel: "Business Privacy",
-    title: "BOI Reporting Compliance",
-    description: "The Corporate Transparency Act requires most entities to report beneficial owners to FinCEN. We handle the filing while maintaining maximum privacy within the legal framework.",
-    readingTime: "5 min read",
-    sections: [
-      {
-        id: "what-is",
-        type: "text",
-        title: "What Is BOI Reporting?",
-        content: "The Corporate Transparency Act (CTA) requires most LLCs and corporations to file Beneficial Ownership Information (BOI) reports with the Financial Crimes Enforcement Network (FinCEN). These reports identify the true beneficial owners of entities — the individuals who ultimately own or control the company. This is a federal requirement separate from state-level filings.",
-      },
-      {
-        id: "our-approach",
-        type: "text",
-        title: "Our Approach to BOI Compliance",
-        content: "We help you file your BOI report accurately and on time. While BOI reporting does require disclosure to FinCEN, this database is NOT publicly accessible — it's a confidential federal database accessible only to law enforcement and financial institutions under specific circumstances. Your privacy on public state filings (through nominees and anonymous LLC formation) remains fully intact.",
-      },
-    ],
-    faqs: [
-      { id: "boi-faq-1", question: "Does BOI reporting eliminate anonymous LLCs?", answer: "No. BOI reports go to a confidential FinCEN database — NOT public records. Your anonymous LLC formation, nominees, and offshore storage continue to protect your privacy from public searches, data brokers, and casual inquiries.", category: "privacy" },
-    ],
-    sidebarLinks: [
-      { title: "Anonymous LLC", href: "/privacy/anonymous-llc" },
-      { title: "Nominee Services", href: "/privacy/nominee-services" },
-      { title: "Compliance Overview", href: "/compliance" },
-    ],
-    relatedPackages: ["wyoming-gold"],
   },
 
   // ==================== ASSET PROTECTION PILLAR ====================
@@ -417,7 +386,7 @@ export const clusterPages: ClusterContent[] = [
         id: "why-nevada",
         type: "text",
         title: "Why Form a Nevada LLC?",
-        content: "Nevada has been a premier state for business formation for decades. It offers no state income tax, strong privacy statutes (no public member disclosure), a dedicated business court, and well-established business law precedents. Our Reno office provides a real Nevada business address and in-person support. Nevada LLC packages include all state filing fees, business license, registered agent, and compliance services.",
+        content: "Nevada has been a premier state for business formation for decades. It offers no state income tax, strong privacy statutes (no public member disclosure), a dedicated business court, and well-established business law precedents. We provide a real Nevada business address for your entity. Nevada LLC packages include all state filing fees, business license, registered agent, and compliance services.",
       },
       {
         id: "costs",
@@ -652,6 +621,70 @@ export const clusterPages: ClusterContent[] = [
     ],
     relatedPackages: ["california-private", "florida-private"],
   },
+  {
+    slug: "second-tier-state-filings",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "2nd-Tier State Filings",
+    description: "Formation and compliance services for secondary states beyond Wyoming and Nevada. We handle filings in all 50 states when your business structure requires additional state registrations.",
+    readingTime: "5 min read",
+    sections: [
+      {
+        id: "what-are",
+        type: "text",
+        title: "What Are 2nd-Tier State Filings?",
+        content: "While Wyoming and Nevada are our specialty states for privacy-focused formation, many business structures require entities in additional states. 2nd-tier state filings cover formation, annual reports, and compliance maintenance for entities in states beyond our core two. Whether you need a holding company in Delaware, a foreign registration in Texas, or an operating entity in any other state, we handle the filings so you can focus on your business.",
+      },
+      {
+        id: "when-needed",
+        type: "text",
+        title: "When Do You Need Multi-State Filings?",
+        content: "Multi-state structures are common for real estate investors with properties in multiple states, businesses operating across state lines, holding company arrangements where different entities serve different purposes, and asset protection strategies that benefit from jurisdictional diversification. We coordinate filings across all states to ensure your entire structure stays in good standing.",
+      },
+    ],
+    faqs: [
+      { id: "stf-faq-1", question: "Do you handle filings in all 50 states?", answer: "Yes. While we specialize in Wyoming and Nevada formation, we coordinate filings in all 50 states for clients who need multi-state structures. This includes formation, annual reports, registered agent service, and compliance maintenance.", category: "compliance" },
+      { id: "stf-faq-2", question: "Does filing in another state affect my Wyoming/Nevada privacy?", answer: "Your Wyoming or Nevada formation filings remain private regardless of what you file in other states. We use nominee structures on your formation filings and can advise on minimizing disclosure in states that require more information.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Foreign Registration", href: "/compliance/foreign-registration" },
+      { title: "Registered Agent", href: "/compliance/registered-agent" },
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+  },
+  {
+    slug: "shares-corporate-records",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Shares & Corporate Records",
+    description: "Professional management of share certificates, stock ledgers, corporate record books, and ownership documentation. Essential for corporations and multi-member LLCs.",
+    readingTime: "4 min read",
+    sections: [
+      {
+        id: "what-are",
+        type: "text",
+        title: "What Are Corporate Records Services?",
+        content: "Every corporation and many LLCs need proper documentation of ownership — share certificates, stock ledgers, membership interest records, and corporate record books. These documents establish who owns what, track transfers, and provide the legal foundation for your entity's governance. We prepare, maintain, and store these records as part of our compliance services, ensuring they are accurate, up to date, and properly organized.",
+      },
+      {
+        id: "what-we-maintain",
+        type: "text",
+        title: "What We Maintain",
+        content: "Our corporate records service covers share certificates and stock ledger maintenance, membership interest documentation for LLCs, corporate record book organization and updates, ownership transfer documentation, and meeting minutes reflecting corporate actions. For Gold package clients, these records are maintained by our offshore records custodian for additional privacy protection.",
+      },
+    ],
+    faqs: [
+      { id: "scr-faq-1", question: "Do I need share certificates for an LLC?", answer: "LLCs don't issue share certificates — they have membership interests documented in the operating agreement. However, proper documentation of ownership percentages and any transfers is equally important. We handle both LLC membership documentation and corporate share certificates.", category: "compliance" },
+      { id: "scr-faq-2", question: "Where are my corporate records stored?", answer: "For Gold package clients, corporate records are stored by our offshore records custodian outside U.S. jurisdiction. For Silver and Bronze packages, records are maintained securely in our domestic files. Either way, you have access to your records at any time.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Corporate Minutes", href: "/compliance/corporate-minutes" },
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+      { title: "Offshore Privacy", href: "/privacy/offshore-privacy" },
+    ],
+    relatedPackages: ["wyoming-gold", "nevada-gold"],
+  },
 
   // ==================== NEW ENTRIES ====================
   {
@@ -666,7 +699,7 @@ export const clusterPages: ClusterContent[] = [
         id: "why-wyoming-leads",
         type: "text",
         title: "Why Wyoming Leads in Privacy",
-        content: "Wyoming's privacy advantage begins with its statutes: the state does not require LLCs or corporations to disclose members, managers, or beneficial owners on any publicly filed document. This isn't a loophole — it's deliberate legislative design. Wyoming has consistently updated its business statutes to prioritize owner privacy while maintaining compliance with federal requirements like BOI reporting. Combined with the lowest annual fees in the country ($60/year), Wyoming delivers the most privacy per dollar of any U.S. state.",
+        content: "Wyoming's privacy advantage begins with its statutes: the state does not require LLCs or corporations to disclose members, managers, or beneficial owners on any publicly filed document. This isn't a loophole — it's deliberate legislative design. Wyoming has consistently updated its business statutes to prioritize owner privacy while maintaining compliance with federal requirements. Combined with the lowest annual fees in the country ($60/year), Wyoming delivers the most privacy per dollar of any U.S. state.",
       },
       {
         id: "privacy-features",
@@ -688,7 +721,7 @@ export const clusterPages: ClusterContent[] = [
     ],
     faqs: [
       { id: "wyp-faq-1", question: "Does Wyoming report my information to any public database?", answer: "No. Wyoming does not require LLC member or manager names on any publicly filed document. With our nominee services, the only names on public filings are our professional nominees — never yours.", category: "privacy" },
-      { id: "wyp-faq-2", question: "Can someone find out I own a Wyoming LLC?", answer: "Not through public state filings. With a Gold package (nominees + offshore storage), no public record or domestic document connects your name to the entity. Federal BOI reporting goes to a confidential FinCEN database, not public records.", category: "privacy" },
+      { id: "wyp-faq-2", question: "Can someone find out I own a Wyoming LLC?", answer: "Not through public state filings. With a Gold package (nominees + offshore storage), no public record or domestic document connects your name to the entity. Your ownership information stays off state databases, data broker sites, and public records searches.", category: "privacy" },
       { id: "wyp-faq-3", question: "Do I need to live in Wyoming to benefit from its privacy laws?", answer: "No. You can form a Wyoming LLC regardless of where you live. If you conduct business in your home state, you may need to foreign register there, but your Wyoming formation filings remain private.", category: "privacy" },
     ],
     sidebarLinks: [
@@ -712,7 +745,7 @@ export const clusterPages: ClusterContent[] = [
         id: "nv-privacy-overview",
         type: "text",
         title: "Nevada Privacy Overview",
-        content: "Nevada has been a privacy-friendly state for business formation for over two decades. Like Wyoming, Nevada does not require public disclosure of LLC members or managers on formation documents or annual filings. The state's long history of business-friendly legislation means decades of favorable court precedent supporting entity privacy. Our Reno office provides an additional advantage: a real Nevada business address and in-person support for clients who want a local presence.",
+        content: "Nevada has been a privacy-friendly state for business formation for over two decades. Like Wyoming, Nevada does not require public disclosure of LLC members or managers on formation documents or annual filings. The state's long history of business-friendly legislation means decades of favorable court precedent supporting entity privacy. We provide a real Nevada business address for clients who want a local presence.",
       },
       {
         id: "nv-business-court",
@@ -729,7 +762,7 @@ export const clusterPages: ClusterContent[] = [
     ],
     faqs: [
       { id: "nvp-faq-1", question: "Is Nevada as private as Wyoming?", answer: "For public filings, yes — both states offer equivalent privacy protections with no member disclosure required. The difference is cost: Nevada's annual state fees are significantly higher ($350+/year vs. Wyoming's $60/year).", category: "privacy" },
-      { id: "nvp-faq-2", question: "Does having a Reno office help with privacy?", answer: "Yes. Our Reno office provides a real business address separate from your personal address. Combined with nominee services, all public-facing information points to our office, not to you.", category: "privacy" },
+      { id: "nvp-faq-2", question: "Does having a Nevada business address help with privacy?", answer: "Yes. Our Nevada address provides a real business address separate from your personal address. Combined with nominee services, all public-facing information points to our address, not to you.", category: "privacy" },
       { id: "nvp-faq-3", question: "Should I choose Nevada over Wyoming for privacy?", answer: "Choose Nevada if you physically operate there or want a local presence. Otherwise, Wyoming provides equivalent privacy at lower cost. Both states are excellent for privacy-first formation.", category: "privacy" },
     ],
     sidebarLinks: [
@@ -787,7 +820,7 @@ export const clusterPages: ClusterContent[] = [
     pillar: "compliance",
     pillarLabel: "Compliance",
     title: "Nevada Registered Agent Service",
-    description: "Professional registered agent service at our Reno, Nevada office. In-state presence, reliable legal document handling, and compliance support — included in every Nevada package.",
+    description: "Professional registered agent service with a Nevada street address. In-state presence, reliable legal document handling, and compliance support — included in every Nevada package.",
     readingTime: "5 min read",
     sections: [
       {
@@ -799,8 +832,8 @@ export const clusterPages: ClusterContent[] = [
       {
         id: "reno-advantage",
         type: "text",
-        title: "The Reno Office Advantage",
-        content: "Our registered agent service operates from our physical office at 1795 Meadow Wood Lane, Suite 100, Reno, NV. Unlike national services that contract with third parties, we own and staff our office. This means in-person document receipt with immediate digital forwarding, a real business address that clients can also use for correspondence (with our Virtual Office add-on), local knowledge of Nevada compliance requirements, and direct relationships with the Nevada Secretary of State's office. For clients who choose Nevada specifically, having a real Reno presence adds credibility and reliability.",
+        title: "The Nevada Address Advantage",
+        content: "Our registered agent service operates from a physical location at 1795 Meadow Wood Lane, Suite 100, Reno, NV. Unlike national services that contract with third parties, we maintain our own Nevada presence. This means reliable document receipt with immediate digital forwarding, a real business address that clients can also use for correspondence (with our Virtual Office add-on), deep knowledge of Nevada compliance requirements, and established relationships with the Nevada Secretary of State's office.",
       },
       {
         id: "nv-requirements",
@@ -810,7 +843,7 @@ export const clusterPages: ClusterContent[] = [
       },
     ],
     faqs: [
-      { id: "nvra-faq-1", question: "Is the Reno office a real physical location?", answer: "Yes. Our office at 1795 Meadow Wood Lane, Suite 100, Reno, NV is a fully staffed physical location. We have been operating from Reno for over 25 years.", category: "compliance" },
+      { id: "nvra-faq-1", question: "Is this a real physical address?", answer: "Yes. Our Nevada location at 1795 Meadow Wood Lane, Suite 100, Reno, NV is a real street address, not a PO box. We have been operating in Nevada for over 25 years.", category: "compliance" },
       { id: "nvra-faq-2", question: "Can I use the Reno address for my business correspondence too?", answer: "Yes — with our Virtual Office add-on ($149/year). This gives you a professional Reno business address for business cards, websites, and correspondence, separate from the registered agent function.", category: "compliance" },
     ],
     sidebarLinks: [
@@ -863,5 +896,138 @@ export const clusterPages: ClusterContent[] = [
       { title: "Nevada LLC", href: "/formation/nevada-llc" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
+  },
+
+  // ==================== FORMATION PILLAR (TAX) ====================
+  {
+    slug: "entity-tax-guide",
+    pillar: "formation",
+    pillarLabel: "Company Formation",
+    title: "Entity Tax Guide",
+    description: "How entity type affects your taxes — understand before you choose. This educational overview helps you make informed formation decisions. Not tax advice — consult a CPA for your specific situation.",
+    readingTime: "9 min read",
+    sections: [
+      {
+        id: "how-entities-taxed",
+        type: "text",
+        title: "How Business Entities Are Taxed",
+        content: "Your choice of entity type determines how your business income is taxed at both federal and state levels. Single-member LLCs are taxed as sole proprietorships by default — all income passes through to your personal return on Schedule C. Multi-member LLCs are taxed as partnerships, filing Form 1065 with each member reporting their share on Schedule K-1. Corporations face 'double taxation' as C-Corps (corporate tax on profits, then personal tax on dividends) unless they elect S-Corp status. Understanding these defaults is critical because the entity you form today determines your tax obligations for years to come.",
+      },
+      {
+        id: "scorp-election",
+        type: "text",
+        title: "The S-Corp Election: When It Makes Sense",
+        content: "Any LLC or Corporation can elect S-Corp tax treatment by filing IRS Form 2553. As an S-Corp, you pay yourself a 'reasonable salary' (subject to payroll taxes) and take remaining profits as distributions (not subject to self-employment tax). The general rule: if your net business income exceeds $80,000 per year, the S-Corp election may save you significant self-employment taxes. Below that threshold, the additional payroll and accounting costs typically outweigh the savings. This election doesn't change your state formation — a Wyoming LLC with an S-Corp election is still a Wyoming LLC for privacy and asset protection purposes.",
+      },
+      {
+        id: "self-employment-tax",
+        type: "text",
+        title: "Self-Employment Tax and Entity Choice",
+        content: "Self-employment tax (15.3% on the first $168,600 of net income in 2024) is one of the largest tax burdens for small business owners. Single-member LLCs and partnerships pay SE tax on all net business income. S-Corps pay SE tax only on the owner's salary — distributions are exempt. C-Corps don't pay SE tax but face double taxation instead. For many Inc123 clients, the entity structure that minimizes total tax burden depends on income level, whether you have employees, and how you plan to extract profits from the business.",
+      },
+      {
+        id: "state-tax-advantages",
+        type: "differentiator",
+        title: "Wyoming and Nevada Tax Advantages",
+        content: "Both Wyoming and Nevada impose no state income tax — on individuals or businesses. This is a significant advantage for business owners in high-tax states who can legitimately establish their entity in a no-income-tax state.",
+        items: [
+          { title: "No State Income Tax", description: "Wyoming and Nevada impose zero state income tax on individuals and businesses.", icon: "DollarSign" },
+          { title: "No Franchise Tax", description: "Wyoming charges no franchise tax. Nevada charges no franchise tax on LLCs (corporations pay a Commerce Tax only if gross revenue exceeds $4M).", icon: "ShieldCheck" },
+          { title: "Low Annual Fees", description: "Wyoming's annual report is $60. Nevada's annual list and business license total $350+. Both are far below states like California ($800 franchise tax minimum).", icon: "Receipt" },
+        ],
+      },
+      {
+        id: "decision-framework",
+        type: "audience",
+        title: "Tax-Informed Entity Decision Framework",
+        content: "Use these profiles to identify which entity structure aligns with your tax situation:",
+        items: [
+          { title: "Solo Operator Under $80K Net Income", description: "Single-member LLC is simplest. Pass-through taxation, minimal paperwork, no payroll required. The S-Corp election likely costs more in accounting fees than it saves." },
+          { title: "Solo Operator Over $80K Net Income", description: "Single-member LLC with S-Corp election. Pay yourself a reasonable salary and take remaining profits as distributions to reduce self-employment tax." },
+          { title: "Multi-Owner Business", description: "Multi-member LLC taxed as a partnership. Each member reports their share on Schedule K-1. S-Corp election available if payroll tax savings justify the added complexity." },
+          { title: "Raising Capital or Going Public", description: "C-Corporation. Required for venture capital, stock issuance, and IPO. Accept double taxation in exchange for capital-raising flexibility." },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "tax-faq-1", question: "When should I make the S-Corp election?", answer: "Generally when your net business income consistently exceeds $80,000 per year. Below that, the added payroll processing and accounting costs typically outweigh the self-employment tax savings. File Form 2553 with the IRS — the election must be made within 75 days of formation or by March 15 for the current tax year.", category: "formation" },
+      { id: "tax-faq-2", question: "Does forming in Wyoming mean I avoid all state taxes?", answer: "Wyoming has no state income tax, but if you physically operate in another state, that state may still tax your business income. Forming in Wyoming provides privacy and asset protection benefits regardless — but state income tax depends on where you conduct business, not just where you're formed.", category: "formation" },
+      { id: "tax-faq-3", question: "Can I change my tax classification after formation?", answer: "Yes. LLCs can elect S-Corp or C-Corp taxation at any time by filing the appropriate IRS forms. You can also revoke an S-Corp election (with restrictions). Your state formation doesn't change — only the federal tax treatment.", category: "formation" },
+      { id: "tax-faq-4", question: "When do I need a CPA vs. when is this guide enough?", answer: "This guide helps you understand the landscape and make informed formation decisions. You should consult a CPA before making the S-Corp election, if you have multi-state tax obligations, if you have complex ownership structures, or if your annual income exceeds $150,000. We're formation specialists, not tax advisors — we'll help you form the right entity, and your CPA ensures the tax strategy is optimized.", category: "formation" },
+    ],
+    sidebarLinks: [
+      { title: "LLC vs Corporation", href: "/compare/llc-vs-corporation" },
+      { title: "LLC vs S-Corp vs C-Corp Tax", href: "/compare/llc-vs-scorp-vs-ccorp-tax" },
+      { title: "Tax Filing & Obligations", href: "/compliance/tax-obligations" },
+      { title: "Wyoming LLC", href: "/formation/wyoming-llc" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+    crossPillarCTA: { pillar: "compliance", title: "Formed Your Entity? Know Your Tax Obligations.", description: "After formation, ongoing tax filings and state compliance requirements begin. Understand what's required and what Incorporate123 handles for you.", href: "/compliance/tax-obligations" },
+  },
+
+  // ==================== COMPLIANCE PILLAR (TAX) ====================
+  {
+    slug: "tax-obligations",
+    pillar: "compliance",
+    pillarLabel: "Compliance",
+    title: "Tax Filing & Obligations",
+    description: "Ongoing tax requirements after forming your entity. Understand federal and state filing obligations, deadlines, and what Incorporate123 handles vs. what requires a CPA.",
+    readingTime: "7 min read",
+    sections: [
+      {
+        id: "post-formation-filing",
+        type: "text",
+        title: "Post-Formation Tax Filing Requirements",
+        content: "Once your entity is formed, federal and state tax obligations begin immediately. Single-member LLCs report income on Schedule C (attached to your personal Form 1040). Multi-member LLCs file Form 1065 and issue K-1s to each member. S-Corps file Form 1120-S with K-1s. C-Corps file Form 1120. All entities need an EIN (Employer Identification Number) from the IRS — included in every Incorporate123 package. Missing filing deadlines results in penalties, so understanding your obligations from day one is essential.",
+      },
+      {
+        id: "federal-forms",
+        type: "audience",
+        title: "Federal Tax Forms by Entity Type",
+        content: "Each entity type has specific federal filing requirements:",
+        items: [
+          { title: "Single-Member LLC", description: "Schedule C on your personal Form 1040. Due April 15. No separate business return required unless you elect S-Corp or C-Corp taxation." },
+          { title: "Multi-Member LLC (Partnership)", description: "Form 1065 due March 15. Issues Schedule K-1 to each member, who reports their share on personal returns." },
+          { title: "S-Corporation (or LLC with S-Corp Election)", description: "Form 1120-S due March 15. Issues K-1s to shareholders. Requires payroll tax filings (Forms 941/940) if paying salaries." },
+          { title: "C-Corporation", description: "Form 1120 due April 15. Corporate income taxed at 21% flat rate. Dividends taxed again on shareholders' personal returns." },
+        ],
+      },
+      {
+        id: "state-obligations",
+        type: "text",
+        title: "State-Level Tax Obligations",
+        content: "Wyoming and Nevada impose no state income tax — a major advantage. However, if you operate in a state with income tax, you may owe taxes there regardless of where your entity is formed. California is notable: any LLC registered or doing business in California owes an $800 annual franchise tax minimum, even if the LLC earns no California income. This applies to both California-formed LLCs and out-of-state LLCs registered to do business in California. Florida has no personal income tax but imposes a 5.5% corporate income tax on C-Corps. Understanding your state obligations prevents costly surprises.",
+      },
+      {
+        id: "quarterly-estimates",
+        type: "text",
+        title: "Quarterly Estimated Tax Payments",
+        content: "If you expect to owe $1,000 or more in federal taxes, the IRS requires quarterly estimated tax payments (Form 1040-ES). Due dates are April 15, June 15, September 15, and January 15 of the following year. Underpayment results in penalties. Most LLC and S-Corp owners need to make quarterly estimates because no employer is withholding taxes from their business income. Your CPA can help calculate the correct quarterly amounts based on projected income.",
+      },
+      {
+        id: "what-we-handle",
+        type: "differentiator",
+        title: "What Incorporate123 Handles vs. What Requires a CPA",
+        content: "We're formation and compliance specialists — not tax advisors. Here's the clear division of responsibilities:",
+        items: [
+          { title: "We Handle", description: "Entity formation, EIN obtainment, annual report filing, registered agent service, corporate minutes, good standing certificates, and state compliance filings.", icon: "CheckCircle" },
+          { title: "Your CPA Handles", description: "Federal and state tax return preparation, S-Corp election filing, quarterly estimated tax calculations, payroll tax compliance, and tax planning strategy.", icon: "Calculator" },
+          { title: "We Coordinate", description: "We provide your CPA with all formation documents, EIN confirmation, and entity details they need to prepare accurate returns.", icon: "Users" },
+        ],
+      },
+    ],
+    faqs: [
+      { id: "taxobl-faq-1", question: "Does my Wyoming LLC owe any Wyoming business taxes?", answer: "No. Wyoming imposes no state income tax, no franchise tax on LLCs, and no gross receipts tax. Your only Wyoming obligation is the $60 annual report fee (which we file for you). However, if you operate in another state, that state's tax laws apply to your business income.", category: "compliance" },
+      { id: "taxobl-faq-2", question: "What is California's $800 franchise tax?", answer: "California imposes a minimum $800 annual franchise tax on every LLC registered or doing business in California — regardless of income. This applies even if your LLC is formed in Wyoming and foreign registered in California. It's due by the 15th day of the 4th month after formation, then annually. Our California Private Package ($1,475) includes the formation and registration — but the $800 state tax is owed directly to California.", category: "compliance" },
+      { id: "taxobl-faq-3", question: "Do I need to make quarterly estimated tax payments?", answer: "If you expect to owe $1,000+ in federal taxes for the year, yes. Quarterly estimates are due April 15, June 15, September 15, and January 15. Your CPA calculates the amounts based on projected income. Missing payments results in underpayment penalties from the IRS.", category: "compliance" },
+    ],
+    sidebarLinks: [
+      { title: "Entity Tax Guide", href: "/formation/entity-tax-guide" },
+      { title: "Annual Reports", href: "/compliance/annual-reports" },
+      { title: "Foreign Registration", href: "/compliance/foreign-registration" },
+      { title: "Registered Agent", href: "/compliance/registered-agent" },
+    ],
+    relatedPackages: ["wyoming-gold", "wyoming-silver"],
+    crossPillarCTA: { pillar: "formation", title: "Haven't Formed Yet? Start with the Tax Guide.", description: "Understanding tax implications before you choose an entity type saves time and money. Our Entity Tax Guide helps you make an informed decision.", href: "/formation/entity-tax-guide" },
   },
 ];

@@ -26,7 +26,6 @@ const ALL_ROUTES = [
   "/privacy/nominee-services",
   "/privacy/private-incorporation",
   "/privacy/offshore-privacy",
-  "/privacy/boi-reporting",
 
   // Asset Protection clusters
   "/asset-protection/charging-order-protection",
@@ -41,6 +40,7 @@ const ALL_ROUTES = [
   "/formation/wyoming-corporation",
   "/formation/nevada-corporation",
   "/formation/shelf-companies",
+  "/formation/entity-tax-guide",
 
   // Compliance clusters
   "/compliance/registered-agent",
@@ -48,6 +48,9 @@ const ALL_ROUTES = [
   "/compliance/corporate-minutes",
   "/compliance/virtual-office",
   "/compliance/foreign-registration",
+  "/compliance/second-tier-state-filings",
+  "/compliance/shares-corporate-records",
+  "/compliance/tax-obligations",
 
   // Package pages
   "/packages/wyoming-gold",
@@ -79,6 +82,7 @@ const ALL_ROUTES = [
   "/compare/wyoming-vs-nevada-privacy",
   "/compare/wyoming-vs-nevada-asset-protection",
   "/compare/shelf-company-vs-new-formation",
+  "/compare/llc-vs-scorp-vs-ccorp-tax",
 
   // Packages index & compare
   "/packages",

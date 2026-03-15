@@ -27,9 +27,9 @@ export const contactData: ContactData = {
     {
       type: "office",
       icon: "MapPin",
-      title: "Visit Our Reno Office",
+      title: "Our Mailing Address",
       description:
-        "1795 Meadow Wood Lane, Suite 100, Reno, NV 89502. Walk-ins welcome. Our office is minutes from the Nevada Secretary of State. Call ahead to schedule a dedicated consultation.",
+        "1795 Meadow Wood Lane, Suite 100, Reno, NV 89502. Call ahead to schedule a dedicated consultation with one of our privacy formation specialists.",
     },
   ],
   formFields: [

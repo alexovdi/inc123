@@ -17,7 +17,7 @@ export const homepageData: HomepageData = {
     },
     trustSnippets: [
       "25 Years",
-      "Real Reno Office",
+      "Thousands Formed",
       "$1,275 All-Inclusive",
       "Money-Back Guarantee",
     ],
@@ -44,10 +44,10 @@ export const homepageData: HomepageData = {
         "Formation, registered agent, EIN, operating agreement, and state fees — all bundled. No surprise add-ons at checkout.",
     },
     {
-      icon: "MapPin",
-      title: "Real Reno Office",
+      icon: "Users",
+      title: "Specialist Team",
       description:
-        "Not a P.O. box operation. Professional offices in Reno, Nevada with real staff and a physical address you can visit.",
+        "Privacy formation specialists — not a call center, not a chatbot. Real people who know your name and understand complex structures.",
     },
     {
       icon: "Award",
@@ -172,7 +172,7 @@ export const packageRenewals: Record<string, string> = {
    ------------------------------------------------ */
 export const trustSignalItems = [
   { icon: "Calendar", value: "25+", label: "Years Trusted" },
-  { icon: "Building", value: "Real", label: "Reno Office" },
+  { icon: "Users", value: "Thousands", label: "Entities Formed" },
   { icon: "ShieldCheck", value: "30-Day", label: "Money-Back Guarantee" },
   { icon: "Phone", value: "(775)", label: "Call Anytime" },
   { icon: "Bitcoin", value: "Crypto", label: "Payments for Privacy" },

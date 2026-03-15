@@ -20,7 +20,6 @@ export const siteNavigation: SiteNavigation = {
             { title: "Nominee Services", href: "/privacy/nominee-services", description: "Year-round nominee directors and officers" },
             { title: "Private Incorporation", href: "/privacy/private-incorporation", description: "Privacy-first corporate formation in WY, NV, CA, FL" },
             { title: "Offshore Privacy", href: "/privacy/offshore-privacy", description: "Records stored outside U.S. jurisdiction" },
-            { title: "BOI Reporting", href: "/privacy/boi-reporting", description: "Beneficial Ownership Information compliance" },
           ],
           featuredLink: {
             title: "Wyoming Gold Privacy LLC",
@@ -69,6 +68,7 @@ export const siteNavigation: SiteNavigation = {
             { title: "Wyoming Corporation", href: "/formation/wyoming-corporation", description: "Corporate formation with close-knit statutes" },
             { title: "Nevada Corporation", href: "/formation/nevada-corporation", description: "Liability protection with Nevada's business court" },
             { title: "Shelf Companies", href: "/formation/shelf-companies", description: "Pre-aged entities for immediate use" },
+            { title: "Entity Tax Guide", href: "/formation/entity-tax-guide", description: "How entity type affects your taxes" },
           ],
           featuredLink: {
             title: "Compare All Packages",
@@ -93,6 +93,9 @@ export const siteNavigation: SiteNavigation = {
             { title: "Corporate Minutes", href: "/compliance/corporate-minutes", description: "Professional minute book maintenance" },
             { title: "Virtual Office", href: "/compliance/virtual-office", description: "Professional business address and mail forwarding" },
             { title: "Foreign Registration", href: "/compliance/foreign-registration", description: "Register your entity to do business in another state" },
+            { title: "2nd-Tier State Filings", href: "/compliance/second-tier-state-filings", description: "Multi-state filings beyond WY and NV" },
+            { title: "Shares & Corporate Records", href: "/compliance/shares-corporate-records", description: "Share certificates, stock ledgers, and record books" },
+            { title: "Tax Filing & Obligations", href: "/compliance/tax-obligations", description: "Ongoing tax requirements after formation" },
           ],
         },
       ],
@@ -113,7 +116,6 @@ export const footerNavigation = {
         { label: "Nominee Services", href: "/privacy/nominee-services" },
         { label: "Private Incorporation", href: "/privacy/private-incorporation" },
         { label: "Offshore Privacy", href: "/privacy/offshore-privacy" },
-        { label: "BOI Reporting", href: "/privacy/boi-reporting" },
       ],
     },
     {
@@ -134,6 +136,7 @@ export const footerNavigation = {
         { label: "Wyoming Corporation", href: "/formation/wyoming-corporation" },
         { label: "Nevada Corporation", href: "/formation/nevada-corporation" },
         { label: "Shelf Companies", href: "/formation/shelf-companies" },
+        { label: "Entity Tax Guide", href: "/formation/entity-tax-guide" },
       ],
     },
     {
@@ -144,6 +147,9 @@ export const footerNavigation = {
         { label: "Corporate Minutes", href: "/compliance/corporate-minutes" },
         { label: "Virtual Office", href: "/compliance/virtual-office" },
         { label: "Foreign Registration", href: "/compliance/foreign-registration" },
+        { label: "2nd-Tier Filings", href: "/compliance/second-tier-state-filings" },
+        { label: "Shares & Records", href: "/compliance/shares-corporate-records" },
+        { label: "Tax Obligations", href: "/compliance/tax-obligations" },
       ],
     },
   ],

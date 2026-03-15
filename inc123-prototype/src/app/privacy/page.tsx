@@ -196,8 +196,8 @@ export default function PrivacyPillarPage() {
             <Card
               pillar="privacy"
               variant="elevated"
-              title="The BOI Problem"
-              description="The Corporate Transparency Act now requires beneficial ownership reporting to FinCEN. Nominee services are more important than ever for maintaining operational privacy."
+              title="Data Broker Exposure"
+              description="Public records scrapers and data brokers harvest business ownership information from state filings. Nominee services keep your name off the records they scrape."
             >
               <div className="flex items-center gap-2 mt-1">
                 <Icon
@@ -206,7 +206,7 @@ export default function PrivacyPillarPage() {
                   className="text-pillar-privacy"
                 />
                 <span className="text-caption text-muted">
-                  New regulations, same privacy need
+                  Your information is only as private as your filings
                 </span>
               </div>
             </Card>
@@ -400,5 +400,5 @@ const serviceDescriptions = [
   "Your nominee serves 365 days a year, every year. Not 'nominee for a day' at formation — continuous privacy protection on every public filing.",
   "Corporate records maintained by our offshore records custodian, outside U.S. jurisdiction. Not accessible through domestic subpoena processes.",
   "Privacy-first formation available in Wyoming, Nevada, California, and Florida with nominee structures and foreign registration.",
-  "The Corporate Transparency Act requires beneficial ownership reporting. We handle BOI compliance while maintaining maximum privacy.",
+  "Privacy-first formation available in Wyoming, Nevada, California, and Florida with nominee structures and foreign registration.",
 ];

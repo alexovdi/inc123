@@ -1,0 +1,82 @@
+
+INCORPORATE123 WEBSITE REDESIGN :: PHASE 2: UX & DESIGN
+--------------------------------------------------------------------------------
+Information Architecture
+Complete 71-Page Site Map, URL Structure
+& Navigation Hierarchy
+
+Prepared by: BIT Studios
+Prepared for: Incorporate123 (David)
+Date: March 2026
+Deliverable: Phase 2, Task 1  --  Information Architecture
+
+Confidential  --  BIT Studios x Incorporate123
+1. Architecture Overview
+This document presents the finalized information architecture for the Incorporate123 website redesign. The architecture consolidates approximately 325 unique current URLs into a focused 71-page structure organized around four intent-based content pillars: Business Privacy, Asset Protection, Company Formation, and Compliance.
+The architecture has been validated against 392 crawled URLs mapped to destinations, 5 competitors analyzed for structural gaps, 5 user journeys confirmed through flow analysis, and SEO keyword data identifying content priorities. Every page, URL, and structural decision is traceable to audit findings, competitive gaps, or user intent data.
+
+Architecture at a Glance
+4 Pillar Pages + 24 Cluster Pages + 6 Comparison Pages + 8 Package Pages + 4 State Hubs + 6 Offshore Pages + 4 Checkout Steps + 10 Utility Pages = ~71 unique pages. Flat URL structure. Internal linking establishes hierarchy. Rolling approval unlocks development.
+ComponentPagesPurposePillar Pages4Primary navigation hubs for each service categoryCluster Pages24Deep-dive pages supporting each pillar's topicsComparison Pages6Decision-support tools for the consideration stagePackage Pages8Conversion endpoints with pricing and order CTAsState Hub Pages4Cross-pillar geographic landing pagesUtility/Support10Homepage, About, Contact, FAQ, Blog, LegalOffshore Hub6International formation servicesCheckout Flow4Multi-step conversion: configure --> details --> payment --> confirm2. Primary Navigation Structure
+The primary navigation replaces the current geography-first structure (United States > Nevada/Wyoming > Services) with an intent-first architecture that matches how visitors think about their needs. The navigation contains four intent-based items matching the pillar structure, plus utility links.
+
+Nav PositionLabelDestinationMega Menu Content1 (Lead)Privacy/privacy/8 clusters + 2 comparisons under Privacy pillar2Asset Protection/asset-protection/7 clusters + 2 comparisons under AP pillar3Formation/formation/7 clusters + 3 comparisons under Formation pillar4Packages/compare-packages/All 8 packages with tier labels (Gold/Silver/Bronze)5About/about/About, Contact, TestimonialsPersistentClient Login/login/Portal access  --  always visible in headerUtility FooterLegalVariousPrivacy Policy, Terms of Service, FAQ, Blog
+2.1 Mega Menu Behavior
+ Desktop: Hover-triggered mega dropdown showing all clusters organized under their pillar. Each cluster is a direct link. Comparison pages appear as a "Compare" subsection.
+ Mobile: Hamburger menu with accordion expand for each pillar. Tap pillar name to expand cluster list. Tap cluster to navigate. Persistent phone number with tap-to-call.
+ Breadcrumbs: Present on every cluster, comparison, and package page. Format: Home > Pillar > Current Page.
+ Persistent CTA: "Get Started" or "Schedule Consultation" button visible on all viewports.
+3. URL Strategy
+All URLs use a flat structure with no deep directory hierarchy. The pillar/cluster hierarchy is established entirely through internal linking, not URL paths. This keeps URLs clean, shareable, and future-proof  --  pages can be reorganized between pillars without breaking URLs.
+
+ Pattern: /descriptive-slug/ (e.g., /wyoming-private-incorporation/ not /services/wyoming/private-incorporation/)
+ Exception: Offshore pages retain /offshore/ prefix for content grouping (e.g., /offshore/nevis/)
+ Exception: Checkout flow uses /checkout/ prefix (e.g., /checkout/configure/)
+ Trailing slashes: Enforced consistently with server-level normalization
+ Canonicals: Self-referencing canonical tag on every page to prevent duplicate content issues
+4. Pillar Architecture  --  Page-by-Page Inventory
+4.1 Pillar 1: Business Privacy (Lead Pillar)
+Hub URL: /privacy/  --  11 pages total. Privacy is the lead pillar because it represents Incorporate123's strongest competitive differentiation (year-round nominees, offshore records), targets the highest-value keyword opportunities (5,500 - 9,500 monthly searches for anonymous LLC terms), and aligns with the premium pricing that justifies Gold packages at $1,275 - $2,100.
+
+Page NameTypeURLPriorityContent SourceBusiness PrivacyPillar Hub/privacy/P1 LaunchNew creationAnonymous LLCCluster/anonymous-llc/P1 LaunchNew creationAnonymous CorporationCluster/anonymous-corporation/P2 ExpansionNew creationNominee ServicesCluster/nominee-services/P1 LaunchExisting  -  enhanceWyoming PrivacyCluster/wyoming-privacy/P1 LaunchNew creationNevada PrivacyCluster/nevada-privacy/P1 LaunchNew creationCalifornia Private Inc.Cluster/california-private-incorporation/P1 LaunchExisting  -  reorganizeFlorida Private Inc.Cluster/florida-private-incorporation/P1 LaunchExisting  -  reorganizeBOI ReportingCluster/beneficial-ownership-reporting/P2 ExpansionNew creationBest State for PrivacyComparison/best-state-for-privacy/P1 LaunchNew creationWY vs NV for PrivacyComparison/wyoming-vs-nevada-privacy/P1 LaunchNew creation
+4.2 Pillar 2: Asset Protection
+Hub URL: /asset-protection/  --  9 pages total. Asset Protection educates on the critical distinction between privacy (protects identity) and asset protection (protects wealth), creating natural 30 - 40% cross-sell opportunities to the Privacy pillar.
+
+Page NameTypeURLPriorityContent SourceAsset ProtectionPillar Hub/asset-protection/P1 LaunchNew creationNevada Asset ProtectionCluster/nevada-asset-protection/P1 LaunchExisting  -  reorganizeWyoming Asset ProtectionCluster/wyoming-asset-protection/P1 LaunchExisting  -  reorganizeCharging Order ProtectionCluster/charging-order-protection/P1 LaunchNew + LC contentInvestment Holding LLCCluster/investment-holding-llc/P2 ExpansionNew creationReal Estate Asset ProtectionCluster/real-estate-asset-protection/P2 ExpansionNew creationLLC vs Living TrustCluster/llc-vs-living-trust/P2 ExpansionNew creationBest State for APComparison/best-state-asset-protection/P2 ExpansionNew creationWY vs NV for APComparison/wyoming-vs-nevada-asset-protection/P2 ExpansionNew creation4.3 Pillar 3: Company Formation
+Hub URL: /formation/  --  10 pages total. Rather than competing on price against $0 providers, this pillar emphasizes what's included in Incorporate123's bundled packages and serves as the entry point for educating visitors about privacy benefits, driving 40%+ upgrade potential from Silver to Gold.
+
+Page NameTypeURLPriorityContent SourceCompany FormationPillar Hub/formation/P1 LaunchNew creationWyoming LLCCluster/wyoming-llc/P1 LaunchNew creationNevada LLCCluster/nevada-llc/P1 LaunchExisting  -  splitWyoming CorporationCluster/wyoming-corporation/P2 ExpansionNew creationNevada CorporationCluster/nevada-corporation/P2 ExpansionExisting  -  splitShelf CompaniesCluster/shelf-companies/P1 LaunchExisting  -  enhanceSeries LLCCluster/series-llc/P2 ExpansionNew creationLLC vs CorporationComparison/llc-vs-corporation/P1 LaunchNew creationWY vs NV FormationComparison/wyoming-vs-nevada/P1 LaunchNew creationShelf vs New EntityComparison/shelf-company-vs-new/P2 ExpansionNew creation
+4.4 Pillar 4: Compliance
+Hub URL: /compliance/  --  7 pages total. Post-formation support and ongoing compliance. Differentiates Incorporate123's year-round registered agent, annual report filing, and corporate minute maintenance from competitors' minimal service offerings.
+
+Page NameTypeURLPriorityContent SourceCompliancePillar Hub/compliance/P1 LaunchNew creationRegistered Agent ServicesCluster/registered-agent/P1 LaunchExisting  -  enhanceWyoming Registered AgentCluster/wyoming-registered-agent/P2 ExpansionNew creationNevada Registered AgentCluster/nevada-registered-agent/P2 ExpansionNew creationAnnual ReportsCluster/annual-reports/P2 ExpansionExisting  -  enhanceForeign State RegistrationCluster/foreign-state-registration/P2 ExpansionNew creationDomesticationCluster/domestication/P2 ExpansionNew creation5. Supporting Page Groups
+5.1 Package Pages  --  8 Conversion Endpoints
+Package pages are the primary conversion destinations. Each features a 3-tier pricing comparison (Bronze/Silver/Gold), tooltip interactions, add-on configurator, LLC/Corp toggle, and dual CTAs (Start Now / Schedule Consultation).
+
+Page NameTypeURLPriorityContent SourceWyoming Gold (Private)Package/wyoming-private-incorporation/P1 LaunchExisting  -  enhanceWyoming SilverPackage/wyoming-incorporation/P1 LaunchExisting  -  enhanceNevada Gold (Private)Package/nevada-private-incorporation/P1 LaunchExisting  -  enhanceNevada SilverPackage/nevada-incorporation/P1 LaunchExisting  -  enhanceNevada Bronze (Basic)Package/nevada-basic-incorporation/P1 LaunchExisting  -  enhanceCalifornia PrivateState Pkg/california-private-incorporation/P1 LaunchExisting  -  enhanceFlorida PrivateState Pkg/florida-private-incorporation/P1 LaunchExisting  -  enhanceShelf CompaniesSpecialty/shelf-companies/P1 LaunchExisting  -  enhance
+5.2 State Hub Pages  --  4 Cross-Pillar Hubs
+State hubs aggregate all content for a given state across all four pillars. They serve geographic search intent (e.g., "Wyoming LLC", "Nevada incorporation") and provide a single entry point linking to privacy, asset protection, formation, and compliance content for that state.
+
+Page NameTypeURLPriorityContent SourceWyoming HubState Hub/wyoming/P1 LaunchNew creationNevada HubState Hub/nevada/P1 LaunchNew creationCalifornia HubState Hub/california/P2 ExpansionNew creationFlorida HubState Hub/florida/P2 ExpansionNew creation
+5.3 Utility & Support Pages  --  10 Pages
+
+Page NameTypeURLPriorityContent SourceHomepageHomepage/P1 LaunchExisting  -  redesignAbout UsUtility/about/P1 LaunchExisting  -  enhanceContactUtility/contact/P1 LaunchExisting  -  preserveFAQ HubResource/faq/P1 LaunchNew (consolidates 188 LC items)BlogContent Hub/blog/P2 ExpansionNew creationCompare All PackagesComparison/compare-packages/P1 LaunchExisting  -  redesignTestimonialsSocial Proof/testimonials/P1 LaunchExisting  -  enhanceClient LoginPortal/login/P1 LaunchExisting  -  preservePrivacy PolicyLegal/privacy-policy/P1 LaunchExisting  -  preserveTerms of ServiceLegal/terms/P1 LaunchExisting  -  preserve5.4 Offshore Hub  --  6 Pages
+Retained for SEO authority, de-emphasized in primary navigation. Offshore pages use a /offshore/ prefix as the one exception to the flat URL structure.
+
+Page NameTypeURLPriorityContent SourceOffshore HubHub Page/offshore/P1 LaunchExisting  -  preserveNevis LLC/CorpOffshore/offshore/nevis/P1 LaunchExisting  -  preserveBVI CompanyOffshore/offshore/bvi/P1 LaunchExisting  -  preservePanama FoundationOffshore/offshore/panama/P1 LaunchExisting  -  preserveHong Kong CompanyOffshore/offshore/hong-kong/P1 LaunchExisting  -  preserveIRS ComplianceOffshore/offshore/irs-compliance/P1 LaunchExisting  -  preserve
+5.5 Checkout Flow  --  4 Steps
+A multi-step conversion flow with progress indicator, form validation, and order summary persistence across steps. The checkout flow is the same for all packages, with the initial configuration step dynamically populated based on the package selected.
+
+Page NameTypeURLPriorityContent SourceStep 1: Package ConfigCheckout/checkout/configure/P1 LaunchExisting  -  redesignStep 2: Entity DetailsCheckout/checkout/details/P1 LaunchExisting  -  redesignStep 3: PaymentCheckout/checkout/payment/P1 LaunchExisting  -  redesignStep 4: ConfirmationCheckout/checkout/confirmation/P1 LaunchExisting  -  redesign6. Internal Linking Strategy
+The pillar/cluster hierarchy is established through internal linking, not URL structure. All URLs are flat (no directory nesting) to keep them clean, shareable, and resilient to structural changes. The following table defines the linking rules for each page type:
+
+From Page TypeLinks ToLink PlacementPillar PagesAll related clusters + comparison pages + relevant packagesIn-content links, sidebar nav, bottom CTAsCluster PagesParent pillar + sibling clusters + relevant comparison + packageBreadcrumb, sidebar, in-content, bottom CTAComparison PagesParent pillar + compared packages (dual CTAs)In-content links, CTA buttons per optionPackage PagesRelated packages ("Also consider...") + parent pillarSidebar, comparison strip, trust sectionState HubsAll content for that state across all 4 pillarsOrganized by pillar with direct links to each
+6.1 Cross-Pillar Linking
+14 pages in the architecture serve multiple pillars simultaneously. These pages are the connective tissue preventing four disconnected silos. Contextual CTAs surface cross-pillar content at the natural decision point where visitors think "what else should I consider?"
+
+Cross-Pillar LinkSourceDestinationCTA MessagingHighest-value upsellAsset Protection clustersPrivacy pillar / Nominee Services"Hiding ownership is your first line of defense"Formation upsellFormation clustersPrivacy pillar"70% of clients add nominee services"Privacy --> APPrivacy clustersAsset Protection pillar"Protect your assets, not just your identity"Compliance captureAll pillar pagesCompliance pillar"Already have an entity? We handle compliance"7. Launch Priority Phasing
+Pages are phased into two priority groups. P1 pages must be live at launch to maintain the pillar/cluster SEO structure. P2 pages can launch shortly after go-live without breaking the architecture.
+
+PhasePage CountIncludesTimelineP1  --  Launch~54 pagesAll pillar hubs, primary clusters, key comparisons, all packages, WY/NV state hubs, all utility, all offshore, checkout flowAt launchP2  --  Expansion~17 pagesSecondary clusters (Anon Corp, BOI, Investment Holding, Real Estate AP, etc.), CA/FL state hubs, BlogShortly post-launch
+--------------------------------------------------------------------------------
+This document is confidential and intended for Incorporate123 and BIT Studios project team members only. Architecture is pending client approval before UX prototyping begins.

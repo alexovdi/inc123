@@ -27,12 +27,6 @@ export const faqItems: FAQItem[] = [
     category: "privacy",
   },
   {
-    id: "faq-5",
-    question: "Do I still need a nominee with BOI reporting?",
-    answer: "Yes. BOI (Beneficial Ownership Information) reporting goes to FinCEN and is not publicly searchable. Nominees protect you against public state records searches, which are entirely separate from BOI filings. Both layers of protection matter — nominees for public privacy, BOI compliance for federal requirements.",
-    category: "privacy",
-  },
-  {
     id: "faq-6",
     question: "What is an offshore records custodian?",
     answer: "An offshore records custodian maintains your corporate documents (operating agreement, meeting minutes, member registry) in a jurisdiction outside the United States. Domestic subpoenas and court orders typically cannot compel production of documents held in foreign jurisdictions. This service is unique to Incorporate123 and included free in every Gold package.",
@@ -41,19 +35,13 @@ export const faqItems: FAQItem[] = [
   {
     id: "faq-7",
     question: "Can someone find out who owns my anonymous LLC?",
-    answer: "With proper nominee services, your name does not appear in any publicly searchable state database. IRS records and BOI filings are not public. The only way your ownership could be discovered is through a court order compelling disclosure — and offshore record storage adds an additional layer of protection against even that.",
+    answer: "With proper nominee services, your name does not appear in any publicly searchable state database. IRS records are not public. The only way your ownership could be discovered is through a court order compelling disclosure — and offshore record storage adds an additional layer of protection against even that.",
     category: "privacy",
   },
   {
     id: "faq-8",
     question: "Is forming an anonymous LLC legal?",
-    answer: "Yes, completely legal. Privacy is not secrecy — you still file taxes, obtain an EIN, and comply with federal reporting requirements like BOI. An anonymous LLC simply keeps your name off publicly searchable state filings. This is a legitimate privacy strategy used by business owners, real estate investors, and public figures nationwide.",
-    category: "privacy",
-  },
-  {
-    id: "faq-9",
-    question: "What is the Corporate Transparency Act?",
-    answer: "The Corporate Transparency Act is a federal law requiring most LLCs and corporations to report their beneficial owners to FinCEN. This reporting is not public — it goes to a government database accessible only to law enforcement and financial institutions. It does not eliminate the value of nominees for state-level privacy. We handle BOI compliance as part of our services.",
+    answer: "Yes, completely legal. Privacy is not secrecy — you still file taxes, obtain an EIN, and comply with federal reporting requirements. An anonymous LLC simply keeps your name off publicly searchable state filings. This is a legitimate privacy strategy used by business owners, real estate investors, and public figures nationwide.",
     category: "privacy",
   },
   {
@@ -187,6 +175,32 @@ export const faqItems: FAQItem[] = [
     category: "formation",
   },
 
+  // Formation — Tax (4)
+  {
+    id: "faq-30a",
+    question: "How does entity type affect my taxes?",
+    answer: "Your entity type determines your default tax treatment. Single-member LLCs are taxed as sole proprietorships (pass-through). Multi-member LLCs are taxed as partnerships. Corporations are taxed as C-Corps (double taxation) unless they elect S-Corp status. Any LLC can elect S-Corp or C-Corp taxation without changing its state formation — the election is federal only.",
+    category: "formation",
+  },
+  {
+    id: "faq-30b",
+    question: "When should I elect S-Corp taxation for my LLC?",
+    answer: "Generally when your net business income consistently exceeds $80,000 per year. The S-Corp election lets you split income between salary (subject to payroll taxes) and distributions (exempt from self-employment tax). Below $80K, the added payroll processing and accounting costs typically outweigh the savings.",
+    category: "formation",
+  },
+  {
+    id: "faq-30c",
+    question: "Does forming in Wyoming or Nevada eliminate my state taxes?",
+    answer: "Wyoming and Nevada have no state income tax — but if you physically operate in another state, that state may still tax your business income. For example, a Wyoming LLC doing business in California owes California's $800 annual franchise tax. Formation state affects privacy and asset protection; operating state determines state tax obligations.",
+    category: "formation",
+  },
+  {
+    id: "faq-30d",
+    question: "What's the difference between pass-through taxation and double taxation?",
+    answer: "Pass-through taxation (LLCs, S-Corps) means business income is taxed once on the owner's personal return. Double taxation (C-Corps) means profits are taxed at the corporate level (21%), then dividends are taxed again on shareholders' personal returns. Most small businesses prefer pass-through to avoid double taxation.",
+    category: "formation",
+  },
+
   // Compliance (6)
   {
     id: "faq-31",
@@ -222,6 +236,26 @@ export const faqItems: FAQItem[] = [
     id: "faq-36",
     question: "Can I change my registered agent to Incorporate123?",
     answer: "Yes. We handle the transfer filing with the state. Contact us for details — the process is straightforward and we can usually complete the changeover within a few business days.",
+    category: "compliance",
+  },
+
+  // Compliance — Tax (3)
+  {
+    id: "faq-36a",
+    question: "Does my Wyoming LLC owe any Wyoming business taxes?",
+    answer: "No. Wyoming imposes no state income tax, no franchise tax on LLCs, and no gross receipts tax. Your only Wyoming obligation is the $60 annual report fee (which we file for you). If you operate in another state, that state's tax laws apply to your business income earned there.",
+    category: "compliance",
+  },
+  {
+    id: "faq-36b",
+    question: "What is California's $800 franchise tax and does it apply to me?",
+    answer: "California imposes a minimum $800 annual franchise tax on every LLC formed in or registered to do business in California — regardless of income. If you have a Wyoming LLC foreign registered in California, you owe this tax. It's due by the 15th day of the 4th month after formation, then annually.",
+    category: "compliance",
+  },
+  {
+    id: "faq-36c",
+    question: "Do I need to make quarterly estimated tax payments?",
+    answer: "If you expect to owe $1,000 or more in federal taxes for the year, the IRS requires quarterly estimated payments (Form 1040-ES). Due dates: April 15, June 15, September 15, and January 15. Underpayment triggers penalties. Your CPA can calculate appropriate quarterly amounts based on projected business income.",
     category: "compliance",
   },
 

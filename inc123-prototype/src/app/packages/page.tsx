@@ -64,7 +64,7 @@ const stateGroups = [
     id: "nevada",
     title: "Nevada Packages",
     description:
-      "No state income tax, established business court. Our Reno office gives you a same-day filing advantage.",
+      "No state income tax, established business court. Our Nevada presence gives you a same-day filing advantage.",
     filter: (pkg: (typeof packages)[number]) => pkg.state === "Nevada",
   },
   {

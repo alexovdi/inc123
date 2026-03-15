@@ -14,14 +14,12 @@ export const pillars: Pillar[] = [
       "Year-Round Nominee Directors & Officers",
       "Offshore Record Storage",
       "Private Incorporation (WY/NV/CA/FL)",
-      "BOI Reporting Compliance",
     ],
     clusters: [
       { title: "Anonymous LLC Formation", href: "/privacy/anonymous-llc", description: "Form an LLC with no public ties to your name" },
       { title: "Nominee Services", href: "/privacy/nominee-services", description: "Year-round nominee directors and officers listed on all public records" },
       { title: "Private Incorporation", href: "/privacy/private-incorporation", description: "Privacy-first formation available in Wyoming, Nevada, California, and Florida" },
       { title: "Offshore Privacy", href: "/privacy/offshore-privacy", description: "Corporate records stored outside U.S. jurisdiction" },
-      { title: "BOI Reporting", href: "/privacy/boi-reporting", description: "Beneficial Ownership Information compliance and filing" },
     ],
   },
   {
@@ -61,6 +59,7 @@ export const pillars: Pillar[] = [
       "Wyoming Corporation",
       "Nevada Corporation",
       "Shelf Companies",
+      "Entity Tax Guide",
     ],
     clusters: [
       { title: "Wyoming LLC", href: "/formation/wyoming-llc", description: "America's most business-friendly state for LLC formation" },
@@ -68,6 +67,7 @@ export const pillars: Pillar[] = [
       { title: "Wyoming Corporation", href: "/formation/wyoming-corporation", description: "Corporate formation with close-knit statutes" },
       { title: "Nevada Corporation", href: "/formation/nevada-corporation", description: "Liability protection with Nevada's dedicated business court" },
       { title: "Shelf Companies", href: "/formation/shelf-companies", description: "Pre-aged entities for immediate use" },
+      { title: "Entity Tax Guide", href: "/formation/entity-tax-guide", description: "How entity type affects your taxes — understand before you choose" },
     ],
   },
   {
@@ -84,6 +84,9 @@ export const pillars: Pillar[] = [
       "Corporate Minutes Maintenance",
       "Virtual Office & Mail Forwarding",
       "Foreign Registration",
+      "2nd-Tier State Filings",
+      "Shares & Corporate Records",
+      "Tax Filing & Obligations",
     ],
     clusters: [
       { title: "Registered Agent", href: "/compliance/registered-agent", description: "Professional registered agent service in Wyoming and Nevada" },
@@ -91,6 +94,9 @@ export const pillars: Pillar[] = [
       { title: "Corporate Minutes", href: "/compliance/corporate-minutes", description: "Professional minute book preparation and maintenance" },
       { title: "Virtual Office", href: "/compliance/virtual-office", description: "Professional business address and mail forwarding" },
       { title: "Foreign Registration", href: "/compliance/foreign-registration", description: "Register your entity to do business in another state" },
+      { title: "2nd-Tier State Filings", href: "/compliance/second-tier-state-filings", description: "Multi-state filings beyond Wyoming and Nevada" },
+      { title: "Shares & Corporate Records", href: "/compliance/shares-corporate-records", description: "Share certificates, stock ledgers, and record books" },
+      { title: "Tax Filing & Obligations", href: "/compliance/tax-obligations", description: "Ongoing tax requirements after forming your entity" },
     ],
   },
 ];

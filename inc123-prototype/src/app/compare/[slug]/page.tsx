@@ -185,7 +185,7 @@ const whereToGoSuggestions: Record<
     {
       title: "Nevada LLC Formation",
       description:
-        "Explore Nevada formation with our Reno office advantage and same-day filing.",
+        "Explore Nevada formation with our in-state presence and same-day filing capability.",
       href: "/formation/nevada-llc",
       pillar: "formation",
     },

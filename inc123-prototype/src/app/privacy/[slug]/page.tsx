@@ -26,7 +26,6 @@ const slugs = [
   "nominee-services",
   "private-incorporation",
   "offshore-privacy",
-  "boi-reporting",
 ];
 
 export function generateStaticParams() {

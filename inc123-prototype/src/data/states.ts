@@ -76,7 +76,6 @@ export const stateHubs: StateHub[] = [
         { title: "Nominee Services", href: "/privacy/nominee-services" },
         { title: "Private Incorporation", href: "/privacy/private-incorporation" },
         { title: "Offshore Privacy", href: "/privacy/offshore-privacy" },
-        { title: "BOI Reporting", href: "/privacy/boi-reporting" },
       ],
       asset: [
         { title: "Charging Order Protection", href: "/asset-protection/charging-order-protection" },
@@ -117,7 +116,7 @@ export const stateHubs: StateHub[] = [
     ],
     advantages: [
       { icon: "EyeOff", title: "Nominee-Friendly Statutes", description: "Nevada has strong statutory support for nominee officers and directors on all filings. Our year-round nominees keep your name off every public record." },
-      { icon: "Building2", title: "Same-Day Filing from Our Reno Office", description: "Our office is minutes from the Nevada Secretary of State. We hand-deliver filing documents for same-day processing — an advantage no remote-only company can match." },
+      { icon: "Building2", title: "Same-Day Filing in Nevada", description: "We are located near the Nevada Secretary of State and can hand-deliver filing documents for same-day processing — an advantage no remote-only company can match." },
       { icon: "DollarSign", title: "No State Income Tax", description: "Nevada has no corporate income tax, no franchise tax, and no personal income tax. Favorable for business owners who live and operate in Nevada." },
       { icon: "Scale", title: "Director Liability Protections", description: "Nevada's corporate statutes offer unique director and officer protections not available in most other states." },
       { icon: "ShieldCheck", title: "Largest Shelf Company Inventory", description: "More aged Nevada entities available than any other state. Shelf companies from year 2000+ with clean histories and no prior liabilities." },

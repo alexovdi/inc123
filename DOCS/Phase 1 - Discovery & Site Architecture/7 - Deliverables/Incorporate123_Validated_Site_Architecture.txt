@@ -1,0 +1,51 @@
+
+                                INCORPORATE123
+                           Website Redesign Project
+
+                          VALIDATED SITE ARCHITECTURE
+             Final :: 71-Page Architecture :: 4 Content Pillars
+
+
+                      Prepared for: David, Incorporate123
+                           Prepared by: BIT Studios
+                      March 2026 :: Phase 1 Deliverable
+                        STATUS: PENDING CLIENT APPROVAL
+Architecture Overview
+This document presents the finalized 71-page site architecture for the Incorporate123 website redesign. The architecture has been validated against: 392 crawled URLs mapped to destinations, 5 competitors analyzed for structural gaps, 3 user journeys confirmed through flow analysis, and content migration data identifying priorities. Every page, URL, and structural decision documented here has a traceable rationale.
+Architecture Summary
+ComponentPagesPurposePillar Pages4Primary navigation hubs for each service categoryCluster Pages24Deep-dive pages supporting each pillar's topicsComparison Pages6Decision-support tools for the consideration stagePackage Pages8Conversion endpoints with pricing and order CTAsState Hub Pages4Cross-pillar geographic landing pagesUtility/Support9+Homepage, About, Contact, FAQ, Blog, LegalOffshore Hub6International formation servicesTOTAL~71Consolidated from 325 unique current URLs
+Navigation Structure
+The primary navigation contains four intent-based items matching the pillar structure, plus utility links. This replaces the current geography-first navigation (United States > Nevada/Wyoming > Services).
+Nav ItemDropdown ItemsNotesFormationWY LLC, NV LLC, Shelf Companies, LLC vs Corp, Compare PackagesTable-stakes entry; guides to privacy upsellPrivacyAnonymous LLC, Nominee Services, WY Privacy, NV Privacy, CA/FL, Best StatePrimary differentiator; routes to Gold packagesAsset ProtectionAP Guide, NV AP, WY AP, Holding LLC, Charging Order, Best StateSecondary differentiator; high-value audienceComplianceRegistered Agent, Annual Reports, Foreign Registration, DomesticationPost-formation services; existing client capturePillar 1: Business Privacy
+--------------------------------------------------------------------------------
+ Primary Differentiator  --  11 pages :: Hub URL: /privacy/
+Privacy is the lead pillar because it represents Incorporate123's strongest competitive differentiation (year-round nominees, offshore records), no competitor organizes content around privacy as a primary pillar, and it aligns with the premium pricing model that justifies Gold packages at $1,275 - $2,100.
+Page NameTypeURLPrioritySourceBusiness PrivacyPillar Hub/privacy/P1New creationAnonymous LLCCluster/anonymous-llc/P1New + LC itemsAnonymous CorporationCluster/anonymous-corporation/P2New + LC itemsNominee ServicesCluster/nominee-services/P1New (key differentiator)Wyoming PrivacyCluster/wyoming-privacy/P1New + existing WYNevada PrivacyCluster/nevada-privacy/P1New + existing NVCalifornia Private Inc.Cluster/california-private-incorporation/P1Existing  --  enhanceFlorida Private Inc.Cluster/florida-private-incorporation/P1Existing  --  enhanceBOI ReportingCluster/boi-reporting/P2New creationBest State for PrivacyComparison/best-state-for-privacy/P1New creationWY vs NV PrivacyComparison/wyoming-vs-nevada-privacy/P2New creation
+Pillar 2: Asset Protection
+--------------------------------------------------------------------------------
+ Secondary Differentiator  --  9 pages :: Hub URL: /asset-protection/
+Asset Protection targets high-net-worth individuals ($500K+ in assets), real estate investors, and business owners in litigious industries. This pillar educates on the critical distinction between privacy (protects identity) and asset protection (protects wealth), creating natural cross-sell opportunities to the Privacy pillar.
+Page NameTypeURLPrioritySourceAsset ProtectionPillar Hub/asset-protection/P1New creationNevada Asset ProtectionCluster/nevada-asset-protection/P1Existing  --  reorganizeWyoming Asset ProtectionCluster/wyoming-asset-protection/P1Existing  --  reorganizeInvestment Holding LLCCluster/investment-holding-llc/P2New creationCharging Order ProtectionCluster/charging-order-protection/P1New + LC contentReal Estate APCluster/real-estate-asset-protection/P2New creationLLC vs Living TrustCluster/llc-vs-living-trust/P2New creationBest State for APComparison/best-state-asset-protection/P2New creationWY vs NV for APComparison/wyoming-vs-nevada-asset-protection/P2New creationPillar 3: Company Formation
+--------------------------------------------------------------------------------
+ Competitive but Necessary  --  10 pages :: Hub URL: /formation/
+Formation is the essential service pillar. Rather than competing on price against $0 providers, this pillar emphasizes what's included in Incorporate123's bundled packages and serves as the entry point for educating visitors about privacy benefits and upgrading to Gold packages.
+Page NameTypeURLPrioritySourceCompany FormationPillar Hub/formation/P1New creationWyoming LLCCluster/wyoming-llc/P1Existing  --  enhanceWyoming CorporationCluster/wyoming-corporation/P2Existing  --  enhanceNevada LLCCluster/nevada-llc/P1Existing  --  enhanceNevada CorporationCluster/nevada-corporation/P2Existing  --  enhanceShelf CompaniesCluster/shelf-companies/P1Existing  --  enhanceLLC vs CorporationCluster/llc-vs-corporation/P1Partial  --  expandForeign RegistrationCluster/foreign-state-registration/P2New creationWY vs NV FormationComparison/wyoming-vs-nevada/P1Partial  --  expandShelf vs NewComparison/shelf-company-vs-new-formation/P2New creation
+Pillar 4: Compliance
+--------------------------------------------------------------------------------
+ Post-Formation Support  --  7 pages :: Hub URL: /compliance/
+Compliance captures existing entity owners through domestication and foreign registration services while differentiating Incorporate123's year-round registered agent and corporate minute maintenance from competitors' minimal post-formation support.
+Page NameTypeURLPrioritySourceCompliancePillar Hub/compliance/P1New creationRegistered AgentCluster/registered-agent/P1Existing  --  enhanceWyoming RACluster/wyoming-registered-agent/P2New creationNevada RACluster/nevada-registered-agent/P2New creationAnnual ReportsCluster/annual-reports/P2Existing  --  enhanceForeign RegistrationCluster/foreign-state-registration/P2New creationDomesticationCluster/domestication/P2New creationPackage Pages, State Hubs & Utility Pages
+Package Pages (8 Conversion Endpoints)
+PackageURLPrimary PillarTierWyoming Gold (Private)/wyoming-private-incorporation/PrivacyGoldWyoming Silver/wyoming-incorporation/FormationSilverNevada Gold (Private)/nevada-private-incorporation/PrivacyGoldNevada Silver/nevada-incorporation/FormationSilverNevada Bronze/nevada-basic-incorporation/FormationBronzeCalifornia Private/california-private-incorporation/PrivacyGoldFlorida Private/florida-private-incorporation/PrivacyGoldShelf Companies/shelf-companies/FormationVaries
+State Hub Pages (4 Cross-Pillar Hubs)
+HubURLLinks ToWyoming Hub/wyoming/All WY content across Privacy, AP, Formation, Compliance pillarsNevada Hub/nevada/All NV content across Privacy, AP, Formation, Compliance pillarsCalifornia Hub/california/CA Private Incorporation, foreign registration, complianceFlorida Hub/florida/FL Private Incorporation, foreign registration, compliance
+Utility & Support Pages
+PageURLNotesHomepage/Hero, pillar CTAs, package links, testimonials, trust signalsAbout Us/about/25-year history, team bios, Reno office, trust signalsContact/contact/Contact form, phone, consultation CTAFAQ Hub/faq/Consolidated from 188 LC FAQ itemsBlog/blog/Post-launch content marketing hubCompare Packages/compare-packages/All packages in comparison table formatTestimonials/testimonials/Client social proof and review aggregationPrivacy Policy/privacy-policy/Legal complianceTerms of Service/terms/Legal compliance
+Offshore Hub
+Retained for authority, de-emphasized in primary navigation. Offshore pages use a /offshore/ prefix as the one exception to the flat URL structure.
+PageURLNotesOffshore Hub/offshore/Main offshore services landing pageNevis LLC/Corp/offshore/nevis/Nevis formation packagesBVI Company/offshore/bvi/BVI IBC formationPanama Foundation/offshore/panama/Panama foundation packagesHong Kong Company/offshore/hong-kong/HK company formationIRS Compliance/offshore/irs-compliance/GILTI/PFIC reporting for US personsInternal Linking Strategy
+The pillar/cluster hierarchy is established through internal linking, not URL structure. All URLs are flat (no directory nesting) to keep them clean, shareable, and resilient to structural changes.
+FromLinks ToLink PlacementPillar PagesAll related clusters + comparison pages + relevant packagesIn-content links, sidebar nav, bottom CTAsCluster PagesParent pillar + sibling clusters + relevant comparison + packageBreadcrumb, sidebar, in-content, bottom CTAComparison PagesParent pillar + compared packagesIn-content links, CTA buttons per optionPackage PagesRelated packages (Also Consider) + parent pillarSidebar, comparison strip, trust sectionState HubsAll content for that state across all pillarsOrganized by pillar with links to each
+
+                      End of Validated Site Architecture
+         Confidential  --  BIT Studios x Incorporate123  --  March 2026

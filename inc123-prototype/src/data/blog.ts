@@ -14,7 +14,7 @@ export const blogPosts: BlogPost[] = [
     slug: "anonymous-llcs-future-of-business-privacy",
     title: "Why Anonymous LLCs Are the Future of Business Privacy",
     excerpt:
-      "With BOI reporting, data breaches, and public records scrapers on the rise, anonymous LLCs have shifted from a niche strategy to a mainstream necessity. Here's why business owners are choosing anonymity — and how to do it right.",
+      "With data breaches and public records scrapers on the rise, anonymous LLCs have shifted from a niche strategy to a mainstream necessity. Here's why business owners are choosing anonymity — and how to do it right.",
     category: "privacy",
     categoryLabel: "Business Privacy",
     date: "2025-11-15",
@@ -64,17 +64,6 @@ export const blogPosts: BlogPost[] = [
     date: "2025-09-05",
     readTime: "6 min read",
     href: "/asset-protection/real-estate",
-  },
-  {
-    slug: "boi-reporting-what-llc-owners-need-to-know",
-    title: "BOI Reporting: What Every LLC Owner Needs to Know",
-    excerpt:
-      "The Corporate Transparency Act requires most LLCs to file Beneficial Ownership Information reports with FinCEN. We explain the deadlines, exemptions, and how nominee services interact with BOI requirements.",
-    category: "compliance",
-    categoryLabel: "Compliance",
-    date: "2025-08-18",
-    readTime: "5 min read",
-    href: "/privacy/boi-reporting",
   },
   {
     slug: "shelf-companies-explained",

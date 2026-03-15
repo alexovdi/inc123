@@ -1,0 +1,11 @@
+---
+source_url: "https://incorporate123.co/learning-center/corporate-veil"
+title: "Corporate Veil"
+scraped_at: "2026-03-13"
+---
+
+Corporate Veil
+
+Nevada is the most difficult state in the country in which to "pierce the corporate veil". The "Corporate Veil" has only been pierced once in the last 20 years and this case (Polaris Indus. Corp. v. Kaplan) involved fraud. "Piercing the Corporate Veil" means: to break through the corporation and go after its Directors, Officers or Stockholders personally. This applies to the Directors, Officers and Stockholders of Nevada Corporations and Managers, Officers and Members of Nevada Limited Liability Companies (LLC's) even if the suit is filed out side of Nevada. For Example a California Judge will look at a case against Officers of a California Corporation and have no problem piercing the corporate veil (because there is plenty of precedent in California for such a decision), however even if a suit is brought against a Nevada Corporation or LLC and it's Officers in California, the California Judge, is then forced to look at the (protective) Nevada Statutes and precident, before he makes a decision to see if "Piercing the Corporate Veil" is appropriate. Of course there is no such provision in the Nevada Statutes and as far as precident goes: As Roland vs. Lepire and Polaris Indus. Corp. v. Kaplan proved, unless outright fraud is involved, it is impossible to pierce the corporate veil in Nevada. So even if your Corporation or LLC gets sued and looses, your personal assets are safe! No wonder so many attorneys recommend incorporating here, even if the Nevada Corporation or LLC plans to open offices in another State. You will not find better protection anywhere!  
+  
+If your corporation or LLC is found liable in a action that included other defendants, then your Nevada Corporation or LLC is protected further by Nevada Law because joint and several liability are not applied, instead a percentage of fault to each defendant, from zero to one hundred is applied.
