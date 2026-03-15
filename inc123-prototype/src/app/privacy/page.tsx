@@ -61,7 +61,7 @@ export default function PrivacyPillarPage() {
             name: "Wyoming Gold LLC",
             price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
             period: "one-time",
-            href: "/packages/wyoming-gold",
+            href: "/wyoming-private-incorporation",
             badge: "Most Popular",
           }}
           relatedPages={pillar.clusters.map((c) => ({
@@ -133,7 +133,7 @@ export default function PrivacyPillarPage() {
           />
           <div className="mt-4">
             <a
-              href="/privacy/anonymous-llc"
+              href="/anonymous-llc"
               className="inline-flex items-center gap-1.5 text-body-sm font-medium text-pillar-privacy hover:text-pillar-privacy/80 transition-colors"
             >
               Learn about Anonymous LLCs
@@ -310,7 +310,7 @@ export default function PrivacyPillarPage() {
                 description: wyGold.description,
                 badge: wyGold.badge,
                 highlighted: true,
-                href: "/packages/wyoming-gold",
+                href: "/wyoming-private-incorporation",
               },
               {
                 name: nvGold.name,
@@ -319,7 +319,7 @@ export default function PrivacyPillarPage() {
                 description: nvGold.description,
                 badge: nvGold.badge,
                 highlighted: true,
-                href: "/packages/nevada-gold",
+                href: "/nevada-private-incorporation",
               },
             ]}
             consultationCTA={{
@@ -375,7 +375,7 @@ export default function PrivacyPillarPage() {
               title: "See Gold Package Details",
               description:
                 "Full breakdown of what's included in Wyoming and Nevada Gold packages.",
-              href: "/packages/wyoming-gold",
+              href: "/wyoming-private-incorporation",
               pillar: "privacy",
             },
             {

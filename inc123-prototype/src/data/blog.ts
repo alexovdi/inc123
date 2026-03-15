@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Business Privacy",
     date: "2025-11-15",
     readTime: "5 min read",
-    href: "/privacy/anonymous-llc",
+    href: "/anonymous-llc",
   },
   {
     slug: "year-round-vs-day-of-nominee-services",
@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Business Privacy",
     date: "2025-10-28",
     readTime: "6 min read",
-    href: "/privacy/nominee-services",
+    href: "/nominee-services",
   },
   {
     slug: "charging-order-protection-overlooked-asset-shield",
@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Asset Protection",
     date: "2025-10-12",
     readTime: "7 min read",
-    href: "/asset-protection/charging-order-protection",
+    href: "/charging-order-protection",
   },
   {
     slug: "wyoming-vs-nevada-definitive-llc-comparison",
@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Company Formation",
     date: "2025-09-20",
     readTime: "8 min read",
-    href: "/compare/wyoming-vs-nevada-llc",
+    href: "/wyoming-vs-nevada-llc",
   },
   {
     slug: "real-estate-investors-need-llc",
@@ -63,7 +63,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Asset Protection",
     date: "2025-09-05",
     readTime: "6 min read",
-    href: "/asset-protection/real-estate",
+    href: "/real-estate",
   },
   {
     slug: "shelf-companies-explained",
@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Company Formation",
     date: "2025-08-02",
     readTime: "5 min read",
-    href: "/formation/shelf-companies",
+    href: "/shelf-companies",
   },
   {
     slug: "true-cost-of-free-llc-formation",
@@ -85,6 +85,6 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Company Formation",
     date: "2025-07-14",
     readTime: "7 min read",
-    href: "/compare/incorporate123-vs-competitors",
+    href: "/incorporate123-vs-competitors",
   },
 ];

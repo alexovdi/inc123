@@ -1,5 +1,3 @@
-import { notFound } from "next/navigation";
-import { stateHubs } from "@/data/states";
 import { packages } from "@/data/packages";
 import { StateHubLayout } from "@/design-system/layouts/StateHubLayout";
 import {
@@ -12,53 +10,16 @@ import {
   AccordionItem,
   CTABlock,
 } from "@/design-system/components";
+import type { StateHub } from "@/lib/types";
 
 /* ------------------------------------------------
-   Static params
+   Component
    ------------------------------------------------ */
-export function generateStaticParams() {
-  return [
-    { slug: "wyoming" },
-    { slug: "nevada" },
-    { slug: "california" },
-    { slug: "florida" },
-  ];
+interface StatePageTemplateProps {
+  state: StateHub;
 }
 
-/* ------------------------------------------------
-   Metadata
-   ------------------------------------------------ */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const state = stateHubs.find((s) => s.slug === slug);
-  if (!state) return {};
-
-  return {
-    title: `${state.name} Business Services — LLC Formation, Privacy & Asset Protection | Incorporate123`,
-    description: `Form a ${state.name} LLC or Corporation with 25 years of expert support. Anonymous LLC formation, asset protection, registered agent, and ongoing compliance. All-inclusive packages.`,
-  };
-}
-
-/* ------------------------------------------------
-   Page
-   ------------------------------------------------ */
-export default async function StateHubPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const state = stateHubs.find((s) => s.slug === slug);
-
-  if (!state) {
-    notFound();
-  }
-
-  // Look up state's packages from the packages data
+export function StatePageTemplate({ state }: StatePageTemplateProps) {
   const statePackages = state.packages
     .map((pkgId) => packages.find((p) => p.id === pkgId))
     .filter(Boolean);
@@ -75,9 +36,7 @@ export default async function StateHubPage({
       }
     >
       <div className="space-y-20">
-        {/* ============================================
-            Section 1: Intent Routing Cards
-            ============================================ */}
+        {/* Intent Routing Cards */}
         <section>
           <div className="text-center mb-10">
             <h2 className="font-display text-heading-lg font-bold text-foreground">
@@ -104,9 +63,7 @@ export default async function StateHubPage({
           </div>
         </section>
 
-        {/* ============================================
-            Section 2: Package Preview Cards
-            ============================================ */}
+        {/* Package Preview Cards */}
         {statePackages.length > 0 && (
           <section>
             <div className="text-center mb-10">
@@ -114,7 +71,8 @@ export default async function StateHubPage({
                 {state.name} Packages — All-Inclusive Pricing
               </h2>
               <p className="mt-3 text-body-lg text-muted max-w-narrow mx-auto">
-                Everything bundled. No hidden fees. See exactly what&apos;s included.
+                Everything bundled. No hidden fees. See exactly what&apos;s
+                included.
               </p>
             </div>
 
@@ -135,7 +93,7 @@ export default async function StateHubPage({
                     entityType="LLC"
                     cta={{
                       label: `View ${pkg.name}`,
-                      href: `/packages/${pkg.id}`,
+                      href: `/${pkg.flatSlug}`,
                     }}
                   />
                 );
@@ -153,9 +111,7 @@ export default async function StateHubPage({
           </section>
         )}
 
-        {/* ============================================
-            Section 3: Advantage Grid
-            ============================================ */}
+        {/* Advantage Grid */}
         <section>
           <div className="text-center mb-10">
             <h2 className="font-display text-heading-lg font-bold text-foreground">
@@ -166,9 +122,7 @@ export default async function StateHubPage({
           <AdvantageGrid items={state.advantages} />
         </section>
 
-        {/* ============================================
-            Section 4: Content Map Grid
-            ============================================ */}
+        {/* Content Map Grid */}
         <section>
           <div className="text-center mb-10">
             <h2 className="font-display text-heading-lg font-bold text-foreground">
@@ -179,9 +133,7 @@ export default async function StateHubPage({
           <ContentMapGrid contentMap={state.contentMap} />
         </section>
 
-        {/* ============================================
-            Section 5: FAQ Accordion
-            ============================================ */}
+        {/* FAQ Accordion */}
         {state.faqs.length > 0 && (
           <section>
             <div className="text-center mb-10">
@@ -202,9 +154,7 @@ export default async function StateHubPage({
           </section>
         )}
 
-        {/* ============================================
-            Section 6: Final CTA Block
-            ============================================ */}
+        {/* Final CTA Block */}
         <CTABlock
           variant="dark"
           layout="centered"
@@ -219,14 +169,14 @@ export default async function StateHubPage({
               ? `View ${statePackages[0].name} — $${statePackages[0].prices.llc.formation.toLocaleString()}`
               : `Start Your ${state.name} LLC`,
             href: statePackages[0]
-              ? `/packages/${statePackages[0].id}`
+              ? `/${statePackages[0].flatSlug}`
               : "/packages",
           }}
           secondaryCTA={
             statePackages[1]
               ? {
                   label: `View ${statePackages[1].name} — $${statePackages[1].prices.llc.formation.toLocaleString()}`,
-                  href: `/packages/${statePackages[1].id}`,
+                  href: `/${statePackages[1].flatSlug}`,
                 }
               : undefined
           }
@@ -236,3 +186,5 @@ export default async function StateHubPage({
     </StateHubLayout>
   );
 }
+
+StatePageTemplate.displayName = "StatePageTemplate";

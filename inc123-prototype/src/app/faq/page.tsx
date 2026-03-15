@@ -65,13 +65,13 @@ const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
       title: "Read the Full Anonymous LLC Guide",
       description:
         "Everything you need to know about forming an anonymous LLC for maximum privacy.",
-      href: "/privacy/anonymous-llc",
+      href: "/anonymous-llc",
     },
     {
       title: "Nominee Services Explained",
       description:
         "How year-round nominee officers and directors protect your identity.",
-      href: "/privacy/nominee-services",
+      href: "/nominee-services",
     },
     {
       title: "Compare Gold vs Silver Packages",
@@ -85,7 +85,7 @@ const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
       title: "Charging Order Protection Guide",
       description:
         "Understand how Wyoming's charging order protection shields your assets.",
-      href: "/asset-protection/charging-order-protection",
+      href: "/charging-order-protection",
     },
     {
       title: "Wyoming Asset Protection Overview",
@@ -95,9 +95,8 @@ const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
     },
     {
       title: "Investment Holding LLC",
-      description:
-        "How to use an LLC to hold and protect investment assets.",
-      href: "/asset-protection/holding-llc",
+      description: "How to use an LLC to hold and protect investment assets.",
+      href: "/investment-holding-llc",
     },
   ],
   formation: [
@@ -105,19 +104,19 @@ const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
       title: "Wyoming LLC Formation",
       description:
         "Step-by-step guide to forming your Wyoming LLC with all-inclusive pricing.",
-      href: "/states/wyoming",
+      href: "/wyoming",
     },
     {
       title: "Nevada LLC Formation",
       description:
         "Everything included in Nevada formation packages and state-specific details.",
-      href: "/states/nevada",
+      href: "/nevada",
     },
     {
       title: "LLC vs Corporation Comparison",
       description:
         "Full side-by-side comparison to help you choose the right entity type.",
-      href: "/formation/llc-vs-corporation",
+      href: "/llc-vs-corporation",
     },
   ],
   compliance: [
@@ -125,19 +124,19 @@ const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
       title: "Registered Agent Services",
       description:
         "Professional registered agent service included in every package.",
-      href: "/compliance/registered-agent",
+      href: "/registered-agent",
     },
     {
       title: "Annual Reports Guide",
       description:
         "Filing requirements, deadlines, and what happens if you miss them.",
-      href: "/compliance/annual-reports",
+      href: "/annual-reports",
     },
     {
       title: "Corporate Minutes Maintenance",
       description:
         "Why corporate minutes matter and how we maintain them for you.",
-      href: "/compliance/corporate-minutes",
+      href: "/corporate-minutes",
     },
   ],
   packages: [
@@ -151,7 +150,7 @@ const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
       title: "Wyoming Gold Package \u2014 $1,275",
       description:
         "Our most popular package with full privacy and asset protection.",
-      href: "/packages/wyoming-gold",
+      href: "/wyoming-private-incorporation",
     },
   ],
   general: [
@@ -208,7 +207,7 @@ export default function FAQPage() {
       items = items.filter(
         (item) =>
           item.question.toLowerCase().includes(query) ||
-          item.answer.toLowerCase().includes(query)
+          item.answer.toLowerCase().includes(query),
       );
     }
 
@@ -233,10 +232,7 @@ export default function FAQPage() {
 
   // Build category filter pills
   const categoryPills: CategoryFilterItem[] = useMemo(() => {
-    const allCount =
-      searchQuery.trim()
-        ? filteredFaqs.length
-        : faqItems.length;
+    const allCount = searchQuery.trim() ? filteredFaqs.length : faqItems.length;
 
     const pills: CategoryFilterItem[] = [
       { value: "all", label: "All", count: allCount },
@@ -261,7 +257,7 @@ export default function FAQPage() {
 
   // Categories to display (with content)
   const visibleCategories = categoryOrder.filter(
-    (cat) => filteredByCategory[cat].length > 0
+    (cat) => filteredByCategory[cat].length > 0,
   );
 
   const handleSearch = useCallback((term: string) => {
@@ -293,7 +289,8 @@ export default function FAQPage() {
             resultCount={filteredFaqs.length}
             totalCount={
               activeCategory !== "all"
-                ? faqsByCategory[activeCategory as FAQCategory]?.length ?? faqItems.length
+                ? (faqsByCategory[activeCategory as FAQCategory]?.length ??
+                  faqItems.length)
                 : faqItems.length
             }
             categoryLabel={activeCategoryLabel}
@@ -341,7 +338,7 @@ export default function FAQPage() {
                     <div
                       className={cn(
                         "border-b-2 pb-4 mb-6",
-                        categoryBorderBottomColors[cat]
+                        categoryBorderBottomColors[cat],
                       )}
                     >
                       <h2 className="font-display text-heading font-semibold text-foreground">

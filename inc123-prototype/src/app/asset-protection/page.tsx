@@ -60,7 +60,7 @@ export default function AssetProtectionPillarPage() {
             name: "Wyoming Gold LLC",
             price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
             period: "one-time",
-            href: "/packages/wyoming-gold",
+            href: "/wyoming-private-incorporation",
             badge: "Most Popular",
           }}
           relatedPages={pillar.clusters.map((c) => ({
@@ -129,7 +129,7 @@ export default function AssetProtectionPillarPage() {
           />
           <div className="mt-4">
             <a
-              href="/asset-protection/charging-order-protection"
+              href="/charging-order-protection"
               className="inline-flex items-center gap-1.5 text-body-sm font-medium text-pillar-asset hover:text-pillar-asset/80 transition-colors"
             >
               Learn about Charging Order Protection
@@ -302,7 +302,7 @@ export default function AssetProtectionPillarPage() {
                 description: wyGold.description,
                 badge: wyGold.badge,
                 highlighted: true,
-                href: "/packages/wyoming-gold",
+                href: "/wyoming-private-incorporation",
               },
               {
                 name: nvGold.name,
@@ -311,7 +311,7 @@ export default function AssetProtectionPillarPage() {
                 description: nvGold.description,
                 badge: nvGold.badge,
                 highlighted: true,
-                href: "/packages/nevada-gold",
+                href: "/nevada-private-incorporation",
               },
             ]}
             consultationCTA={{
@@ -367,7 +367,7 @@ export default function AssetProtectionPillarPage() {
               title: "See Gold Package Details",
               description:
                 "Full breakdown of what's included in Wyoming and Nevada Gold packages.",
-              href: "/packages/wyoming-gold",
+              href: "/wyoming-private-incorporation",
               pillar: "asset",
             },
             {

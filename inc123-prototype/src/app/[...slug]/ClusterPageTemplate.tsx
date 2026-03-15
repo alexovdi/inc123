@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { ClusterLayout } from "@/design-system/layouts/ClusterLayout";
 import {
   ClusterHero,
@@ -10,62 +9,52 @@ import {
   AccordionItem,
   WhereToGoNext,
 } from "@/design-system/components";
-import { clusterPages } from "@/data/clusters";
 import { packages } from "@/data/packages";
-import type { Metadata } from "next";
+import type { ClusterContent } from "@/lib/types";
+import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------
-   Static params — 5 formation cluster slugs
+   Pillar config
    ------------------------------------------------ */
-const PILLAR = "formation" as const;
-const PILLAR_LABEL = "Company Formation";
-const PILLAR_HREF = "/formation";
+const pillarConfig: Record<
+  string,
+  { label: string; href: string; suggestionContext: string }
+> = {
+  privacy: {
+    label: "Business Privacy",
+    href: "/privacy",
+    suggestionContext: "your privacy strategy",
+  },
+  asset: {
+    label: "Asset Protection",
+    href: "/asset-protection",
+    suggestionContext: "your asset protection strategy",
+  },
+  formation: {
+    label: "Company Formation",
+    href: "/formation",
+    suggestionContext: "your formation needs",
+  },
+  compliance: {
+    label: "Compliance",
+    href: "/compliance",
+    suggestionContext: "keeping your entity in good standing",
+  },
+};
 
-const slugs = [
-  "wyoming-llc",
-  "nevada-llc",
-  "wyoming-corporation",
-  "nevada-corporation",
-  "shelf-companies",
-];
-
-export function generateStaticParams() {
-  return slugs.map((slug) => ({ slug }));
+/* ------------------------------------------------
+   Component
+   ------------------------------------------------ */
+interface ClusterPageTemplateProps {
+  cluster: ClusterContent;
 }
 
-/* ------------------------------------------------
-   Metadata
-   ------------------------------------------------ */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const cluster = clusterPages.find(
-    (c) => c.slug === slug && c.pillar === PILLAR
-  );
-  if (!cluster) return {};
-  return {
-    title: `${cluster.title} — ${PILLAR_LABEL} | Incorporate123`,
-    description: cluster.description,
+export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
+  const config = pillarConfig[cluster.pillar] ?? {
+    label: cluster.pillarLabel,
+    href: `/${cluster.pillar}`,
+    suggestionContext: "your business needs",
   };
-}
-
-/* ------------------------------------------------
-   Page Component
-   ------------------------------------------------ */
-export default async function FormationClusterPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const cluster = clusterPages.find(
-    (c) => c.slug === slug && c.pillar === PILLAR
-  );
-
-  if (!cluster) notFound();
 
   /* Resolve related packages */
   const relatedPkgs = cluster.relatedPackages
@@ -73,38 +62,34 @@ export default async function FormationClusterPage({
     .filter(Boolean);
 
   const goldPackages = relatedPkgs.filter((p) => p!.tier === "gold");
-
-  /* Build dual package CTA items (take first 2 gold packages) */
   const dualPkgs = goldPackages.slice(0, 2);
 
-  /* Build sidebar related pages from sidebarLinks */
+  /* Build sidebar related pages */
   const sidebarRelatedPages = cluster.sidebarLinks.map((link) => ({
     title: link.title,
     href: link.href,
   }));
 
-  /* Build "where to go next" suggestions from sidebar links + pillar */
-  const suggestions = [
-    ...cluster.sidebarLinks.slice(0, 3).map((link) => ({
-      title: link.title,
-      description: `Learn more about ${link.title.toLowerCase()} and how it supports your formation needs.`,
-      href: link.href,
-      pillar: PILLAR,
-    })),
-  ];
+  /* Build suggestions */
+  const suggestions = cluster.sidebarLinks.slice(0, 3).map((link) => ({
+    title: link.title,
+    description: `Learn more about ${link.title.toLowerCase()} and how it relates to ${config.suggestionContext}.`,
+    href: link.href,
+    pillar: cluster.pillar as PillarName,
+  }));
 
   return (
     <ClusterLayout
-      pillar={PILLAR}
-      pillarLabel={PILLAR_LABEL}
-      pillarHref={PILLAR_HREF}
+      pillar={cluster.pillar}
+      pillarLabel={config.label}
+      pillarHref={config.href}
       title={cluster.title}
       description={cluster.description}
       customHero={
         <ClusterHero
-          pillar={PILLAR}
-          pillarLabel={PILLAR_LABEL}
-          pillarHref={PILLAR_HREF}
+          pillar={cluster.pillar}
+          pillarLabel={config.label}
+          pillarHref={config.href}
           title={cluster.title}
           description={cluster.description}
           readingTime={cluster.readingTime}
@@ -119,7 +104,7 @@ export default async function FormationClusterPage({
                   name: goldPackages[0].name,
                   price: `$${goldPackages[0].prices.llc.formation.toLocaleString()}`,
                   period: "one-time",
-                  href: `/packages/${goldPackages[0].id}`,
+                  href: `/${goldPackages[0].flatSlug}`,
                   badge: goldPackages[0].badge,
                 }
               : undefined
@@ -139,14 +124,8 @@ export default async function FormationClusterPage({
       }
     >
       <div className="space-y-16">
-        {/* ------------------------------------------------
-            Long-form content sections
-            ------------------------------------------------ */}
         <LongFormContent sections={cluster.sections} />
 
-        {/* ------------------------------------------------
-            Dual Package CTA
-            ------------------------------------------------ */}
         {dualPkgs.length >= 2 && (
           <section>
             <h2 className="text-heading font-display font-semibold text-foreground mb-2">
@@ -164,7 +143,7 @@ export default async function FormationClusterPage({
                   description: dualPkgs[0]!.description,
                   badge: dualPkgs[0]!.badge,
                   highlighted: true,
-                  href: `/packages/${dualPkgs[0]!.id}`,
+                  href: `/${dualPkgs[0]!.flatSlug}`,
                 },
                 {
                   name: dualPkgs[1]!.name,
@@ -173,7 +152,7 @@ export default async function FormationClusterPage({
                   description: dualPkgs[1]!.description,
                   badge: dualPkgs[1]!.badge,
                   highlighted: true,
-                  href: `/packages/${dualPkgs[1]!.id}`,
+                  href: `/${dualPkgs[1]!.flatSlug}`,
                 },
               ]}
               consultationCTA={{
@@ -185,13 +164,10 @@ export default async function FormationClusterPage({
           </section>
         )}
 
-        {/* ------------------------------------------------
-            Cross-Pillar CTA
-            ------------------------------------------------ */}
         {cluster.crossPillarCTA && (
           <section>
             <CrossPillarCTA
-              fromPillar={PILLAR}
+              fromPillar={cluster.pillar}
               toPillar={cluster.crossPillarCTA.pillar}
               heading={cluster.crossPillarCTA.title}
               description={cluster.crossPillarCTA.description}
@@ -200,9 +176,6 @@ export default async function FormationClusterPage({
           </section>
         )}
 
-        {/* ------------------------------------------------
-            FAQ Accordion
-            ------------------------------------------------ */}
         {cluster.faqs.length > 0 && (
           <section>
             <h2 className="text-heading font-display font-semibold text-foreground mb-6">
@@ -218,9 +191,6 @@ export default async function FormationClusterPage({
           </section>
         )}
 
-        {/* ------------------------------------------------
-            Where to Go Next
-            ------------------------------------------------ */}
         {suggestions.length > 0 && (
           <WhereToGoNext suggestions={suggestions} maxItems={3} />
         )}
@@ -228,3 +198,5 @@ export default async function FormationClusterPage({
     </ClusterLayout>
   );
 }
+
+ClusterPageTemplate.displayName = "ClusterPageTemplate";

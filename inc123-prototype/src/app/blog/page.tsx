@@ -92,7 +92,7 @@ export default function BlogPage() {
         description="Our most popular package includes anonymous LLC formation, year-round nominee services, and charging order protection — all for one transparent price."
         primaryCTA={{
           label: "View Wyoming Gold LLC — $1,275",
-          href: "/packages/wyoming-gold",
+          href: "/wyoming-private-incorporation",
         }}
         secondaryCTA={{
           label: "Compare All Packages",

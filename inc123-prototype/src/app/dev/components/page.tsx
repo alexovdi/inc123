@@ -366,8 +366,8 @@ export default function ComponentShowcase() {
 
           <Section title="Breadcrumbs">
             <div className="space-y-4">
-              <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy", href: "/privacy" }, { label: "Anonymous LLC", href: "/privacy/anonymous-llc" }]} pillar="privacy" />
-              <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Packages", href: "/packages" }, { label: "Wyoming Gold LLC", href: "/packages/wyoming-gold" }]} />
+              <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy", href: "/privacy" }, { label: "Anonymous LLC", href: "/anonymous-llc" }]} pillar="privacy" />
+              <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Packages", href: "/packages" }, { label: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" }]} />
             </div>
           </Section>
 

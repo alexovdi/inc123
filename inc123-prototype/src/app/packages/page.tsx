@@ -332,7 +332,7 @@ export default function PackagesPage() {
             description="Choose the formation package that fits your business. All-inclusive pricing, no hidden fees, 25+ years of experience."
             primaryCTA={{
               label: "Start with Wyoming Gold",
-              href: "/packages/wyoming-gold",
+              href: "/wyoming-private-incorporation",
             }}
             secondaryCTA={{
               label: "Call (775) 313-4155",

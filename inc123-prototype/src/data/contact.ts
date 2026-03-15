@@ -86,7 +86,7 @@ export const contactData: ContactData = {
       icon: "Shield",
       title: "Anonymous LLC Guide",
       description: "Learn how anonymous LLCs work and why Wyoming leads the way.",
-      href: "/privacy/anonymous-llc",
+      href: "/anonymous-llc",
     },
     {
       icon: "LogIn",

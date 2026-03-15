@@ -61,6 +61,7 @@ export interface PackageAddOn {
 
 export interface PackageTier {
   id: string;
+  flatSlug: string;
   name: string;
   tier: TierLevel;
   state: string;

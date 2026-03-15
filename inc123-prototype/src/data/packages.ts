@@ -6,20 +6,23 @@ const sharedAddOns: PackageAddOn[] = [
     name: "Foreign Registration",
     price: 149,
     description: "Register your entity to do business in another state",
-    tooltip: "Required if your LLC does business in a state other than where it was formed",
+    tooltip:
+      "Required if your LLC does business in a state other than where it was formed",
   },
   {
     id: "ein",
     name: "EIN Obtainment",
     price: 75,
     description: "We obtain your federal Employer Identification Number",
-    tooltip: "Required for opening a bank account, hiring employees, and filing taxes",
+    tooltip:
+      "Required for opening a bank account, hiring employees, and filing taxes",
   },
   {
     id: "operating-agreement",
     name: "Custom Operating Agreement",
     price: 99,
-    description: "Professionally drafted operating agreement tailored to your entity",
+    description:
+      "Professionally drafted operating agreement tailored to your entity",
   },
   {
     id: "rush-filing",
@@ -32,14 +35,16 @@ const sharedAddOns: PackageAddOn[] = [
     name: "Virtual Office Address",
     price: 149,
     description: "Professional Reno, NV business address with mail forwarding",
-    tooltip: "Separate from registered agent address — used for business correspondence",
+    tooltip:
+      "Separate from registered agent address — used for business correspondence",
   },
   {
     id: "crypto-payment",
     name: "Cryptocurrency Payment Processing",
     price: 0,
     description: "Pay with Bitcoin, Ethereum, XRP, Litecoin, or Monero",
-    tooltip: "No additional fee — we accept major cryptocurrencies for maximum privacy",
+    tooltip:
+      "No additional fee — we accept major cryptocurrencies for maximum privacy",
   },
 ];
 
@@ -47,6 +52,7 @@ export const packages: PackageTier[] = [
   // Wyoming
   {
     id: "wyoming-gold",
+    flatSlug: "wyoming-private-incorporation",
     name: "Wyoming Gold LLC",
     tier: "gold",
     state: "Wyoming",
@@ -54,17 +60,52 @@ export const packages: PackageTier[] = [
       llc: { formation: 1275, renewal: 525 },
       corp: { formation: 1575, renewal: 625 },
     },
-    description: "Complete privacy package with year-round nominees, offshore records, and full compliance. Our most popular package.",
+    description:
+      "Complete privacy package with year-round nominees, offshore records, and full compliance. Our most popular package.",
     badge: "Most Popular",
     highlighted: true,
     features: [
-      { name: "State Filing Fees Included", status: "included", tooltip: "All Wyoming state filing fees are included — no hidden charges" },
-      { name: "Registered Agent (1 Year)", status: "included", tooltip: "Professional registered agent service in Wyoming for one full year" },
-      { name: "Year-Round Nominee Directors", status: "included", tooltip: "Nominee directors listed on public records year-round, not just at formation" },
-      { name: "Year-Round Nominee Officers", status: "included", tooltip: "Nominee officers protect your identity on all corporate filings" },
-      { name: "Offshore Record Storage", status: "included", tooltip: "Corporate records stored outside U.S. jurisdiction for maximum privacy" },
-      { name: "Corporate Minutes Maintenance", status: "included", tooltip: "Professional preparation and maintenance of your corporate minute book" },
-      { name: "Annual Report Filing", status: "included", tooltip: "We prepare and file your Wyoming annual report each year" },
+      {
+        name: "State Filing Fees Included",
+        status: "included",
+        tooltip:
+          "All Wyoming state filing fees are included — no hidden charges",
+      },
+      {
+        name: "Registered Agent (1 Year)",
+        status: "included",
+        tooltip:
+          "Professional registered agent service in Wyoming for one full year",
+      },
+      {
+        name: "Year-Round Nominee Directors",
+        status: "included",
+        tooltip:
+          "Nominee directors listed on public records year-round, not just at formation",
+      },
+      {
+        name: "Year-Round Nominee Officers",
+        status: "included",
+        tooltip:
+          "Nominee officers protect your identity on all corporate filings",
+      },
+      {
+        name: "Offshore Record Storage",
+        status: "included",
+        tooltip:
+          "Corporate records stored outside U.S. jurisdiction for maximum privacy",
+      },
+      {
+        name: "Corporate Minutes Maintenance",
+        status: "included",
+        tooltip:
+          "Professional preparation and maintenance of your corporate minute book",
+      },
+      {
+        name: "Annual Report Filing",
+        status: "included",
+        tooltip: "We prepare and file your Wyoming annual report each year",
+      },
       { name: "Certificate of Good Standing", status: "included" },
       { name: "Corporate Seal", status: "included" },
       { name: "Custom Operating Agreement", status: "included" },
@@ -73,6 +114,7 @@ export const packages: PackageTier[] = [
   },
   {
     id: "wyoming-silver",
+    flatSlug: "wyoming-incorporation",
     name: "Wyoming Silver LLC",
     tier: "silver",
     state: "Wyoming",
@@ -80,13 +122,26 @@ export const packages: PackageTier[] = [
       llc: { formation: 875, renewal: 325 },
       corp: { formation: 1175, renewal: 425 },
     },
-    description: "Professional formation with registered agent and compliance essentials. Great starting point for business formation.",
+    description:
+      "Professional formation with registered agent and compliance essentials. Great starting point for business formation.",
     features: [
       { name: "State Filing Fees Included", status: "included" },
       { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "not-included", tooltip: "Upgrade to Gold for year-round nominee directors" },
-      { name: "Year-Round Nominee Officers", status: "not-included", tooltip: "Upgrade to Gold for year-round nominee officers" },
-      { name: "Offshore Record Storage", status: "not-included", tooltip: "Upgrade to Gold for offshore record storage" },
+      {
+        name: "Year-Round Nominee Directors",
+        status: "not-included",
+        tooltip: "Upgrade to Gold for year-round nominee directors",
+      },
+      {
+        name: "Year-Round Nominee Officers",
+        status: "not-included",
+        tooltip: "Upgrade to Gold for year-round nominee officers",
+      },
+      {
+        name: "Offshore Record Storage",
+        status: "not-included",
+        tooltip: "Upgrade to Gold for offshore record storage",
+      },
       { name: "Corporate Minutes Maintenance", status: "included" },
       { name: "Annual Report Filing", status: "included" },
       { name: "Certificate of Good Standing", status: "included" },
@@ -98,6 +153,7 @@ export const packages: PackageTier[] = [
   // Nevada
   {
     id: "nevada-gold",
+    flatSlug: "nevada-private-incorporation",
     name: "Nevada Gold LLC",
     tier: "gold",
     state: "Nevada",
@@ -105,18 +161,27 @@ export const packages: PackageTier[] = [
       llc: { formation: 1800, renewal: 525 },
       corp: { formation: 2100, renewal: 625 },
     },
-    description: "Premium Nevada formation with full privacy suite. Nominees, offshore records, and complete compliance included.",
+    description:
+      "Premium Nevada formation with full privacy suite. Nominees, offshore records, and complete compliance included.",
     badge: "Premium",
     highlighted: true,
     features: [
-      { name: "State Filing Fees Included", status: "included", tooltip: "All Nevada state filing and business license fees included" },
+      {
+        name: "State Filing Fees Included",
+        status: "included",
+        tooltip: "All Nevada state filing and business license fees included",
+      },
       { name: "Registered Agent (1 Year)", status: "included" },
       { name: "Year-Round Nominee Directors", status: "included" },
       { name: "Year-Round Nominee Officers", status: "included" },
       { name: "Offshore Record Storage", status: "included" },
       { name: "Corporate Minutes Maintenance", status: "included" },
       { name: "Annual Report Filing", status: "included" },
-      { name: "Nevada Business License", status: "included", tooltip: "Initial Nevada state business license included" },
+      {
+        name: "Nevada Business License",
+        status: "included",
+        tooltip: "Initial Nevada state business license included",
+      },
       { name: "Certificate of Good Standing", status: "included" },
       { name: "Custom Operating Agreement", status: "included" },
     ],
@@ -124,6 +189,7 @@ export const packages: PackageTier[] = [
   },
   {
     id: "nevada-silver",
+    flatSlug: "nevada-incorporation",
     name: "Nevada Silver LLC",
     tier: "silver",
     state: "Nevada",
@@ -131,7 +197,8 @@ export const packages: PackageTier[] = [
       llc: { formation: 1275, renewal: 325 },
       corp: { formation: 1575, renewal: 425 },
     },
-    description: "Solid Nevada formation with compliance essentials. Upgrade to Gold for full privacy features.",
+    description:
+      "Solid Nevada formation with compliance essentials. Upgrade to Gold for full privacy features.",
     features: [
       { name: "State Filing Fees Included", status: "included" },
       { name: "Registered Agent (1 Year)", status: "included" },
@@ -148,6 +215,7 @@ export const packages: PackageTier[] = [
   },
   {
     id: "nevada-bronze",
+    flatSlug: "nevada-basic-incorporation",
     name: "Nevada Bronze LLC",
     tier: "bronze",
     state: "Nevada",
@@ -155,7 +223,8 @@ export const packages: PackageTier[] = [
       llc: { formation: 699, renewal: 225 },
       corp: { formation: 899, renewal: 325 },
     },
-    description: "Basic Nevada formation at an affordable price. Includes state filing fees and registered agent.",
+    description:
+      "Basic Nevada formation at an affordable price. Includes state filing fees and registered agent.",
     features: [
       { name: "State Filing Fees Included", status: "included" },
       { name: "Registered Agent (1 Year)", status: "included" },
@@ -173,6 +242,7 @@ export const packages: PackageTier[] = [
   // State-specific privacy packages
   {
     id: "california-private",
+    flatSlug: "california-private-incorporation",
     name: "California Private LLC",
     tier: "gold",
     state: "California",
@@ -180,7 +250,8 @@ export const packages: PackageTier[] = [
       llc: { formation: 1475, renewal: 525 },
       corp: { formation: 1775, renewal: 625 },
     },
-    description: "Privacy-focused California formation. Wyoming or Nevada nominee structure with California foreign registration.",
+    description:
+      "Privacy-focused California formation. Wyoming or Nevada nominee structure with California foreign registration.",
     badge: "Privacy",
     features: [
       { name: "State Filing Fees Included", status: "included" },
@@ -188,7 +259,11 @@ export const packages: PackageTier[] = [
       { name: "Year-Round Nominee Directors", status: "included" },
       { name: "Year-Round Nominee Officers", status: "included" },
       { name: "Offshore Record Storage", status: "included" },
-      { name: "CA Foreign Registration", status: "included", tooltip: "Register your WY/NV entity to do business in California" },
+      {
+        name: "CA Foreign Registration",
+        status: "included",
+        tooltip: "Register your WY/NV entity to do business in California",
+      },
       { name: "Annual Report Filing", status: "included" },
       { name: "Certificate of Good Standing", status: "included" },
       { name: "Custom Operating Agreement", status: "included" },
@@ -197,6 +272,7 @@ export const packages: PackageTier[] = [
   },
   {
     id: "florida-private",
+    flatSlug: "florida-private-incorporation",
     name: "Florida Private LLC",
     tier: "gold",
     state: "Florida",
@@ -204,7 +280,8 @@ export const packages: PackageTier[] = [
       llc: { formation: 1475, renewal: 525 },
       corp: { formation: 1775, renewal: 625 },
     },
-    description: "Privacy-focused Florida formation. Wyoming or Nevada nominee structure with Florida foreign registration.",
+    description:
+      "Privacy-focused Florida formation. Wyoming or Nevada nominee structure with Florida foreign registration.",
     badge: "Privacy",
     features: [
       { name: "State Filing Fees Included", status: "included" },
@@ -212,7 +289,11 @@ export const packages: PackageTier[] = [
       { name: "Year-Round Nominee Directors", status: "included" },
       { name: "Year-Round Nominee Officers", status: "included" },
       { name: "Offshore Record Storage", status: "included" },
-      { name: "FL Foreign Registration", status: "included", tooltip: "Register your WY/NV entity to do business in Florida" },
+      {
+        name: "FL Foreign Registration",
+        status: "included",
+        tooltip: "Register your WY/NV entity to do business in Florida",
+      },
       { name: "Annual Report Filing", status: "included" },
       { name: "Certificate of Good Standing", status: "included" },
       { name: "Custom Operating Agreement", status: "included" },
@@ -221,6 +302,7 @@ export const packages: PackageTier[] = [
   },
   {
     id: "shelf-companies",
+    flatSlug: "shelf-company-packages",
     name: "Shelf Company",
     tier: "gold",
     state: "Wyoming",
@@ -228,11 +310,21 @@ export const packages: PackageTier[] = [
       llc: { formation: 2500, renewal: 525 },
       corp: { formation: 2800, renewal: 625 },
     },
-    description: "Pre-aged entity with established history. Immediate availability for business needs requiring entity age.",
+    description:
+      "Pre-aged entity with established history. Immediate availability for business needs requiring entity age.",
     badge: "Pre-Aged",
     features: [
-      { name: "Pre-Aged Entity (1-5 Years)", status: "included", tooltip: "Entity with established formation date — age varies by availability" },
-      { name: "Clean History Guaranteed", status: "included", tooltip: "No prior business activity, liens, or liabilities" },
+      {
+        name: "Pre-Aged Entity (1-5 Years)",
+        status: "included",
+        tooltip:
+          "Entity with established formation date — age varies by availability",
+      },
+      {
+        name: "Clean History Guaranteed",
+        status: "included",
+        tooltip: "No prior business activity, liens, or liabilities",
+      },
       { name: "State Filing Fees Included", status: "included" },
       { name: "Registered Agent (1 Year)", status: "included" },
       { name: "Year-Round Nominee Directors", status: "included" },

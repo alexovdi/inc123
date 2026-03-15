@@ -1,88 +1,87 @@
 import { test, expect } from "@playwright/test";
 
 /**
- * All 50+ routes in the prototype.
+ * All routes in the prototype using flat URL architecture.
  * Each route is tested for:
  * 1. HTTP 200 response
  * 2. Non-trivial body content (>100 chars)
  * 3. No console JS errors
- *
- * Note: Checkout details/payment/confirmation are client-rendered inside
- * Suspense and may have minimal SSR content. They're tested separately
- * in checkout.spec.ts.
  */
 const ALL_ROUTES = [
   // Homepage
   "/",
 
-  // Pillar pages
+  // Pillar hub pages
   "/privacy",
   "/asset-protection",
   "/formation",
   "/compliance",
 
-  // Privacy clusters
-  "/privacy/anonymous-llc",
-  "/privacy/nominee-services",
-  "/privacy/private-incorporation",
-  "/privacy/offshore-privacy",
+  // Privacy clusters (flat)
+  "/anonymous-llc",
+  "/nominee-services",
+  "/private-incorporation",
+  "/offshore-privacy",
+  "/wyoming-privacy",
+  "/nevada-privacy",
 
-  // Asset Protection clusters
-  "/asset-protection/charging-order-protection",
-  "/asset-protection/wyoming",
-  "/asset-protection/nevada",
-  "/asset-protection/investment-holding-llc",
-  "/asset-protection/real-estate",
+  // Asset Protection clusters (flat)
+  "/charging-order-protection",
+  "/wyoming-asset-protection",
+  "/nevada-asset-protection",
+  "/investment-holding-llc",
+  "/real-estate",
 
-  // Formation clusters
-  "/formation/wyoming-llc",
-  "/formation/nevada-llc",
-  "/formation/wyoming-corporation",
-  "/formation/nevada-corporation",
-  "/formation/shelf-companies",
-  "/formation/entity-tax-guide",
+  // Formation clusters (flat)
+  "/wyoming-llc",
+  "/nevada-llc",
+  "/wyoming-corporation",
+  "/nevada-corporation",
+  "/shelf-companies",
+  "/entity-tax-guide",
 
-  // Compliance clusters
-  "/compliance/registered-agent",
-  "/compliance/annual-reports",
-  "/compliance/corporate-minutes",
-  "/compliance/virtual-office",
-  "/compliance/foreign-registration",
-  "/compliance/second-tier-state-filings",
-  "/compliance/shares-corporate-records",
-  "/compliance/tax-obligations",
+  // Compliance clusters (flat)
+  "/registered-agent",
+  "/annual-reports",
+  "/corporate-minutes",
+  "/virtual-office",
+  "/foreign-registration",
+  "/second-tier-state-filings",
+  "/shares-corporate-records",
+  "/tax-obligations",
+  "/wyoming-registered-agent",
+  "/nevada-registered-agent",
+  "/domestication",
 
-  // Package pages
-  "/packages/wyoming-gold",
-  "/packages/wyoming-silver",
-  "/packages/nevada-gold",
-  "/packages/nevada-silver",
-  "/packages/nevada-bronze",
-  "/packages/california-private",
-  "/packages/florida-private",
-  "/packages/shelf-companies",
+  // Package pages (flat slugs)
+  "/wyoming-private-incorporation",
+  "/wyoming-incorporation",
+  "/nevada-private-incorporation",
+  "/nevada-incorporation",
+  "/nevada-basic-incorporation",
+  "/california-private-incorporation",
+  "/florida-private-incorporation",
+  "/shelf-company-packages",
 
-  // Comparison pages
-  "/compare/wyoming-vs-nevada-llc",
-  "/compare/gold-vs-silver-wyoming",
-  "/compare/gold-vs-silver-nevada",
-  "/compare/llc-vs-corporation",
-  "/compare/wyoming-vs-delaware",
-  "/compare/incorporate123-vs-competitors",
+  // Comparison pages (flat)
+  "/wyoming-vs-nevada-llc",
+  "/gold-vs-silver-wyoming",
+  "/gold-vs-silver-nevada",
+  "/llc-vs-corporation",
+  "/wyoming-vs-delaware",
+  "/incorporate123-vs-competitors",
+  "/best-state-for-privacy",
+  "/best-state-for-asset-protection",
+  "/wyoming-vs-nevada-privacy",
+  "/wyoming-vs-nevada-asset-protection",
+  "/shelf-company-vs-new-formation",
+  "/llc-vs-scorp-vs-ccorp-tax",
 
-  // State hubs
-  "/states/wyoming",
-  "/states/nevada",
-  "/states/california",
-  "/states/florida",
-
-  // Additional comparison pages
-  "/compare/best-state-for-privacy",
-  "/compare/best-state-for-asset-protection",
-  "/compare/wyoming-vs-nevada-privacy",
-  "/compare/wyoming-vs-nevada-asset-protection",
-  "/compare/shelf-company-vs-new-formation",
-  "/compare/llc-vs-scorp-vs-ccorp-tax",
+  // State hubs (flat)
+  "/wyoming",
+  "/nevada",
+  "/california",
+  "/florida",
 
   // Packages index & compare
   "/packages",
@@ -134,7 +133,7 @@ test.describe("All routes return 200 with content", () => {
           !e.includes("favicon") &&
           !e.includes("404") &&
           !e.includes("hydration") &&
-          !e.includes("Hydration")
+          !e.includes("Hydration"),
       );
       expect(realErrors).toEqual([]);
     });
@@ -142,7 +141,9 @@ test.describe("All routes return 200 with content", () => {
 
   for (const route of CLIENT_ONLY_ROUTES) {
     test(`${route} returns 200`, async ({ page }) => {
-      const response = await page.goto(route, { waitUntil: "domcontentloaded" });
+      const response = await page.goto(route, {
+        waitUntil: "domcontentloaded",
+      });
       expect(response?.status()).toBe(200);
     });
   }

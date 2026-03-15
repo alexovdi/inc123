@@ -32,7 +32,7 @@ interface PackagePageClientProps {
 }
 
 /* ------------------------------------------------
-   Trust signal items (reused from homepage pattern)
+   Trust signal items
    ------------------------------------------------ */
 const trustItems = [
   { icon: "Clock", value: "25+ Years", label: "Trusted Since 2000" },
@@ -51,17 +51,15 @@ export function PackagePageClient({
   siblingPackages,
   alsoConsider,
 }: PackagePageClientProps) {
-  /* ---- Interactive state ---- */
   const [entityType, setEntityType] = useState<EntityType>("llc");
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
 
   const toggleAddOn = useCallback((id: string) => {
     setSelectedAddOns((prev) =>
-      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id],
     );
   }, []);
 
-  /* ---- Derived values ---- */
   const currentPrice = pkg.prices[entityType];
 
   const addOnTotal = useMemo(
@@ -70,15 +68,13 @@ export function PackagePageClient({
         const addOn = pkg.addOns.find((a) => a.id === id);
         return sum + (addOn?.price ?? 0);
       }, 0),
-    [selectedAddOns, pkg.addOns]
+    [selectedAddOns, pkg.addOns],
   );
 
   const grandTotal = currentPrice.formation + addOnTotal;
 
-  /* ---- Pricing grid tiers ---- */
   const pricingTiers = useMemo(() => {
     const allTiers = [pkg, ...siblingPackages];
-    // Sort: bronze -> silver -> gold
     const tierOrder = { bronze: 0, silver: 1, gold: 2 };
     allTiers.sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier]);
 
@@ -94,26 +90,23 @@ export function PackagePageClient({
     }));
   }, [pkg, siblingPackages, entityType]);
 
-  /* ---- FAQ items for this package ---- */
   const packageFaqs = useMemo(() => {
-    // Combine package-category FAQs with formation FAQs
     return faqItems.filter(
-      (faq) => faq.category === "packages" || faq.category === "formation"
+      (faq) => faq.category === "packages" || faq.category === "formation",
     );
   }, []);
 
-  /* ---- Testimonials relevant to this package ---- */
   const relevantTestimonials = useMemo(() => {
-    // Try to find testimonials matching this package's state or service
     const matching = testimonials.filter(
       (t) =>
         t.serviceUsed.toLowerCase().includes(pkg.state.toLowerCase()) ||
-        t.serviceUsed.toLowerCase().includes(pkg.tier)
+        t.serviceUsed.toLowerCase().includes(pkg.tier),
     );
-    return matching.length >= 2 ? matching.slice(0, 3) : testimonials.slice(0, 3);
+    return matching.length >= 2
+      ? matching.slice(0, 3)
+      : testimonials.slice(0, 3);
   }, [pkg.state, pkg.tier]);
 
-  /* ---- Progressive disclosure sections ---- */
   const disclosureSections = useMemo(
     () => [
       {
@@ -126,7 +119,8 @@ export function PackagePageClient({
               {pkg.state} is one of the most popular states for business
               formation due to its favorable legal environment. The state offers
               strong charging order protection, no state income tax on business
-              earnings, and robust privacy statutes that protect business owners.
+              earnings, and robust privacy statutes that protect business
+              owners.
             </p>
             <p>
               When you form a {entityType === "llc" ? "LLC" : "Corporation"} in{" "}
@@ -155,10 +149,10 @@ export function PackagePageClient({
             </p>
             <p>
               Our nominees are based offshore, outside U.S. jurisdiction. This
-              provides an additional privacy layer that domestic nominees
-              cannot offer. Combined with offshore record storage, your
-              corporate structure maintains maximum separation from public
-              disclosure requirements.
+              provides an additional privacy layer that domestic nominees cannot
+              offer. Combined with offshore record storage, your corporate
+              structure maintains maximum separation from public disclosure
+              requirements.
             </p>
           </div>
         ),
@@ -181,29 +175,27 @@ export function PackagePageClient({
               For Gold packages, we also set up your year-round nominee
               directors and officers, configure offshore record storage, and
               initiate your registered agent service. You will receive email
-              confirmation at each step along with a clear timeline of
-              remaining deliverables.
+              confirmation at each step along with a clear timeline of remaining
+              deliverables.
             </p>
           </div>
         ),
       },
     ],
-    [pkg.state, entityType]
+    [pkg.state, entityType],
   );
 
-  /* ---- Also Consider cards ---- */
   const alsoConsiderItems = useMemo(
     () =>
       alsoConsider.map((p) => ({
         name: p.name,
         state: p.state,
         price: `$${p.prices.llc.formation.toLocaleString()}`,
-        href: `/packages/${p.id}`,
+        href: `/${p.flatSlug}`,
       })),
-    [alsoConsider]
+    [alsoConsider],
   );
 
-  /* ---- Running total add-on items ---- */
   const runningTotalAddOns = useMemo(
     () =>
       selectedAddOns
@@ -213,23 +205,21 @@ export function PackagePageClient({
           return { name: addOn.name, price: addOn.price };
         })
         .filter(Boolean) as { name: string; price: number }[],
-    [selectedAddOns, pkg.addOns]
+    [selectedAddOns, pkg.addOns],
   );
 
   return (
     <PackageLayout packageName={pkg.name}>
       <div className="space-y-12 lg:space-y-16">
-        {/* ---- Breadcrumbs ---- */}
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
             { label: "Packages", href: "/packages" },
-            { label: pkg.name, href: `/packages/${pkg.id}` },
+            { label: pkg.name, href: `/${pkg.flatSlug}` },
           ]}
           pillar="privacy"
         />
 
-        {/* ---- 1. PackageHero ---- */}
         <PackageHero
           packageName={pkg.name}
           prices={pkg.prices}
@@ -246,7 +236,6 @@ export function PackagePageClient({
           }}
         />
 
-        {/* ---- 2. PricingGrid ---- */}
         <section id="pricing-grid" className="scroll-mt-24">
           <PricingGrid
             tiers={pricingTiers}
@@ -264,22 +253,24 @@ export function PackagePageClient({
               description: a.description,
               tooltip: a.tooltip,
             }))}
-            onTierSelect={(selection) => {
-              // In the prototype, scroll to configurator
+            onTierSelect={() => {
               const el = document.getElementById("addon-configurator");
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
           />
         </section>
 
-        {/* ---- 3. ValueComparisonCallout ---- */}
         <ValueComparisonCallout
           price={`$${currentPrice.formation.toLocaleString()} all-inclusive`}
           valueStatement={`Total value of included services: $${Math.round(currentPrice.formation * 1.6).toLocaleString()}+ in Year 1`}
-          includedValue={`${pkg.name}: $${currentPrice.formation.toLocaleString()} all-inclusive. That includes ${pkg.features.filter((f) => f.status === "included").map((f) => f.name.toLowerCase()).join(", ")}. Annual renewal: $${currentPrice.renewal.toLocaleString()}/year.`}
+          includedValue={`${pkg.name}: $${currentPrice.formation.toLocaleString()} all-inclusive. That includes ${pkg.features
+            .filter((f) => f.status === "included")
+            .map((f) => f.name.toLowerCase())
+            .join(
+              ", ",
+            )}. Annual renewal: $${currentPrice.renewal.toLocaleString()}/year.`}
         />
 
-        {/* ---- 4. AddOnConfigurator + RunningTotal ---- */}
         <div className="lg:grid lg:grid-cols-3 lg:gap-8">
           <div className="lg:col-span-2" id="addon-configurator">
             <AddOnConfigurator
@@ -304,7 +295,6 @@ export function PackagePageClient({
           </div>
         </div>
 
-        {/* ---- 5. ProgressiveDisclosure ---- */}
         <section>
           <h2 className="font-display text-heading-lg font-bold text-foreground mb-6">
             What You Need to Know
@@ -315,7 +305,6 @@ export function PackagePageClient({
           />
         </section>
 
-        {/* ---- 6. AlsoConsiderCards ---- */}
         <section>
           <AlsoConsiderCards
             packages={alsoConsiderItems}
@@ -323,7 +312,6 @@ export function PackagePageClient({
           />
         </section>
 
-        {/* ---- 7. TrustSignals + MoneyBack + TestimonialCarousel ---- */}
         <section className="space-y-8">
           <TrustSignals items={trustItems} layout="compact" variant="subtle" />
 
@@ -342,7 +330,6 @@ export function PackagePageClient({
           />
         </section>
 
-        {/* ---- 8. FAQAccordion ---- */}
         <section>
           <h2 className="font-display text-heading-lg font-bold text-foreground mb-6">
             Frequently Asked Questions
@@ -356,7 +343,6 @@ export function PackagePageClient({
           </Accordion>
         </section>
 
-        {/* ---- 9. Final CTABlock ---- */}
         <CTABlock
           heading="Ready to Get Started?"
           description={`${pkg.name} — $${currentPrice.formation.toLocaleString()} all-inclusive. ${pkg.description}`}

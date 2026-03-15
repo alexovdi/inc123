@@ -81,7 +81,7 @@ export function BreadcrumbsDemo() {
           items={[
             { label: "Home", href: "/" },
             { label: "Privacy", href: "/privacy" },
-            { label: "Anonymous LLC", href: "/privacy/anonymous-llc" },
+            { label: "Anonymous LLC", href: "/anonymous-llc" },
           ]}
           pillar="privacy"
         />
@@ -89,7 +89,7 @@ export function BreadcrumbsDemo() {
           items={[
             { label: "Home", href: "/" },
             { label: "Packages", href: "/packages" },
-            { label: "Wyoming Gold LLC", href: "/packages/wyoming-gold" },
+            { label: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
           ]}
         />
       </div>
