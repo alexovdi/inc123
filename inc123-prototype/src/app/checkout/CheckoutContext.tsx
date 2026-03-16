@@ -3,11 +3,15 @@
 import { createContext, useContext, useReducer, type ReactNode } from "react";
 import type { CheckoutState, EntityType } from "@/lib/types";
 
+/** Default to Wyoming Gold (most popular) so direct-nav to payment/confirmation
+ *  shows real pricing instead of $0. */
+const DEFAULT_PACKAGE = "wyoming-gold";
+
 const initialState: CheckoutState = {
   step: 1,
   selectedState: "Wyoming",
   entityType: "llc",
-  selectedTier: "",
+  selectedTier: DEFAULT_PACKAGE,
   selectedAddOns: [],
   companyDetails: {
     name1: "",
@@ -36,12 +40,21 @@ type CheckoutAction =
   | { type: "SET_ENTITY_TYPE"; entityType: EntityType }
   | { type: "SET_TIER"; tier: string }
   | { type: "TOGGLE_ADDON"; addonId: string }
-  | { type: "SET_COMPANY_DETAILS"; details: Partial<CheckoutState["companyDetails"]> }
-  | { type: "SET_BILLING_ADDRESS"; address: Partial<CheckoutState["billingAddress"]> }
+  | {
+      type: "SET_COMPANY_DETAILS";
+      details: Partial<CheckoutState["companyDetails"]>;
+    }
+  | {
+      type: "SET_BILLING_ADDRESS";
+      address: Partial<CheckoutState["billingAddress"]>;
+    }
   | { type: "SET_PAYMENT_METHOD"; method: CheckoutState["paymentMethod"] }
   | { type: "RESET" };
 
-function checkoutReducer(state: CheckoutState, action: CheckoutAction): CheckoutState {
+function checkoutReducer(
+  state: CheckoutState,
+  action: CheckoutAction,
+): CheckoutState {
   switch (action.type) {
     case "SET_STEP":
       return { ...state, step: action.step };
@@ -84,10 +97,16 @@ interface CheckoutContextValue {
 
 const CheckoutContext = createContext<CheckoutContextValue | null>(null);
 
-export function CheckoutProvider({ children, initialPackage }: { children: ReactNode; initialPackage?: string }) {
+export function CheckoutProvider({
+  children,
+  initialPackage,
+}: {
+  children: ReactNode;
+  initialPackage?: string;
+}) {
   const [state, dispatch] = useReducer(checkoutReducer, {
     ...initialState,
-    selectedTier: initialPackage || "",
+    selectedTier: initialPackage || DEFAULT_PACKAGE,
   });
 
   return (

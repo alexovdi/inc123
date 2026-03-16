@@ -2,7 +2,9 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Package Pages", () => {
   test("Wyoming Gold LLC loads with correct price", async ({ page }) => {
-    await page.goto("/packages/wyoming-gold", { waitUntil: "networkidle" });
+    await page.goto("/wyoming-private-incorporation", {
+      waitUntil: "networkidle",
+    });
 
     const bodyText = await page.locator("body").innerText();
     expect(bodyText).toContain("Wyoming Gold LLC");
@@ -10,10 +12,15 @@ test.describe("Package Pages", () => {
   });
 
   test("entity toggle changes aria-checked state", async ({ page }) => {
-    await page.goto("/packages/wyoming-gold", { waitUntil: "networkidle" });
+    await page.goto("/wyoming-private-incorporation", {
+      waitUntil: "networkidle",
+    });
 
     // Find Corporation radio button (LLC should be checked by default)
-    const corpRadio = page.locator('button[role="radio"]').filter({ hasText: "Corporation" }).first();
+    const corpRadio = page
+      .locator('button[role="radio"]')
+      .filter({ hasText: "Corporation" })
+      .first();
     await expect(corpRadio).toBeVisible();
 
     // Initially LLC is active, Corp is not
@@ -32,12 +39,16 @@ test.describe("Package Pages", () => {
     const hasCorpPrice = bodyText.includes("1,575");
     // If hero didn't update, that's a potential app issue we note but don't fail
     if (!hasCorpPrice) {
-      console.log("NOTE: Corp price $1,575 not found in body text after toggle - possible disconnected state");
+      console.log(
+        "NOTE: Corp price $1,575 not found in body text after toggle - possible disconnected state",
+      );
     }
   });
 
   test("add-on checkbox toggles selection", async ({ page }) => {
-    await page.goto("/packages/wyoming-gold", { waitUntil: "networkidle" });
+    await page.goto("/wyoming-private-incorporation", {
+      waitUntil: "networkidle",
+    });
 
     // Find EIN add-on row — use the AddOnConfigurator section (id="addon-configurator")
     const configurator = page.locator("#addon-configurator");
@@ -45,7 +56,11 @@ test.describe("Package Pages", () => {
 
     if (await einRow.isVisible()) {
       // Find the checkbox within the EIN row's parent
-      const einCheckbox = einRow.locator("..").locator("..").locator('input[type="checkbox"], button[role="checkbox"]').first();
+      const einCheckbox = einRow
+        .locator("..")
+        .locator("..")
+        .locator('input[type="checkbox"], button[role="checkbox"]')
+        .first();
       if (await einCheckbox.isVisible()) {
         await einCheckbox.click();
         await page.waitForTimeout(300);
@@ -57,13 +72,16 @@ test.describe("Package Pages", () => {
 
       // Verify total changed — RunningTotal shows $1,350 (1275 + 75) or EIN appears in summary
       const bodyText = await page.locator("body").innerText();
-      const hasEINSelected = bodyText.includes("1,350") || bodyText.includes("EIN");
+      const hasEINSelected =
+        bodyText.includes("1,350") || bodyText.includes("EIN");
       expect(hasEINSelected).toBe(true);
     }
   });
 
   test("CTA links include package query params", async ({ page }) => {
-    await page.goto("/packages/wyoming-gold", { waitUntil: "networkidle" });
+    await page.goto("/wyoming-private-incorporation", {
+      waitUntil: "networkidle",
+    });
 
     const ctaLink = page.locator('a[href*="/checkout/configure"]').first();
     if (await ctaLink.isVisible()) {
@@ -73,7 +91,9 @@ test.describe("Package Pages", () => {
   });
 
   test("Nevada Bronze LLC loads", async ({ page }) => {
-    await page.goto("/packages/nevada-bronze", { waitUntil: "networkidle" });
+    await page.goto("/nevada-basic-incorporation", {
+      waitUntil: "networkidle",
+    });
 
     const bodyText = await page.locator("body").innerText();
     expect(bodyText).toContain("Nevada Bronze");
@@ -81,7 +101,9 @@ test.describe("Package Pages", () => {
   });
 
   test("Shelf Companies page loads", async ({ page }) => {
-    await page.goto("/packages/shelf-companies", { waitUntil: "networkidle" });
+    await page.goto("/shelf-company-packages", {
+      waitUntil: "networkidle",
+    });
 
     const bodyText = await page.locator("body").innerText();
     expect(bodyText).toContain("Shelf");

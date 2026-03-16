@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Package Pricing Calculator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1e3a5f;
+        --secondary: #2563eb;
+        --accent: #d97706;
+        --gold: #d97706;
+        --silver: #64748b;
+        --bronze: #b45309;
+        --success: #16a34a;
+        --bg: #f0f4f8;
+        --fg: #0f172a;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --radius: 12px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .header {
+        background: var(--primary);
+        color: white;
+        padding: 32px 24px;
+        text-align: center;
+      }
+      .header h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.5rem, 3.5vw, 2rem);
+        font-weight: 400;
+        margin-bottom: 4px;
+      }
+      .header p {
+        opacity: 0.75;
+        font-size: 0.85rem;
+      }
+
+      .app {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 20px;
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 24px;
+      }
+      @media (max-width: 800px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Steps */
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .step {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        padding: 24px;
+      }
+      .step.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--secondary);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .step-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--primary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+      }
+      .step-title .done {
+        color: var(--success);
+        margin-left: 8px;
+        font-size: 0.75rem;
+      }
+
+      /* Options grid */
+      .options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+      }
+      .option-btn {
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        background: white;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.85rem;
+      }
+      .option-btn:hover {
+        border-color: var(--secondary);
+        background: #f8faff;
+      }
+      .option-btn.selected {
+        border-color: var(--secondary);
+        background: #eff6ff;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      }
+      .option-btn .opt-label {
+        font-weight: 600;
+        color: var(--primary);
+      }
+      .option-btn .opt-sub {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* Package cards in step 3 */
+      .pkg-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+      }
+      .pkg-btn {
+        padding: 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        background: white;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.2s;
+        font-family: "DM Sans", sans-serif;
+        position: relative;
+      }
+      .pkg-btn:hover {
+        border-color: var(--secondary);
+      }
+      .pkg-btn.selected {
+        border-color: var(--secondary);
+        background: #eff6ff;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      }
+      .pkg-btn .tier-badge {
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 2px 8px;
+        border-radius: 100px;
+        display: inline-block;
+        margin-bottom: 6px;
+      }
+      .pkg-btn .pkg-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--primary);
+      }
+      .pkg-btn .pkg-price {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-top: 4px;
+      }
+      .pkg-btn .pkg-renewal {
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      .pkg-btn .pkg-features {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 8px;
+        line-height: 1.5;
+      }
+      .pkg-btn .popular {
+        position: absolute;
+        top: -8px;
+        right: 12px;
+        background: var(--secondary);
+        color: white;
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 2px 8px;
+        border-radius: 100px;
+      }
+
+      /* Add-ons */
+      .addon-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .addon-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .addon-item:hover {
+        border-color: var(--secondary);
+        background: #fafbff;
+      }
+      .addon-item.checked {
+        border-color: var(--secondary);
+        background: #eff6ff;
+      }
+      .addon-check {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--border);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        color: white;
+        flex-shrink: 0;
+        transition: all 0.15s;
+      }
+      .addon-item.checked .addon-check {
+        background: var(--secondary);
+        border-color: var(--secondary);
+      }
+      .addon-info {
+        flex: 1;
+      }
+      .addon-name {
+        font-weight: 500;
+        font-size: 0.85rem;
+      }
+      .addon-desc {
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      .addon-price {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--primary);
+        white-space: nowrap;
+      }
+
+      /* Summary panel */
+      .summary-panel {
+        position: sticky;
+        top: 20px;
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        height: fit-content;
+      }
+      .summary-header {
+        background: var(--primary);
+        color: white;
+        padding: 16px 20px;
+      }
+      .summary-header h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+      }
+      .summary-body {
+        padding: 20px;
+      }
+      .summary-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        font-size: 0.82rem;
+      }
+      .summary-line.addon-line {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+      .summary-sep {
+        border-top: 1px solid var(--border);
+        margin: 10px 0;
+      }
+      .summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+      }
+      .summary-total .label {
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .summary-total .amount {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .summary-renewal {
+        font-size: 0.78rem;
+        color: var(--muted);
+        padding: 4px 0 8px;
+      }
+
+      .competitor-box {
+        margin-top: 16px;
+        padding: 14px;
+        background: #fefce8;
+        border-radius: 8px;
+        border: 1px solid #fef08a;
+        font-size: 0.78rem;
+      }
+      .competitor-box .comp-title {
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .competitor-box .comp-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 3px 0;
+      }
+      .competitor-box .comp-name {
+        color: var(--muted);
+      }
+      .competitor-box .comp-price {
+        font-weight: 500;
+      }
+      .competitor-box .comp-savings {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #fef08a;
+        font-weight: 600;
+        color: var(--success);
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .print-btn {
+        display: block;
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .print-btn:hover {
+        background: #15294a;
+      }
+
+      @media print {
+        .summary-panel {
+          position: static;
+          border: 2px solid var(--primary);
+        }
+        .print-btn {
+          display: none;
+        }
+        .app {
+          display: block;
+        }
+        .steps {
+          page-break-after: always;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Package Pricing Calculator</h1>
+      <p>Configure your formation package and see your total investment</p>
+    </header>
+
+    <div class="app">
+      <div class="steps">
+        <!-- Step 1: State -->
+        <div class="step" id="step1">
+          <div class="step-title">
+            <span class="step-num">1</span> Select Your State
+            <span class="done" id="done1"></span>
+          </div>
+          <div class="options" id="state-options"></div>
+        </div>
+
+        <!-- Step 2: Entity Type -->
+        <div class="step disabled" id="step2">
+          <div class="step-title">
+            <span class="step-num">2</span> Entity Type
+            <span class="done" id="done2"></span>
+          </div>
+          <div class="options" id="entity-options">
+            <div class="option-btn" data-entity="llc">
+              <div class="opt-label">LLC</div>
+              <div class="opt-sub">Flexible, pass-through tax</div>
+            </div>
+            <div class="option-btn" data-entity="corp">
+              <div class="opt-label">Corporation</div>
+              <div class="opt-sub">Formal structure, stock</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Package -->
+        <div class="step disabled" id="step3">
+          <div class="step-title">
+            <span class="step-num">3</span> Choose Your Package
+            <span class="done" id="done3"></span>
+          </div>
+          <div class="pkg-options" id="pkg-options"></div>
+        </div>
+
+        <!-- Step 4: Add-Ons -->
+        <div class="step disabled" id="step4">
+          <div class="step-title">
+            <span class="step-num">4</span> Optional Add-Ons
+          </div>
+          <div class="addon-list" id="addon-list"></div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-panel">
+        <div class="summary-header"><h3>Order Summary</h3></div>
+        <div class="summary-body" id="summary-body">
+          <div class="empty-state">
+            Select a state to begin building your package
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const DATA = {
+        packages: [
+          {
+            id: "wyoming-gold",
+            name: "Wyoming Gold",
+            tier: "gold",
+            state: "Wyoming",
+            llc: 1275,
+            corp: 1575,
+            renewalLlc: 525,
+            renewalCorp: 625,
+            popular: true,
+            features: [
+              "Nominees",
+              "Offshore Records",
+              "Minutes",
+              "Mail Forwarding",
+              "Operating Agreement",
+            ],
+          },
+          {
+            id: "wyoming-silver",
+            name: "Wyoming Silver",
+            tier: "silver",
+            state: "Wyoming",
+            llc: 875,
+            corp: 1175,
+            renewalLlc: 325,
+            renewalCorp: 425,
+            features: [
+              "Minutes",
+              "Annual Report",
+              "Mail Forwarding",
+              "Corporate Seal",
+            ],
+          },
+          {
+            id: "wyoming-bronze",
+            name: "Wyoming Bronze",
+            tier: "bronze",
+            state: "Wyoming",
+            llc: 625,
+            corp: 625,
+            renewalLlc: null,
+            renewalCorp: null,
+            features: ["State Filing Fees", "Registered Agent"],
+          },
+          {
+            id: "nevada-gold",
+            name: "Nevada Gold",
+            tier: "gold",
+            state: "Nevada",
+            llc: 1800,
+            corp: 2100,
+            renewalLlc: 525,
+            renewalCorp: 625,
+            popular: true,
+            features: [
+              "Nominees",
+              "Offshore Records",
+              "Minutes",
+              "NV Business License",
+              "Operating Agreement",
+            ],
+          },
+          {
+            id: "nevada-silver",
+            name: "Nevada Silver",
+            tier: "silver",
+            state: "Nevada",
+            llc: 1275,
+            corp: 1575,
+            renewalLlc: 325,
+            renewalCorp: 425,
+            features: [
+              "Minutes",
+              "Annual Report",
+              "NV Business License",
+              "Corporate Seal",
+            ],
+          },
+          {
+            id: "nevada-bronze",
+            name: "Nevada Bronze",
+            tier: "bronze",
+            state: "Nevada",
+            llc: 699,
+            corp: 899,
+            renewalLlc: 225,
+            renewalCorp: 325,
+            features: [
+              "State Filing Fees",
+              "Registered Agent",
+              "NV Business License",
+            ],
+          },
+          {
+            id: "california-private",
+            name: "California Private",
+            tier: "gold",
+            state: "California",
+            llc: 1475,
+            corp: 1775,
+            renewalLlc: 525,
+            renewalCorp: 625,
+            features: [
+              "Nominees",
+              "Offshore Records",
+              "CA Foreign Reg",
+              "Operating Agreement",
+            ],
+          },
+          {
+            id: "florida-private",
+            name: "Florida Private",
+            tier: "gold",
+            state: "Florida",
+            llc: 1475,
+            corp: 1775,
+            renewalLlc: 525,
+            renewalCorp: 625,
+            features: [
+              "Nominees",
+              "Offshore Records",
+              "FL Foreign Reg",
+              "Operating Agreement",
+            ],
+          },
+          {
+            id: "shelf",
+            name: "Shelf Company",
+            tier: "gold",
+            state: "Wyoming",
+            llc: 2500,
+            corp: 2800,
+            renewalLlc: 525,
+            renewalCorp: 625,
+            features: [
+              "Pre-Aged Entity",
+              "Nominees",
+              "Offshore Records",
+              "Minutes",
+              "Operating Agreement",
+            ],
+          },
+        ],
+        addons: [
+          {
+            id: "foreign-reg",
+            name: "Foreign Registration",
+            price: 149,
+            desc: "Register in another state",
+          },
+          {
+            id: "ein",
+            name: "EIN Obtainment",
+            price: 75,
+            desc: "Federal employer ID number",
+          },
+          {
+            id: "operating-agreement",
+            name: "Custom Operating Agreement",
+            price: 99,
+            desc: "Tailored to your entity",
+          },
+          {
+            id: "rush",
+            name: "Rush Filing (24-hour)",
+            price: 199,
+            desc: "Expedited state filing",
+          },
+          {
+            id: "virtual-office",
+            name: "Virtual Office Address",
+            price: 149,
+            desc: "Reno NV address + mail forwarding",
+          },
+          {
+            id: "dba",
+            name: "DBA/Fictitious Name",
+            price: 50,
+            desc: "County-level DBA filing",
+          },
+        ],
+        competitors: {
+          Wyoming: [
+            {
+              name: "WY Corporate Services",
+              getPrice: (e) => (e === "llc" ? 1140 : 1440),
+            },
+            { name: "Anderson Advisors", getPrice: () => 2750 },
+          ],
+          Nevada: [
+            { name: "NCH Inc", getPrice: (e) => (e === "llc" ? 1300 : 1600) },
+            { name: "Anderson Advisors", getPrice: () => 2750 },
+          ],
+          California: [
+            { name: "NCH Inc + Foreign Filing", getPrice: () => 1750 },
+            { name: "Anderson Advisors", getPrice: () => 3200 },
+          ],
+          Florida: [
+            { name: "NCH Inc + Foreign Filing", getPrice: () => 1750 },
+            { name: "Anderson Advisors", getPrice: () => 3200 },
+          ],
+        },
+      };
+
+      let state = {
+        selectedState: null,
+        entity: null,
+        pkg: null,
+        addons: new Set(),
+      };
+
+      function fmt(n) {
+        return "$" + n.toLocaleString();
+      }
+
+      const tierColors = {
+        gold: { bg: "#fef3c7", color: "#b45309" },
+        silver: { bg: "#f1f5f9", color: "#64748b" },
+        bronze: { bg: "#fed7aa", color: "#92400e" },
+      };
+
+      // Step 1: States
+      const states = [...new Set(DATA.packages.map((p) => p.state))];
+      const stateOpts = document.getElementById("state-options");
+      states.forEach((s) => {
+        const btn = document.createElement("div");
+        btn.className = "option-btn";
+        btn.dataset.state = s;
+        const count = DATA.packages.filter((p) => p.state === s).length;
+        btn.innerHTML = `<div class="opt-label">${s}</div><div class="opt-sub">${count} package${count > 1 ? "s" : ""}</div>`;
+        btn.onclick = () => selectState(s);
+        stateOpts.appendChild(btn);
+      });
+
+      function selectState(s) {
+        state.selectedState = s;
+        state.pkg = null;
+        state.addons.clear();
+        document
+          .querySelectorAll("#state-options .option-btn")
+          .forEach((b) =>
+            b.classList.toggle("selected", b.dataset.state === s),
+          );
+        document.getElementById("done1").textContent = "\u2713 " + s;
+        document.getElementById("step2").classList.remove("disabled");
+        document.getElementById("step3").classList.add("disabled");
+        document.getElementById("step4").classList.add("disabled");
+        document.getElementById("done2").textContent = "";
+        document.getElementById("done3").textContent = "";
+        if (state.entity) renderPackages();
+        renderSummary();
+      }
+
+      // Step 2: Entity
+      document
+        .querySelectorAll("#entity-options .option-btn")
+        .forEach((btn) => {
+          btn.onclick = () => {
+            state.entity = btn.dataset.entity;
+            state.pkg = null;
+            state.addons.clear();
+            document
+              .querySelectorAll("#entity-options .option-btn")
+              .forEach((b) => b.classList.toggle("selected", b === btn));
+            document.getElementById("done2").textContent =
+              "\u2713 " + (state.entity === "llc" ? "LLC" : "Corporation");
+            document.getElementById("step3").classList.remove("disabled");
+            document.getElementById("done3").textContent = "";
+            renderPackages();
+            renderSummary();
+          };
+        });
+
+      // Step 3: Packages
+      function renderPackages() {
+        const container = document.getElementById("pkg-options");
+        container.innerHTML = "";
+        const pkgs = DATA.packages.filter(
+          (p) => p.state === state.selectedState,
+        );
+        pkgs.forEach((pkg) => {
+          const price = state.entity === "llc" ? pkg.llc : pkg.corp;
+          const renewal =
+            state.entity === "llc" ? pkg.renewalLlc : pkg.renewalCorp;
+          const tc = tierColors[pkg.tier];
+          const btn = document.createElement("div");
+          btn.className = "pkg-btn" + (state.pkg === pkg.id ? " selected" : "");
+          btn.innerHTML = `
+      ${pkg.popular ? '<div class="popular">Most Popular</div>' : ""}
+      <span class="tier-badge" style="background:${tc.bg};color:${tc.color}">${pkg.tier}</span>
+      <div class="pkg-name">${pkg.name}</div>
+      <div class="pkg-price">${fmt(price)}</div>
+      <div class="pkg-renewal">Year 2 renewal: ${renewal ? fmt(renewal) + "/yr" : "TBD"}</div>
+      <div class="pkg-features">${pkg.features.join(" \u00b7 ")}</div>
+    `;
+          btn.onclick = () => {
+            state.pkg = pkg.id;
+            document
+              .querySelectorAll(".pkg-btn")
+              .forEach((b) => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            document.getElementById("done3").textContent = "\u2713 " + pkg.name;
+            document.getElementById("step4").classList.remove("disabled");
+            renderAddons(pkg);
+            renderSummary();
+          };
+          container.appendChild(btn);
+        });
+      }
+
+      // Step 4: Add-ons
+      function renderAddons(pkg) {
+        const list = document.getElementById("addon-list");
+        list.innerHTML = "";
+        // Filter out add-ons already included in package
+        const goldIncluded = pkg.tier === "gold" ? ["operating-agreement"] : [];
+        DATA.addons.forEach((addon) => {
+          if (goldIncluded.includes(addon.id)) return;
+          const item = document.createElement("div");
+          item.className =
+            "addon-item" + (state.addons.has(addon.id) ? " checked" : "");
+          item.innerHTML = `
+      <div class="addon-check">${state.addons.has(addon.id) ? "\u2713" : ""}</div>
+      <div class="addon-info"><div class="addon-name">${addon.name}</div><div class="addon-desc">${addon.desc}</div></div>
+      <div class="addon-price">${addon.price === 0 ? "FREE" : fmt(addon.price)}</div>
+    `;
+          item.onclick = () => {
+            if (state.addons.has(addon.id)) state.addons.delete(addon.id);
+            else state.addons.add(addon.id);
+            item.classList.toggle("checked");
+            item.querySelector(".addon-check").textContent = state.addons.has(
+              addon.id,
+            )
+              ? "\u2713"
+              : "";
+            renderSummary();
+          };
+          list.appendChild(item);
+        });
+      }
+
+      // Summary
+      function renderSummary() {
+        const body = document.getElementById("summary-body");
+        if (!state.pkg || !state.entity) {
+          body.innerHTML =
+            '<div class="empty-state">Select a state, entity type, and package to see your summary</div>';
+          return;
+        }
+        const pkg = DATA.packages.find((p) => p.id === state.pkg);
+        const price = state.entity === "llc" ? pkg.llc : pkg.corp;
+        const renewal =
+          state.entity === "llc" ? pkg.renewalLlc : pkg.renewalCorp;
+
+        let addonsTotal = 0;
+        let addonsHtml = "";
+        state.addons.forEach((id) => {
+          const addon = DATA.addons.find((a) => a.id === id);
+          if (addon && addon.price > 0) {
+            addonsTotal += addon.price;
+            addonsHtml += `<div class="summary-line addon-line"><span>+ ${addon.name}</span><span>${fmt(addon.price)}</span></div>`;
+          }
+        });
+
+        const total = price + addonsTotal;
+
+        // Competitor comparison
+        const comps = DATA.competitors[state.selectedState] || [];
+        let compHtml = "";
+        if (comps.length > 0) {
+          const compRows = comps
+            .map((c) => {
+              const cp = c.getPrice(state.entity);
+              return `<div class="comp-row"><span class="comp-name">${c.name}</span><span class="comp-price">${fmt(cp)}</span></div>`;
+            })
+            .join("");
+          const bestComp = Math.min(
+            ...comps.map((c) => c.getPrice(state.entity)),
+          );
+          const savings = bestComp - total;
+          compHtml = `
+      <div class="competitor-box">
+        <div class="comp-title">Equivalent at Competitors</div>
+        ${compRows}
+        <div class="comp-row" style="font-weight:600"><span>Incorporate123</span><span style="color:var(--success)">${fmt(total)}</span></div>
+        ${savings > 0 ? `<div class="comp-savings">You save ${fmt(savings)} vs. nearest competitor</div>` : ""}
+      </div>
+    `;
+        }
+
+        body.innerHTML = `
+    <div class="summary-line"><span>${pkg.name} (${state.entity.toUpperCase()})</span><span style="font-weight:600">${fmt(price)}</span></div>
+    ${addonsHtml}
+    <div class="summary-sep"></div>
+    <div class="summary-total"><span class="label">Formation Total</span><span class="amount">${fmt(total)}</span></div>
+    <div class="summary-renewal">Year 2 renewal: ${renewal ? fmt(renewal) + "/yr" : "TBD"}</div>
+    <div class="summary-sep"></div>
+    ${compHtml}
+    <button class="print-btn" onclick="window.print()">Print Summary</button>
+  `;
+      }
+    </script>
+  </body>
+</html>

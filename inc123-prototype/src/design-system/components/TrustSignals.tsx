@@ -10,15 +10,18 @@ import type { TrustSignalItem } from "@/lib/types";
 /*  CountUp hook                                       */
 /* -------------------------------------------------- */
 function useCountUp(target: number, duration = 1500, shouldStart = false) {
-  const [value, setValue] = useState(0);
+  // Start with the target value so the page always looks correct,
+  // even before JS hydrates or IntersectionObserver fires.
+  const [value, setValue] = useState(target);
+  const hasAnimated = useRef(false);
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    if (!shouldStart || target === 0) {
-      if (shouldStart) setValue(target);
-      return;
-    }
+    if (!shouldStart || target === 0 || hasAnimated.current) return;
+    hasAnimated.current = true;
 
+    // Brief reset to 0 then animate up — progressive enhancement
+    setValue(0);
     const startTime = performance.now();
 
     function tick(now: number) {
@@ -88,9 +91,13 @@ function CountUpDisplay({
   isVisible: boolean;
 }) {
   const current = useCountUp(target, 1500, isVisible);
+  // Add a space before alphabetic suffixes (e.g. "Day") but not
+  // before symbols like "+" or "%"
+  const separator = suffix && /^[A-Za-z]/.test(suffix) ? " " : "";
   return (
     <>
       {current.toLocaleString()}
+      {separator}
       {suffix}
     </>
   );

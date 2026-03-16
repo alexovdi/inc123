@@ -161,7 +161,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
           {/* CTA Button (right-aligned) */}
           <div className="hidden items-center gap-3 lg:flex">
             <Button variant="cta" size="sm" asChild>
-              <NextLink href="/packages">Compare Packages</NextLink>
+              <NextLink href="/compare-packages">Compare Packages</NextLink>
             </Button>
           </div>
 

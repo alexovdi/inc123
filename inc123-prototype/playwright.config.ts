@@ -8,13 +8,16 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 2,
   reporter: "html",
   use: {
-    baseURL: "http://localhost:3099",
+    baseURL: "http://localhost:2121",
     trace: "on-first-retry",
   },
   projects: [
     {
       name: "desktop",
-      use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 720 } },
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1280, height: 720 },
+      },
     },
     {
       name: "mobile",
@@ -27,8 +30,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npx next dev --port 3099",
-    port: 3099,
+    command: "npx next dev --port 2121",
+    port: 2121,
     reuseExistingServer: true,
   },
 });

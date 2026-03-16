@@ -33,19 +33,24 @@ test.describe("Checkout Flow", () => {
     await page.goto("/checkout/configure", { waitUntil: "networkidle" });
 
     // Toggle to Corporation
-    const corpToggle = page.getByRole("button", { name: /Corporation/i }).first();
+    const corpToggle = page
+      .getByRole("button", { name: /Corporation/i })
+      .first();
     if (await corpToggle.isVisible()) {
       await corpToggle.click();
       await page.waitForTimeout(300);
     }
   });
 
-  test("continue button disabled without tier", async ({ page }) => {
+  test("continue button enabled with default tier", async ({ page }) => {
     await page.goto("/checkout/configure", { waitUntil: "networkidle" });
 
-    const continueBtn = page.getByRole("button", { name: /Continue to Details/i });
+    const continueBtn = page.getByRole("button", {
+      name: /Continue to Details/i,
+    });
     if (await continueBtn.isVisible()) {
-      expect(await continueBtn.isDisabled()).toBe(true);
+      // Default tier (wyoming-gold) is pre-selected, so button should be enabled
+      expect(await continueBtn.isDisabled()).toBe(false);
     }
   });
 

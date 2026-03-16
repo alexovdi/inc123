@@ -78,7 +78,7 @@ export function PillarLayout({
             {children}
           </main>
           {sidebar && (
-            <div className="w-full lg:w-[30%] shrink-0 order-1 lg:order-2">
+            <div className="w-full lg:w-[30%] shrink-0 order-2 lg:order-2">
               {sidebar}
             </div>
           )}

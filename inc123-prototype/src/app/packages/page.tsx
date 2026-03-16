@@ -58,7 +58,8 @@ const stateGroups = [
     title: "Wyoming Packages",
     description:
       "America's top state for privacy and asset protection. Lowest fees, strongest charging order protection.",
-    filter: (pkg: (typeof packages)[number]) => pkg.state === "Wyoming" && pkg.id !== "shelf-companies",
+    filter: (pkg: (typeof packages)[number]) =>
+      pkg.state === "Wyoming" && pkg.id !== "shelf-companies",
   },
   {
     id: "nevada",
@@ -88,25 +89,29 @@ const howItWorksSteps = [
   {
     number: 1,
     title: "Choose Your Package",
-    description: "Select the tier and state that fits your privacy and business needs.",
+    description:
+      "Select the tier and state that fits your privacy and business needs.",
     icon: <Icon name="Layers" size="lg" />,
   },
   {
     number: 2,
     title: "Complete Your Order",
-    description: "Provide basic details and select any add-ons. Pay securely online.",
+    description:
+      "Provide basic details and select any add-ons. Pay securely online.",
     icon: <Icon name="CreditCard" size="lg" />,
   },
   {
     number: 3,
     title: "We File Everything",
-    description: "Our team prepares and files all documents with the state on your behalf.",
+    description:
+      "Our team prepares and files all documents with the state on your behalf.",
     icon: <Icon name="Send" size="lg" />,
   },
   {
     number: 4,
     title: "Receive Your Documents",
-    description: "Get your formation documents, EIN, and compliance package delivered.",
+    description:
+      "Get your formation documents, EIN, and compliance package delivered.",
     icon: <Icon name="ClipboardCheck" size="lg" />,
   },
 ];
@@ -255,7 +260,7 @@ export default function PackagesPage() {
                     entityType={entityType === "llc" ? "LLC" : "Corp"}
                     cta={{
                       label: "View Details",
-                      href: `/packages/${pkg.id}`,
+                      href: `/${pkg.flatSlug}`,
                     }}
                   />
                 ))}
@@ -294,7 +299,8 @@ export default function PackagesPage() {
             How It Works
           </h2>
           <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            From package selection to receiving your documents — we handle everything.
+            From package selection to receiving your documents — we handle
+            everything.
           </p>
           <div className="mt-10">
             <HowItWorks steps={howItWorksSteps} />

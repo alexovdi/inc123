@@ -411,5 +411,4 @@ const serviceDescriptions = [
   "Your nominee serves 365 days a year, every year. Not 'nominee for a day' at formation — continuous privacy protection on every public filing.",
   "Corporate records maintained by our offshore records custodian, outside U.S. jurisdiction. Not accessible through domestic subpoena processes.",
   "Privacy-first formation available in Wyoming, Nevada, California, and Florida with nominee structures and foreign registration.",
-  "Privacy-first formation available in Wyoming, Nevada, California, and Florida with nominee structures and foreign registration.",
 ];

@@ -79,7 +79,7 @@ export default function ComparePackagesPage() {
                 entityType={entityType === "llc" ? "LLC" : "Corp"}
                 cta={{
                   label: "View Package",
-                  href: `/packages/${pkg.id}`,
+                  href: `/${pkg.flatSlug}`,
                 }}
               />
             ))}
@@ -97,8 +97,8 @@ export default function ComparePackagesPage() {
             See which features are included in each package tier.
           </p>
 
-          <div className="mt-10 overflow-x-auto -mx-container-x px-container-x">
-            <table className="w-full min-w-[640px] border-collapse text-body-sm">
+          <div className="mt-10 -mx-container-x px-container-x overflow-x-auto overscroll-x-contain pb-2 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border">
+            <table className="w-full min-w-[600px] border-collapse text-body-sm">
               <thead>
                 <tr className="border-b-2 border-border">
                   <th className="py-3 px-4 text-left font-semibold text-foreground">
@@ -121,15 +121,16 @@ export default function ComparePackagesPage() {
                   const bronzePkg = packages.find((p) => p.tier === "bronze");
                   const silverPkg = packages.find((p) => p.tier === "silver");
                   const goldPkg = packages.find(
-                    (p) => p.tier === "gold" && p.state === "Wyoming" && p.id === "wyoming-gold"
+                    (p) =>
+                      p.tier === "gold" &&
+                      p.state === "Wyoming" &&
+                      p.id === "wyoming-gold",
                   );
 
-                  const getStatus = (
-                    pkg: (typeof packages)[0] | undefined
-                  ) => {
+                  const getStatus = (pkg: (typeof packages)[0] | undefined) => {
                     if (!pkg) return "not-included";
                     const feature = pkg.features.find(
-                      (f) => f.name === featureName
+                      (f) => f.name === featureName,
                     );
                     return feature?.status ?? "not-included";
                   };
@@ -138,19 +139,28 @@ export default function ComparePackagesPage() {
                     switch (status) {
                       case "included":
                         return (
-                          <span className="text-success font-medium" aria-label="Included">
+                          <span
+                            className="text-success font-medium"
+                            aria-label="Included"
+                          >
                             &#10003;
                           </span>
                         );
                       case "add-on":
                         return (
-                          <span className="text-warning font-medium" aria-label="Available as add-on">
+                          <span
+                            className="text-warning font-medium"
+                            aria-label="Available as add-on"
+                          >
                             Add-on
                           </span>
                         );
                       default:
                         return (
-                          <span className="text-muted" aria-label="Not included">
+                          <span
+                            className="text-muted"
+                            aria-label="Not included"
+                          >
                             &mdash;
                           </span>
                         );

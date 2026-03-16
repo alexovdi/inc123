@@ -96,6 +96,18 @@ const ALL_ROUTES = [
   "/login",
   "/privacy-policy",
   "/terms",
+
+  // Offshore hub & jurisdiction pages
+  "/offshore",
+  "/offshore/nevis",
+  "/offshore/belize",
+  "/offshore/cook-islands",
+  "/offshore/panama",
+  "/offshore/british-virgin-islands",
+
+  // Additional clusters
+  "/anonymous-corporation",
+  "/series-llc",
 ];
 
 // These are client-rendered in Suspense — test HTTP 200 only, content tested elsewhere

@@ -418,4 +418,7 @@ const complianceServiceDescriptions = [
   "Professional minute book preparation and maintenance. Proper corporate minutes help preserve your limited liability protection.",
   "Professional business address in Reno, NV with mail forwarding. Separate from registered agent address — used for business correspondence.",
   "Register your entity to do business in another state. Required if your LLC operates outside its formation state.",
+  "Multi-state filings beyond Wyoming and Nevada. We handle the complexity of operating across state lines — franchise taxes, business licenses, and state-specific requirements.",
+  "Share certificates, stock ledgers, and corporate record books. Proper documentation of ownership and governance — essential for investor-ready entities.",
+  "Ongoing tax filing requirements after formation. EIN obtainment, initial returns, state franchise taxes, and annual obligations — we keep you informed and compliant.",
 ];
