@@ -38,15 +38,16 @@ export interface TestimonialCarouselProps {
    ------------------------------------------------ */
 function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
   return (
-    <div className="flex items-center gap-0.5" aria-label={`${rating} out of ${max} stars`}>
+    <div
+      className="flex items-center gap-0.5"
+      aria-label={`${rating} out of ${max} stars`}
+    >
       {Array.from({ length: max }, (_, i) => (
         <Star
           key={i}
           className={cn(
             "h-4 w-4",
-            i < rating
-              ? "fill-accent text-accent"
-              : "fill-none text-border"
+            i < rating ? "fill-accent text-accent" : "fill-none text-border",
           )}
           aria-hidden="true"
         />
@@ -76,11 +77,17 @@ function TestimonialCarousel({
     (index: number) => {
       setCurrentIndex(((index % count) + count) % count);
     },
-    [count]
+    [count],
   );
 
-  const goNext = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
-  const goPrev = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
+  const goNext = useCallback(
+    () => goTo(currentIndex + 1),
+    [currentIndex, goTo],
+  );
+  const goPrev = useCallback(
+    () => goTo(currentIndex - 1),
+    [currentIndex, goTo],
+  );
 
   // Auto-play
   useEffect(() => {
@@ -130,7 +137,7 @@ function TestimonialCarousel({
     <div
       className={cn(
         "relative bg-surface shadow-card rounded-card overflow-hidden",
-        className
+        className,
       )}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -143,33 +150,48 @@ function TestimonialCarousel({
       tabIndex={0}
     >
       {/* Testimonial content */}
-      <div className="px-6 py-8 sm:px-10 sm:py-10" aria-live="polite">
-        {/* Quote */}
-        <blockquote>
-          {current.rating !== undefined && (
-            <div className="mb-4">
-              <StarRating rating={current.rating} />
-            </div>
-          )}
+      <div className="relative px-6 py-8 sm:px-10 sm:py-10" aria-live="polite">
+        {/* Decorative quote mark */}
+        <span
+          className="absolute top-6 left-6 text-[6rem] leading-none font-display text-muted/10 select-none pointer-events-none"
+          aria-hidden="true"
+        >
+          &ldquo;
+        </span>
 
-          <p className="text-heading-sm font-display leading-relaxed text-foreground sm:text-heading">
-            &ldquo;{current.quote}&rdquo;
-          </p>
+        {/* Quote — crossfade on index change */}
+        <blockquote className="relative">
+          <div
+            key={currentIndex}
+            style={{
+              animation: "testimonial-fade-in 400ms ease-out both",
+            }}
+          >
+            {current.rating !== undefined && (
+              <div className="mb-4">
+                <StarRating rating={current.rating} />
+              </div>
+            )}
 
-          {/* Attribution */}
-          <footer className="mt-6">
-            <cite className="not-italic">
-              <span className="block text-body font-semibold text-foreground">
-                {current.name}
-              </span>
-              <span className="mt-1 block text-body-sm text-muted">
-                {current.businessType} &middot; {current.state}
-              </span>
-              <span className="mt-0.5 block text-caption text-secondary">
-                {current.serviceUsed}
-              </span>
-            </cite>
-          </footer>
+            <p className="text-heading-sm font-display leading-relaxed text-foreground sm:text-heading">
+              &ldquo;{current.quote}&rdquo;
+            </p>
+
+            {/* Attribution */}
+            <footer className="mt-6">
+              <cite className="not-italic">
+                <span className="block text-body font-semibold text-foreground">
+                  {current.name}
+                </span>
+                <span className="mt-1 block text-body-sm text-muted">
+                  {current.businessType} &middot; {current.state}
+                </span>
+                <span className="mt-0.5 block text-caption text-secondary">
+                  {current.serviceUsed}
+                </span>
+              </cite>
+            </footer>
+          </div>
         </blockquote>
       </div>
 
@@ -197,7 +219,11 @@ function TestimonialCarousel({
           </div>
 
           {/* Dot indicators */}
-          <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
+          <div
+            className="flex items-center gap-2"
+            role="tablist"
+            aria-label="Testimonial navigation"
+          >
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
@@ -210,7 +236,7 @@ function TestimonialCarousel({
                   "h-2 rounded-pill transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary",
                   idx === currentIndex
                     ? "w-6 bg-secondary"
-                    : "w-2 bg-border hover:bg-muted"
+                    : "w-2 bg-border hover:bg-muted",
                 )}
               />
             ))}

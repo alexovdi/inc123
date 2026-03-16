@@ -107,7 +107,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                 {/* Mega Menu Panel */}
                 {item.children && activeMenu === item.label && (
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
-                    <div className="w-[600px] rounded-card bg-surface p-6 shadow-dropdown border border-border">
+                    <div className="w-[min(600px,90vw)] rounded-card bg-surface p-6 shadow-dropdown border border-border">
                       {item.children.map((pillar) => (
                         <div key={pillar.pillar}>
                           <div className="mb-3">
@@ -167,7 +167,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="flex items-center gap-2 lg:hidden"
+            className="flex items-center gap-2 p-2 -mr-2 lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >

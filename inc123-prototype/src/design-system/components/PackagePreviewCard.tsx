@@ -44,11 +44,11 @@ function PackagePreviewCard({
   return (
     <div
       className={cn(
-        "flex flex-col bg-surface rounded-card border p-5 transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5",
+        "flex flex-col bg-surface rounded-card border p-6 transition-all duration-300 ease-out hover:shadow-card-hover hover:-translate-y-1 hover:border-secondary/50",
         tier.highlighted
           ? "border-secondary shadow-card-hover ring-1 ring-secondary/30 scale-[1.02]"
           : "border-border",
-        className
+        className,
       )}
     >
       {/* Badge */}
@@ -65,7 +65,7 @@ function PackagePreviewCard({
 
       {/* Price */}
       <div className="mt-2">
-        <span className="font-mono text-heading-sm font-bold text-foreground">
+        <span className="font-mono text-heading-lg font-bold text-foreground">
           ${tier.price.toLocaleString()}
         </span>
         <span className="text-body-sm text-muted ml-1">/{tier.period}</span>

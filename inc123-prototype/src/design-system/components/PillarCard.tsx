@@ -65,25 +65,21 @@ function PillarCard({
     <a
       href={href}
       className={cn(
-        "group block bg-surface rounded-card border border-border border-t-2 p-6",
-        "shadow-card hover:shadow-card-hover hover:-translate-y-1",
-        "transition-all duration-200",
+        "group block bg-surface rounded-card border border-border border-t-4 p-6",
+        "shadow-card hover:shadow-card-hover hover:-translate-y-1.5",
+        "transition-all duration-300 ease-out",
         pillarTopBorderMap[pillar],
-        className
+        className,
       )}
     >
       {/* Icon */}
       <div
         className={cn(
-          "inline-flex items-center justify-center w-10 h-10 rounded-card",
-          pillarSoftBgMap[pillar]
+          "inline-flex items-center justify-center w-12 h-12 rounded-card transition-transform duration-300 group-hover:scale-105",
+          pillarSoftBgMap[pillar],
         )}
       >
-        <Icon
-          name={icon}
-          size="md"
-          className={pillarTextMap[pillar]}
-        />
+        <Icon name={icon} size="lg" className={pillarTextMap[pillar]} />
       </div>
 
       {/* Title */}
@@ -92,9 +88,7 @@ function PillarCard({
       </h3>
 
       {/* Description */}
-      <p className="text-body-sm text-muted mt-2">
-        {description}
-      </p>
+      <p className="text-body-sm text-muted mt-2">{description}</p>
 
       {/* Services list */}
       {services.length > 0 && (
@@ -120,7 +114,7 @@ function PillarCard({
         className={cn(
           "inline-flex items-center gap-1.5 mt-5 text-body-sm font-medium transition-all duration-200",
           pillarTextMap[pillar],
-          "group-hover:gap-2"
+          "group-hover:gap-2",
         )}
       >
         {ctaLabel ?? "Learn More"}

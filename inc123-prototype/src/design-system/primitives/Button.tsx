@@ -4,7 +4,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/design-system/utils/cn";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-button font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 rounded-button font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -14,12 +14,12 @@ const buttonVariants = cva(
           "bg-transparent text-foreground border border-border hover:bg-muted/10 active:bg-muted/20",
         ghost:
           "bg-transparent text-foreground hover:bg-muted/10 active:bg-muted/20",
-        cta: "bg-accent text-white hover:bg-accent-hover active:bg-accent-hover/90 shadow-card hover:shadow-card-hover",
+        cta: "bg-accent text-white hover:bg-accent-hover active:bg-accent-hover/90 shadow-card hover:shadow-card-hover hover:scale-[1.02] active:scale-[0.98]",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 active:bg-destructive/80",
       },
       size: {
-        sm: "h-9 px-3 text-body-sm",
+        sm: "h-10 px-4 text-body-sm",
         md: "h-11 px-6 text-body",
         lg: "h-14 px-8 text-body-lg",
       },
@@ -32,7 +32,7 @@ const buttonVariants = cva(
       size: "md",
       fullWidth: false,
     },
-  }
+  },
 );
 
 const pillarColorMap = {
@@ -49,7 +49,8 @@ const pillarColorMap = {
 type Pillar = keyof typeof pillarColorMap;
 
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">,
+  extends
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">,
     VariantProps<typeof buttonVariants> {
   /** Optional pillar color override — replaces variant background */
   pillar?: Pillar;
@@ -105,7 +106,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : "button";
     const isDisabled = disabled || loading;
@@ -113,7 +114,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const classes = cn(
       buttonVariants({ variant, size, fullWidth }),
       pillar && pillarColorMap[pillar],
-      className
+      className,
     );
 
     const inner = (
@@ -138,16 +139,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <button
-        ref={ref}
-        className={classes}
-        disabled={isDisabled}
-        {...props}
-      >
+      <button ref={ref} className={classes} disabled={isDisabled} {...props}>
         {inner}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

@@ -48,7 +48,7 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
             <li key={link.href}>
               <NextLink
                 href={link.href}
-                className="text-caption text-white/60 transition-colors hover:text-white"
+                className="text-caption text-white/70 transition-colors hover:text-white"
               >
                 {link.label}
               </NextLink>
@@ -62,7 +62,7 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
         <div className="space-y-5">
           {col.sections.map((section) => (
             <div key={section.heading}>
-              <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/50">
+              <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/60">
                 {section.heading}
               </h4>
               <ul className="space-y-2">
@@ -70,7 +70,7 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
                   <li key={link.href}>
                     <NextLink
                       href={link.href}
-                      className="text-caption text-white/60 transition-colors hover:text-white"
+                      className="text-caption text-white/70 transition-colors hover:text-white"
                     >
                       {link.label}
                     </NextLink>
@@ -97,6 +97,7 @@ function FooterAccordionItem({ col }: { col: FooterColumn }) {
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
+        aria-label={`${isOpen ? "Collapse" : "Expand"} ${col.title}`}
         className="flex w-full items-center justify-between py-4 text-left"
       >
         <h3 className="font-display text-body-sm font-semibold text-white/90">
@@ -184,19 +185,19 @@ export function SiteFooter({
             <span className="font-display text-body-sm font-bold text-white/80">
               Incorporate123
             </span>
-            <span className="text-caption text-white/40">
+            <span className="text-caption text-white/50">
               Trusted Since 2000 | 25+ Years
             </span>
           </div>
 
           {/* Center: Crypto note */}
-          <div className="flex items-center gap-1.5 text-caption text-white/40">
+          <div className="flex items-center gap-1.5 text-caption text-white/50">
             <Bitcoin className="h-3.5 w-3.5" />
             <span>We accept cryptocurrency for maximum privacy</span>
           </div>
 
           {/* Right: Legal + Copyright */}
-          <div className="flex items-center gap-4 text-caption text-white/40">
+          <div className="flex items-center gap-4 text-caption text-white/50">
             {legal.map((link) => (
               <NextLink
                 key={link.href}

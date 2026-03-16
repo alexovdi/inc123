@@ -23,26 +23,23 @@ const pillarTextMap: Record<PillarName, string> = {
 /* -------------------------------------------------- */
 /*  CVA variants                                       */
 /* -------------------------------------------------- */
-const ctaBlockVariants = cva(
-  "rounded-card py-section-y-sm px-container-x",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary-50 text-foreground",
-        dark: "bg-primary text-white",
-        pillar: "", // Applied dynamically via pillarBgMap
-      },
-      layout: {
-        centered: "text-center",
-        split: "",
-      },
+const ctaBlockVariants = cva("rounded-card py-section-y-sm px-container-x", {
+  variants: {
+    variant: {
+      default: "bg-primary-50 text-foreground",
+      dark: "bg-primary text-white",
+      pillar: "", // Applied dynamically via pillarBgMap
     },
-    defaultVariants: {
-      variant: "default",
-      layout: "centered",
+    layout: {
+      centered: "text-center",
+      split: "",
     },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+    layout: "centered",
+  },
+});
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -92,7 +89,7 @@ function CTABlock({
       className={cn(
         ctaBlockVariants({ variant: isPillar ? "default" : variant, layout }),
         isPillar && pillar && pillarBgMap[pillar],
-        className
+        className,
       )}
     >
       <div
@@ -100,17 +97,17 @@ function CTABlock({
           "mx-auto max-w-content",
           isSplit
             ? "flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12"
-            : "flex flex-col items-center"
+            : "flex flex-col items-center",
         )}
       >
         {/* Text block */}
         <div className={cn(isSplit ? "flex-1" : "max-w-narrow")}>
           <h2
             className={cn(
-              "font-display font-bold text-heading-lg",
+              "font-display font-bold text-display",
               isDark && "text-white",
               isPillar && pillar && pillarTextMap[pillar],
-              !isDark && !isPillar && "text-foreground"
+              !isDark && !isPillar && "text-foreground",
             )}
           >
             {heading}
@@ -118,7 +115,7 @@ function CTABlock({
           <p
             className={cn(
               "mt-3 text-body-lg",
-              isDark ? "text-white/80" : "text-muted"
+              isDark ? "text-white/80" : "text-muted",
             )}
           >
             {description}
@@ -129,7 +126,7 @@ function CTABlock({
             <p
               className={cn(
                 "mt-4 text-body-sm font-medium",
-                isDark ? "text-white/80" : "text-muted"
+                isDark ? "text-white/80" : "text-muted",
               )}
             >
               {trustSignal}
@@ -143,13 +140,16 @@ function CTABlock({
             "flex gap-3",
             isCentered
               ? "flex-col sm:flex-row justify-center mt-6"
-              : "flex-col sm:flex-row lg:flex-col lg:shrink-0 mt-6 lg:mt-0"
+              : "flex-col sm:flex-row lg:flex-col lg:shrink-0 mt-6 lg:mt-0",
           )}
         >
           <Button
             variant="cta"
             size="lg"
-            className={cn(isDark && "bg-white text-foreground hover:bg-white/90 active:bg-white/80")}
+            className={cn(
+              isDark &&
+                "bg-white text-foreground hover:bg-white/90 active:bg-white/80",
+            )}
             asChild
           >
             <a href={primaryCTA.href}>{primaryCTA.label}</a>
@@ -160,7 +160,8 @@ function CTABlock({
               variant={isDark ? "secondary" : "secondary"}
               size="lg"
               className={cn(
-                isDark && "border-white/60 text-white bg-white/10 hover:bg-white/20"
+                isDark &&
+                  "border-white/60 text-white bg-white/10 hover:bg-white/20",
               )}
               asChild
             >
@@ -174,7 +175,7 @@ function CTABlock({
           <p
             className={cn(
               "text-body-sm font-medium lg:hidden mt-4",
-              isDark ? "text-white/80" : "text-muted"
+              isDark ? "text-white/80" : "text-muted",
             )}
           >
             {trustSignal}

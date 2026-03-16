@@ -109,7 +109,10 @@ function ComparisonTable({
               className={cn(stickyHeader && "sticky top-0 z-20 bg-background")}
             >
               {/* Label column header */}
-              <th className="sticky left-0 z-30 bg-background text-left p-4 font-display text-body-sm font-semibold text-muted border-b border-border min-w-[180px]">
+              <th
+                scope="col"
+                className="sticky left-0 z-30 bg-background text-left p-4 font-display text-body-sm font-semibold text-muted border-b border-border min-w-[180px]"
+              >
                 Feature
               </th>
 
@@ -117,6 +120,7 @@ function ComparisonTable({
               {columns.map((col) => (
                 <th
                   key={col.id}
+                  scope="col"
                   className={cn(
                     "text-center p-4 border-b border-border min-w-[150px] transition-colors duration-150",
                     isEmphasised(col.id) &&
