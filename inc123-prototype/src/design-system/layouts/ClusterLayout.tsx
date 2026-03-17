@@ -1,6 +1,10 @@
 import NextLink from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarBorderMap,
+  pillarTextMap,
+} from "@/design-system/utils/pillarMaps";
 import type { PillarName } from "@/design-system/tokens";
 
 export interface ClusterLayoutProps {
@@ -14,20 +18,6 @@ export interface ClusterLayoutProps {
   customHero?: React.ReactNode;
   className?: string;
 }
-
-const pillarBorderMap: Record<PillarName, string> = {
-  privacy: "border-pillar-privacy",
-  asset: "border-pillar-asset",
-  formation: "border-pillar-formation",
-  compliance: "border-pillar-compliance",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 export function ClusterLayout({
   pillar,

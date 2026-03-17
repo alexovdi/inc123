@@ -8,23 +8,13 @@ import {
   type KeyboardEvent,
 } from "react";
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarTextMap,
+  pillarSoftBgMap,
+} from "@/design-system/utils/pillarMaps";
 import { Link, Icon } from "@/design-system/primitives";
 import type { NavPillar } from "@/lib/types";
 import type { PillarName } from "@/design-system/tokens";
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
-
-const pillarSoftBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy-soft",
-  asset: "bg-pillar-asset-soft",
-  formation: "bg-pillar-formation-soft",
-  compliance: "bg-pillar-compliance-soft",
-};
 
 /* -------------------------------------------------- */
 /*  Props                                              */

@@ -7,7 +7,7 @@ import {
   QuickLinkCards,
   MapPlaceholder,
 } from "@/design-system/components";
-import { contactData } from "@/data/contact";
+import { contactData, contactTrustItems } from "@/data/contact";
 
 export const metadata: Metadata = {
   title: "Contact Us — Call, Email or Visit Our Reno Office | Incorporate123",
@@ -15,16 +15,6 @@ export const metadata: Metadata = {
     "Get in touch with Incorporate123. Call (775) 313-4155, email us, or visit our office at 1795 Meadow Wood Lane, Suite 100, Reno, NV 89502. Real people, real answers.",
   alternates: { canonical: "https://incorporate123.co/contact" },
 };
-
-/* ------------------------------------------------
-   Trust signals for the contact page
-   ------------------------------------------------ */
-const contactTrustItems = [
-  { icon: "Clock", value: "1 Day", label: "Response Time" },
-  { icon: "ShieldCheck", value: "Private", label: "Your Info Is Confidential" },
-  { icon: "Phone", value: "Real", label: "Person Answers" },
-  { icon: "Award", value: "25+", label: "Years Experience" },
-];
 
 export default function ContactPage() {
   const { hero, methods, formFields, quickLinks } = contactData;

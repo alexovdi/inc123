@@ -1,23 +1,10 @@
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarBorderTopMap,
+  pillarTextMap,
+} from "@/design-system/utils/pillarMaps";
 import { Icon } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar top-border color map
-   ------------------------------------------------ */
-const pillarTopBorderMap: Record<PillarName, string> = {
-  privacy: "border-t-pillar-privacy",
-  asset: "border-t-pillar-asset",
-  formation: "border-t-pillar-formation",
-  compliance: "border-t-pillar-compliance",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 /* ------------------------------------------------
    Props
@@ -55,7 +42,7 @@ function WhereToGoNext({
     <section
       className={cn(
         "bg-primary-50 rounded-card py-section-y-sm px-container-x",
-        className
+        className,
       )}
     >
       <h2 className="text-heading font-display font-semibold text-foreground text-center mb-8">
@@ -65,7 +52,7 @@ function WhereToGoNext({
       <div
         className={cn(
           "flex flex-col md:flex-row gap-6",
-          "max-w-content mx-auto"
+          "max-w-content mx-auto",
         )}
       >
         {visibleSuggestions.map((item, index) => (
@@ -77,22 +64,18 @@ function WhereToGoNext({
               "shadow-card hover:shadow-card-hover",
               "transition-all duration-200",
               item.pillar && "border-t-2",
-              item.pillar && pillarTopBorderMap[item.pillar]
+              item.pillar && pillarBorderTopMap[item.pillar],
             )}
           >
             <h3 className="text-heading-sm font-display font-semibold text-foreground">
               {item.title}
             </h3>
-            <p className="text-body-sm text-muted mt-2">
-              {item.description}
-            </p>
+            <p className="text-body-sm text-muted mt-2">{item.description}</p>
             <span
               className={cn(
                 "inline-flex items-center gap-1.5 mt-4 text-body-sm font-medium transition-all duration-200",
                 "group-hover:gap-2",
-                item.pillar
-                  ? pillarTextMap[item.pillar]
-                  : "text-secondary"
+                item.pillar ? pillarTextMap[item.pillar] : "text-secondary",
               )}
             >
               Explore

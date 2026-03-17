@@ -6,33 +6,35 @@ import { ArrowLeft, ArrowRight, Info } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
 import { FormSection, OrderSummary } from "@/design-system/components";
 import { Button, Input, Textarea } from "@/design-system/primitives";
-import { packages } from "@/data/packages";
-import { useCheckout } from "../CheckoutContext";
+import { getTierBySlug } from "@/data/packages";
+import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 
 export default function CheckoutDetailsPage() {
   const router = useRouter();
   const { state, dispatch } = useCheckout();
 
-  // Look up selected package
-  const selectedPackage = useMemo(
-    () => packages.find((pkg) => pkg.id === state.selectedTier),
-    [state.selectedTier]
+  // Look up selected tier definition
+  const selectedTierDef = useMemo(
+    () => getTierBySlug(state.selectedTier),
+    [state.selectedTier],
   );
 
-  // Pricing
-  const basePrice = selectedPackage
-    ? selectedPackage.prices[state.entityType].formation
-    : 0;
+  // Pricing via tier-first helpers
+  const pricing = getCheckoutPrice(state);
+  const basePrice = pricing?.formation ?? 0;
+
+  // Get add-ons from the tier definition
+  const availableAddOns = selectedTierDef?.addOns ?? [];
 
   const addOnTotal = state.selectedAddOns.reduce((sum, id) => {
-    const addOn = selectedPackage?.addOns.find((a) => a.id === id);
+    const addOn = availableAddOns.find((a) => a.id === id);
     return sum + (addOn?.price ?? 0);
   }, 0);
 
   const total = basePrice + addOnTotal;
 
   const selectedAddOnDetails = state.selectedAddOns
-    .map((id) => selectedPackage?.addOns.find((a) => a.id === id))
+    .map((id) => availableAddOns.find((a) => a.id === id))
     .filter(Boolean)
     .map((a) => ({ name: a!.name, price: a!.price }));
 
@@ -63,11 +65,13 @@ export default function CheckoutDetailsPage() {
     router.push("/checkout/configure");
   };
 
-  const sidebar = selectedPackage ? (
+  const entityLabel = state.entityType === "llc" ? "LLC" : "Corp";
+
+  const sidebar = selectedTierDef ? (
     <OrderSummary
       package={{
-        name: selectedPackage.name.replace(/LLC$/, state.entityType === "llc" ? "LLC" : "Corp"),
-        tier: selectedPackage.tier,
+        name: `${state.selectedState} ${selectedTierDef.name} ${entityLabel}`,
+        tier: selectedTierDef.tier,
         price: basePrice,
       }}
       entityType={state.entityType === "llc" ? "LLC" : "Corporation"}
@@ -165,7 +169,7 @@ export default function CheckoutDetailsPage() {
         />
 
         {/* Privacy note for Gold packages */}
-        {selectedPackage?.tier === "gold" && (
+        {selectedTierDef?.tier === "gold" && (
           <div className="flex gap-3 rounded-card border border-secondary/20 bg-secondary/5 p-4">
             <Info className="h-5 w-5 shrink-0 text-secondary mt-0.5" />
             <div className="text-body-sm text-foreground">

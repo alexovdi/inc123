@@ -1,30 +1,11 @@
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarTextMap,
+  pillarBgMap,
+  pillarBorderMap,
+} from "@/design-system/utils/pillarMaps";
 import { Icon } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar color maps
-   ------------------------------------------------ */
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
-
-const pillarBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy",
-  asset: "bg-pillar-asset",
-  formation: "bg-pillar-formation",
-  compliance: "bg-pillar-compliance",
-};
-
-const pillarBorderMap: Record<PillarName, string> = {
-  privacy: "border-pillar-privacy",
-  asset: "border-pillar-asset",
-  formation: "border-pillar-formation",
-  compliance: "border-pillar-compliance",
-};
 
 /* ------------------------------------------------
    Props
@@ -71,7 +52,7 @@ function PillarHero({
         <p
           className={cn(
             "text-body-sm font-semibold uppercase tracking-wider mb-3",
-            pillarTextMap[pillar]
+            pillarTextMap[pillar],
           )}
         >
           {eyebrow}
@@ -97,7 +78,7 @@ function PillarHero({
               "text-white hover:opacity-90 active:opacity-80",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
               pillarBgMap[pillar],
-              `focus-visible:ring-current`
+              `focus-visible:ring-current`,
             )}
           >
             {primaryCTA.label}
@@ -110,7 +91,7 @@ function PillarHero({
               "h-11 px-6 text-body",
               "bg-transparent border text-foreground hover:bg-muted/10 active:bg-muted/20",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
-              pillarBorderMap[pillar]
+              pillarBorderMap[pillar],
             )}
           >
             {secondaryCTA.label}

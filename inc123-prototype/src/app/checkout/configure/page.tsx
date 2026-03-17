@@ -12,62 +12,74 @@ import {
   FormSection,
 } from "@/design-system/components";
 import { Button } from "@/design-system/primitives";
-import { packages } from "@/data/packages";
+import {
+  getTierBySlug,
+  getTierPrice,
+  getAvailableTiersForState,
+  getTierFeaturesForState,
+} from "@/data/packages";
 import { FORMATION_STATES } from "@/data/checkout";
-import { useCheckout } from "../CheckoutContext";
+import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 import type { EntityType } from "@/lib/types";
 
 export default function CheckoutConfigurePage() {
   const router = useRouter();
   const { state, dispatch } = useCheckout();
 
-  // Filter packages by selected state
-  const statePackages = useMemo(
-    () => packages.filter((pkg) => pkg.state === state.selectedState),
+  // Get available tier definitions for the selected state
+  const availableTiers = useMemo(
+    () => getAvailableTiersForState(state.selectedState),
     [state.selectedState],
   );
 
-  // Get the currently selected package
-  const selectedPackage = useMemo(
-    () => packages.find((pkg) => pkg.id === state.selectedTier),
+  // Get the currently selected tier definition
+  const selectedTierDef = useMemo(
+    () => getTierBySlug(state.selectedTier),
     [state.selectedTier],
   );
 
   // Entity label for display (swap LLC ↔ Corp in package names)
   const entityLabel = state.entityType === "llc" ? "LLC" : "Corp";
 
-  // Build tier cards from state packages
+  // Build tier cards from tierDefinitions filtered by selected state
   const tierCards = useMemo(
     () =>
-      statePackages.map((pkg) => ({
-        id: pkg.id,
-        name: pkg.name.replace(/LLC$/, entityLabel),
-        price: pkg.prices[state.entityType].formation,
-        features: pkg.features
-          .filter((f) => f.status === "included")
-          .slice(0, 4)
-          .map((f) => f.name),
-        badge: pkg.badge,
-        highlighted: pkg.highlighted,
-      })),
-    [statePackages, state.entityType, entityLabel],
+      availableTiers.map((tierDef) => {
+        const price = getTierPrice(
+          tierDef,
+          state.selectedState,
+          state.entityType,
+        );
+        const features = getTierFeaturesForState(tierDef, state.selectedState);
+        return {
+          id: tierDef.slug,
+          name: `${tierDef.name} ${entityLabel}`,
+          price: price?.formation ?? 0,
+          features: features
+            .filter((f) => f.status === "included")
+            .slice(0, 4)
+            .map((f) => f.name),
+          badge: tierDef.badge,
+          highlighted: tierDef.highlighted,
+        };
+      }),
+    [availableTiers, state.selectedState, state.entityType, entityLabel],
   );
 
-  // Calculate pricing
-  const basePrice = selectedPackage
-    ? selectedPackage.prices[state.entityType].formation
-    : 0;
+  // Calculate pricing using tier-first helpers
+  const pricing = getCheckoutPrice(state);
+  const basePrice = pricing?.formation ?? 0;
+
+  // Get add-ons for the selected tier (or first available tier)
+  const availableAddOns =
+    selectedTierDef?.addOns ?? availableTiers[0]?.addOns ?? [];
 
   const addOnTotal = state.selectedAddOns.reduce((sum, id) => {
-    const addOn = selectedPackage?.addOns.find((a) => a.id === id);
+    const addOn = availableAddOns.find((a) => a.id === id);
     return sum + (addOn?.price ?? 0);
   }, 0);
 
   const total = basePrice + addOnTotal;
-
-  // Get add-ons for the selected package (or first package for the state)
-  const availableAddOns =
-    selectedPackage?.addOns ?? statePackages[0]?.addOns ?? [];
 
   // Selected add-on details for OrderSummary
   const selectedAddOnDetails = state.selectedAddOns
@@ -85,11 +97,11 @@ export default function CheckoutConfigurePage() {
     }
   };
 
-  const sidebar = selectedPackage ? (
+  const sidebar = selectedTierDef ? (
     <OrderSummary
       package={{
-        name: selectedPackage.name.replace(/LLC$/, entityLabel),
-        tier: selectedPackage.tier,
+        name: `${state.selectedState} ${selectedTierDef.name} ${entityLabel}`,
+        tier: selectedTierDef.tier,
         price: basePrice,
       }}
       entityType={state.entityType === "llc" ? "LLC" : "Corporation"}
@@ -131,8 +143,18 @@ export default function CheckoutConfigurePage() {
               type="button"
               onClick={() => {
                 dispatch({ type: "SET_STATE", state: s.value });
-                // Clear tier selection when state changes
-                dispatch({ type: "SET_TIER", tier: "" });
+                // Reset to the best available tier for the new state
+                const tiersForState = getAvailableTiersForState(s.value);
+                const currentStillAvailable = tiersForState.find(
+                  (t) => t.slug === state.selectedTier,
+                );
+                if (!currentStillAvailable && tiersForState.length > 0) {
+                  // Pick the highlighted tier, or last (highest) tier
+                  const best =
+                    tiersForState.find((t) => t.highlighted) ??
+                    tiersForState[tiersForState.length - 1];
+                  dispatch({ type: "SET_TIER", tier: best.slug });
+                }
               }}
               className={`flex flex-col items-center gap-1 rounded-card border-2 p-4 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 ${
                 state.selectedState === s.value

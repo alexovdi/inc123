@@ -11,6 +11,7 @@ import {
   WhereToGoNext,
 } from "@/design-system/components";
 import { packages } from "@/data/packages";
+import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import type { ComparisonPage } from "@/lib/types";
 import type { DualPackageItem } from "@/design-system/components";
 
@@ -34,7 +35,7 @@ function buildDualPackageItems(
       description: resolved[0]!.description,
       badge: resolved[0]!.badge,
       highlighted: resolved[0]!.highlighted ?? false,
-      href: `/${resolved[0]!.flatSlug}`,
+      href: resolveLegacyPackageToTierUrl(resolved[0]!.id),
     },
     {
       name: resolved[1]!.name,
@@ -43,7 +44,7 @@ function buildDualPackageItems(
       description: resolved[1]!.description,
       badge: resolved[1]!.badge,
       highlighted: resolved[1]!.highlighted ?? false,
-      href: `/${resolved[1]!.flatSlug}`,
+      href: resolveLegacyPackageToTierUrl(resolved[1]!.id),
     },
   ];
 }

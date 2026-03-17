@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
-import { packages } from "@/data/packages";
+import {
+  tierDefinitions,
+  getTierMinPrice,
+  getTierPrice,
+  ALL_FORMATION_STATES,
+} from "@/data/packages";
 import {
   CTABlock,
   PackagePreviewCard,
@@ -12,7 +17,7 @@ import {
   AccordionItem,
 } from "@/design-system/components";
 import { Icon } from "@/design-system/primitives";
-import type { EntityType } from "@/lib/types";
+import type { EntityType, TierDefinition } from "@/lib/types";
 
 const entityOptions = [
   { value: "llc", label: "LLC" },
@@ -23,66 +28,6 @@ const trustStats = [
   { icon: "Calendar", label: "25+ Years in Business" },
   { icon: "Shield", label: "All-Inclusive Pricing" },
   { icon: "CircleCheck", label: "Money-Back Guarantee" },
-];
-
-const intentCards = [
-  {
-    icon: "Eye",
-    title: "Maximum Privacy",
-    description:
-      "Year-round nominees, offshore record storage, and anonymous ownership. Full identity protection from public records.",
-    anchor: "#wyoming",
-    cta: "See Gold packages",
-  },
-  {
-    icon: "Building2",
-    title: "Professional Formation",
-    description:
-      "Essential formation with registered agent and compliance support. Everything you need to get your business started right.",
-    anchor: "#nevada",
-    cta: "See Silver & Bronze",
-  },
-  {
-    icon: "MapPin",
-    title: "Operate in Your Home State",
-    description:
-      "Live in California or Florida? Form in a privacy state, register in yours. Full nominee protection included.",
-    anchor: "#ca-fl",
-    cta: "See Privacy packages",
-  },
-];
-
-const stateGroups = [
-  {
-    id: "wyoming",
-    title: "Wyoming Packages",
-    description:
-      "America's top state for privacy and asset protection. Lowest fees, strongest charging order protection.",
-    filter: (pkg: (typeof packages)[number]) =>
-      pkg.state === "Wyoming" && pkg.id !== "shelf-companies",
-  },
-  {
-    id: "nevada",
-    title: "Nevada Packages",
-    description:
-      "No state income tax, established business court. Our Nevada presence gives you a same-day filing advantage.",
-    filter: (pkg: (typeof packages)[number]) => pkg.state === "Nevada",
-  },
-  {
-    id: "ca-fl",
-    title: "California & Florida Privacy",
-    description:
-      "Live in CA or FL? Form in a privacy state, register in yours. Full nominee protection included.",
-    filter: (pkg: (typeof packages)[number]) =>
-      pkg.state === "California" || pkg.state === "Florida",
-  },
-  {
-    id: "shelf",
-    title: "Shelf Companies",
-    description:
-      "Pre-aged entity with established history. Immediate availability for business needs requiring entity age.",
-    filter: (pkg: (typeof packages)[number]) => pkg.id === "shelf-companies",
-  },
 ];
 
 const howItWorksSteps = [
@@ -127,7 +72,7 @@ const faqItems = [
     id: "which-state",
     title: "Which state should I form in?",
     answer:
-      "Wyoming offers the lowest fees and strongest charging order protection — it's our most popular choice. Nevada is ideal if you want an established business court system and no state income tax. If you live in California or Florida, our Privacy packages let you form in a privacy state while registering in yours.",
+      "Wyoming offers the lowest fees and strongest charging order protection — it's our most popular choice. Nevada is ideal if you want an established business court system and no state income tax. If you live in California or Florida, our Gold packages let you form in a privacy state while registering in yours.",
   },
   {
     id: "whats-included",
@@ -136,10 +81,16 @@ const faqItems = [
       "Every package includes state filing fees, registered agent service for the first year, and core compliance documents. There are no hidden fees — the price you see is the price you pay for formation. Annual renewal fees cover ongoing registered agent and compliance services.",
   },
   {
+    id: "bronze",
+    title: "When should I choose Bronze?",
+    answer:
+      "Bronze is ideal if you need a straightforward Nevada formation at the most affordable price. It includes state filing fees, registered agent, and Nevada business license. You can always upgrade to Silver or Gold later to add compliance and privacy features.",
+  },
+  {
     id: "upgrade",
     title: "Can I upgrade later?",
     answer:
-      "Yes. You can upgrade from Silver to Gold at any time by adding nominee services and offshore record storage. Contact our team and we'll handle the transition seamlessly.",
+      "Yes. You can upgrade from Bronze to Silver, or Silver to Gold, at any time by adding compliance and privacy services. Contact our team and we'll handle the transition seamlessly.",
   },
   {
     id: "guarantee",
@@ -149,8 +100,38 @@ const faqItems = [
   },
 ];
 
+/** Returns the display price for a tier in the given state, or its global min. */
+function tierPrice(
+  tier: TierDefinition,
+  state: string,
+  entityType: EntityType,
+): number {
+  const statePrice = getTierPrice(tier, state, entityType);
+  return statePrice ? statePrice.formation : getTierMinPrice(tier, entityType);
+}
+
+/** Check whether a tier is available in a given state */
+function tierAvailableInState(tier: TierDefinition, state: string): boolean {
+  return tier.availableStates.includes(state);
+}
+
 export default function PackagesPage() {
   const [entityType, setEntityType] = useState<EntityType>("llc");
+  const [selectedState, setSelectedState] = useState("Wyoming");
+
+  const formationTiers = useMemo(
+    () =>
+      tierDefinitions.filter((t) => t.tier !== "gold" || t.slug !== "shelf"),
+    [],
+  );
+
+  /** Ordered as Bronze, Silver, Gold for display */
+  const tierOrder: Record<string, number> = { bronze: 0, silver: 1, gold: 2 };
+  const orderedTiers = useMemo(
+    () =>
+      [...formationTiers].sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier]),
+    [formationTiers],
+  );
 
   return (
     <div className="space-y-0">
@@ -183,92 +164,116 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Quick Decision Guide */}
+      {/* State Selector */}
       <section className="py-section-y px-container-x bg-background">
         <div className="mx-auto max-w-content">
           <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            Not Sure Where to Start?
+            Choose Your Formation State
           </h2>
           <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            Choose based on what matters most to your business.
+            Select a state to see available tiers and pricing. Not all tiers are
+            available in every state.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {intentCards.map((card) => (
-              <a
-                key={card.title}
-                href={card.anchor}
-                className="group rounded-xl border border-border bg-surface p-6 shadow-card hover:shadow-card-hover transition-all"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
-                  <Icon name={card.icon} size="lg" />
-                </div>
-                <h3 className="mt-4 font-display text-heading-sm font-semibold text-foreground">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-body-sm text-muted">
-                  {card.description}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all">
-                  {card.cta}
-                  <Icon name="ArrowRight" size="sm" />
-                </span>
-              </a>
-            ))}
+          {/* State Tabs */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {ALL_FORMATION_STATES.map(({ name, abbreviation }) => {
+              const isSelected = selectedState === name;
+              return (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => setSelectedState(name)}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-body-sm font-medium transition-colors ${
+                    isSelected
+                      ? "bg-secondary text-white shadow-card"
+                      : "bg-surface border border-border text-foreground hover:bg-primary-50"
+                  }`}
+                >
+                  <span className="font-bold">{abbreviation}</span>
+                  <span className="hidden sm:inline">{name}</span>
+                </button>
+              );
+            })}
           </div>
+
+          {/* Tier Cards */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {orderedTiers.map((tier) => {
+              const available = tierAvailableInState(tier, selectedState);
+              if (!available) return null;
+
+              const price = tierPrice(tier, selectedState, entityType);
+              const stateVariant = tier.stateVariants[selectedState];
+              const renewal = stateVariant
+                ? `$${stateVariant.prices[entityType].renewal}/yr renewal`
+                : undefined;
+
+              return (
+                <PackagePreviewCard
+                  key={tier.slug}
+                  tier={{
+                    name: `${tier.name} ${entityType === "llc" ? "LLC" : "Corporation"}`,
+                    badge: tier.badge,
+                    price,
+                    period: "formation",
+                    description: stateVariant?.description ?? tier.description,
+                    highlighted: tier.highlighted,
+                    renewal,
+                  }}
+                  entityType={entityType === "llc" ? "LLC" : "Corp"}
+                  cta={{
+                    label: "View Details",
+                    href: `/${tier.slug}?state=${selectedState.toLowerCase()}`,
+                  }}
+                />
+              );
+            })}
+          </div>
+
+          {/* State-specific note for CA/FL */}
+          {(selectedState === "California" || selectedState === "Florida") && (
+            <p className="mt-6 text-body-sm text-muted text-center max-w-narrow mx-auto">
+              {selectedState} packages use a Wyoming or Nevada nominee structure
+              with {selectedState} foreign registration included. Only Gold tier
+              is available for {selectedState}.
+            </p>
+          )}
         </div>
       </section>
 
-      {/* Packages by State */}
-      {stateGroups.map((group) => {
-        const groupPackages = packages.filter(group.filter);
-        const isShelf = group.id === "shelf";
+      {/* Shelf Company Card */}
+      <section className="py-section-y px-container-x">
+        <div className="mx-auto max-w-content">
+          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
+            Shelf Companies
+          </h2>
+          <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
+            Pre-aged entities with established history. Immediate availability
+            for business needs requiring entity age.
+          </p>
 
-        return (
-          <section
-            key={group.id}
-            id={group.id}
-            className="py-section-y px-container-x scroll-mt-24"
-          >
-            <div className="mx-auto max-w-content">
-              <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-                {group.title}
-              </h2>
-              <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-                {group.description}
-              </p>
-
-              <div
-                className={`mt-10 grid gap-6 ${
-                  isShelf
-                    ? "grid-cols-1 max-w-lg mx-auto"
-                    : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                }`}
-              >
-                {groupPackages.map((pkg) => (
-                  <PackagePreviewCard
-                    key={pkg.id}
-                    tier={{
-                      name: pkg.name,
-                      badge: pkg.badge,
-                      price: pkg.prices[entityType].formation,
-                      period: "formation",
-                      description: pkg.description,
-                      highlighted: pkg.highlighted,
-                      renewal: `$${pkg.prices[entityType].renewal}/yr renewal`,
-                    }}
-                    entityType={entityType === "llc" ? "LLC" : "Corp"}
-                    cta={{
-                      label: "View Details",
-                      href: `/${pkg.flatSlug}`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })}
+          <div className="mt-10 grid grid-cols-1 max-w-lg mx-auto">
+            <PackagePreviewCard
+              tier={{
+                name: "Shelf Company",
+                badge: "Pre-Aged",
+                price: 2500,
+                period: "formation",
+                description:
+                  "Pre-aged entity with established history and clean record. Wyoming formation with full nominee and offshore services included.",
+                highlighted: false,
+                renewal: "$525/yr renewal",
+              }}
+              entityType={entityType === "llc" ? "LLC" : "Corp"}
+              cta={{
+                label: "View Details",
+                href: "/shelf-companies",
+              }}
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Compare CTA */}
       <section className="px-container-x">
@@ -278,8 +283,8 @@ export default function PackagesPage() {
               Want a Side-by-Side Feature Breakdown?
             </h3>
             <p className="mt-2 text-body text-muted max-w-narrow mx-auto">
-              Compare every feature across all tiers and states in our detailed
-              comparison table.
+              Compare every feature across all tiers in our detailed comparison
+              table.
             </p>
             <Link
               href="/compare-packages"
@@ -337,8 +342,8 @@ export default function PackagesPage() {
             heading="Ready to Get Started?"
             description="Choose the formation package that fits your business. All-inclusive pricing, no hidden fees, 25+ years of experience."
             primaryCTA={{
-              label: "Start with Wyoming Gold",
-              href: "/wyoming-private-incorporation",
+              label: "Start with Gold",
+              href: "/gold",
             }}
             secondaryCTA={{
               label: "Call (775) 313-4155",

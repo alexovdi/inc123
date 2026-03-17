@@ -39,7 +39,7 @@ export const siteNavigation: SiteNavigation = {
           ],
           featuredLink: {
             title: "Wyoming Gold Privacy LLC",
-            href: "/wyoming-private-incorporation",
+            href: "/gold?state=wyoming",
             description:
               "Our most popular privacy package — $1,275 all-inclusive",
           },
@@ -86,7 +86,7 @@ export const siteNavigation: SiteNavigation = {
           ],
           featuredLink: {
             title: "Wyoming Gold Asset Protection LLC",
-            href: "/wyoming-private-incorporation",
+            href: "/gold?state=wyoming",
             description: "Full privacy + charging order protection — $1,275",
           },
         },
@@ -257,12 +257,12 @@ export const footerNavigation = {
             { label: "Compare All Packages", href: "/packages" },
             {
               label: "Wyoming Gold LLC",
-              href: "/wyoming-private-incorporation",
+              href: "/gold?state=wyoming",
             },
-            { label: "Wyoming Silver LLC", href: "/wyoming-incorporation" },
-            { label: "Nevada Gold LLC", href: "/nevada-private-incorporation" },
-            { label: "Nevada Silver LLC", href: "/nevada-incorporation" },
-            { label: "Nevada Bronze LLC", href: "/nevada-basic-incorporation" },
+            { label: "Wyoming Silver LLC", href: "/silver?state=wyoming" },
+            { label: "Nevada Gold LLC", href: "/gold?state=nevada" },
+            { label: "Nevada Silver LLC", href: "/silver?state=nevada" },
+            { label: "Nevada Bronze LLC", href: "/bronze?state=nevada" },
           ],
         },
         {

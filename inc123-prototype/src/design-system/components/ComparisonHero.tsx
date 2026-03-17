@@ -1,30 +1,11 @@
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarTextMap,
+  pillarBorderSoftMap,
+  pillarSoftBgMap,
+} from "@/design-system/utils/pillarMaps";
 import { Icon } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar color maps
-   ------------------------------------------------ */
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
-
-const pillarBorderMap: Record<PillarName, string> = {
-  privacy: "border-pillar-privacy/30",
-  asset: "border-pillar-asset/30",
-  formation: "border-pillar-formation/30",
-  compliance: "border-pillar-compliance/30",
-};
-
-const pillarBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy-soft",
-  asset: "bg-pillar-asset-soft",
-  formation: "bg-pillar-formation-soft",
-  compliance: "bg-pillar-compliance-soft",
-};
 
 /* ------------------------------------------------
    Props
@@ -62,7 +43,7 @@ function ComparisonHero({
         <p
           className={cn(
             "text-body-sm font-semibold uppercase tracking-wider mb-2",
-            pillarTextMap[pillar]
+            pillarTextMap[pillar],
           )}
         >
           Comparison
@@ -82,8 +63,8 @@ function ComparisonHero({
         <div
           className={cn(
             "rounded-card border p-5 max-w-content",
-            pillarBorderMap[pillar],
-            pillarBgMap[pillar]
+            pillarBorderSoftMap[pillar],
+            pillarSoftBgMap[pillar],
           )}
         >
           <div className="flex items-start gap-3">
@@ -96,9 +77,7 @@ function ComparisonHero({
               <p className="font-display font-semibold text-foreground">
                 Bottom Line: {verdict.winner} Wins
               </p>
-              <p className="text-body-sm text-muted mt-1">
-                {verdict.summary}
-              </p>
+              <p className="text-body-sm text-muted mt-1">{verdict.summary}</p>
             </div>
           </div>
         </div>

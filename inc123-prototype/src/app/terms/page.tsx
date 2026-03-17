@@ -243,7 +243,7 @@ export default function TermsPage() {
             description="All-inclusive packages with no hidden fees. 25 years of formation expertise."
             primaryCTA={{
               label: "View Packages & Pricing",
-              href: "/wyoming-private-incorporation",
+              href: "/gold?state=wyoming",
             }}
             secondaryCTA={{
               label: "Contact Us",

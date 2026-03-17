@@ -2,14 +2,25 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import { CheckoutProvider } from "./CheckoutContext";
+import { CheckoutProvider, resolveCheckoutParams } from "./CheckoutContext";
 
 function CheckoutProviderWrapper({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
-  const initialPackage = searchParams.get("package") || "";
+
+  // Resolve both new (?tier=gold&state=wyoming) and legacy (?package=wyoming-gold) formats
+  const resolved = resolveCheckoutParams({
+    tier: searchParams.get("tier"),
+    state: searchParams.get("state"),
+    entity: searchParams.get("entity"),
+    package: searchParams.get("package"),
+  });
 
   return (
-    <CheckoutProvider initialPackage={initialPackage}>
+    <CheckoutProvider
+      initialTier={resolved.selectedTier}
+      initialStateName={resolved.selectedState}
+      initialEntity={resolved.entityType}
+    >
       {children}
     </CheckoutProvider>
   );

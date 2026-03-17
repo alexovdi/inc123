@@ -4,22 +4,11 @@ import {
   getAllSlugs,
   type PageEntry,
 } from "@/lib/slug-registry";
+import { pillarLabelMap } from "@/design-system/utils/pillarMaps";
 import { ClusterPageTemplate } from "./ClusterPageTemplate";
 import { ComparisonPageTemplate } from "./ComparisonPageTemplate";
 import { StatePageTemplate } from "./StatePageTemplate";
-import { PackagePageClient } from "./PackagePageClient";
-import { packages } from "@/data/packages";
 import type { Metadata } from "next";
-
-/* ------------------------------------------------
-   Pillar label map
-   ------------------------------------------------ */
-const pillarLabelMap: Record<string, string> = {
-  privacy: "Business Privacy",
-  asset: "Asset Protection",
-  formation: "Company Formation",
-  compliance: "Compliance",
-};
 
 /* ------------------------------------------------
    Static params — all flat slugs
@@ -61,12 +50,6 @@ export async function generateMetadata({
         description: entry.data.description,
         alternates: { canonical },
       };
-    case "package":
-      return {
-        title: `${entry.data.name} — ${entry.data.state} Formation | Incorporate123`,
-        description: entry.data.description,
-        alternates: { canonical },
-      };
     case "state":
       return {
         title: `${entry.data.name} Business Services — LLC Formation, Privacy & Asset Protection | Incorporate123`,
@@ -102,16 +85,6 @@ function BreadcrumbSchema({ entry, slug }: { entry: PageEntry; slug: string }) {
       });
       items.push({
         name: entry.data.title,
-        url: `${SITE_URL}/${slug}`,
-      });
-      break;
-    case "package":
-      items.push({
-        name: "Packages",
-        url: `${SITE_URL}/packages`,
-      });
-      items.push({
-        name: entry.data.name,
         url: `${SITE_URL}/${slug}`,
       });
       break;
@@ -174,24 +147,6 @@ export default async function CatchAllPage({
           <ComparisonPageTemplate comparison={entry.data} />
         </>
       );
-
-    case "package": {
-      const pkg = entry.data;
-      const siblingPackages = packages.filter(
-        (p) => p.state === pkg.state && p.id !== pkg.id,
-      );
-      const alsoConsider = packages.filter((p) => p.id !== pkg.id).slice(0, 3);
-      return (
-        <>
-          {breadcrumb}
-          <PackagePageClient
-            pkg={pkg}
-            siblingPackages={siblingPackages}
-            alsoConsider={alsoConsider}
-          />
-        </>
-      );
-    }
 
     case "state":
       return (

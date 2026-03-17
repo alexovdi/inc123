@@ -23,7 +23,8 @@ export function MegaMenuDemo() {
     <div className="space-y-8">
       <div className="border border-border rounded-card overflow-hidden bg-surface">
         <p className="px-4 py-2 text-caption text-muted bg-muted/5">
-          MegaMenu renders inside SiteHeader. Below is a standalone preview of the dropdown panel content.
+          MegaMenu renders inside SiteHeader. Below is a standalone preview of
+          the dropdown panel content.
         </p>
         <div className="p-4">
           <MegaMenu items={pillarItems} />
@@ -50,7 +51,8 @@ export function MobileNavDemo() {
     <div className="space-y-8">
       <div className="border border-border rounded-card overflow-hidden bg-surface">
         <p className="px-4 py-2 text-caption text-muted bg-muted/5">
-          MobileNav renders as a slide-out panel. Below is a constrained preview.
+          MobileNav renders as a slide-out panel. Below is a constrained
+          preview.
         </p>
         <div className="max-h-96 overflow-auto">
           <MobileNav
@@ -89,14 +91,17 @@ export function BreadcrumbsDemo() {
           items={[
             { label: "Home", href: "/" },
             { label: "Packages", href: "/packages" },
-            { label: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+            { label: "Gold Package", href: "/gold?state=wyoming" },
           ]}
         />
       </div>
       <SpecPanel
         title="Breadcrumbs Specifications"
         items={[
-          { label: "Link style", value: "text-muted text-body-sm hover:text-foreground" },
+          {
+            label: "Link style",
+            value: "text-muted text-body-sm hover:text-foreground",
+          },
           { label: "Separator", value: "ChevronRight icon, text-muted/50" },
           { label: "Active item", value: "text-foreground font-medium" },
         ]}
@@ -109,7 +114,9 @@ export function StickyMobileCTADemo() {
   return (
     <div className="rounded-card border border-border bg-surface p-6">
       <p className="text-body text-muted mb-4">
-        The StickyMobileCTA is a fixed-position bar that only appears on mobile viewports after scrolling past the threshold. Resize your browser to mobile width and scroll down to see it in action.
+        The StickyMobileCTA is a fixed-position bar that only appears on mobile
+        viewports after scrolling past the threshold. Resize your browser to
+        mobile width and scroll down to see it in action.
       </p>
       <StickyMobileCTA
         primaryCTA={{ children: "Get Started — $1,275", onClick: () => {} }}
@@ -125,12 +132,44 @@ export function CardDemo() {
     <div className="space-y-8">
       <DemoSection title="Variants">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Card variant="default" title="Default Card" description="Basic card with border" />
-          <Card variant="elevated" title="Elevated Card" description="Card with shadow elevation" />
-          <Card variant="interactive" title="Interactive Card" description="Hover to see the lift effect" href="#" />
-          <Card variant="featured" pillar="privacy" title="Featured Privacy" description="Card with pillar accent and featured border" />
-          <Card variant="interactive" pillar="asset" title="Asset Protection" description="Pillar-accented interactive card" href="#" badge="New" />
-          <Card variant="interactive" pillar="formation" title="Company Formation" description="Start your business today" href="#" cta={{ label: "Learn More", href: "#" }} />
+          <Card
+            variant="default"
+            title="Default Card"
+            description="Basic card with border"
+          />
+          <Card
+            variant="elevated"
+            title="Elevated Card"
+            description="Card with shadow elevation"
+          />
+          <Card
+            variant="interactive"
+            title="Interactive Card"
+            description="Hover to see the lift effect"
+            href="#"
+          />
+          <Card
+            variant="featured"
+            pillar="privacy"
+            title="Featured Privacy"
+            description="Card with pillar accent and featured border"
+          />
+          <Card
+            variant="interactive"
+            pillar="asset"
+            title="Asset Protection"
+            description="Pillar-accented interactive card"
+            href="#"
+            badge="New"
+          />
+          <Card
+            variant="interactive"
+            pillar="formation"
+            title="Company Formation"
+            description="Start your business today"
+            href="#"
+            cta={{ label: "Learn More", href: "#" }}
+          />
         </div>
       </DemoSection>
 
@@ -138,9 +177,42 @@ export function CardDemo() {
         <StateGrid
           columns={3}
           states={[
-            { label: "Default", children: <Card variant="interactive" title="Card" description="Default state" href="#" /> },
-            { label: "Hover", note: "shadow-card-hover -translate-y-1", children: <Card variant="interactive" title="Card" description="Hover state" href="#" className="shadow-card-hover -translate-y-1" /> },
-            { label: "Featured", note: "border-secondary/30", children: <Card variant="featured" pillar="privacy" title="Card" description="Featured state" /> },
+            {
+              label: "Default",
+              children: (
+                <Card
+                  variant="interactive"
+                  title="Card"
+                  description="Default state"
+                  href="#"
+                />
+              ),
+            },
+            {
+              label: "Hover",
+              note: "shadow-card-hover -translate-y-1",
+              children: (
+                <Card
+                  variant="interactive"
+                  title="Card"
+                  description="Hover state"
+                  href="#"
+                  className="shadow-card-hover -translate-y-1"
+                />
+              ),
+            },
+            {
+              label: "Featured",
+              note: "border-secondary/30",
+              children: (
+                <Card
+                  variant="featured"
+                  pillar="privacy"
+                  title="Card"
+                  description="Featured state"
+                />
+              ),
+            },
           ]}
         />
       </DemoSection>
@@ -150,8 +222,14 @@ export function CardDemo() {
         items={[
           { label: "Default", value: "border-border bg-surface rounded-card" },
           { label: "Elevated", value: "shadow-card" },
-          { label: "Interactive hover", value: "shadow-card-hover -translate-y-1 transition-all" },
-          { label: "Featured border", value: "border-secondary/30 (or pillar color)" },
+          {
+            label: "Interactive hover",
+            value: "shadow-card-hover -translate-y-1 transition-all",
+          },
+          {
+            label: "Featured border",
+            value: "border-secondary/30 (or pillar color)",
+          },
           { label: "Padding", value: "p-6" },
         ]}
       />
@@ -185,8 +263,16 @@ export function CTABlockDemo() {
       <SpecPanel
         title="CTABlock Specifications"
         items={[
-          { label: "Default bg", value: "bg-secondary/5 border-secondary/20", color: "bg-secondary" },
-          { label: "Dark bg", value: "bg-primary text-surface", color: "bg-primary" },
+          {
+            label: "Default bg",
+            value: "bg-secondary/5 border-secondary/20",
+            color: "bg-secondary",
+          },
+          {
+            label: "Dark bg",
+            value: "bg-primary text-surface",
+            color: "bg-primary",
+          },
           { label: "Layout centered", value: "text-center, max-w-2xl mx-auto" },
           { label: "Layout split", value: "flex justify-between, text-left" },
           { label: "Padding", value: "px-8 py-12 rounded-card" },
@@ -205,7 +291,11 @@ export function TrustSignalsDemo() {
           variant="light"
           items={[
             { icon: "Shield", value: "25+", label: "Years in Business" },
-            { icon: "CircleCheck", value: "100%", label: "Money-Back Guarantee" },
+            {
+              icon: "CircleCheck",
+              value: "100%",
+              label: "Money-Back Guarantee",
+            },
             { icon: "Users", value: "1000+", label: "Companies Formed" },
             { icon: "Lock", value: "Secure", label: "Checkout" },
           ]}
@@ -218,7 +308,11 @@ export function TrustSignalsDemo() {
             variant="dark"
             items={[
               { icon: "Shield", value: "25+", label: "Years in Business" },
-              { icon: "CircleCheck", value: "100%", label: "Money-Back Guarantee" },
+              {
+                icon: "CircleCheck",
+                value: "100%",
+                label: "Money-Back Guarantee",
+              },
               { icon: "Users", value: "1000+", label: "Companies Formed" },
             ]}
           />
@@ -230,9 +324,16 @@ export function TrustSignalsDemo() {
         items={[
           { label: "Light text", value: "text-foreground" },
           { label: "Dark text", value: "text-surface" },
-          { label: "Icon color (light)", value: "text-secondary", color: "bg-secondary" },
+          {
+            label: "Icon color (light)",
+            value: "text-secondary",
+            color: "bg-secondary",
+          },
           { label: "Icon color (dark)", value: "text-surface" },
-          { label: "Value font", value: "font-display font-bold text-heading-sm" },
+          {
+            label: "Value font",
+            value: "font-display font-bold text-heading-sm",
+          },
         ]}
       />
     </div>

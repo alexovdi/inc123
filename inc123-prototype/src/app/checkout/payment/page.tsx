@@ -18,73 +18,9 @@ import {
   MockStripeInput,
 } from "@/design-system/components";
 import { Button, Input, Select, Checkbox } from "@/design-system/primitives";
-import { packages } from "@/data/packages";
-import { useCheckout } from "../CheckoutContext";
-
-/* ------------------------------------------------
-   US States for billing address
-   ------------------------------------------------ */
-const US_STATES = [
-  { value: "AL", label: "Alabama" },
-  { value: "AK", label: "Alaska" },
-  { value: "AZ", label: "Arizona" },
-  { value: "AR", label: "Arkansas" },
-  { value: "CA", label: "California" },
-  { value: "CO", label: "Colorado" },
-  { value: "CT", label: "Connecticut" },
-  { value: "DE", label: "Delaware" },
-  { value: "FL", label: "Florida" },
-  { value: "GA", label: "Georgia" },
-  { value: "HI", label: "Hawaii" },
-  { value: "ID", label: "Idaho" },
-  { value: "IL", label: "Illinois" },
-  { value: "IN", label: "Indiana" },
-  { value: "IA", label: "Iowa" },
-  { value: "KS", label: "Kansas" },
-  { value: "KY", label: "Kentucky" },
-  { value: "LA", label: "Louisiana" },
-  { value: "ME", label: "Maine" },
-  { value: "MD", label: "Maryland" },
-  { value: "MA", label: "Massachusetts" },
-  { value: "MI", label: "Michigan" },
-  { value: "MN", label: "Minnesota" },
-  { value: "MS", label: "Mississippi" },
-  { value: "MO", label: "Missouri" },
-  { value: "MT", label: "Montana" },
-  { value: "NE", label: "Nebraska" },
-  { value: "NV", label: "Nevada" },
-  { value: "NH", label: "New Hampshire" },
-  { value: "NJ", label: "New Jersey" },
-  { value: "NM", label: "New Mexico" },
-  { value: "NY", label: "New York" },
-  { value: "NC", label: "North Carolina" },
-  { value: "ND", label: "North Dakota" },
-  { value: "OH", label: "Ohio" },
-  { value: "OK", label: "Oklahoma" },
-  { value: "OR", label: "Oregon" },
-  { value: "PA", label: "Pennsylvania" },
-  { value: "RI", label: "Rhode Island" },
-  { value: "SC", label: "South Carolina" },
-  { value: "SD", label: "South Dakota" },
-  { value: "TN", label: "Tennessee" },
-  { value: "TX", label: "Texas" },
-  { value: "UT", label: "Utah" },
-  { value: "VT", label: "Vermont" },
-  { value: "VA", label: "Virginia" },
-  { value: "WA", label: "Washington" },
-  { value: "WV", label: "West Virginia" },
-  { value: "WI", label: "Wisconsin" },
-  { value: "WY", label: "Wyoming" },
-];
-
-/* ------------------------------------------------
-   Payment method definitions
-   ------------------------------------------------ */
-const PAYMENT_METHODS = [
-  { id: "credit-card", label: "Credit Card", icon: "CreditCard" },
-  { id: "paypal", label: "PayPal", icon: "Wallet" },
-  { id: "crypto", label: "Crypto", icon: "Bitcoin" },
-];
+import { getTierBySlug } from "@/data/packages";
+import { US_STATES, PAYMENT_METHODS } from "@/data/checkout";
+import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 
 /* ------------------------------------------------
    Helpers
@@ -107,26 +43,28 @@ export default function CheckoutPaymentPage() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // Look up selected package
-  const selectedPackage = useMemo(
-    () => packages.find((pkg) => pkg.id === state.selectedTier),
-    [state.selectedTier]
+  // Look up selected tier definition
+  const selectedTierDef = useMemo(
+    () => getTierBySlug(state.selectedTier),
+    [state.selectedTier],
   );
 
-  // Pricing
-  const basePrice = selectedPackage
-    ? selectedPackage.prices[state.entityType].formation
-    : 0;
+  // Pricing via tier-first helpers
+  const pricing = getCheckoutPrice(state);
+  const basePrice = pricing?.formation ?? 0;
+
+  // Get add-ons from the tier definition
+  const availableAddOns = selectedTierDef?.addOns ?? [];
 
   const addOnTotal = state.selectedAddOns.reduce((sum, id) => {
-    const addOn = selectedPackage?.addOns.find((a) => a.id === id);
+    const addOn = availableAddOns.find((a) => a.id === id);
     return sum + (addOn?.price ?? 0);
   }, 0);
 
   const total = basePrice + addOnTotal;
 
   const selectedAddOnDetails = state.selectedAddOns
-    .map((id) => selectedPackage?.addOns.find((a) => a.id === id))
+    .map((id) => availableAddOns.find((a) => a.id === id))
     .filter(Boolean)
     .map((a) => ({ name: a!.name, price: a!.price }));
 
@@ -155,11 +93,13 @@ export default function CheckoutPaymentPage() {
     router.push("/checkout/details");
   };
 
-  const sidebar = selectedPackage ? (
+  const entityLabel = state.entityType === "llc" ? "LLC" : "Corp";
+
+  const sidebar = selectedTierDef ? (
     <OrderSummary
       package={{
-        name: selectedPackage.name.replace(/LLC$/, state.entityType === "llc" ? "LLC" : "Corp"),
-        tier: selectedPackage.tier,
+        name: `${state.selectedState} ${selectedTierDef.name} ${entityLabel}`,
+        tier: selectedTierDef.tier,
         price: basePrice,
       }}
       entityType={state.entityType === "llc" ? "LLC" : "Corporation"}
@@ -185,9 +125,7 @@ export default function CheckoutPaymentPage() {
       </div>
 
       {/* Billing Address */}
-      <FormSection
-        title="Billing Address"
-      >
+      <FormSection title="Billing Address">
         <Input
           label="Street Address"
           placeholder="123 Main Street"
@@ -218,7 +156,7 @@ export default function CheckoutPaymentPage() {
             onChange={(e) =>
               updateBilling(
                 "zip",
-                e.target.value.replace(/\D/g, "").slice(0, 5)
+                e.target.value.replace(/\D/g, "").slice(0, 5),
               )
             }
             required
@@ -242,9 +180,7 @@ export default function CheckoutPaymentPage() {
           }
         >
           {/* Credit Card form */}
-          {state.paymentMethod === "credit-card" && (
-            <MockStripeInput />
-          )}
+          {state.paymentMethod === "credit-card" && <MockStripeInput />}
 
           {/* PayPal placeholder */}
           {state.paymentMethod === "paypal" && (
@@ -288,13 +224,13 @@ export default function CheckoutPaymentPage() {
                       <Bitcoin className="h-4 w-4" />
                       {crypto}
                     </button>
-                  )
+                  ),
                 )}
               </div>
               <p className="text-body-sm text-muted">
                 After placing your order, you&apos;ll receive a wallet address
-                and payment instructions by email. Formation begins upon
-                payment confirmation.
+                and payment instructions by email. Formation begins upon payment
+                confirmation.
               </p>
             </div>
           )}
@@ -359,9 +295,7 @@ export default function CheckoutPaymentPage() {
           loading={isProcessing}
           onClick={handlePlaceOrder}
         >
-          {isProcessing
-            ? "Processing..."
-            : `Place Order — ${formatUSD(total)}`}
+          {isProcessing ? "Processing..." : `Place Order — ${formatUSD(total)}`}
         </Button>
       </div>
     </CheckoutLayout>

@@ -1,24 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarBorderTopMap,
+  pillarTextMap,
+} from "@/design-system/utils/pillarMaps";
 import { Icon } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar top-border color map
-   ------------------------------------------------ */
-const pillarTopBorderMap: Record<PillarName, string> = {
-  privacy: "border-t-pillar-privacy",
-  asset: "border-t-pillar-asset",
-  formation: "border-t-pillar-formation",
-  compliance: "border-t-pillar-compliance",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 /* ------------------------------------------------
    CVA Variants
@@ -45,8 +32,9 @@ export interface ClusterItem {
   pillar: PillarName;
 }
 
-export interface ClusterGridProps
-  extends VariantProps<typeof clusterGridVariants> {
+export interface ClusterGridProps extends VariantProps<
+  typeof clusterGridVariants
+> {
   /** Cluster page link cards */
   clusters: ClusterItem[];
   /** Number of columns at desktop */
@@ -69,7 +57,7 @@ function ClusterGrid({ clusters, columns = 3, className }: ClusterGridProps) {
             "group block bg-surface rounded-card border border-border border-t-2 p-6",
             "shadow-card hover:shadow-card-hover hover:-translate-y-1",
             "transition-all duration-200",
-            pillarTopBorderMap[cluster.pillar]
+            pillarBorderTopMap[cluster.pillar],
           )}
         >
           <h3 className="text-heading-sm font-display font-semibold text-foreground">
@@ -82,7 +70,7 @@ function ClusterGrid({ clusters, columns = 3, className }: ClusterGridProps) {
             className={cn(
               "inline-flex items-center gap-1.5 mt-4 text-body-sm font-medium transition-colors",
               pillarTextMap[cluster.pillar],
-              "group-hover:gap-2"
+              "group-hover:gap-2",
             )}
           >
             Learn More

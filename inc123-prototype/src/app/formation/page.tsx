@@ -58,10 +58,10 @@ export default function FormationPillarPage() {
         <ContentSidebar
           variant="pillar"
           packageShortcut={{
-            name: "Wyoming Gold LLC",
+            name: "Gold Package",
             price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
             period: "one-time",
-            href: "/wyoming-private-incorporation",
+            href: "/gold?state=wyoming",
             badge: "Most Popular",
           }}
           relatedPages={pillar.clusters.map((c) => ({
@@ -329,7 +329,7 @@ export default function FormationPillarPage() {
                 description: wyGold.description,
                 badge: wyGold.badge,
                 highlighted: true,
-                href: "/wyoming-private-incorporation",
+                href: "/gold?state=wyoming",
               },
               {
                 name: wySilver.name,
@@ -337,7 +337,7 @@ export default function FormationPillarPage() {
                 period: "one-time",
                 description: wySilver.description,
                 highlighted: false,
-                href: "/wyoming-incorporation",
+                href: "/silver?state=wyoming",
               },
             ]}
             consultationCTA={{
@@ -393,7 +393,7 @@ export default function FormationPillarPage() {
               title: "See Gold Package Details",
               description:
                 "Full breakdown of what's included in the Wyoming Gold package.",
-              href: "/wyoming-private-incorporation",
+              href: "/gold?state=wyoming",
               pillar: "formation",
             },
             {

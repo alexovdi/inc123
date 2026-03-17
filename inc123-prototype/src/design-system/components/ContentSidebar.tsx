@@ -1,18 +1,9 @@
 "use client";
 
 import { cn } from "@/design-system/utils/cn";
+import { pillarTextMap } from "@/design-system/utils/pillarMaps";
 import { Button, Icon, Link } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar color maps
-   ------------------------------------------------ */
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 /* ------------------------------------------------
    Props

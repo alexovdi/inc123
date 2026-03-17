@@ -1,16 +1,7 @@
 import { cn } from "@/design-system/utils/cn";
+import { pillarTextMap } from "@/design-system/utils/pillarMaps";
 import { Link } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* -------------------------------------------------- */
-/*  Pillar separator color map                         */
-/* -------------------------------------------------- */
-const pillarSeparatorMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -57,7 +48,7 @@ function Breadcrumbs({ items, pillar, className }: BreadcrumbsProps) {
               key={item.href}
               className={cn(
                 "flex items-center",
-                isCollapsedOnMobile && !isEllipsis && "hidden md:flex"
+                isCollapsedOnMobile && !isEllipsis && "hidden md:flex",
               )}
             >
               {/* Separator before each item (except the first) */}
@@ -67,9 +58,9 @@ function Breadcrumbs({ items, pillar, className }: BreadcrumbsProps) {
                   aria-hidden="true"
                   className={cn(
                     "mx-2 select-none",
-                    pillar ? pillarSeparatorMap[pillar] : "text-muted",
+                    pillar ? pillarTextMap[pillar] : "text-muted",
                     /* On mobile, hide separator for collapsed items */
-                    isCollapsedOnMobile && !isEllipsis && "hidden md:inline"
+                    isCollapsedOnMobile && !isEllipsis && "hidden md:inline",
                   )}
                 >
                   /
@@ -86,7 +77,7 @@ function Breadcrumbs({ items, pillar, className }: BreadcrumbsProps) {
                   <span
                     className={cn(
                       "mx-2 select-none",
-                      pillar ? pillarSeparatorMap[pillar] : "text-muted"
+                      pillar ? pillarTextMap[pillar] : "text-muted",
                     )}
                   >
                     /
@@ -107,7 +98,9 @@ function Breadcrumbs({ items, pillar, className }: BreadcrumbsProps) {
                   href={item.href}
                   variant="breadcrumb"
                   className={cn(
-                    isCollapsedOnMobile && !isEllipsis && "hidden md:inline-flex"
+                    isCollapsedOnMobile &&
+                      !isEllipsis &&
+                      "hidden md:inline-flex",
                   )}
                 >
                   {item.label}

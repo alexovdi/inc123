@@ -1,4 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
+import { pillarTextMap } from "@/design-system/utils/pillarMaps";
 import type { PillarName } from "@/design-system/tokens";
 
 export interface ComparisonLayoutProps {
@@ -10,13 +11,6 @@ export interface ComparisonLayoutProps {
   customHero?: React.ReactNode;
   className?: string;
 }
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 export function ComparisonLayout({
   title,
@@ -36,7 +30,12 @@ export function ComparisonLayout({
         <div className="bg-primary-50">
           <div className="mx-auto max-w-wide px-container-x py-section-y-sm">
             {pillar && (
-              <p className={cn("text-body-sm font-semibold uppercase tracking-wider mb-2", pillarTextMap[pillar])}>
+              <p
+                className={cn(
+                  "text-body-sm font-semibold uppercase tracking-wider mb-2",
+                  pillarTextMap[pillar],
+                )}
+              >
                 Comparison
               </p>
             )}

@@ -1,37 +1,12 @@
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarBorderTopMap,
+  pillarTextMap,
+  pillarSoftBgMap,
+  pillarIconMap,
+} from "@/design-system/utils/pillarMaps";
 import { Icon, Button } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar color maps
-   ------------------------------------------------ */
-const pillarBorderTopMap: Record<PillarName, string> = {
-  privacy: "border-t-pillar-privacy",
-  asset: "border-t-pillar-asset",
-  formation: "border-t-pillar-formation",
-  compliance: "border-t-pillar-compliance",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
-
-const pillarSoftBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy-soft",
-  asset: "bg-pillar-asset-soft",
-  formation: "bg-pillar-formation-soft",
-  compliance: "bg-pillar-compliance-soft",
-};
-
-const pillarIconMap: Record<PillarName, string> = {
-  privacy: "Shield",
-  asset: "Vault",
-  formation: "Building2",
-  compliance: "ClipboardCheck",
-};
 
 /* ------------------------------------------------
    Types
@@ -72,14 +47,14 @@ function IntentRoutingCard({
         "shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
         "transition-all duration-200",
         pillarBorderTopMap[pillar],
-        className
+        className,
       )}
     >
       {/* Icon */}
       <div
         className={cn(
           "inline-flex items-center justify-center w-10 h-10 rounded-card",
-          pillarSoftBgMap[pillar]
+          pillarSoftBgMap[pillar],
         )}
       >
         <Icon
@@ -93,16 +68,14 @@ function IntentRoutingCard({
       <h3
         className={cn(
           "text-heading-sm font-display font-semibold mt-4",
-          pillarTextMap[pillar]
+          pillarTextMap[pillar],
         )}
       >
         {title}
       </h3>
 
       {/* Description */}
-      <p className="text-body-sm text-muted mt-2 flex-1">
-        {description}
-      </p>
+      <p className="text-body-sm text-muted mt-2 flex-1">{description}</p>
 
       {/* Key links */}
       <ul className="mt-4 space-y-1.5">
@@ -113,14 +86,10 @@ function IntentRoutingCard({
               className={cn(
                 "flex items-center gap-2 text-body-sm font-medium transition-colors",
                 pillarTextMap[pillar],
-                "hover:underline"
+                "hover:underline",
               )}
             >
-              <Icon
-                name="ArrowRight"
-                size="xs"
-                className="shrink-0"
-              />
+              <Icon name="ArrowRight" size="xs" className="shrink-0" />
               {link.label}
             </a>
           </li>
@@ -129,13 +98,7 @@ function IntentRoutingCard({
 
       {/* CTA button */}
       <div className="mt-5">
-        <Button
-          variant="primary"
-          pillar={pillar}
-          size="sm"
-          fullWidth
-          asChild
-        >
+        <Button variant="primary" pillar={pillar} size="sm" fullWidth asChild>
           <a href={cta.href}>{cta.label}</a>
         </Button>
       </div>

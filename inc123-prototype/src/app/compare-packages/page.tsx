@@ -1,34 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import { packages } from "@/data/packages";
+import { useState, useMemo } from "react";
+import {
+  tierDefinitions,
+  getTierMinPrice,
+  getTierPrice,
+  ALL_FORMATION_STATES,
+  entityOptions,
+  comparisonFeatures,
+  tierOrder,
+} from "@/data/packages";
 import {
   CTABlock,
   PackagePreviewCard,
   EntityTypeToggle,
 } from "@/design-system/components";
-import type { EntityType } from "@/lib/types";
+import type { EntityType, TierDefinition } from "@/lib/types";
 
-const entityOptions = [
-  { value: "llc", label: "LLC" },
-  { value: "corp", label: "Corporation" },
-];
-
-/** Shared feature names for the comparison table, in display order */
-const comparisonFeatures = [
-  "State Filing Fees Included",
-  "Registered Agent (1 Year)",
-  "Year-Round Nominee Directors",
-  "Year-Round Nominee Officers",
-  "Offshore Record Storage",
-  "Corporate Minutes Maintenance",
-  "Annual Report Filing",
-  "Certificate of Good Standing",
-  "Custom Operating Agreement",
-];
+const orderedTiers = [...tierDefinitions].sort(
+  (a, b) => tierOrder[a.tier] - tierOrder[b.tier],
+);
 
 export default function ComparePackagesPage() {
   const [entityType, setEntityType] = useState<EntityType>("llc");
+  const [selectedState, setSelectedState] = useState("Wyoming");
+
+  /** Get pricing for a tier in current state */
+  function getPrice(tier: TierDefinition): number | null {
+    const statePrice = getTierPrice(tier, selectedState, entityType);
+    return statePrice ? statePrice.formation : null;
+  }
+
+  /** Tiers available in the selected state */
+  const visibleTiers = useMemo(
+    () => orderedTiers.filter((t) => t.availableStates.includes(selectedState)),
+    [selectedState],
+  );
 
   return (
     <div className="space-y-0">
@@ -40,7 +47,7 @@ export default function ComparePackagesPage() {
           </h1>
           <p className="mt-4 text-body-lg text-white/80 max-w-narrow mx-auto">
             Find the right formation package for your business. Compare
-            features, pricing, and privacy levels across all states and tiers.
+            features, pricing, and privacy levels across all tiers.
           </p>
           <div className="mt-8 flex justify-center">
             <EntityTypeToggle
@@ -53,37 +60,87 @@ export default function ComparePackagesPage() {
         </div>
       </section>
 
-      {/* Package Grid */}
+      {/* State Selector + Tier Cards */}
       <section className="py-section-y px-container-x bg-background">
         <div className="mx-auto max-w-content">
           <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            All Formation Packages
+            Formation Packages by Tier
           </h2>
           <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
             Showing {entityType === "llc" ? "LLC" : "Corporation"} formation
-            pricing. Toggle above to switch entity type.
+            pricing. Select a state below to see available tiers.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {packages.map((pkg) => (
-              <PackagePreviewCard
-                key={pkg.id}
-                tier={{
-                  name: pkg.name,
-                  badge: pkg.badge,
-                  price: pkg.prices[entityType].formation,
-                  period: "formation",
-                  description: pkg.description,
-                  highlighted: pkg.highlighted,
-                }}
-                entityType={entityType === "llc" ? "LLC" : "Corp"}
-                cta={{
-                  label: "View Package",
-                  href: `/${pkg.flatSlug}`,
-                }}
-              />
-            ))}
+          {/* State Tabs */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {ALL_FORMATION_STATES.map(({ name, abbreviation }) => {
+              const isSelected = selectedState === name;
+              return (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => setSelectedState(name)}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-body-sm font-medium transition-colors ${
+                    isSelected
+                      ? "bg-secondary text-white shadow-card"
+                      : "bg-surface border border-border text-foreground hover:bg-primary-50"
+                  }`}
+                >
+                  <span className="font-bold">{abbreviation}</span>
+                  <span className="hidden sm:inline">{name}</span>
+                </button>
+              );
+            })}
           </div>
+
+          {/* Tier Cards */}
+          <div
+            className={`mt-10 grid gap-6 ${
+              visibleTiers.length === 1
+                ? "grid-cols-1 max-w-lg mx-auto"
+                : visibleTiers.length === 2
+                  ? "grid-cols-1 sm:grid-cols-2 max-w-[48rem] mx-auto"
+                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
+            {visibleTiers.map((tier) => {
+              const price = getPrice(tier);
+              if (price === null) return null;
+              const stateVariant = tier.stateVariants[selectedState];
+              const renewal = stateVariant
+                ? `$${stateVariant.prices[entityType].renewal}/yr renewal`
+                : undefined;
+
+              return (
+                <PackagePreviewCard
+                  key={tier.slug}
+                  tier={{
+                    name: `${tier.name} ${entityType === "llc" ? "LLC" : "Corporation"}`,
+                    badge: tier.badge,
+                    price,
+                    period: "formation",
+                    description: stateVariant?.description ?? tier.description,
+                    highlighted: tier.highlighted,
+                    renewal,
+                  }}
+                  entityType={entityType === "llc" ? "LLC" : "Corp"}
+                  cta={{
+                    label: "View Package",
+                    href: `/${tier.slug}?state=${selectedState.toLowerCase()}`,
+                  }}
+                />
+              );
+            })}
+          </div>
+
+          {/* State-specific note */}
+          {(selectedState === "California" || selectedState === "Florida") && (
+            <p className="mt-6 text-body-sm text-muted text-center max-w-narrow mx-auto">
+              {selectedState} packages use a Wyoming or Nevada nominee structure
+              with {selectedState} foreign registration included. Only Gold tier
+              is available.
+            </p>
+          )}
         </div>
       </section>
 
@@ -117,19 +174,21 @@ export default function ComparePackagesPage() {
               </thead>
               <tbody>
                 {comparisonFeatures.map((featureName) => {
-                  // Derive status per tier from actual package data
-                  const bronzePkg = packages.find((p) => p.tier === "bronze");
-                  const silverPkg = packages.find((p) => p.tier === "silver");
-                  const goldPkg = packages.find(
-                    (p) =>
-                      p.tier === "gold" &&
-                      p.state === "Wyoming" &&
-                      p.id === "wyoming-gold",
+                  const bronzeTier = tierDefinitions.find(
+                    (t) => t.tier === "bronze",
+                  );
+                  const silverTier = tierDefinitions.find(
+                    (t) => t.tier === "silver",
+                  );
+                  const goldTier = tierDefinitions.find(
+                    (t) => t.tier === "gold",
                   );
 
-                  const getStatus = (pkg: (typeof packages)[0] | undefined) => {
-                    if (!pkg) return "not-included";
-                    const feature = pkg.features.find(
+                  const getStatus = (
+                    tier: TierDefinition | undefined,
+                  ): string => {
+                    if (!tier) return "not-included";
+                    const feature = tier.features.find(
                       (f) => f.name === featureName,
                     );
                     return feature?.status ?? "not-included";
@@ -176,17 +235,58 @@ export default function ComparePackagesPage() {
                         {featureName}
                       </td>
                       <td className="py-3 px-4 text-center">
-                        {renderCell(getStatus(bronzePkg))}
+                        {renderCell(getStatus(bronzeTier))}
                       </td>
                       <td className="py-3 px-4 text-center">
-                        {renderCell(getStatus(silverPkg))}
+                        {renderCell(getStatus(silverTier))}
                       </td>
                       <td className="py-3 px-4 text-center bg-secondary/5">
-                        {renderCell(getStatus(goldPkg))}
+                        {renderCell(getStatus(goldTier))}
                       </td>
                     </tr>
                   );
                 })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pricing row below the table */}
+          <div className="mt-6 -mx-container-x px-container-x overflow-x-auto overscroll-x-contain pb-2">
+            <table className="w-full min-w-[600px] border-collapse text-body-sm">
+              <tbody>
+                <tr className="border-t-2 border-border">
+                  <td className="py-3 px-4 font-semibold text-foreground">
+                    Starting From
+                  </td>
+                  {orderedTiers.map((tier) => {
+                    const minPrice = getTierMinPrice(tier, entityType);
+                    return (
+                      <td
+                        key={tier.slug}
+                        className={`py-3 px-4 text-center font-mono font-bold text-foreground ${tier.tier === "gold" ? "bg-secondary/5" : ""}`}
+                      >
+                        ${minPrice.toLocaleString()}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  <td className="py-2 px-4" />
+                  {orderedTiers.map((tier) => (
+                    <td key={tier.slug} className="py-2 px-4 text-center">
+                      <a
+                        href={`/${tier.slug}`}
+                        className={`inline-flex items-center justify-center rounded-lg px-4 py-2 text-body-sm font-medium transition-colors ${
+                          tier.highlighted
+                            ? "bg-accent text-white hover:bg-accent/90"
+                            : "bg-secondary/10 text-secondary hover:bg-secondary/20"
+                        }`}
+                      >
+                        View {tier.name}
+                      </a>
+                    </td>
+                  ))}
+                </tr>
               </tbody>
             </table>
           </div>

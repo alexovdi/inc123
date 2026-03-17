@@ -15,7 +15,7 @@ import {
 } from "@/design-system/components";
 
 import { pillars } from "@/data/pillars";
-import { packages } from "@/data/packages";
+import { tierDefinitions, getTierMinPrice } from "@/data/packages";
 import {
   homepageData,
   pillarCardOverrides,
@@ -109,18 +109,13 @@ const differentiatorIcons: Record<string, React.ReactNode> = {
 };
 
 /* ------------------------------------------------
-   Package cards to display (4 primary packages)
+   Tier cards to display (Gold, Silver, Bronze)
+   Ordered by tier level — Gold first (highlighted)
    ------------------------------------------------ */
-const homepagePackageIds = [
-  "wyoming-gold",
-  "nevada-gold",
-  "wyoming-silver",
-  "nevada-silver",
-];
-
-const homepagePackages = homepagePackageIds
-  .map((id) => packages.find((p) => p.id === id))
-  .filter(Boolean);
+const tierOrder: Record<string, number> = { gold: 0, silver: 1, bronze: 2 };
+const homepageTiers = [...tierDefinitions].sort(
+  (a, b) => (tierOrder[a.tier] ?? 9) - (tierOrder[b.tier] ?? 9),
+);
 
 /* ------------------------------------------------
    Page
@@ -233,27 +228,27 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          {/* 4 Package Cards with renewal pricing + Gold elevation */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {homepagePackages.map((pkg, index) => {
-              if (!pkg) return null;
-              const isGold = pkg.tier === "gold";
+          {/* 3 Tier Cards (Gold, Silver, Bronze) with "from" pricing */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {homepageTiers.map((tier, index) => {
+              const minPrice = getTierMinPrice(tier, "llc");
+              const isGold = tier.tier === "gold";
               return (
-                <ScrollReveal key={pkg.id} delay={index * 80}>
+                <ScrollReveal key={tier.slug} delay={index * 80}>
                   <PackagePreviewCard
                     tier={{
-                      name: pkg.name,
-                      price: pkg.prices.llc.formation,
-                      period: "one-time",
-                      description: pkg.description,
-                      badge: pkg.badge,
-                      highlighted: pkg.highlighted,
-                      renewal: packageRenewals[pkg.id],
+                      name: `${tier.name} Package`,
+                      price: minPrice,
+                      period: "formation",
+                      description: tier.description,
+                      badge: tier.badge,
+                      highlighted: tier.highlighted,
+                      renewal: packageRenewals[tier.slug],
                     }}
                     entityType="LLC"
                     cta={{
                       label: "View Full Details →",
-                      href: `/${pkg.flatSlug}`,
+                      href: `/${tier.slug}`,
                     }}
                     className={
                       isGold

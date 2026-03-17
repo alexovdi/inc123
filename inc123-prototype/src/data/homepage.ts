@@ -159,8 +159,13 @@ export const homepageTestimonials: CarouselTestimonial[] = [
 
 /* ------------------------------------------------
    Package renewal pricing map
+   Keyed by tier slug for tier-first architecture
    ------------------------------------------------ */
 export const packageRenewals: Record<string, string> = {
+  gold: "$525/yr with nominees",
+  silver: "$325/yr",
+  bronze: "$225/yr",
+  // Legacy keys kept for backward compatibility
   "wyoming-gold": "$525/yr with nominees",
   "nevada-gold": "$525/yr with nominees",
   "wyoming-silver": "$325/yr",

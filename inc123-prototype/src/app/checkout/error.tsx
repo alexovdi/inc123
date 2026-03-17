@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import NextLink from "next/link";
 import { Button, Icon } from "@/design-system/primitives";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/data/contact";
 
 export default function CheckoutError({
   error,
@@ -48,10 +49,10 @@ export default function CheckoutError({
         <p className="mt-8 text-body-sm text-muted">
           If this keeps happening, please call{" "}
           <a
-            href="tel:+17753134155"
+            href={PHONE_HREF}
             className="font-medium text-secondary hover:text-secondary/80 transition-colors"
           >
-            (775) 313-4155
+            {PHONE_DISPLAY}
           </a>{" "}
           and we&apos;ll help you complete your order.
         </p>

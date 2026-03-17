@@ -109,7 +109,7 @@ export const clusterPages: ClusterContent[] = [
     sidebarLinks: [
       { title: "Nominee Services", href: "/nominee-services" },
       { title: "Offshore Privacy", href: "/offshore-privacy" },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
       { title: "WY vs NV Comparison", href: "/wyoming-vs-nevada-llc" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
@@ -172,7 +172,7 @@ export const clusterPages: ClusterContent[] = [
     sidebarLinks: [
       { title: "Anonymous LLC", href: "/anonymous-llc" },
       { title: "Offshore Privacy", href: "/offshore-privacy" },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
       { title: "Gold vs Silver", href: "/gold-vs-silver-wyoming" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
@@ -275,7 +275,7 @@ export const clusterPages: ClusterContent[] = [
     sidebarLinks: [
       { title: "Nominee Services", href: "/nominee-services" },
       { title: "Anonymous LLC", href: "/anonymous-llc" },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
   },
@@ -347,7 +347,7 @@ export const clusterPages: ClusterContent[] = [
       { title: "Anonymous LLC", href: "/anonymous-llc" },
       { title: "Nominee Services", href: "/nominee-services" },
       { title: "LLC vs Corporation", href: "/llc-vs-corporation" },
-      { title: "Wyoming Gold", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
     crossPillarCTA: {
@@ -419,7 +419,7 @@ export const clusterPages: ClusterContent[] = [
         title: "Investment Holding LLC",
         href: "/investment-holding-llc",
       },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
     ],
     relatedPackages: ["wyoming-gold"],
     crossPillarCTA: {
@@ -584,7 +584,7 @@ export const clusterPages: ClusterContent[] = [
         title: "Real Estate Protection",
         href: "/real-estate",
       },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
     ],
     relatedPackages: ["wyoming-gold"],
   },
@@ -855,7 +855,7 @@ export const clusterPages: ClusterContent[] = [
     ],
     sidebarLinks: [
       { title: "Wyoming LLC", href: "/wyoming-llc" },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
     ],
     relatedPackages: ["shelf-companies"],
   },
@@ -1311,7 +1311,7 @@ export const clusterPages: ClusterContent[] = [
       { title: "Anonymous LLC", href: "/anonymous-llc" },
       { title: "Nominee Services", href: "/nominee-services" },
       { title: "WY vs NV Privacy", href: "/wyoming-vs-nevada-privacy" },
-      { title: "Wyoming Gold LLC", href: "/wyoming-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=wyoming" },
     ],
     relatedPackages: ["wyoming-gold"],
     crossPillarCTA: {
@@ -1379,7 +1379,7 @@ export const clusterPages: ClusterContent[] = [
     sidebarLinks: [
       { title: "Anonymous LLC", href: "/anonymous-llc" },
       { title: "WY vs NV Privacy", href: "/wyoming-vs-nevada-privacy" },
-      { title: "Nevada Gold LLC", href: "/nevada-private-incorporation" },
+      { title: "Gold Package", href: "/gold?state=nevada" },
     ],
     relatedPackages: ["nevada-gold"],
   },

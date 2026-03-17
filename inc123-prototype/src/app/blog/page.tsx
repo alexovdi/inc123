@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { blogPosts } from "@/data/blog";
+import { pillarTagMap } from "@/design-system/utils/pillarMaps";
 import { CTABlock } from "@/design-system/components";
 import { Link } from "@/design-system/primitives";
 
@@ -9,13 +10,6 @@ export const metadata: Metadata = {
   description:
     "Expert articles on anonymous LLCs, nominee services, asset protection, Wyoming and Nevada business formation, and ongoing compliance. Practical advice from 25 years of experience.",
   alternates: { canonical: "https://incorporate123.co/blog" },
-};
-
-const pillarBgMap: Record<string, string> = {
-  privacy: "bg-pillar-privacy/10 text-pillar-privacy",
-  asset: "bg-pillar-asset/10 text-pillar-asset",
-  formation: "bg-pillar-formation/10 text-pillar-formation",
-  compliance: "bg-pillar-compliance/10 text-pillar-compliance",
 };
 
 function formatDate(iso: string): string {
@@ -54,7 +48,7 @@ export default function BlogPage() {
               >
                 {/* Category badge */}
                 <span
-                  className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold ${pillarBgMap[post.category]}`}
+                  className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold ${pillarTagMap[post.category]}`}
                 >
                   {post.categoryLabel}
                 </span>
@@ -104,7 +98,7 @@ export default function BlogPage() {
         description="Our most popular package includes anonymous LLC formation, year-round nominee services, and charging order protection — all for one transparent price."
         primaryCTA={{
           label: "View Wyoming Gold LLC — $1,275",
-          href: "/wyoming-private-incorporation",
+          href: "/gold?state=wyoming",
         }}
         secondaryCTA={{
           label: "Compare All Packages",

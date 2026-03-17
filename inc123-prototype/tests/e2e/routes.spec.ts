@@ -53,15 +53,10 @@ const ALL_ROUTES = [
   "/nevada-registered-agent",
   "/domestication",
 
-  // Package pages (flat slugs)
-  "/wyoming-private-incorporation",
-  "/wyoming-incorporation",
-  "/nevada-private-incorporation",
-  "/nevada-incorporation",
-  "/nevada-basic-incorporation",
-  "/california-private-incorporation",
-  "/florida-private-incorporation",
-  "/shelf-company-packages",
+  // Tier-first package pages
+  "/gold",
+  "/silver",
+  "/bronze",
 
   // Comparison pages (flat)
   "/wyoming-vs-nevada-llc",

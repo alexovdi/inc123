@@ -1,20 +1,17 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, type KeyboardEvent } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  type KeyboardEvent,
+} from "react";
 import { cn } from "@/design-system/utils/cn";
+import { pillarTextMap } from "@/design-system/utils/pillarMaps";
 import { Button, Icon, Link } from "@/design-system/primitives";
 import type { NavPillar } from "@/lib/types";
 import type { PillarName } from "@/design-system/tokens";
-
-/* -------------------------------------------------- */
-/*  Pillar color maps                                  */
-/* -------------------------------------------------- */
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -31,7 +28,13 @@ export interface MobileNavProps {
 /* -------------------------------------------------- */
 /*  Component                                          */
 /* -------------------------------------------------- */
-function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className }: MobileNavProps) {
+function MobileNav({
+  items,
+  isOpen,
+  onClose,
+  phone = "1-800-555-0123",
+  className,
+}: MobileNavProps) {
   const [expandedPillar, setExpandedPillar] = useState<PillarName | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -76,7 +79,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
 
     const panel = panelRef.current;
     const focusable = panel.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
     );
     if (focusable.length > 0) focusable[0].focus();
   }, [isOpen]);
@@ -89,7 +92,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
         togglePillar(pillar);
       }
     },
-    [togglePillar]
+    [togglePillar],
   );
 
   if (!isOpen) return null;
@@ -113,7 +116,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
           "fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-surface shadow-dropdown lg:hidden",
           "flex flex-col overflow-y-auto",
           "animate-slide-in-right",
-          className
+          className,
         )}
       >
         {/* Header: close button */}
@@ -126,7 +129,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
             className={cn(
               "inline-flex items-center justify-center w-11 h-11 rounded-button",
               "text-muted hover:text-foreground hover:bg-muted/10 transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary",
             )}
             aria-label="Close menu"
           >
@@ -150,7 +153,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
             href={`tel:${phone.replace(/[^+\d]/g, "")}`}
             className={cn(
               "flex items-center gap-3 px-4 py-3 min-h-[44px] border-b border-border",
-              "text-secondary font-medium text-body-sm hover:bg-muted/5 transition-colors"
+              "text-secondary font-medium text-body-sm hover:bg-muted/5 transition-colors",
             )}
           >
             <Icon name="Phone" size="sm" />
@@ -164,7 +167,10 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
             const isExpanded = expandedPillar === item.pillar;
 
             return (
-              <div key={item.pillar} className="border-b border-border last:border-b-0">
+              <div
+                key={item.pillar}
+                className="border-b border-border last:border-b-0"
+              >
                 {/* Accordion trigger */}
                 <button
                   onClick={() => togglePillar(item.pillar)}
@@ -172,7 +178,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
                   className={cn(
                     "flex items-center justify-between w-full px-4 py-3 min-h-[44px]",
                     "text-body font-medium text-foreground hover:bg-muted/5 transition-colors",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary"
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary",
                   )}
                   aria-expanded={isExpanded}
                 >
@@ -184,7 +190,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
                     size="sm"
                     className={cn(
                       "text-muted transition-transform duration-200",
-                      isExpanded && "rotate-180"
+                      isExpanded && "rotate-180",
                     )}
                   />
                 </button>
@@ -198,7 +204,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
                       variant="subtle"
                       className={cn(
                         "block py-2 pl-3 min-h-[44px] flex items-center text-body-sm font-medium",
-                        pillarTextMap[item.pillar]
+                        pillarTextMap[item.pillar],
                       )}
                     >
                       {item.label} Overview
@@ -213,7 +219,7 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
                             variant="subtle"
                             className={cn(
                               "block py-2 pl-3 min-h-[44px] flex items-center",
-                              "text-body-sm text-foreground hover:text-secondary"
+                              "text-body-sm text-foreground hover:text-secondary",
                             )}
                           >
                             {cluster.title}
@@ -231,11 +237,15 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
                           "block mt-2 p-3 rounded-card text-body-sm",
                           "bg-muted/5 hover:bg-muted/10 transition-colors",
                           pillarTextMap[item.pillar],
-                          "font-medium"
+                          "font-medium",
                         )}
                       >
                         {item.featuredLink.title}
-                        <Icon name="ArrowRight" size="xs" className="inline ml-1" />
+                        <Icon
+                          name="ArrowRight"
+                          size="xs"
+                          className="inline ml-1"
+                        />
                       </Link>
                     )}
                   </div>
@@ -245,7 +255,6 @@ function MobileNav({ items, isOpen, onClose, phone = "1-800-555-0123", className
           })}
         </nav>
       </div>
-
     </>
   );
 }

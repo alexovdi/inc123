@@ -1,30 +1,11 @@
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarBorderTopMap,
+  pillarTextMap,
+  pillarSoftBgMap,
+} from "@/design-system/utils/pillarMaps";
 import { Icon, Link } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar color maps
-   ------------------------------------------------ */
-const pillarTopBorderMap: Record<PillarName, string> = {
-  privacy: "border-t-pillar-privacy",
-  asset: "border-t-pillar-asset",
-  formation: "border-t-pillar-formation",
-  compliance: "border-t-pillar-compliance",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
-
-const pillarSoftBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy-soft",
-  asset: "bg-pillar-asset-soft",
-  formation: "bg-pillar-formation-soft",
-  compliance: "bg-pillar-compliance-soft",
-};
 
 /* ------------------------------------------------
    Props
@@ -68,7 +49,7 @@ function PillarCard({
         "group block bg-surface rounded-card border border-border border-t-4 p-6",
         "shadow-card hover:shadow-card-hover hover:-translate-y-1.5",
         "transition-all duration-300 ease-out",
-        pillarTopBorderMap[pillar],
+        pillarBorderTopMap[pillar],
         className,
       )}
     >

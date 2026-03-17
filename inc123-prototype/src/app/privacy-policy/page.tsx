@@ -267,7 +267,7 @@ export default function PrivacyPolicyPage() {
             description="25 years of privacy expertise. All-inclusive packages. Real people who answer the phone."
             primaryCTA={{
               label: "View Packages & Pricing",
-              href: "/wyoming-private-incorporation",
+              href: "/gold?state=wyoming",
             }}
             secondaryCTA={{
               label: "Contact Us",

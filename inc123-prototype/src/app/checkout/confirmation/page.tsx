@@ -12,9 +12,9 @@ import {
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
 import { ConfirmationBlock } from "@/design-system/components";
 import { Button, Divider } from "@/design-system/primitives";
-import { packages } from "@/data/packages";
+import { getTierBySlug } from "@/data/packages";
 import { checkoutTimelineSteps } from "@/data/checkout";
-import { useCheckout } from "../CheckoutContext";
+import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 
 /* ------------------------------------------------
    Helpers
@@ -46,30 +46,29 @@ export default function CheckoutConfirmationPage() {
     setOrderNumber(generateOrderNumber());
   }, []);
 
-  // Look up selected package
-  const selectedPackage = useMemo(
-    () => packages.find((pkg) => pkg.id === state.selectedTier),
-    [state.selectedTier]
+  // Look up selected tier definition
+  const selectedTierDef = useMemo(
+    () => getTierBySlug(state.selectedTier),
+    [state.selectedTier],
   );
 
-  // Pricing
-  const basePrice = selectedPackage
-    ? selectedPackage.prices[state.entityType].formation
-    : 0;
+  // Pricing via tier-first helpers
+  const pricing = getCheckoutPrice(state);
+  const basePrice = pricing?.formation ?? 0;
+  const renewal = pricing?.renewal ?? 0;
 
-  const renewal = selectedPackage
-    ? selectedPackage.prices[state.entityType].renewal
-    : 0;
+  // Get add-ons from the tier definition
+  const availableAddOns = selectedTierDef?.addOns ?? [];
 
   const addOnTotal = state.selectedAddOns.reduce((sum, id) => {
-    const addOn = selectedPackage?.addOns.find((a) => a.id === id);
+    const addOn = availableAddOns.find((a) => a.id === id);
     return sum + (addOn?.price ?? 0);
   }, 0);
 
   const total = basePrice + addOnTotal;
 
   const selectedAddOnDetails = state.selectedAddOns
-    .map((id) => selectedPackage?.addOns.find((a) => a.id === id))
+    .map((id) => availableAddOns.find((a) => a.id === id))
     .filter(Boolean)
     .map((a) => ({ name: a!.name, price: a!.price }));
 
@@ -154,12 +153,12 @@ export default function CheckoutConfirmationPage() {
         </div>
 
         {/* Confirmation Block with order summary and next steps */}
-        {selectedPackage && (
+        {selectedTierDef && (
           <ConfirmationBlock
             orderNumber={orderNumber}
             package={{
-              name: selectedPackage.name.replace(/LLC$/, state.entityType === "llc" ? "LLC" : "Corp"),
-              tier: selectedPackage.tier,
+              name: `${state.selectedState} ${selectedTierDef.name} ${entityLabel}`,
+              tier: selectedTierDef.tier,
               price: basePrice,
             }}
             entityType={entityLabel}
@@ -177,10 +176,8 @@ export default function CheckoutConfirmationPage() {
             <span className="font-semibold text-foreground">
               {formatUSD(renewal)}/year
             </span>{" "}
-            {selectedPackage?.tier === "gold"
-              ? "with nominees"
-              : ""}{" "}
-            — starting Year 2
+            {selectedTierDef?.tier === "gold" ? "with nominees" : ""} — starting
+            Year 2
           </p>
         </div>
 
@@ -240,11 +237,7 @@ export default function CheckoutConfirmationPage() {
 
         {/* Return home */}
         <div className="mt-8 text-center">
-          <Button
-            variant="ghost"
-            size="md"
-            onClick={() => router.push("/")}
-          >
+          <Button variant="ghost" size="md" onClick={() => router.push("/")}>
             Return to Homepage
           </Button>
         </div>

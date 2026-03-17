@@ -2,18 +2,9 @@ import { type ReactNode } from "react";
 import NextLink from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
+import { pillarBorderTopMap } from "@/design-system/utils/pillarMaps";
 import { Badge, Icon } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* -------------------------------------------------- */
-/*  Pillar top-border map                              */
-/* -------------------------------------------------- */
-const pillarTopBorderMap: Record<PillarName, string> = {
-  privacy: "border-t-pillar-privacy",
-  asset: "border-t-pillar-asset",
-  formation: "border-t-pillar-formation",
-  compliance: "border-t-pillar-compliance",
-};
 
 /* -------------------------------------------------- */
 /*  CVA variants                                       */
@@ -39,7 +30,7 @@ const cardVariants = cva(
       variant: "default",
       layout: "vertical",
     },
-  }
+  },
 );
 
 /* -------------------------------------------------- */
@@ -92,7 +83,7 @@ function Card({
   /* -- Featured border color override for pillar --- */
   const featuredBorderClass =
     variant === "featured" && pillar
-      ? pillarTopBorderMap[pillar].replace("border-t-", "border-")
+      ? pillarBorderTopMap[pillar].replace("border-t-", "border-")
       : undefined;
 
   /* -- Inner content ------------------------------- */
@@ -105,7 +96,7 @@ function Card({
             "relative overflow-hidden bg-muted/10",
             isHorizontal
               ? "md:w-48 md:shrink-0 aspect-[4/3] md:aspect-auto"
-              : "aspect-[16/9]"
+              : "aspect-[16/9]",
           )}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -137,7 +128,7 @@ function Card({
         <h3
           className={cn(
             "font-display font-semibold text-foreground",
-            isCompact ? "text-body" : "text-heading-sm"
+            isCompact ? "text-body" : "text-heading-sm",
           )}
         >
           {title}
@@ -145,7 +136,12 @@ function Card({
 
         {/* Description */}
         {description && (
-          <p className={cn("text-muted", isCompact ? "text-body-sm" : "text-body")}>
+          <p
+            className={cn(
+              "text-muted",
+              isCompact ? "text-body-sm" : "text-body",
+            )}
+          >
             {description}
           </p>
         )}
@@ -161,7 +157,7 @@ function Card({
               className={cn(
                 "inline-flex items-center gap-1 text-body-sm font-medium text-secondary",
                 "hover:text-secondary/80 transition-colors",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded-sm"
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded-sm",
               )}
             >
               {cta.label}
@@ -175,11 +171,14 @@ function Card({
 
   /* -- Shared classes ------------------------------ */
   const classes = cn(
-    cardVariants({ variant: featuredBorderClass ? "default" : variant, layout }),
+    cardVariants({
+      variant: featuredBorderClass ? "default" : variant,
+      layout,
+    }),
     pillar && "border-t-2",
-    pillar && pillarTopBorderMap[pillar],
+    pillar && pillarBorderTopMap[pillar],
     featuredBorderClass,
-    className
+    className,
   );
 
   /* -- Wrap in link if href is provided ------------ */
@@ -190,7 +189,10 @@ function Card({
       return (
         <a
           href={href}
-          className={cn(classes, "no-underline block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2")}
+          className={cn(
+            classes,
+            "no-underline block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
+          )}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -202,7 +204,10 @@ function Card({
     return (
       <NextLink
         href={href}
-        className={cn(classes, "no-underline block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2")}
+        className={cn(
+          classes,
+          "no-underline block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
+        )}
       >
         {content}
       </NextLink>

@@ -128,9 +128,7 @@ export default function OffshorePage() {
                     <Link href="/contact">Schedule Offshore Consultation</Link>
                   </Button>
                   <Button variant="secondary" size="md" asChild>
-                    <Link href="/wyoming-private-incorporation">
-                      View Wyoming Gold Package
-                    </Link>
+                    <Link href="/gold?state=wyoming">View Gold Package</Link>
                   </Button>
                 </div>
               </div>
@@ -179,10 +177,10 @@ export default function OffshorePage() {
           <WhereToGoNext
             suggestions={[
               {
-                title: "Wyoming Gold Package",
+                title: "Gold Package",
                 description:
                   "The domestic foundation for any offshore structure — year-round nominees, offshore records, and full privacy.",
-                href: "/wyoming-private-incorporation",
+                href: "/gold?state=wyoming",
                 pillar: "privacy",
               },
               {

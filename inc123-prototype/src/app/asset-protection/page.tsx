@@ -58,10 +58,10 @@ export default function AssetProtectionPillarPage() {
         <ContentSidebar
           variant="pillar"
           packageShortcut={{
-            name: "Wyoming Gold LLC",
+            name: "Gold Package",
             price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
             period: "one-time",
-            href: "/wyoming-private-incorporation",
+            href: "/gold?state=wyoming",
             badge: "Most Popular",
           }}
           relatedPages={pillar.clusters.map((c) => ({
@@ -318,7 +318,7 @@ export default function AssetProtectionPillarPage() {
                 description: wyGold.description,
                 badge: wyGold.badge,
                 highlighted: true,
-                href: "/wyoming-private-incorporation",
+                href: "/gold?state=wyoming",
               },
               {
                 name: nvGold.name,
@@ -327,7 +327,7 @@ export default function AssetProtectionPillarPage() {
                 description: nvGold.description,
                 badge: nvGold.badge,
                 highlighted: true,
-                href: "/nevada-private-incorporation",
+                href: "/gold?state=nevada",
               },
             ]}
             consultationCTA={{
@@ -383,7 +383,7 @@ export default function AssetProtectionPillarPage() {
               title: "See Gold Package Details",
               description:
                 "Full breakdown of what's included in Wyoming and Nevada Gold packages.",
-              href: "/wyoming-private-incorporation",
+              href: "/gold?state=wyoming",
               pillar: "asset",
             },
             {

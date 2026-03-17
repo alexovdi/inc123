@@ -91,8 +91,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ).map((route) => ({ ...route, lastModified: now }));
 
   /* ------------------------------------------------
+     Tier-first package pages (/gold, /silver, /bronze)
+     ------------------------------------------------ */
+  const tierRoutes: MetadataRoute.Sitemap = (
+    [
+      { url: `${SITE_URL}/gold`, priority: 0.9 },
+      { url: `${SITE_URL}/silver`, priority: 0.9 },
+      { url: `${SITE_URL}/bronze`, priority: 0.9 },
+    ] as const
+  ).map((route) => ({
+    ...route,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+  }));
+
+  /* ------------------------------------------------
      Dynamic routes from slug registry
-     (clusters, comparisons, packages, states)
+     (clusters, comparisons, states — packages removed)
      ------------------------------------------------ */
   const dynamicRoutes: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
     url: `${SITE_URL}/${slug}`,
@@ -113,5 +128,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticRoutes, ...dynamicRoutes, ...offshoreRoutes];
+  return [...staticRoutes, ...tierRoutes, ...dynamicRoutes, ...offshoreRoutes];
 }

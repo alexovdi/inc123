@@ -1,16 +1,12 @@
 import { clusterPages } from "@/data/clusters";
 import { comparisonPages } from "@/data/comparisons";
-import { packages } from "@/data/packages";
 import { stateHubs } from "@/data/states";
-import type {
-  ClusterContent,
-  ComparisonPage,
-  PackageTier,
-  StateHub,
-} from "@/lib/types";
+import type { ClusterContent, ComparisonPage, StateHub } from "@/lib/types";
 
 /* ------------------------------------------------
-   Package slug mapping (old id → new flat slug)
+   Legacy package slug mapping (kept for reference)
+   Packages now live at /gold, /silver, /bronze
+   Old URLs redirect via next.config.ts
    ------------------------------------------------ */
 export const PACKAGE_SLUG_MAP: Record<string, string> = {
   "wyoming-gold": "wyoming-private-incorporation",
@@ -34,7 +30,6 @@ const REVERSE_PACKAGE_MAP: Record<string, string> = Object.fromEntries(
 export type PageEntry =
   | { type: "cluster"; data: ClusterContent }
   | { type: "comparison"; data: ComparisonPage }
-  | { type: "package"; data: PackageTier }
   | { type: "state"; data: StateHub };
 
 /* ------------------------------------------------
@@ -53,13 +48,8 @@ function buildRegistry(): Map<string, PageEntry> {
     map.set(comparison.slug, { type: "comparison", data: comparison });
   }
 
-  // Packages — use flatSlug
-  for (const pkg of packages) {
-    const flatSlug = pkg.flatSlug ?? PACKAGE_SLUG_MAP[pkg.id];
-    if (flatSlug) {
-      map.set(flatSlug, { type: "package", data: pkg });
-    }
-  }
+  // Packages no longer in catch-all registry — they live at /gold, /silver, /bronze
+  // Old package slugs redirect via next.config.ts
 
   // States — use slug directly
   for (const state of stateHubs) {
@@ -100,4 +90,44 @@ export function getPackageFlatSlug(packageId: string): string {
 /** Resolve a flat slug back to a package id */
 export function getPackageIdFromSlug(flatSlug: string): string | undefined {
   return REVERSE_PACKAGE_MAP[flatSlug];
+}
+
+/* ------------------------------------------------
+   Legacy package ID → Tier URL resolver
+   Used by cluster/comparison templates that still
+   reference package IDs in their data files
+   ------------------------------------------------ */
+const LEGACY_PACKAGE_TO_TIER: Record<string, string> = {
+  "wyoming-gold": "/gold?state=wyoming",
+  "wyoming-silver": "/silver?state=wyoming",
+  "nevada-gold": "/gold?state=nevada",
+  "nevada-silver": "/silver?state=nevada",
+  "nevada-bronze": "/bronze?state=nevada",
+  "california-private": "/gold?state=california",
+  "florida-private": "/gold?state=florida",
+  "shelf-companies": "/shelf-companies",
+};
+
+/** Resolve a legacy package ID to its new tier URL */
+export function resolveLegacyPackageToTierUrl(packageId: string): string {
+  return LEGACY_PACKAGE_TO_TIER[packageId] ?? `/gold`;
+}
+
+/** Get the tier slug from a legacy package ID */
+export function getLegacyPackageTierSlug(
+  packageId: string,
+): string | undefined {
+  const url = LEGACY_PACKAGE_TO_TIER[packageId];
+  if (!url) return undefined;
+  return url.split("?")[0].replace("/", "");
+}
+
+/** Get the state from a legacy package ID */
+export function getLegacyPackageState(packageId: string): string | undefined {
+  const url = LEGACY_PACKAGE_TO_TIER[packageId];
+  if (!url) return undefined;
+  const match = url.match(/state=(\w+)/);
+  return match
+    ? match[1].charAt(0).toUpperCase() + match[1].slice(1)
+    : undefined;
 }

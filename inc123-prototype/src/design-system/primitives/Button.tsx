@@ -2,6 +2,8 @@ import { type ReactNode, type ButtonHTMLAttributes, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/design-system/utils/cn";
+import { pillarButtonMap } from "@/design-system/utils/pillarMaps";
+import type { PillarName } from "@/design-system/tokens";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 rounded-button font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50",
@@ -35,25 +37,12 @@ const buttonVariants = cva(
   },
 );
 
-const pillarColorMap = {
-  privacy:
-    "bg-pillar-privacy text-white hover:bg-pillar-privacy/90 active:bg-pillar-privacy/80",
-  asset:
-    "bg-pillar-asset text-white hover:bg-pillar-asset/90 active:bg-pillar-asset/80",
-  formation:
-    "bg-pillar-formation text-white hover:bg-pillar-formation/90 active:bg-pillar-formation/80",
-  compliance:
-    "bg-pillar-compliance text-white hover:bg-pillar-compliance/90 active:bg-pillar-compliance/80",
-} as const;
-
-type Pillar = keyof typeof pillarColorMap;
-
 export interface ButtonProps
   extends
     Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">,
     VariantProps<typeof buttonVariants> {
   /** Optional pillar color override — replaces variant background */
-  pillar?: Pillar;
+  pillar?: PillarName;
   /** Show a loading spinner and hide children text */
   loading?: boolean;
   /** Icon element rendered beside the label */
@@ -113,7 +102,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const classes = cn(
       buttonVariants({ variant, size, fullWidth }),
-      pillar && pillarColorMap[pillar],
+      pillar && pillarButtonMap[pillar],
       className,
     );
 

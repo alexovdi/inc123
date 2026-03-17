@@ -2,16 +2,23 @@
 
 import { createContext, useContext, useReducer, type ReactNode } from "react";
 import type { CheckoutState, EntityType } from "@/lib/types";
+import { getTierBySlug, getTierPrice } from "@/data/packages";
+import {
+  getLegacyPackageTierSlug,
+  getLegacyPackageState,
+} from "@/lib/slug-registry";
 
-/** Default to Wyoming Gold (most popular) so direct-nav to payment/confirmation
- *  shows real pricing instead of $0. */
-const DEFAULT_PACKAGE = "wyoming-gold";
+/* ------------------------------------------------
+   Defaults — Gold tier + Wyoming (most popular)
+   ------------------------------------------------ */
+const DEFAULT_TIER = "gold";
+const DEFAULT_STATE = "Wyoming";
 
 const initialState: CheckoutState = {
   step: 1,
-  selectedState: "Wyoming",
+  selectedState: DEFAULT_STATE,
   entityType: "llc",
-  selectedTier: DEFAULT_PACKAGE,
+  selectedTier: DEFAULT_TIER,
   selectedAddOns: [],
   companyDetails: {
     name1: "",
@@ -90,6 +97,73 @@ function checkoutReducer(
   }
 }
 
+/** Capitalize first letter (e.g. "wyoming" → "Wyoming") */
+function capitalize(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
+/** Resolve query params into initial checkout state overrides.
+ *
+ *  Accepts two formats:
+ *  - New: `?tier=gold&state=wyoming&entity=llc`
+ *  - Legacy: `?package=wyoming-gold`
+ *
+ *  Returns overrides for selectedTier, selectedState, entityType. */
+export function resolveCheckoutParams(params: {
+  tier?: string | null;
+  state?: string | null;
+  entity?: string | null;
+  package?: string | null;
+}): Pick<CheckoutState, "selectedTier" | "selectedState" | "entityType"> {
+  let tier = DEFAULT_TIER;
+  let state = DEFAULT_STATE;
+  let entityType: EntityType = "llc";
+
+  if (params.tier) {
+    // New tier-first format: ?tier=gold&state=wyoming
+    const tierDef = getTierBySlug(params.tier);
+    if (tierDef) {
+      tier = tierDef.slug;
+      // Resolve state — use provided state or first available
+      if (params.state) {
+        const capitalized = capitalize(params.state);
+        if (tierDef.availableStates.includes(capitalized)) {
+          state = capitalized;
+        } else {
+          state = tierDef.availableStates[0];
+        }
+      } else {
+        state = tierDef.availableStates[0];
+      }
+    }
+  } else if (params.package) {
+    // Legacy format: ?package=wyoming-gold
+    const legacyTier = getLegacyPackageTierSlug(params.package);
+    const legacyState = getLegacyPackageState(params.package);
+    if (legacyTier) tier = legacyTier;
+    if (legacyState) state = legacyState;
+  }
+
+  // Entity type override
+  if (params.entity === "corp" || params.entity === "llc") {
+    entityType = params.entity;
+  }
+
+  return { selectedTier: tier, selectedState: state, entityType };
+}
+
+/** Get the resolved price for the current checkout tier + state + entity.
+ *  Returns { formation, renewal } or null if the combination is invalid. */
+export function getCheckoutPrice(checkoutState: CheckoutState) {
+  const tierDef = getTierBySlug(checkoutState.selectedTier);
+  if (!tierDef) return null;
+  return getTierPrice(
+    tierDef,
+    checkoutState.selectedState,
+    checkoutState.entityType,
+  );
+}
+
 interface CheckoutContextValue {
   state: CheckoutState;
   dispatch: React.Dispatch<CheckoutAction>;
@@ -99,14 +173,23 @@ const CheckoutContext = createContext<CheckoutContextValue | null>(null);
 
 export function CheckoutProvider({
   children,
-  initialPackage,
+  initialTier,
+  initialStateName,
+  initialEntity,
 }: {
   children: ReactNode;
-  initialPackage?: string;
+  /** Tier slug: "gold", "silver", or "bronze" */
+  initialTier?: string;
+  /** State name: "Wyoming", "Nevada", etc. */
+  initialStateName?: string;
+  /** Entity type: "llc" or "corp" */
+  initialEntity?: EntityType;
 }) {
   const [state, dispatch] = useReducer(checkoutReducer, {
     ...initialState,
-    selectedTier: initialPackage || DEFAULT_PACKAGE,
+    selectedTier: initialTier || DEFAULT_TIER,
+    selectedState: initialStateName || DEFAULT_STATE,
+    entityType: initialEntity || "llc",
   });
 
   return (

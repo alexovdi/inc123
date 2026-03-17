@@ -172,10 +172,10 @@ export default async function OffshoreJurisdictionPage({
                 pillar: "privacy" as const,
               })),
               {
-                title: "Wyoming Gold Package",
+                title: "Gold Package",
                 description:
                   "The domestic foundation for any offshore structure — year-round nominees, offshore records, and full privacy.",
-                href: "/wyoming-private-incorporation",
+                href: "/gold?state=wyoming",
                 pillar: "privacy" as const,
               },
             ]}

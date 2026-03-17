@@ -1,24 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarSoftBgMap,
+  pillarTextMap,
+} from "@/design-system/utils/pillarMaps";
 import { Button } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* -------------------------------------------------- */
-/*  Pillar color map                                   */
-/* -------------------------------------------------- */
-const pillarBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy-soft text-foreground",
-  asset: "bg-pillar-asset-soft text-foreground",
-  formation: "bg-pillar-formation-soft text-foreground",
-  compliance: "bg-pillar-compliance-soft text-foreground",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 /* -------------------------------------------------- */
 /*  CVA variants                                       */
@@ -88,7 +75,8 @@ function CTABlock({
     <section
       className={cn(
         ctaBlockVariants({ variant: isPillar ? "default" : variant, layout }),
-        isPillar && pillar && pillarBgMap[pillar],
+        isPillar && pillar && pillarSoftBgMap[pillar],
+        isPillar && "text-foreground",
         className,
       )}
     >

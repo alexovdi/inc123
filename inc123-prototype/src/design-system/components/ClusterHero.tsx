@@ -1,32 +1,12 @@
 import NextLink from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarBorderTopMap,
+  pillarTextMap,
+} from "@/design-system/utils/pillarMaps";
 import { Badge } from "@/design-system/primitives";
 import type { PillarName } from "@/design-system/tokens";
-
-/* ------------------------------------------------
-   Pillar color maps
-   ------------------------------------------------ */
-const pillarBorderTopMap: Record<PillarName, string> = {
-  privacy: "border-t-pillar-privacy",
-  asset: "border-t-pillar-asset",
-  formation: "border-t-pillar-formation",
-  compliance: "border-t-pillar-compliance",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
-
-const pillarSoftBgMap: Record<PillarName, string> = {
-  privacy: "bg-pillar-privacy-soft",
-  asset: "bg-pillar-asset-soft",
-  formation: "bg-pillar-formation-soft",
-  compliance: "bg-pillar-compliance-soft",
-};
 
 /* ------------------------------------------------
    Props
@@ -62,11 +42,7 @@ function ClusterHero({
 }: ClusterHeroProps) {
   return (
     <section
-      className={cn(
-        "border-t-4",
-        pillarBorderTopMap[pillar],
-        className
-      )}
+      className={cn("border-t-4", pillarBorderTopMap[pillar], className)}
     >
       <div className="mx-auto max-w-content px-container-x pt-6 pb-section-y-sm">
         {/* Back link */}
@@ -74,7 +50,7 @@ function ClusterHero({
           href={pillarHref}
           className={cn(
             "mb-4 inline-flex items-center gap-1.5 text-body-sm font-medium transition-colors hover:underline",
-            pillarTextMap[pillar]
+            pillarTextMap[pillar],
           )}
         >
           <ArrowLeft className="h-4 w-4" />
@@ -85,7 +61,7 @@ function ClusterHero({
         <p
           className={cn(
             "text-body-sm font-semibold uppercase tracking-wider mb-3",
-            pillarTextMap[pillar]
+            pillarTextMap[pillar],
           )}
         >
           {pillarLabel} &middot; Guide

@@ -10,6 +10,7 @@ import {
   WhereToGoNext,
 } from "@/design-system/components";
 import { packages } from "@/data/packages";
+import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import type { ClusterContent } from "@/lib/types";
 import type { PillarName } from "@/design-system/tokens";
 
@@ -101,10 +102,10 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
           packageShortcut={
             goldPackages[0]
               ? {
-                  name: goldPackages[0].name,
+                  name: "Gold Package",
                   price: `$${goldPackages[0].prices.llc.formation.toLocaleString()}`,
                   period: "one-time",
-                  href: `/${goldPackages[0].flatSlug}`,
+                  href: resolveLegacyPackageToTierUrl(goldPackages[0].id),
                   badge: goldPackages[0].badge,
                 }
               : undefined
@@ -143,7 +144,7 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
                   description: dualPkgs[0]!.description,
                   badge: dualPkgs[0]!.badge,
                   highlighted: true,
-                  href: `/${dualPkgs[0]!.flatSlug}`,
+                  href: resolveLegacyPackageToTierUrl(dualPkgs[0]!.id),
                 },
                 {
                   name: dualPkgs[1]!.name,
@@ -152,7 +153,7 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
                   description: dualPkgs[1]!.description,
                   badge: dualPkgs[1]!.badge,
                   highlighted: true,
-                  href: `/${dualPkgs[1]!.flatSlug}`,
+                  href: resolveLegacyPackageToTierUrl(dualPkgs[1]!.id),
                 },
               ]}
               consultationCTA={{

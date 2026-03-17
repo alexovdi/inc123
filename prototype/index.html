@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incorporate123 | Business Privacy & Formation Specialists</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Wyoming and Nevada business privacy, asset protection, and incorporation. All-inclusive packages with year-round nominee services.">
+</head>
+<body>
+
+    <!-- SECTION 0: Site Header -->
+    <header class="site-header" id="site-header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <i data-lucide="shield-check" class="icon-brand"></i>
+                <span>Incorporate<span class="logo-accent">123</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li class="nav-item has-dropdown">
+                        <a href="/privacy/" class="nav-link">Privacy <i data-lucide="chevron-down" class="icon-sm"></i></a>
+                        <!-- Mega Menu Example (Simplified for prototype) -->
+                        <div class="mega-menu">
+                            <div class="mega-col privacy-col">
+                                <span class="mega-title">Privacy</span>
+                                <a href="#">Anonymous LLC</a>
+                                <a href="#">Nominee Services</a>
+                                <a href="#">Wyoming Privacy</a>
+                                <div class="mega-divider">Compare</div>
+                                <a href="#">Best State for Privacy</a>
+                                <a href="/privacy/" class="explore-link">Explore All Privacy &rarr;</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="/asset-protection/" class="nav-link">Asset Protection <i data-lucide="chevron-down" class="icon-sm"></i></a>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="/formation/" class="nav-link">Formation <i data-lucide="chevron-down" class="icon-sm"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/compare-packages/" class="nav-link">Packages</a>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="/about/" class="nav-link">About <i data-lucide="chevron-down" class="icon-sm"></i></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- utility cluster -->
+            <div class="utility-cluster">
+                <a href="/login/" class="login-link">Client Login</a>
+                <a href="tel:8005551234" class="phone-link"><i data-lucide="phone"></i> <span>(800) 555-1234</span></a>
+                <a href="/compare-packages/" class="btn btn-secondary btn-sm desktop-only">Get Started &rarr;</a>
+                <button class="mobile-menu-trigger" id="mobile-menu-btn" aria-label="Open Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Overlay Navigation -->
+    <div class="mobile-nav-overlay" id="mobile-nav">
+        <!-- populated via JS or hidden/shown -->
+        <div class="mobile-nav-header">
+            <span class="logo-text">Incorporate123</span>
+            <button class="mobile-close-btn" id="mobile-close-btn"><i data-lucide="x"></i></button>
+        </div>
+        <div class="mobile-nav-content">
+            <a href="/compare-packages/" class="btn btn-secondary btn-full">Compare Packages &rarr;</a>
+            <a href="/login/" class="mobile-link">Client Login</a>
+            <hr class="nav-divider">
+            <div class="accordion">
+                <div class="accordion-item"><button class="accordion-header privacy-accent">Privacy <i data-lucide="chevron-down"></i></button></div>
+                <div class="accordion-item"><button class="accordion-header ap-accent">Asset Protection <i data-lucide="chevron-down"></i></button></div>
+                <div class="accordion-item"><button class="accordion-header formation-accent">Formation <i data-lucide="chevron-down"></i></button></div>
+            </div>
+            <hr class="nav-divider">
+            <a href="tel:8005551234" class="mobile-phone"><i data-lucide="phone"></i> (800) 555-1234</a>
+        </div>
+    </div>
+
+    <!-- SECTION 1: Hero -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="display-xl">Business Privacy Starts Here.</h1>
+                <p class="hero-subhead text-lg">25 years specializing in business privacy, asset protection, and incorporation for Wyoming and Nevada. All-inclusive packages — no hidden fees, no surprises.</p>
+                <div class="hero-ctas">
+                    <a href="/privacy/" class="btn btn-primary btn-lg">Protect Your Privacy &rarr;</a>
+                    <a href="/compare-packages/" class="btn btn-ghost-light btn-lg">View Packages & Pricing &rarr;</a>
+                </div>
+                <a href="tel:8005551234" class="safety-net-link text-light">Prefer to talk? Call us — (800) 555-1234</a>
+                
+                <div class="mini-trust-strip">
+                    <div class="trust-item"><i data-lucide="shield-check"></i> Trusted Since 2000</div>
+                    <div class="trust-item"><i data-lucide="award"></i> 25 Years Specialized Experience</div>
+                    <div class="trust-item"><i data-lucide="map-pin"></i> Real Reno, Nevada Office</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Abstract Shield/Vault Motif -->
+                <div class="abstract-graphic">
+                    <div class="shield-layer primary"></div>
+                    <div class="shield-layer secondary"></div>
+                    <i data-lucide="lock" class="hero-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Pillar Navigation -->
+    <section class="pillar-section section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title text-center">How Can We Help?</h2>
+            
+            <div class="pillar-grid">
+                <!-- Privacy Pillar -->
+                <div class="pillar-card border-privacy">
+                    <div class="pillar-icon text-privacy"><i data-lucide="lock"></i></div>
+                    <h3 class="pillar-label text-privacy">BUSINESS PRIVACY</h3>
+                    <p class="pillar-message">Privacy you can't get elsewhere. Year-round nominee directors and officers keep your name off public records — not just at formation, but every day.</p>
+                    <p class="pillar-trust">Year-round nominees included — not "nominee for a day"</p>
+                    <a href="/privacy/" class="soft-cta text-privacy">Explore Privacy Options &rarr;</a>
+                </div>
+
+                <!-- AP Pillar -->
+                <div class="pillar-card border-ap">
+                    <div class="pillar-icon text-ap"><i data-lucide="shield"></i></div>
+                    <h3 class="pillar-label text-ap">ASSET PROTECTION</h3>
+                    <p class="pillar-message">Protect what you've built. Wyoming and Nevada LLCs with charging order protection — the strongest structural defense for your business assets.</p>
+                    <p class="pillar-trust">For individuals with $500K+ in assets</p>
+                    <a href="/asset-protection/" class="soft-cta text-ap">Protect Your Assets &rarr;</a>
+                </div>
+
+                <!-- Formation Pillar -->
+                <div class="pillar-card border-formation">
+                    <div class="pillar-icon text-formation"><i data-lucide="file-text"></i></div>
+                    <h3 class="pillar-label text-formation">BUSINESS INCORPORATION</h3>
+                    <p class="pillar-message">Expert formation, all-inclusive. Wyoming and Nevada entities with everything included — state fees, registered agent, operating agreement, EIN.</p>
+                    <p class="pillar-trust">25 years forming Wyoming and Nevada entities</p>
+                    <a href="/formation/" class="soft-cta text-formation">Start Your Company &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Package Quick-Access -->
+    <section class="package-section section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">Ready to Get Started?</h2>
+            <p class="section-subtext">All-inclusive packages — state fees, registered agent, and compliance included in every tier.</p>
+
+            <div class="packages-grid">
+                <!-- Silver -->
+                <div class="package-card standard">
+                    <div class="package-header">
+                        <span class="tier-name">Silver — Formation</span>
+                    </div>
+                    <div class="package-pricing">
+                        <div class="price-row"><span>WY</span> <span class="price-amount font-mono">$875</span></div>
+                        <div class="price-row"><span>NV</span> <span class="price-amount font-mono">$1,275</span></div>
+                        <div class="renewal-rate font-mono text-muted">Renewal: $325/yr</div>
+                    </div>
+                    <ul class="package-features">
+                        <li><i data-lucide="check" class="text-blue"></i> Registered agent</li>
+                        <li><i data-lucide="check" class="text-blue"></i> Operating agreement</li>
+                        <li><i data-lucide="check" class="text-blue"></i> All state fees included</li>
+                    </ul>
+                    <a href="/wyoming-gold/" class="upgrade-nudge">Add privacy for $375 more &rarr;</a>
+                    <a href="/wyoming-incorporation/" class="btn btn-secondary btn-full">View Silver Package &rarr;</a>
+                </div>
+
+                <!-- Gold -->
+                <div class="package-card highlighted">
+                    <div class="package-badge bg-amber text-white">★ Most Popular</div>
+                    <div class="package-header">
+                        <span class="tier-name text-amber">Gold — Privacy</span>
+                    </div>
+                    <div class="package-pricing">
+                        <div class="price-row"><span>WY</span> <span class="price-amount font-mono">$1,275</span></div>
+                        <div class="price-row"><span>NV</span> <span class="price-amount font-mono">$1,800</span></div>
+                        <div class="renewal-rate font-mono text-muted">Renewal: $525/yr with nominees</div>
+                    </div>
+                    <div class="value-line text-amber font-medium">Includes $2,000+ in Year 1 services</div>
+                    <ul class="package-features">
+                        <li><i data-lucide="check" class="text-amber"></i> Year-round nominees</li>
+                        <li><i data-lucide="check" class="text-amber"></i> Offshore records storage</li>
+                        <li><i data-lucide="check" class="text-amber"></i> Full compliance & filing</li>
+                    </ul>
+                    <a href="/wyoming-private-llc/" class="btn btn-primary btn-full">Get Started &rarr;</a>
+                    <a href="/contact/" class="safety-net-link text-sm mt-3 d-inline-block">Schedule a consultation</a>
+                </div>
+
+                <!-- Bronze -->
+                <div class="package-card standard minimal">
+                    <div class="package-header">
+                        <span class="tier-name">Bronze — Nevada</span>
+                    </div>
+                    <div class="package-pricing">
+                        <div class="price-row"><span>NV</span> <span class="price-amount font-mono">$895</span></div>
+                        <div class="renewal-rate font-mono text-muted">Renewal: $295/yr</div>
+                    </div>
+                    <ul class="package-features">
+                        <li><i data-lucide="check" class="text-blue"></i> Basic Nevada formation</li>
+                        <li><i data-lucide="check" class="text-blue"></i> Standard filing speed</li>
+                    </ul>
+                    <a href="/nevada-incorporation/" class="btn btn-secondary btn-full btn-sm mt-auto">View Bronze Package &rarr;</a>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <a href="/compare-packages/" class="text-link text-blue font-medium">Compare all packages in detail &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Differentiators -->
+    <section class="differentiators-section section-padding bg-navy text-white">
+        <div class="container">
+            <h2 class="section-title text-center text-white mb-10">Why Clients Choose Incorporate123</h2>
+            
+            <div class="diff-grid">
+                <!-- Item 1 -->
+                <div class="diff-item">
+                    <div class="diff-icon"><i data-lucide="calendar"></i></div>
+                    <h3 class="diff-title">Year-Round Nominees</h3>
+                    <p class="diff-desc">Your nominee directors and officers are maintained 365 days a year. Most providers offer a 'nominee for a day' and disappear. We don't.</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="diff-item">
+                    <div class="diff-icon"><i data-lucide="server"></i></div>
+                    <h3 class="diff-title">Offshore Records Storage</h3>
+                    <p class="diff-desc">Corporate records maintained outside U.S. jurisdiction. Included free in every Gold package since 2012. Unique to Incorporate123.</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="diff-item">
+                    <div class="diff-icon"><i data-lucide="check-circle"></i></div>
+                    <h3 class="diff-title">All-Inclusive Pricing</h3>
+                    <p class="diff-desc">State filing fees, registered agent, operating agreement, EIN — all included. No hidden fees. The price you see is the price you pay.</p>
+                </div>
+                <!-- Item 4 -->
+                <div class="diff-item">
+                    <div class="diff-icon"><i data-lucide="award"></i></div>
+                    <h3 class="diff-title">25 Years of Expertise</h3>
+                    <p class="diff-desc">Forming Wyoming and Nevada entities since 2000. Over 15,000 businesses formed. Specialized in privacy and asset protection.</p>
+                </div>
+                <!-- Item 5 -->
+                <div class="diff-item">
+                    <div class="diff-icon"><i data-lucide="building"></i></div>
+                    <h3 class="diff-title">Real Reno Office</h3>
+                    <p class="diff-desc">Kingsbury Executive Suites, Reno, Nevada. Real people, real office, real expertise. Not a virtual mailbox or a PO box.</p>
+                </div>
+                <!-- Item 6 -->
+                <div class="diff-item">
+                    <div class="diff-icon"><i data-lucide="bitcoin"></i></div>
+                    <h3 class="diff-title">Crypto Payments Accepted</h3>
+                    <p class="diff-desc">Bitcoin, Ethereum, XRP, Litecoin, Monero. We accept cryptocurrency because our clients value privacy — and so do we.</p>
+                </div>
+            </div>
+
+            <!-- Optional Callout -->
+            <div class="value-callout bg-navy-light text-center border-amber-left mt-10 p-6 rounded">
+                <p class="text-lg">Competitors charge $400–$5,000/year for nominee services alone. Ours are included in every Gold package — along with offshore records, registered agent, operating agreement, EIN, and all state fees. <strong>Total included value: $2,000+ in Year 1.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Trust Signals Bar -->
+    <section class="trust-signals-section bg-light-gray py-4 border-y">
+        <div class="container">
+            <div class="trust-row flex flex-wrap justify-center gap-6 items-center text-sm font-medium text-slate-700">
+                <div class="trust-badge flex items-center gap-2"><i data-lucide="shield" class="text-blue"></i> Trusted Since 2000</div>
+                <a href="tel:8005551234" class="trust-badge flex items-center gap-2 text-link hover:text-blue"><i data-lucide="phone" class="text-blue"></i> Call Us: (800) 555-1234</a>
+                <div class="trust-badge flex items-center gap-2"><i data-lucide="check-circle" class="text-green"></i> 30-Day Money-Back Guarantee</div>
+                <div class="trust-badge flex items-center gap-2"><i data-lucide="coins" class="text-amber"></i> Crypto Accepted</div>
+                <div class="trust-badge flex items-center gap-2"><i data-lucide="map-pin" class="text-blue"></i> Real Reno, NV Office</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: How It Works -->
+    <section class="how-it-works-section section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtext">From selection to formation — we handle every step.</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-line hidden md:block"></div>
+                
+                <div class="process-step">
+                    <div class="step-circle bg-blue text-white">1</div>
+                    <h3 class="step-title">Choose Your Package</h3>
+                    <p class="step-desc text-muted">Select Gold, Silver, or Bronze. Compare features and pick what fits your goals.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-circle bg-blue text-white">2</div>
+                    <h3 class="step-title">We Form Your Entity</h3>
+                    <p class="step-desc text-muted">We handle all state filings, paperwork, and fees. Typical turnaround: 3–5 business days.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-circle bg-amber text-white">3</div>
+                    <h3 class="step-title">Nominees Protect You</h3>
+                    <p class="step-desc text-muted">Year-round nominee directors and officers keep your name off public records completely.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-circle bg-blue text-white">4</div>
+                    <h3 class="step-title">Compliance, Handled</h3>
+                    <p class="step-desc text-muted">Registered agent, annual reports, and corporate minutes — maintained every year.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Testimonials -->
+    <section class="testimonials-section section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-12">What Our Clients Say</h2>
+            
+            <div class="testim-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testim-card bg-white p-8 rounded shadow-sm relative">
+                    <div class="stars text-amber mb-4"><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i></div>
+                    <blockquote class="text-slate-700 italic mb-6">"We moved our California business to a Wyoming entity with nominee services. Our ownership is completely private and the process was handled start to finish."</blockquote>
+                    <div class="author flex items-center gap-3">
+                        <div class="avatar bg-blue-100 text-blue font-bold rounded-full w-10 h-10 flex items-center justify-center">M</div>
+                        <div>
+                            <div class="author-name font-semibold text-sm">Mark T.</div>
+                            <div class="author-desc text-xs text-muted">California Business Owner</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testim-card bg-white p-8 rounded shadow-sm relative">
+                    <div class="stars text-amber mb-4"><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i></div>
+                    <blockquote class="text-slate-700 italic mb-6">"After 15 years with another provider, we switched to Incorporate123 for the year-round nominee maintenance. The difference in service is night and day."</blockquote>
+                    <div class="author flex items-center gap-3">
+                        <div class="avatar bg-green-100 text-green font-bold rounded-full w-10 h-10 flex items-center justify-center"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
+                        <div>
+                            <div class="author-name font-semibold text-sm">Investment Group</div>
+                            <div class="author-desc text-xs text-muted">Nevada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testim-card bg-white p-8 rounded shadow-sm relative">
+                    <div class="stars text-amber mb-4"><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i><i data-lucide="star" fill="currentColor" class="w-4 h-4 inline"></i></div>
+                    <blockquote class="text-slate-700 italic mb-6">"The all-inclusive pricing was what sold us. No hidden fees, no surprise add-ons — just one clear price for everything we needed."</blockquote>
+                    <div class="author flex items-center gap-3">
+                        <div class="avatar bg-amber-100 text-amber font-bold rounded-full w-10 h-10 flex items-center justify-center">S</div>
+                        <div>
+                            <div class="author-name font-semibold text-sm">Sarah M.</div>
+                            <div class="author-desc text-xs text-muted">Wyoming LLC Owner</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-dots flex justify-center gap-2 mt-8 md:hidden">
+                <span class="w-2 h-2 rounded-full bg-blue"></span>
+                <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+                <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: Final CTA Block -->
+    <section class="final-cta-section section-padding bg-navy text-center text-white">
+        <div class="container max-w-2xl">
+            <h2 class="display-sm mb-4">Ready to Protect Your Privacy?</h2>
+            <p class="text-lg text-slate-300 mb-8">25 years of specialized experience. All-inclusive pricing. Real people, real office.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+                <a href="/privacy/" class="btn btn-primary btn-lg">Get Started &rarr;</a>
+                <a href="/contact/" class="btn btn-ghost-light btn-lg">Schedule a Consultation &rarr;</a>
+            </div>
+            <a href="tel:8005551234" class="safety-net-link text-slate-300 hover:text-white transition">Or call us directly — (800) 555-1234</a>
+        </div>
+    </section>
+
+    <!-- SECTION 9: Site Footer -->
+    <footer class="site-footer bg-footer text-gray-400 py-16">
+        <div class="container">
+            <div class="footer-grid grid grid-cols-2 md:grid-cols-6 gap-8 mb-12 border-b border-gray-700 pb-12">
+                <!-- Col 1 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Privacy</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Anonymous LLC</a></li>
+                        <li><a href="#" class="hover:text-white transition">Anonymous Corp.</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nominee Services</a></li>
+                        <li><a href="#" class="hover:text-white transition">Wyoming Privacy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nevada Privacy</a></li>
+                        <li class="pt-2"><a href="#" class="text-blue hover:text-white transition text-xs font-semibold">COMPARE STATES &rarr;</a></li>
+                    </ul>
+                </div>
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Asset Protection</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">NV Asset Prot.</a></li>
+                        <li><a href="#" class="hover:text-white transition">WY Asset Prot.</a></li>
+                        <li><a href="#" class="hover:text-white transition">Charging Order</a></li>
+                        <li><a href="#" class="hover:text-white transition">Holding LLC</a></li>
+                        <li class="pt-2"><a href="#" class="text-green hover:text-white transition text-xs font-semibold">COMPARE WY VS NV &rarr;</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Formation</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Wyoming LLC</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nevada LLC</a></li>
+                        <li><a href="#" class="hover:text-white transition">Wyoming Corp.</a></li>
+                        <li><a href="#" class="hover:text-white transition">Shelf Companies</a></li>
+                        <li class="pt-2"><a href="#" class="text-amber hover:text-white transition text-xs font-semibold">COMPARE ALL &rarr;</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/about/" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="/contact/" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="/faq/" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="/blog/" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="/login/" class="hover:text-white transition text-blue font-medium">Client Login</a></li>
+                    </ul>
+                </div>
+                <!-- Col 5 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Packages</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-amber text-amber font-medium transition">★ WY Gold</a></li>
+                        <li><a href="#" class="hover:text-amber text-amber font-medium transition">★ NV Gold</a></li>
+                        <li><a href="#" class="hover:text-white transition">WY Silver</a></li>
+                        <li><a href="#" class="hover:text-white transition">NV Silver</a></li>
+                        <li><a href="#" class="hover:text-white transition">NV Bronze</a></li>
+                    </ul>
+                </div>
+                <!-- Col 6 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">States & Offshore</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Wyoming</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nevada</a></li>
+                        <li><a href="#" class="hover:text-white transition">California</a></li>
+                        <li><a href="#" class="hover:text-white transition">Florida</a></li>
+                        <li><a href="#" class="hover:text-white transition">Offshore Hub</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Legal + Contact Row -->
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs space-y-4 md:space-y-0">
+                <div class="legal-links">
+                    &copy; 2026 Incorporate123. All rights reserved. &nbsp;|&nbsp; 
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a> &nbsp;|&nbsp; 
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+                <div class="company-address text-center md:text-left">
+                    Kingsbury Executive Suites, Reno, NV &nbsp;|&nbsp; <a href="tel:8005551234" class="hover:text-white transition">(800) 555-1234</a>
+                </div>
+                <div class="crypto-icons flex gap-3 text-gray-500">
+                    <i data-lucide="bitcoin" class="w-5 h-5 hover:text-white transition" title="Bitcoin Accepted"></i>
+                    <span title="Ethereum Accepted" class="cursor-pointer hover:text-white transition font-mono mt-0.5">Ξ</span>
+                    <span title="XRP Accepted" class="cursor-pointer hover:text-white transition font-mono mt-0.5">✕</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="mobile-sticky-cta" id="mobile-sticky-cta">
+        <a href="/privacy/" class="btn btn-primary btn-full justify-center">Protect Your Privacy</a>
+        <a href="tel:8005551234" class="sticky-phone" aria-label="Call Us"><i data-lucide="phone"></i></a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

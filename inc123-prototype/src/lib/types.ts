@@ -73,6 +73,33 @@ export interface PackageTier {
   addOns: PackageAddOn[];
 }
 
+/** Tier-First Package Architecture */
+export interface TierStateVariant {
+  state: string;
+  abbreviation: string;
+  prices: Record<EntityType, { formation: number; renewal: number }>;
+  extraFeatures?: PackageFeature[];
+  description?: string;
+  /** Legacy package ID for backward compat (e.g., "wyoming-gold") */
+  legacyId: string;
+}
+
+export interface TierDefinition {
+  tier: TierLevel;
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  badge?: string;
+  highlighted?: boolean;
+  availableStates: string[];
+  /** Canonical feature list (state-independent) */
+  features: PackageFeature[];
+  /** State-specific pricing and feature overrides */
+  stateVariants: Record<string, TierStateVariant>;
+  addOns: PackageAddOn[];
+}
+
 /** Testimonials */
 export interface Testimonial {
   id: string;

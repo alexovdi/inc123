@@ -1,4 +1,8 @@
 import { cn } from "@/design-system/utils/cn";
+import {
+  pillarAccentMap,
+  pillarTextMap,
+} from "@/design-system/utils/pillarMaps";
 import type { PillarName } from "@/design-system/tokens";
 
 export interface PillarLayoutProps {
@@ -10,20 +14,6 @@ export interface PillarLayoutProps {
   customHero?: React.ReactNode;
   className?: string;
 }
-
-const pillarAccentMap: Record<PillarName, string> = {
-  privacy: "border-pillar-privacy bg-pillar-privacy-soft",
-  asset: "border-pillar-asset bg-pillar-asset-soft",
-  formation: "border-pillar-formation bg-pillar-formation-soft",
-  compliance: "border-pillar-compliance bg-pillar-compliance-soft",
-};
-
-const pillarTextMap: Record<PillarName, string> = {
-  privacy: "text-pillar-privacy",
-  asset: "text-pillar-asset",
-  formation: "text-pillar-formation",
-  compliance: "text-pillar-compliance",
-};
 
 export function PillarLayout({
   pillar,

@@ -1,5 +1,19 @@
 import type { ContactData } from "@/lib/types";
 
+/** Canonical phone number constants — import these instead of hardcoding */
+export const PHONE_DISPLAY = "(775) 313-4155";
+export const PHONE_HREF = "tel:+17753134155";
+
+/* ------------------------------------------------
+   Trust signals for the contact page
+   ------------------------------------------------ */
+export const contactTrustItems = [
+  { icon: "Clock", value: "1 Day", label: "Response Time" },
+  { icon: "ShieldCheck", value: "Private", label: "Your Info Is Confidential" },
+  { icon: "Phone", value: "Real", label: "Person Answers" },
+  { icon: "Award", value: "25+", label: "Years Experience" },
+];
+
 export const contactData: ContactData = {
   hero: {
     eyebrow: "Get in Touch",

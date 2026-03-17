@@ -1,4 +1,5 @@
 import { packages } from "@/data/packages";
+import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import { StateHubLayout } from "@/design-system/layouts/StateHubLayout";
 import {
   StateHero,
@@ -93,7 +94,7 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
                     entityType="LLC"
                     cta={{
                       label: `View ${pkg.name}`,
-                      href: `/${pkg.flatSlug}`,
+                      href: resolveLegacyPackageToTierUrl(pkg.id),
                     }}
                   />
                 );
@@ -169,14 +170,14 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
               ? `View ${statePackages[0].name} — $${statePackages[0].prices.llc.formation.toLocaleString()}`
               : `Start Your ${state.name} LLC`,
             href: statePackages[0]
-              ? `/${statePackages[0].flatSlug}`
+              ? resolveLegacyPackageToTierUrl(statePackages[0].id)
               : "/packages",
           }}
           secondaryCTA={
             statePackages[1]
               ? {
                   label: `View ${statePackages[1].name} — $${statePackages[1].prices.llc.formation.toLocaleString()}`,
-                  href: `/${statePackages[1].flatSlug}`,
+                  href: resolveLegacyPackageToTierUrl(statePackages[1].id),
                 }
               : undefined
           }
