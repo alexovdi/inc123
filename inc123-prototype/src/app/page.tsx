@@ -12,6 +12,7 @@ import {
   ComplianceCallout,
   CTABlock,
   TestimonialCarousel,
+  PackageWizard,
 } from "@/design-system/components";
 
 import { pillars } from "@/data/pillars";
@@ -139,6 +140,18 @@ export default function HomePage() {
         eyebrow={hero.eyebrow}
         safetyNet={hero.safetyNet}
       />
+
+      {/* ==========================================
+          Section 1b: Package Wizard
+          — interactive recommendation tool
+          ========================================== */}
+      <section className="bg-background py-section-y-sm">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <PackageWizard />
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* ==========================================
           Section 2: Pillar Navigation Cards

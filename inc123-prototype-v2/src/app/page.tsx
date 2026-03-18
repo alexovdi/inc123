@@ -1,5 +1,7 @@
 import { Section } from "@/components/layout";
+import { FadeUp } from "@/components/animation/FadeUp";
 import { HomepageHero } from "@/components/heroes/HomepageHero";
+import { PackageWizard } from "@/components/conversion/PackageWizard";
 import { PillarCards } from "@/components/cards/PillarCards";
 import { Differentiators } from "@/components/content/Differentiators";
 import { HowItWorks } from "@/components/content/HowItWorks";
@@ -13,6 +15,15 @@ export default function HomePage() {
     <>
       {/* 1. HERO — dark */}
       <HomepageHero />
+
+      {/* 2. PACKAGE WIZARD — cream-alt */}
+      <Section variant="cream-alt" id="wizard">
+        <FadeUp>
+          <div className="mx-auto max-w-3xl">
+            <PackageWizard />
+          </div>
+        </FadeUp>
+      </Section>
 
       {/* 3. PILLAR CARDS — cream */}
       <Section variant="cream">

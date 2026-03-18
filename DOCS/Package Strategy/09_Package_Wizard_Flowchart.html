@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Package Wizard Specification &amp; Flowchart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#B8860B",
+          primaryTextColor: "#1a1a1a",
+          primaryBorderColor: "#B8860B",
+          lineColor: "#666",
+          secondaryColor: "#f5f0e8",
+          tertiaryColor: "#fff",
+          fontSize: "14px",
+        },
+        flowchart: { curve: "basis", padding: 20 },
+      });
+    </script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: "#B8860B", light: "#D4A843", dark: "#8B6508" },
+              surface: { DEFAULT: "#FAF8F5", alt: "#F3EDE3" },
+              ink: { DEFAULT: "#1a1a1a", muted: "#6B6B6B" },
+            },
+            fontFamily: {
+              display: ["Georgia", "serif"],
+              body: ["system-ui", "-apple-system", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        .page-break {
+          page-break-before: always;
+        }
+        body {
+          font-size: 11pt;
+        }
+      }
+      .mermaid svg {
+        max-width: 100%;
+        height: auto;
+      }
+      .step-card {
+        transition: transform 0.2s;
+      }
+      .step-card:hover {
+        transform: translateY(-2px);
+      }
+      details summary {
+        cursor: pointer;
+      }
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+      details[open] summary .chevron {
+        transform: rotate(90deg);
+      }
+      .chevron {
+        transition: transform 0.2s;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-ink font-body">
+    <!-- ════════════════════════════════════════════════════════════════════
+       HEADER
+       ════════════════════════════════════════════════════════════════════ -->
+    <header class="bg-ink text-white">
+      <div class="max-w-6xl mx-auto px-6 py-8">
+        <p
+          class="text-brand-light text-sm font-semibold tracking-widest uppercase mb-2"
+        >
+          Incorporate123 &middot; Feature Specification
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl leading-tight">
+          Package Wizard
+        </h1>
+        <p class="mt-3 text-white/70 text-lg max-w-2xl">
+          Interactive recommendation engine that guides visitors to the right
+          package in 60 seconds. Visual flowchart, step-by-step screens, and
+          complete outcome matrix.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4 text-sm text-white/50">
+          <span>Doc #09</span>
+          <span>&middot;</span>
+          <span>Status: <span class="text-green-400">Implemented</span></span>
+          <span>&middot;</span>
+          <span>Last updated: 2026-03-18</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+       TABLE OF CONTENTS
+       ════════════════════════════════════════════════════════════════════ -->
+    <nav class="bg-surface border-b border-brand/20 no-print">
+      <div class="max-w-6xl mx-auto px-6 py-4">
+        <p
+          class="text-xs font-semibold tracking-widest uppercase text-ink-muted mb-2"
+        >
+          Contents
+        </p>
+        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm">
+          <a href="#overview" class="text-brand hover:text-brand-dark"
+            >1. Overview</a
+          >
+          <a href="#flowchart" class="text-brand hover:text-brand-dark"
+            >2. Decision Flowchart</a
+          >
+          <a href="#screens" class="text-brand hover:text-brand-dark"
+            >3. Step-by-Step Screens</a
+          >
+          <a href="#matrix" class="text-brand hover:text-brand-dark"
+            >4. Outcome Matrix</a
+          >
+          <a href="#edge-cases" class="text-brand hover:text-brand-dark"
+            >5. Edge Cases</a
+          >
+          <a href="#recommendation" class="text-brand hover:text-brand-dark"
+            >6. Recommendation Screen</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6">
+      <!-- ══════════════════════════════════════════════════════════════════
+         SECTION 1: OVERVIEW
+         ══════════════════════════════════════════════════════════════════ -->
+      <section id="overview" class="py-12 border-b border-gray-200">
+        <h2 class="font-display text-3xl text-ink mb-6">1. Overview</h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-surface rounded-lg p-6 border border-gray-200">
+            <p
+              class="text-xs font-semibold tracking-widest uppercase text-brand mb-2"
+            >
+              Purpose
+            </p>
+            <p class="text-sm leading-relaxed">
+              Shortcut the education funnel (4+ page reads) into a 60-second
+              guided recommendation. Visitors who already know their intent can
+              get a package recommendation in 1&ndash;3 clicks.
+            </p>
+          </div>
+          <div class="bg-surface rounded-lg p-6 border border-gray-200">
+            <p
+              class="text-xs font-semibold tracking-widest uppercase text-brand mb-2"
+            >
+              Placement
+            </p>
+            <p class="text-sm leading-relaxed">
+              New section between <strong>HomepageHero</strong> (dark) and
+              <strong>PillarCards</strong> (cream). Uses
+              <code class="bg-gray-100 px-1 rounded text-xs">cream-alt</code>
+              background. Creates a &ldquo;two paths&rdquo; moment: guided quiz
+              vs. self-directed browsing.
+            </p>
+          </div>
+          <div class="bg-surface rounded-lg p-6 border border-gray-200">
+            <p
+              class="text-xs font-semibold tracking-widest uppercase text-brand mb-2"
+            >
+              UX Pattern
+            </p>
+            <p class="text-sm leading-relaxed">
+              <strong>Card-selection with auto-advance.</strong> No radio
+              buttons, no dropdowns, no &ldquo;Next&rdquo; button. Click a card
+              &rarr; slide to next question. 3-dot progress indicator. Back
+              navigation available.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+          <div class="bg-surface-alt rounded-lg p-4">
+            <p class="text-2xl font-bold text-brand">5</p>
+            <p class="text-xs text-ink-muted mt-1">Intent Paths</p>
+          </div>
+          <div class="bg-surface-alt rounded-lg p-4">
+            <p class="text-2xl font-bold text-brand">3</p>
+            <p class="text-xs text-ink-muted mt-1">Max Steps</p>
+          </div>
+          <div class="bg-surface-alt rounded-lg p-4">
+            <p class="text-2xl font-bold text-brand">17</p>
+            <p class="text-xs text-ink-muted mt-1">Possible Outcomes</p>
+          </div>
+          <div class="bg-surface-alt rounded-lg p-4">
+            <p class="text-2xl font-bold text-brand">8</p>
+            <p class="text-xs text-ink-muted mt-1">Packages Covered</p>
+          </div>
+          <div class="bg-surface-alt rounded-lg p-4">
+            <p class="text-2xl font-bold text-brand">1</p>
+            <p class="text-xs text-ink-muted mt-1">Edge Case</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════════════
+         SECTION 2: DECISION FLOWCHART
+         ══════════════════════════════════════════════════════════════════ -->
+      <section id="flowchart" class="py-12 border-b border-gray-200 page-break">
+        <h2 class="font-display text-3xl text-ink mb-2">
+          2. Decision Flowchart
+        </h2>
+        <p class="text-ink-muted mb-8">
+          Complete decision tree. Gold nodes = recommendations. Dashed line =
+          edge case fallback.
+        </p>
+
+        <div
+          class="bg-surface rounded-xl p-6 border border-gray-200 overflow-x-auto"
+        >
+          <pre class="mermaid">
+flowchart TD
+    START["<b>START</b><br/>Find Your Package in 60 Seconds"]
+
+    %% Step 1: Intent
+    Q1{"<b>Step 1</b><br/>What's your primary goal?"}
+    START --> Q1
+
+    %% Five intent branches
+    Q1 -- "🛡 Keep My Name Private" --> Q2_PRIV
+    Q1 -- "🔒 Protect My Assets" --> Q2_ASSET
+    Q1 -- "🏢 Form a Business" --> Q2_FORM
+    Q1 -- "🕐 Shelf Company" --> REC_SHELF
+    Q1 -- "📍 I Operate in CA/FL" --> Q2_CAFL
+
+    %% Step 2: Privacy / Asset Protection tier
+    Q2_PRIV{"<b>Step 2</b><br/>Service level?<br/><i>Privacy path</i>"}
+    Q2_ASSET{"<b>Step 2</b><br/>Service level?<br/><i>Asset path</i>"}
+
+    Q2_PRIV -- "Gold: Full Privacy<br/><small>⭐ Recommended</small>" --> Q3_PRIV_GOLD
+    Q2_PRIV -- "Silver: Professional" --> Q3_PRIV_SILVER
+
+    Q2_ASSET -- "Gold: Full Privacy<br/><small>⭐ Recommended</small>" --> Q3_ASSET_GOLD
+    Q2_ASSET -- "Silver: Professional" --> Q3_ASSET_SILVER
+
+    %% Step 2: Formation tier (has Bronze)
+    Q2_FORM{"<b>Step 2</b><br/>Service level?<br/><i>Formation path</i>"}
+
+    Q2_FORM -- "Gold: Full Privacy" --> Q3_FORM_GOLD
+    Q2_FORM -- "Silver: Professional" --> Q3_FORM_SILVER
+    Q2_FORM -- "Bronze: Basic Filing" --> Q3_FORM_BRONZE
+
+    %% Step 2: CA/FL state selection
+    Q2_CAFL{"<b>Step 2</b><br/>Which state?"}
+
+    Q2_CAFL -- "California" --> REC_CA
+    Q2_CAFL -- "Florida" --> REC_FL
+
+    %% Step 3: State selection — Privacy
+    Q3_PRIV_GOLD{"<b>Step 3: State</b><br/><i>Privacy + Gold</i>"}
+    Q3_PRIV_SILVER{"<b>Step 3: State</b><br/><i>Privacy + Silver</i>"}
+
+    Q3_PRIV_GOLD -- "WY ⭐ Best Value" --> REC_WY_GOLD_P
+    Q3_PRIV_GOLD -- "NV" --> REC_NV_GOLD_P
+    Q3_PRIV_SILVER -- "WY" --> REC_WY_SILVER_P
+    Q3_PRIV_SILVER -- "NV" --> REC_NV_SILVER_P
+
+    %% Step 3: State selection — Asset
+    Q3_ASSET_GOLD{"<b>Step 3: State</b><br/><i>Asset + Gold</i>"}
+    Q3_ASSET_SILVER{"<b>Step 3: State</b><br/><i>Asset + Silver</i>"}
+
+    Q3_ASSET_GOLD -- "WY" --> REC_WY_GOLD_A
+    Q3_ASSET_GOLD -- "NV ⭐ Recommended" --> REC_NV_GOLD_A
+    Q3_ASSET_SILVER -- "WY" --> REC_WY_SILVER_A
+    Q3_ASSET_SILVER -- "NV ⭐ Recommended" --> REC_NV_SILVER_A
+
+    %% Step 3: State selection — Formation
+    Q3_FORM_GOLD{"<b>Step 3: State</b><br/><i>Formation + Gold</i>"}
+    Q3_FORM_SILVER{"<b>Step 3: State</b><br/><i>Formation + Silver</i>"}
+    Q3_FORM_BRONZE{"<b>Step 3: State</b><br/><i>Formation + Bronze</i>"}
+
+    Q3_FORM_GOLD -- "WY" --> REC_WY_GOLD_F
+    Q3_FORM_GOLD -- "NV" --> REC_NV_GOLD_F
+    Q3_FORM_SILVER -- "WY" --> REC_WY_SILVER_F
+    Q3_FORM_SILVER -- "NV" --> REC_NV_SILVER_F
+    Q3_FORM_BRONZE -- "NV" --> REC_NV_BRONZE
+    Q3_FORM_BRONZE -- "WY" --> REC_EDGE:::edgeCase
+
+    %% ── Recommendation nodes ──
+
+    REC_WY_GOLD_P["<b>Wyoming Gold</b><br/>$1,275"]:::recNode
+    REC_NV_GOLD_P["<b>Nevada Gold</b><br/>$1,800"]:::recNode
+    REC_WY_SILVER_P["<b>Wyoming Silver</b><br/>$875"]:::recNode
+    REC_NV_SILVER_P["<b>Nevada Silver</b><br/>$1,275"]:::recNode
+
+    REC_WY_GOLD_A["<b>Wyoming Gold</b><br/>$1,275"]:::recNode
+    REC_NV_GOLD_A["<b>Nevada Gold</b><br/>$1,800"]:::recNode
+    REC_WY_SILVER_A["<b>Wyoming Silver</b><br/>$875"]:::recNode
+    REC_NV_SILVER_A["<b>Nevada Silver</b><br/>$1,275"]:::recNode
+
+    REC_WY_GOLD_F["<b>Wyoming Gold</b><br/>$1,275"]:::recNode
+    REC_NV_GOLD_F["<b>Nevada Gold</b><br/>$1,800"]:::recNode
+    REC_WY_SILVER_F["<b>Wyoming Silver</b><br/>$875"]:::recNode
+    REC_NV_SILVER_F["<b>Nevada Silver</b><br/>$1,275"]:::recNode
+    REC_NV_BRONZE["<b>Nevada Bronze</b><br/>$699"]:::recNode
+
+    REC_SHELF["<b>Shelf Companies</b><br/>From $2,000"]:::recNode
+    REC_CA["<b>California Private</b><br/>$1,475"]:::recNode
+    REC_FL["<b>Florida Private</b><br/>$1,475"]:::recNode
+
+    REC_EDGE["<b>⚠ EDGE CASE</b><br/>WY Bronze → WY Silver $875<br/><i>Bronze unavailable in WY</i>"]:::edgeCase
+
+    %% Styles
+    classDef recNode fill:#B8860B,color:#fff,stroke:#8B6508,stroke-width:2px,font-size:13px
+    classDef edgeCase fill:#D97706,color:#fff,stroke:#92400E,stroke-width:2px,stroke-dasharray:5 5,font-size:12px
+        </pre>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-4 text-sm">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-5 h-5 rounded bg-brand border-2 border-brand-dark"
+            ></div>
+            <span>Recommendation (package result)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div
+              class="w-5 h-5 rounded bg-amber-600 border-2 border-amber-800 border-dashed"
+            ></div>
+            <span>Edge case fallback</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 rounded bg-white border-2 border-brand"></div>
+            <span>Decision point</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════════════
+         SECTION 3: STEP-BY-STEP SCREENS
+         ══════════════════════════════════════════════════════════════════ -->
+      <section id="screens" class="py-12 border-b border-gray-200 page-break">
+        <h2 class="font-display text-3xl text-ink mb-2">
+          3. Step-by-Step Screens
+        </h2>
+        <p class="text-ink-muted mb-8">
+          What the user sees at each step. Cards auto-advance on click.
+        </p>
+
+        <!-- STEP 1 -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand text-white text-sm font-bold"
+              >1</span
+            >
+            <div>
+              <h3 class="font-display text-xl">
+                &ldquo;What&rsquo;s your primary goal?&rdquo;
+              </h3>
+              <p class="text-sm text-ink-muted">
+                We&rsquo;ll recommend the best package for your needs.
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F6E1;&#xFE0F;</div>
+              <p class="font-semibold text-sm">Keep My Name Private</p>
+              <p class="text-xs text-ink-muted mt-1">
+                Nominees on every filing, offshore records
+              </p>
+              <p class="text-xs text-brand mt-2 font-medium">
+                &rarr; Goes to Tier Selection (2 options)
+              </p>
+            </div>
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F512;</div>
+              <p class="font-semibold text-sm">Protect My Assets</p>
+              <p class="text-xs text-ink-muted mt-1">
+                Charging order protection, holding structures
+              </p>
+              <p class="text-xs text-brand mt-2 font-medium">
+                &rarr; Goes to Tier Selection (2 options)
+              </p>
+            </div>
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F3E2;</div>
+              <p class="font-semibold text-sm">Form a Business</p>
+              <p class="text-xs text-ink-muted mt-1">
+                All-inclusive formation with expert support
+              </p>
+              <p class="text-xs text-brand mt-2 font-medium">
+                &rarr; Goes to Tier Selection (3 options)
+              </p>
+            </div>
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F552;</div>
+              <p class="font-semibold text-sm">I Need a Shelf Company</p>
+              <p class="text-xs text-ink-muted mt-1">
+                Aged entities with established history
+              </p>
+              <p class="text-xs text-green-700 mt-2 font-medium">
+                &rarr; SHORTCUT: 1-click recommendation
+              </p>
+            </div>
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F4CD;</div>
+              <p class="font-semibold text-sm">I Operate in CA or FL</p>
+              <p class="text-xs text-ink-muted mt-1">
+                Home state registration with privacy formation
+              </p>
+              <p class="text-xs text-green-700 mt-2 font-medium">
+                &rarr; SHORTCUT: State pick &rarr; recommendation
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand text-white text-sm font-bold"
+              >2</span
+            >
+            <div>
+              <h3 class="font-display text-xl">
+                &ldquo;What level of service do you need?&rdquo;
+              </h3>
+              <p class="text-sm text-ink-muted">
+                All packages include state filing fees and registered agent.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4">
+            <!-- Privacy/Asset path -->
+            <div class="bg-surface rounded-lg border border-gray-200 p-5">
+              <p
+                class="text-xs font-semibold tracking-widest uppercase text-brand mb-3"
+              >
+                Privacy &amp; Asset Protection Path
+              </p>
+              <div class="space-y-3">
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <div class="flex items-center justify-between">
+                    <p class="font-semibold text-sm">Full Privacy</p>
+                    <span
+                      class="text-[10px] bg-brand text-white px-1.5 py-0.5 rounded-full font-semibold"
+                      >Recommended</span
+                    >
+                  </div>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Nominees, offshore records, compliance
+                  </p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Maps to: <code class="bg-gray-100 px-1 rounded">gold</code>
+                  </p>
+                </div>
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <p class="font-semibold text-sm">Professional Formation</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Registered agent, compliance management
+                  </p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Maps to:
+                    <code class="bg-gray-100 px-1 rounded">silver</code>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formation path -->
+            <div class="bg-surface rounded-lg border border-gray-200 p-5">
+              <p
+                class="text-xs font-semibold tracking-widest uppercase text-brand mb-3"
+              >
+                Formation Path
+              </p>
+              <div class="space-y-3">
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <p class="font-semibold text-sm">Full Privacy</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Nominees, offshore records, compliance
+                  </p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Maps to: <code class="bg-gray-100 px-1 rounded">gold</code>
+                  </p>
+                </div>
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <p class="font-semibold text-sm">Professional Formation</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Registered agent, compliance management
+                  </p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Maps to:
+                    <code class="bg-gray-100 px-1 rounded">silver</code>
+                  </p>
+                </div>
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <p class="font-semibold text-sm">Basic Filing</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Registered agent, you manage compliance
+                  </p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Maps to:
+                    <code class="bg-gray-100 px-1 rounded">bronze</code>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CA/FL path -->
+            <div class="bg-surface rounded-lg border border-gray-200 p-5">
+              <p
+                class="text-xs font-semibold tracking-widest uppercase text-brand mb-3"
+              >
+                CA/FL Path (different question)
+              </p>
+              <p class="text-sm text-ink-muted mb-3 italic">
+                &ldquo;Which state do you operate in?&rdquo;
+              </p>
+              <div class="space-y-3">
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <p class="font-semibold text-sm">California</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    WY/NV formation + CA foreign registration
+                  </p>
+                  <p class="text-xs text-green-700 mt-1 font-medium">
+                    &rarr; Skips to recommendation
+                  </p>
+                </div>
+                <div class="bg-white rounded border border-gray-200 p-3">
+                  <p class="font-semibold text-sm">Florida</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    WY/NV formation + FL foreign registration
+                  </p>
+                  <p class="text-xs text-green-700 mt-1 font-medium">
+                    &rarr; Skips to recommendation
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand text-white text-sm font-bold"
+              >3</span
+            >
+            <div>
+              <h3 class="font-display text-xl">&ldquo;Which state?&rdquo;</h3>
+              <p class="text-sm text-ink-muted">
+                Both offer strong privacy protections with different strengths.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 max-w-lg">
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F4CD;</div>
+              <p class="font-semibold text-sm">Wyoming</p>
+              <p class="text-xs text-ink-muted mt-1">
+                Lowest cost, strongest privacy laws
+              </p>
+              <div class="mt-2 text-xs space-y-1">
+                <p class="text-brand font-medium">
+                  Badge: &ldquo;Best Value&rdquo; when intent = privacy
+                </p>
+                <p class="text-ink-muted">
+                  No badge for asset/formation intents
+                </p>
+              </div>
+            </div>
+            <div
+              class="step-card bg-white rounded-lg border border-gray-200 p-4 hover:border-brand hover:shadow-md"
+            >
+              <div class="text-2xl mb-2">&#x1F4CD;</div>
+              <p class="font-semibold text-sm">Nevada</p>
+              <p class="text-xs text-ink-muted mt-1">
+                Business court, charging order protection
+              </p>
+              <div class="mt-2 text-xs space-y-1">
+                <p class="text-brand font-medium">
+                  Badge: &ldquo;Recommended&rdquo; when intent =
+                  asset-protection
+                </p>
+                <p class="text-ink-muted">
+                  No badge for privacy/formation intents
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════════════
+         SECTION 4: COMPLETE OUTCOME MATRIX
+         ══════════════════════════════════════════════════════════════════ -->
+      <section id="matrix" class="py-12 border-b border-gray-200 page-break">
+        <h2 class="font-display text-3xl text-ink mb-2">
+          4. Complete Outcome Matrix
+        </h2>
+        <p class="text-ink-muted mb-6">
+          All 17 possible paths through the wizard. Every combination of intent
+          + tier + state mapped to a package recommendation.
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-ink text-white text-left">
+                <th class="px-3 py-3 font-semibold rounded-tl-lg">#</th>
+                <th class="px-3 py-3 font-semibold">Intent</th>
+                <th class="px-3 py-3 font-semibold">Tier</th>
+                <th class="px-3 py-3 font-semibold">State</th>
+                <th class="px-3 py-3 font-semibold text-center">Steps</th>
+                <th class="px-3 py-3 font-semibold">Recommended Package</th>
+                <th class="px-3 py-3 font-semibold">Price</th>
+                <th class="px-3 py-3 font-semibold">Alternative 1</th>
+                <th class="px-3 py-3 font-semibold rounded-tr-lg">
+                  Alternative 2
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Privacy paths -->
+              <tr class="bg-blue-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">1</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F6E1;&#xFE0F; Privacy</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Gold</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Wyoming Gold</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,275</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Silver</td>
+              </tr>
+              <tr class="bg-blue-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">2</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F6E1;&#xFE0F; Privacy</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Gold</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Gold</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,800</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Silver</td>
+              </tr>
+              <tr class="bg-blue-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">3</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F6E1;&#xFE0F; Privacy</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Silver</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Wyoming Silver</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$875</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+              </tr>
+              <tr class="bg-blue-50/50 border-b border-gray-200">
+                <td class="px-3 py-2.5 text-ink-muted">4</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F6E1;&#xFE0F; Privacy</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Silver</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Silver</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,275</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+              </tr>
+
+              <!-- Asset Protection paths -->
+              <tr class="bg-green-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">5</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F512; Asset</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Gold</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Wyoming Gold</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,275</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+              </tr>
+              <tr class="bg-green-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">6</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F512; Asset</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Gold</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Gold</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,800</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Silver</td>
+              </tr>
+              <tr class="bg-green-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">7</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F512; Asset</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Silver</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Wyoming Silver</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$875</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+              </tr>
+              <tr class="bg-green-50/50 border-b border-gray-200">
+                <td class="px-3 py-2.5 text-ink-muted">8</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F512; Asset</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Silver</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Silver</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,275</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+              </tr>
+
+              <!-- Formation paths -->
+              <tr class="bg-purple-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">9</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F3E2; Formation</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Gold</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Wyoming Gold</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,275</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+              </tr>
+              <tr class="bg-purple-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">10</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F3E2; Formation</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Gold</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Gold</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,800</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+              </tr>
+              <tr class="bg-purple-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">11</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F3E2; Formation</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Silver</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Wyoming Silver</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$875</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+              </tr>
+              <tr class="bg-purple-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">12</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F3E2; Formation</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Silver</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Silver</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,275</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Bronze</td>
+              </tr>
+              <tr class="bg-purple-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">13</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F3E2; Formation</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-orange-100 text-orange-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Bronze</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Nevada</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">Nevada Bronze</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$699</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Silver</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+              </tr>
+              <tr class="bg-amber-50/60 border-b border-gray-200">
+                <td class="px-3 py-2.5 text-ink-muted">14</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F3E2; Formation</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">
+                  <span
+                    class="bg-orange-100 text-orange-800 px-1.5 py-0.5 rounded text-xs font-medium"
+                    >Bronze</span
+                  >
+                </td>
+                <td class="px-3 py-2.5">Wyoming</td>
+                <td class="px-3 py-2.5 text-center">3</td>
+                <td class="px-3 py-2.5 font-semibold">
+                  Wyoming Silver &#x26A0;
+                </td>
+                <td class="px-3 py-2.5 font-bold text-brand">$875</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Bronze</td>
+              </tr>
+
+              <!-- Shortcut paths -->
+              <tr class="bg-yellow-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">15</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F552; Shelf</span
+                  >
+                </td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+                <td class="px-3 py-2.5 text-center font-bold text-green-700">
+                  1
+                </td>
+                <td class="px-3 py-2.5 font-semibold">Shelf Companies</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$2,000+</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Gold</td>
+                <td class="px-3 py-2.5 text-ink-muted">Nevada Gold</td>
+              </tr>
+              <tr class="bg-yellow-50/50 border-b border-gray-100">
+                <td class="px-3 py-2.5 text-ink-muted">16</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F4CD; CA/FL</span
+                  >
+                </td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+                <td class="px-3 py-2.5">California</td>
+                <td class="px-3 py-2.5 text-center font-bold text-green-700">
+                  2
+                </td>
+                <td class="px-3 py-2.5 font-semibold">California Private</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,475</td>
+                <td class="px-3 py-2.5 text-ink-muted">Florida Private</td>
+                <td class="px-3 py-2.5 text-ink-muted">Wyoming Gold</td>
+              </tr>
+              <tr class="bg-yellow-50/50">
+                <td class="px-3 py-2.5 text-ink-muted rounded-bl-lg">17</td>
+                <td class="px-3 py-2.5">
+                  <span class="inline-flex items-center gap-1"
+                    >&#x1F4CD; CA/FL</span
+                  >
+                </td>
+                <td class="px-3 py-2.5 text-ink-muted">&mdash;</td>
+                <td class="px-3 py-2.5">Florida</td>
+                <td class="px-3 py-2.5 text-center font-bold text-green-700">
+                  2
+                </td>
+                <td class="px-3 py-2.5 font-semibold">Florida Private</td>
+                <td class="px-3 py-2.5 font-bold text-brand">$1,475</td>
+                <td class="px-3 py-2.5 text-ink-muted">California Private</td>
+                <td class="px-3 py-2.5 text-ink-muted rounded-br-lg">
+                  Wyoming Gold
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-4 text-sm text-ink-muted">
+          &#x26A0; Row 14: Edge case &mdash; Bronze does not exist for Wyoming.
+          Wizard falls back to Wyoming Silver with an explanatory note.
+        </p>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════════════
+         SECTION 5: EDGE CASES
+         ══════════════════════════════════════════════════════════════════ -->
+      <section id="edge-cases" class="py-12 border-b border-gray-200">
+        <h2 class="font-display text-3xl text-ink mb-2">
+          5. Edge Cases &amp; Shortcut Paths
+        </h2>
+        <p class="text-ink-muted mb-6">
+          Non-standard flows that deviate from the 3-step pattern.
+        </p>
+
+        <div class="space-y-6">
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">&#x26A0;</span>
+              <div>
+                <h3 class="font-semibold text-lg">Bronze + Wyoming Fallback</h3>
+                <p class="text-sm text-ink-muted mt-1">
+                  Wyoming does not offer a Bronze package. When a user selects
+                  <strong>Formation &rarr; Basic Filing &rarr; Wyoming</strong>,
+                  the wizard:
+                </p>
+                <ol class="mt-3 text-sm space-y-1 list-decimal list-inside">
+                  <li>
+                    Recommends <strong>Wyoming Silver ($875)</strong> as the
+                    primary result
+                  </li>
+                  <li>
+                    Displays note:
+                    <em
+                      >&ldquo;Wyoming&rsquo;s most affordable option is the
+                      Silver package at $875.&rdquo;</em
+                    >
+                  </li>
+                  <li>
+                    Shows <strong>Wyoming Gold</strong> and
+                    <strong>Nevada Bronze</strong> as alternatives
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">&#x26A1;</span>
+              <div>
+                <h3 class="font-semibold text-lg">
+                  Shelf Company Shortcut (1 step)
+                </h3>
+                <p class="text-sm text-ink-muted mt-1">
+                  Clicking &ldquo;I Need a Shelf Company&rdquo; in Step 1
+                  <strong>immediately</strong> shows the recommendation screen.
+                  No tier or state questions &mdash; shelf companies are a
+                  distinct product category.
+                </p>
+                <p class="text-sm mt-2">
+                  <strong>Result:</strong> Shelf Companies (From $2,000) with
+                  Wyoming Gold and Nevada Gold as alternatives.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">&#x26A1;</span>
+              <div>
+                <h3 class="font-semibold text-lg">CA/FL Shortcut (2 steps)</h3>
+                <p class="text-sm text-ink-muted mt-1">
+                  Clicking &ldquo;I Operate in CA or FL&rdquo; goes to a
+                  state-pick screen (California or Florida), then
+                  <strong>immediately</strong> shows the recommendation. No tier
+                  question &mdash; CA/FL Private packages are single-tier
+                  (Gold-equivalent).
+                </p>
+                <p class="text-sm mt-2">
+                  <strong>Result:</strong> California Private or Florida Private
+                  ($1,475) with the other state&rsquo;s Private package and
+                  Wyoming Gold as alternatives.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════════════
+         SECTION 6: RECOMMENDATION SCREEN
+         ══════════════════════════════════════════════════════════════════ -->
+      <section id="recommendation" class="py-12 page-break">
+        <h2 class="font-display text-3xl text-ink mb-2">
+          6. Recommendation Screen Layout
+        </h2>
+        <p class="text-ink-muted mb-8">
+          What the user sees after completing the wizard. Replaces question
+          cards in the same container.
+        </p>
+
+        <!-- Wireframe -->
+        <div class="max-w-2xl mx-auto">
+          <div
+            class="bg-surface-alt rounded-xl p-8 border-2 border-dashed border-gray-300"
+          >
+            <!-- Heading -->
+            <div class="text-center mb-6">
+              <p class="font-display text-2xl">Here&rsquo;s Your Match</p>
+              <p class="text-xs text-ink-muted mt-1 italic">
+                (Optional edge case note appears here)
+              </p>
+            </div>
+
+            <!-- Primary card -->
+            <div
+              class="relative bg-white rounded-lg border-2 border-brand p-6 shadow-md"
+            >
+              <span
+                class="absolute -top-3 left-6 bg-brand text-white text-xs font-semibold px-3 py-0.5 rounded-full"
+                >Most Popular</span
+              >
+              <h3 class="text-xl font-semibold mt-1">Wyoming Gold</h3>
+              <p class="mt-1">
+                <span class="text-3xl font-bold">$1,275</span>
+                <span class="text-sm text-ink-muted">all-inclusive</span>
+              </p>
+              <ul class="mt-4 space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <span class="text-brand font-bold">&#x2713;</span> Year-round
+                  nominee directors &amp; officers
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand font-bold">&#x2713;</span> Offshore
+                  records storage
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand font-bold">&#x2713;</span> Registered
+                  agent + full compliance
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand font-bold">&#x2713;</span> All state
+                  fees included
+                </li>
+              </ul>
+              <div class="mt-6 flex flex-wrap items-center gap-3">
+                <span
+                  class="inline-flex items-center gap-2 bg-brand text-white font-semibold text-sm px-5 py-2.5 rounded-md shadow"
+                  >View Full Package Details &rarr;</span
+                >
+                <a class="text-sm text-brand underline underline-offset-4"
+                  >Compare All Packages</a
+                >
+              </div>
+              <p class="mt-2 text-xs text-ink-muted">
+                CTA links to:
+                <code class="bg-gray-100 px-1 rounded"
+                  >/packages/{slug}?ref=wizard</code
+                >
+              </p>
+            </div>
+
+            <!-- Alternatives -->
+            <div class="mt-6">
+              <p class="text-sm font-medium text-ink-muted mb-3">
+                Also consider:
+              </p>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                  <p class="text-sm font-semibold">Nevada Gold</p>
+                  <p class="text-lg font-bold">$1,800</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Strongest asset protection + full privacy
+                  </p>
+                  <p class="text-xs text-brand mt-2">View Details &rarr;</p>
+                </div>
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                  <p class="text-sm font-semibold">Wyoming Silver</p>
+                  <p class="text-lg font-bold">$875</p>
+                  <p class="text-xs text-ink-muted mt-1">
+                    Professional compliance without nominees
+                  </p>
+                  <p class="text-xs text-brand mt-2">View Details &rarr;</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trust + restart -->
+            <div class="mt-6 text-center border-t border-gray-200 pt-4">
+              <p class="text-xs text-ink-muted">
+                25 Years &middot; All-Inclusive Pricing &middot; 30-Day
+                Guarantee
+              </p>
+              <p class="mt-2 text-sm text-brand underline underline-offset-4">
+                &#x21BA; Not quite right? Start over
+              </p>
+            </div>
+          </div>
+          <p class="text-center text-xs text-ink-muted mt-3">
+            Wireframe &mdash; actual implementation uses design system tokens
+            and animations
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+    <footer class="bg-ink text-white/50 text-sm mt-12">
+      <div
+        class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap justify-between gap-4"
+      >
+        <p>
+          Incorporate123 &middot; Package Wizard Specification &middot; Doc #09
+        </p>
+        <p>
+          Source:
+          <code class="text-white/70"
+            >src/components/conversion/PackageWizard/</code
+          >
+          + <code class="text-white/70">src/data/wizard.ts</code>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

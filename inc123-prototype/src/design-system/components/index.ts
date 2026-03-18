@@ -144,10 +144,7 @@ export {
   type DualPackageItem,
   type ConsultationCTA,
 } from "./DualPackageCTA";
-export {
-  PillarCard,
-  type PillarCardProps,
-} from "./PillarCard";
+export { PillarCard, type PillarCardProps } from "./PillarCard";
 export {
   StateSelector,
   type StateSelectorProps,
@@ -158,10 +155,7 @@ export {
   type WhereToGoNextProps,
   type SuggestionItem,
 } from "./WhereToGoNext";
-export {
-  FormSection,
-  type FormSectionProps,
-} from "./FormSection";
+export { FormSection, type FormSectionProps } from "./FormSection";
 export {
   OrderSummary,
   type OrderSummaryProps,
@@ -195,18 +189,12 @@ export {
   type CategoryFilterPillsProps,
   type CategoryFilterItem,
 } from "./CategoryFilterPills";
-export {
-  HomepageHero,
-  type HomepageHeroProps,
-} from "./HomepageHero";
+export { HomepageHero, type HomepageHeroProps } from "./HomepageHero";
 export {
   ComplianceCallout,
   type ComplianceCalloutProps,
 } from "./ComplianceCallout";
-export {
-  PillarHero,
-  type PillarHeroProps,
-} from "./PillarHero";
+export { PillarHero, type PillarHeroProps } from "./PillarHero";
 export {
   StateHero,
   type StateHeroProps,
@@ -221,86 +209,40 @@ export {
   type AdvantageGridProps,
   type AdvantageItem,
 } from "./AdvantageGrid";
-export {
-  ContentMapGrid,
-  type ContentMapGridProps,
-} from "./ContentMapGrid";
-export {
-  ClusterHero,
-  type ClusterHeroProps,
-} from "./ClusterHero";
-export {
-  LongFormContent,
-  type LongFormContentProps,
-} from "./LongFormContent";
-export {
-  PackageHero,
-  type PackageHeroProps,
-} from "./PackageHero";
-export {
-  FeatureTooltip,
-  type FeatureTooltipProps,
-} from "./FeatureTooltip";
+export { ContentMapGrid, type ContentMapGridProps } from "./ContentMapGrid";
+export { ClusterHero, type ClusterHeroProps } from "./ClusterHero";
+export { LongFormContent, type LongFormContentProps } from "./LongFormContent";
+export { PackageHero, type PackageHeroProps } from "./PackageHero";
+export { FeatureTooltip, type FeatureTooltipProps } from "./FeatureTooltip";
 export {
   AddOnConfigurator,
   type AddOnConfiguratorProps,
 } from "./AddOnConfigurator";
-export {
-  FAQHero,
-  type FAQHeroProps,
-} from "./FAQHero";
-export {
-  SearchInput,
-  type SearchInputProps,
-} from "./SearchInput";
+export { FAQHero, type FAQHeroProps } from "./FAQHero";
+export { SearchInput, type SearchInputProps } from "./SearchInput";
 export {
   RelatedGuides,
   type RelatedGuidesProps,
   type RelatedGuide,
 } from "./RelatedGuides";
-export {
-  ComparisonHero,
-  type ComparisonHeroProps,
-} from "./ComparisonHero";
+export { ComparisonHero, type ComparisonHeroProps } from "./ComparisonHero";
 export {
   TierSelectorCards,
   type TierSelectorCardsProps,
   type TierSelectorCard,
 } from "./TierSelectorCards";
-export {
-  MockStripeInput,
-  type MockStripeInputProps,
-} from "./MockStripeInput";
-export {
-  AboutHero,
-  type AboutHeroProps,
-} from "./AboutHero";
-export {
-  FounderBio,
-  type FounderBioProps,
-} from "./FounderBio";
-export {
-  Timeline,
-  type TimelineProps,
-} from "./Timeline";
+export { MockStripeInput, type MockStripeInputProps } from "./MockStripeInput";
+export { AboutHero, type AboutHeroProps } from "./AboutHero";
+export { FounderBio, type FounderBioProps } from "./FounderBio";
+export { Timeline, type TimelineProps } from "./Timeline";
 export {
   PhilosophyCards,
   type PhilosophyCardsProps,
   type PhilosophyCard,
 } from "./PhilosophyCards";
-export {
-  OfficeSection,
-  type OfficeSectionProps,
-} from "./OfficeSection";
-export {
-  StatsStrip,
-  type StatsStripProps,
-  type StatItem,
-} from "./StatsStrip";
-export {
-  ContactHero,
-  type ContactHeroProps,
-} from "./ContactHero";
+export { OfficeSection, type OfficeSectionProps } from "./OfficeSection";
+export { StatsStrip, type StatsStripProps, type StatItem } from "./StatsStrip";
+export { ContactHero, type ContactHeroProps } from "./ContactHero";
 export {
   ContactMethodCards,
   type ContactMethodCardsProps,
@@ -310,12 +252,10 @@ export {
   type ContactFormProps,
   type ContactFormField,
 } from "./ContactForm";
-export {
-  MapPlaceholder,
-  type MapPlaceholderProps,
-} from "./MapPlaceholder";
+export { MapPlaceholder, type MapPlaceholderProps } from "./MapPlaceholder";
 export {
   QuickLinkCards,
   type QuickLinkCardsProps,
   type QuickLink,
 } from "./QuickLinkCards";
+export { PackageWizard } from "./PackageWizard";
