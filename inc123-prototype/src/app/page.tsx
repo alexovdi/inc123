@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import { Clock, Globe, DollarSign, MapPin, Award, Phone } from "lucide-react";
 
-import { Icon, ScrollReveal } from "@/design-system/primitives";
-import {
-  HomepageHero,
-  PillarCard,
-  PackagePreviewCard,
-  TrustSignals,
-  HowItWorks,
-  ComplianceCallout,
-  CTABlock,
-  TestimonialCarousel,
-  PackageWizard,
-} from "@/design-system/components";
+import { Icon } from "@/design-system/primitives/Icon";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { ComplianceCallout } from "@/design-system/components/ComplianceCallout";
+import { HomepageHero } from "@/design-system/components/HomepageHero";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { PackageWizard } from "@/design-system/components/PackageWizard";
+import { PillarCard } from "@/design-system/components/PillarCard";
+import { TestimonialCarousel } from "@/design-system/components/TestimonialCarousel";
+import { TrustSignals } from "@/design-system/components/TrustSignals";
 
 import { pillars } from "@/data/pillars";
 import { tierDefinitions, getTierMinPrice } from "@/data/packages";

@@ -1,6 +1,7 @@
 import { offshoreData } from "@/data/offshore";
-import { WhereToGoNext } from "@/design-system/components";
-import { Button, Icon } from "@/design-system/primitives";
+import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { Metadata } from "next";
 import Link from "next/link";
 

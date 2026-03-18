@@ -1,14 +1,12 @@
 "use client";
 
-import {
-  MegaMenu,
-  MobileNav,
-  Breadcrumbs,
-  StickyMobileCTA,
-  Card,
-  CTABlock,
-  TrustSignals,
-} from "@/design-system/components";
+import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
+import { Card } from "@/design-system/components/Card";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { MegaMenu } from "@/design-system/components/MegaMenu";
+import { MobileNav } from "@/design-system/components/MobileNav";
+import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
+import { TrustSignals } from "@/design-system/components/TrustSignals";
 import { siteNavigation } from "@/data/navigation";
 import { DemoSection } from "../../_components/DemoSection";
 import { StateGrid } from "../../_components/StateGrid";

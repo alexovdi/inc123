@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 interface CodeBlockProps {
   code: string;

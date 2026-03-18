@@ -10,8 +10,9 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
-import { ConfirmationBlock } from "@/design-system/components";
-import { Button, Divider } from "@/design-system/primitives";
+import { ConfirmationBlock } from "@/design-system/components/ConfirmationBlock";
+import { Button } from "@/design-system/primitives/Button";
+import { Divider } from "@/design-system/primitives/Divider";
 import { getTierBySlug } from "@/data/packages";
 import { checkoutTimelineSteps } from "@/data/checkout";
 import { useCheckout, getCheckoutPrice } from "../CheckoutContext";

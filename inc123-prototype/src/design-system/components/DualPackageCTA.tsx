@@ -1,5 +1,7 @@
 import { cn } from "@/design-system/utils/cn";
-import { Button, Badge, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -47,9 +49,7 @@ function DualPackageCTA({
             className={cn(
               "bg-surface rounded-card border p-6 shadow-card",
               "transition-shadow duration-200 hover:shadow-card-hover",
-              pkg.highlighted
-                ? "border-secondary border-2"
-                : "border-border"
+              pkg.highlighted ? "border-secondary border-2" : "border-border",
             )}
           >
             {/* Header with optional badge */}
@@ -69,15 +69,11 @@ function DualPackageCTA({
               <span className="text-heading-lg font-mono font-bold text-foreground">
                 {pkg.price}
               </span>
-              <span className="text-body-sm text-muted">
-                /{pkg.period}
-              </span>
+              <span className="text-body-sm text-muted">/{pkg.period}</span>
             </div>
 
             {/* Description */}
-            <p className="text-body-sm text-muted mt-3">
-              {pkg.description}
-            </p>
+            <p className="text-body-sm text-muted mt-3">{pkg.description}</p>
 
             {/* CTA button */}
             <Button

@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -25,10 +25,7 @@ function AboutHero({
 }: AboutHeroProps) {
   return (
     <section
-      className={cn(
-        "bg-primary-50 py-section-y px-container-x",
-        className
-      )}
+      className={cn("bg-primary-50 py-section-y px-container-x", className)}
     >
       <div className="mx-auto max-w-content flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
         {/* Text — 60% on desktop */}

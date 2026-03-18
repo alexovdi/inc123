@@ -5,7 +5,7 @@ import {
   pillarBorderTopMap,
   pillarTextMap,
 } from "@/design-system/utils/pillarMaps";
-import { Badge } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
 import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------

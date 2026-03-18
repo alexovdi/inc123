@@ -1,5 +1,7 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon, Badge, Tooltip } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Tooltip } from "@/design-system/primitives/Tooltip";
 
 /* ------------------------------------------------
    Props
@@ -48,7 +50,7 @@ function FeatureTooltip({
       <span
         className={cn(
           "text-body-sm",
-          status === "not-included" ? "text-muted" : "text-foreground"
+          status === "not-included" ? "text-muted" : "text-foreground",
         )}
       >
         {name}

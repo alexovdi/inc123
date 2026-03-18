@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* -------------------------------------------------- */
 /*  Props                                              */

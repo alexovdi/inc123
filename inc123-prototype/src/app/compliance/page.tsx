@@ -1,18 +1,15 @@
 import { PillarLayout } from "@/design-system/layouts/PillarLayout";
-import {
-  PillarHero,
-  ProgressiveDisclosure,
-  Card,
-  ClusterGrid,
-  ComparisonCards,
-  DualPackageCTA,
-  CrossPillarCTA,
-  Accordion,
-  AccordionItem,
-  WhereToGoNext,
-  ContentSidebar,
-} from "@/design-system/components";
-import { Icon } from "@/design-system/primitives";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { Card } from "@/design-system/components/Card";
+import { ClusterGrid } from "@/design-system/components/ClusterGrid";
+import { ComparisonCards } from "@/design-system/components/ComparisonCards";
+import { ContentSidebar } from "@/design-system/components/ContentSidebar";
+import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
+import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
+import { PillarHero } from "@/design-system/components/PillarHero";
+import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
+import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { Icon } from "@/design-system/primitives/Icon";
 import { pillars } from "@/data/pillars";
 import { packages } from "@/data/packages";
 import { faqItems } from "@/data/faq";

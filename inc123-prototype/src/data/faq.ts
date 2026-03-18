@@ -1,6 +1,6 @@
 import type { FAQItem } from "@/lib/types";
 import type { PillarName } from "@/design-system/tokens";
-import type { RelatedGuide } from "@/design-system/components";
+import type { RelatedGuide } from "@/design-system/components/RelatedGuides";
 
 /* ------------------------------------------------
    Category configuration

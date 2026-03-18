@@ -2,8 +2,11 @@
 
 import { useState, useCallback, type FormEvent } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Input, Select, Textarea, Button } from "@/design-system/primitives";
-import { Icon } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Input } from "@/design-system/primitives/Input";
+import { Select } from "@/design-system/primitives/Select";
+import { Textarea } from "@/design-system/primitives/Textarea";
 import type { SelectOption } from "@/design-system/primitives/Select";
 
 /* -------------------------------------------------- */

@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import NextLink from "next/link";
-import { Button, Icon } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/data/contact";
 
 export default function CheckoutError({

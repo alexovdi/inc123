@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    CVA Variants
@@ -17,14 +17,15 @@ const moneyBackVariants = cva(
     defaultVariants: {
       variant: "standard",
     },
-  }
+  },
 );
 
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
-export interface MoneyBackBadgeProps
-  extends VariantProps<typeof moneyBackVariants> {
+export interface MoneyBackBadgeProps extends VariantProps<
+  typeof moneyBackVariants
+> {
   /** Display variant */
   variant?: "standard" | "detailed";
   /** Additional class names */

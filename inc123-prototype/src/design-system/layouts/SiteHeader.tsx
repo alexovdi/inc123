@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import NextLink from "next/link";
 import { Menu, X, Phone, LogIn } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
-import { Button } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
 import type { SiteNavigation } from "@/lib/types";
 
 export interface SiteHeaderProps {

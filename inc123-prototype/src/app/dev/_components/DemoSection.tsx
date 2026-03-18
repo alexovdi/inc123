@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
 import { CodeBlock } from "./CodeBlock";
 
 interface DemoSectionProps {
@@ -10,11 +10,18 @@ interface DemoSectionProps {
   stateLabel?: string;
 }
 
-export function DemoSection({ title, children, code, stateLabel }: DemoSectionProps) {
+export function DemoSection({
+  title,
+  children,
+  code,
+  stateLabel,
+}: DemoSectionProps) {
   return (
     <div className="mb-8">
       <div className="flex items-center gap-2 mb-4">
-        <h3 className="font-display text-heading-sm font-semibold text-muted">{title}</h3>
+        <h3 className="font-display text-heading-sm font-semibold text-muted">
+          {title}
+        </h3>
         {stateLabel && <Badge variant="info">{stateLabel}</Badge>}
       </div>
       {children}

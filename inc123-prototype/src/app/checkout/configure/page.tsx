@@ -4,14 +4,12 @@ import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
-import {
-  EntityTypeToggle,
-  TierSelectorCards,
-  AddOnConfigurator,
-  OrderSummary,
-  FormSection,
-} from "@/design-system/components";
-import { Button } from "@/design-system/primitives";
+import { AddOnConfigurator } from "@/design-system/components/AddOnConfigurator";
+import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { FormSection } from "@/design-system/components/FormSection";
+import { OrderSummary } from "@/design-system/components/OrderSummary";
+import { TierSelectorCards } from "@/design-system/components/TierSelectorCards";
+import { Button } from "@/design-system/primitives/Button";
 import {
   getTierBySlug,
   getTierPrice,

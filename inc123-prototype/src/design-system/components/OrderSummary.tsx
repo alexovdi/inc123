@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
-import { Badge, Divider } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Divider } from "@/design-system/primitives/Divider";
 
 /* ------------------------------------------------
    Props
@@ -48,11 +49,13 @@ function formatUSD(amount: number): string {
   }).format(amount);
 }
 
-function tierToVariant(
-  tier: string
-): "bronze" | "silver" | "gold" | undefined {
+function tierToVariant(tier: string): "bronze" | "silver" | "gold" | undefined {
   const normalized = tier.toLowerCase();
-  if (normalized === "bronze" || normalized === "silver" || normalized === "gold") {
+  if (
+    normalized === "bronze" ||
+    normalized === "silver" ||
+    normalized === "gold"
+  ) {
     return normalized;
   }
   return undefined;
@@ -145,7 +148,7 @@ function OrderSummary({
     <aside
       className={cn(
         "bg-surface shadow-card rounded-card border border-border",
-        className
+        className,
       )}
     >
       {/* Desktop: sticky sidebar, always visible */}
@@ -172,7 +175,7 @@ function OrderSummary({
             <ChevronDown
               className={cn(
                 "h-4 w-4 transition-transform duration-200",
-                isExpanded && "rotate-180"
+                isExpanded && "rotate-180",
               )}
               aria-hidden="true"
             />

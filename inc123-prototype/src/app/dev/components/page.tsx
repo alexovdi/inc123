@@ -1,63 +1,58 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Button,
-  Badge,
-  Icon,
-  Link,
-  Divider,
-  Toggle,
-  Skeleton,
-  Input,
-  Select,
-  Checkbox,
-  RadioGroup,
-  Textarea,
-  Tooltip,
-  Alert,
-} from "@/design-system/primitives";
-import {
-  Accordion,
-  AccordionItem,
-  Card,
-  CTABlock,
-  TrustSignals,
-  Breadcrumbs,
-  HowItWorks,
-  DifferentiatorCallout,
-  StepIndicator,
-  EntityTypeToggle,
-  PackagePreviewCard,
-  ValueComparisonCallout,
-  MoneyBackBadge,
-  DecisionGuideBlocks,
-  PillarCard,
-  WhereToGoNext,
-  CategoryFilterPills,
-  FormSection,
-  AudienceBlocks,
-  AlsoConsiderCards,
-  TestimonialCarousel,
-  ProgressiveDisclosure,
-  DifferentiatorGrid,
-  ComparisonTable,
-  WinnerIndicator,
-  CrossPillarCTA,
-  ClusterGrid,
-  ComparisonCards,
-  DualPackageCTA,
-  OrderSummary,
-  ConfirmationBlock,
-  RunningTotal,
-  StickyMobileCTA,
-  AccordionSearch,
-  PricingGrid,
-  ContentSidebar,
-  StateSelector,
-  PaymentForm,
-  PaymentMethodSelector,
-} from "@/design-system/components";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { AccordionSearch } from "@/design-system/components/AccordionSearch";
+import { AlsoConsiderCards } from "@/design-system/components/AlsoConsiderCards";
+import { AudienceBlocks } from "@/design-system/components/AudienceBlocks";
+import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
+import { Card } from "@/design-system/components/Card";
+import { CategoryFilterPills } from "@/design-system/components/CategoryFilterPills";
+import { ClusterGrid } from "@/design-system/components/ClusterGrid";
+import { ComparisonCards } from "@/design-system/components/ComparisonCards";
+import { ComparisonTable } from "@/design-system/components/ComparisonTable";
+import { ConfirmationBlock } from "@/design-system/components/ConfirmationBlock";
+import { ContentSidebar } from "@/design-system/components/ContentSidebar";
+import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { DecisionGuideBlocks } from "@/design-system/components/DecisionGuideBlocks";
+import { DifferentiatorCallout } from "@/design-system/components/DifferentiatorCallout";
+import { DifferentiatorGrid } from "@/design-system/components/DifferentiatorGrid";
+import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
+import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { FormSection } from "@/design-system/components/FormSection";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { MoneyBackBadge } from "@/design-system/components/MoneyBackBadge";
+import { OrderSummary } from "@/design-system/components/OrderSummary";
+import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { PaymentForm } from "@/design-system/components/PaymentForm";
+import { PaymentMethodSelector } from "@/design-system/components/PaymentMethodSelector";
+import { PillarCard } from "@/design-system/components/PillarCard";
+import { PricingGrid } from "@/design-system/components/PricingGrid";
+import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
+import { RunningTotal } from "@/design-system/components/RunningTotal";
+import { StateSelector } from "@/design-system/components/StateSelector";
+import { StepIndicator } from "@/design-system/components/StepIndicator";
+import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
+import { TestimonialCarousel } from "@/design-system/components/TestimonialCarousel";
+import { TrustSignals } from "@/design-system/components/TrustSignals";
+import { ValueComparisonCallout } from "@/design-system/components/ValueComparisonCallout";
+import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { WinnerIndicator } from "@/design-system/components/WinnerIndicator";
+import { Alert } from "@/design-system/primitives/Alert";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
+import { Checkbox } from "@/design-system/primitives/Checkbox";
+import { Divider } from "@/design-system/primitives/Divider";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Input } from "@/design-system/primitives/Input";
+import { Link } from "@/design-system/primitives/Link";
+import { RadioGroup } from "@/design-system/primitives/RadioGroup";
+import { Select } from "@/design-system/primitives/Select";
+import { Skeleton } from "@/design-system/primitives/Skeleton";
+import { Textarea } from "@/design-system/primitives/Textarea";
+import { Toggle } from "@/design-system/primitives/Toggle";
+import { Tooltip } from "@/design-system/primitives/Tooltip";
 import { testimonials } from "@/data/testimonials";
 
 function Section({

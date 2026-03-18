@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { testimonials } from "@/data/testimonials";
-import { StatsStrip, CTABlock } from "@/design-system/components";
-import { Icon } from "@/design-system/primitives";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { StatsStrip } from "@/design-system/components/StatsStrip";
+import { Icon } from "@/design-system/primitives/Icon";
 
 export const metadata: Metadata = {
   title:

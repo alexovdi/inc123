@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { ClusterSection } from "@/lib/types";
 
 /* ------------------------------------------------
@@ -56,9 +56,7 @@ function AudienceSection({ section }: { section: ClusterSection }) {
         {section.title}
       </h2>
       {section.content && (
-        <p className="text-body text-muted mb-6">
-          {section.content}
-        </p>
+        <p className="text-body text-muted mb-6">{section.content}</p>
       )}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {section.items?.map((item, index) => (
@@ -94,9 +92,7 @@ function DifferentiatorSection({ section }: { section: ClusterSection }) {
         {section.title}
       </h2>
       {section.content && (
-        <p className="text-body text-muted mb-6">
-          {section.content}
-        </p>
+        <p className="text-body text-muted mb-6">{section.content}</p>
       )}
       <div className="space-y-4">
         {section.items?.map((item, index) => (

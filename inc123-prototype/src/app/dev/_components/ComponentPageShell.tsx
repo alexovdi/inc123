@@ -1,4 +1,4 @@
-import { Badge } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
 import { CodeBlock } from "./CodeBlock";
 import type { CategoryId } from "../_data/component-registry";
 import type { ComponentSnippets } from "../_data/component-snippets";
@@ -41,7 +41,9 @@ export function ComponentPageShell({
       </div>
       {snippets && (
         <div className="mb-8">
-          <h2 className="text-caption font-medium text-muted/50 uppercase tracking-wide mb-2">Quick Start</h2>
+          <h2 className="text-caption font-medium text-muted/50 uppercase tracking-wide mb-2">
+            Quick Start
+          </h2>
           <CodeBlock code={snippets.basic} />
         </div>
       )}

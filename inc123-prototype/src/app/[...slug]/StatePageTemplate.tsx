@@ -1,16 +1,13 @@
 import { packages } from "@/data/packages";
 import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import { StateHubLayout } from "@/design-system/layouts/StateHubLayout";
-import {
-  StateHero,
-  IntentRoutingCard,
-  PackagePreviewCard,
-  AdvantageGrid,
-  ContentMapGrid,
-  Accordion,
-  AccordionItem,
-  CTABlock,
-} from "@/design-system/components";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { AdvantageGrid } from "@/design-system/components/AdvantageGrid";
+import { ContentMapGrid } from "@/design-system/components/ContentMapGrid";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { IntentRoutingCard } from "@/design-system/components/IntentRoutingCard";
+import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { StateHero } from "@/design-system/components/StateHero";
 import type { StateHub } from "@/lib/types";
 
 /* ------------------------------------------------

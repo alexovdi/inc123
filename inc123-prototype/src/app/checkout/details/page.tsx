@@ -4,8 +4,11 @@ import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Info } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
-import { FormSection, OrderSummary } from "@/design-system/components";
-import { Button, Input, Textarea } from "@/design-system/primitives";
+import { FormSection } from "@/design-system/components/FormSection";
+import { OrderSummary } from "@/design-system/components/OrderSummary";
+import { Button } from "@/design-system/primitives/Button";
+import { Input } from "@/design-system/primitives/Input";
+import { Textarea } from "@/design-system/primitives/Textarea";
 import { getTierBySlug } from "@/data/packages";
 import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 

@@ -1,5 +1,6 @@
 import NextLink from "next/link";
-import { Button, Icon } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 
 export default function NotFound() {
   return (

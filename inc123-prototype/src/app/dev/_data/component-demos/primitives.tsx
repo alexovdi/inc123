@@ -1,22 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Button,
-  Badge,
-  Icon,
-  Link,
-  Divider,
-  Toggle,
-  Skeleton,
-  Input,
-  Select,
-  Checkbox,
-  RadioGroup,
-  Textarea,
-  Tooltip,
-  Alert,
-} from "@/design-system/primitives";
+import { Alert } from "@/design-system/primitives/Alert";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
+import { Checkbox } from "@/design-system/primitives/Checkbox";
+import { Divider } from "@/design-system/primitives/Divider";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Input } from "@/design-system/primitives/Input";
+import { Link } from "@/design-system/primitives/Link";
+import { RadioGroup } from "@/design-system/primitives/RadioGroup";
+import { Select } from "@/design-system/primitives/Select";
+import { Skeleton } from "@/design-system/primitives/Skeleton";
+import { Textarea } from "@/design-system/primitives/Textarea";
+import { Toggle } from "@/design-system/primitives/Toggle";
+import { Tooltip } from "@/design-system/primitives/Tooltip";
 import { DemoSection } from "../../_components/DemoSection";
 import { StateGrid } from "../../_components/StateGrid";
 import { SpecPanel } from "../../_components/SpecPanel";
@@ -28,7 +26,10 @@ import { snippets } from "../component-snippets";
 export function ButtonDemo() {
   return (
     <div className="space-y-8">
-      <DemoSection title="Variants" code={snippets.button.examples?.["Variants"]}>
+      <DemoSection
+        title="Variants"
+        code={snippets.button.examples?.["Variants"]}
+      >
         <div className="flex flex-wrap gap-3">
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -50,12 +51,56 @@ export function ButtonDemo() {
         <StateGrid
           columns={6}
           states={[
-            { label: "Default", children: <Button variant="primary">Primary</Button> },
-            { label: "Hover", note: "bg-secondary/90", children: <Button variant="primary" className="bg-secondary/90">Primary</Button> },
-            { label: "Focus", note: "ring-2 ring-secondary", children: <Button variant="primary" className="ring-2 ring-secondary ring-offset-2 ring-offset-surface">Primary</Button> },
-            { label: "Active", note: "bg-secondary/80", children: <Button variant="primary" className="bg-secondary/80">Primary</Button> },
-            { label: "Disabled", children: <Button variant="primary" disabled>Primary</Button> },
-            { label: "Loading", children: <Button variant="primary" loading>Primary</Button> },
+            {
+              label: "Default",
+              children: <Button variant="primary">Primary</Button>,
+            },
+            {
+              label: "Hover",
+              note: "bg-secondary/90",
+              children: (
+                <Button variant="primary" className="bg-secondary/90">
+                  Primary
+                </Button>
+              ),
+            },
+            {
+              label: "Focus",
+              note: "ring-2 ring-secondary",
+              children: (
+                <Button
+                  variant="primary"
+                  className="ring-2 ring-secondary ring-offset-2 ring-offset-surface"
+                >
+                  Primary
+                </Button>
+              ),
+            },
+            {
+              label: "Active",
+              note: "bg-secondary/80",
+              children: (
+                <Button variant="primary" className="bg-secondary/80">
+                  Primary
+                </Button>
+              ),
+            },
+            {
+              label: "Disabled",
+              children: (
+                <Button variant="primary" disabled>
+                  Primary
+                </Button>
+              ),
+            },
+            {
+              label: "Loading",
+              children: (
+                <Button variant="primary" loading>
+                  Primary
+                </Button>
+              ),
+            },
           ]}
         />
       </DemoSection>
@@ -64,25 +109,77 @@ export function ButtonDemo() {
         <StateGrid
           columns={5}
           states={[
-            { label: "Primary Hover", note: "bg-secondary/90", children: <Button variant="primary" className="bg-secondary/90">Primary</Button> },
-            { label: "Secondary Hover", note: "bg-muted/10", children: <Button variant="secondary" className="bg-muted/10">Secondary</Button> },
-            { label: "Ghost Hover", note: "bg-muted/10", children: <Button variant="ghost" className="bg-muted/10">Ghost</Button> },
-            { label: "CTA Hover", note: "bg-accent-hover", children: <Button variant="cta" className="bg-accent-hover">CTA</Button> },
-            { label: "Destructive Hover", note: "bg-destructive/90", children: <Button variant="destructive" className="bg-destructive/90">Destructive</Button> },
+            {
+              label: "Primary Hover",
+              note: "bg-secondary/90",
+              children: (
+                <Button variant="primary" className="bg-secondary/90">
+                  Primary
+                </Button>
+              ),
+            },
+            {
+              label: "Secondary Hover",
+              note: "bg-muted/10",
+              children: (
+                <Button variant="secondary" className="bg-muted/10">
+                  Secondary
+                </Button>
+              ),
+            },
+            {
+              label: "Ghost Hover",
+              note: "bg-muted/10",
+              children: (
+                <Button variant="ghost" className="bg-muted/10">
+                  Ghost
+                </Button>
+              ),
+            },
+            {
+              label: "CTA Hover",
+              note: "bg-accent-hover",
+              children: (
+                <Button variant="cta" className="bg-accent-hover">
+                  CTA
+                </Button>
+              ),
+            },
+            {
+              label: "Destructive Hover",
+              note: "bg-destructive/90",
+              children: (
+                <Button variant="destructive" className="bg-destructive/90">
+                  Destructive
+                </Button>
+              ),
+            },
           ]}
         />
       </DemoSection>
 
-      <DemoSection title="States" stateLabel="Interactive" code={snippets.button.examples?.["Loading"]}>
+      <DemoSection
+        title="States"
+        stateLabel="Interactive"
+        code={snippets.button.examples?.["Loading"]}
+      >
         <div className="flex flex-wrap gap-3">
           <Button loading>Loading</Button>
           <Button disabled>Disabled</Button>
-          <Button icon={<Icon name="ArrowRight" size="sm" />} iconPosition="right">With Icon</Button>
+          <Button
+            icon={<Icon name="ArrowRight" size="sm" />}
+            iconPosition="right"
+          >
+            With Icon
+          </Button>
           <Button fullWidth>Full Width</Button>
         </div>
       </DemoSection>
 
-      <DemoSection title="Pillar Colors" code={snippets.button.examples?.["Pillar Colors"]}>
+      <DemoSection
+        title="Pillar Colors"
+        code={snippets.button.examples?.["Pillar Colors"]}
+      >
         <div className="flex flex-wrap gap-3">
           <Button pillar="privacy">Privacy</Button>
           <Button pillar="asset">Asset Protection</Button>
@@ -94,15 +191,26 @@ export function ButtonDemo() {
       <SpecPanel
         title="Button Specifications"
         items={[
-          { label: "Primary bg", value: "bg-secondary → #2563eb", color: "bg-secondary" },
+          {
+            label: "Primary bg",
+            value: "bg-secondary → #2563eb",
+            color: "bg-secondary",
+          },
           { label: "Secondary bg", value: "bg-transparent, border-border" },
           { label: "Ghost bg", value: "bg-transparent" },
           { label: "CTA bg", value: "bg-accent → #d97706", color: "bg-accent" },
-          { label: "Destructive bg", value: "bg-destructive → #dc2626", color: "bg-destructive" },
+          {
+            label: "Destructive bg",
+            value: "bg-destructive → #dc2626",
+            color: "bg-destructive",
+          },
           { label: "Size sm", value: "h-9 px-3 text-body-sm" },
           { label: "Size md", value: "h-11 px-6 text-body" },
           { label: "Size lg", value: "h-14 px-8 text-body-lg" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface" },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface",
+          },
           { label: "Border radius", value: "rounded-button" },
           { label: "Disabled", value: "pointer-events-none opacity-50" },
         ]}
@@ -117,7 +225,10 @@ export function ButtonDemo() {
 export function BadgeDemo() {
   return (
     <div className="space-y-8">
-      <DemoSection title="Variants" code={snippets.badge.examples?.["Variants"]}>
+      <DemoSection
+        title="Variants"
+        code={snippets.badge.examples?.["Variants"]}
+      >
         <div className="flex flex-wrap gap-2">
           <Badge>Default</Badge>
           <Badge variant="success">Success</Badge>
@@ -126,7 +237,10 @@ export function BadgeDemo() {
           <Badge variant="info">Info</Badge>
         </div>
       </DemoSection>
-      <DemoSection title="Pillar & Tier" code={snippets.badge.examples?.["Pillar & Tier"]}>
+      <DemoSection
+        title="Pillar & Tier"
+        code={snippets.badge.examples?.["Pillar & Tier"]}
+      >
         <div className="flex flex-wrap gap-2">
           <Badge pillar="privacy">Privacy</Badge>
           <Badge pillar="asset">Asset Protection</Badge>
@@ -142,10 +256,26 @@ export function BadgeDemo() {
         title="Badge Specifications"
         items={[
           { label: "Default", value: "bg-muted/15 text-foreground" },
-          { label: "Success", value: "bg-success/15 text-success → #16a34a", color: "bg-success" },
-          { label: "Warning", value: "bg-warning/15 text-warning → #ea580c", color: "bg-warning" },
-          { label: "Destructive", value: "bg-destructive/15 text-destructive → #dc2626", color: "bg-destructive" },
-          { label: "Info", value: "bg-secondary/15 text-secondary → #2563eb", color: "bg-secondary" },
+          {
+            label: "Success",
+            value: "bg-success/15 text-success → #16a34a",
+            color: "bg-success",
+          },
+          {
+            label: "Warning",
+            value: "bg-warning/15 text-warning → #ea580c",
+            color: "bg-warning",
+          },
+          {
+            label: "Destructive",
+            value: "bg-destructive/15 text-destructive → #dc2626",
+            color: "bg-destructive",
+          },
+          {
+            label: "Info",
+            value: "bg-secondary/15 text-secondary → #2563eb",
+            color: "bg-secondary",
+          },
           { label: "Size sm", value: "px-2 py-0.5 text-caption" },
           { label: "Size md", value: "px-3 py-1 text-body-sm" },
           { label: "Border radius", value: "rounded-pill" },
@@ -161,7 +291,10 @@ export function BadgeDemo() {
 export function IconDemo() {
   return (
     <div className="space-y-8">
-      <DemoSection title="Sizes & Pillar Colors" code={snippets.icon.examples?.["Sizes"]}>
+      <DemoSection
+        title="Sizes & Pillar Colors"
+        code={snippets.icon.examples?.["Sizes"]}
+      >
         <div className="flex flex-wrap items-center gap-4">
           <Icon name="Shield" size="xs" />
           <Icon name="Shield" size="sm" />
@@ -184,10 +317,26 @@ export function IconDemo() {
           { label: "md", value: "20px" },
           { label: "lg", value: "24px" },
           { label: "xl", value: "32px" },
-          { label: "Privacy color", value: "text-pillar-privacy → #2563eb", color: "bg-pillar-privacy" },
-          { label: "Asset color", value: "text-pillar-asset → #16a34a", color: "bg-pillar-asset" },
-          { label: "Formation color", value: "text-pillar-formation → #d97706", color: "bg-pillar-formation" },
-          { label: "Compliance color", value: "text-pillar-compliance → #9333ea", color: "bg-pillar-compliance" },
+          {
+            label: "Privacy color",
+            value: "text-pillar-privacy → #2563eb",
+            color: "bg-pillar-privacy",
+          },
+          {
+            label: "Asset color",
+            value: "text-pillar-asset → #16a34a",
+            color: "bg-pillar-asset",
+          },
+          {
+            label: "Formation color",
+            value: "text-pillar-formation → #d97706",
+            color: "bg-pillar-formation",
+          },
+          {
+            label: "Compliance color",
+            value: "text-pillar-compliance → #9333ea",
+            color: "bg-pillar-compliance",
+          },
         ]}
       />
     </div>
@@ -203,11 +352,21 @@ export function LinkDemo() {
       <DemoSection title="Variants" code={snippets.link.examples?.["Variants"]}>
         <div className="flex flex-wrap gap-4">
           <Link href="#">Default Link</Link>
-          <Link href="#" variant="subtle">Subtle Link</Link>
-          <Link href="#" variant="nav">Nav Link</Link>
-          <Link href="#" variant="breadcrumb">Breadcrumb</Link>
-          <Link href="#" pillar="privacy">Privacy Pillar</Link>
-          <Link href="https://example.com" external>External Link</Link>
+          <Link href="#" variant="subtle">
+            Subtle Link
+          </Link>
+          <Link href="#" variant="nav">
+            Nav Link
+          </Link>
+          <Link href="#" variant="breadcrumb">
+            Breadcrumb
+          </Link>
+          <Link href="#" pillar="privacy">
+            Privacy Pillar
+          </Link>
+          <Link href="https://example.com" external>
+            External Link
+          </Link>
         </div>
       </DemoSection>
 
@@ -216,8 +375,27 @@ export function LinkDemo() {
           columns={3}
           states={[
             { label: "Default", children: <Link href="#">Default Link</Link> },
-            { label: "Hover", note: "text-link/80", children: <Link href="#" className="text-link/80">Default Link</Link> },
-            { label: "Focus", note: "ring-2 ring-secondary", children: <Link href="#" className="ring-2 ring-secondary ring-offset-2 ring-offset-surface">Default Link</Link> },
+            {
+              label: "Hover",
+              note: "text-link/80",
+              children: (
+                <Link href="#" className="text-link/80">
+                  Default Link
+                </Link>
+              ),
+            },
+            {
+              label: "Focus",
+              note: "ring-2 ring-secondary",
+              children: (
+                <Link
+                  href="#"
+                  className="ring-2 ring-secondary ring-offset-2 ring-offset-surface"
+                >
+                  Default Link
+                </Link>
+              ),
+            },
           ]}
         />
       </DemoSection>
@@ -225,9 +403,16 @@ export function LinkDemo() {
       <SpecPanel
         title="Link Specifications"
         items={[
-          { label: "Default color", value: "text-link → #2563eb", color: "bg-link" },
+          {
+            label: "Default color",
+            value: "text-link → #2563eb",
+            color: "bg-link",
+          },
           { label: "Default hover", value: "text-link/80" },
-          { label: "Default decoration", value: "underline underline-offset-2" },
+          {
+            label: "Default decoration",
+            value: "underline underline-offset-2",
+          },
           { label: "Subtle hover", value: "underline on hover" },
           { label: "Nav hover", value: "text-link" },
           { label: "Breadcrumb hover", value: "text-foreground" },
@@ -245,7 +430,10 @@ export function LinkDemo() {
 export function DividerDemo() {
   return (
     <div className="space-y-8">
-      <DemoSection title="Weights & Orientations" code={snippets.divider.examples?.["Weights"]}>
+      <DemoSection
+        title="Weights & Orientations"
+        code={snippets.divider.examples?.["Weights"]}
+      >
         <div className="space-y-4">
           <Divider weight="light" />
           <Divider weight="medium" />
@@ -283,7 +471,11 @@ export function ToggleDemo() {
   const [checked, setChecked] = useState(false);
   return (
     <div className="space-y-8">
-      <DemoSection title="Default" stateLabel="Interactive" code={snippets.toggle.basic}>
+      <DemoSection
+        title="Default"
+        stateLabel="Interactive"
+        code={snippets.toggle.basic}
+      >
         <Toggle
           labels={{ on: "Brand", off: "Wireframe" }}
           checked={checked}
@@ -295,10 +487,50 @@ export function ToggleDemo() {
         <StateGrid
           columns={4}
           states={[
-            { label: "Off", note: "bg-muted/30", children: <Toggle labels={{ on: "On", off: "Off" }} checked={false} onChange={() => {}} /> },
-            { label: "On", note: "bg-secondary", children: <Toggle labels={{ on: "On", off: "Off" }} checked={true} onChange={() => {}} /> },
-            { label: "Disabled Off", children: <Toggle labels={{ on: "On", off: "Off" }} checked={false} onChange={() => {}} disabled /> },
-            { label: "Disabled On", children: <Toggle labels={{ on: "On", off: "Off" }} checked={true} onChange={() => {}} disabled /> },
+            {
+              label: "Off",
+              note: "bg-muted/30",
+              children: (
+                <Toggle
+                  labels={{ on: "On", off: "Off" }}
+                  checked={false}
+                  onChange={() => {}}
+                />
+              ),
+            },
+            {
+              label: "On",
+              note: "bg-secondary",
+              children: (
+                <Toggle
+                  labels={{ on: "On", off: "Off" }}
+                  checked={true}
+                  onChange={() => {}}
+                />
+              ),
+            },
+            {
+              label: "Disabled Off",
+              children: (
+                <Toggle
+                  labels={{ on: "On", off: "Off" }}
+                  checked={false}
+                  onChange={() => {}}
+                  disabled
+                />
+              ),
+            },
+            {
+              label: "Disabled On",
+              children: (
+                <Toggle
+                  labels={{ on: "On", off: "Off" }}
+                  checked={true}
+                  onChange={() => {}}
+                  disabled
+                />
+              ),
+            },
           ]}
         />
       </DemoSection>
@@ -307,12 +539,19 @@ export function ToggleDemo() {
         title="Toggle Specifications"
         items={[
           { label: "Track (off)", value: "bg-muted/30" },
-          { label: "Track (on)", value: "bg-secondary → #2563eb", color: "bg-secondary" },
+          {
+            label: "Track (on)",
+            value: "bg-secondary → #2563eb",
+            color: "bg-secondary",
+          },
           { label: "Thumb", value: "bg-white rounded-full shadow-card" },
           { label: "Size sm", value: "h-5 w-9, thumb h-3.5 w-3.5" },
           { label: "Size md", value: "h-6 w-11, thumb h-4.5 w-4.5" },
           { label: "Size lg", value: "h-7 w-[3.25rem], thumb h-5.5 w-5.5" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 (focus-within)" },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 (focus-within)",
+          },
           { label: "Disabled", value: "cursor-not-allowed opacity-50" },
         ]}
       />
@@ -330,23 +569,86 @@ export function InputDemo() {
         <StateGrid
           columns={5}
           states={[
-            { label: "Default", note: "border-border", children: <div className="w-48"><Input label="Name" placeholder="e.g., Acme LLC" /></div> },
-            { label: "Focus", note: "ring-2 ring-secondary", children: <div className="w-48"><Input label="Name" placeholder="e.g., Acme LLC" className="[&_input]:ring-2 [&_input]:ring-secondary [&_input]:ring-offset-2 [&_input]:ring-offset-surface" /></div> },
-            { label: "Error", note: "border-destructive", children: <div className="w-48"><Input label="Email" error="Required field" /></div> },
-            { label: "Success", note: "border-success", children: <div className="w-48"><Input label="Name" placeholder="Acme LLC" state="success" helperText="Name available" /></div> },
-            { label: "Disabled", children: <div className="w-48"><Input label="Name" value="Acme LLC" disabled /></div> },
+            {
+              label: "Default",
+              note: "border-border",
+              children: (
+                <div className="w-48">
+                  <Input label="Name" placeholder="e.g., Acme LLC" />
+                </div>
+              ),
+            },
+            {
+              label: "Focus",
+              note: "ring-2 ring-secondary",
+              children: (
+                <div className="w-48">
+                  <Input
+                    label="Name"
+                    placeholder="e.g., Acme LLC"
+                    className="[&_input]:ring-2 [&_input]:ring-secondary [&_input]:ring-offset-2 [&_input]:ring-offset-surface"
+                  />
+                </div>
+              ),
+            },
+            {
+              label: "Error",
+              note: "border-destructive",
+              children: (
+                <div className="w-48">
+                  <Input label="Email" error="Required field" />
+                </div>
+              ),
+            },
+            {
+              label: "Success",
+              note: "border-success",
+              children: (
+                <div className="w-48">
+                  <Input
+                    label="Name"
+                    placeholder="Acme LLC"
+                    state="success"
+                    helperText="Name available"
+                  />
+                </div>
+              ),
+            },
+            {
+              label: "Disabled",
+              children: (
+                <div className="w-48">
+                  <Input label="Name" value="Acme LLC" disabled />
+                </div>
+              ),
+            },
           ]}
         />
       </DemoSection>
 
-      <DemoSection title="Default & Error" code={snippets.input.examples?.["With Helper Text"]}>
+      <DemoSection
+        title="Default & Error"
+        code={snippets.input.examples?.["With Helper Text"]}
+      >
         <div className="grid gap-6 sm:grid-cols-2 max-w-content">
-          <Input label="Company Name" placeholder="e.g., Acme Holdings LLC" helperText="Enter your desired company name" />
-          <Input label="Email" type="email" placeholder="you@example.com" error="Please enter a valid email" />
+          <Input
+            label="Company Name"
+            placeholder="e.g., Acme Holdings LLC"
+            helperText="Enter your desired company name"
+          />
+          <Input
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            error="Please enter a valid email"
+          />
         </div>
       </DemoSection>
 
-      <DemoSection title="Disabled" code={snippets.input.examples?.["Disabled"]}>
+      <DemoSection
+        title="Disabled"
+        code={snippets.input.examples?.["Disabled"]}
+      >
         <div className="grid gap-6 sm:grid-cols-2 max-w-content">
           <Input label="Company Name" value="Acme Holdings LLC" disabled />
           <Input label="Email" type="email" value="user@example.com" disabled />
@@ -356,16 +658,35 @@ export function InputDemo() {
       <SpecPanel
         title="Input Specifications"
         items={[
-          { label: "Default border", value: "border-border → #e2e8f0", color: "bg-border" },
-          { label: "Error border", value: "border-destructive → #dc2626", color: "bg-destructive" },
-          { label: "Success border", value: "border-success → #16a34a", color: "bg-success" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface" },
+          {
+            label: "Default border",
+            value: "border-border → #e2e8f0",
+            color: "bg-border",
+          },
+          {
+            label: "Error border",
+            value: "border-destructive → #dc2626",
+            color: "bg-destructive",
+          },
+          {
+            label: "Success border",
+            value: "border-success → #16a34a",
+            color: "bg-success",
+          },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface",
+          },
           { label: "Error focus", value: "ring-2 ring-destructive" },
           { label: "Success focus", value: "ring-2 ring-success" },
           { label: "Size sm", value: "h-9 px-3 text-body-sm" },
           { label: "Size md", value: "h-11 px-4 text-body" },
           { label: "Size lg", value: "h-14 px-5 text-body-lg" },
-          { label: "Background", value: "bg-surface → #ffffff", color: "bg-surface" },
+          {
+            label: "Background",
+            value: "bg-surface → #ffffff",
+            color: "bg-surface",
+          },
           { label: "Border radius", value: "rounded-button" },
           { label: "Placeholder", value: "text-muted/60" },
           { label: "Disabled", value: "cursor-not-allowed opacity-50" },
@@ -392,7 +713,10 @@ export function SelectDemo() {
                 <div className="w-48">
                   <Select
                     label="State"
-                    options={[{ value: "wy", label: "Wyoming" }, { value: "nv", label: "Nevada" }]}
+                    options={[
+                      { value: "wy", label: "Wyoming" },
+                      { value: "nv", label: "Nevada" },
+                    ]}
                     placeholder="Select a state"
                   />
                 </div>
@@ -461,9 +785,20 @@ export function SelectDemo() {
       <SpecPanel
         title="Select Specifications"
         items={[
-          { label: "Default border", value: "border-border → #e2e8f0", color: "bg-border" },
-          { label: "Error border", value: "border-destructive → #dc2626", color: "bg-destructive" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface" },
+          {
+            label: "Default border",
+            value: "border-border → #e2e8f0",
+            color: "bg-border",
+          },
+          {
+            label: "Error border",
+            value: "border-destructive → #dc2626",
+            color: "bg-destructive",
+          },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface",
+          },
           { label: "Error focus", value: "ring-2 ring-destructive" },
           { label: "Size md", value: "h-11 px-4 text-body" },
           { label: "Background", value: "bg-surface, appearance-none" },
@@ -486,16 +821,72 @@ export function CheckboxDemo() {
         <StateGrid
           columns={5}
           states={[
-            { label: "Unchecked", children: <Checkbox label="Accept terms" checked={false} onChange={() => {}} /> },
-            { label: "Checked", note: "bg-secondary", children: <Checkbox label="Accept terms" checked={true} onChange={() => {}} /> },
-            { label: "Focus", note: "ring-2 ring-secondary", children: <div className="[&_input]:focus-visible:[&+span]:ring-2"><Checkbox label="Accept terms" checked={false} onChange={() => {}} className="[&_span:has(svg)]:ring-2 [&_span:has(svg)]:ring-secondary [&_span:has(svg)]:ring-offset-2" /></div> },
-            { label: "Disabled (off)", children: <Checkbox label="Accept terms" checked={false} onChange={() => {}} disabled /> },
-            { label: "Disabled (on)", children: <Checkbox label="Accept terms" checked={true} onChange={() => {}} disabled /> },
+            {
+              label: "Unchecked",
+              children: (
+                <Checkbox
+                  label="Accept terms"
+                  checked={false}
+                  onChange={() => {}}
+                />
+              ),
+            },
+            {
+              label: "Checked",
+              note: "bg-secondary",
+              children: (
+                <Checkbox
+                  label="Accept terms"
+                  checked={true}
+                  onChange={() => {}}
+                />
+              ),
+            },
+            {
+              label: "Focus",
+              note: "ring-2 ring-secondary",
+              children: (
+                <div className="[&_input]:focus-visible:[&+span]:ring-2">
+                  <Checkbox
+                    label="Accept terms"
+                    checked={false}
+                    onChange={() => {}}
+                    className="[&_span:has(svg)]:ring-2 [&_span:has(svg)]:ring-secondary [&_span:has(svg)]:ring-offset-2"
+                  />
+                </div>
+              ),
+            },
+            {
+              label: "Disabled (off)",
+              children: (
+                <Checkbox
+                  label="Accept terms"
+                  checked={false}
+                  onChange={() => {}}
+                  disabled
+                />
+              ),
+            },
+            {
+              label: "Disabled (on)",
+              children: (
+                <Checkbox
+                  label="Accept terms"
+                  checked={true}
+                  onChange={() => {}}
+                  disabled
+                />
+              ),
+            },
           ]}
         />
       </DemoSection>
 
-      <DemoSection title="Default" stateLabel="Interactive" code={snippets.checkbox.basic}>
+      <DemoSection
+        title="Default"
+        stateLabel="Interactive"
+        code={snippets.checkbox.basic}
+      >
         <Checkbox
           label="I agree to the Terms of Service"
           description="By checking this box you agree to our terms and privacy policy."
@@ -508,12 +899,19 @@ export function CheckboxDemo() {
         title="Checkbox Specifications"
         items={[
           { label: "Unchecked", value: "border-border bg-surface" },
-          { label: "Checked", value: "border-secondary bg-secondary → #2563eb", color: "bg-secondary" },
+          {
+            label: "Checked",
+            value: "border-secondary bg-secondary → #2563eb",
+            color: "bg-secondary",
+          },
           { label: "Check icon", value: "text-white (Lucide Check)" },
           { label: "Box size sm", value: "h-4 w-4" },
           { label: "Box size md", value: "h-5 w-5" },
           { label: "Border", value: "border-2 rounded-[4px]" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 (peer-focus-visible)" },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 (peer-focus-visible)",
+          },
           { label: "Disabled", value: "cursor-not-allowed opacity-50" },
         ]}
       />
@@ -558,7 +956,10 @@ export function RadioGroupDemo() {
               label: "Disabled",
               children: (
                 <RadioGroup
-                  options={[{ value: "a", label: "Option A" }, { value: "b", label: "Option B" }]}
+                  options={[
+                    { value: "a", label: "Option A" },
+                    { value: "b", label: "Option B" },
+                  ]}
                   value="a"
                   onChange={() => {}}
                   disabled
@@ -569,12 +970,24 @@ export function RadioGroupDemo() {
         />
       </DemoSection>
 
-      <DemoSection title="Default" stateLabel="Interactive" code={snippets["radio-group"].basic}>
+      <DemoSection
+        title="Default"
+        stateLabel="Interactive"
+        code={snippets["radio-group"].basic}
+      >
         <RadioGroup
           label="Entity Type"
           options={[
-            { value: "llc", label: "LLC", description: "Limited Liability Company" },
-            { value: "corp", label: "Corporation", description: "C-Corp or S-Corp" },
+            {
+              value: "llc",
+              label: "LLC",
+              description: "Limited Liability Company",
+            },
+            {
+              value: "corp",
+              label: "Corporation",
+              description: "C-Corp or S-Corp",
+            },
           ]}
           value={value}
           onChange={setValue}
@@ -585,11 +998,18 @@ export function RadioGroupDemo() {
         title="RadioGroup Specifications"
         items={[
           { label: "Unselected", value: "border-border (border-2)" },
-          { label: "Selected border", value: "border-secondary → #2563eb", color: "bg-secondary" },
+          {
+            label: "Selected border",
+            value: "border-secondary → #2563eb",
+            color: "bg-secondary",
+          },
           { label: "Dot", value: "bg-secondary rounded-full" },
           { label: "Circle size md", value: "h-5 w-5" },
           { label: "Dot size md", value: "h-2.5 w-2.5" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 (peer-focus-visible)" },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 (peer-focus-visible)",
+          },
           { label: "Disabled", value: "cursor-not-allowed opacity-50" },
         ]}
       />
@@ -607,34 +1027,111 @@ export function TextareaDemo() {
         <StateGrid
           columns={5}
           states={[
-            { label: "Default", note: "border-border", children: <div className="w-48"><Textarea label="Notes" placeholder="Type here..." rows={2} /></div> },
-            { label: "Focus", note: "ring-2 ring-secondary", children: <div className="w-48"><Textarea label="Notes" placeholder="Type here..." rows={2} className="[&_textarea]:ring-2 [&_textarea]:ring-secondary [&_textarea]:ring-offset-2 [&_textarea]:ring-offset-surface" /></div> },
-            { label: "Error", note: "border-destructive", children: <div className="w-48"><Textarea label="Notes" error="Required" rows={2} /></div> },
-            { label: "Success", note: "border-success", children: <div className="w-48"><Textarea label="Notes" placeholder="Valid" rows={2} state="success" /></div> },
-            { label: "Disabled", children: <div className="w-48"><Textarea label="Notes" value="Read-only" rows={2} disabled /></div> },
+            {
+              label: "Default",
+              note: "border-border",
+              children: (
+                <div className="w-48">
+                  <Textarea label="Notes" placeholder="Type here..." rows={2} />
+                </div>
+              ),
+            },
+            {
+              label: "Focus",
+              note: "ring-2 ring-secondary",
+              children: (
+                <div className="w-48">
+                  <Textarea
+                    label="Notes"
+                    placeholder="Type here..."
+                    rows={2}
+                    className="[&_textarea]:ring-2 [&_textarea]:ring-secondary [&_textarea]:ring-offset-2 [&_textarea]:ring-offset-surface"
+                  />
+                </div>
+              ),
+            },
+            {
+              label: "Error",
+              note: "border-destructive",
+              children: (
+                <div className="w-48">
+                  <Textarea label="Notes" error="Required" rows={2} />
+                </div>
+              ),
+            },
+            {
+              label: "Success",
+              note: "border-success",
+              children: (
+                <div className="w-48">
+                  <Textarea
+                    label="Notes"
+                    placeholder="Valid"
+                    rows={2}
+                    state="success"
+                  />
+                </div>
+              ),
+            },
+            {
+              label: "Disabled",
+              children: (
+                <div className="w-48">
+                  <Textarea label="Notes" value="Read-only" rows={2} disabled />
+                </div>
+              ),
+            },
           ]}
         />
       </DemoSection>
 
-      <DemoSection title="Default with Character Limit" code={snippets.textarea.examples?.["With Character Limit"]}>
+      <DemoSection
+        title="Default with Character Limit"
+        code={snippets.textarea.examples?.["With Character Limit"]}
+      >
         <div className="max-w-md">
-          <Textarea label="Business Description" placeholder="Describe your business..." maxLength={500} />
+          <Textarea
+            label="Business Description"
+            placeholder="Describe your business..."
+            maxLength={500}
+          />
         </div>
       </DemoSection>
 
-      <DemoSection title="Error State" code={snippets.textarea.examples?.["Error"]}>
+      <DemoSection
+        title="Error State"
+        code={snippets.textarea.examples?.["Error"]}
+      >
         <div className="max-w-md">
-          <Textarea label="Business Description" error="Description is required" />
+          <Textarea
+            label="Business Description"
+            error="Description is required"
+          />
         </div>
       </DemoSection>
 
       <SpecPanel
         title="Textarea Specifications"
         items={[
-          { label: "Default border", value: "border-border → #e2e8f0", color: "bg-border" },
-          { label: "Error border", value: "border-destructive → #dc2626", color: "bg-destructive" },
-          { label: "Success border", value: "border-success → #16a34a", color: "bg-success" },
-          { label: "Focus ring", value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface" },
+          {
+            label: "Default border",
+            value: "border-border → #e2e8f0",
+            color: "bg-border",
+          },
+          {
+            label: "Error border",
+            value: "border-destructive → #dc2626",
+            color: "bg-destructive",
+          },
+          {
+            label: "Success border",
+            value: "border-success → #16a34a",
+            color: "bg-success",
+          },
+          {
+            label: "Focus ring",
+            value: "ring-2 ring-secondary ring-offset-2 ring-offset-surface",
+          },
           { label: "Size md", value: "px-4 py-3 text-body" },
           { label: "Resize", value: "resize-y" },
           { label: "Background", value: "bg-surface" },
@@ -651,28 +1148,64 @@ export function TextareaDemo() {
 export function TooltipDemo() {
   return (
     <div className="space-y-8">
-      <DemoSection title="Positions" code={snippets.tooltip.examples?.["Positions"]}>
+      <DemoSection
+        title="Positions"
+        code={snippets.tooltip.examples?.["Positions"]}
+      >
         <div className="flex flex-wrap gap-6">
-          <Tooltip content="This is a tooltip" trigger={<Button variant="secondary">Hover me (top)</Button>} />
-          <Tooltip content="Bottom tooltip with more detailed text about nominee services." trigger={<Button variant="secondary">Bottom</Button>} position="bottom" />
-          <Tooltip content="Left tooltip" trigger={<Button variant="secondary">Left</Button>} position="left" />
-          <Tooltip content="Right tooltip" trigger={<Button variant="secondary">Right</Button>} position="right" />
+          <Tooltip
+            content="This is a tooltip"
+            trigger={<Button variant="secondary">Hover me (top)</Button>}
+          />
+          <Tooltip
+            content="Bottom tooltip with more detailed text about nominee services."
+            trigger={<Button variant="secondary">Bottom</Button>}
+            position="bottom"
+          />
+          <Tooltip
+            content="Left tooltip"
+            trigger={<Button variant="secondary">Left</Button>}
+            position="left"
+          />
+          <Tooltip
+            content="Right tooltip"
+            trigger={<Button variant="secondary">Right</Button>}
+            position="right"
+          />
         </div>
       </DemoSection>
-      <DemoSection title="Medium Size" code={snippets.tooltip.examples?.["Medium Size"]}>
-        <Tooltip content="A longer tooltip explaining what nominee officer service means in detail for privacy protection." trigger={<Badge variant="info">Info Badge</Badge>} size="md" />
+      <DemoSection
+        title="Medium Size"
+        code={snippets.tooltip.examples?.["Medium Size"]}
+      >
+        <Tooltip
+          content="A longer tooltip explaining what nominee officer service means in detail for privacy protection."
+          trigger={<Badge variant="info">Info Badge</Badge>}
+          size="md"
+        />
       </DemoSection>
 
       <SpecPanel
         title="Tooltip Specifications"
         items={[
-          { label: "Background", value: "bg-foreground → #0f172a", color: "bg-foreground" },
+          {
+            label: "Background",
+            value: "bg-foreground → #0f172a",
+            color: "bg-foreground",
+          },
           { label: "Text", value: "text-surface → #ffffff" },
           { label: "Border radius", value: "rounded-card" },
-          { label: "Size sm", value: "px-3 py-1.5 text-caption whitespace-nowrap" },
+          {
+            label: "Size sm",
+            value: "px-3 py-1.5 text-caption whitespace-nowrap",
+          },
           { label: "Size md", value: "px-4 py-2.5 text-body-sm max-w-sm" },
           { label: "Size lg", value: "px-5 py-3 text-body-sm max-w-md" },
-          { label: "Arrow", value: "border-[5px] border-transparent, directional border-foreground" },
+          {
+            label: "Arrow",
+            value:
+              "border-[5px] border-transparent, directional border-foreground",
+          },
           { label: "Animation", value: "animate-fade-in" },
           { label: "Default delay", value: "150ms" },
         ]}
@@ -687,31 +1220,79 @@ export function TooltipDemo() {
 export function AlertDemo() {
   return (
     <div className="space-y-8">
-      <DemoSection title="Variants" code={snippets.alert.examples?.["Variants"]}>
+      <DemoSection
+        title="Variants"
+        code={snippets.alert.examples?.["Variants"]}
+      >
         <div className="space-y-3 max-w-content">
-          <Alert variant="info" title="Information" description="Your order has been received and is being processed." />
-          <Alert variant="warning" title="Warning" description="State filing fees may take 3-5 business days." />
-          <Alert variant="error" title="Error" description="Payment method declined. Please try another card." />
-          <Alert variant="success" title="Success" description="Your LLC has been successfully formed!" />
+          <Alert
+            variant="info"
+            title="Information"
+            description="Your order has been received and is being processed."
+          />
+          <Alert
+            variant="warning"
+            title="Warning"
+            description="State filing fees may take 3-5 business days."
+          />
+          <Alert
+            variant="error"
+            title="Error"
+            description="Payment method declined. Please try another card."
+          />
+          <Alert
+            variant="success"
+            title="Success"
+            description="Your LLC has been successfully formed!"
+          />
         </div>
       </DemoSection>
-      <DemoSection title="Dismissible" stateLabel="Interactive" code={snippets.alert.examples?.["Dismissible"]}>
+      <DemoSection
+        title="Dismissible"
+        stateLabel="Interactive"
+        code={snippets.alert.examples?.["Dismissible"]}
+      >
         <div className="max-w-content">
-          <Alert variant="error" title="Error" description="Payment method declined. Please try another card." dismissible />
+          <Alert
+            variant="error"
+            title="Error"
+            description="Payment method declined. Please try another card."
+            dismissible
+          />
         </div>
       </DemoSection>
 
       <SpecPanel
         title="Alert Specifications"
         items={[
-          { label: "Info", value: "border-secondary/30 bg-secondary/5, icon text-secondary", color: "bg-secondary" },
-          { label: "Warning", value: "border-warning/30 bg-warning/5, icon text-warning", color: "bg-warning" },
-          { label: "Error", value: "border-destructive/30 bg-destructive/5, icon text-destructive", color: "bg-destructive" },
-          { label: "Success", value: "border-success/30 bg-success/5, icon text-success", color: "bg-success" },
+          {
+            label: "Info",
+            value: "border-secondary/30 bg-secondary/5, icon text-secondary",
+            color: "bg-secondary",
+          },
+          {
+            label: "Warning",
+            value: "border-warning/30 bg-warning/5, icon text-warning",
+            color: "bg-warning",
+          },
+          {
+            label: "Error",
+            value:
+              "border-destructive/30 bg-destructive/5, icon text-destructive",
+            color: "bg-destructive",
+          },
+          {
+            label: "Success",
+            value: "border-success/30 bg-success/5, icon text-success",
+            color: "bg-success",
+          },
           { label: "Border radius", value: "rounded-card" },
           { label: "Padding", value: "px-4 py-3" },
           { label: "Text", value: "text-body-sm text-foreground" },
-          { label: "Dismiss button", value: "hover:bg-foreground/5 focus-visible:ring-2" },
+          {
+            label: "Dismiss button",
+            value: "hover:bg-foreground/5 focus-visible:ring-2",
+          },
         ]}
       />
     </div>

@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Badge } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
 
 /* ------------------------------------------------
    Props
@@ -28,7 +28,7 @@ function ValueComparisonCallout({
     <div
       className={cn(
         "bg-success/5 border border-success/20 rounded-card p-6",
-        className
+        className,
       )}
     >
       {/* Price */}

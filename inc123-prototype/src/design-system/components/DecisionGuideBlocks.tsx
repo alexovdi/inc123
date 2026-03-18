@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -20,10 +20,7 @@ export interface DecisionGuideBlocksProps {
 /* ------------------------------------------------
    Component
    ------------------------------------------------ */
-function DecisionGuideBlocks({
-  options,
-  className,
-}: DecisionGuideBlocksProps) {
+function DecisionGuideBlocks({ options, className }: DecisionGuideBlocksProps) {
   return (
     <div className={cn("flex flex-col md:flex-row gap-6", className)}>
       {options.map((option, i) => (

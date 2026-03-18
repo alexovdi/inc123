@@ -8,15 +8,12 @@ import {
   getTierPrice,
   ALL_FORMATION_STATES,
 } from "@/data/packages";
-import {
-  CTABlock,
-  PackagePreviewCard,
-  EntityTypeToggle,
-  HowItWorks,
-  Accordion,
-  AccordionItem,
-} from "@/design-system/components";
-import { Icon } from "@/design-system/primitives";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { EntityType, TierDefinition } from "@/lib/types";
 
 const entityOptions = [

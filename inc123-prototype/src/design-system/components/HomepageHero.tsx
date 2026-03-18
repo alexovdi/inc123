@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Button } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
 import { CheckCircle } from "lucide-react";
 
 /* ------------------------------------------------

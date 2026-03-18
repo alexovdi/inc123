@@ -1,6 +1,6 @@
 import { cn } from "@/design-system/utils/cn";
 import { pillarTextMap } from "@/design-system/utils/pillarMaps";
-import { Link } from "@/design-system/primitives";
+import { Link } from "@/design-system/primitives/Link";
 import type { PillarName } from "@/design-system/tokens";
 
 /* -------------------------------------------------- */

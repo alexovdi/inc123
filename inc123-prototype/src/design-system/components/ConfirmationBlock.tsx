@@ -1,5 +1,8 @@
 import { cn } from "@/design-system/utils/cn";
-import { Badge, Button, Divider, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
+import { Divider } from "@/design-system/primitives/Divider";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -51,11 +54,13 @@ function formatUSD(amount: number): string {
   }).format(amount);
 }
 
-function tierToVariant(
-  tier: string
-): "bronze" | "silver" | "gold" | undefined {
+function tierToVariant(tier: string): "bronze" | "silver" | "gold" | undefined {
   const normalized = tier.toLowerCase();
-  if (normalized === "bronze" || normalized === "silver" || normalized === "gold") {
+  if (
+    normalized === "bronze" ||
+    normalized === "silver" ||
+    normalized === "gold"
+  ) {
     return normalized;
   }
   return undefined;
@@ -77,7 +82,7 @@ function ConfirmationBlock({
     <div
       className={cn(
         "bg-surface rounded-card border border-border overflow-hidden",
-        className
+        className,
       )}
     >
       {/* Success header */}
@@ -93,9 +98,7 @@ function ConfirmationBlock({
         <h2 className="text-heading-lg font-display font-bold text-foreground">
           Order Confirmed!
         </h2>
-        <p className="mt-2 text-body text-muted">
-          Order #{orderNumber}
-        </p>
+        <p className="mt-2 text-body text-muted">Order #{orderNumber}</p>
       </div>
 
       {/* Order summary */}

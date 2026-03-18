@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -27,7 +27,7 @@ function RelatedGuides({ guides, className }: RelatedGuidesProps) {
     <div
       className={cn(
         "rounded-card border border-border bg-primary-50/50 p-4 sm:p-5",
-        className
+        className,
       )}
     >
       <p className="text-body-sm font-semibold text-foreground mb-3">
@@ -40,7 +40,7 @@ function RelatedGuides({ guides, className }: RelatedGuidesProps) {
             href={guide.href}
             className={cn(
               "group flex items-start gap-3 rounded-button p-2 -mx-2",
-              "transition-colors hover:bg-surface"
+              "transition-colors hover:bg-surface",
             )}
           >
             <span className="mt-0.5 shrink-0 text-secondary transition-transform duration-200 group-hover:translate-x-0.5">

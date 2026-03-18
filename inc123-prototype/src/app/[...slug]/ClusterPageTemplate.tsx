@@ -1,14 +1,11 @@
 import { ClusterLayout } from "@/design-system/layouts/ClusterLayout";
-import {
-  ClusterHero,
-  LongFormContent,
-  ContentSidebar,
-  DualPackageCTA,
-  CrossPillarCTA,
-  Accordion,
-  AccordionItem,
-  WhereToGoNext,
-} from "@/design-system/components";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { ClusterHero } from "@/design-system/components/ClusterHero";
+import { ContentSidebar } from "@/design-system/components/ContentSidebar";
+import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
+import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
+import { LongFormContent } from "@/design-system/components/LongFormContent";
+import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
 import { packages } from "@/data/packages";
 import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import type { ClusterContent } from "@/lib/types";

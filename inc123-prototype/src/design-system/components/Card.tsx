@@ -3,7 +3,8 @@ import NextLink from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
 import { pillarBorderTopMap } from "@/design-system/utils/pillarMaps";
-import { Badge, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { PillarName } from "@/design-system/tokens";
 
 /* -------------------------------------------------- */

@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { ContactMethod } from "@/lib/types";
 
 /* -------------------------------------------------- */
@@ -27,18 +27,14 @@ function ContactMethodCards({ methods, className }: ContactMethodCardsProps) {
                 key={method.type}
                 className={cn(
                   "rounded-card border bg-surface p-6 transition-shadow hover:shadow-card-hover flex flex-col",
-                  isPhone
-                    ? "border-secondary border-2"
-                    : "border-border"
+                  isPhone ? "border-secondary border-2" : "border-border",
                 )}
               >
                 {/* Icon */}
                 <div
                   className={cn(
                     "mb-4 flex items-center justify-center w-12 h-12 rounded-full",
-                    isPhone
-                      ? "bg-secondary/15"
-                      : "bg-secondary/10"
+                    isPhone ? "bg-secondary/15" : "bg-secondary/10",
                   )}
                 >
                   <Icon

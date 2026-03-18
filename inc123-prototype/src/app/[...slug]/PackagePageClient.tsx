@@ -2,22 +2,19 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { PackageLayout } from "@/design-system/layouts/PackageLayout";
-import {
-  Breadcrumbs,
-  PackageHero,
-  PricingGrid,
-  ValueComparisonCallout,
-  AddOnConfigurator,
-  RunningTotal,
-  ProgressiveDisclosure,
-  AlsoConsiderCards,
-  TrustSignals,
-  TestimonialCarousel,
-  Accordion,
-  AccordionItem,
-  CTABlock,
-  MoneyBackBadge,
-} from "@/design-system/components";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { AddOnConfigurator } from "@/design-system/components/AddOnConfigurator";
+import { AlsoConsiderCards } from "@/design-system/components/AlsoConsiderCards";
+import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { MoneyBackBadge } from "@/design-system/components/MoneyBackBadge";
+import { PackageHero } from "@/design-system/components/PackageHero";
+import { PricingGrid } from "@/design-system/components/PricingGrid";
+import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
+import { RunningTotal } from "@/design-system/components/RunningTotal";
+import { TestimonialCarousel } from "@/design-system/components/TestimonialCarousel";
+import { TrustSignals } from "@/design-system/components/TrustSignals";
+import { ValueComparisonCallout } from "@/design-system/components/ValueComparisonCallout";
 import { faqItems } from "@/data/faq";
 import { testimonials } from "@/data/testimonials";
 import type { PackageTier, EntityType } from "@/lib/types";

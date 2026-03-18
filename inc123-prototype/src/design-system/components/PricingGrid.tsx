@@ -2,13 +2,11 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { cn } from "@/design-system/utils/cn";
-import {
-  Button,
-  Badge,
-  Icon,
-  Tooltip,
-  Checkbox,
-} from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
+import { Checkbox } from "@/design-system/primitives/Checkbox";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Tooltip } from "@/design-system/primitives/Tooltip";
 import { EntityTypeToggle } from "./EntityTypeToggle";
 
 /* ------------------------------------------------

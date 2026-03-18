@@ -2,7 +2,8 @@
 
 import { type FormEvent, useState, useCallback } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Button, Icon } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 import { Input } from "@/design-system/primitives/Input";
 import { Select } from "@/design-system/primitives/Select";
 
@@ -149,7 +150,7 @@ function PaymentForm({
       billingCity,
       billingState,
       billingZip,
-    ]
+    ],
   );
 
   return (

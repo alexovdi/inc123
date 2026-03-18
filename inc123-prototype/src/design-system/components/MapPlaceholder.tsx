@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -37,9 +37,7 @@ function MapPlaceholder({ address, className }: MapPlaceholderProps) {
             <p className="text-body font-medium text-foreground/70">
               Map — Kingsbury Executive Suites
             </p>
-            <p className="mt-1 text-body-sm text-muted">
-              {address}
-            </p>
+            <p className="mt-1 text-body-sm text-muted">{address}</p>
           </div>
         </div>
       </div>

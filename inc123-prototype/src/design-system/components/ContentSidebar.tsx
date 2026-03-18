@@ -2,7 +2,9 @@
 
 import { cn } from "@/design-system/utils/cn";
 import { pillarTextMap } from "@/design-system/utils/pillarMaps";
-import { Button, Icon, Link } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Link } from "@/design-system/primitives/Link";
 import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------

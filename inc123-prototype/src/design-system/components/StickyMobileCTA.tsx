@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Button, Icon, type ButtonProps } from "@/design-system/primitives";
+import { Button, type ButtonProps } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -60,7 +61,7 @@ function StickyMobileCTA({
         "bg-surface shadow-dropdown border-t border-border",
         "transition-transform duration-300 ease-out",
         isVisible ? "translate-y-0" : "translate-y-full",
-        className
+        className,
       )}
       role="complementary"
       aria-label="Quick actions"
@@ -69,11 +70,7 @@ function StickyMobileCTA({
         {/* Primary CTA */}
         <div className="flex-1">
           {primaryCTA.href ? (
-            <Button
-              {...primaryCTA}
-              fullWidth
-              asChild
-            >
+            <Button {...primaryCTA} fullWidth asChild>
               <a href={primaryCTA.href}>{primaryCTA.children}</a>
             </Button>
           ) : (
@@ -89,7 +86,7 @@ function StickyMobileCTA({
               "inline-flex items-center justify-center w-11 h-11 shrink-0",
               "rounded-button border border-border text-secondary",
               "hover:bg-muted/10 transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
             )}
             aria-label={isDefaultPhone ? `Call ${phone}` : undefined}
           >

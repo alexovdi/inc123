@@ -1,5 +1,6 @@
 import { cn } from "@/design-system/utils/cn";
-import { Badge, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -42,7 +43,7 @@ function AlsoConsiderCards({
             className={cn(
               "group flex-1 flex flex-col bg-surface rounded-card border border-border p-5",
               "transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
             )}
           >
             {/* Package name */}

@@ -5,7 +5,8 @@ import {
   pillarSoftBgMap,
   pillarIconMap,
 } from "@/design-system/utils/pillarMaps";
-import { Icon, Button } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------

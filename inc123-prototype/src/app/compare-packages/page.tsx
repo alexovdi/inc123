@@ -10,11 +10,9 @@ import {
   comparisonFeatures,
   tierOrder,
 } from "@/data/packages";
-import {
-  CTABlock,
-  PackagePreviewCard,
-  EntityTypeToggle,
-} from "@/design-system/components";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
 import type { EntityType, TierDefinition } from "@/lib/types";
 
 const orderedTiers = [...tierDefinitions].sort(

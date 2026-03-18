@@ -2,7 +2,7 @@
 
 import React, { Suspense } from "react";
 import { useParams } from "next/navigation";
-import { Skeleton } from "@/design-system/primitives";
+import { Skeleton } from "@/design-system/primitives/Skeleton";
 import { ComponentPageShell } from "../../_components/ComponentPageShell";
 import { getComponentBySlug } from "../../_data/component-registry";
 import { getDemoComponent } from "../../_data/demo-map";
@@ -47,7 +47,9 @@ export default function ComponentPage() {
           <DemoComponent />
         </Suspense>
       ) : (
-        <p className="text-body text-muted">No demo available for this component.</p>
+        <p className="text-body text-muted">
+          No demo available for this component.
+        </p>
       )}
     </ComponentPageShell>
   );

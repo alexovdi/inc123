@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/design-system/utils/cn";
-import { Button, Badge } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
 import { EntityTypeToggle } from "./EntityTypeToggle";
 import type { EntityType } from "@/lib/types";
 
@@ -46,7 +47,7 @@ function PackageHero({
     <section
       className={cn(
         "w-full bg-surface rounded-card border border-border px-6 py-8 sm:px-10 sm:py-12",
-        className
+        className,
       )}
     >
       <div className="mx-auto max-w-content">

@@ -11,13 +11,14 @@ import {
   Bitcoin,
 } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
-import {
-  FormSection,
-  OrderSummary,
-  PaymentMethodSelector,
-  MockStripeInput,
-} from "@/design-system/components";
-import { Button, Input, Select, Checkbox } from "@/design-system/primitives";
+import { FormSection } from "@/design-system/components/FormSection";
+import { MockStripeInput } from "@/design-system/components/MockStripeInput";
+import { OrderSummary } from "@/design-system/components/OrderSummary";
+import { PaymentMethodSelector } from "@/design-system/components/PaymentMethodSelector";
+import { Button } from "@/design-system/primitives/Button";
+import { Checkbox } from "@/design-system/primitives/Checkbox";
+import { Input } from "@/design-system/primitives/Input";
+import { Select } from "@/design-system/primitives/Select";
 import { getTierBySlug } from "@/data/packages";
 import { US_STATES, PAYMENT_METHODS } from "@/data/checkout";
 import { useCheckout, getCheckoutPrice } from "../CheckoutContext";

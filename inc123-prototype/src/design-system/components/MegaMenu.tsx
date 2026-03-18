@@ -12,7 +12,8 @@ import {
   pillarTextMap,
   pillarSoftBgMap,
 } from "@/design-system/utils/pillarMaps";
-import { Link, Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Link } from "@/design-system/primitives/Link";
 import type { NavPillar } from "@/lib/types";
 import type { PillarName } from "@/design-system/tokens";
 

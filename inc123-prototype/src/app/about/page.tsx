@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import {
-  AboutHero,
-  FounderBio,
-  Timeline,
-  PhilosophyCards,
-  StatsStrip,
-  OfficeSection,
-  CTABlock,
-} from "@/design-system/components";
+import { AboutHero } from "@/design-system/components/AboutHero";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { FounderBio } from "@/design-system/components/FounderBio";
+import { OfficeSection } from "@/design-system/components/OfficeSection";
+import { PhilosophyCards } from "@/design-system/components/PhilosophyCards";
+import { StatsStrip } from "@/design-system/components/StatsStrip";
+import { Timeline } from "@/design-system/components/Timeline";
 import { aboutData } from "@/data/about";
 
 export const metadata: Metadata = {

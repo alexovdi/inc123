@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Button } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
 import { ClipboardCheck } from "lucide-react";
 
 /* ------------------------------------------------

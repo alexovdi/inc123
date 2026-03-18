@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -22,12 +22,7 @@ export interface ComparisonCardsProps {
    ------------------------------------------------ */
 function ComparisonCards({ comparisons, className }: ComparisonCardsProps) {
   return (
-    <div
-      className={cn(
-        "grid grid-cols-1 md:grid-cols-2 gap-6",
-        className
-      )}
-    >
+    <div className={cn("grid grid-cols-1 md:grid-cols-2 gap-6", className)}>
       {comparisons.map((item, index) => (
         <a
           key={index}
@@ -35,15 +30,13 @@ function ComparisonCards({ comparisons, className }: ComparisonCardsProps) {
           className={cn(
             "group block bg-surface rounded-card border border-border p-6",
             "shadow-card hover:shadow-card-hover",
-            "transition-all duration-200"
+            "transition-all duration-200",
           )}
         >
           <h3 className="text-heading-sm font-display font-semibold text-foreground">
             {item.title}
           </h3>
-          <p className="text-body-sm text-muted mt-2">
-            {item.description}
-          </p>
+          <p className="text-body-sm text-muted mt-2">{item.description}</p>
           <span className="inline-flex items-center gap-1.5 mt-4 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all duration-200">
             Compare
             <Icon

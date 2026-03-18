@@ -1,5 +1,6 @@
 import { cn } from "@/design-system/utils/cn";
-import { Button, Badge } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
 import type { EntityType } from "@/lib/types";
 
 /* ------------------------------------------------

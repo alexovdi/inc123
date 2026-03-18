@@ -4,7 +4,7 @@ import {
   pillarSoftBgMap,
   pillarTextMap,
 } from "@/design-system/utils/pillarMaps";
-import { Button } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
 import type { PillarName } from "@/design-system/tokens";
 
 /* -------------------------------------------------- */

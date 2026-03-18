@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { blogPosts } from "@/data/blog";
 import { pillarTagMap } from "@/design-system/utils/pillarMaps";
-import { CTABlock } from "@/design-system/components";
-import { Link } from "@/design-system/primitives";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { Link } from "@/design-system/primitives/Link";
 
 export const metadata: Metadata = {
   title:

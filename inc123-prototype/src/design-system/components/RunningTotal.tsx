@@ -2,7 +2,9 @@
 
 import { useState, useCallback } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Button, Badge, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -105,7 +107,7 @@ function RunningTotal({
       <aside
         className={cn(
           "hidden lg:block sticky top-24 bg-surface shadow-card rounded-card border border-border p-6",
-          className
+          className,
         )}
       >
         <h4 className="font-display text-heading-sm font-semibold text-foreground mb-4">
@@ -130,7 +132,7 @@ function RunningTotal({
       <div
         className={cn(
           "fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-surface border-t border-border shadow-card",
-          className
+          className,
         )}
       >
         {/* Expandable itemized view */}
@@ -162,7 +164,7 @@ function RunningTotal({
               size="sm"
               className={cn(
                 "text-muted transition-transform duration-200",
-                mobileExpanded && "rotate-180"
+                mobileExpanded && "rotate-180",
               )}
             />
           </button>

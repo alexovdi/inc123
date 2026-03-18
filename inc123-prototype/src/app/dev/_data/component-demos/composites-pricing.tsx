@@ -1,18 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import {
-  EntityTypeToggle,
-  PricingGrid,
-  RunningTotal,
-  PackagePreviewCard,
-  ValueComparisonCallout,
-  AlsoConsiderCards,
-  MoneyBackBadge,
-  ComparisonTable,
-  WinnerIndicator,
-  DecisionGuideBlocks,
-} from "@/design-system/components";
+import { AlsoConsiderCards } from "@/design-system/components/AlsoConsiderCards";
+import { ComparisonTable } from "@/design-system/components/ComparisonTable";
+import { DecisionGuideBlocks } from "@/design-system/components/DecisionGuideBlocks";
+import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { MoneyBackBadge } from "@/design-system/components/MoneyBackBadge";
+import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { PricingGrid } from "@/design-system/components/PricingGrid";
+import { RunningTotal } from "@/design-system/components/RunningTotal";
+import { ValueComparisonCallout } from "@/design-system/components/ValueComparisonCallout";
+import { WinnerIndicator } from "@/design-system/components/WinnerIndicator";
 import { DemoSection } from "../../_components/DemoSection";
 import { StateGrid } from "../../_components/StateGrid";
 import { SpecPanel } from "../../_components/SpecPanel";
@@ -23,7 +21,10 @@ export function EntityTypeToggleDemo() {
     <div className="space-y-8">
       <div>
         <EntityTypeToggle
-          options={[{ value: "llc", label: "LLC" }, { value: "corp", label: "Corporation" }]}
+          options={[
+            { value: "llc", label: "LLC" },
+            { value: "corp", label: "Corporation" },
+          ]}
           value={entityType}
           onChange={setEntityType}
         />
@@ -32,8 +33,15 @@ export function EntityTypeToggleDemo() {
       <SpecPanel
         title="EntityTypeToggle Specifications"
         items={[
-          { label: "Active pill", value: "bg-secondary text-white", color: "bg-secondary" },
-          { label: "Inactive pill", value: "bg-transparent text-muted hover:text-foreground" },
+          {
+            label: "Active pill",
+            value: "bg-secondary text-white",
+            color: "bg-secondary",
+          },
+          {
+            label: "Inactive pill",
+            value: "bg-transparent text-muted hover:text-foreground",
+          },
           { label: "Container", value: "bg-muted/10 rounded-pill p-1" },
         ]}
       />
@@ -101,20 +109,43 @@ export function PricingGridDemo() {
           default: "llc",
         }}
         addOns={[
-          { id: "rush", name: "Rush Filing", price: 199, description: "24-hour expedited filing" },
-          { id: "ein", name: "EIN Obtainment", price: 75, description: "Federal Tax ID number" },
-          { id: "ra", name: "Registered Agent", price: 150, description: "Additional year of registered agent service" },
+          {
+            id: "rush",
+            name: "Rush Filing",
+            price: 199,
+            description: "24-hour expedited filing",
+          },
+          {
+            id: "ein",
+            name: "EIN Obtainment",
+            price: 75,
+            description: "Federal Tax ID number",
+          },
+          {
+            id: "ra",
+            name: "Registered Agent",
+            price: 150,
+            description: "Additional year of registered agent service",
+          },
         ]}
         onTierSelect={(selection) => console.log("tier selected:", selection)}
       />
       <SpecPanel
         title="PricingGrid Specifications"
         items={[
-          { label: "Highlighted card", value: "border-secondary shadow-card-hover scale-105", color: "bg-secondary" },
+          {
+            label: "Highlighted card",
+            value: "border-secondary shadow-card-hover scale-105",
+            color: "bg-secondary",
+          },
           { label: "Default card", value: "border-border bg-surface" },
           { label: "Badge", value: "Badge component (info or tier variant)" },
           { label: "Price", value: "font-display text-heading-lg font-bold" },
-          { label: "Feature included", value: "text-success CircleCheck icon", color: "bg-success" },
+          {
+            label: "Feature included",
+            value: "text-success CircleCheck icon",
+            color: "bg-success",
+          },
           { label: "Feature excluded", value: "text-muted/40 X icon" },
         ]}
       />
@@ -137,7 +168,10 @@ export function RunningTotalDemo() {
       <SpecPanel
         title="RunningTotal Specifications"
         items={[
-          { label: "Background", value: "bg-surface border-border rounded-card" },
+          {
+            label: "Background",
+            value: "bg-surface border-border rounded-card",
+          },
           { label: "Total", value: "font-display text-heading-sm font-bold" },
           { label: "CTA", value: "Button variant=cta fullWidth" },
         ]}
@@ -157,7 +191,12 @@ export function PackagePreviewCardDemo() {
               label: "Default",
               children: (
                 <PackagePreviewCard
-                  tier={{ name: "Silver LLC", price: 875, period: "/one-time", description: "Professional formation." }}
+                  tier={{
+                    name: "Silver LLC",
+                    price: 875,
+                    period: "/one-time",
+                    description: "Professional formation.",
+                  }}
                   entityType="LLC"
                   cta={{ label: "View", href: "#" }}
                 />
@@ -168,7 +207,14 @@ export function PackagePreviewCardDemo() {
               note: "border-secondary shadow-card-hover",
               children: (
                 <PackagePreviewCard
-                  tier={{ name: "Gold LLC", price: 1275, period: "/one-time", description: "Complete privacy.", badge: "Most Popular", highlighted: true }}
+                  tier={{
+                    name: "Gold LLC",
+                    price: 1275,
+                    period: "/one-time",
+                    description: "Complete privacy.",
+                    badge: "Most Popular",
+                    highlighted: true,
+                  }}
                   entityType="LLC"
                   cta={{ label: "View", href: "#" }}
                 />
@@ -178,7 +224,13 @@ export function PackagePreviewCardDemo() {
               label: "Premium Badge",
               children: (
                 <PackagePreviewCard
-                  tier={{ name: "NV Gold LLC", price: 1800, period: "/one-time", description: "Full privacy.", badge: "Premium" }}
+                  tier={{
+                    name: "NV Gold LLC",
+                    price: 1800,
+                    period: "/one-time",
+                    description: "Full privacy.",
+                    badge: "Premium",
+                  }}
                   entityType="LLC"
                   cta={{ label: "View", href: "#" }}
                 />
@@ -191,8 +243,15 @@ export function PackagePreviewCardDemo() {
       <SpecPanel
         title="PackagePreviewCard Specifications"
         items={[
-          { label: "Default", value: "border-border bg-surface rounded-card p-6" },
-          { label: "Highlighted", value: "border-secondary shadow-card-hover", color: "bg-secondary" },
+          {
+            label: "Default",
+            value: "border-border bg-surface rounded-card p-6",
+          },
+          {
+            label: "Highlighted",
+            value: "border-secondary shadow-card-hover",
+            color: "bg-secondary",
+          },
           { label: "Price", value: "font-display text-heading-md font-bold" },
           { label: "CTA", value: "Button variant=primary (highlighted: cta)" },
         ]}
@@ -217,9 +276,24 @@ export function AlsoConsiderCardsDemo() {
   return (
     <AlsoConsiderCards
       packages={[
-        { name: "Wyoming Silver LLC", state: "Wyoming", price: "$875", href: "#" },
-        { name: "Nevada Gold LLC", state: "Nevada", price: "$1,800", href: "#" },
-        { name: "California Private LLC", state: "California", price: "$1,475", href: "#" },
+        {
+          name: "Wyoming Silver LLC",
+          state: "Wyoming",
+          price: "$875",
+          href: "#",
+        },
+        {
+          name: "Nevada Gold LLC",
+          state: "Nevada",
+          price: "$1,800",
+          href: "#",
+        },
+        {
+          name: "California Private LLC",
+          state: "California",
+          price: "$1,475",
+          href: "#",
+        },
       ]}
     />
   );
@@ -235,9 +309,16 @@ export function MoneyBackBadgeDemo() {
       <SpecPanel
         title="MoneyBackBadge Specifications"
         items={[
-          { label: "Icon", value: "Shield + Check, text-success", color: "bg-success" },
+          {
+            label: "Icon",
+            value: "Shield + Check, text-success",
+            color: "bg-success",
+          },
           { label: "Standard", value: "inline-flex gap-2 items-center" },
-          { label: "Detailed", value: "bg-success/5 border-success/20 rounded-card p-4" },
+          {
+            label: "Detailed",
+            value: "bg-success/5 border-success/20 rounded-card p-4",
+          },
         ]}
       />
     </div>
@@ -256,7 +337,11 @@ export function ComparisonTableDemo() {
           { label: "State Filing Fee", values: { wy: "$100", nv: "$425" } },
           { label: "Annual Fee", values: { wy: "$60", nv: "$350+" } },
           { label: "State Income Tax", values: { wy: "None", nv: "None" } },
-          { label: "Charging Order Protection", tooltip: "Legal protection against creditors seizing LLC assets", values: { wy: "Strongest", nv: "Good" } },
+          {
+            label: "Charging Order Protection",
+            tooltip: "Legal protection against creditors seizing LLC assets",
+            values: { wy: "Strongest", nv: "Good" },
+          },
           { label: "Privacy Statutes", values: { wy: "Strong", nv: "Strong" } },
         ]}
         highlightColumn="wy"
@@ -264,7 +349,11 @@ export function ComparisonTableDemo() {
       <SpecPanel
         title="ComparisonTable Specifications"
         items={[
-          { label: "Highlighted column", value: "bg-secondary/5 border-secondary/20", color: "bg-secondary" },
+          {
+            label: "Highlighted column",
+            value: "bg-secondary/5 border-secondary/20",
+            color: "bg-secondary",
+          },
           { label: "Header", value: "font-display font-semibold" },
           { label: "Row border", value: "border-b border-border" },
           { label: "Tooltip", value: "Info icon with Tooltip component" },
@@ -289,15 +378,35 @@ export function DecisionGuideBlocksDemo() {
     <div className="space-y-8">
       <DecisionGuideBlocks
         options={[
-          { title: "Choose Wyoming If...", description: "Best for most privacy and asset protection needs.", criteria: ["You want the strongest charging order protection", "You want the lowest annual fees ($60/year state fee)", "You want maximum privacy with nominees"] },
-          { title: "Choose Nevada If...", description: "Best for in-state operations and business court access.", criteria: ["You plan to physically operate in Nevada", "You value Nevada's dedicated business court", "You need a Nevada-based registered agent"] },
+          {
+            title: "Choose Wyoming If...",
+            description: "Best for most privacy and asset protection needs.",
+            criteria: [
+              "You want the strongest charging order protection",
+              "You want the lowest annual fees ($60/year state fee)",
+              "You want maximum privacy with nominees",
+            ],
+          },
+          {
+            title: "Choose Nevada If...",
+            description:
+              "Best for in-state operations and business court access.",
+            criteria: [
+              "You plan to physically operate in Nevada",
+              "You value Nevada's dedicated business court",
+              "You need a Nevada-based registered agent",
+            ],
+          },
         ]}
       />
       <SpecPanel
         title="DecisionGuideBlocks Specifications"
         items={[
           { label: "Card", value: "border-border bg-surface rounded-card p-6" },
-          { label: "Title", value: "font-display text-heading-sm font-semibold" },
+          {
+            label: "Title",
+            value: "font-display text-heading-sm font-semibold",
+          },
           { label: "Criteria", value: "list-disc text-body text-muted" },
         ]}
       />

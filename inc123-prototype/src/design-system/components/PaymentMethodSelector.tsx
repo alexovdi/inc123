@@ -2,7 +2,7 @@
 
 import { type ReactNode } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -42,7 +42,11 @@ function PaymentMethodSelector({
   return (
     <div className={cn("bg-surface rounded-card", className)}>
       {/* Tabs */}
-      <div className="flex flex-row gap-3" role="tablist" aria-label="Payment method">
+      <div
+        className="flex flex-row gap-3"
+        role="tablist"
+        aria-label="Payment method"
+      >
         {methods.map((method) => {
           const isActive = method.id === activeMethod;
 
@@ -60,7 +64,7 @@ function PaymentMethodSelector({
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
                 isActive
                   ? "border-secondary bg-secondary/5 text-secondary"
-                  : "border-border text-foreground hover:border-secondary/50 hover:bg-muted/5"
+                  : "border-border text-foreground hover:border-secondary/50 hover:bg-muted/5",
               )}
             >
               <Icon name={method.icon} size="sm" />

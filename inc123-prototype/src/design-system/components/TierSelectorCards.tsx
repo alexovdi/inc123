@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/design-system/utils/cn";
-import { Badge, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -76,7 +77,7 @@ function TierSelectorCards({
                 ? "border-secondary bg-secondary/5 shadow-card-hover"
                 : tier.highlighted
                   ? "border-secondary/40 bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5"
-                  : "border-border bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5"
+                  : "border-border bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
             )}
           >
             {/* Badge */}
@@ -100,7 +101,7 @@ function TierSelectorCards({
                   "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors",
                   isSelected
                     ? "border-secondary bg-secondary"
-                    : "border-border bg-surface"
+                    : "border-border bg-surface",
                 )}
                 aria-hidden="true"
               >
@@ -115,7 +116,9 @@ function TierSelectorCards({
               <span className="text-heading font-display font-bold text-foreground font-mono">
                 {formatUSD(tier.price)}
               </span>
-              <span className="ml-1 text-body-sm text-muted">all-inclusive</span>
+              <span className="ml-1 text-body-sm text-muted">
+                all-inclusive
+              </span>
             </div>
 
             {/* Features */}

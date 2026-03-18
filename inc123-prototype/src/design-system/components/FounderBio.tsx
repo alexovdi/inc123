@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -55,7 +55,10 @@ function FounderBio({
           {/* Bio paragraphs */}
           <div className="mt-6 space-y-4">
             {bio.map((paragraph, index) => (
-              <p key={index} className="text-body text-foreground/90 leading-relaxed">
+              <p
+                key={index}
+                className="text-body text-foreground/90 leading-relaxed"
+              >
                 {paragraph}
               </p>
             ))}

@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -43,11 +43,7 @@ function AudienceBlocks({
             className="bg-surface rounded-card border border-border p-6"
           >
             <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-button bg-secondary/10">
-              <Icon
-                name={audience.icon}
-                size="md"
-                className="text-secondary"
-              />
+              <Icon name={audience.icon} size="md" className="text-secondary" />
             </div>
             <h3 className="text-heading-sm font-display font-semibold text-foreground mb-2">
               {audience.title}

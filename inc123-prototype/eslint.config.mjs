@@ -13,6 +13,27 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "@/design-system/components",
+              message:
+                "Import directly from the component file (e.g. @/design-system/components/Card) to avoid Turbopack compilation freezes.",
+            },
+            {
+              name: "@/design-system/primitives",
+              message:
+                "Import directly from the primitive file (e.g. @/design-system/primitives/Button) to avoid Turbopack compilation freezes.",
+            },
+          ],
+        },
+      ],
+    },
+  },
 ]);
 
 export default eslintConfig;

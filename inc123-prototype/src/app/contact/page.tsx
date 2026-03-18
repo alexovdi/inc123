@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import {
-  ContactHero,
-  ContactMethodCards,
-  ContactForm,
-  TrustSignals,
-  QuickLinkCards,
-  MapPlaceholder,
-} from "@/design-system/components";
+import { ContactForm } from "@/design-system/components/ContactForm";
+import { ContactHero } from "@/design-system/components/ContactHero";
+import { ContactMethodCards } from "@/design-system/components/ContactMethodCards";
+import { MapPlaceholder } from "@/design-system/components/MapPlaceholder";
+import { QuickLinkCards } from "@/design-system/components/QuickLinkCards";
+import { TrustSignals } from "@/design-system/components/TrustSignals";
 import { contactData, contactTrustItems } from "@/data/contact";
 
 export const metadata: Metadata = {

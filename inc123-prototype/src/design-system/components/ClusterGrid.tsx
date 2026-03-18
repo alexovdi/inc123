@@ -4,7 +4,7 @@ import {
   pillarBorderTopMap,
   pillarTextMap,
 } from "@/design-system/utils/pillarMaps";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------

@@ -1,19 +1,16 @@
 import { ComparisonLayout } from "@/design-system/layouts/ComparisonLayout";
-import {
-  ComparisonHero,
-  ComparisonTable,
-  WinnerIndicator,
-  DualPackageCTA,
-  DecisionGuideBlocks,
-  CrossPillarCTA,
-  Accordion,
-  AccordionItem,
-  WhereToGoNext,
-} from "@/design-system/components";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { ComparisonHero } from "@/design-system/components/ComparisonHero";
+import { ComparisonTable } from "@/design-system/components/ComparisonTable";
+import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
+import { DecisionGuideBlocks } from "@/design-system/components/DecisionGuideBlocks";
+import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
+import type { DualPackageItem } from "@/design-system/components/DualPackageCTA";
+import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { WinnerIndicator } from "@/design-system/components/WinnerIndicator";
 import { packages } from "@/data/packages";
 import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import type { ComparisonPage } from "@/lib/types";
-import type { DualPackageItem } from "@/design-system/components";
 
 /* ------------------------------------------------
    Helper: resolve packages for DualPackageCTA

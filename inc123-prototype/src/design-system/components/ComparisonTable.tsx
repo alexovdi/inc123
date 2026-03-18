@@ -8,7 +8,9 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Badge, Tooltip, Icon } from "@/design-system/primitives";
+import { Badge } from "@/design-system/primitives/Badge";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Tooltip } from "@/design-system/primitives/Tooltip";
 
 /* ------------------------------------------------
    Types

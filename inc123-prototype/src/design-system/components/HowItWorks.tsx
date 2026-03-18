@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { ScrollReveal } from "@/design-system/primitives";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 
 /* ------------------------------------------------
    Types

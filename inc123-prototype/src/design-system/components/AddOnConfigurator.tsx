@@ -1,7 +1,9 @@
 "use client";
 
 import { cn } from "@/design-system/utils/cn";
-import { Checkbox, Icon, Tooltip } from "@/design-system/primitives";
+import { Checkbox } from "@/design-system/primitives/Checkbox";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Tooltip } from "@/design-system/primitives/Tooltip";
 import type { PackageAddOn } from "@/lib/types";
 
 /* ------------------------------------------------
@@ -49,12 +51,17 @@ function AddOnRow({ addOn, checked, onToggle }: AddOnRowProps) {
       role="button"
       tabIndex={0}
       onClick={onToggle}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggle(); } }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onToggle();
+        }
+      }}
       className={cn(
         "flex items-start gap-4 rounded-card border p-4 transition-colors cursor-pointer",
         checked
           ? "border-secondary/30 bg-secondary/5"
-          : "border-border bg-surface hover:border-secondary/20"
+          : "border-border bg-surface hover:border-secondary/20",
       )}
     >
       <Checkbox
@@ -119,8 +126,8 @@ function AddOnConfigurator({
         Customize Your Package
       </h2>
       <p className="mt-2 text-body text-muted">
-        Optional add-ons to enhance your formation. Select any that apply —
-        your total updates in real time.
+        Optional add-ons to enhance your formation. Select any that apply — your
+        total updates in real time.
       </p>
 
       {/* Recommended add-ons */}
@@ -178,13 +185,8 @@ function AddOnConfigurator({
               const addOn = addOns.find((a) => a.id === id);
               if (!addOn) return null;
               return (
-                <div
-                  key={id}
-                  className="flex items-center justify-between"
-                >
-                  <span className="text-body-sm text-muted">
-                    {addOn.name}
-                  </span>
+                <div key={id} className="flex items-center justify-between">
+                  <span className="text-body-sm text-muted">{addOn.name}</span>
                   <span className="font-mono text-body-sm text-muted">
                     {addOn.price === 0
                       ? "FREE"
@@ -196,15 +198,10 @@ function AddOnConfigurator({
           </div>
         )}
 
-        <div
-          role="separator"
-          className="my-3 h-px w-full bg-border"
-        />
+        <div role="separator" className="my-3 h-px w-full bg-border" />
 
         <div className="flex items-center justify-between">
-          <span className="text-body-lg font-bold text-foreground">
-            Total
-          </span>
+          <span className="text-body-lg font-bold text-foreground">Total</span>
           <span className="font-mono text-heading-sm font-bold text-foreground">
             ${grandTotal.toLocaleString()}
           </span>

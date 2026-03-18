@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
 import { offshoreData } from "@/data/offshore";
-import {
-  AdvantageGrid,
-  LongFormContent,
-  Accordion,
-  AccordionItem,
-  WhereToGoNext,
-} from "@/design-system/components";
-import { Button, Icon } from "@/design-system/primitives";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { AdvantageGrid } from "@/design-system/components/AdvantageGrid";
+import { LongFormContent } from "@/design-system/components/LongFormContent";
+import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 import type { ClusterSection } from "@/lib/types";
 import type { Metadata } from "next";
 import Link from "next/link";

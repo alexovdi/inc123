@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from "react";
 import { cn } from "@/design-system/utils/cn";
-import { Button, Icon } from "@/design-system/primitives";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    Props
@@ -65,24 +66,17 @@ function StateSelector({
         window.location.href = href;
       }
     },
-    []
+    [],
   );
 
   return (
-    <div
-      className={cn(
-        "bg-primary-50 rounded-card p-6",
-        className
-      )}
-    >
+    <div className={cn("bg-primary-50 rounded-card p-6", className)}>
       {/* Heading */}
       <h3 className="text-heading-sm font-display font-semibold text-foreground">
         {heading}
       </h3>
       {description && (
-        <p className="text-body-sm text-muted mt-1">
-          {description}
-        </p>
+        <p className="text-body-sm text-muted mt-1">{description}</p>
       )}
 
       {/* Card buttons for small state lists */}
@@ -103,15 +97,13 @@ function StateSelector({
                   "flex flex-col items-center gap-1 p-4 rounded-card border border-border bg-surface",
                   "shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
                   "transition-all duration-200",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
                 )}
               >
                 <span className="text-heading font-display font-bold text-foreground">
                   {abbr}
                 </span>
-                <span className="text-caption text-muted">
-                  {state.label}
-                </span>
+                <span className="text-caption text-muted">{state.label}</span>
               </button>
             );
           })}
@@ -134,7 +126,7 @@ function StateSelector({
                 className={cn(
                   "w-full appearance-none h-11 px-4 pr-10 rounded-button border border-border bg-surface",
                   "text-body text-foreground font-sans",
-                  "transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface"
+                  "transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface",
                 )}
               >
                 <option value="" disabled>

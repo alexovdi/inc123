@@ -1,16 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import {
-  FAQHero,
-  SearchInput,
-  CategoryFilterPills,
-  Accordion,
-  AccordionItem,
-  RelatedGuides,
-  CTABlock,
-} from "@/design-system/components";
-import type { CategoryFilterItem } from "@/design-system/components";
+import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { CategoryFilterPills } from "@/design-system/components/CategoryFilterPills";
+import type { CategoryFilterItem } from "@/design-system/components/CategoryFilterPills";
+import { CTABlock } from "@/design-system/components/CTABlock";
+import { FAQHero } from "@/design-system/components/FAQHero";
+import { RelatedGuides } from "@/design-system/components/RelatedGuides";
+import { SearchInput } from "@/design-system/components/SearchInput";
 import {
   faqItems,
   type FAQCategory,

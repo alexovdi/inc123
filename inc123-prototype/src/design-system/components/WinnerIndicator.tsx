@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
-import { Icon } from "@/design-system/primitives";
+import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
    CVA Variants
@@ -22,8 +22,9 @@ const winnerVariants = cva("inline-flex items-center gap-1.5", {
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
-export interface WinnerIndicatorProps
-  extends VariantProps<typeof winnerVariants> {
+export interface WinnerIndicatorProps extends VariantProps<
+  typeof winnerVariants
+> {
   /** Outcome type */
   type: "winner" | "tie" | "loser";
   /** Content to display */
@@ -35,11 +36,7 @@ export interface WinnerIndicatorProps
 /* ------------------------------------------------
    Component
    ------------------------------------------------ */
-function WinnerIndicator({
-  type,
-  children,
-  className,
-}: WinnerIndicatorProps) {
+function WinnerIndicator({ type, children, className }: WinnerIndicatorProps) {
   return (
     <span className={cn(winnerVariants({ type }), className)}>
       {type === "winner" && (
