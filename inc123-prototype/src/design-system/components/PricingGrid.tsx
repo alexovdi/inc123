@@ -52,10 +52,10 @@ export interface TierSelection {
 export interface PricingGridProps {
   /** Package tiers to display as columns */
   tiers: PricingTier[];
-  /** Entity type toggle config */
-  entityToggle: PricingEntityToggle;
+  /** Entity type toggle config (omit to hide toggle) */
+  entityToggle?: PricingEntityToggle;
   /** Available add-ons */
-  addOns: PricingAddOn[];
+  addOns?: PricingAddOn[];
   /** Callback when a tier is selected */
   onTierSelect: (selection: TierSelection) => void;
   /** Additional class names */
@@ -118,7 +118,7 @@ function PricingGrid({
   onTierSelect,
   className,
 }: PricingGridProps) {
-  const [entityType, setEntityType] = useState(entityToggle.default);
+  const [entityType, setEntityType] = useState(entityToggle?.default ?? "llc");
   const [selectedAddOns, setSelectedAddOns] = useState<Record<string, boolean>>(
     {},
   );
@@ -145,7 +145,7 @@ function PricingGrid({
   const addOnTotal = useMemo(
     () =>
       activeAddOnIds.reduce((sum, id) => {
-        const addOn = addOns.find((a) => a.id === id);
+        const addOn = (addOns ?? []).find((a) => a.id === id);
         return sum + (addOn?.price ?? 0);
       }, 0),
     [activeAddOnIds, addOns],
@@ -166,13 +166,15 @@ function PricingGrid({
   return (
     <div className={cn("w-full", className)}>
       {/* Entity toggle */}
-      <div className="flex justify-center mb-8">
-        <EntityTypeToggle
-          options={entityToggle.options}
-          value={entityType}
-          onChange={setEntityType}
-        />
-      </div>
+      {entityToggle && (
+        <div className="flex justify-center mb-8">
+          <EntityTypeToggle
+            options={entityToggle.options}
+            value={entityType}
+            onChange={setEntityType}
+          />
+        </div>
+      )}
 
       {/* Tier columns — Gold-first on mobile via CSS order */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -275,13 +277,13 @@ function PricingGrid({
       </div>
 
       {/* Add-ons section */}
-      {addOns.length > 0 && (
+      {(addOns ?? []).length > 0 && (
         <div className="mt-10 bg-surface rounded-card border border-border p-6">
           <h4 className="font-display text-heading-sm font-semibold text-foreground mb-4">
             Available Add-Ons
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {addOns.map((addOn) => {
+            {(addOns ?? []).map((addOn) => {
               const checkbox = (
                 <Checkbox
                   key={addOn.id}

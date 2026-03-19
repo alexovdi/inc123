@@ -30,6 +30,8 @@ export interface RunningTotalProps {
   total: number;
   /** Checkout destination */
   checkoutHref: string;
+  /** Checkout button label (default: "Proceed to Checkout") */
+  checkoutLabel?: string;
   /** Additional class names */
   className?: string;
 }
@@ -93,6 +95,7 @@ function RunningTotal({
   addOns,
   total,
   checkoutHref,
+  checkoutLabel = "Proceed to Checkout",
   className,
 }: RunningTotalProps) {
   const [mobileExpanded, setMobileExpanded] = useState(false);
@@ -123,7 +126,7 @@ function RunningTotal({
 
         <div className="mt-6">
           <Button variant="cta" fullWidth asChild>
-            <a href={checkoutHref}>Proceed to Checkout</a>
+            <a href={checkoutHref}>{checkoutLabel}</a>
           </Button>
         </div>
       </aside>
@@ -170,7 +173,7 @@ function RunningTotal({
           </button>
 
           <Button variant="cta" size="sm" asChild>
-            <a href={checkoutHref}>Checkout</a>
+            <a href={checkoutHref}>{checkoutLabel}</a>
           </Button>
         </div>
       </div>
