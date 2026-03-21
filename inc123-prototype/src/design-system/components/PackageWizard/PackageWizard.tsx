@@ -95,6 +95,7 @@ type WizardAction =
   | { type: "SET_TIER"; tier: WizardTier }
   | { type: "SET_ENTITY"; entity: EntityType }
   | { type: "ADVANCE_TO_RESULT" }
+  | { type: "CONFIRM_INTENT" }
   | { type: "BACK" }
   | { type: "RESET" };
 
@@ -112,16 +113,18 @@ function wizardReducer(data: WizardData, action: WizardAction): WizardData {
   switch (action.type) {
     case "START":
       return { ...data, step: 0, direction: 1 };
-    case "SET_INTENT": {
-      const intent = action.intent;
+    case "SET_INTENT":
+      return { ...data, intent: action.intent };
+    case "CONFIRM_INTENT": {
+      const intent = data.intent;
+      if (!intent) return data;
       if (intent === "shelf") {
-        return { ...data, step: 0, direction: 1, intent, done: true };
+        return { ...data, direction: 1, done: true };
       }
       return {
         ...data,
         step: 1,
         direction: 1,
-        intent,
         tier: getDefaultTier(intent),
         state: null,
         done: false,
@@ -157,7 +160,6 @@ function wizardReducer(data: WizardData, action: WizardAction): WizardData {
           ...data,
           step: 0,
           direction: -1,
-          intent: null,
           state: null,
           tier: null,
         };
@@ -262,6 +264,7 @@ export function PackageWizard() {
             onSelect={(id) =>
               dispatch({ type: "SET_INTENT", intent: id as WizardIntent })
             }
+            dispatch={dispatch}
           />
         </WizardTransition>
 
@@ -351,9 +354,11 @@ PackageWizard.displayName = "PackageWizard";
 function StepGoal({
   selected,
   onSelect,
+  dispatch: parentDispatch,
 }: {
   selected: WizardIntent | null;
   onSelect: (id: string) => void;
+  dispatch: React.Dispatch<WizardAction>;
 }) {
   return (
     <div>
@@ -371,9 +376,28 @@ function StepGoal({
             title={option.title}
             subtitle={option.subtitle}
             badge={option.badge}
+            selected={selected === option.id}
             onClick={() => onSelect(option.id)}
           />
         ))}
+      </div>
+
+      {/* Continue button */}
+      <div className="mx-auto mt-6 flex max-w-[48rem] items-center justify-end">
+        <button
+          type="button"
+          disabled={!selected}
+          onClick={() => parentDispatch({ type: "CONFIRM_INTENT" })}
+          className={cn(
+            "inline-flex items-center gap-2 rounded-button px-6 py-2.5 text-body-sm font-semibold transition-all",
+            selected
+              ? "bg-secondary text-white hover:bg-secondary/90 cursor-pointer"
+              : "bg-border text-muted cursor-not-allowed",
+          )}
+        >
+          Continue
+          <ArrowRight className="h-4 w-4" />
+        </button>
       </div>
     </div>
   );

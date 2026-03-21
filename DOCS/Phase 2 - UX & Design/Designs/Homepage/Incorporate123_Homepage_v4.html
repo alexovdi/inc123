@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Privacy, Asset Protection & Business Formation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0c1e35;--navy-mid:#152d4a;--navy-light:#1e3a5f;
+  --blue:#2563eb;--blue-light:#60a5fa;--blue-glow:rgba(37,99,235,.15);
+  --amber:#d97706;--amber-light:#f59e0b;--amber-glow:rgba(217,119,6,.15);
+  --green:#16a34a;--green-soft:#f0fdf4;--purple:#9333ea;--purple-soft:#faf5ff;
+  --white:#fff;--off-white:#f8fafc;--ghost:#f1f5f9;
+  --fg:#0f172a;--fg2:#334155;--muted:#64748b;--faint:#94a3b8;--dim:#cbd5e1;
+  --border:#e2e8f0;--border-light:#f1f5f9;
+  --fd:'Outfit',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--fg);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.ctr{max-width:1200px;margin:0 auto;padding:0 28px}
+@media(prefers-reduced-motion:reduce){*{animation:0s!important;transition:0s!important}}
+
+/* ═══ REVEAL ═══ */
+[data-r]{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+[data-r].v{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ═══ BTNS ═══ */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-weight:600;font-size:15px;padding:16px 34px;border-radius:14px;border:none;cursor:pointer;transition:all .35s var(--ease);white-space:nowrap;letter-spacing:-.01em;position:relative;isolation:isolate}
+.btn::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.15),transparent 40%);opacity:0;transition:opacity .35s;pointer-events:none;z-index:1}
+.btn:hover::before{opacity:1}
+.btn-amber{background:linear-gradient(135deg,var(--amber),var(--amber-light));color:#fff;box-shadow:0 2px 4px rgba(217,119,6,.2),0 8px 24px rgba(217,119,6,.18),inset 0 1px 0 rgba(255,255,255,.1)}
+.btn-amber:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(217,119,6,.25),0 16px 40px rgba(217,119,6,.22),inset 0 1px 0 rgba(255,255,255,.15)}
+.btn-glass{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.btn-glass:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--blue);background:rgba(37,99,235,.04);transform:translateY(-2px)}
+.btn-full{width:100%;justify-content:center}
+.btn-sm{padding:11px 22px;font-size:14px;border-radius:10px}
+.arr{display:inline-block;transition:transform .35s var(--ease)}.btn:hover .arr{transform:translateX(4px)}
+
+/* ═══ HEADER ═══ */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .4s var(--ease)}
+.hdr-bg{position:absolute;inset:0;background:rgba(255,255,255,.75);backdrop-filter:blur(24px) saturate(200%);-webkit-backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid transparent;transition:all .4s var(--ease);opacity:0}
+.hdr.s .hdr-bg{opacity:1;border-bottom-color:rgba(0,0,0,.04)}
+.hdr-in{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;padding:0 28px}
+.logo{font-family:var(--fd);font-weight:900;font-size:20px;letter-spacing:-.8px;transition:color .3s}
+.hdr:not(.s) .logo{color:#fff}
+.hdr.s .logo{color:var(--navy)}
+.logo b{color:var(--blue)}
+.nav{display:flex;gap:4px}
+.nav a{font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .25s}
+.hdr:not(.s) .nav a{color:rgba(255,255,255,.7)}
+.hdr:not(.s) .nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.hdr.s .nav a{color:var(--fg2)}
+.hdr.s .nav a:hover{color:var(--fg);background:var(--ghost)}
+.nr{display:flex;align-items:center;gap:10px}
+.nr .login{font-size:13px;font-weight:500;padding:8px 12px;transition:all .25s}
+.hdr:not(.s) .login{color:rgba(255,255,255,.5)}.hdr:not(.s) .login:hover{color:#fff}
+.hdr.s .login{color:var(--muted)}.hdr.s .login:hover{color:var(--fg)}
+.nr .ph{font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;transition:all .25s}
+.hdr:not(.s) .ph{color:rgba(255,255,255,.8)}.hdr:not(.s) .ph:hover{background:rgba(255,255,255,.08)}
+.hdr.s .ph{color:var(--fg)}.hdr.s .ph:hover{background:var(--ghost)}
+.ph-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(22,163,74,.5);animation:blink 3s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hdr-cta-w{transition:all .3s}
+.hdr:not(.s) .hdr-cta-w .btn{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2)}
+.hdr:not(.s) .hdr-cta-w .btn:hover{background:rgba(255,255,255,.18)}
+.mob-btn{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;align-items:center;justify-content:center;border-radius:10px}
+.mob-btn svg{width:20px;height:20px;transition:color .3s}
+.hdr:not(.s) .mob-btn svg{color:#fff}.hdr.s .mob-btn svg{color:var(--fg)}
+@media(max-width:1024px){.nav,.nr .login,.hdr-cta-w{display:none}.mob-btn{display:flex}}
+
+/* ═══════════════════════════════════════════
+   HERO — IMMERSIVE FULL-VIEWPORT
+   ═══════════════════════════════════════════ */
+.hero{min-height:100dvh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--navy)}
+
+/* Layered bg */
+.hero-aurora{position:absolute;inset:0;overflow:hidden}
+.aurora-beam{position:absolute;filter:blur(100px);border-radius:50%;animation:aurora 20s ease-in-out infinite alternate}
+.ab1{width:50vw;height:50vw;top:-15%;right:-10%;background:rgba(37,99,235,.18);animation-delay:0s}
+.ab2{width:40vw;height:40vw;bottom:-20%;left:-5%;background:rgba(147,51,234,.08);animation-delay:-5s}
+.ab3{width:35vw;height:35vw;top:40%;left:30%;background:rgba(37,99,235,.06);animation-delay:-10s}
+.ab4{width:25vw;height:25vw;bottom:10%;right:20%;background:rgba(217,119,6,.06);animation-delay:-15s}
+@keyframes aurora{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.1)}100%{transform:translate(-20px,20px) scale(.95)}}
+
+.hero-grid-bg{position:absolute;inset:0;opacity:.025;
+  background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 70%)}
+.hero-grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E")}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(12,30,53,.6) 100%);pointer-events:none}
+
+/* Animated border glow line */
+.hero-glow-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--amber-light),var(--blue),transparent);background-size:200% 100%;animation:glowSlide 8s linear infinite}
+@keyframes glowSlide{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+.hero-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center;padding:120px 0 100px}
+.hero-txt{max-width:560px}
+
+/* Animated badge */
+.hero-chip{display:inline-flex;align-items:center;gap:10px;font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);padding:9px 20px 9px 16px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.1);border-radius:100px;margin-bottom:36px;position:relative;overflow:hidden}
+.hero-chip::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(96,165,250,.1),transparent);animation:chipShine 4s ease-in-out infinite}
+@keyframes chipShine{0%,100%{left:-100%}50%{left:150%}}
+.chip-live{width:8px;height:8px;border-radius:50%;background:var(--blue-light);position:relative;flex-shrink:0}
+.chip-live::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--blue-light);opacity:0;animation:ping 2.5s ease-in-out infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.6}100%{transform:scale(2);opacity:0}}
+
+.hero h1{font-family:var(--fd);font-weight:900;font-size:clamp(44px,6vw,76px);line-height:.98;color:#fff;letter-spacing:-3.5px;margin-bottom:28px}
+.hero h1 .hl{display:inline;position:relative;
+  background:linear-gradient(135deg,#60a5fa 0%,#818cf8 30%,#c084fc 50%,#f0abfc 70%,#60a5fa 100%);
+  background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 12s ease infinite}
+@keyframes shimmer{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}
+.hero-sub{font-size:18px;line-height:1.8;color:rgba(255,255,255,.45);margin-bottom:44px;max-width:460px;letter-spacing:-.02em}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-safety{font-size:14px;color:rgba(255,255,255,.3);margin-top:20px}
+.hero-safety a{color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.15);transition:all .25s}
+.hero-safety a:hover{color:#fff;text-decoration-color:#fff}
+
+/* Stats — horizontal ticker feel */
+.hero-stats{display:flex;gap:1px;margin-top:72px;background:rgba(255,255,255,.04);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.05)}
+.h-stat{flex:1;padding:28px 24px;text-align:center;position:relative}
+.h-stat+.h-stat::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.06)}
+.h-stat-val{font-family:var(--fm);font-weight:600;font-size:28px;color:#fff;letter-spacing:-1px;line-height:1}
+.h-stat-val .unit{font-size:14px;color:rgba(255,255,255,.3);font-weight:400;margin-left:2px}
+.h-stat-lab{font-size:12px;color:rgba(255,255,255,.3);margin-top:8px;letter-spacing:.02em}
+
+/* Hero visual — shield constellation */
+.hero-vis{display:flex;align-items:center;justify-content:center;position:relative}
+.constellation{position:relative;width:460px;height:500px}
+/* Orbit rings */
+.orb-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.03)}
+.or1{inset:0;animation:spin 80s linear infinite}
+.or2{inset:55px;border-color:rgba(37,99,235,.08);animation:spin 55s linear infinite reverse}
+.or3{inset:110px;border-color:rgba(255,255,255,.02);animation:spin 40s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+/* Orbit dots with trails */
+.orb-dot{position:absolute;width:10px;height:10px;border-radius:50%}
+.or1 .orb-dot{top:-5px;left:50%;transform:translateX(-50%);background:var(--blue);box-shadow:0 0 16px rgba(37,99,235,.5),0 0 40px rgba(37,99,235,.2)}
+.or2 .orb-dot{bottom:-5px;left:50%;transform:translateX(-50%);background:var(--green);box-shadow:0 0 16px rgba(22,163,74,.5),0 0 40px rgba(22,163,74,.2)}
+.or3 .orb-dot{top:50%;right:-5px;transform:translateY(-50%);background:var(--amber);box-shadow:0 0 16px rgba(217,119,6,.5),0 0 40px rgba(217,119,6,.2)}
+
+/* Shield center */
+.shield-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:180px;height:200px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.03)}}
+.shield-wrap svg{width:100%;height:100%;filter:drop-shadow(0 0 60px rgba(37,99,235,.25)) drop-shadow(0 0 120px rgba(37,99,235,.1))}
+
+/* Floating glass cards */
+.glass-card{position:absolute;padding:14px 20px;border-radius:16px;background:rgba(255,255,255,.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.07);box-shadow:0 12px 40px rgba(0,0,0,.2);animation:float 6s ease-in-out infinite}
+.gc-ico{font-size:20px;margin-bottom:6px}
+.gc-txt{font-family:var(--fd);font-weight:700;font-size:13px;color:#fff}
+.gc-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;font-family:var(--fm);letter-spacing:.04em}
+.gc-privacy{top:5%;right:5%;animation-delay:0s}
+.gc-asset{bottom:22%;left:-5%;animation-delay:-2s}
+.gc-formation{top:52%;right:-8%;animation-delay:-4s}
+/* Glow accents on cards */
+.gc-privacy::before{content:'';position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,rgba(37,99,235,.2),transparent 50%);z-index:-1}
+.gc-asset::before{content:'';position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,rgba(22,163,74,.15),transparent 50%);z-index:-1}
+.gc-formation::before{content:'';position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,rgba(217,119,6,.15),transparent 50%);z-index:-1}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+@media(max-width:1024px){
+  .hero-wrap{grid-template-columns:1fr;text-align:center;padding:100px 0 80px}
+  .hero-txt{max-width:100%;margin:0 auto}.hero-sub{margin:0 auto 44px}
+  .hero-ctas{justify-content:center}.hero-safety{text-align:center}
+  .hero-stats{max-width:500px;margin:72px auto 0}
+  .hero-vis{display:none}
+}
+
+/* ═══════════════════════════════════════════
+   SOCIAL PROOF TICKER
+   ═══════════════════════════════════════════ */
+.ticker{padding:20px 0;background:var(--navy-mid);border-bottom:1px solid rgba(255,255,255,.04);overflow:hidden;position:relative}
+.ticker-track{display:flex;gap:48px;animation:scroll 30s linear infinite;width:max-content}
+.ticker-item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;flex-shrink:0}
+.ticker-item .ti-ico{font-size:16px}
+.ticker-item strong{color:rgba(255,255,255,.7);font-weight:600}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════════════════
+   SECTIONS COMMON
+   ═══════════════════════════════════════════ */
+.sec{padding:128px 0}
+.sec-dark{background:var(--navy);position:relative;overflow:hidden}
+.sec-alt{background:var(--off-white)}
+.sec-lab{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+.sec-lab-light{color:var(--blue-light)}
+.sec-h{font-family:var(--fd);font-weight:900;font-size:clamp(32px,4.2vw,50px);letter-spacing:-2px;color:var(--fg);line-height:1.05;margin-bottom:18px}
+.sec-h-w{color:#fff}
+.sec-p{font-size:17px;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:60px;letter-spacing:-.01em}
+.sec-p-w{color:rgba(255,255,255,.38)}
+.tc{text-align:center}.tc .sec-p{margin-left:auto;margin-right:auto}
+
+/* ═══════════════════════════════════════════
+   PILLARS — EDITORIAL CARDS
+   ═══════════════════════════════════════════ */
+.pill-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pill{position:relative;padding:44px 34px 34px;border-radius:24px;background:var(--white);border:1px solid var(--border);transition:all .5s var(--ease);overflow:hidden}
+/* Gradient wash on hover */
+.pill::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .5s var(--ease);pointer-events:none;border-radius:24px}
+.pill:hover::after{opacity:1}
+.pill:hover{transform:translateY(-10px);box-shadow:0 32px 80px -16px rgba(0,0,0,.1);border-color:transparent}
+.pill[data-c="blue"]::after{background:linear-gradient(180deg,rgba(37,99,235,.04) 0%,transparent 60%)}
+.pill[data-c="green"]::after{background:linear-gradient(180deg,rgba(22,163,74,.04) 0%,transparent 60%)}
+.pill[data-c="amber"]::after{background:linear-gradient(180deg,rgba(217,119,6,.04) 0%,transparent 60%)}
+/* Top accent line */
+.pill::before{content:'';position:absolute;top:0;left:32px;right:32px;height:3px;border-radius:0 0 3px 3px;transition:all .5s var(--ease)}
+.pill[data-c="blue"]::before{background:linear-gradient(90deg,var(--blue),var(--blue-light))}
+.pill[data-c="green"]::before{background:linear-gradient(90deg,var(--green),#4ade80)}
+.pill[data-c="amber"]::before{background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+.pill:hover::before{left:0;right:0;height:4px}
+
+.pill-ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;font-size:26px;position:relative;z-index:1}
+.pill-name{font-family:var(--fd);font-weight:800;font-size:24px;color:var(--fg);margin-bottom:14px;letter-spacing:-.5px;position:relative;z-index:1}
+.pill-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:24px;position:relative;z-index:1}
+.pill-trust{font-size:13px;font-weight:500;padding:14px 18px;border-radius:14px;margin-bottom:28px;line-height:1.6;position:relative;z-index:1;border-left:3px solid}
+.pill[data-c="blue"] .pill-trust{color:var(--blue);background:rgba(37,99,235,.04);border-color:var(--blue)}
+.pill[data-c="green"] .pill-trust{color:var(--green);background:rgba(22,163,74,.04);border-color:var(--green)}
+.pill[data-c="amber"] .pill-trust{color:var(--amber);background:rgba(217,119,6,.04);border-color:var(--amber)}
+.pill-link{font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px;position:relative;z-index:1;transition:gap .35s var(--ease)}
+.pill-link:hover{gap:14px}
+.pill[data-c="blue"] .pill-link{color:var(--blue)}
+.pill[data-c="green"] .pill-link{color:var(--green)}
+.pill[data-c="amber"] .pill-link{color:var(--amber)}
+
+@media(max-width:768px){.pill-g{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+
+/* ═══════════════════════════════════════════
+   PACKAGES — REFINED PRICING
+   ═══════════════════════════════════════════ */
+.pkg-g{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:20px;align-items:start}
+.pkg{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:40px 32px;transition:all .5s var(--ease)}
+.pkg:hover{transform:translateY(-6px);box-shadow:0 24px 64px -12px rgba(0,0,0,.07)}
+
+.pkg.gold{border:2px solid transparent;position:relative;padding-top:52px;
+  background:linear-gradient(var(--white),var(--white)) padding-box,linear-gradient(135deg,var(--amber),var(--amber-light),var(--amber)) border-box;
+  box-shadow:0 8px 40px rgba(217,119,6,.08)}
+.pkg.gold:hover{box-shadow:0 24px 64px rgba(217,119,6,.12)}
+.pkg-badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,var(--amber),var(--amber-light));color:#fff;font-family:var(--fd);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 24px;border-radius:100px;box-shadow:0 4px 20px rgba(217,119,6,.35);white-space:nowrap}
+
+.pkg-tier{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.pkg-name{font-family:var(--fd);font-weight:800;font-size:26px;color:var(--fg);margin-bottom:28px;letter-spacing:-.5px}
+.pkg-pr{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.pkg-amt{font-family:var(--fm);font-weight:600;font-size:40px;color:var(--fg);letter-spacing:-2px;line-height:1}
+.pkg-amt-sm{font-size:24px;color:var(--muted)}
+.pkg-st{font-size:14px;color:var(--muted)}
+.pkg-ren{font-family:var(--fm);font-size:13px;color:var(--faint);margin:12px 0 28px}
+.pkg-val{font-size:13px;font-weight:600;color:var(--amber);padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,rgba(217,119,6,.05),rgba(245,158,11,.03));text-align:center;margin-bottom:28px;border:1px solid rgba(217,119,6,.08)}
+.pkg-feat{list-style:none;margin-bottom:32px}
+.pkg-feat li{font-size:14px;color:var(--fg2);padding:9px 0;display:flex;align-items:center;gap:12px;line-height:1.5}
+.chk{width:22px;height:22px;border-radius:50%;background:rgba(22,163,74,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chk svg{width:12px;height:12px;stroke:var(--green);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pkg-foot{text-align:center;margin-top:14px;font-size:13px;color:var(--muted)}
+.pkg-foot a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-decoration-color:transparent;transition:text-decoration-color .25s}
+.pkg-foot a:hover{text-decoration-color:var(--blue)}
+.pkg-cmp{text-align:center;margin-top:44px}
+.pkg-cmp a{font-size:15px;font-weight:500;color:var(--blue);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--border);transition:text-decoration-color .25s}
+.pkg-cmp a:hover{text-decoration-color:var(--blue)}
+@media(max-width:900px){.pkg-g{grid-template-columns:1fr;max-width:440px;margin:0 auto}.pkg.gold{order:-1}}
+
+/* ═══════════════════════════════════════════
+   DIFFERENTIATORS
+   ═══════════════════════════════════════════ */
+.diff-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
+.diff{padding:36px 28px;border-radius:20px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04);transition:all .5s var(--ease);position:relative;overflow:hidden}
+.diff::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(37,99,235,.08),transparent 60%);opacity:0;transition:opacity .5s}
+.diff:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08);transform:translateY(-6px)}
+.diff:hover::after{opacity:1}
+.diff-ico{width:48px;height:48px;border-radius:14px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:22px;position:relative;z-index:1}
+.diff-t{font-family:var(--fd);font-weight:700;font-size:17px;color:#fff;margin-bottom:12px;letter-spacing:-.2px;position:relative;z-index:1}
+.diff-d{font-size:14px;color:rgba(255,255,255,.38);line-height:1.8;position:relative;z-index:1}
+.diff-q{margin-top:48px;text-align:center;padding:32px 44px;background:rgba(217,119,6,.04);border:1px solid rgba(217,119,6,.06);border-radius:20px;position:relative;z-index:1}
+.diff-q p{font-size:16px;color:rgba(255,255,255,.5);line-height:1.75}
+.diff-q strong{color:#fbbf24;font-weight:600}
+@media(max-width:768px){.diff-g{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   TRUST
+   ═══════════════════════════════════════════ */
+.trust{padding:56px 0;border-bottom:1px solid var(--border-light)}
+.trust-r{display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap}
+.trust-i{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--fg2)}
+.trust-ico{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cr-r{display:flex;gap:4px;margin-top:4px}.cr-t{font-family:var(--fm);font-size:10px;font-weight:600;padding:3px 6px;border-radius:4px;background:var(--purple-soft);color:var(--purple)}
+@media(max-width:768px){.trust-r{gap:20px}}
+
+/* ═══════════════════════════════════════════
+   PROCESS
+   ═══════════════════════════════════════════ */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.proc::before{content:'';position:absolute;top:40px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--blue),var(--green),var(--amber),var(--purple));border-radius:2px;opacity:.5}
+.proc-s{text-align:center;position:relative;z-index:1;padding:0 14px}
+.proc-n{width:80px;height:80px;border-radius:50%;margin:0 auto 28px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:28px;background:var(--white);color:var(--sc);border:2.5px solid var(--sc);box-shadow:0 0 0 8px var(--white);transition:all .5s var(--ease)}
+.proc-s:hover .proc-n{background:var(--sc);color:#fff;transform:scale(1.12);box-shadow:0 0 0 10px var(--white),0 12px 32px -4px rgba(0,0,0,.12)}
+.proc-t{font-family:var(--fd);font-weight:700;font-size:17px;color:var(--fg);margin-bottom:10px;letter-spacing:-.2px}
+.proc-d{font-size:14px;color:var(--muted);line-height:1.7}
+@media(max-width:768px){.proc{grid-template-columns:1fr 1fr;gap:52px 16px}.proc::before{display:none}}
+@media(max-width:480px){.proc{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+   ═══════════════════════════════════════════ */
+.tst-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tst{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:40px 32px;transition:all .5s var(--ease)}
+.tst:hover{transform:translateY(-6px);box-shadow:0 24px 64px -12px rgba(0,0,0,.06);border-color:transparent}
+.tst-stars{color:var(--amber);font-size:13px;letter-spacing:4px;margin-bottom:24px}
+.tst-q{font-size:16px;line-height:1.85;color:var(--fg2);margin-bottom:28px;font-style:italic}
+.tst-q::before{content:'"';font-family:var(--fd);font-size:48px;font-weight:900;color:var(--border);display:block;line-height:.8;margin-bottom:12px}
+.tst-auth{display:flex;align-items:center;gap:14px}
+.tst-av{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:15px}
+.tst-n{font-weight:600;font-size:14px;color:var(--fg)}.tst-d{font-size:13px;color:var(--muted);margin-top:2px}
+.tst-note{text-align:center;margin-top:36px;font-size:12px;color:var(--faint);font-style:italic}
+@media(max-width:768px){.tst-g{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+
+/* ═══════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════ */
+.fcta{padding:160px 0;text-align:center;position:relative;overflow:hidden}
+.fcta .hero-grain{opacity:.3}
+.fcta-orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none}
+.fo1{width:60vw;height:60vw;top:-30%;left:-20%;background:rgba(37,99,235,.1)}
+.fo2{width:50vw;height:50vw;bottom:-30%;right:-20%;background:rgba(217,119,6,.06)}
+.fcta .hero-glow-line{top:0;bottom:auto}
+.fcta-in{position:relative;z-index:1}
+.fcta-in h2{font-family:var(--fd);font-weight:900;font-size:clamp(36px,5vw,60px);color:#fff;margin-bottom:24px;letter-spacing:-2.5px;line-height:1.02}
+.fcta-in p{font-size:19px;color:rgba(255,255,255,.4);margin-bottom:48px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7}
+.fcta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.ftr{background:var(--navy);border-top:1px solid rgba(255,255,255,.04);padding:80px 0 36px}
+.ftr-g{display:grid;grid-template-columns:repeat(6,1fr);gap:28px;margin-bottom:60px}
+.ftr-c h4{font-family:var(--fd);font-weight:700;font-size:12px;color:rgba(255,255,255,.6);margin-bottom:20px;text-transform:uppercase;letter-spacing:.1em}
+.ftr-c a{display:block;font-size:13px;color:rgba(255,255,255,.25);padding:5px 0;transition:color .2s}
+.ftr-c a:hover{color:rgba(255,255,255,.7)}
+.ftr-c .gm{color:var(--amber)}
+.ftr-sep{font-size:10px;color:rgba(255,255,255,.1);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin:12px 0 6px}
+.ftr-b{border-top:1px solid rgba(255,255,255,.04);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.ftr-b>*{font-size:13px;color:rgba(255,255,255,.2)}
+.ftr-b a{color:rgba(255,255,255,.28);display:inline;padding:0}.ftr-b a:hover{color:rgba(255,255,255,.6)}
+.ftr-cr{display:flex;gap:5px}.ftr-cr span{font-family:var(--fm);font-size:10px;font-weight:600;padding:3px 7px;border-radius:4px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.2)}
+@media(max-width:1024px){.ftr-g{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.ftr-g{grid-template-columns:1fr 1fr}.ftr-b{flex-direction:column;text-align:center}}
+
+/* ═══ STICKY ═══ */
+.sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(255,255,255,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid rgba(0,0,0,.04);padding:10px 16px;gap:12px;box-shadow:0 -4px 32px rgba(0,0,0,.05)}
+.sticky .btn{flex:1;justify-content:center;padding:14px 16px}
+.sticky-ph{width:50px;height:50px;border-radius:14px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.08);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:all .25s}
+.sticky-ph:hover{background:rgba(37,99,235,.1)}
+@media(max-width:768px){.sticky.v{display:flex}.ftr{padding-bottom:90px}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <div class="hdr-bg"></div>
+  <div class="hdr-in">
+    <a href="/" class="logo">incorporate<b>123</b></a>
+    <nav class="nav"><a href="/privacy/">Privacy</a><a href="/asset-protection/">Asset Protection</a><a href="/formation/">Formation</a><a href="/compare-packages/">Packages</a><a href="/about/">About</a></nav>
+    <div class="nr">
+      <a href="/login/" class="login">Client Login</a>
+      <a href="tel:7755551234" class="ph"><span class="ph-dot"></span>(775) 555-1234</a>
+      <span class="hdr-cta-w"><a href="/compare-packages/" class="btn btn-outline btn-sm">Get Started <span class="arr">→</span></a></span>
+    </div>
+    <button class="mob-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-aurora"><div class="aurora-beam ab1"></div><div class="aurora-beam ab2"></div><div class="aurora-beam ab3"></div><div class="aurora-beam ab4"></div></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-glow-line"></div>
+  <div class="ctr">
+    <div class="hero-wrap">
+      <div class="hero-txt">
+        <div class="hero-chip"><span class="chip-live"></span>Privacy & Asset Protection Specialists</div>
+        <h1>Your Business.<br><span class="hl">Your Privacy.</span><br>Our Expertise.</h1>
+        <p class="hero-sub">25 years specializing in business privacy, asset protection, and incorporation for Wyoming and Nevada. All-inclusive packages — no hidden fees.</p>
+        <div class="hero-ctas">
+          <a href="/privacy/" class="btn btn-amber">Protect Your Privacy <span class="arr">→</span></a>
+          <a href="/compare-packages/" class="btn btn-glass">View Packages & Pricing <span class="arr">→</span></a>
+        </div>
+        <p class="hero-safety">Prefer to talk? <a href="tel:7755551234">Call us — (775) 555-1234</a></p>
+        <div class="hero-stats">
+          <div class="h-stat"><div class="h-stat-val">25<span class="unit">yrs</span></div><div class="h-stat-lab">Specialized Experience</div></div>
+          <div class="h-stat"><div class="h-stat-val">$1,275</div><div class="h-stat-lab">WY Gold All-Inclusive</div></div>
+          <div class="h-stat"><div class="h-stat-val">$525<span class="unit">/yr</span></div><div class="h-stat-lab">Renewal with Nominees</div></div>
+        </div>
+      </div>
+      <div class="hero-vis">
+        <div class="constellation">
+          <div class="orb-ring or1"><span class="orb-dot"></span></div>
+          <div class="orb-ring or2"><span class="orb-dot"></span></div>
+          <div class="orb-ring or3"><span class="orb-dot"></span></div>
+          <div class="shield-wrap">
+            <svg viewBox="0 0 180 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M90 12L166 50C166 50 174 142 90 188C6 142 14 50 14 50Z" fill="url(#sg)" stroke="url(#ss)" stroke-width="1.5"/>
+              <path d="M90 30L148 60C148 60 154 134 90 172C26 134 32 60 32 60Z" fill="none" stroke="rgba(96,165,250,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+              <defs>
+                <linearGradient id="sg" x1="90" y1="12" x2="90" y2="188"><stop stop-color="#2563eb" stop-opacity=".15"/><stop offset="1" stop-color="#0c1e35" stop-opacity=".4"/></linearGradient>
+                <linearGradient id="ss" x1="90" y1="12" x2="90" y2="188"><stop stop-color="#60a5fa" stop-opacity=".35"/><stop offset="1" stop-color="#2563eb" stop-opacity=".08"/></linearGradient>
+              </defs>
+              <rect x="62" y="88" width="56" height="44" rx="10" fill="url(#lg)" opacity=".6"/>
+              <linearGradient id="lg" x1="90" y1="88" x2="90" y2="132"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+              <path d="M72 88V76C72 64 108 64 108 76V88" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+              <circle cx="90" cy="106" r="6" fill="white" opacity=".85"/>
+              <rect x="88" y="110" width="4" height="12" rx="2" fill="white" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="glass-card gc-privacy"><div class="gc-ico">🔒</div><div class="gc-txt">Privacy</div><div class="gc-sub">Year-round nominees</div></div>
+          <div class="glass-card gc-asset"><div class="gc-ico">🛡</div><div class="gc-txt">Protection</div><div class="gc-sub">Charging order</div></div>
+          <div class="glass-card gc-formation"><div class="gc-ico">📄</div><div class="gc-txt">Formation</div><div class="gc-sub">All-inclusive</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker">
+    <div class="ticker-item"><span class="ti-ico">🏛</span><strong>Trusted since 2000</strong> — 25 years specialized</div>
+    <div class="ticker-item"><span class="ti-ico">🔒</span>Year-round nominee services <strong>included in every Gold package</strong></div>
+    <div class="ticker-item"><span class="ti-ico">💲</span>All-inclusive pricing — <strong>no hidden fees at checkout</strong></div>
+    <div class="ticker-item"><span class="ti-ico">🌐</span>Offshore records storage — <strong>unique to Incorporate123</strong></div>
+    <div class="ticker-item"><span class="ti-ico">📍</span>Real Reno, Nevada office — <strong>not a virtual mailbox</strong></div>
+    <div class="ticker-item"><span class="ti-ico">₿</span>Crypto accepted — <strong>BTC, ETH, XRP, LTC, XMR</strong></div>
+    <div class="ticker-item"><span class="ti-ico">✓</span><strong>30-day money-back guarantee</strong></div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section class="sec">
+  <div class="ctr">
+    <div class="sec-lab" data-r>Choose Your Path</div>
+    <h2 class="sec-h" data-r class="d1">How can we help?</h2>
+    <p class="sec-p" data-r class="d2">Three intent-based paths. Privacy leads — but every path connects to the protection you need.</p>
+    <div class="pill-g">
+      <div class="pill" data-c="blue" data-r class="d1">
+        <div class="pill-ico" style="background:rgba(37,99,235,.06);color:var(--blue)">🔒</div>
+        <div class="pill-name">Business Privacy</div>
+        <p class="pill-desc">Privacy you can't get elsewhere. Year-round nominee directors and officers keep your name off public records — not just at formation, but every day.</p>
+        <div class="pill-trust">"Year-round nominees included — not 'nominee for a day'"</div>
+        <a href="/privacy/" class="pill-link">Explore Privacy Options <span class="arr">→</span></a>
+      </div>
+      <div class="pill" data-c="green" data-r class="d2">
+        <div class="pill-ico" style="background:rgba(22,163,74,.06);color:var(--green)">🛡</div>
+        <div class="pill-name">Asset Protection</div>
+        <p class="pill-desc">Protect what you've built. Wyoming and Nevada LLCs with charging order protection — the strongest structural defense for your business assets.</p>
+        <div class="pill-trust">"For individuals with $500K+ in assets"</div>
+        <a href="/asset-protection/" class="pill-link">Protect Your Assets <span class="arr">→</span></a>
+      </div>
+      <div class="pill" data-c="amber" data-r class="d3">
+        <div class="pill-ico" style="background:rgba(217,119,6,.06);color:var(--amber)">📄</div>
+        <div class="pill-name">Business Incorporation</div>
+        <p class="pill-desc">Expert formation, all-inclusive. Wyoming and Nevada LLCs and Corporations with everything included — state fees, registered agent, operating agreement, EIN.</p>
+        <div class="pill-trust">"25 years forming Wyoming and Nevada entities"</div>
+        <a href="/formation/" class="pill-link">Start Your Company <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="sec sec-alt">
+  <div class="ctr">
+    <div class="tc" data-r><div class="sec-lab">All-Inclusive Packages</div><h2 class="sec-h">Ready to get started?</h2><p class="sec-p">State fees, registered agent, and compliance included in every tier. No hidden add-ons at checkout.</p></div>
+    <div class="pkg-g">
+      <div class="pkg" data-r class="d1">
+        <div class="pkg-tier">Silver</div><div class="pkg-name">Formation</div>
+        <div class="pkg-pr"><span class="pkg-amt">$875</span><span class="pkg-st">Wyoming</span></div>
+        <div class="pkg-pr"><span class="pkg-amt pkg-amt-sm">$1,275</span><span class="pkg-st">Nevada</span></div>
+        <div class="pkg-ren">Renewal: $325/yr</div>
+        <ul class="pkg-feat"><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Registered agent included</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Custom operating agreement</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>All state filing fees</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>EIN filing</li></ul>
+        <a href="/wyoming-incorporation/" class="btn btn-outline btn-full">View Silver Package <span class="arr">→</span></a>
+        <p class="pkg-foot"><a href="/compare-packages/">Add privacy for $375 more →</a></p>
+      </div>
+      <div class="pkg gold" data-r class="d2">
+        <div class="pkg-badge">★ Most Popular</div>
+        <div class="pkg-tier">Gold</div><div class="pkg-name">Privacy</div>
+        <div class="pkg-pr"><span class="pkg-amt">$1,275</span><span class="pkg-st">Wyoming</span></div>
+        <div class="pkg-pr"><span class="pkg-amt pkg-amt-sm">$1,800</span><span class="pkg-st">Nevada</span></div>
+        <div class="pkg-ren">Renewal: $525/yr with nominees</div>
+        <div class="pkg-val">Includes $2,000+ in Year 1 services</div>
+        <ul class="pkg-feat"><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Year-round nominee services</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Offshore records storage</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Full compliance package</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Registered agent included</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Corporate minutes maintenance</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>All state filing fees</li></ul>
+        <a href="/wyoming-private-llc/" class="btn btn-amber btn-full">Get Started <span class="arr">→</span></a>
+        <p class="pkg-foot"><a href="/contact/">Schedule a consultation</a></p>
+      </div>
+      <div class="pkg" data-r class="d3">
+        <div class="pkg-tier">Bronze</div><div class="pkg-name">Nevada Only</div>
+        <div class="pkg-pr"><span class="pkg-amt">$625</span><span class="pkg-st">Nevada</span></div>
+        <div class="pkg-ren">Renewal: $225/yr</div>
+        <ul class="pkg-feat"><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Basic Nevada formation</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>Registered agent</li><li><span class="chk"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span>State filing fees</li></ul>
+        <a href="/nevada-basic-incorporation/" class="btn btn-outline btn-full btn-sm">View Bronze <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="pkg-cmp" data-r><a href="/compare-packages/">Compare all packages in detail →</a></div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="sec sec-dark">
+  <div class="hero-grain" style="opacity:.3"></div>
+  <div class="ctr">
+    <div class="tc" style="position:relative;z-index:1" data-r><div class="sec-lab sec-lab-light">What Sets Us Apart</div><h2 class="sec-h sec-h-w">Why clients choose Incorporate123</h2><p class="sec-p sec-p-w">Six advantages no other formation company can match.</p></div>
+    <div class="diff-g">
+      <div class="diff" data-r class="d1"><div class="diff-ico">🔄</div><div class="diff-t">Year-Round Nominees</div><p class="diff-d">Nominees maintained 365 days a year — not just at formation. Most providers offer a "nominee for a day" and disappear.</p></div>
+      <div class="diff" data-r class="d2"><div class="diff-ico">🌐</div><div class="diff-t">Offshore Records Storage</div><p class="diff-d">Corporate records outside U.S. jurisdiction. Included free in every Gold package since 2012. No competitor offers this.</p></div>
+      <div class="diff" data-r class="d3"><div class="diff-ico">💲</div><div class="diff-t">All-Inclusive Pricing</div><p class="diff-d">State fees, registered agent, operating agreement, EIN — all included. No hidden fees. The price you see is the price you pay.</p></div>
+      <div class="diff" data-r class="d1"><div class="diff-ico">📅</div><div class="diff-t">25 Years of Expertise</div><p class="diff-d">Forming Wyoming and Nevada entities since 2000. Specialized in privacy and asset protection — not a generic filing service.</p></div>
+      <div class="diff" data-r class="d2"><div class="diff-ico">🏢</div><div class="diff-t">Real Reno Office</div><p class="diff-d">Kingsbury Executive Suites, Reno, Nevada. Real people, real office. Not a virtual mailbox or a PO box.</p></div>
+      <div class="diff" data-r class="d3"><div class="diff-ico">₿</div><div class="diff-t">Crypto Accepted</div><p class="diff-d">Bitcoin, Ethereum, XRP, Litecoin, Monero. We accept crypto because our clients value privacy — and so do we.</p></div>
+    </div>
+    <div class="diff-q" data-r><p>Competitors charge <strong>$400–$5,000/year</strong> for nominee services alone. Ours are included in every Gold package — along with offshore records, registered agent, operating agreement, EIN, and all state fees.</p></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="ctr"><div class="trust-r">
+    <div class="trust-i"><div class="trust-ico" style="background:rgba(37,99,235,.06)">🏛</div>Trusted Since 2000</div>
+    <div class="trust-i"><div class="trust-ico" style="background:rgba(22,163,74,.06)">📞</div><a href="tel:7755551234" style="font-weight:700">(775) 555-1234</a></div>
+    <div class="trust-i"><div class="trust-ico" style="background:rgba(217,119,6,.06)">✓</div>30-Day Money-Back Guarantee</div>
+    <div class="trust-i"><div class="trust-ico" style="background:rgba(147,51,234,.06)">₿</div><div><div style="margin-bottom:4px">Crypto Accepted</div><div class="cr-r"><span class="cr-t">BTC</span><span class="cr-t">ETH</span><span class="cr-t">XRP</span><span class="cr-t">LTC</span><span class="cr-t">XMR</span></div></div></div>
+    <div class="trust-i"><div class="trust-ico" style="background:rgba(217,119,6,.06)">📍</div>Real Reno, NV Office</div>
+  </div></div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec">
+  <div class="ctr">
+    <div class="tc" data-r><div class="sec-lab">Simple Process</div><h2 class="sec-h">How it works</h2><p class="sec-p">From selection to formation — we handle every step.</p></div>
+    <div class="proc">
+      <div class="proc-s" data-r class="d1"><div class="proc-n" style="--sc:var(--blue)">1</div><div class="proc-t">Choose Your Package</div><p class="proc-d">Select Gold, Silver, or Bronze. Compare features and pick what fits.</p></div>
+      <div class="proc-s" data-r class="d2"><div class="proc-n" style="--sc:var(--green)">2</div><div class="proc-t">We Form Your Entity</div><p class="proc-d">All state filings, paperwork, and fees handled. 5–7 business days.</p></div>
+      <div class="proc-s" data-r class="d3"><div class="proc-n" style="--sc:var(--amber)">3</div><div class="proc-t">Nominees Protect You</div><p class="proc-d">Year-round nominee officers keep your name off public records.</p></div>
+      <div class="proc-s" data-r class="d4"><div class="proc-n" style="--sc:var(--purple)">4</div><div class="proc-t">Compliance, Handled</div><p class="proc-d">Registered agent, annual reports, corporate minutes — every year.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-alt">
+  <div class="ctr">
+    <div class="tc" data-r><div class="sec-lab">Client Experiences</div><h2 class="sec-h">What our clients say</h2><p class="sec-p">Business owners who chose privacy, protection, and transparency.</p></div>
+    <div class="tst-g">
+      <div class="tst" data-r class="d1"><div class="tst-stars">★★★★★</div><p class="tst-q">We moved our California business to a Wyoming entity with nominee services. Our ownership is completely private and the process was handled start to finish.</p><div class="tst-auth"><div class="tst-av" style="background:rgba(37,99,235,.06);color:var(--blue)">MT</div><div><div class="tst-n">Mark T.</div><div class="tst-d">California Business Owner</div></div></div></div>
+      <div class="tst" data-r class="d2"><div class="tst-stars">★★★★★</div><p class="tst-q">After 15 years with another provider, we switched for the year-round nominee maintenance. The difference in service level is night and day.</p><div class="tst-auth"><div class="tst-av" style="background:rgba(22,163,74,.06);color:var(--green)">IG</div><div><div class="tst-n">Investment Group</div><div class="tst-d">Nevada</div></div></div></div>
+      <div class="tst" data-r class="d3"><div class="tst-stars">★★★★★</div><p class="tst-q">The all-inclusive pricing was what sold us. No hidden fees, no surprise add-ons at checkout — just one clear price for everything we needed.</p><div class="tst-auth"><div class="tst-av" style="background:rgba(217,119,6,.06);color:var(--amber)">SM</div><div><div class="tst-n">Sarah M.</div><div class="tst-d">Wyoming LLC Owner</div></div></div></div>
+    </div>
+    <p class="tst-note">Placeholder testimonials — real client quotes pending collection.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec sec-dark fcta">
+  <div class="fcta-orb fo1"></div><div class="fcta-orb fo2"></div><div class="hero-grain" style="opacity:.3"></div><div class="hero-glow-line"></div>
+  <div class="ctr"><div class="fcta-in" data-r>
+    <h2>Ready to protect<br>your privacy?</h2>
+    <p>25 years of specialized experience. All-inclusive pricing. Real people, real office.</p>
+    <div class="fcta-btns"><a href="/privacy/" class="btn btn-amber">Get Started <span class="arr">→</span></a><a href="/contact/" class="btn btn-glass">Schedule a Consultation <span class="arr">→</span></a></div>
+    <p class="hero-safety" style="margin-top:22px">Or call us directly — <a href="tel:7755551234">(775) 555-1234</a></p>
+  </div></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="ctr">
+    <div class="ftr-g">
+      <div class="ftr-c"><h4>Privacy</h4><a href="/anonymous-llc/">Anonymous LLC</a><a href="/nominee-services/">Nominee Services</a><a href="/wyoming-privacy/">Wyoming Privacy</a><a href="/nevada-privacy/">Nevada Privacy</a><a href="/california-private-incorporation/">CA Private Inc.</a><a href="/florida-private-incorporation/">FL Private Inc.</a><a href="/beneficial-ownership-reporting/">BOI Reporting</a><div class="ftr-sep">Compare</div><a href="/best-state-for-privacy/">Best State for Privacy</a><a href="/wyoming-vs-nevada-privacy/">WY vs NV Privacy</a></div>
+      <div class="ftr-c"><h4>Asset Protection</h4><a href="/nevada-asset-protection/">Nevada AP</a><a href="/wyoming-asset-protection/">Wyoming AP</a><a href="/charging-order-protection/">Charging Order</a><a href="/investment-holding-llc/">Holding LLC</a><a href="/llc-vs-living-trust/">LLC vs Trust</a><div class="ftr-sep">Compare</div><a href="/best-state-asset-protection/">Best State for AP</a><a href="/wyoming-vs-nevada-asset-protection/">WY vs NV AP</a></div>
+      <div class="ftr-c"><h4>Incorporation</h4><a href="/wyoming-llc/">Wyoming LLC</a><a href="/wyoming-corporation/">Wyoming Corp.</a><a href="/nevada-llc/">Nevada LLC</a><a href="/nevada-corporation/">Nevada Corp.</a><a href="/shelf-companies/">Shelf Companies</a><a href="/llc-vs-corporation/">LLC vs Corporation</a><div class="ftr-sep">Compare</div><a href="/wyoming-vs-nevada/">Wyoming vs Nevada</a><a href="/shelf-company-vs-new-formation/">Shelf vs New</a></div>
+      <div class="ftr-c"><h4>Company</h4><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/faq/">FAQ</a><a href="/blog/">Blog</a><a href="/testimonials/">Testimonials</a><a href="/login/">Client Login</a></div>
+      <div class="ftr-c"><h4>Packages</h4><a href="/wyoming-private-llc/"><span class="gm">★</span> Wyoming Gold</a><a href="/nevada-private-llc/"><span class="gm">★</span> Nevada Gold</a><a href="/wyoming-incorporation/">Wyoming Silver</a><a href="/nevada-incorporation/">Nevada Silver</a><a href="/nevada-basic-incorporation/">Nevada Bronze</a><a href="/california-private-incorporation/">CA Private</a><a href="/florida-private-incorporation/">FL Private</a></div>
+      <div class="ftr-c"><h4>States</h4><a href="/wyoming/">Wyoming</a><a href="/nevada/">Nevada</a><a href="/california/">California</a><a href="/florida/">Florida</a><div class="ftr-sep">More</div><a href="/offshore/">Offshore</a><a href="/compliance/">Compliance</a></div>
+    </div>
+    <div class="ftr-b"><div>© 2026 Incorporate123 · <a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a></div><div>Kingsbury Executive Suites, Reno, NV · <a href="tel:7755551234">(775) 555-1234</a></div><div class="ftr-cr"><span>BTC</span><span>ETH</span><span>XRP</span><span>LTC</span><span>XMR</span></div></div>
+  </div>
+</footer>
+
+<!-- STICKY -->
+<div class="sticky" id="stk"><a href="/privacy/" class="btn btn-amber">Protect Your Privacy <span class="arr">→</span></a><a href="tel:7755551234" class="sticky-ph" aria-label="Call">📞</a></div>
+
+<script>
+// Header transparent → solid
+const hdr=document.getElementById('hdr'),stk=document.getElementById('stk'),hero=document.querySelector('.hero');
+new IntersectionObserver(([e])=>{hdr.classList.toggle('s',!e.isIntersecting);stk.classList.toggle('v',!e.isIntersecting)},{threshold:0}).observe(hero);
+
+// Scroll reveal
+document.querySelectorAll('[data-r]').forEach(el=>{
+  new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('v')},{threshold:.08,rootMargin:'0px 0px -60px 0px'}).observe(el);
+});
+
+// Duplicate ticker for seamless loop
+const tk=document.getElementById('ticker');
+tk.innerHTML+=tk.innerHTML;
+</script>
+</body>
+</html>

@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Privacy, Asset Protection & Business Formation Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #0a0c10;
+  --bg-primary: #0f1117;
+  --bg-elevated: #161821;
+  --bg-card: #1a1d28;
+  --bg-card-hover: #1f2233;
+  --bg-accent-subtle: #1c1a14;
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-medium: rgba(255,255,255,0.1);
+  --border-gold: rgba(200,170,110,0.3);
+  --text-primary: #f0ece4;
+  --text-secondary: rgba(240,236,228,0.65);
+  --text-tertiary: rgba(240,236,228,0.4);
+  --gold: #c8aa6e;
+  --gold-bright: #dfc48c;
+  --gold-dim: #9a7f4e;
+  --accent-privacy: #6ea5c8;
+  --accent-asset: #8bc86e;
+  --accent-formation: #c8a06e;
+  --accent-privacy-bg: rgba(110,165,200,0.08);
+  --accent-asset-bg: rgba(139,200,110,0.08);
+  --accent-formation-bg: rgba(200,160,110,0.08);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+
+/* --- UTILITIES --- */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  padding: 14px 32px; border-radius: 100px;
+  transition: all 0.4s var(--ease-out);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  color: #0f1117; box-shadow: 0 4px 24px rgba(200,170,110,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(200,170,110,0.35), inset 0 1px 0 rgba(255,255,255,0.3); }
+.btn-secondary {
+  background: rgba(255,255,255,0.05); color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.btn-ghost {
+  background: transparent; color: var(--gold); padding: 8px 0; font-size: 0.9rem;
+}
+.btn-ghost:hover { color: var(--gold-bright); }
+.btn-ghost .arrow { transition: transform 0.3s var(--ease-out); }
+.btn-ghost:hover .arrow { transform: translateX(4px); }
+.btn .arrow { display: inline-block; }
+
+/* --- SECTION SPACING --- */
+.section { padding: 100px 0; position: relative; }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600; line-height: 1.15; margin-bottom: 16px;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;
+  font-weight: 300; line-height: 1.7;
+}
+
+/* --- PILLAR COLORS --- */
+.pillar-privacy { --pillar: var(--accent-privacy); --pillar-bg: var(--accent-privacy-bg); }
+.pillar-asset { --pillar: var(--accent-asset); --pillar-bg: var(--accent-asset-bg); }
+.pillar-formation { --pillar: var(--accent-formation); --pillar-bg: var(--accent-formation-bg); }
+
+/* ============================
+   SECTION 0: HEADER
+   ============================ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,12,16,0.85); backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all 0.4s var(--ease-out);
+}
+.site-header.scrolled { background: rgba(10,12,16,0.95); }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 72px; max-width: 1400px; margin: 0 auto;
+}
+.logo { display: flex; align-items: baseline; gap: 0; font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; }
+.logo-inc { color: var(--text-primary); }
+.logo-123 { color: var(--gold); font-weight: 700; }
+.nav-main { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  padding: 8px 16px; font-size: 0.88rem; font-weight: 400;
+  color: var(--text-secondary); border-radius: 8px;
+  transition: all 0.25s ease;
+}
+.nav-link:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+.header-actions { display: flex; align-items: center; gap: 16px; }
+.header-phone {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--text-secondary);
+  transition: color 0.25s ease;
+}
+.header-phone:hover { color: var(--gold); }
+.header-phone svg { width: 15px; height: 15px; }
+.header-login { font-size: 0.85rem; color: var(--text-secondary); padding: 6px 12px; transition: color 0.25s ease; }
+.header-login:hover { color: var(--text-primary); }
+.header-cta {
+  font-size: 0.82rem; padding: 9px 20px; border-radius: 100px;
+  border: 1px solid var(--border-gold); color: var(--gold);
+  transition: all 0.3s ease;
+}
+.header-cta:hover { background: rgba(200,170,110,0.1); }
+.mobile-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; }
+.mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--text-primary); position: relative; transition: all 0.3s ease; }
+.mobile-toggle span::before, .mobile-toggle span::after {
+  content: ''; position: absolute; left: 0; width: 100%; height: 2px;
+  background: var(--text-primary); transition: all 0.3s ease;
+}
+.mobile-toggle span::before { top: -7px; }
+.mobile-toggle span::after { top: 7px; }
+
+/* ============================
+   SECTION 1: HERO
+   ============================ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 0 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(110,165,200,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 30%, rgba(200,170,110,0.05) 0%, transparent 70%);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; position: relative; z-index: 1;
+}
+.hero-content { max-width: 600px; }
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: 600; line-height: 1.08; letter-spacing: -0.025em;
+  margin-bottom: 24px;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.1rem; line-height: 1.75; color: var(--text-secondary);
+  margin-bottom: 40px; font-weight: 300; max-width: 520px;
+}
+.hero-ctas { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.hero-phone {
+  display: block; font-size: 0.88rem; color: var(--text-tertiary);
+  margin-bottom: 48px; transition: color 0.25s ease;
+}
+.hero-phone:hover { color: var(--gold); }
+.hero-trust { display: flex; gap: 32px; flex-wrap: wrap; }
+.trust-chip {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: var(--text-tertiary);
+  letter-spacing: 0.03em; text-transform: uppercase; font-weight: 500;
+}
+.trust-chip svg { width: 16px; height: 16px; color: var(--gold-dim); flex-shrink: 0; }
+
+/* Hero Visual */
+.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+.shield-graphic {
+  width: 420px; height: 420px; position: relative;
+}
+.shield-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  animation: pulse-ring 6s var(--ease-out) infinite;
+}
+.shield-ring:nth-child(1) { inset: 0; border-color: rgba(200,170,110,0.15); animation-delay: 0s; }
+.shield-ring:nth-child(2) { inset: 40px; border-color: rgba(110,165,200,0.12); animation-delay: 1s; }
+.shield-ring:nth-child(3) { inset: 80px; border-color: rgba(200,170,110,0.1); animation-delay: 2s; }
+.shield-ring:nth-child(4) { inset: 120px; border-color: rgba(139,200,110,0.08); animation-delay: 3s; }
+.shield-center {
+  position: absolute; inset: 140px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,170,110,0.08) 0%, transparent 70%);
+}
+.shield-center svg { width: 64px; height: 64px; color: var(--gold); opacity: 0.7; }
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.6; }
+}
+.floating-badge {
+  position: absolute; background: var(--bg-card);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: 12px 18px; font-size: 0.78rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: float-badge 5s ease-in-out infinite;
+}
+.floating-badge.badge-1 { top: 40px; right: 0; animation-delay: 0s; }
+.floating-badge.badge-2 { bottom: 60px; left: -10px; animation-delay: 1.5s; }
+.floating-badge.badge-3 { top: 50%; right: -20px; animation-delay: 3s; }
+.floating-badge .badge-icon { color: var(--gold); margin-bottom: 4px; }
+.floating-badge .badge-label { color: var(--text-secondary); }
+.floating-badge .badge-value { font-weight: 600; color: var(--text-primary); }
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ============================
+   SECTION 2: PILLAR NAV
+   ============================ */
+.pillars { background: var(--bg-primary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pillar-card {
+  padding: 48px 36px; border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  position: relative; overflow: hidden;
+  transition: all 0.5s var(--ease-out);
+}
+.pillar-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--pillar); opacity: 0.6; transition: opacity 0.3s ease;
+}
+.pillar-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-4px); }
+.pillar-card:hover::before { opacity: 1; }
+.pillar-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  background: var(--pillar-bg); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.pillar-icon svg { width: 24px; height: 24px; color: var(--pillar); }
+.pillar-label {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--pillar); font-weight: 600; margin-bottom: 12px;
+}
+.pillar-title {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+  margin-bottom: 16px; line-height: 1.2;
+}
+.pillar-desc {
+  font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;
+  margin-bottom: 20px; font-weight: 300;
+}
+.pillar-trust {
+  font-size: 0.82rem; color: var(--text-tertiary); font-style: italic;
+  margin-bottom: 24px; padding-left: 12px;
+  border-left: 2px solid var(--pillar-bg);
+}
+.pillar-cta {
+  font-size: 0.88rem; color: var(--pillar); font-weight: 500;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: gap 0.3s var(--ease-out);
+}
+.pillar-cta:hover { gap: 10px; }
+
+/* ============================
+   SECTION 3: PACKAGES
+   ============================ */
+.packages { background: var(--bg-deep); }
+.packages-grid {
+  display: grid; grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 20px; align-items: start;
+}
+.pkg-card {
+  border-radius: var(--radius-lg); padding: 40px 32px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card); position: relative;
+  transition: all 0.4s var(--ease-out);
+}
+.pkg-card:hover { border-color: var(--border-medium); }
+.pkg-card.pkg-gold {
+  background: linear-gradient(170deg, var(--bg-card) 0%, var(--bg-accent-subtle) 100%);
+  border-color: var(--border-gold);
+  box-shadow: 0 8px 48px rgba(200,170,110,0.08);
+  padding: 48px 36px;
+}
+.pkg-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.pkg-gold .pkg-badge { background: rgba(200,170,110,0.15); color: var(--gold); }
+.pkg-silver .pkg-badge { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
+.pkg-bronze .pkg-badge { background: rgba(255,255,255,0.04); color: var(--text-tertiary); }
+.pkg-tier {
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 600;
+  margin-bottom: 24px; line-height: 1.2;
+}
+.pkg-gold .pkg-tier { font-size: 1.6rem; }
+.pkg-prices { margin-bottom: 8px; }
+.pkg-price-row {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;
+}
+.pkg-state { font-size: 0.78rem; color: var(--text-tertiary); width: 28px; font-weight: 500; }
+.pkg-amount {
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700;
+  color: var(--text-primary); line-height: 1;
+}
+.pkg-gold .pkg-amount { color: var(--gold-bright); font-size: 2.3rem; }
+.pkg-suffix { font-size: 0.82rem; color: var(--text-tertiary); font-weight: 300; }
+.pkg-renewal {
+  font-size: 0.82rem; color: var(--text-tertiary); margin-bottom: 24px;
+  padding-bottom: 24px; border-bottom: 1px solid var(--border-subtle);
+}
+.pkg-value {
+  font-size: 0.82rem; color: var(--gold-dim); margin-bottom: 24px; font-weight: 500;
+}
+.pkg-features { list-style: none; margin-bottom: 32px; }
+.pkg-features li {
+  font-size: 0.88rem; color: var(--text-secondary); padding: 8px 0;
+  display: flex; align-items: flex-start; gap: 10px; font-weight: 300;
+}
+.pkg-features li svg { width: 16px; height: 16px; color: var(--gold-dim); margin-top: 3px; flex-shrink: 0; }
+.pkg-gold .pkg-features li svg { color: var(--gold); }
+.pkg-cta-area { display: flex; flex-direction: column; gap: 12px; }
+.pkg-upgrade {
+  font-size: 0.82rem; color: var(--gold-dim);
+  display: flex; align-items: center; gap: 4px;
+  transition: color 0.25s ease; margin-top: 4px;
+}
+.pkg-upgrade:hover { color: var(--gold); }
+.packages-compare {
+  text-align: center; margin-top: 48px;
+}
+.packages-compare a {
+  font-size: 0.92rem; color: var(--gold);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 500; transition: gap 0.3s ease;
+}
+.packages-compare a:hover { gap: 10px; }
+
+/* ============================
+   SECTION 4: DIFFERENTIATORS
+   ============================ */
+.differentiators {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.diff-item {
+  padding: 36px 28px; border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  transition: all 0.4s var(--ease-out);
+}
+.diff-item:hover { border-color: var(--border-medium); transform: translateY(-2px); }
+.diff-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: rgba(200,170,110,0.08);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.diff-icon svg { width: 20px; height: 20px; color: var(--gold); }
+.diff-title {
+  font-family: var(--font-display); font-size: 1.2rem; font-weight: 600;
+  margin-bottom: 10px;
+}
+.diff-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; }
+.diff-comparison {
+  margin-top: 56px; padding: 40px; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(200,170,110,0.04) 0%, rgba(200,170,110,0.01) 100%);
+  border: 1px solid var(--border-gold); text-align: center;
+}
+.diff-comparison p {
+  font-size: 1rem; color: var(--text-secondary); line-height: 1.8;
+  max-width: 780px; margin: 0 auto; font-weight: 300;
+}
+.diff-comparison strong { color: var(--gold-bright); font-weight: 600; }
+
+/* ============================
+   SECTION 5: TRUST BAR
+   ============================ */
+.trust-bar {
+  background: var(--bg-deep); padding: 36px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.trust-bar-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.trust-signal {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.82rem; color: var(--text-tertiary);
+  font-weight: 500; letter-spacing: 0.02em; white-space: nowrap;
+}
+.trust-signal svg { width: 18px; height: 18px; color: var(--gold-dim); }
+.trust-signal a { color: var(--text-tertiary); transition: color 0.25s ease; }
+.trust-signal a:hover { color: var(--gold); }
+.crypto-icons { display: flex; gap: 6px; align-items: center; }
+.crypto-icons span {
+  font-size: 0.65rem; background: rgba(255,255,255,0.05);
+  padding: 2px 6px; border-radius: 4px; font-weight: 600; color: var(--text-tertiary);
+}
+
+/* ============================
+   SECTION 6: HOW IT WORKS
+   ============================ */
+.how-it-works { background: var(--bg-primary); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+.steps-grid::before {
+  content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%;
+  height: 1px; background: linear-gradient(90deg, transparent, var(--border-medium), var(--border-medium), transparent);
+}
+.step-item { text-align: center; position: relative; z-index: 1; }
+.step-number {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--bg-elevated); border: 1px solid var(--border-medium);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
+  color: var(--gold); transition: all 0.4s var(--ease-out);
+}
+.step-item:hover .step-number {
+  border-color: var(--border-gold);
+  box-shadow: 0 0 24px rgba(200,170,110,0.12);
+}
+.step-title {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+  margin-bottom: 12px;
+}
+.step-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; max-width: 240px; margin: 0 auto; }
+
+/* ============================
+   SECTION 7: TESTIMONIALS
+   ============================ */
+.testimonials { background: var(--bg-deep); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card {
+  padding: 40px 32px; border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle); background: var(--bg-card);
+  display: flex; flex-direction: column;
+  transition: all 0.4s var(--ease-out);
+}
+.testimonial-card:hover { border-color: var(--border-medium); }
+.testimonial-stars { display: flex; gap: 3px; margin-bottom: 20px; }
+.testimonial-stars svg { width: 16px; height: 16px; color: var(--gold); }
+.testimonial-quote {
+  font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;
+  font-weight: 300; font-style: italic; flex: 1; margin-bottom: 28px;
+}
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  color: var(--gold-dim);
+}
+.testimonial-name { font-size: 0.88rem; font-weight: 600; }
+.testimonial-role { font-size: 0.78rem; color: var(--text-tertiary); }
+
+/* ============================
+   SECTION 8: FINAL CTA
+   ============================ */
+.final-cta {
+  padding: 120px 0; position: relative; overflow: hidden;
+  text-align: center;
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(200,170,110,0.06) 0%, transparent 70%);
+}
+.final-cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.final-cta h2 {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 600; line-height: 1.1; margin-bottom: 20px;
+}
+.final-cta .section-subtitle { margin-bottom: 40px; }
+.final-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.final-cta-phone { font-size: 0.9rem; color: var(--text-tertiary); }
+.final-cta-phone a { color: var(--text-tertiary); transition: color 0.25s ease; }
+.final-cta-phone a:hover { color: var(--gold); }
+
+/* ============================
+   SECTION 9: FOOTER
+   ============================ */
+.site-footer {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  padding: 72px 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px;
+  padding-bottom: 56px;
+}
+.footer-col-title {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--text-tertiary); font-weight: 600; margin-bottom: 20px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: 0.85rem; color: var(--text-secondary); font-weight: 300;
+  transition: color 0.25s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-legal {
+  border-top: 1px solid var(--border-subtle);
+  padding: 28px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-legal-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-legal-left span, .footer-legal-left a {
+  font-size: 0.78rem; color: var(--text-tertiary);
+}
+.footer-legal-left a { transition: color 0.25s ease; }
+.footer-legal-left a:hover { color: var(--text-secondary); }
+.footer-legal-right { display: flex; align-items: center; gap: 6px; }
+.footer-legal-right span {
+  font-size: 0.6rem; background: rgba(255,255,255,0.05);
+  padding: 3px 7px; border-radius: 4px; font-weight: 600; color: var(--text-tertiary);
+}
+
+/* ============================
+   MOBILE STICKY CTA
+   ============================ */
+.mobile-sticky-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 999; background: rgba(10,12,16,0.95);
+  backdrop-filter: blur(16px); border-top: 1px solid var(--border-subtle);
+  padding: 12px 16px;
+  transform: translateY(100%); transition: transform 0.4s var(--ease-out);
+}
+.mobile-sticky-cta.visible { transform: translateY(0); }
+.mobile-sticky-cta-inner {
+  display: flex; align-items: center; gap: 12px;
+}
+.mobile-sticky-cta .btn { flex: 1; justify-content: center; padding: 14px 20px; font-size: 0.88rem; }
+.mobile-sticky-cta .phone-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border-medium);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.mobile-sticky-cta .phone-icon svg { width: 20px; height: 20px; color: var(--gold); }
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .hero-content { max-width: 100%; margin: 0 auto; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-visual { order: -1; }
+  .shield-graphic { width: 280px; height: 280px; }
+  .shield-ring:nth-child(2) { inset: 25px; }
+  .shield-ring:nth-child(3) { inset: 50px; }
+  .shield-ring:nth-child(4) { inset: 75px; }
+  .shield-center { inset: 90px; }
+  .floating-badge { display: none; }
+  .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .pkg-card.pkg-gold { order: -1; }
+  .diff-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .steps-grid::before { display: none; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .container { padding: 0 20px; }
+  .nav-main { display: none; }
+  .header-phone { display: none; }
+  .header-login { display: none; }
+  .header-cta { display: none; }
+  .mobile-toggle { display: flex; }
+  .header-inner { height: 64px; padding: 0 20px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar-card { padding: 36px 28px; }
+  .packages-grid { max-width: 100%; }
+  .diff-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .trust-bar-inner { gap: 24px; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .footer-legal { flex-direction: column; align-items: flex-start; }
+  .hero-ctas { flex-direction: column; width: 100%; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .final-cta-buttons { flex-direction: column; align-items: center; }
+  .final-cta-buttons .btn { width: 100%; justify-content: center; max-width: 360px; }
+  .mobile-sticky-cta { display: block; }
+  body { padding-bottom: 76px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero-trust { flex-direction: column; gap: 12px; align-items: center; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SECTION 0: HEADER ===== -->
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="Incorporate123 Home">
+      <span class="logo-inc">Incorporate</span><span class="logo-123">123</span>
+    </a>
+    <nav class="nav-main" role="navigation" aria-label="Main navigation">
+      <a href="/privacy/" class="nav-link">Privacy</a>
+      <a href="/asset-protection/" class="nav-link">Asset Protection</a>
+      <a href="/formation/" class="nav-link">Formation</a>
+      <a href="/compare-packages/" class="nav-link">Packages</a>
+      <a href="/about/" class="nav-link">About</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:7755551234" class="header-phone" aria-label="Call us at (775) 555-1234">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(775) 555-1234</span>
+      </a>
+      <a href="/login/" class="header-login">Client Login</a>
+      <a href="/compare-packages/" class="header-cta">Get Started <span class="arrow">→</span></a>
+    </div>
+    <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section class="hero section" id="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1 id="hero-heading" class="reveal">Your Business.<br><span class="highlight">Your Privacy.</span><br>Our Expertise.</h1>
+        <p class="hero-sub reveal reveal-delay-1">25 years specializing in business privacy, asset protection, and incorporation for Wyoming and Nevada. All-inclusive packages — no hidden fees.</p>
+        <div class="hero-ctas reveal reveal-delay-2">
+          <a href="/privacy/" class="btn btn-primary">Protect Your Privacy <span class="arrow">→</span></a>
+          <a href="/compare-packages/" class="btn btn-secondary">View Packages &amp; Pricing <span class="arrow">→</span></a>
+        </div>
+        <a href="tel:7755551234" class="hero-phone reveal reveal-delay-3">Prefer to talk? Call us — (775) 555-1234</a>
+        <div class="hero-trust reveal reveal-delay-4">
+          <div class="trust-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Trusted Since 2000
+          </div>
+          <div class="trust-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            25 Years Specialized Experience
+          </div>
+          <div class="trust-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Real Reno, Nevada Office
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="shield-graphic" aria-hidden="true">
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="floating-badge badge-1">
+            <div class="badge-value">365-Day</div>
+            <div class="badge-label">Nominee Protection</div>
+          </div>
+          <div class="floating-badge badge-2">
+            <div class="badge-value">$1,275</div>
+            <div class="badge-label">All-Inclusive WY Gold</div>
+          </div>
+          <div class="floating-badge badge-3">
+            <div class="badge-value">25 Years</div>
+            <div class="badge-label">Specialized Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: PILLAR NAV ===== -->
+<section class="pillars section" id="pillars" aria-labelledby="pillars-heading">
+  <h2 id="pillars-heading" class="sr-only">Our Services</h2>
+  <div class="container">
+    <div class="pillars-grid">
+      <div class="pillar-card pillar-privacy reveal">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="pillar-label">Business Privacy</div>
+        <h3 class="pillar-title">Privacy You Can't Get Elsewhere</h3>
+        <p class="pillar-desc">Year-round nominee directors and officers keep your name off public records — not just at formation, but every day.</p>
+        <p class="pillar-trust">Year-round nominees included — not "nominee for a day"</p>
+        <a href="/privacy/" class="pillar-cta">Explore Privacy Options <span class="arrow">→</span></a>
+      </div>
+      <div class="pillar-card pillar-asset reveal reveal-delay-1">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pillar-label">Asset Protection</div>
+        <h3 class="pillar-title">Protect What You've Built</h3>
+        <p class="pillar-desc">Wyoming and Nevada LLCs with charging order protection — the strongest structural defense for your business assets.</p>
+        <p class="pillar-trust">For individuals with $500K+ in assets</p>
+        <a href="/asset-protection/" class="pillar-cta">Protect Your Assets <span class="arrow">→</span></a>
+      </div>
+      <div class="pillar-card pillar-formation reveal reveal-delay-2">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="pillar-label">Business Incorporation</div>
+        <h3 class="pillar-title">Expert Formation, All-Inclusive</h3>
+        <p class="pillar-desc">Wyoming and Nevada LLCs and Corporations with everything included — state fees, registered agent, operating agreement, EIN.</p>
+        <p class="pillar-trust">25 years forming Wyoming and Nevada entities</p>
+        <a href="/formation/" class="pillar-cta">Start Your Company <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: PACKAGES ===== -->
+<section class="packages section" id="packages" aria-labelledby="packages-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title reveal" id="packages-heading">Ready to Get Started?</h2>
+      <p class="section-subtitle reveal reveal-delay-1">All-inclusive packages — state fees, registered agent, and compliance included in every tier.</p>
+    </div>
+    <div class="packages-grid">
+      <!-- Silver -->
+      <div class="pkg-card pkg-silver reveal">
+        <div class="pkg-badge">Formation</div>
+        <div class="pkg-tier">Silver — Formation</div>
+        <div class="pkg-prices">
+          <div class="pkg-price-row">
+            <span class="pkg-state">WY</span>
+            <span class="pkg-amount">$875</span>
+            <span class="pkg-suffix">all-inclusive</span>
+          </div>
+          <div class="pkg-price-row">
+            <span class="pkg-state">NV</span>
+            <span class="pkg-amount">$1,275</span>
+            <span class="pkg-suffix">all-inclusive</span>
+          </div>
+        </div>
+        <div class="pkg-renewal">Renewal: $325/yr</div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Registered agent service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Operating agreement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>All state filing fees</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>EIN obtainment</li>
+        </ul>
+        <div class="pkg-cta-area">
+          <a href="/wyoming-incorporation/" class="btn btn-secondary" style="width:100%;justify-content:center">View Silver Package <span class="arrow">→</span></a>
+          <a href="/compare-packages/" class="pkg-upgrade">Add privacy for $375 more →</a>
+        </div>
+      </div>
+      <!-- Gold -->
+      <div class="pkg-card pkg-gold reveal reveal-delay-1">
+        <div class="pkg-badge">★ Most Popular</div>
+        <div class="pkg-tier">Gold — Privacy</div>
+        <div class="pkg-prices">
+          <div class="pkg-price-row">
+            <span class="pkg-state">WY</span>
+            <span class="pkg-amount">$1,275</span>
+            <span class="pkg-suffix">all-inclusive</span>
+          </div>
+          <div class="pkg-price-row">
+            <span class="pkg-state">NV</span>
+            <span class="pkg-amount">$1,800</span>
+            <span class="pkg-suffix">all-inclusive</span>
+          </div>
+        </div>
+        <div class="pkg-renewal">Renewal: $525/yr with nominees</div>
+        <div class="pkg-value">Includes $2,000+ in Year 1 services</div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Year-round nominee services</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Offshore records storage</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Full compliance maintenance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Silver plus privacy</li>
+        </ul>
+        <div class="pkg-cta-area">
+          <a href="/wyoming-private-llc/" class="btn btn-primary" style="width:100%;justify-content:center">Get Started <span class="arrow">→</span></a>
+          <a href="/contact/" class="btn-ghost" style="text-align:center;display:block">Schedule a consultation <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <!-- Bronze -->
+      <div class="pkg-card pkg-bronze reveal reveal-delay-2">
+        <div class="pkg-badge">Nevada</div>
+        <div class="pkg-tier">Bronze — Nevada</div>
+        <div class="pkg-prices">
+          <div class="pkg-price-row">
+            <span class="pkg-state">NV</span>
+            <span class="pkg-amount">$699</span>
+            <span class="pkg-suffix">all-inclusive</span>
+          </div>
+        </div>
+        <div class="pkg-renewal">Renewal: $275/yr</div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Basic Nevada formation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Registered agent service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>All state filing fees</li>
+        </ul>
+        <div class="pkg-cta-area">
+          <a href="/nevada-incorporation/" class="btn btn-secondary" style="width:100%;justify-content:center;font-size:0.85rem">View Bronze Package <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="packages-compare reveal">
+      <a href="/compare-packages/">Compare all packages in detail <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: DIFFERENTIATORS ===== -->
+<section class="differentiators section" id="differentiators" aria-labelledby="diff-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title reveal" id="diff-heading">Why Clients Choose Incorporate123</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item reveal">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 class="diff-title">Year-Round Nominees</h3>
+        <p class="diff-desc">Your nominees are maintained 365 days a year — not just at formation. Most providers offer a "nominee for a day" and disappear.</p>
+      </div>
+      <div class="diff-item reveal reveal-delay-1">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3 class="diff-title">Offshore Records Storage</h3>
+        <p class="diff-desc">Corporate records maintained outside U.S. jurisdiction. Included free in every Gold package since 2012. No competitor offers this.</p>
+      </div>
+      <div class="diff-item reveal reveal-delay-2">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="diff-title">All-Inclusive Pricing</h3>
+        <p class="diff-desc">State filing fees, registered agent, operating agreement, EIN — all included. No hidden fees. The price you see is the price you pay.</p>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="diff-title">25 Years of Expertise</h3>
+        <p class="diff-desc">Forming Wyoming and Nevada entities since 2000. Specialized in privacy and asset protection — not a generic filing service.</p>
+      </div>
+      <div class="diff-item reveal reveal-delay-1">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 class="diff-title">Real Reno Office</h3>
+        <p class="diff-desc">Kingsbury Executive Suites, Reno, Nevada. Real people, real office, real expertise — not a virtual mailbox or a PO box.</p>
+      </div>
+      <div class="diff-item reveal reveal-delay-2">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="diff-title">Crypto Payments Accepted</h3>
+        <p class="diff-desc">Bitcoin, Ethereum, XRP, Litecoin, Monero. We accept cryptocurrency because our clients value privacy — and so do we.</p>
+      </div>
+    </div>
+    <div class="diff-comparison reveal">
+      <p>Competitors charge <strong>$400–$5,000/year</strong> for nominee services alone. Ours are included in every Gold package — along with offshore records, registered agent, operating agreement, EIN, and all state fees. Total included value: <strong>$2,000+ in Year 1</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: TRUST SIGNALS BAR ===== -->
+<section class="trust-bar" aria-label="Trust signals">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-signal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Trusted Since 2000
+      </div>
+      <div class="trust-signal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:7755551234">Call Us: (775) 555-1234</a>
+      </div>
+      <div class="trust-signal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        30-Day Money-Back Guarantee
+      </div>
+      <div class="trust-signal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Crypto Accepted
+        <div class="crypto-icons">
+          <span>BTC</span><span>ETH</span><span>XRP</span><span>LTC</span><span>XMR</span>
+        </div>
+      </div>
+      <div class="trust-signal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Real Reno, NV Office
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: HOW IT WORKS ===== -->
+<section class="how-it-works section" id="how-it-works" aria-labelledby="hiw-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title reveal" id="hiw-heading">How It Works</h2>
+      <p class="section-subtitle reveal reveal-delay-1">From selection to formation — we handle every step.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item reveal">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Choose Your Package</h3>
+        <p class="step-desc">Select Gold, Silver, or Bronze. Compare features and pick what fits your goals.</p>
+      </div>
+      <div class="step-item reveal reveal-delay-1">
+        <div class="step-number">2</div>
+        <h3 class="step-title">We Form Your Entity</h3>
+        <p class="step-desc">We handle all state filings, paperwork, and fees. Typical turnaround: 5–7 business days.</p>
+      </div>
+      <div class="step-item reveal reveal-delay-2">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Nominees Protect You</h3>
+        <p class="step-desc">Year-round nominee directors and officers keep your name off public records.</p>
+      </div>
+      <div class="step-item reveal reveal-delay-3">
+        <div class="step-number">4</div>
+        <h3 class="step-title">Compliance, Handled</h3>
+        <p class="step-desc">Registered agent, annual reports, and corporate minutes — maintained every year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: TESTIMONIALS ===== -->
+<section class="testimonials section" id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title reveal" id="testimonials-heading">What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote class="testimonial-quote">"We moved our California business to a Wyoming entity with nominee services. Our ownership is completely private and the process was handled start to finish."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">MT</div>
+          <div>
+            <div class="testimonial-name">Mark T.</div>
+            <div class="testimonial-role">California Business Owner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars" aria-label="5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote class="testimonial-quote">"After 15 years with another provider, we switched to Incorporate123 for the year-round nominee maintenance. The difference in service is night and day."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">IG</div>
+          <div>
+            <div class="testimonial-name">Investment Group</div>
+            <div class="testimonial-role">Nevada</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars" aria-label="5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote class="testimonial-quote">"The all-inclusive pricing was what sold us. No hidden fees, no surprise add-ons — just one clear price for everything we needed."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">SM</div>
+          <div>
+            <div class="testimonial-name">Sarah M.</div>
+            <div class="testimonial-role">Wyoming LLC Owner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: FINAL CTA ===== -->
+<section class="final-cta section" id="final-cta" aria-labelledby="final-cta-heading">
+  <div class="container">
+    <div class="final-cta-inner">
+      <h2 class="section-title reveal" id="final-cta-heading">Ready to Protect Your Privacy?</h2>
+      <p class="section-subtitle reveal reveal-delay-1">25 years of specialized experience. All-inclusive pricing. Real people, real office.</p>
+      <div class="final-cta-buttons reveal reveal-delay-2">
+        <a href="/privacy/" class="btn btn-primary">Get Started <span class="arrow">→</span></a>
+        <a href="/contact/" class="btn btn-secondary">Schedule a Consultation <span class="arrow">→</span></a>
+      </div>
+      <p class="final-cta-phone reveal reveal-delay-3">Or call us directly — <a href="tel:7755551234">(775) 555-1234</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 9: FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 class="footer-col-title">Privacy</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy/">Privacy Overview</a></li>
+          <li><a href="/privacy/nominee-services/">Nominee Services</a></li>
+          <li><a href="/privacy/offshore-records/">Offshore Records</a></li>
+          <li><a href="/privacy/wyoming-privacy/">Wyoming Privacy</a></li>
+          <li><a href="/privacy/nevada-privacy/">Nevada Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Asset Protection</h3>
+        <ul class="footer-links">
+          <li><a href="/asset-protection/">AP Overview</a></li>
+          <li><a href="/asset-protection/wyoming-llc/">Wyoming LLC</a></li>
+          <li><a href="/asset-protection/nevada-llc/">Nevada LLC</a></li>
+          <li><a href="/asset-protection/charging-order/">Charging Order</a></li>
+          <li><a href="/asset-protection/compare/">Compare States</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Incorporation</h3>
+        <ul class="footer-links">
+          <li><a href="/formation/">Formation Overview</a></li>
+          <li><a href="/formation/wyoming/">Wyoming Entity</a></li>
+          <li><a href="/formation/nevada/">Nevada Entity</a></li>
+          <li><a href="/formation/california/">California Entity</a></li>
+          <li><a href="/formation/florida/">Florida Entity</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/testimonials/">Testimonials</a></li>
+          <li><a href="/login/">Client Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Packages</h3>
+        <ul class="footer-links">
+          <li><a href="/wyoming-private-llc/">WY Gold</a></li>
+          <li><a href="/nevada-private-llc/">NV Gold</a></li>
+          <li><a href="/wyoming-incorporation/">WY Silver</a></li>
+          <li><a href="/nevada-incorporation/">NV Silver</a></li>
+          <li><a href="/nevada-bronze/">NV Bronze</a></li>
+          <li><a href="/compare-packages/">Compare All</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">States</h3>
+        <ul class="footer-links">
+          <li><a href="/states/wyoming/">Wyoming</a></li>
+          <li><a href="/states/nevada/">Nevada</a></li>
+          <li><a href="/states/california/">California</a></li>
+          <li><a href="/states/florida/">Florida</a></li>
+          <li><a href="/states/offshore/">Offshore</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-left">
+        <span>&copy; 2026 Incorporate123. All rights reserved.</span>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <span>Kingsbury Executive Suites, Reno, NV</span>
+        <a href="tel:7755551234">(775) 555-1234</a>
+      </div>
+      <div class="footer-legal-right">
+        <span>BTC</span><span>ETH</span><span>XRP</span><span>LTC</span><span>XMR</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY CTA ===== -->
+<div class="mobile-sticky-cta" id="mobileStickyBar" aria-label="Quick actions">
+  <div class="mobile-sticky-cta-inner container">
+    <a href="/privacy/" class="btn btn-primary">Protect Your Privacy <span class="arrow">→</span></a>
+    <a href="tel:7755551234" class="phone-icon" aria-label="Call (775) 555-1234">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+// Header scroll behavior
+const header = document.getElementById('siteHeader');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 50);
+  lastScroll = y;
+}, { passive: true });
+
+// Mobile sticky CTA bar
+const hero = document.getElementById('hero');
+const stickyBar = document.getElementById('mobileStickyBar');
+if (hero && stickyBar) {
+  const obs = new IntersectionObserver(([e]) => {
+    stickyBar.classList.toggle('visible', !e.isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(hero);
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>

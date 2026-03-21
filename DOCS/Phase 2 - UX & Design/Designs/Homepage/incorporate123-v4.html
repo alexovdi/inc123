@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incorporate123 — Privacy, Asset Protection & Business Formation Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --midnight: #0C1222;
+  --deep: #111A2E;
+  --navy: #162038;
+  --slate: #1F2D4A;
+  --steel: #4A5878;
+  --drift: #7A89A6;
+  --haze: #A8B3C8;
+  --mist: #CED5E2;
+  --pearl: #F8F6F1;
+  --bone: #EDEBE5;
+  --warm-white: #FDFCF9;
+  --pure: #FFFFFF;
+
+  --ember: #D4593A;
+  --ember-hot: #E06842;
+  --ember-deep: #B94A2F;
+  --ember-glow: rgba(212, 89, 58, 0.15);
+  --ember-ghost: rgba(212, 89, 58, 0.06);
+
+  --pv: #1A7A6D;
+  --pv-bg: rgba(26, 122, 109, 0.08);
+  --ap: #4B6FA0;
+  --ap-bg: rgba(75, 111, 160, 0.08);
+  --fm: #7B6199;
+  --fm-bg: rgba(123, 97, 153, 0.08);
+
+  --gold-pkg: #C9973A;
+  --gold-glow: rgba(201, 151, 58, 0.1);
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'Space Mono', monospace;
+
+  --max: 1200px;
+  --vpad: 140px;
+  --hpad: 40px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--sans);
+  background: var(--midnight);
+  color: var(--pure);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.mx { max-width: var(--max); margin: 0 auto; padding: 0 var(--hpad); }
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ====== REVEAL ====== */
+.rv { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.rv.on { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; } .d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; } .d5 { transition-delay: 0.40s; }
+
+/* ====== BUTTONS ====== */
+.btn {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.005em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 36px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+  position: relative;
+}
+.btn svg { width: 16px; height: 16px; transition: transform 0.35s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+
+.btn-ember {
+  background: var(--ember);
+  color: var(--pure);
+  border-radius: 60px;
+}
+.btn-ember:hover {
+  background: var(--ember-hot);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(212, 89, 58, 0.35);
+}
+
+.btn-glass {
+  background: rgba(255,255,255,0.06);
+  color: var(--pure);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 60px;
+  backdrop-filter: blur(8px);
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--midnight);
+  border: 2px solid var(--midnight);
+  border-radius: 60px;
+}
+.btn-outline:hover {
+  background: var(--midnight);
+  color: var(--pure);
+}
+
+.btn-gold {
+  background: var(--gold-pkg);
+  color: var(--midnight);
+  border-radius: 60px;
+  font-weight: 700;
+}
+.btn-gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(201, 151, 58, 0.3);
+}
+
+.btn-ghost-dark {
+  background: rgba(255,255,255,0.04);
+  color: var(--mist);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 60px;
+}
+.btn-ghost-dark:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+  color: var(--pure);
+}
+
+.link-arr {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s var(--ease), color 0.2s;
+}
+.link-arr:hover { gap: 14px; }
+.link-arr svg { width: 14px; height: 14px; }
+
+.subtle {
+  font-size: 14px;
+  color: var(--drift);
+}
+.subtle a { border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1px; transition: all 0.2s; }
+.subtle a:hover { color: var(--ember); border-color: var(--ember); }
+
+.subtle-dark {
+  font-size: 14px;
+  color: var(--steel);
+}
+.subtle-dark a { border-bottom: 1px solid var(--bone); padding-bottom: 1px; transition: all 0.2s; }
+.subtle-dark a:hover { color: var(--ember); border-color: var(--ember); }
+
+/* ====== HEADER ====== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.35s var(--ease);
+}
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 18, 34, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.hdr {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--hpad);
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--pure);
+  font-optical-sizing: auto;
+}
+.logo i { font-style: normal; color: var(--ember); font-weight: 400; }
+
+nav { display: flex; gap: 4px; }
+nav a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--haze);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+nav a:hover { color: var(--pure); background: rgba(255,255,255,0.05); }
+nav svg { width: 10px; height: 10px; opacity: 0.4; }
+
+.hdr-r { display: flex; align-items: center; gap: 20px; }
+.hdr-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--drift);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+.hdr-link:hover { color: var(--pure); }
+.hdr-link svg { width: 14px; height: 14px; }
+
+.hdr-tel {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ember);
+}
+
+.hdr-btn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 22px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 60px;
+  color: var(--pure);
+  transition: all 0.25s;
+}
+.hdr-btn:hover { border-color: var(--ember); color: var(--ember); }
+
+.burger { display: none; width: 24px; height: 16px; flex-direction: column; justify-content: space-between; cursor: pointer; }
+.burger span { height: 1.5px; background: var(--pure); border-radius: 1px; }
+
+/* ====== HERO ====== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 76px;
+}
+
+/* Atmospheric depth */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 75% 35%, rgba(212, 89, 58, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 15% 85%, rgba(26, 122, 109, 0.03) 0%, transparent 50%);
+}
+
+.hero-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-txt {
+  animation: heroIn 1s var(--ease) both;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-tag::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--ember);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  font-optical-sizing: auto;
+}
+.hero h1 em {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--haze);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--drift);
+  max-width: 480px;
+  margin-bottom: 44px;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.hero-escape { margin-bottom: 0; }
+
+/* Hero right: proof column */
+.hero-proof {
+  animation: heroIn 1s var(--ease) 0.2s both;
+  position: relative;
+}
+.hero-proof::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(212, 89, 58, 0.3), transparent);
+}
+
+.proof {
+  padding: 32px 0 32px 48px;
+  position: relative;
+}
+.proof + .proof { border-top: 1px solid rgba(255,255,255,0.05); }
+
+.proof-val {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 48px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--pure);
+  margin-bottom: 6px;
+  font-optical-sizing: auto;
+}
+.proof-val small {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--steel);
+}
+
+.proof-lbl {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Floating abstract shield */
+.hero-glyph {
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* ====== SECTION: LIGHT BG ====== */
+.light-section {
+  background: var(--pearl);
+  color: var(--midnight);
+  position: relative;
+}
+
+/* ====== PILLARS ====== */
+.pillars { padding: var(--vpad) 0; }
+
+.sec-head {
+  margin-bottom: 72px;
+}
+.sec-head .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 16px;
+  display: block;
+}
+.sec-head h2 {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: clamp(32px, 4.2vw, 56px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  font-optical-sizing: auto;
+}
+
+.pillar-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.pillar {
+  position: relative;
+  padding: 44px;
+  background: var(--pure);
+  border-radius: 20px;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  overflow: hidden;
+}
+.pillar:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(12, 18, 34, 0.08);
+}
+
+/* Top accent gradient */
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+}
+.pillar--pv::before { background: linear-gradient(90deg, var(--pv), #2AA396); }
+.pillar--ap::before { background: linear-gradient(90deg, var(--ap), #6B8FC0); }
+.pillar--fm::before { background: linear-gradient(90deg, var(--fm), #9B81B9); }
+
+.pillar-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.pillar--pv .pillar-icon { background: var(--pv-bg); color: var(--pv); }
+.pillar--ap .pillar-icon { background: var(--ap-bg); color: var(--ap); }
+.pillar--fm .pillar-icon { background: var(--fm-bg); color: var(--fm); }
+.pillar-icon svg { width: 26px; height: 26px; }
+
+.pillar-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.pillar--pv .pillar-lbl { color: var(--pv); }
+.pillar--ap .pillar-lbl { color: var(--ap); }
+.pillar--fm .pillar-lbl { color: var(--fm); }
+
+.pillar h3 {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--midnight);
+  margin-bottom: 14px;
+}
+
+.pillar p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--steel);
+  margin-bottom: 16px;
+}
+
+.pillar-trust {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--drift);
+  padding: 14px 0;
+  border-top: 1px solid var(--bone);
+  margin-bottom: 20px;
+}
+
+.pillar--pv .link-arr { color: var(--pv); }
+.pillar--ap .link-arr { color: var(--ap); }
+.pillar--fm .link-arr { color: var(--fm); }
+
+/* ====== PACKAGES ====== */
+.packages {
+  padding: var(--vpad) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Spotlight glow behind Gold */
+.packages::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 151, 58, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pkg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pkg {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 44px 36px;
+  backdrop-filter: blur(4px);
+  transition: all 0.35s var(--ease);
+}
+.pkg:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.pkg--gold {
+  background: linear-gradient(165deg, rgba(201, 151, 58, 0.08) 0%, rgba(201, 151, 58, 0.02) 100%);
+  border: 1.5px solid rgba(201, 151, 58, 0.25);
+  padding: 56px 44px;
+  position: relative;
+}
+.pkg--gold::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: linear-gradient(165deg, rgba(201, 151, 58, 0.15), transparent 60%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.pkg--gold:hover::before { opacity: 1; }
+
+.pkg-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 60px;
+  margin-bottom: 20px;
+  color: var(--gold-pkg);
+  background: var(--gold-glow);
+  border: 1px solid rgba(201, 151, 58, 0.2);
+}
+
+.pkg-tier {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--drift);
+  margin-bottom: 4px;
+}
+
+.pkg-name {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  font-optical-sizing: auto;
+}
+
+.pkg-prices { margin-bottom: 8px; }
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.price-st {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--drift);
+  width: 22px;
+}
+.price-amt {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 38px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-optical-sizing: auto;
+}
+.pkg--gold .price-amt { color: var(--gold-pkg); }
+
+.pkg-renew {
+  font-size: 13px;
+  color: var(--drift);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.pkg-renew strong { color: var(--pure); font-weight: 600; }
+
+.pkg-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-pkg);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pkg-list li {
+  font-size: 14px;
+  color: var(--haze);
+  padding: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.pkg-list svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+.pkg--gold .pkg-list svg { color: var(--gold-pkg); }
+.pkg-list .ck { color: var(--drift); }
+
+.pkg-cta { margin-top: 28px; width: 100%; justify-content: center; }
+.pkg-foot { text-align: center; margin-top: 12px; font-size: 13px; color: var(--drift); }
+.pkg-foot a { border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1px; }
+.pkg-foot a:hover { color: var(--gold-pkg); border-color: var(--gold-pkg); }
+
+.pkg-compare { text-align: center; margin-top: 48px; position: relative; z-index: 1; }
+.pkg-compare .link-arr { color: var(--ember); }
+
+/* ====== DIFFERENTIATORS ====== */
+.diffs {
+  padding: var(--vpad) 0;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.diff {
+  padding: 48px;
+  border-bottom: 1px solid var(--bone);
+  position: relative;
+  transition: background 0.3s;
+}
+.diff:nth-child(odd) { border-right: 1px solid var(--bone); }
+.diff:nth-last-child(-n+2) { border-bottom: none; }
+.diff:hover { background: var(--pure); }
+
+.diff-num {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 0.8;
+  color: var(--bone);
+  margin-bottom: 20px;
+  letter-spacing: -0.04em;
+  font-optical-sizing: auto;
+}
+
+.diff h3 {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--midnight);
+  margin-bottom: 10px;
+}
+
+.diff p {
+  font-size: 15px;
+  color: var(--steel);
+  line-height: 1.7;
+}
+
+.val-callout {
+  margin-top: 48px;
+  background: var(--midnight);
+  border-radius: 20px;
+  padding: 40px 48px;
+  text-align: center;
+}
+.val-callout p {
+  font-size: 17px;
+  color: var(--haze);
+  line-height: 1.7;
+}
+.val-callout strong {
+  font-family: var(--serif);
+  font-weight: 800;
+  color: var(--ember);
+}
+
+/* ====== TRUST BAR ====== */
+.trust {
+  padding: 44px 0;
+  background: var(--warm-white);
+  border-top: 1px solid var(--bone);
+  border-bottom: 1px solid var(--bone);
+}
+.trust-inner {
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--midnight);
+}
+.trust-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ember);
+  flex-shrink: 0;
+}
+.trust-item a {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ember);
+  font-weight: 400;
+}
+
+/* ====== HOW IT WORKS ====== */
+.process { padding: var(--vpad) 0; }
+
+.steps-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.steps-track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ember), var(--pv));
+}
+
+.step {
+  padding: 40px 28px 0 0;
+  border-right: 1px solid var(--bone);
+}
+.step:last-child { border-right: none; }
+
+.step-n {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 52px;
+  color: var(--bone);
+  line-height: 0.9;
+  margin-bottom: 16px;
+  letter-spacing: -0.04em;
+  font-optical-sizing: auto;
+}
+
+.step h3 {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  color: var(--midnight);
+  margin-bottom: 10px;
+}
+.step p {
+  font-size: 14px;
+  color: var(--steel);
+  line-height: 1.7;
+}
+
+/* ====== TESTIMONIALS ====== */
+.testi {
+  padding: var(--vpad) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.t-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  transition: all 0.35s var(--ease);
+}
+.t-card:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+}
+
+.t-stars { display: flex; gap: 3px; margin-bottom: 24px; }
+.t-stars svg { width: 16px; height: 16px; fill: var(--gold-pkg); color: var(--gold-pkg); }
+
+.t-big-q {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 0.5;
+  color: rgba(255,255,255,0.06);
+  margin-bottom: 8px;
+  font-optical-sizing: auto;
+}
+
+.t-quote {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--haze);
+  flex: 1;
+  margin-bottom: 28px;
+}
+
+.t-who {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.t-av {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ember-ghost);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--ember);
+}
+.t-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--pure);
+}
+.t-role {
+  font-size: 12px;
+  color: var(--drift);
+}
+
+/* ====== FINAL CTA ====== */
+.final {
+  padding: var(--vpad) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 0%, rgba(212, 89, 58, 0.06) 0%, transparent 70%);
+}
+
+.final-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.final h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  font-optical-sizing: auto;
+}
+.final h2 em {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--haze);
+}
+
+.final .sub {
+  font-size: 17px;
+  color: var(--drift);
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.final-btns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background: var(--deep);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 80px 0 0;
+}
+
+.ft-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ft-col h4 {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--drift);
+  margin-bottom: 16px;
+}
+.ft-col a {
+  display: block;
+  font-size: 13px;
+  color: var(--steel);
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.ft-col a:hover { color: var(--ember); }
+
+.ft-cmp {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.ft-cmp-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.ft-bottom {
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.ft-legal {
+  font-size: 12px;
+  color: var(--steel);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ft-legal a { border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1px; }
+.ft-legal a:hover { color: var(--haze); }
+
+.ft-crypto {
+  display: flex;
+  gap: 6px;
+}
+.ft-crypto span {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--steel);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 4px 9px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* ====== MOBILE STICKY ====== */
+.mob-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(12, 18, 34, 0.97);
+  backdrop-filter: blur(16px);
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.mob-row { display: flex; gap: 10px; }
+.mob-row .btn { flex: 1; justify-content: center; }
+.mob-phone {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mob-phone svg { width: 20px; height: 20px; color: var(--ember); }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+  :root { --vpad: 100px; }
+  .hero-wrap { grid-template-columns: 1fr; }
+  .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .hero-proof::before { display: none; }
+  .proof { padding: 24px 0; border-right: 1px solid rgba(255,255,255,0.05); }
+  .proof:last-child { border-right: none; }
+  .pillar-row, .testi-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .pkg-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .pkg--gold { order: -1; }
+  .diff-grid { grid-template-columns: 1fr; }
+  .diff { border-right: none !important; }
+  .steps-track { grid-template-columns: repeat(2, 1fr); }
+  .step { border-bottom: 1px solid var(--bone); }
+  .ft-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 767px) {
+  :root { --vpad: 80px; --hpad: 20px; }
+  nav, .hdr-btn, .hdr-tel { display: none; }
+  .burger { display: flex; }
+  .hdr { height: 60px; }
+  .hero { min-height: auto; padding: 120px 0 80px; }
+  .hero h1 { font-size: 40px; }
+  .hero-proof { grid-template-columns: 1fr; }
+  .proof { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .hero-ctas, .final-btns { flex-direction: column; width: 100%; }
+  .hero-ctas .btn, .final-btns .btn { width: 100%; justify-content: center; }
+  .pillar-row { max-width: 100%; }
+  .steps-track { grid-template-columns: 1fr; }
+  .steps-track::before { display: none; }
+  .trust-inner { gap: 20px; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ft-bottom { flex-direction: column; text-align: center; }
+  .ft-legal { justify-content: center; }
+  .mob-bar { display: block; }
+  footer { padding-bottom: 88px; }
+  .val-callout { padding: 28px 24px; }
+  .hero-glyph { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="hdr">
+    <a href="/" class="logo">Incorporate<i>123</i></a>
+    <nav aria-label="Main">
+      <a href="/privacy/">Privacy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></a>
+      <a href="/asset-protection/">Asset Protection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></a>
+      <a href="/formation/">Formation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></a>
+      <a href="/compare-packages/">Packages</a>
+      <a href="/about/">About <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></a>
+    </nav>
+    <div class="hdr-r">
+      <a href="/login/" class="hdr-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg> Login</a>
+      <a href="tel:7755551234" class="hdr-tel">(775) 555-1234</a>
+      <a href="/compare-packages/" class="hdr-btn">Get Started →</a>
+    </div>
+    <div class="burger" role="button" aria-label="Menu" tabindex="0"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-label="Hero">
+  <div class="mx">
+    <div class="hero-wrap">
+      <div class="hero-txt">
+        <div class="hero-tag">Privacy · Protection · Formation</div>
+        <h1>Your Privacy,<em>Our Expertise.</em></h1>
+        <p class="hero-sub">25 years specializing in Wyoming and Nevada business privacy, asset protection, and incorporation. All-inclusive packages — no hidden fees, no surprises.</p>
+        <div class="hero-ctas">
+          <a href="/privacy/" class="btn btn-ember">Protect Your Privacy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="/compare-packages/" class="btn btn-glass">View Packages &amp; Pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <p class="subtle hero-escape">Prefer to talk? <a href="tel:7755551234">(775) 555-1234</a></p>
+      </div>
+      <div class="hero-proof">
+        <div class="proof">
+          <div class="proof-val">25<small> yrs</small></div>
+          <div class="proof-lbl">Specialized Experience</div>
+        </div>
+        <div class="proof">
+          <div class="proof-val">$1,275</div>
+          <div class="proof-lbl">All-Inclusive · WY Gold</div>
+        </div>
+        <div class="proof">
+          <div class="proof-val">$2K<small>+</small></div>
+          <div class="proof-lbl">Year 1 Included Value</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background shield glyph -->
+  <svg class="hero-glyph" viewBox="0 0 600 600" fill="none"><path d="M300 60 L500 140 V340 C500 480 300 560 300 560 C300 560 100 480 100 340 V140 Z" stroke="white" stroke-width="1" opacity="0.5"/><path d="M300 110 L460 175 V330 C460 440 300 510 300 510 C300 510 140 440 140 330 V175 Z" stroke="white" stroke-width="0.5" opacity="0.3"/></svg>
+</section>
+
+<!-- ===== PILLARS ===== -->
+<section class="light-section pillars" aria-label="Services">
+  <div class="mx">
+    <div class="sec-head rv">
+      <span class="tag">Choose Your Path</span>
+      <h2>How Can We Help?</h2>
+    </div>
+    <div class="pillar-row">
+      <div class="pillar pillar--pv rv">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="pillar-lbl">Privacy</div>
+        <h3>Business Privacy</h3>
+        <p>Privacy you can't get elsewhere. Year-round nominee directors and officers keep your name off public records — not just at formation, but every day.</p>
+        <p class="pillar-trust">"Year-round nominees included — not 'nominee for a day'"</p>
+        <a href="/privacy/" class="link-arr">Explore Privacy Options <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="pillar pillar--ap rv d1">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="pillar-lbl">Asset Protection</div>
+        <h3>Protect What You've Built</h3>
+        <p>Wyoming and Nevada LLCs with charging order protection — the strongest structural defense for your business assets and personal wealth.</p>
+        <p class="pillar-trust">"For individuals with $500K+ in assets"</p>
+        <a href="/asset-protection/" class="link-arr">Protect Your Assets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="pillar pillar--fm rv d2">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="pillar-lbl">Business Incorporation</div>
+        <h3>Expert Formation, All-Inclusive</h3>
+        <p>Wyoming and Nevada LLCs and Corporations with everything included — state fees, registered agent, operating agreement, and EIN.</p>
+        <p class="pillar-trust">"25 years forming Wyoming and Nevada entities"</p>
+        <a href="/formation/" class="link-arr">Start Your Company <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PACKAGES ===== -->
+<section class="packages" aria-label="Packages">
+  <div class="mx">
+    <div class="sec-head rv" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <span class="tag">All-Inclusive Pricing</span>
+      <h2>Ready to Get Started?</h2>
+      <p style="color:var(--drift);font-size:16px;max-width:460px;margin:12px auto 0;">State fees, registered agent, and compliance included in every tier.</p>
+    </div>
+    <div class="pkg-grid">
+      <!-- Silver -->
+      <div class="pkg rv">
+        <div class="pkg-tier">Silver</div>
+        <div class="pkg-name">Formation</div>
+        <div class="pkg-prices">
+          <div class="price-row"><span class="price-st">WY</span><span class="price-amt">$875</span></div>
+          <div class="price-row"><span class="price-st">NV</span><span class="price-amt">$1,275</span></div>
+        </div>
+        <p class="pkg-renew">Renewal: <strong>$325/yr</strong></p>
+        <ul class="pkg-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> Registered agent included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> Operating agreement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> All state filing fees</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> EIN obtainment</li>
+        </ul>
+        <a href="/wyoming-incorporation/" class="btn btn-ghost-dark pkg-cta">View Silver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <p class="pkg-foot"><a href="/compare-packages/">Add privacy for $375 more →</a></p>
+      </div>
+      <!-- Gold -->
+      <div class="pkg pkg--gold rv d1">
+        <div class="pkg-badge">★ Most Popular</div>
+        <div class="pkg-tier">Gold</div>
+        <div class="pkg-name">Privacy</div>
+        <div class="pkg-prices">
+          <div class="price-row"><span class="price-st">WY</span><span class="price-amt">$1,275</span></div>
+          <div class="price-row"><span class="price-st">NV</span><span class="price-amt">$1,800</span></div>
+        </div>
+        <p class="pkg-renew">Renewal: <strong>$525/yr</strong> with nominees</p>
+        <p class="pkg-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Includes $2,000+ in Year 1</p>
+        <ul class="pkg-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg> Year-round nominee services</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg> Offshore records storage</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg> Full compliance maintenance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg> Everything in Silver, plus privacy</li>
+        </ul>
+        <a href="/wyoming-private-llc/" class="btn btn-gold pkg-cta">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <p class="pkg-foot"><a href="/contact/">Schedule a consultation</a></p>
+      </div>
+      <!-- Bronze -->
+      <div class="pkg rv d2">
+        <div class="pkg-tier">Bronze</div>
+        <div class="pkg-name">Nevada</div>
+        <div class="pkg-prices">
+          <div class="price-row"><span class="price-st">NV</span><span class="price-amt">$699</span></div>
+        </div>
+        <p class="pkg-renew">Renewal: <strong>$275/yr</strong></p>
+        <ul class="pkg-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> Basic Nevada formation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> Registered agent included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ck"><polyline points="20,6 9,17 4,12"/></svg> State filing fees included</li>
+        </ul>
+        <a href="/nevada-incorporation/" class="btn btn-ghost-dark pkg-cta">View Bronze <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div class="pkg-compare rv"><a href="/compare-packages/" class="link-arr">Compare all packages in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ===== DIFFERENTIATORS ===== -->
+<section class="light-section diffs" aria-label="Why Incorporate123">
+  <div class="mx">
+    <div class="sec-head rv" style="color:var(--midnight);">
+      <span class="tag">What Sets Us Apart</span>
+      <h2 style="color:var(--midnight);">Why Clients Choose<br>Incorporate123</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff rv"><div class="diff-num">01</div><h3>Year-Round Nominees</h3><p>Your nominees are maintained 365 days a year — not just at formation. Most providers offer a "nominee for a day" and disappear.</p></div>
+      <div class="diff rv d1"><div class="diff-num">02</div><h3>Offshore Records Storage</h3><p>Corporate records maintained outside U.S. jurisdiction. Included free in every Gold package since 2012. No competitor offers this.</p></div>
+      <div class="diff rv"><div class="diff-num">03</div><h3>All-Inclusive Pricing</h3><p>State filing fees, registered agent, operating agreement, EIN — all included. No hidden fees. The price you see is the price you pay.</p></div>
+      <div class="diff rv d1"><div class="diff-num">04</div><h3>25 Years of Expertise</h3><p>Forming Wyoming and Nevada entities since 2000. Specialized in privacy and asset protection — not a generic filing service.</p></div>
+      <div class="diff rv"><div class="diff-num">05</div><h3>Real Reno Office</h3><p>Kingsbury Executive Suites, Reno, Nevada. Real people, real office, real expertise — not a virtual mailbox or a PO box.</p></div>
+      <div class="diff rv d1"><div class="diff-num">06</div><h3>Crypto Payments Accepted</h3><p>Bitcoin, Ethereum, XRP, Litecoin, Monero. We accept cryptocurrency because our clients value privacy — and so do we.</p></div>
+    </div>
+    <div class="val-callout rv">
+      <p>Competitors charge <strong>$400–$5,000/year</strong> for nominee services alone. Ours are included — along with offshore records, registered agent, EIN, and all state fees. Total included value: <strong>$2,000+ in Year 1</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<section class="trust light-section" aria-label="Trust signals">
+  <div class="mx">
+    <div class="trust-inner">
+      <div class="trust-item"><div class="trust-dot"></div> Trusted Since 2000</div>
+      <div class="trust-item"><div class="trust-dot"></div> <a href="tel:7755551234">(775) 555-1234</a></div>
+      <div class="trust-item"><div class="trust-dot"></div> 30-Day Money-Back Guarantee</div>
+      <div class="trust-item"><div class="trust-dot"></div> Real Reno, NV Office</div>
+      <div class="trust-item"><div class="trust-dot"></div> Crypto Accepted</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="light-section process" aria-label="Process">
+  <div class="mx">
+    <div class="sec-head rv" style="color:var(--midnight);">
+      <span class="tag">Simple Process</span>
+      <h2 style="color:var(--midnight);">How It Works</h2>
+      <p style="color:var(--steel);font-size:16px;margin-top:12px;">From selection to formation — we handle every step.</p>
+    </div>
+    <div class="steps-track">
+      <div class="step rv"><div class="step-n">1</div><h3>Choose Your Package</h3><p>Select Gold, Silver, or Bronze. Compare features and pick what fits your goals.</p></div>
+      <div class="step rv d1"><div class="step-n">2</div><h3>We Form Your Entity</h3><p>We handle all state filings, paperwork, and fees. Typical turnaround: 5–7 business days.</p></div>
+      <div class="step rv d2"><div class="step-n">3</div><h3>Nominees Protect You</h3><p>Year-round nominee directors and officers keep your name off public records.</p></div>
+      <div class="step rv d3"><div class="step-n">4</div><h3>Compliance, Handled</h3><p>Registered agent, annual reports, and corporate minutes — maintained every year.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testi" aria-label="Testimonials">
+  <div class="mx">
+    <div class="sec-head rv" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <span class="tag">Client Experiences</span>
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="t-card rv">
+        <div>
+          <div class="t-stars"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <div class="t-big-q">"</div>
+          <p class="t-quote">We moved our California business to a Wyoming entity with nominee services. Our ownership is completely private and the process was handled start to finish.</p>
+        </div>
+        <div class="t-who">
+          <div class="t-av">MT</div>
+          <div><div class="t-name">Mark T.</div><div class="t-role">California Business Owner</div></div>
+        </div>
+      </div>
+      <div class="t-card rv d1">
+        <div>
+          <div class="t-stars"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <div class="t-big-q">"</div>
+          <p class="t-quote">After 15 years with another provider, we switched to Incorporate123 for the year-round nominee maintenance. The difference in service is night and day.</p>
+        </div>
+        <div class="t-who">
+          <div class="t-av">IG</div>
+          <div><div class="t-name">Investment Group</div><div class="t-role">Nevada</div></div>
+        </div>
+      </div>
+      <div class="t-card rv d2">
+        <div>
+          <div class="t-stars"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <div class="t-big-q">"</div>
+          <p class="t-quote">The all-inclusive pricing was what sold us. No hidden fees, no surprise add-ons — just one clear price for everything we needed.</p>
+        </div>
+        <div class="t-who">
+          <div class="t-av">SM</div>
+          <div><div class="t-name">Sarah M.</div><div class="t-role">Wyoming LLC Owner</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" aria-label="Get started">
+  <div class="mx">
+    <div class="final-inner">
+      <span class="tag rv" style="display:block;margin-bottom:16px;">Take the Next Step</span>
+      <h2 class="rv">Ready to Protect<em> Your Privacy?</em></h2>
+      <p class="sub rv">25 years of specialized experience. All-inclusive pricing. Real people, real office.</p>
+      <div class="final-btns rv">
+        <a href="/privacy/" class="btn btn-ember">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="/contact/" class="btn btn-glass">Schedule a Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <p class="subtle rv">Or call us directly — <a href="tel:7755551234">(775) 555-1234</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="mx">
+    <div class="ft-grid">
+      <div class="ft-col"><h4>Privacy</h4><a href="/privacy/">Business Privacy</a><a href="/anonymous-llc/">Anonymous LLC</a><a href="/nominee-services/">Nominee Services</a><a href="/offshore-records/">Offshore Records</a><div class="ft-cmp"><span class="ft-cmp-lbl">Compare</span><a href="/privacy-vs-competitors/">Privacy vs Competitors</a></div></div>
+      <div class="ft-col"><h4>Asset Protection</h4><a href="/asset-protection/">Asset Protection</a><a href="/wyoming-llc-protection/">Wyoming LLC</a><a href="/charging-order/">Charging Order</a><a href="/holding-llc/">Holding LLC</a><div class="ft-cmp"><span class="ft-cmp-lbl">Compare</span><a href="/asset-protection-comparison/">AP Comparison</a></div></div>
+      <div class="ft-col"><h4>Incorporation</h4><a href="/formation/">Business Formation</a><a href="/wyoming-llc/">Wyoming LLC</a><a href="/nevada-llc/">Nevada LLC</a><a href="/wyoming-corporation/">Wyoming Corp</a><div class="ft-cmp"><span class="ft-cmp-lbl">Compare</span><a href="/wyoming-vs-nevada/">WY vs NV</a></div></div>
+      <div class="ft-col"><h4>Company</h4><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/faq/">FAQ</a><a href="/blog/">Blog</a><a href="/testimonials/">Testimonials</a><a href="/login/">Client Login</a></div>
+      <div class="ft-col"><h4>Packages</h4><a href="/wyoming-private-llc/">WY Gold</a><a href="/nevada-private-llc/">NV Gold</a><a href="/wyoming-incorporation/">WY Silver</a><a href="/nevada-incorporation/">NV Silver</a><a href="/nevada-basic/">NV Bronze</a><a href="/compare-packages/">Compare All</a></div>
+      <div class="ft-col"><h4>States</h4><a href="/wyoming/">Wyoming</a><a href="/nevada/">Nevada</a><a href="/california/">California</a><a href="/florida/">Florida</a><a href="/offshore/">Offshore</a></div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-legal"><span>© 2026 Incorporate123</span><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms</a><span>Kingsbury Executive Suites, Reno, NV</span><a href="tel:7755551234">(775) 555-1234</a></div>
+      <div class="ft-crypto"><span>BTC</span><span>ETH</span><span>XRP</span><span>LTC</span><span>XMR</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY ===== -->
+<div class="mob-bar" aria-label="Quick actions">
+  <div class="mob-row">
+    <a href="/privacy/" class="btn btn-ember">Protect Your Privacy</a>
+    <a href="tel:7755551234" class="mob-phone" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  </div>
+</div>
+
+<script>
+const els=document.querySelectorAll('.rv');
+const ob=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('on');ob.unobserve(i.target)}})},{threshold:0.1,rootMargin:'0px 0px -32px 0px'});
+els.forEach(el=>ob.observe(el));
+</script>
+</body>
+</html>
