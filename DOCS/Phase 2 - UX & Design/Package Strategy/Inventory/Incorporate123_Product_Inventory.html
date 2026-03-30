@@ -1,0 +1,1604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Complete Product Inventory</title>
+    <style>
+      /* ===== RESET & BASE ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 72px;
+      }
+      body {
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: #1a1a2e;
+        background: #f4f6f9;
+        line-height: 1.55;
+        font-size: 15px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ===== COLOR TOKENS ===== */
+      :root {
+        --us: #1a5276;
+        --renewals: #1e8449;
+        --shelf: #7d3c98;
+        --offshore: #b9770e;
+        --vo: #2e86c1;
+        --addons: #566573;
+        --banking: #117a65;
+        --standalone: #839192;
+      }
+
+      /* ===== HEADER ===== */
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          #0d1b2a 0%,
+          #1b2838 50%,
+          #1a5276 100%
+        );
+        color: #fff;
+        padding: 48px 40px 40px;
+        text-align: center;
+      }
+      .page-header h1 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
+      }
+      .page-header .subtitle {
+        font-size: 16px;
+        opacity: 0.75;
+        font-weight: 400;
+      }
+      .page-header .meta {
+        margin-top: 16px;
+        font-size: 13px;
+        opacity: 0.55;
+      }
+
+      /* ===== STICKY NAV ===== */
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #fff;
+        border-bottom: 1px solid #dde1e6;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        justify-content: center;
+        padding: 0 12px;
+      }
+      .sticky-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #444;
+        border-bottom: 3px solid transparent;
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .sticky-nav a:hover {
+        color: #1a5276;
+        border-bottom-color: #1a5276;
+      }
+      .sticky-nav .dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* ===== LAYOUT ===== */
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      /* ===== SECTION ===== */
+      .section {
+        margin-bottom: 48px;
+      }
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid currentColor;
+      }
+      .section-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      .section-header h2 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+      }
+      .section-header .count {
+        margin-left: auto;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        color: #fff;
+      }
+
+      /* ===== SUB-SECTION ===== */
+      .subsection {
+        margin-bottom: 28px;
+      }
+      .subsection h3 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .subsection .note {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 12px;
+        font-style: italic;
+      }
+
+      /* ===== TABLES ===== */
+      .table-wrap {
+        overflow-x: auto;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        margin-bottom: 18px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        font-size: 14px;
+      }
+      thead th {
+        text-align: left;
+        padding: 11px 14px;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      }
+      tbody td {
+        padding: 10px 14px;
+        border-bottom: 1px solid #eef0f3;
+        vertical-align: middle;
+      }
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+      tbody tr:hover {
+        background: #f8f9fb;
+      }
+
+      /* Totals row */
+      .totals td {
+        font-weight: 700;
+        background: #f0f2f5;
+        border-top: 2px solid #d0d4da;
+      }
+
+      /* ===== TIER BADGES ===== */
+      .badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        white-space: nowrap;
+      }
+      .badge-bronze {
+        background: #f0e1cc;
+        color: #7d5a29;
+      }
+      .badge-silver {
+        background: #e0e4e8;
+        color: #3d4a56;
+      }
+      .badge-gold {
+        background: #fdf2d0;
+        color: #7a5e0b;
+      }
+      .badge-private {
+        background: #e8daef;
+        color: #6c3483;
+      }
+      .badge-max {
+        background: #d4efdf;
+        color: #1a7a3a;
+      }
+      .badge-exec {
+        background: #d6eaf8;
+        color: #1a5276;
+      }
+      .badge-plus {
+        background: #fde9d0;
+        color: #a0522d;
+      }
+      .badge-shelf {
+        background: #f5eef8;
+        color: #7d3c98;
+      }
+      .badge-offshore {
+        background: #fef5e7;
+        color: #9a7611;
+      }
+      .badge-vo {
+        background: #d4e6f1;
+        color: #1a5276;
+      }
+
+      /* ===== CHECK / X ===== */
+      .yes {
+        color: #1e8449;
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .no {
+        color: #c0392b;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      /* ===== COMPARISON SECTION ===== */
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+      .comparison-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+      }
+      .comparison-card .card-header {
+        padding: 16px 20px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .comparison-card.current .card-header {
+        background: #7f8c8d;
+      }
+      .comparison-card.new-site .card-header {
+        background: #1a5276;
+      }
+      .comparison-card ul {
+        list-style: none;
+        padding: 16px 20px;
+      }
+      .comparison-card li {
+        padding: 7px 0;
+        border-bottom: 1px solid #f0f1f3;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .comparison-card li:last-child {
+        border-bottom: none;
+      }
+      .comparison-card li .icon {
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+
+      /* Diff table */
+      .diff-table {
+        margin-top: 24px;
+      }
+      .diff-table td.current-col {
+        background: #fdf2f2;
+      }
+      .diff-table td.new-col {
+        background: #eef8f0;
+      }
+      .diff-table td.arrow-col {
+        text-align: center;
+        font-size: 18px;
+        color: #888;
+        padding: 10px 8px;
+      }
+
+      /* Missing items */
+      .missing-list {
+        background: #fff8e1;
+        border-left: 4px solid #f9a825;
+        border-radius: 0 8px 8px 0;
+        padding: 20px 24px;
+        margin-top: 20px;
+      }
+      .missing-list h4 {
+        color: #e65100;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      .missing-list ol {
+        padding-left: 20px;
+        font-size: 14px;
+        color: #5d4037;
+      }
+      .missing-list li {
+        margin-bottom: 6px;
+      }
+
+      /* ===== SUMMARY ===== */
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .summary-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+        border-top: 4px solid;
+      }
+      .summary-card .num {
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .summary-card .label {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #666;
+      }
+      .summary-total {
+        background: linear-gradient(135deg, #0d1b2a, #1a5276);
+        color: #fff;
+        border-radius: 10px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 2px 12px rgba(26, 82, 118, 0.25);
+      }
+      .summary-total .num {
+        font-size: 48px;
+        font-weight: 800;
+      }
+      .summary-total .label {
+        font-size: 14px;
+        opacity: 0.7;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===== FOOTER ===== */
+      .page-footer {
+        text-align: center;
+        padding: 32px 24px;
+        font-size: 12px;
+        color: #888;
+        border-top: 1px solid #dde1e6;
+        margin-top: 48px;
+      }
+      .page-footer strong {
+        color: #555;
+      }
+
+      /* ===== PRINT ===== */
+      @media print {
+        html {
+          scroll-padding-top: 0;
+        }
+        body {
+          background: #fff;
+          font-size: 11pt;
+        }
+        .sticky-nav {
+          display: none;
+        }
+        .page-header {
+          background: #1a5276 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          padding: 24px 20px;
+        }
+        .page-header h1 {
+          font-size: 22pt;
+        }
+        .container {
+          padding: 16px 12px;
+          max-width: 100%;
+        }
+        .section {
+          margin-bottom: 24px;
+          page-break-inside: avoid;
+        }
+        .table-wrap {
+          box-shadow: none;
+          border: 1px solid #ccc;
+        }
+        table {
+          font-size: 9pt;
+        }
+        thead th {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .comparison-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .comparison-card {
+          box-shadow: none;
+          border: 1px solid #ccc;
+        }
+        .comparison-card .card-header {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .summary-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .summary-card,
+        .summary-total {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          box-shadow: none;
+          border: 1px solid #ccc;
+        }
+        .section-number,
+        .count,
+        .badge {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .missing-list {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .page-footer {
+          margin-top: 24px;
+        }
+        a {
+          color: inherit !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header class="page-header">
+      <h1>Incorporate123 &mdash; Complete Product Inventory</h1>
+      <div class="subtitle">
+        Full catalog of products, packages, and services across all business
+        lines
+      </div>
+      <div class="meta">
+        Prepared March 22, 2026 &middot; Product Inventory &middot; BIT Studios
+      </div>
+    </header>
+
+    <!-- ========== STICKY NAV ========== -->
+    <nav class="sticky-nav">
+      <a href="#us-packages"
+        ><span class="dot" style="background: var(--us)"></span> U.S.
+        Packages</a
+      >
+      <a href="#renewals"
+        ><span class="dot" style="background: var(--renewals)"></span>
+        Renewals</a
+      >
+      <a href="#shelf"
+        ><span class="dot" style="background: var(--shelf)"></span> Shelf
+        Companies</a
+      >
+      <a href="#offshore"
+        ><span class="dot" style="background: var(--offshore)"></span>
+        Offshore</a
+      >
+      <a href="#virtual-office"
+        ><span class="dot" style="background: var(--vo)"></span> Virtual
+        Office</a
+      >
+      <a href="#addons"
+        ><span class="dot" style="background: var(--addons)"></span> Add-Ons</a
+      >
+      <a href="#banking"
+        ><span class="dot" style="background: var(--banking)"></span> Banking</a
+      >
+      <a href="#standalone"
+        ><span class="dot" style="background: var(--standalone)"></span>
+        Standalone</a
+      >
+      <a href="#summary"
+        ><span class="dot" style="background: #0d1b2a"></span> Summary</a
+      >
+      <a href="#comparison"
+        ><span class="dot" style="background: #c0392b"></span> Comparison</a
+      >
+    </nav>
+
+    <div class="container">
+      <!-- ================================================================
+     1. U.S. INCORPORATION PACKAGES
+     ================================================================ -->
+      <section class="section" id="us-packages">
+        <div class="section-header" style="color: var(--us)">
+          <span class="section-number" style="background: var(--us)">1</span>
+          <h2>U.S. Incorporation Packages</h2>
+          <span class="count" style="background: var(--us)">15 variants</span>
+        </div>
+
+        <!-- Nevada -->
+        <div class="subsection">
+          <h3>
+            Nevada
+            <span style="color: #888; font-weight: 400">(8 variants)</span>
+          </h3>
+          <p class="note">
+            State fees ($425 LLC / $725 Corp) included in all prices. Corp is
+            always +$300 over LLC.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr style="background: var(--us)">
+                  <th>Package</th>
+                  <th>LLC Price</th>
+                  <th>Corp Price</th>
+                  <th>Privacy</th>
+                  <th>Virtual Office</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge badge-bronze">Bronze</span></td>
+                  <td>$1,000</td>
+                  <td>$1,300</td>
+                  <td><span class="no">&times;</span></td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-plus">Bronze PLUS</span></td>
+                  <td>$1,525</td>
+                  <td>$1,825</td>
+                  <td><span class="yes">&check;</span></td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-silver">Silver</span></td>
+                  <td>$1,275</td>
+                  <td>$1,575</td>
+                  <td><span class="no">&times;</span></td>
+                  <td>Basic</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-exec">Silver Executive</span>
+                  </td>
+                  <td>$1,575</td>
+                  <td>$1,875</td>
+                  <td><span class="no">&times;</span></td>
+                  <td>Executive</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-max">Silver NevadaMAX</span></td>
+                  <td>
+                    $4,000
+                    <span style="color: #888; font-size: 12px"
+                      >(or $1,000 + $250/mo)</span
+                    >
+                  </td>
+                  <td>
+                    $4,300
+                    <span style="color: #888; font-size: 12px"
+                      >(or $1,300 + $250/mo)</span
+                    >
+                  </td>
+                  <td><span class="no">&times;</span></td>
+                  <td>Part-time Suite</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-gold">Gold</span></td>
+                  <td>$1,800</td>
+                  <td>$2,100</td>
+                  <td><span class="yes">&check;</span></td>
+                  <td>Basic</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-exec">Gold Executive</span></td>
+                  <td>$2,100</td>
+                  <td>$2,400</td>
+                  <td><span class="yes">&check;</span></td>
+                  <td>Executive</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-max">Gold NevadaMAX</span></td>
+                  <td>
+                    $4,275
+                    <span style="color: #888; font-size: 12px"
+                      >(or $1,275 + $250/mo)</span
+                    >
+                  </td>
+                  <td>
+                    $4,575
+                    <span style="color: #888; font-size: 12px"
+                      >(or $1,575 + $250/mo)</span
+                    >
+                  </td>
+                  <td><span class="yes">&check;</span></td>
+                  <td>Part-time Suite</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Wyoming -->
+        <div class="subsection">
+          <h3>
+            Wyoming
+            <span style="color: #888; font-weight: 400">(5 variants)</span>
+          </h3>
+          <p class="note">
+            State fees ($100) included. Same price for LLC or Corp.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr style="background: var(--us)">
+                  <th>Package</th>
+                  <th>Price</th>
+                  <th>Privacy</th>
+                  <th>Virtual Office</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge badge-bronze">Bronze</span></td>
+                  <td>$625</td>
+                  <td><span class="no">&times;</span></td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-silver">Silver</span></td>
+                  <td>$900</td>
+                  <td><span class="no">&times;</span></td>
+                  <td>Mail forwarding</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-vo">Silver + Virtual Office</span>
+                  </td>
+                  <td>$1,300</td>
+                  <td><span class="no">&times;</span></td>
+                  <td>Basic</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-gold">Gold (Private)</span></td>
+                  <td>$1,275</td>
+                  <td><span class="yes">&check;</span></td>
+                  <td>Mail forwarding</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-vo">Gold + Virtual Office</span>
+                  </td>
+                  <td>$1,675</td>
+                  <td><span class="yes">&check;</span></td>
+                  <td>Basic</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="margin-top: 8px">
+            <strong>Note:</strong> WY Bronze includes more than NV Bronze
+            &mdash; Offshore Secretary &amp; Custodian ($250), FREE EIN, and
+            FREE Bank Account Opening are bundled in all Wyoming packages.
+          </p>
+        </div>
+
+        <!-- Multi-State Privacy -->
+        <div class="subsection">
+          <h3>
+            Multi-State Privacy
+            <span style="color: #888; font-weight: 400">(2 variants)</span>
+          </h3>
+          <p class="note">
+            Both include Gold-level privacy. Same price for LLC or Corp.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr style="background: var(--us)">
+                  <th>Package</th>
+                  <th>Price</th>
+                  <th>How It Works</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge badge-private">California Private</span>
+                  </td>
+                  <td>$1,460</td>
+                  <td>WY formation + CA foreign registration</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-private">Florida Private</span>
+                  </td>
+                  <td>$1,485</td>
+                  <td>WY formation + FL foreign registration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     2. RENEWALS
+     ================================================================ -->
+      <section class="section" id="renewals">
+        <div class="section-header" style="color: var(--renewals)">
+          <span class="section-number" style="background: var(--renewals)"
+            >2</span
+          >
+          <h2>Renewal Packages</h2>
+          <span class="count" style="background: var(--renewals)">8 total</span>
+        </div>
+
+        <!-- Nevada Renewals -->
+        <div class="subsection">
+          <h3>
+            Nevada Renewals
+            <span style="color: #888; font-weight: 400">(6 packages)</span>
+          </h3>
+          <p class="note">All prices are in addition to state filing fees.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr style="background: var(--renewals)">
+                  <th>Package</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge badge-bronze">Bronze Renewal</span>
+                  </td>
+                  <td>$575 + state fees</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-plus">Bronze PLUS Renewal</span>
+                  </td>
+                  <td>$1,050 + state fees</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-silver">Silver Renewal</span>
+                  </td>
+                  <td>$850 + state fees</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-exec"
+                      >Silver Executive Renewal</span
+                    >
+                  </td>
+                  <td>$1,150 + state fees</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-gold">Gold Renewal</span></td>
+                  <td>$1,375 + state fees</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge badge-exec">Gold Executive Renewal</span>
+                  </td>
+                  <td>$1,675 + state fees</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Wyoming Renewals -->
+        <div class="subsection">
+          <h3>
+            Wyoming Renewals
+            <span style="color: #888; font-weight: 400">(2 packages)</span>
+          </h3>
+          <p class="note">State fees included in price.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr style="background: var(--renewals)">
+                  <th>Package</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge badge-silver">Silver Renewal</span>
+                  </td>
+                  <td>$850</td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge-gold">Gold Renewal</span></td>
+                  <td>$1,225</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     3. SHELF COMPANIES
+     ================================================================ -->
+      <section class="section" id="shelf">
+        <div class="section-header" style="color: var(--shelf)">
+          <span class="section-number" style="background: var(--shelf)">3</span>
+          <h2>Shelf Companies</h2>
+          <span class="count" style="background: var(--shelf)"
+            >15 entities</span
+          >
+        </div>
+        <p class="note" style="margin-bottom: 14px">
+          All Wyoming, never used, in good standing. Wire/crypto payment only.
+          All require Gold Renewal ($1,225/yr). Name change available for $300.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr style="background: var(--shelf)">
+                <th>Vintage</th>
+                <th>Entity Type</th>
+                <th>Price</th>
+                <th>Available</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-shelf">Dec 2020</span></td>
+                <td>WY Corp &amp; LLC</td>
+                <td>$2,000</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-shelf">Jan 2020</span></td>
+                <td>WY Corp &amp; LLC</td>
+                <td>$2,500</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-shelf">Dec 2014</span></td>
+                <td>WY LLC</td>
+                <td>$4,000</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-shelf">Dec 2013</span></td>
+                <td>WY LLC</td>
+                <td>$4,500</td>
+                <td>1</td>
+              </tr>
+              <tr class="totals">
+                <td colspan="3">Total Entities</td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     4. OFFSHORE / INTERNATIONAL
+     ================================================================ -->
+      <section class="section" id="offshore">
+        <div class="section-header" style="color: var(--offshore)">
+          <span class="section-number" style="background: var(--offshore)"
+            >4</span
+          >
+          <h2>Offshore / International</h2>
+          <span class="count" style="background: var(--offshore)"
+            >7 products</span
+          >
+        </div>
+        <p class="note" style="margin-bottom: 14px">
+          All include: nominee directors, registered agent, KYC admin ($150),
+          bank account opening ($500), IRS pass-through election.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr style="background: var(--offshore)">
+                <th>Package</th>
+                <th>Initial Cost</th>
+                <th>Annual Renewal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore"
+                    >BVI Business Company &amp; Bank</span
+                  >
+                </td>
+                <td>$3,200</td>
+                <td>$1,950</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore"
+                    >Nevis Corporation &amp; Bank</span
+                  >
+                </td>
+                <td>$2,290</td>
+                <td>$1,535</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore">Nevis LLC &amp; Bank</span>
+                </td>
+                <td>$2,060</td>
+                <td>$1,535</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore"
+                    >Panama Corporation &amp; Bank</span
+                  >
+                </td>
+                <td>$2,450</td>
+                <td>$1,385</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore"
+                    >Hong Kong Limited Co. &amp; Bank</span
+                  >
+                </td>
+                <td>$3,950</td>
+                <td>~$2,000+</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore"
+                    >Bahamas Dynasty Trust</span
+                  >
+                </td>
+                <td>$2,500</td>
+                <td>$2,500</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-offshore"
+                    >Bahamas Dynasty Trust + Protector</span
+                  >
+                </td>
+                <td>$3,500</td>
+                <td>$3,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     5. VIRTUAL OFFICE
+     ================================================================ -->
+      <section class="section" id="virtual-office">
+        <div class="section-header" style="color: var(--vo)">
+          <span class="section-number" style="background: var(--vo)">5</span>
+          <h2>Virtual Office</h2>
+          <span class="count" style="background: var(--vo)">6 products</span>
+        </div>
+        <p class="note" style="margin-bottom: 6px">
+          <strong>Basic:</strong> Address, 2 hr/wk workstation, 1 hr/mo
+          boardroom, weekly mail forwarding.
+        </p>
+        <p class="note" style="margin-bottom: 14px">
+          <strong>Executive:</strong> Address, 4 hr/wk private suite, 2 hr/mo
+          boardroom, 3&times;/wk mail, directory listing, suite #.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr style="background: var(--vo)">
+                <th>Package</th>
+                <th>Standalone Price</th>
+                <th>Bundled Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge badge-vo">Basic Virtual Office</span>
+                </td>
+                <td>$600/yr</td>
+                <td>$275/yr</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-vo"
+                    >Basic VO + Registered Agent</span
+                  >
+                </td>
+                <td>$800/yr</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-vo">Executive Virtual Office</span>
+                </td>
+                <td>$1,200/yr</td>
+                <td>$575/yr</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-vo"
+                    >Executive VO + Registered Agent</span
+                  >
+                </td>
+                <td>$1,350/yr</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-vo"
+                    >Part-time Private Suite (NevadaMAX)</span
+                  >
+                </td>
+                <td>$250/mo + deposit</td>
+                <td>Bundled in MAX</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-vo">Full-time Private Suite</span>
+                </td>
+                <td>from $600/mo + deposit</td>
+                <td>&mdash;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     6. ADD-ON SERVICES
+     ================================================================ -->
+      <section class="section" id="addons">
+        <div class="section-header" style="color: var(--addons)">
+          <span class="section-number" style="background: var(--addons)"
+            >6</span
+          >
+          <h2>Add-On Services</h2>
+          <span class="count" style="background: var(--addons)"
+            >17 services</span
+          >
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr style="background: var(--addons)">
+                <th>Service</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Foreign State Filing</td>
+                <td>$450 &ndash; $600</td>
+              </tr>
+              <tr>
+                <td>Corporate DBA</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Domestication to Nevada</td>
+                <td>$750</td>
+              </tr>
+              <tr>
+                <td>Domestication to Wyoming</td>
+                <td>$500</td>
+              </tr>
+              <tr>
+                <td>Nominee Officer / Director / Manager (NV)</td>
+                <td>$525/yr</td>
+              </tr>
+              <tr>
+                <td>Nominee Officer / Director / Manager (WY)</td>
+                <td>$375/yr</td>
+              </tr>
+              <tr>
+                <td>Offshore Secretary &amp; Custodian</td>
+                <td>$250</td>
+              </tr>
+              <tr>
+                <td>LLC Nominee Tax Return Signing</td>
+                <td>$250</td>
+              </tr>
+              <tr>
+                <td>Shelf Company Name Change</td>
+                <td>$300</td>
+              </tr>
+              <tr>
+                <td>Offshore Bank Account Opening</td>
+                <td>$500 &ndash; $1,000</td>
+              </tr>
+              <tr>
+                <td>EIN Obtainment</td>
+                <td>Free with most packages ($100 value)</td>
+              </tr>
+              <tr>
+                <td>Custom Operating Agreement</td>
+                <td>Included in some packages</td>
+              </tr>
+              <tr>
+                <td>Private Telephone Line (NV)</td>
+                <td>~$33/mo + ~$40 setup</td>
+              </tr>
+              <tr>
+                <td>Special Meetings / Special Resolutions</td>
+                <td>$75 each</td>
+              </tr>
+              <tr>
+                <td>Stock Certificate Issuance</td>
+                <td>$75 resolution + $50/cert</td>
+              </tr>
+              <tr>
+                <td>Original Document Set</td>
+                <td>$75/set + shipping</td>
+              </tr>
+              <tr>
+                <td>KYC Administration (offshore, standalone)</td>
+                <td>$150</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     7. BANKING
+     ================================================================ -->
+      <section class="section" id="banking">
+        <div class="section-header" style="color: var(--banking)">
+          <span class="section-number" style="background: var(--banking)"
+            >7</span
+          >
+          <h2>Banking</h2>
+          <span class="count" style="background: var(--banking)"
+            >1 product</span
+          >
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr style="background: var(--banking)">
+                <th>Service</th>
+                <th>Price</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Corporate / LLC Bank Account Opening</td>
+                <td>
+                  <strong>FREE</strong> with packages
+                  <span style="color: #888; font-size: 12px"
+                    >($250 value standalone)</span
+                  >
+                </td>
+                <td>
+                  Includes checking account, Visa debit card, online banking
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     8. STANDALONE SERVICES
+     ================================================================ -->
+      <section class="section" id="standalone">
+        <div class="section-header" style="color: var(--standalone)">
+          <span class="section-number" style="background: var(--standalone)"
+            >8</span
+          >
+          <h2>Standalone Services</h2>
+          <span class="count" style="background: var(--standalone)"
+            >~7 services</span
+          >
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr style="background: var(--standalone)">
+                <th>Service</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Registered Agent only (NV)</td>
+                <td>$200/yr</td>
+              </tr>
+              <tr>
+                <td>Registered Agent only (WY)</td>
+                <td>$150/yr</td>
+              </tr>
+              <tr>
+                <td>Records Only / Custom Records</td>
+                <td>$125</td>
+              </tr>
+              <tr>
+                <td>Company Secretary / Records Custodian</td>
+                <td>$250</td>
+              </tr>
+              <tr>
+                <td>Mail Forwarding (weekly)</td>
+                <td>Included</td>
+              </tr>
+              <tr>
+                <td>Mail Forwarding (executive)</td>
+                <td>Included</td>
+              </tr>
+              <tr>
+                <td>International Shipping</td>
+                <td>$75</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     GRAND TOTAL SUMMARY
+     ================================================================ -->
+      <section class="section" id="summary">
+        <div class="section-header" style="color: #0d1b2a">
+          <span class="section-number" style="background: #0d1b2a">&sum;</span>
+          <h2>Grand Total Summary</h2>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-card" style="border-top-color: var(--us)">
+            <div class="num" style="color: var(--us)">15</div>
+            <div class="label">U.S. Packages</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--renewals)">
+            <div class="num" style="color: var(--renewals)">8</div>
+            <div class="label">Renewals</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--shelf)">
+            <div class="num" style="color: var(--shelf)">15</div>
+            <div class="label">Shelf Entities</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--offshore)">
+            <div class="num" style="color: var(--offshore)">7</div>
+            <div class="label">Offshore</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--vo)">
+            <div class="num" style="color: var(--vo)">6</div>
+            <div class="label">Virtual Office</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--addons)">
+            <div class="num" style="color: var(--addons)">17</div>
+            <div class="label">Add-Ons</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--banking)">
+            <div class="num" style="color: var(--banking)">1</div>
+            <div class="label">Banking</div>
+          </div>
+          <div class="summary-card" style="border-top-color: var(--standalone)">
+            <div class="num" style="color: var(--standalone)">~7</div>
+            <div class="label">Standalone</div>
+          </div>
+        </div>
+        <div class="summary-total">
+          <div class="num">~76</div>
+          <div class="label">Total Products &amp; Services</div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+     COMPARISON: CURRENT SITE vs NEW PROTOTYPE
+     ================================================================ -->
+      <section class="section" id="comparison">
+        <div class="section-header" style="color: #c0392b">
+          <span class="section-number" style="background: #c0392b">&harr;</span>
+          <h2>Current Site vs. New Prototype</h2>
+        </div>
+
+        <!-- Side-by-side cards -->
+        <div class="comparison-grid">
+          <div class="comparison-card current">
+            <div class="card-header">Current Site (incorporate123.co)</div>
+            <ul>
+              <li>
+                <span class="icon">&#9679;</span> 8 Nevada variants (Bronze,
+                Bronze PLUS, Silver, Silver Exec, Silver MAX, Gold, Gold Exec,
+                Gold MAX)
+              </li>
+              <li>
+                <span class="icon">&#9679;</span> 5 Wyoming variants (Bronze,
+                Silver, Silver+VO, Gold, Gold+VO)
+              </li>
+              <li><span class="icon">&#9679;</span> CA Private, FL Private</li>
+              <li>
+                <span class="icon">&#9679;</span> 15 individual shelf entities
+                listed
+              </li>
+              <li>
+                <span class="icon">&#9679;</span> 7 offshore/international
+                products
+              </li>
+              <li>
+                <span class="icon">&#9679;</span> 6 virtual office tiers
+                (standalone)
+              </li>
+              <li><span class="icon">&#9679;</span> 8 renewal packages</li>
+              <li>
+                <span class="icon">&#9679;</span> NevadaMAX &amp; Executive
+                tiers
+              </li>
+              <li><span class="icon">&#9679;</span> Bronze PLUS (NV)</li>
+            </ul>
+          </div>
+          <div class="comparison-card new-site">
+            <div class="card-header">New Prototype (in development)</div>
+            <ul>
+              <li>
+                <span class="icon" style="color: #1e8449">&#10003;</span> NV
+                Bronze, NV Silver, NV Gold (3 streamlined)
+              </li>
+              <li>
+                <span class="icon" style="color: #1e8449">&#10003;</span> WY
+                Silver, WY Gold (2 streamlined)
+              </li>
+              <li>
+                <span class="icon" style="color: #1e8449">&#10003;</span> CA
+                Private, FL Private (kept)
+              </li>
+              <li>
+                <span class="icon" style="color: #1e8449">&#10003;</span> 1
+                unified "Shelf Company" package page
+              </li>
+              <li>
+                <span class="icon" style="color: #c0392b">&#10007;</span>
+                Offshore: not yet represented
+              </li>
+              <li>
+                <span class="icon" style="color: #e67e22">&#8594;</span> Virtual
+                office bundled into packages/add-ons
+              </li>
+              <li>
+                <span class="icon" style="color: #c0392b">&#10007;</span>
+                Renewals: not yet represented (post-sale)
+              </li>
+              <li>
+                <span class="icon" style="color: #e67e22">&#8594;</span>
+                NevadaMAX &amp; Executive: eliminated
+              </li>
+              <li>
+                <span class="icon" style="color: #e67e22">&#8594;</span> Bronze
+                PLUS: eliminated (Gold covers this)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Diff table -->
+        <div class="table-wrap diff-table">
+          <table>
+            <thead>
+              <tr style="background: #34495e">
+                <th style="width: 40%">Current Site</th>
+                <th style="width: 8%; text-align: center">&nbsp;</th>
+                <th style="width: 40%">New Prototype</th>
+                <th style="width: 12%">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="current-col">8 NV variants</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">NV Bronze, NV Silver, NV Gold</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #d5f5e3; color: #1e8449"
+                    >Simplified</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">5 WY variants</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">WY Silver, WY Gold</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #d5f5e3; color: #1e8449"
+                    >Simplified</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">CA Private, FL Private</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">CA Private, FL Private</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #d6eaf8; color: #1a5276"
+                    >Kept</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">
+                  15 shelf entities listed individually
+                </td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">1 "Shelf Company" package page</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #d5f5e3; color: #1e8449"
+                    >Simplified</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">7 offshore products</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">Not in prototype (TBD)</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #fadbd8; color: #c0392b"
+                    >Missing</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">6 virtual office tiers</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">Bundled into packages / add-ons</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #fef9e7; color: #b9770e"
+                    >Merged</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">8 renewal packages</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">Not in prototype (post-sale)</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #fadbd8; color: #c0392b"
+                    >Missing</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">NevadaMAX / Executive tiers</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">Eliminated</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #f5eef8; color: #7d3c98"
+                    >Removed</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="current-col">Bronze PLUS (NV)</td>
+                <td class="arrow-col">&rarr;</td>
+                <td class="new-col">Eliminated &mdash; Gold covers this</td>
+                <td>
+                  <span
+                    class="badge"
+                    style="background: #f5eef8; color: #7d3c98"
+                    >Removed</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Missing items callout -->
+        <div class="missing-list">
+          <h4>Missing from New Site &mdash; Needs Decision</h4>
+          <ol>
+            <li>
+              <strong>Offshore products</strong> &mdash; 7 packages not
+              represented in the prototype
+            </li>
+            <li>
+              <strong>Renewal packages</strong> &mdash; 8 packages; post-sale
+              flow but still need a purchase mechanism
+            </li>
+            <li>
+              <strong>NevadaMAX / Executive tiers</strong> &mdash; Eliminated or
+              deferred? Client needs to confirm
+            </li>
+            <li>
+              <strong>Wyoming Bronze</strong> &mdash; Current site has it
+              ($625); new site dropped it
+            </li>
+            <li>
+              <strong>Standalone virtual office</strong> &mdash; Can customers
+              buy VO without a formation package?
+            </li>
+            <li>
+              <strong>Domestication service</strong> &mdash; Significant
+              offering ($500&ndash;$750), not yet in prototype
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+    <!-- /.container -->
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="page-footer">
+      <strong>Source:</strong> Scraped content from incorporate123.co (March
+      2026)<br />
+      Prepared by BIT Studios &middot; Product Inventory &middot; Incorporate123
+      Website Redesign
+    </footer>
+  </body>
+</html>
