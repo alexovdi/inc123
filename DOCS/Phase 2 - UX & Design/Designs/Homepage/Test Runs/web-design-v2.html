@@ -1,0 +1,1964 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Incorporate123 — Privacy, Asset Protection & Business Formation
+      Specialists
+    </title>
+    <meta
+      name="description"
+      content="25 years forming anonymous LLCs and corporations in Wyoming and Nevada. Year-round nominee services, offshore records, and all-inclusive pricing. Protect your privacy and assets today."
+    />
+    <link rel="canonical" href="https://incorporate123.com/" />
+    <meta
+      property="og:title"
+      content="Incorporate123 — Privacy, Asset Protection & Business Formation Specialists"
+    />
+    <meta
+      property="og:description"
+      content="25 years forming anonymous LLCs and corporations in Wyoming and Nevada. Year-round nominee services, offshore records, and all-inclusive pricing."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+       DESIGN TOKENS — Incorporate123
+       All visual values defined here. Zero raw values below.
+       ============================================================ */
+      :root {
+        /* --- BACKGROUNDS --- */
+        --color-bg-primary: #faf7f2; /* Warm parchment white — signals established, premium. Never sterile pure white */
+        --color-bg-secondary: #f0ebe1; /* Sandy linen — alternating sections get visible warmth, evoking Wyoming landscape */
+        --color-bg-accent: #1b3a2a; /* Deep forest green — high-emphasis sections. Green = growth/protection, unique in legal category */
+        --color-bg-dark: #1a1f1e; /* Near-black with green undertone — hero/footer enclosure. Warm enough to not feel corporate */
+
+        /* --- TEXT --- */
+        --color-text-primary: #2c2a25; /* Warm charcoal with brown tint — never pure black. Feels organic, matches parchment bg */
+        --color-text-secondary: #6b6560; /* Warm medium gray — same brown temperature as primary, for captions and meta */
+        --color-text-on-accent: #faf7f2; /* Parchment on dark green — passes WCAG AA at 11.2:1 ratio */
+        --color-text-on-dark: #e8e3db; /* Warm off-white on dark backgrounds — softer than pure white, 12.8:1 ratio */
+        --color-text-muted-on-dark: #9a9590; /* Muted warm gray for secondary text on dark backgrounds */
+
+        /* --- BRAND --- */
+        --color-accent: #2d7a54; /* Forest green — interactive elements ONLY. Ownable: no incorporation competitor uses green */
+        --color-accent-hover: #1f5c3d; /* Darkened green for hover. Deepens without shifting hue */
+        --color-character: #c4734b; /* Terracotta/burnt sienna — the warmth color. Evokes Nevada desert, southwestern earth. Completely different hue from green accent */
+        --color-character-light: #d4956f; /* Lightened terracotta for subtle uses */
+
+        /* --- SURFACES --- */
+        --color-border: #ddd7cc; /* Warm beige border — low contrast against parchment bg, just enough definition */
+        --color-surface: #ffffff; /* Pure white cards on parchment bg — the slight contrast creates lift without shadow dependence */
+        --color-surface-dark: #232927; /* Elevated surface on dark backgrounds */
+
+        /* --- SEMANTIC --- */
+        --color-gold-badge: #b8860b; /* Dark goldenrod for "Most Popular" badge — distinct from accent and character */
+        --color-gold-badge-bg: #fff8e7; /* Light gold background for badge */
+
+        /* --- FONTS --- */
+        /* Display: DM Serif Display — chose because serif in a sans-serif legal category signals
+         editorial authority and 25 years of depth. Rejected Playfair Display because its high
+         contrast feels too magazine-editorial, not grounded enough for legal services. */
+        --font-display: "DM Serif Display", Georgia, serif;
+        /* Body: Inter — chose because excellent readability at body sizes, neutral enough to let
+         serif display carry personality. Rejected Source Sans 3 because it competes with serif
+         headings at smaller sizes. */
+        --font-body: "Inter", system-ui, sans-serif;
+
+        /* --- TYPE SCALE — Major Third (1.250) ---
+         Base: 16px. Each step = previous × 1.25.
+         16 × 1.25^0 = 16px (body)
+         16 × 1.25^1 = 20px (h3)
+         16 × 1.25^2 = 25px (h2)
+         16 × 1.25^3 = 31.25px (h1)
+         16 × 1.25^4 = 39px (hero)
+         16 × 1.25^5 = 48.8px (hero-xl for desktop)
+         14px for small text (body / 1.14)
+      */
+        --text-hero: clamp(
+          2.1rem,
+          4vw,
+          3.05rem
+        ); /* 48.8px max — used once, hero only */
+        --text-h1: clamp(
+          1.75rem,
+          3vw,
+          1.953rem
+        ); /* 31.25px — section headings */
+        --text-h2: clamp(
+          1.35rem,
+          2.2vw,
+          1.563rem
+        ); /* 25px — subsection headings */
+        --text-h3: clamp(
+          1.1rem,
+          1.6vw,
+          1.25rem
+        ); /* 20px — card titles, feature headings */
+        --text-h4: 0.8125rem; /* 13px — eyebrows, labels (uppercase so visually larger) */
+        --text-body: 1rem; /* 16px — base. Never smaller for body content */
+        --text-small: 0.875rem; /* 14px — captions, fine print */
+
+        /* --- LINE HEIGHT --- */
+        --line-height-tight: 1.15; /* Headings — compact for display font */
+        --line-height-normal: 1.6; /* Body — generous for Inter readability */
+
+        /* --- SPACING — base unit 8px with multipliers --- */
+        --space-unit: 0.5rem; /* 8px base */
+        --space-xs: 0.25rem; /* 4px — 0.5x base */
+        --space-sm: 0.5rem; /* 8px — 1x base */
+        --space-md: 1rem; /* 16px — 2x base */
+        --space-lg: 1.5rem; /* 24px — 3x base */
+        --space-xl: 2rem; /* 32px — 4x base */
+        --space-2xl: 3rem; /* 48px — 6x base */
+        --space-3xl: 4rem; /* 64px — 8x base */
+
+        /* --- LAYOUT --- */
+        --section-gap: 7.5rem; /* 120px — vertical space between major sections */
+        --content-max-width: 72rem; /* 1152px — main content container */
+        --content-narrow: 44rem; /* 704px — centered text blocks, ~65 char line length */
+
+        /* --- RADII --- */
+        --radius-sm: 0.25rem; /* 4px — badges, tags */
+        --radius-md: 0.5rem; /* 8px — buttons, inputs */
+        --radius-lg: 0.75rem; /* 12px — cards, modals */
+
+        /* --- SHADOWS --- */
+        --shadow-sm: 0 1px 3px rgba(44, 42, 37, 0.06); /* Subtle lift */
+        --shadow-md: 0 4px 12px rgba(44, 42, 37, 0.08); /* Cards at rest */
+        --shadow-lg: 0 8px 24px rgba(44, 42, 37, 0.12); /* Hover/elevated */
+        --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.3); /* Cards on dark bg */
+
+        /* --- BUTTONS --- */
+        --button-height: 2.875rem; /* 46px — touch-friendly */
+        --button-padding-x: 1.75rem; /* 28px horizontal */
+        --button-radius: 0.5rem; /* matches --radius-md */
+
+        /* --- CARDS --- */
+        --card-radius: 0.75rem; /* matches --radius-lg */
+        --card-shadow: 0 4px 12px rgba(44, 42, 37, 0.08); /* matches --shadow-md */
+        --card-padding: 2rem; /* 32px internal spacing */
+
+        /* --- TRANSITIONS --- */
+        --transition-fast: 150ms ease; /* Hover states */
+        --transition-normal: 300ms ease; /* Layout shifts */
+
+        /* --- NAV --- */
+        --nav-height: 4.25rem; /* 68px */
+        --utility-height: 2.25rem; /* 36px */
+      }
+
+      /* ============================================================
+       RESET & BASE
+       ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: var(--text-body);
+        line-height: var(--line-height-normal);
+        color: var(--color-text-primary);
+        background: var(--color-bg-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      /* ============================================================
+       UTILITIES
+       ============================================================ */
+      .container {
+        max-width: var(--content-max-width);
+        margin-inline: auto;
+        padding-inline: var(--space-lg);
+      }
+
+      .narrow {
+        max-width: var(--content-narrow);
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        font-family: var(--font-body);
+        font-size: var(--text-h4);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: var(--space-sm);
+      }
+
+      .eyebrow--light {
+        color: var(--color-character-light);
+      }
+
+      .section-heading {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-md);
+      }
+
+      .section-subtext {
+        font-size: var(--text-body);
+        color: var(--color-text-secondary);
+        max-width: var(--content-narrow);
+        line-height: var(--line-height-normal);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--space-3xl);
+      }
+
+      .section-header .section-subtext {
+        margin-inline: auto;
+      }
+
+      /* ============================================================
+       BUTTONS — 3-tier hierarchy
+       ============================================================ */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--button-height);
+        padding-inline: var(--button-padding-x);
+        border-radius: var(--button-radius);
+        font-family: var(--font-body);
+        font-size: var(--text-small);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        border: none;
+        gap: var(--space-xs);
+        white-space: nowrap;
+      }
+
+      /* Primary — solid fill, ONE per viewport */
+      .btn-primary {
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+      }
+      .btn-primary:hover {
+        background: var(--color-accent-hover);
+        transform: translateY(-1px);
+      }
+      .btn-primary:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      /* Secondary — outline */
+      .btn-secondary {
+        background: transparent;
+        color: var(--color-accent);
+        border: 1.5px solid var(--color-accent);
+      }
+      .btn-secondary:hover {
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+      }
+      .btn-secondary:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      .btn-secondary--light {
+        color: var(--color-text-on-dark);
+        border-color: var(--color-text-on-dark);
+      }
+      .btn-secondary--light:hover {
+        background: var(--color-text-on-dark);
+        color: var(--color-bg-dark);
+      }
+
+      /* Tertiary — text only with arrow */
+      .btn-tertiary {
+        background: none;
+        color: var(--color-accent);
+        padding-inline: 0;
+        height: auto;
+        font-weight: 600;
+      }
+      .btn-tertiary:hover {
+        color: var(--color-accent-hover);
+      }
+      .btn-tertiary--light {
+        color: var(--color-text-on-dark);
+      }
+      .btn-tertiary--light:hover {
+        color: var(--color-character-light);
+      }
+
+      .btn .arrow {
+        transition: transform var(--transition-fast);
+      }
+      .btn:hover .arrow {
+        transform: translateX(3px);
+      }
+
+      /* ============================================================
+       SKIP LINK (Accessibility)
+       ============================================================ */
+      .skip-link {
+        position: absolute;
+        top: calc(var(--space-sm) * -1 - var(--button-height));
+        left: var(--space-md);
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        padding: var(--space-sm) var(--space-md);
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        z-index: 100;
+        transition: top var(--transition-fast);
+      }
+      .skip-link:focus {
+        top: var(--space-sm);
+      }
+
+      /* ============================================================
+       UTILITY BAR
+       ============================================================ */
+      .utility-bar {
+        background: var(--color-bg-dark);
+        color: var(--color-text-muted-on-dark);
+        font-size: var(--text-small);
+        height: var(--utility-height);
+        display: flex;
+        align-items: center;
+      }
+      .utility-bar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .utility-bar a {
+        color: var(--color-text-on-dark);
+        transition: color var(--transition-fast);
+      }
+      .utility-bar a:hover {
+        color: var(--color-character-light);
+      }
+      .utility-tagline {
+        color: var(--color-text-muted-on-dark);
+        font-size: var(--text-small);
+      }
+
+      /* ============================================================
+       PRIMARY HEADER
+       ============================================================ */
+      .header {
+        background: var(--color-bg-primary);
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--color-border);
+        backdrop-filter: blur(12px);
+        background: rgba(250, 247, 242, 0.95);
+      }
+      .header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .logo {
+        font-family: var(--font-display);
+        font-size: var(--text-h2);
+        color: var(--color-text-primary);
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .logo-mark {
+        width: var(--space-xl);
+        height: var(--space-xl);
+        background: var(--color-accent);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-text-on-accent);
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: 1;
+      }
+      .nav-links {
+        display: flex;
+        gap: var(--space-xl);
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: var(--text-small);
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        transition: color var(--transition-fast);
+      }
+      .nav-links a:hover {
+        color: var(--color-text-primary);
+      }
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+      }
+      .header-login {
+        font-size: var(--text-small);
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        transition: color var(--transition-fast);
+      }
+      .header-login:hover {
+        color: var(--color-accent);
+      }
+
+      /* ============================================================
+       HERO
+       ============================================================ */
+      .hero {
+        background: var(--color-bg-dark);
+        color: var(--color-text-on-dark);
+        padding-top: var(--space-3xl);
+        padding-bottom: var(--space-3xl);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3xl);
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-content {
+        max-width: 36rem;
+      }
+      .hero .eyebrow {
+        color: var(--color-character-light);
+        margin-bottom: var(--space-md);
+      }
+      .hero h1 {
+        font-family: var(--font-display);
+        font-size: var(--text-hero);
+        line-height: var(--line-height-tight);
+        color: var(--color-text-on-dark);
+        margin-bottom: var(--space-lg);
+      }
+      .hero-sub {
+        font-size: var(--text-body);
+        color: var(--color-text-muted-on-dark);
+        line-height: var(--line-height-normal);
+        margin-bottom: var(--space-xl);
+      }
+      .hero-ctas {
+        display: flex;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+      }
+      .hero-safety {
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+      }
+      .hero-safety a {
+        color: var(--color-character-light);
+        font-weight: 600;
+        transition: color var(--transition-fast);
+      }
+      .hero-safety a:hover {
+        color: var(--color-character);
+      }
+
+      /* Signature visual — Geometric shield motif */
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        min-height: 22rem;
+      }
+      .shield {
+        position: relative;
+        width: 18rem;
+        height: 20rem;
+      }
+      .shield-layer {
+        position: absolute;
+        border-radius: var(--radius-lg);
+        opacity: 0.15;
+      }
+      .shield-layer--1 {
+        width: 14rem;
+        height: 16rem;
+        background: var(--color-accent);
+        top: var(--space-xl);
+        left: var(--space-xl);
+        transform: rotate(-6deg);
+        opacity: 0.2;
+      }
+      .shield-layer--2 {
+        width: 12rem;
+        height: 14rem;
+        background: var(--color-character);
+        top: var(--space-lg);
+        left: var(--space-3xl);
+        transform: rotate(3deg);
+        opacity: 0.2;
+      }
+      .shield-layer--3 {
+        width: 13rem;
+        height: 15rem;
+        background: var(--color-accent);
+        top: var(--space-md);
+        left: var(--space-2xl);
+        transform: rotate(-2deg);
+        opacity: 0.25;
+        border: 1px solid rgba(45, 122, 84, 0.3);
+      }
+      .shield-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 6rem;
+        height: 6rem;
+        z-index: 2;
+      }
+      .shield-icon svg {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: var(--color-character-light);
+        stroke-width: 1.5;
+        opacity: 0.6;
+      }
+
+      /* Trust strip */
+      .trust-strip {
+        background: var(--color-surface-dark);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: var(--space-md) 0;
+      }
+      .trust-strip .container {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-2xl);
+        flex-wrap: wrap;
+      }
+      .trust-item {
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+      .trust-item .dot {
+        width: var(--space-xs);
+        height: var(--space-xs);
+        background: var(--color-character);
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      /* ============================================================
+       PILLAR NAVIGATION CARDS
+       ============================================================ */
+      .pillars {
+        background: var(--color-bg-primary);
+        padding: var(--section-gap) 0;
+      }
+      .pillar-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+      }
+      .pillar-card {
+        background: var(--color-surface);
+        border-radius: var(--card-radius);
+        box-shadow: var(--card-shadow);
+        padding: var(--card-padding);
+        transition:
+          box-shadow var(--transition-fast),
+          transform var(--transition-fast);
+        border: 1px solid var(--color-border);
+        display: flex;
+        flex-direction: column;
+      }
+      .pillar-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+      }
+      .pillar-card--privacy {
+        border-top: 3px solid var(--color-accent);
+      }
+      .pillar-card--asset {
+        border-top: 3px solid var(--color-character);
+      }
+      .pillar-card--formation {
+        border-top: 3px solid var(--color-gold-badge);
+      }
+      .pillar-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h2);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+      }
+      .pillar-card p {
+        color: var(--color-text-secondary);
+        font-size: var(--text-small);
+        line-height: var(--line-height-normal);
+        margin-bottom: var(--space-md);
+      }
+      .pillar-services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        margin-bottom: var(--space-lg);
+        flex-grow: 1;
+      }
+      .pillar-services span {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        background: var(--color-bg-secondary);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: var(--radius-sm);
+      }
+      .pillar-below {
+        text-align: center;
+        color: var(--color-text-secondary);
+        font-size: var(--text-small);
+      }
+      .pillar-below a {
+        color: var(--color-accent);
+        font-weight: 600;
+        transition: color var(--transition-fast);
+      }
+      .pillar-below a:hover {
+        color: var(--color-accent-hover);
+      }
+
+      /* ============================================================
+       PACKAGE QUICK LINKS
+       ============================================================ */
+      .packages {
+        background: var(--color-bg-secondary);
+        padding: var(--section-gap) 0;
+      }
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+      }
+      .package-card {
+        background: var(--color-surface);
+        border-radius: var(--card-radius);
+        box-shadow: var(--card-shadow);
+        padding: var(--card-padding);
+        transition: box-shadow var(--transition-fast);
+        border: 1px solid var(--color-border);
+        position: relative;
+      }
+      .package-card:hover {
+        box-shadow: var(--shadow-lg);
+      }
+      .package-card--gold {
+        border: 2px solid var(--color-accent);
+        box-shadow: var(--shadow-lg);
+      }
+      .package-badge {
+        position: absolute;
+        top: calc(var(--space-md) * -1);
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--color-gold-badge-bg);
+        color: var(--color-gold-badge);
+        font-size: var(--text-small);
+        font-weight: 700;
+        padding: var(--space-xs) var(--space-md);
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+        border: 1px solid var(--color-gold-badge);
+      }
+      .package-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+        margin-top: var(--space-sm);
+      }
+      .package-price {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        color: var(--color-accent);
+        margin-bottom: var(--space-xs);
+      }
+      .package-renewal {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-md);
+      }
+      .package-features {
+        margin-bottom: var(--space-lg);
+      }
+      .package-features li {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        padding: var(--space-xs) 0;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-sm);
+      }
+      .package-features li::before {
+        content: "✓";
+        color: var(--color-accent);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .package-below {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .package-below .safety {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+      }
+      .package-below .safety a {
+        color: var(--color-character);
+        font-weight: 600;
+      }
+
+      /* ============================================================
+       DIFFERENTIATORS
+       ============================================================ */
+      .differentiators {
+        background: var(--color-bg-primary);
+        padding: var(--section-gap) 0;
+      }
+      .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+      }
+      .diff-item {
+        padding: var(--space-lg);
+        border-left: 3px solid var(--color-border);
+        transition: border-color var(--transition-fast);
+      }
+      .diff-item:hover {
+        border-color: var(--color-accent);
+      }
+      .diff-number {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        color: var(--color-accent);
+        opacity: 0.3;
+        line-height: 1;
+        margin-bottom: var(--space-sm);
+      }
+      .diff-item h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+      }
+      .diff-item p {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        line-height: var(--line-height-normal);
+      }
+
+      /* ============================================================
+       TESTIMONIALS
+       ============================================================ */
+      .testimonials {
+        background: var(--color-bg-accent);
+        color: var(--color-text-on-accent);
+        padding: var(--section-gap) 0;
+      }
+      .testimonials .eyebrow {
+        color: var(--color-character-light);
+      }
+      .testimonials .section-heading {
+        color: var(--color-text-on-accent);
+      }
+      .testimonials .section-subtext {
+        color: var(--color-text-muted-on-dark);
+      }
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+      }
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: var(--card-radius);
+        padding: var(--card-padding);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .testimonial-stars {
+        color: var(--color-character-light);
+        font-size: var(--text-h3);
+        margin-bottom: var(--space-md);
+        letter-spacing: 0.1em;
+      }
+      .testimonial-card blockquote {
+        font-size: var(--text-body);
+        line-height: var(--line-height-normal);
+        color: var(--color-text-on-dark);
+        margin-bottom: var(--space-md);
+        font-style: italic;
+      }
+      .testimonial-attribution {
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+      }
+
+      /* Fallback stats */
+      .stats-row {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-3xl);
+        margin-top: var(--space-2xl);
+      }
+      .stat {
+        text-align: center;
+      }
+      .stat-number {
+        font-family: var(--font-display);
+        font-size: var(--text-hero);
+        color: var(--color-text-on-accent);
+        line-height: 1;
+        margin-bottom: var(--space-xs);
+      }
+      .stat-label {
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+      }
+
+      /* ============================================================
+       TRUST SIGNALS BAR
+       ============================================================ */
+      .trust-signals {
+        background: var(--color-bg-secondary);
+        padding: var(--space-3xl) 0;
+      }
+      .trust-signals-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--space-lg);
+        text-align: center;
+      }
+      .trust-signal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .trust-signal-icon {
+        width: var(--space-2xl);
+        height: var(--space-2xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-surface);
+        border-radius: 50%;
+        box-shadow: var(--shadow-sm);
+        color: var(--color-accent);
+      }
+      .trust-signal-icon svg {
+        width: var(--space-lg);
+        height: var(--space-lg);
+      }
+      .trust-signal span {
+        font-size: var(--text-small);
+        font-weight: 600;
+        color: var(--color-text-primary);
+      }
+
+      /* ============================================================
+       HOW IT WORKS
+       ============================================================ */
+      .how-it-works {
+        background: var(--color-bg-primary);
+        padding: var(--section-gap) 0;
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-lg);
+        position: relative;
+      }
+      .steps-grid::before {
+        content: "";
+        position: absolute;
+        top: var(--space-xl);
+        left: calc(12.5% + var(--space-md));
+        right: calc(12.5% + var(--space-md));
+        height: 2px;
+        background: var(--color-border);
+        z-index: 0;
+      }
+      .step {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .step-number {
+        width: var(--space-2xl);
+        height: var(--space-2xl);
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        margin: 0 auto var(--space-md);
+      }
+      .step h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+      }
+      .step p {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        line-height: var(--line-height-normal);
+      }
+
+      /* ============================================================
+       COMPLIANCE CALLOUT
+       ============================================================ */
+      .compliance {
+        background: var(--color-bg-secondary);
+        padding: var(--section-gap) 0;
+      }
+      .compliance-inner {
+        max-width: var(--content-narrow);
+        margin-inline: auto;
+        text-align: center;
+      }
+      .compliance-inner h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-md);
+      }
+      .compliance-inner p {
+        font-size: var(--text-body);
+        color: var(--color-text-secondary);
+        line-height: var(--line-height-normal);
+        margin-bottom: var(--space-xl);
+      }
+      .compliance-ctas {
+        display: flex;
+        gap: var(--space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* ============================================================
+       FINAL CTA
+       ============================================================ */
+      .final-cta {
+        background: var(--color-bg-dark);
+        color: var(--color-text-on-dark);
+        padding: var(--section-gap) 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Decorative terracotta accent line */
+      .final-cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--space-xs);
+        background: linear-gradient(
+          90deg,
+          var(--color-accent),
+          var(--color-character),
+          var(--color-accent)
+        );
+      }
+      .final-cta .eyebrow {
+        color: var(--color-character-light);
+      }
+      .final-cta h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        line-height: var(--line-height-tight);
+        color: var(--color-text-on-dark);
+        margin-bottom: var(--space-md);
+        max-width: var(--content-narrow);
+        margin-inline: auto;
+      }
+      .final-cta .subtext {
+        font-size: var(--text-body);
+        color: var(--color-text-muted-on-dark);
+        margin-bottom: var(--space-xl);
+        max-width: var(--content-narrow);
+        margin-inline: auto;
+      }
+      .final-cta-actions {
+        display: flex;
+        gap: var(--space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+      }
+      .final-cta .phone-link {
+        font-size: var(--text-body);
+        color: var(--color-character-light);
+        font-weight: 600;
+      }
+      .final-cta .phone-link:hover {
+        color: var(--color-character);
+      }
+
+      /* ============================================================
+       FOOTER
+       ============================================================ */
+      .footer {
+        background: var(--color-bg-dark);
+        color: var(--color-text-muted-on-dark);
+        padding-top: var(--space-3xl);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-xl);
+        padding-bottom: var(--space-3xl);
+      }
+      .footer-col h4 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        color: var(--color-text-on-dark);
+        margin-bottom: var(--space-md);
+      }
+      .footer-col a {
+        display: block;
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+        padding: var(--space-xs) 0;
+        transition: color var(--transition-fast);
+      }
+      .footer-col a:hover {
+        color: var(--color-text-on-dark);
+      }
+      .footer-col .footer-subhead {
+        font-weight: 700;
+        color: var(--color-text-on-dark);
+        margin-top: var(--space-md);
+        margin-bottom: var(--space-sm);
+        font-size: var(--text-small);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: var(--space-lg) 0;
+      }
+      .footer-bottom .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+      }
+      .footer-legal {
+        display: flex;
+        gap: var(--space-lg);
+        font-size: var(--text-small);
+      }
+      .footer-legal a {
+        color: var(--color-text-muted-on-dark);
+        transition: color var(--transition-fast);
+      }
+      .footer-legal a:hover {
+        color: var(--color-text-on-dark);
+      }
+      .footer-contact {
+        text-align: right;
+        font-size: var(--text-small);
+      }
+      .footer-contact a {
+        color: var(--color-character-light);
+        font-weight: 600;
+      }
+      .footer-payments {
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+        text-align: center;
+        padding: var(--space-md) 0 var(--space-lg);
+      }
+      .payment-icons {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-top: var(--space-sm);
+        flex-wrap: wrap;
+        font-size: var(--text-small);
+        color: var(--color-text-muted-on-dark);
+      }
+
+      /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+      @media (max-width: 1024px) {
+        .pillar-grid {
+          grid-template-columns: 1fr;
+        }
+        .package-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .diff-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testimonial-grid {
+          grid-template-columns: 1fr;
+        }
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps-grid::before {
+          display: none;
+        }
+        .trust-signals-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --section-gap: 5rem;
+          --card-padding: 1.5rem;
+        }
+        .utility-bar {
+          display: none;
+        }
+        .hero .container {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          display: none;
+        }
+        .nav-links {
+          display: none;
+        }
+        .package-grid {
+          grid-template-columns: 1fr;
+        }
+        .diff-grid {
+          grid-template-columns: 1fr;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .trust-signals-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-row {
+          flex-direction: column;
+          gap: var(--space-xl);
+        }
+        .trust-strip .container {
+          flex-direction: column;
+          gap: var(--space-sm);
+          align-items: center;
+        }
+        .footer-bottom .container {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer-contact {
+          text-align: center;
+        }
+        .footer-legal {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- ======================== UTILITY BAR ======================== -->
+    <div class="utility-bar" role="banner">
+      <div class="container">
+        <a href="tel:+17750000000">(775) xxx-xxxx</a>
+        <span class="utility-tagline"
+          >Privacy, Asset Protection &amp; Business Formation Specialists</span
+        >
+        <a href="/login/">Client Login <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+
+    <!-- ======================== HEADER ======================== -->
+    <header class="header">
+      <div class="container">
+        <a href="/" class="logo" aria-label="Incorporate123 — Home">
+          <span class="logo-mark">i</span>
+          Incorporate123
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/privacy/">Privacy</a>
+          <a href="/asset-protection/">Asset Protection</a>
+          <a href="/formation/">Formation</a>
+          <a href="/compare-packages/">Packages</a>
+          <a href="/about/">About</a>
+        </nav>
+        <div class="header-actions">
+          <a href="/login/" class="header-login">Client Login</a>
+          <a href="/compare-packages/" class="btn btn-primary"
+            >Get Started <span class="arrow">&rarr;</span></a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ======================== HERO ======================== -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <div class="hero-content">
+            <p class="eyebrow">
+              Trusted Since 2000 &middot; Privacy Specialists
+            </p>
+            <h1 id="hero-heading">
+              Privacy, Asset Protection &amp; Business Formation &mdash;
+              All-Inclusive, Nothing Hidden
+            </h1>
+            <p class="hero-sub">
+              Year-round nominee services, offshore records, and expert
+              formation in Wyoming and Nevada. 25 years of specialized
+              experience protecting your privacy and assets.
+            </p>
+            <div class="hero-ctas">
+              <a href="/privacy/" class="btn btn-primary"
+                >Protect Your Privacy <span class="arrow">&rarr;</span></a
+              >
+              <a
+                href="/compare-packages/"
+                class="btn btn-secondary btn-secondary--light"
+                >View Packages &amp; Pricing
+                <span class="arrow">&rarr;</span></a
+              >
+            </div>
+            <p class="hero-safety">
+              Have questions? Call <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </p>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="shield">
+              <div class="shield-layer shield-layer--1"></div>
+              <div class="shield-layer shield-layer--2"></div>
+              <div class="shield-layer shield-layer--3"></div>
+              <div class="shield-icon">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M32 4L6 16v16c0 14.4 11.1 27.8 26 32 14.9-4.2 26-17.6 26-32V16L32 4z"
+                  />
+                  <path
+                    d="M32 14L14 22v10c0 10 7.7 19.4 18 22.4C42.3 51.4 50 42 50 32V22L32 14z"
+                  />
+                  <circle cx="32" cy="30" r="4" />
+                  <path d="M28 34h8v8h-8z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Strip -->
+      <div class="trust-strip">
+        <div class="container">
+          <span class="trust-item"><span class="dot"></span> 25 Years</span>
+          <span class="trust-item"
+            ><span class="dot"></span> Real Reno Office</span
+          >
+          <span class="trust-item"
+            ><span class="dot"></span> $1,275 All-Inclusive</span
+          >
+          <span class="trust-item"
+            ><span class="dot"></span> Money-Back Guarantee</span
+          >
+        </div>
+      </div>
+
+      <!-- ======================== PILLAR NAVIGATION CARDS ======================== -->
+      <section class="pillars" aria-labelledby="pillars-heading">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">How Can We Help?</p>
+            <h2 class="section-heading" id="pillars-heading">
+              Choose Your Starting Point
+            </h2>
+            <p class="section-subtext">
+              Whether you need privacy protection, asset shielding, or business
+              formation &mdash; we specialize in all three.
+            </p>
+          </div>
+          <div class="pillar-grid">
+            <!-- Card 1: Business Privacy -->
+            <div class="pillar-card pillar-card--privacy">
+              <h3>Business Privacy</h3>
+              <p>
+                Anonymous LLCs, year-round nominee services, offshore records
+                custodian. Real privacy &mdash; not "nominee for a day."
+              </p>
+              <div class="pillar-services">
+                <span>Anonymous LLC Formation</span>
+                <span>Nominee Services</span>
+                <span>WY/NV Private Incorporation</span>
+                <span>Offshore Privacy</span>
+              </div>
+              <a href="/privacy/" class="btn btn-tertiary"
+                >Explore Privacy Solutions <span class="arrow">&rarr;</span></a
+              >
+            </div>
+            <!-- Card 2: Asset Protection -->
+            <div class="pillar-card pillar-card--asset">
+              <h3>Asset Protection</h3>
+              <p>
+                Charging order protection, holding structures, and multi-entity
+                strategies for individuals with $500K+ in assets.
+              </p>
+              <div class="pillar-services">
+                <span>Charging Order Protection</span>
+                <span>Wyoming/Nevada AP</span>
+                <span>Investment Holding LLC</span>
+                <span>Real Estate AP</span>
+              </div>
+              <a href="/asset-protection/" class="btn btn-tertiary"
+                >Protect Your Assets <span class="arrow">&rarr;</span></a
+              >
+            </div>
+            <!-- Card 3: Business Incorporation -->
+            <div class="pillar-card pillar-card--formation">
+              <h3>Business Incorporation</h3>
+              <p>
+                Expert LLC and Corporation formation in Wyoming and Nevada.
+                Everything included &mdash; registered agent, EIN, operating
+                agreement, state fees.
+              </p>
+              <div class="pillar-services">
+                <span>Wyoming LLC</span>
+                <span>Nevada LLC</span>
+                <span>Wyoming Corporation</span>
+                <span>Nevada Corporation</span>
+              </div>
+              <a href="/formation/" class="btn btn-tertiary"
+                >Start Your Company <span class="arrow">&rarr;</span></a
+              >
+            </div>
+          </div>
+          <p class="pillar-below">
+            Already have a company?
+            <a href="/compliance/"
+              >Explore compliance services <span class="arrow">&rarr;</span></a
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================== PACKAGE QUICK LINKS ======================== -->
+      <section class="packages" aria-labelledby="packages-heading">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Ready to Get Started?</p>
+            <h2 class="section-heading" id="packages-heading">
+              All-Inclusive Packages &mdash; See Exactly What's Included
+            </h2>
+            <p class="section-subtext">
+              Transparent pricing with everything bundled. No hidden fees, no
+              surprise add-ons.
+            </p>
+          </div>
+          <div class="package-grid">
+            <!-- Wyoming Gold -->
+            <div class="package-card package-card--gold">
+              <div class="package-badge">Most Popular</div>
+              <h3>Wyoming Gold</h3>
+              <div class="package-price">$1,275</div>
+              <div class="package-renewal">$525/yr renewal with nominees</div>
+              <ul class="package-features">
+                <li>Year-Round Nominees</li>
+                <li>Offshore Records</li>
+                <li>Registered Agent</li>
+                <li>EIN + Operating Agreement</li>
+              </ul>
+              <a
+                href="/packages/wyoming-gold/"
+                class="btn btn-primary"
+                style="width: 100%"
+                >Select Wyoming Gold <span class="arrow">&rarr;</span></a
+              >
+            </div>
+            <!-- Nevada Gold -->
+            <div class="package-card package-card--gold">
+              <h3>Nevada Gold</h3>
+              <div class="package-price">$1,800</div>
+              <div class="package-renewal">$525/yr renewal with nominees</div>
+              <ul class="package-features">
+                <li>Year-Round Nominees</li>
+                <li>Offshore Records</li>
+                <li>Registered Agent</li>
+                <li>EIN + Operating Agreement</li>
+              </ul>
+              <a
+                href="/packages/nevada-gold/"
+                class="btn btn-secondary"
+                style="width: 100%"
+                >Select Nevada Gold <span class="arrow">&rarr;</span></a
+              >
+            </div>
+            <!-- Wyoming Silver -->
+            <div class="package-card">
+              <h3>Wyoming Silver</h3>
+              <div class="package-price">$875</div>
+              <div class="package-renewal">$325/yr renewal</div>
+              <ul class="package-features">
+                <li>Registered Agent</li>
+                <li>EIN Filing</li>
+                <li>Operating Agreement</li>
+                <li>State Fees Included</li>
+              </ul>
+              <a
+                href="/packages/wyoming-silver/"
+                class="btn btn-secondary"
+                style="width: 100%"
+                >Select Wyoming Silver <span class="arrow">&rarr;</span></a
+              >
+            </div>
+            <!-- Nevada Silver -->
+            <div class="package-card">
+              <h3>Nevada Silver</h3>
+              <div class="package-price">$1,275</div>
+              <div class="package-renewal">$325/yr renewal</div>
+              <ul class="package-features">
+                <li>Registered Agent</li>
+                <li>EIN Filing</li>
+                <li>Operating Agreement</li>
+                <li>State Fees Included</li>
+              </ul>
+              <a
+                href="/packages/nevada-silver/"
+                class="btn btn-secondary"
+                style="width: 100%"
+                >Select Nevada Silver <span class="arrow">&rarr;</span></a
+              >
+            </div>
+          </div>
+          <div class="package-below">
+            <a href="/compare-packages/" class="btn btn-tertiary"
+              >Compare All Packages <span class="arrow">&rarr;</span></a
+            >
+            <p class="safety">
+              Not sure which package? Call
+              <a href="tel:+17750000000">(775) xxx-xxxx</a> for a free
+              consultation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== DIFFERENTIATORS ======================== -->
+      <section class="differentiators" aria-labelledby="diff-heading">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">The Incorporate123 Difference</p>
+            <h2 class="section-heading" id="diff-heading">
+              Why Clients Choose Incorporate123
+            </h2>
+            <p class="section-subtext">
+              25 years of specialized privacy and formation expertise &mdash;
+              not a budget filing service, not a $5,000 consultation.
+            </p>
+          </div>
+          <div class="diff-grid">
+            <div class="diff-item">
+              <div class="diff-number">01</div>
+              <h3>Year-Round Nominees Included</h3>
+              <p>
+                Not "nominee for a day" &mdash; your nominees serve all year,
+                every year. Included in Gold packages at no extra cost.
+              </p>
+            </div>
+            <div class="diff-item">
+              <div class="diff-number">02</div>
+              <h3>Offshore Records Since 2012</h3>
+              <p>
+                Corporate records stored offshore for genuine privacy. Free with
+                every Gold package &mdash; competitors charge
+                $400&ndash;$5,000/year.
+              </p>
+            </div>
+            <div class="diff-item">
+              <div class="diff-number">03</div>
+              <h3>All-Inclusive Pricing</h3>
+              <p>
+                Formation, registered agent, EIN, operating agreement, and state
+                fees &mdash; all bundled. No surprise add-ons at checkout.
+              </p>
+            </div>
+            <div class="diff-item">
+              <div class="diff-number">04</div>
+              <h3>Real Reno Office</h3>
+              <p>
+                Not a P.O. box operation. Professional offices in Reno, Nevada
+                with real staff and a physical address you can visit.
+              </p>
+            </div>
+            <div class="diff-item">
+              <div class="diff-number">05</div>
+              <h3>25 Years of Specialization</h3>
+              <p>
+                Focused exclusively on Wyoming and Nevada privacy formation
+                since 2000. Depth over breadth.
+              </p>
+            </div>
+            <div class="diff-item">
+              <div class="diff-number">06</div>
+              <h3>Talk to a Real Person</h3>
+              <p>
+                Have questions? Call us directly. No chatbots, no offshore call
+                centers, no sales pressure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== TESTIMONIALS ======================== -->
+      <section class="testimonials" aria-labelledby="testimonials-heading">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Client Experiences</p>
+            <h2 class="section-heading" id="testimonials-heading">
+              Trusted by Business Owners Nationwide
+            </h2>
+          </div>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </div>
+              <blockquote>
+                "The year-round nominee service is worth every penny. Other
+                companies charge extra or only provide nominees at filing.
+                Incorporate123 includes it from day one."
+              </blockquote>
+              <p class="testimonial-attribution">
+                Michael R. &middot; California &middot; 2024
+              </p>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </div>
+              <blockquote>
+                "I called with questions before ordering and spoke to a real
+                person within seconds. No phone tree, no chatbot. That's when I
+                knew this was the right company."
+              </blockquote>
+              <p class="testimonial-attribution">
+                Sarah T. &middot; Florida &middot; 2025
+              </p>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </div>
+              <blockquote>
+                "All-inclusive means all-inclusive. No hidden fees at checkout.
+                The price I saw was the price I paid. Refreshing in this
+                industry."
+              </blockquote>
+              <p class="testimonial-attribution">
+                David K. &middot; Texas &middot; 2024
+              </p>
+            </div>
+          </div>
+          <!-- Fallback stats -->
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-number">25</div>
+              <div class="stat-label">Years of Service</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">2</div>
+              <div class="stat-label">Specialized States</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Real Office in Reno</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== TRUST SIGNALS BAR ======================== -->
+      <section class="trust-signals" aria-label="Trust signals">
+        <div class="container">
+          <div class="trust-signals-grid">
+            <div class="trust-signal">
+              <div class="trust-signal-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <span>Trusted Since 2000</span>
+            </div>
+            <div class="trust-signal">
+              <div class="trust-signal-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <span>Real Reno Office</span>
+            </div>
+            <div class="trust-signal">
+              <div class="trust-signal-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <span>30-Day Money-Back Guarantee</span>
+            </div>
+            <div class="trust-signal">
+              <div class="trust-signal-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </div>
+              <span>(775) xxx-xxxx &middot; Call Anytime</span>
+            </div>
+            <div class="trust-signal">
+              <div class="trust-signal-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </div>
+              <span>Crypto Payments for Privacy</span>
+            </div>
+            <div class="trust-signal">
+              <div class="trust-signal-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <span>Secure Checkout</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== HOW IT WORKS ======================== -->
+      <section class="how-it-works" aria-labelledby="how-heading">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Your Journey</p>
+            <h2 class="section-heading" id="how-heading">How It Works</h2>
+            <p class="section-subtext">
+              From research to fully formed and protected &mdash; we handle the
+              details.
+            </p>
+          </div>
+          <div class="steps-grid">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h3>Choose Your Protection Level</h3>
+              <p>
+                Explore our Privacy, Asset Protection, or Formation guides
+                &mdash; or jump straight to packages if you already know what
+                you need.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h3>Select Your Package</h3>
+              <p>
+                Pick the package that fits your needs. Gold for full privacy
+                with year-round nominees, Silver for expert formation with
+                everything included.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h3>We Handle the Filing</h3>
+              <p>
+                Complete a short form with your entity details. We file with the
+                state, obtain your EIN, prepare your operating agreement, and
+                set up registered agent service.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <h3>You're Protected</h3>
+              <p>
+                Receive your formation documents, nominee confirmations, and
+                ongoing compliance support. Your privacy and assets are secured.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== COMPLIANCE CALLOUT ======================== -->
+      <section class="compliance" aria-labelledby="compliance-heading">
+        <div class="container">
+          <div class="compliance-inner">
+            <p class="eyebrow">Returning Clients</p>
+            <h2 id="compliance-heading">
+              Already Have an Entity? We Keep You Compliant.
+            </h2>
+            <p>
+              Registered agent renewals, annual reports, corporate minutes,
+              virtual office upgrades, and domestication services. Ongoing
+              support &mdash; not just a mailbox.
+            </p>
+            <div class="compliance-ctas">
+              <a href="/compliance/" class="btn btn-primary"
+                >Explore Compliance Services
+                <span class="arrow">&rarr;</span></a
+              >
+              <a href="/login/" class="btn btn-secondary"
+                >Client Login <span class="arrow">&rarr;</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== FINAL CTA ======================== -->
+      <section class="final-cta" aria-labelledby="final-heading">
+        <div class="container">
+          <p class="eyebrow eyebrow--light">Take the Next Step</p>
+          <h2 id="final-heading">Ready to Protect Your Privacy and Assets?</h2>
+          <p class="subtext">
+            Start with a package, or schedule a free consultation to discuss
+            your specific needs.
+          </p>
+          <div class="final-cta-actions">
+            <a href="/compare-packages/" class="btn btn-primary"
+              >View Packages &amp; Pricing <span class="arrow">&rarr;</span></a
+            >
+            <a href="/contact/" class="btn btn-secondary btn-secondary--light"
+              >Schedule a Consultation <span class="arrow">&rarr;</span></a
+            >
+          </div>
+          <a href="tel:+17750000000" class="phone-link">(775) xxx-xxxx</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Column 1: Business Privacy -->
+          <div class="footer-col">
+            <h4>Business Privacy</h4>
+            <a href="/anonymous-llc/">Anonymous LLC Formation</a>
+            <a href="/nominee-services/">Nominee Services</a>
+            <a href="/wyoming-private-incorporation/"
+              >Wyoming Private Incorporation</a
+            >
+            <a href="/nevada-private-incorporation/"
+              >Nevada Private Incorporation</a
+            >
+            <a href="/california-private-llc/">California Private LLC</a>
+            <a href="/florida-private-llc/">Florida Private LLC</a>
+            <a href="/best-state-privacy/">Best State for Privacy</a>
+            <a href="/wyoming-vs-nevada-privacy/">Wyoming vs Nevada Privacy</a>
+          </div>
+          <!-- Column 2: Asset Protection + Formation -->
+          <div class="footer-col">
+            <h4>Asset Protection</h4>
+            <a href="/charging-order-protection/">Charging Order Protection</a>
+            <a href="/wyoming-asset-protection/">Wyoming Asset Protection</a>
+            <a href="/nevada-asset-protection/">Nevada Asset Protection</a>
+            <a href="/investment-holding-llc/">Investment Holding LLC</a>
+            <p class="footer-subhead">Company Formation</p>
+            <a href="/wyoming-llc/">Wyoming LLC</a>
+            <a href="/nevada-llc/">Nevada LLC</a>
+            <a href="/wyoming-corporation/">Wyoming Corporation</a>
+            <a href="/nevada-corporation/">Nevada Corporation</a>
+          </div>
+          <!-- Column 3: Packages + States -->
+          <div class="footer-col">
+            <h4>Packages</h4>
+            <a href="/packages/wyoming-gold/">Wyoming Gold (Privacy)</a>
+            <a href="/packages/wyoming-silver/">Wyoming Silver (Formation)</a>
+            <a href="/packages/nevada-gold/">Nevada Gold (Privacy)</a>
+            <a href="/packages/nevada-silver/">Nevada Silver (Formation)</a>
+            <p class="footer-subhead">By State</p>
+            <a href="/wyoming/">Wyoming</a>
+            <a href="/nevada/">Nevada</a>
+            <a href="/california/">California</a>
+            <a href="/florida/">Florida</a>
+          </div>
+          <!-- Column 4: Company + Support -->
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact</a>
+            <a href="/testimonials/">Testimonials</a>
+            <a href="/blog/">Blog</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/login/">Client Login</a>
+            <p class="footer-subhead">Compliance</p>
+            <a href="/registered-agent/">Registered Agent</a>
+            <a href="/annual-reports/">Annual Reports</a>
+            <a href="/offshore/">Offshore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Payment & Crypto -->
+      <div class="footer-payments">
+        <div class="container">
+          <p>We accept cryptocurrency for your privacy</p>
+          <div class="payment-icons">
+            <span>Visa</span>
+            <span>Mastercard</span>
+            <span>AMEX</span>
+            <span>&middot;</span>
+            <span>Bitcoin</span>
+            <span>Ethereum</span>
+            <span>XRP</span>
+            <span>Litecoin</span>
+            <span>Monero</span>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2026 Incorporate123. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+          <div class="footer-contact">
+            <a href="tel:+17750000000">(775) xxx-xxxx</a><br />
+            Reno, Nevada
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,3183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Incorporate123 — Privacy, Asset Protection &amp; Business Formation
+      Specialists
+    </title>
+    <meta
+      name="description"
+      content="All-inclusive LLC formation, year-round nominee services, and offshore records in Wyoming and Nevada. 25 years of specialized privacy and asset protection experience. Packages from $875."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "Incorporate123",
+        "description": "Privacy, Asset Protection & Business Formation Specialists. All-inclusive LLC formation with year-round nominee services in Wyoming and Nevada.",
+        "url": "https://www.incorporate123.com",
+        "telephone": "(775) xxx-xxxx",
+        "foundingDate": "2000",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Reno",
+          "addressRegion": "NV",
+          "addressCountry": "US"
+        },
+        "areaServed": "US",
+        "priceRange": "$875 - $1,800"
+      }
+    </script>
+    <style>
+      /* ============================================
+   DESIGN TOKENS
+   ============================================ */
+      :root {
+        /* --- BACKGROUNDS --- */
+        --color-bg-primary: #f8f7f4; /* Warm cream — signals premium, not clinical. Avoids sterile white. */
+        --color-bg-secondary: #f0ede8; /* Slightly darker warm tone — alternating section contrast */
+        --color-bg-accent: #0b1d3a; /* Deep navy — gravitas, trust, authority. Primary dark section color */
+
+        /* --- TEXT --- */
+        --color-text-primary: #2c2a26; /* Warm charcoal with brown tint — never pure black, feels approachable yet serious */
+        --color-text-secondary: #6b6660; /* Warm medium gray — captions, meta, secondary info */
+        --color-text-on-accent: #f8f7f4; /* Cream on dark navy — warm contrast, passes AA at 12.8:1 */
+        --color-text-on-accent-secondary: #a8b4c8; /* Muted blue-gray on navy — for secondary text on dark */
+
+        /* --- BRAND --- */
+        --color-accent: #b8860b; /* Dark goldenrod — premium, financial trust. Interactive elements ONLY */
+        --color-accent-hover: #9a7209; /* Deeper gold for hover — maintains luxury feel */
+        --color-accent-light: #d4a843; /* Lighter gold for badges, decorative accents */
+        --color-character: #3a6b5e; /* Deep sage green — protection, growth, stability. Third brand hue */
+        --color-character-light: #e8f0ed; /* Light sage for subtle backgrounds */
+
+        /* --- SURFACES --- */
+        --color-border: #e0dcd6; /* Warm light border — barely visible on primary bg */
+        --color-border-dark: #1e3358; /* Border on dark backgrounds */
+        --color-surface: #ffffff; /* Cards, elevated content — pure white stands out against cream bg */
+        --color-footer: #061222; /* Deepest navy — darker than accent bg for footer gravity */
+
+        /* --- FONTS --- */
+        /* DM Serif Display: editorial authority in a sans-serif category. Signals considered expertise. */
+        --font-display: "DM Serif Display", Georgia, serif;
+        /* Inter: invisible body font — excellent readability, lets serif display carry brand voice */
+        --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+        /* --- TYPE SCALE — Major Third (1.25) ---
+     Base: 16px
+     16 * 1.25^1 = 20px
+     16 * 1.25^2 = 25px
+     16 * 1.25^3 = 31.25px
+     16 * 1.25^4 = 39px
+     16 * 1.25^5 = 48.8px
+     16 * 1.25^6 = 61px
+  */
+        --text-hero: 3.815rem; /* ~61px — used once, hero only */
+        --text-h1: 3.052rem; /* ~48.8px — section headings */
+        --text-h2: 2.441rem; /* ~39px — subsection headings */
+        --text-h3: 1.563rem; /* ~25px — card titles */
+        --text-h4: 0.875rem; /* 14px — eyebrows, labels */
+        --text-body: 1rem; /* 16px — body text minimum */
+        --text-body-lg: 1.125rem; /* 18px — hero subtext, lead paragraphs */
+        --text-small: 0.875rem; /* 14px — captions, fine print */
+
+        /* --- LINE HEIGHT --- */
+        --line-height-tight: 1.15; /* Headings */
+        --line-height-normal: 1.6; /* Body text */
+
+        /* --- SPACING — 8px base unit --- */
+        --space-unit: 8px;
+        --space-xs: 4px; /* 0.5x */
+        --space-sm: 8px; /* 1x */
+        --space-md: 16px; /* 2x */
+        --space-lg: 24px; /* 3x */
+        --space-xl: 32px; /* 4x */
+        --space-2xl: 48px; /* 6x */
+        --space-3xl: 64px; /* 8x */
+        --space-4xl: 96px; /* 12x */
+
+        /* --- LAYOUT --- */
+        --section-gap: 120px; /* Vertical space between sections */
+        --content-max-width: 1180px;
+        --content-narrow: 700px;
+
+        /* --- RADII --- */
+        --radius-sm: 4px; /* Badges, tags */
+        --radius-md: 8px; /* Buttons, inputs */
+        --radius-lg: 12px; /* Cards */
+        --radius-xl: 16px; /* Large cards */
+
+        /* --- SHADOWS --- */
+        --shadow-sm:
+          0 1px 3px rgba(44, 42, 38, 0.06), 0 1px 2px rgba(44, 42, 38, 0.04);
+        --shadow-md:
+          0 4px 12px rgba(44, 42, 38, 0.08), 0 2px 4px rgba(44, 42, 38, 0.04);
+        --shadow-lg:
+          0 12px 32px rgba(44, 42, 38, 0.12), 0 4px 8px rgba(44, 42, 38, 0.06);
+
+        /* --- BUTTONS --- */
+        --button-height: 48px;
+        --button-padding-x: 28px;
+        --button-radius: var(--radius-md);
+
+        /* --- CARDS --- */
+        --card-radius: var(--radius-lg);
+        --card-shadow: var(--shadow-md);
+        --card-padding: var(--space-xl);
+
+        /* --- EASING --- */
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+
+        /* --- DURATION --- */
+        --duration-fast: 150ms;
+        --duration-normal: 300ms;
+        --duration-slow: 500ms;
+        --duration-entrance: 600ms;
+
+        /* --- STAGGER --- */
+        --stagger-delay: 80ms;
+
+        /* --- TRANSITIONS --- */
+        --transition-fast: var(--duration-fast) var(--ease-out-expo);
+        --transition-normal: var(--duration-normal) var(--ease-out-expo);
+      }
+
+      /* ============================================
+   RESET & BASE
+   ============================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: var(--text-body);
+        line-height: var(--line-height-normal);
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-primary);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul,
+      ol {
+        list-style: none;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: inherit;
+      }
+
+      /* --- Skip Nav --- */
+      .skip-nav {
+        position: absolute;
+        top: calc(var(--space-sm) * -1 - var(--button-height));
+        left: var(--space-md);
+        z-index: 9999;
+        padding: var(--space-sm) var(--space-md);
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        font-weight: 600;
+        font-size: var(--text-small);
+        border-radius: var(--button-radius);
+        transition: top var(--transition-fast);
+      }
+      .skip-nav:focus {
+        top: var(--space-sm);
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      /* ============================================
+   UTILITY CLASSES
+   ============================================ */
+      .container {
+        max-width: var(--content-max-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--space-lg);
+        padding-right: var(--space-lg);
+      }
+
+      .container-narrow {
+        max-width: var(--content-narrow);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-padding {
+        padding-top: var(--section-gap);
+        padding-bottom: var(--section-gap);
+      }
+
+      .eyebrow {
+        font-family: var(--font-body);
+        font-size: var(--text-h4);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-accent);
+        margin-bottom: var(--space-sm);
+      }
+
+      .eyebrow-light {
+        color: var(--color-accent-light);
+      }
+
+      .section-heading {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        line-height: var(--line-height-tight);
+        color: var(--color-text-primary);
+        margin-bottom: var(--space-md);
+      }
+
+      .section-heading-light {
+        color: var(--color-text-on-accent);
+      }
+
+      .section-subtext {
+        font-size: var(--text-body-lg);
+        color: var(--color-text-secondary);
+        max-width: var(--content-narrow);
+        line-height: var(--line-height-normal);
+      }
+
+      .section-subtext-light {
+        color: var(--color-text-on-accent-secondary);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--space-3xl);
+      }
+
+      .section-header .section-subtext {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* --- Buttons --- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--button-height);
+        padding: 0 var(--button-padding-x);
+        font-family: var(--font-body);
+        font-size: var(--text-body);
+        font-weight: 600;
+        border-radius: var(--button-radius);
+        transition:
+          transform var(--transition-fast),
+          box-shadow var(--transition-fast),
+          background-color var(--transition-fast),
+          color var(--transition-fast);
+        white-space: nowrap;
+        gap: var(--space-sm);
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn:active {
+        transform: translateY(0) scale(0.97);
+      }
+      .btn:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      .btn-primary {
+        background-color: var(--color-accent);
+        color: var(--color-text-on-accent);
+        box-shadow: var(--shadow-sm);
+      }
+      .btn-primary:hover {
+        background-color: var(--color-accent-hover);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+      }
+      .btn-secondary:hover {
+        background-color: var(--color-accent);
+        color: var(--color-text-on-accent);
+      }
+
+      .btn-secondary-light {
+        color: var(--color-text-on-accent);
+        border-color: rgba(248, 247, 244, 0.3);
+      }
+      .btn-secondary-light:hover {
+        background-color: rgba(248, 247, 244, 0.1);
+        border-color: rgba(248, 247, 244, 0.6);
+        color: var(--color-text-on-accent);
+      }
+
+      .btn-tertiary {
+        background: none;
+        color: var(--color-accent);
+        padding: 0;
+        height: auto;
+        font-weight: 600;
+      }
+      .btn-tertiary:hover {
+        color: var(--color-accent-hover);
+        transform: none;
+      }
+      .btn-tertiary .arrow {
+        transition: transform var(--transition-fast);
+      }
+      .btn-tertiary:hover .arrow {
+        transform: translateX(4px);
+      }
+
+      /* ============================================
+   1. GLOBAL HEADER
+   ============================================ */
+
+      /* Utility Bar */
+      .utility-bar {
+        background-color: var(--color-footer);
+        color: var(--color-text-on-accent-secondary);
+        font-size: var(--text-small);
+        padding: var(--space-sm) 0;
+      }
+      .utility-bar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .utility-bar a {
+        color: var(--color-text-on-accent);
+        font-weight: 500;
+        transition: color var(--transition-fast);
+      }
+      .utility-bar a:hover {
+        color: var(--color-accent-light);
+      }
+      .utility-bar .tagline {
+        color: var(--color-text-on-accent-secondary);
+      }
+
+      /* Primary Header */
+      .primary-header {
+        background-color: var(--color-bg-primary);
+        border-bottom: 1px solid var(--color-border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition:
+          box-shadow var(--transition-normal),
+          padding var(--transition-normal);
+      }
+      .primary-header.scrolled {
+        box-shadow: var(--shadow-md);
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .primary-header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        transition: height var(--transition-normal);
+      }
+      .primary-header.scrolled .container {
+        height: 60px;
+      }
+
+      .logo {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        color: var(--color-bg-accent);
+        flex-shrink: 0;
+      }
+      .logo span {
+        color: var(--color-accent);
+      }
+
+      /* Desktop Nav */
+      .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xl);
+      }
+      .desktop-nav-links {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+      }
+      .nav-item {
+        position: relative;
+        font-size: var(--text-small);
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        padding: var(--space-lg) 0;
+        cursor: pointer;
+        transition: color var(--transition-fast);
+      }
+      .nav-item:hover,
+      .nav-item:focus-within {
+        color: var(--color-text-primary);
+      }
+      .nav-item .chevron {
+        display: inline-block;
+        margin-left: var(--space-xs);
+        transition: transform var(--transition-fast);
+        font-size: 10px;
+      }
+      .nav-item:hover .chevron {
+        transform: rotate(180deg);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+      }
+      .client-login-link {
+        font-size: var(--text-small);
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        transition: color var(--transition-fast);
+      }
+      .client-login-link:hover {
+        color: var(--color-accent);
+      }
+
+      /* Mega Menus */
+      .mega-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(8px);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--card-radius);
+        box-shadow: var(--shadow-lg);
+        padding: var(--space-xl);
+        min-width: 560px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity var(--transition-normal),
+          transform var(--transition-normal),
+          visibility var(--transition-normal);
+        z-index: 1001;
+      }
+      .nav-item:hover .mega-menu,
+      .nav-item:focus-within .mega-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+      }
+      .mega-menu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+      }
+      .mega-menu-section h4 {
+        font-family: var(--font-body);
+        font-size: var(--text-small);
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--space-sm);
+        padding-bottom: var(--space-xs);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .mega-menu-section a {
+        display: block;
+        padding: var(--space-xs) 0;
+        font-size: var(--text-small);
+        color: var(--color-text-primary);
+        transition: color var(--transition-fast);
+      }
+      .mega-menu-section a:hover {
+        color: var(--color-accent);
+      }
+      .mega-menu-quick-links {
+        grid-column: 1 / -1;
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--color-border);
+        display: flex;
+        gap: var(--space-lg);
+      }
+      .mega-menu-quick-links a {
+        font-size: var(--text-small);
+        font-weight: 600;
+        color: var(--color-accent);
+      }
+      .mega-menu-quick-links a:hover {
+        color: var(--color-accent-hover);
+      }
+
+      /* Simple dropdown for About */
+      .simple-dropdown {
+        min-width: 200px;
+      }
+      .simple-dropdown .mega-menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 24px;
+        padding: var(--space-sm);
+        box-sizing: content-box;
+      }
+      .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--color-text-primary);
+        border-radius: 2px;
+        transition:
+          transform var(--transition-normal),
+          opacity var(--transition-fast);
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile Nav */
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--color-surface);
+        z-index: 999;
+        overflow-y: auto;
+        padding: var(--space-lg);
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+      }
+      .mobile-nav.open {
+        transform: translateX(0);
+      }
+      .mobile-nav-top {
+        display: flex;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-lg);
+        padding-bottom: var(--space-lg);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .mobile-nav-top a {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--button-height);
+        border-radius: var(--button-radius);
+        font-weight: 600;
+        font-size: var(--text-small);
+      }
+      .mobile-nav-top .mn-packages {
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+      }
+      .mobile-nav-top .mn-login {
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
+      }
+
+      .mobile-accordion {
+        margin-bottom: var(--space-sm);
+      }
+      .mobile-accordion-trigger {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-md) 0;
+        font-size: var(--text-body);
+        font-weight: 600;
+        color: var(--color-text-primary);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .mobile-accordion-trigger .chevron {
+        transition: transform var(--transition-fast);
+        font-size: 12px;
+      }
+      .mobile-accordion-trigger.active .chevron {
+        transform: rotate(180deg);
+      }
+      .mobile-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+      }
+      .mobile-accordion-content a {
+        display: block;
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+      }
+      .mobile-accordion-content a:hover {
+        color: var(--color-accent);
+      }
+
+      /* ============================================
+   2. HERO
+   ============================================ */
+      .hero {
+        background-color: var(--color-bg-accent);
+        position: relative;
+        overflow: hidden;
+        padding: var(--space-4xl) 0;
+      }
+
+      /* Noise texture overlay */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+        z-index: 1;
+      }
+      .hero > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3xl);
+        align-items: center;
+      }
+
+      .hero-content {
+        max-width: 600px;
+      }
+      .hero-eyebrow {
+        font-family: var(--font-body);
+        font-size: var(--text-h4);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-accent-light);
+        margin-bottom: var(--space-md);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: hero-fade-in var(--duration-entrance) var(--ease-out-expo)
+          forwards;
+        animation-delay: 0ms;
+      }
+      .hero-headline {
+        font-family: var(--font-display);
+        font-size: var(--text-hero);
+        line-height: var(--line-height-tight);
+        color: var(--color-text-on-accent);
+        margin-bottom: var(--space-lg);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: hero-fade-in var(--duration-entrance) var(--ease-out-expo)
+          forwards;
+        animation-delay: calc(var(--stagger-delay) * 1);
+      }
+      .hero-headline em {
+        font-style: normal;
+        color: var(--color-accent-light);
+      }
+      .hero-subheadline {
+        font-size: var(--text-body-lg);
+        line-height: var(--line-height-normal);
+        color: var(--color-text-on-accent-secondary);
+        margin-bottom: var(--space-xl);
+        max-width: 520px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: hero-fade-in var(--duration-entrance) var(--ease-out-expo)
+          forwards;
+        animation-delay: calc(var(--stagger-delay) * 2);
+      }
+      .hero-ctas {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-xl);
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: hero-fade-in var(--duration-entrance) var(--ease-out-expo)
+          forwards;
+        animation-delay: calc(var(--stagger-delay) * 3);
+      }
+      .hero-phone {
+        font-size: var(--text-small);
+        color: var(--color-text-on-accent-secondary);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: hero-fade-in var(--duration-entrance) var(--ease-out-expo)
+          forwards;
+        animation-delay: calc(var(--stagger-delay) * 4);
+      }
+      .hero-phone a {
+        color: var(--color-text-on-accent);
+        font-weight: 500;
+        transition: color var(--transition-fast);
+      }
+      .hero-phone a:hover {
+        color: var(--color-accent-light);
+      }
+
+      .hero-trust-strip {
+        display: flex;
+        gap: var(--space-lg);
+        flex-wrap: wrap;
+        padding-top: var(--space-xl);
+        border-top: 1px solid var(--color-border-dark);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: hero-fade-in var(--duration-entrance) var(--ease-out-expo)
+          forwards;
+        animation-delay: calc(var(--stagger-delay) * 5);
+      }
+      .trust-item {
+        font-size: var(--text-small);
+        font-weight: 600;
+        color: var(--color-text-on-accent);
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .trust-item .icon {
+        color: var(--color-accent-light);
+        font-size: var(--text-body-lg);
+      }
+
+      @keyframes hero-fade-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Hero Visual — Shield Composition */
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: hero-fade-in 800ms var(--ease-out-expo) forwards;
+        animation-delay: calc(var(--stagger-delay) * 3);
+      }
+      .shield-composition {
+        width: 340px;
+        height: 400px;
+        position: relative;
+      }
+      .shield-main {
+        width: 200px;
+        height: 240px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(
+          135deg,
+          var(--color-accent),
+          var(--color-accent-light)
+        );
+        clip-path: polygon(
+          50% 0%,
+          100% 20%,
+          100% 70%,
+          50% 100%,
+          0% 70%,
+          0% 20%
+        );
+        opacity: 0.9;
+      }
+      .shield-main::after {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        background: var(--color-bg-accent);
+        clip-path: polygon(
+          50% 0%,
+          100% 20%,
+          100% 70%,
+          50% 100%,
+          0% 70%,
+          0% 20%
+        );
+      }
+      .shield-lock {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        font-size: 48px;
+        color: var(--color-accent-light);
+      }
+      .shield-ring {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgba(184, 134, 11, 0.2);
+        border-radius: 50%;
+      }
+      .shield-ring-2 {
+        width: 340px;
+        height: 340px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgba(184, 134, 11, 0.1);
+        border-radius: 50%;
+      }
+      .shield-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--color-accent-light);
+        position: absolute;
+        opacity: 0.5;
+      }
+      .shield-dot-1 {
+        top: 10%;
+        left: 20%;
+      }
+      .shield-dot-2 {
+        top: 5%;
+        right: 25%;
+      }
+      .shield-dot-3 {
+        bottom: 15%;
+        left: 15%;
+      }
+      .shield-dot-4 {
+        bottom: 10%;
+        right: 20%;
+      }
+
+      /* ============================================
+   3. PILLAR NAVIGATION CARDS
+   ============================================ */
+      .pillars {
+        background-color: var(--color-bg-primary);
+      }
+
+      .pillar-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+      }
+
+      .pillar-card {
+        background: var(--color-surface);
+        border-radius: var(--card-radius);
+        padding: var(--card-padding);
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--color-border);
+        transition:
+          transform var(--transition-fast),
+          box-shadow var(--transition-fast);
+        display: flex;
+        flex-direction: column;
+      }
+      .pillar-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+      .pillar-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-h2);
+        margin-bottom: var(--space-md);
+      }
+      .pillar-card:nth-child(1) .pillar-card-icon {
+        background: rgba(184, 134, 11, 0.1);
+        color: var(--color-accent);
+      }
+      .pillar-card:nth-child(2) .pillar-card-icon {
+        background: var(--color-character-light);
+        color: var(--color-character);
+      }
+      .pillar-card:nth-child(3) .pillar-card-icon {
+        background: rgba(11, 29, 58, 0.08);
+        color: var(--color-bg-accent);
+      }
+
+      .pillar-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+      }
+      .pillar-card > p {
+        font-size: var(--text-body);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-md);
+        flex-grow: 1;
+      }
+      .pillar-services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        margin-bottom: var(--space-lg);
+      }
+      .pillar-services span {
+        font-size: var(--text-small);
+        padding: var(--space-xs) var(--space-sm);
+        background: var(--color-bg-secondary);
+        border-radius: var(--radius-sm);
+        color: var(--color-text-secondary);
+      }
+      .pillar-card .btn-tertiary {
+        margin-top: auto;
+      }
+
+      .pillars-compliance {
+        text-align: center;
+        font-size: var(--text-body);
+        color: var(--color-text-secondary);
+      }
+      .pillars-compliance a {
+        color: var(--color-accent);
+        font-weight: 600;
+        transition: color var(--transition-fast);
+      }
+      .pillars-compliance a:hover {
+        color: var(--color-accent-hover);
+      }
+
+      /* ============================================
+   4. PACKAGE QUICK LINKS
+   ============================================ */
+      .packages {
+        background-color: var(--color-bg-secondary);
+      }
+
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+      }
+
+      .package-card {
+        background: var(--color-surface);
+        border-radius: var(--card-radius);
+        padding: var(--card-padding);
+        box-shadow: var(--card-shadow);
+        border: 2px solid var(--color-border);
+        transition:
+          transform var(--transition-fast),
+          box-shadow var(--transition-fast),
+          border-color var(--transition-fast);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .package-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-accent);
+      }
+      .package-card.featured {
+        border-color: var(--color-accent);
+      }
+      .package-badge {
+        position: absolute;
+        top: calc(var(--space-md) * -1);
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        font-size: var(--text-small);
+        font-weight: 700;
+        padding: var(--space-xs) var(--space-md);
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+      }
+      .package-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+        margin-top: var(--space-sm);
+      }
+      .package-price {
+        font-size: var(--text-h2);
+        font-weight: 700;
+        color: var(--color-text-primary);
+        margin-bottom: var(--space-xs);
+      }
+      .package-renewal {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-md);
+        padding-bottom: var(--space-md);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .package-includes {
+        margin-bottom: var(--space-lg);
+        flex-grow: 1;
+      }
+      .package-includes li {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        padding: var(--space-xs) 0;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-sm);
+      }
+      .package-includes .check {
+        color: var(--color-character);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .package-card .btn {
+        width: 100%;
+      }
+
+      .packages-bottom {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .packages-bottom .phone-safety {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+      }
+      .packages-bottom .phone-safety a {
+        color: var(--color-accent);
+        font-weight: 600;
+      }
+
+      /* ============================================
+   5. DIFFERENTIATORS
+   ============================================ */
+      .differentiators {
+        background-color: var(--color-bg-primary);
+      }
+      .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+      }
+      .diff-item {
+        padding: var(--space-lg);
+      }
+      .diff-item .icon {
+        font-size: var(--text-h2);
+        margin-bottom: var(--space-md);
+        display: block;
+      }
+      .diff-item h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-sm);
+        font-size: 1.25rem;
+      }
+      .diff-item p {
+        font-size: var(--text-body);
+        color: var(--color-text-secondary);
+        line-height: var(--line-height-normal);
+      }
+
+      /* ============================================
+   6. TESTIMONIALS
+   ============================================ */
+      .testimonials {
+        background-color: var(--color-bg-accent);
+        position: relative;
+        overflow: hidden;
+      }
+      .testimonials::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+        z-index: 1;
+      }
+      .testimonials > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .testimonial-carousel {
+        position: relative;
+        overflow: hidden;
+      }
+      .testimonial-track {
+        display: flex;
+        transition: transform var(--duration-slow) var(--ease-out-expo);
+      }
+      .testimonial-card {
+        min-width: 100%;
+        padding: 0 var(--space-lg);
+      }
+      .testimonial-card-inner {
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .testimonial-stars {
+        color: var(--color-accent-light);
+        font-size: var(--text-h3);
+        margin-bottom: var(--space-md);
+        letter-spacing: var(--space-xs);
+      }
+      .testimonial-quote {
+        font-family: var(--font-display);
+        font-size: var(--text-h2);
+        line-height: 1.3;
+        color: var(--color-text-on-accent);
+        margin-bottom: var(--space-lg);
+        font-style: italic;
+      }
+      .testimonial-author {
+        font-size: var(--text-body);
+        color: var(--color-text-on-accent-secondary);
+      }
+      .testimonial-author strong {
+        color: var(--color-text-on-accent);
+      }
+
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-sm);
+        margin-top: var(--space-xl);
+      }
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(248, 247, 244, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: background var(--transition-fast);
+        padding: 0;
+      }
+      .carousel-dot.active {
+        background: var(--color-accent-light);
+      }
+      .carousel-dot:focus-visible {
+        outline: 2px solid var(--color-accent-light);
+        outline-offset: 2px;
+      }
+
+      /* ============================================
+   7. TRUST SIGNALS BAR
+   ============================================ */
+      .trust-bar {
+        background-color: var(--color-bg-secondary);
+        padding: var(--space-3xl) 0;
+      }
+      .trust-bar-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--space-md);
+        text-align: center;
+      }
+      .trust-signal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .trust-signal .icon {
+        font-size: var(--text-h2);
+        color: var(--color-accent);
+      }
+      .trust-signal span {
+        font-size: var(--text-small);
+        font-weight: 600;
+        color: var(--color-text-primary);
+      }
+
+      /* ============================================
+   8. HOW IT WORKS
+   ============================================ */
+      .how-it-works {
+        background-color: var(--color-bg-primary);
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-lg);
+        position: relative;
+      }
+      /* Connecting line */
+      .steps-grid::before {
+        content: "";
+        position: absolute;
+        top: 36px;
+        left: calc(12.5% + var(--space-lg));
+        right: calc(12.5% + var(--space-lg));
+        height: 2px;
+        background: var(--color-border);
+        z-index: 0;
+      }
+      .step {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .step-number {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: var(--color-bg-accent);
+        color: var(--color-accent-light);
+        font-family: var(--font-display);
+        font-size: var(--text-h3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--space-md);
+      }
+      .step h3 {
+        font-family: var(--font-display);
+        font-size: 1.125rem;
+        margin-bottom: var(--space-sm);
+      }
+      .step p {
+        font-size: var(--text-small);
+        color: var(--color-text-secondary);
+        line-height: var(--line-height-normal);
+      }
+
+      /* ============================================
+   9. COMPLIANCE CALLOUT
+   ============================================ */
+      .compliance {
+        background-color: var(--color-bg-secondary);
+      }
+      .compliance-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .compliance-inner h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        line-height: var(--line-height-tight);
+        margin-bottom: var(--space-md);
+      }
+      .compliance-inner > p {
+        font-size: var(--text-body-lg);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-xl);
+      }
+      .compliance-ctas {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+      }
+
+      /* ============================================
+   10. FINAL CTA
+   ============================================ */
+      .final-cta {
+        background-color: var(--color-bg-accent);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .final-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+        z-index: 1;
+      }
+      .final-cta > * {
+        position: relative;
+        z-index: 2;
+      }
+      .final-cta h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-h1);
+        line-height: var(--line-height-tight);
+        color: var(--color-text-on-accent);
+        margin-bottom: var(--space-md);
+      }
+      .final-cta > .container > p {
+        font-size: var(--text-body-lg);
+        color: var(--color-text-on-accent-secondary);
+        max-width: var(--content-narrow);
+        margin: 0 auto var(--space-xl);
+      }
+      .final-cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-lg);
+        flex-wrap: wrap;
+      }
+      .final-cta .phone-line {
+        font-size: var(--text-body);
+        color: var(--color-text-on-accent-secondary);
+      }
+      .final-cta .phone-line a {
+        color: var(--color-text-on-accent);
+        font-weight: 600;
+      }
+
+      /* ============================================
+   11. FOOTER
+   ============================================ */
+      .site-footer {
+        background-color: var(--color-footer);
+        color: var(--color-text-on-accent-secondary);
+        padding-top: var(--space-3xl);
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-xl);
+        padding-bottom: var(--space-3xl);
+        border-bottom: 1px solid rgba(248, 247, 244, 0.1);
+      }
+      .footer-col h4 {
+        font-family: var(--font-body);
+        font-size: var(--text-small);
+        font-weight: 700;
+        color: var(--color-text-on-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--space-md);
+      }
+      .footer-col a {
+        display: block;
+        padding: var(--space-xs) 0;
+        font-size: var(--text-small);
+        color: var(--color-text-on-accent-secondary);
+        transition: color var(--transition-fast);
+      }
+      .footer-col a:hover {
+        color: var(--color-accent-light);
+      }
+
+      .footer-bottom {
+        padding: var(--space-lg) 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-md);
+        font-size: var(--text-small);
+      }
+      .footer-legal {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+      }
+      .footer-legal a {
+        color: var(--color-text-on-accent-secondary);
+        transition: color var(--transition-fast);
+      }
+      .footer-legal a:hover {
+        color: var(--color-accent-light);
+      }
+
+      .footer-contact-info {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        flex-wrap: wrap;
+      }
+      .footer-payments {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+        padding-top: var(--space-md);
+        width: 100%;
+      }
+      .payment-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-xs) var(--space-sm);
+        border: 1px solid rgba(248, 247, 244, 0.15);
+        border-radius: var(--radius-sm);
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--color-text-on-accent-secondary);
+      }
+      .footer-crypto-note {
+        font-size: 12px;
+        color: var(--color-text-on-accent-secondary);
+        opacity: 0.7;
+        padding-top: var(--space-sm);
+        width: 100%;
+      }
+
+      /* ============================================
+   STICKY MOBILE CTA BAR
+   ============================================ */
+      .mobile-cta-bar {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 998;
+        background: var(--color-surface);
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 -4px 12px rgba(44, 42, 38, 0.1);
+        padding: var(--space-sm) var(--space-md);
+        transform: translateY(100%);
+        transition: transform var(--transition-normal);
+      }
+      .mobile-cta-bar.visible {
+        transform: translateY(0);
+      }
+      .mobile-cta-bar-inner {
+        display: flex;
+        gap: var(--space-sm);
+      }
+      .mobile-cta-bar .btn-cta-main {
+        flex: 7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        background: var(--color-accent);
+        color: var(--color-text-on-accent);
+        font-weight: 700;
+        font-size: var(--text-body);
+        border-radius: var(--button-radius);
+      }
+      .mobile-cta-bar .btn-cta-phone {
+        flex: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        border: 2px solid var(--color-accent);
+        color: var(--color-accent);
+        border-radius: var(--button-radius);
+        font-size: var(--text-h3);
+      }
+
+      /* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity var(--duration-entrance) var(--ease-out-expo),
+          transform var(--duration-entrance) var(--ease-out-expo);
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stagger-grid .fade-up-item {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity var(--duration-entrance) var(--ease-out-expo),
+          transform var(--duration-entrance) var(--ease-out-expo);
+      }
+      .stagger-grid.visible .fade-up-item {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stagger-grid.visible .fade-up-item:nth-child(1) {
+        transition-delay: 0ms;
+      }
+      .stagger-grid.visible .fade-up-item:nth-child(2) {
+        transition-delay: calc(var(--stagger-delay) * 1);
+      }
+      .stagger-grid.visible .fade-up-item:nth-child(3) {
+        transition-delay: calc(var(--stagger-delay) * 2);
+      }
+      .stagger-grid.visible .fade-up-item:nth-child(4) {
+        transition-delay: calc(var(--stagger-delay) * 3);
+      }
+      .stagger-grid.visible .fade-up-item:nth-child(5) {
+        transition-delay: calc(var(--stagger-delay) * 4);
+      }
+      .stagger-grid.visible .fade-up-item:nth-child(6) {
+        transition-delay: calc(var(--stagger-delay) * 5);
+      }
+
+      /* ============================================
+   REDUCED MOTION
+   ============================================ */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .fade-up,
+        .stagger-grid .fade-up-item,
+        .hero-eyebrow,
+        .hero-headline,
+        .hero-subheadline,
+        .hero-ctas,
+        .hero-phone,
+        .hero-trust-strip,
+        .hero-visual {
+          opacity: 1;
+          transform: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ============================================
+   RESPONSIVE — Mobile-first overrides
+   ============================================ */
+
+      /* <= 1024px */
+      @media (max-width: 1024px) {
+        :root {
+          --text-hero: 2.8rem;
+          --text-h1: 2.2rem;
+          --section-gap: 96px;
+        }
+        .utility-bar {
+          display: none;
+        }
+        .desktop-nav {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .mobile-nav {
+          display: block;
+        }
+        .mobile-cta-bar {
+          display: block;
+        }
+
+        .hero .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-content {
+          max-width: 100%;
+        }
+        .hero-subheadline {
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-ctas {
+          justify-content: center;
+        }
+        .hero-trust-strip {
+          justify-content: center;
+        }
+        .hero-visual {
+          display: none;
+        }
+
+        .pillar-grid {
+          grid-template-columns: 1fr;
+        }
+        .package-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .diff-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps-grid::before {
+          display: none;
+        }
+        .trust-bar-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-lg);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        body {
+          padding-bottom: 68px;
+        }
+      }
+
+      /* <= 768px */
+      @media (max-width: 768px) {
+        :root {
+          --text-hero: 2.2rem;
+          --text-h1: 1.8rem;
+          --text-h2: 1.5rem;
+          --section-gap: 80px;
+          --card-padding: var(--space-lg);
+        }
+        .package-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .diff-grid {
+          grid-template-columns: 1fr;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .trust-bar-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .mega-menu {
+          min-width: 100%;
+        }
+      }
+
+      /* <= 480px */
+      @media (max-width: 480px) {
+        :root {
+          --text-hero: 1.8rem;
+          --text-h1: 1.5rem;
+          --section-gap: 64px;
+        }
+        .container {
+          padding-left: var(--space-md);
+          padding-right: var(--space-md);
+        }
+        .hero {
+          padding: var(--space-3xl) 0;
+        }
+        .hero-ctas {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-ctas .btn {
+          width: 100%;
+        }
+        .compliance-ctas {
+          flex-direction: column;
+          align-items: center;
+        }
+        .final-cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+        .trust-bar-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- ============================================
+     1. GLOBAL HEADER
+     ============================================ -->
+
+    <!-- Utility Bar (Desktop Only) -->
+    <div class="utility-bar" role="banner">
+      <div class="container">
+        <a href="tel:+17750000000" aria-label="Call us at (775) xxx-xxxx"
+          >(775) xxx-xxxx</a
+        >
+        <span class="tagline"
+          >Privacy, Asset Protection &amp; Business Formation Specialists</span
+        >
+        <a href="/login/">Client Login &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Primary Header -->
+    <header
+      class="primary-header"
+      id="primary-header"
+      role="navigation"
+      aria-label="Primary navigation"
+    >
+      <div class="container">
+        <!-- Logo -->
+        <a href="/" class="logo" aria-label="Incorporate123 Home"
+          >Incorporate<span>123</span></a
+        >
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <ul class="desktop-nav-links" role="menubar">
+            <!-- Privacy -->
+            <li class="nav-item" role="none">
+              <button
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Privacy <span class="chevron" aria-hidden="true">&#9660;</span>
+              </button>
+              <div class="mega-menu" role="menu" aria-label="Privacy submenu">
+                <div class="mega-menu-grid">
+                  <div class="mega-menu-section">
+                    <h4>Services</h4>
+                    <a href="/privacy/anonymous-llc/" role="menuitem"
+                      >Anonymous LLC Formation</a
+                    >
+                    <a href="/privacy/nominee-services/" role="menuitem"
+                      >Nominee Services</a
+                    >
+                    <a
+                      href="/privacy/wyoming-private-incorporation/"
+                      role="menuitem"
+                      >Wyoming Private Incorporation</a
+                    >
+                    <a
+                      href="/privacy/nevada-private-incorporation/"
+                      role="menuitem"
+                      >Nevada Private Incorporation</a
+                    >
+                    <a href="/privacy/california-private-llc/" role="menuitem"
+                      >California Private LLC</a
+                    >
+                    <a href="/privacy/florida-private-llc/" role="menuitem"
+                      >Florida Private LLC</a
+                    >
+                    <a href="/privacy/offshore-privacy/" role="menuitem"
+                      >Offshore Privacy</a
+                    >
+                    <a href="/privacy/boi-reporting/" role="menuitem"
+                      >BOI Reporting</a
+                    >
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Compare</h4>
+                    <a
+                      href="/compare/wyoming-vs-nevada-privacy/"
+                      role="menuitem"
+                      >Wyoming vs Nevada Privacy</a
+                    >
+                    <a href="/compare/best-state-for-privacy/" role="menuitem"
+                      >Best State for Privacy</a
+                    >
+                  </div>
+                  <div class="mega-menu-quick-links">
+                    <a href="/packages/wyoming-gold/"
+                      >Gold Packages (Privacy)</a
+                    >
+                    <a href="/contact/">Schedule Consultation</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- Asset Protection -->
+            <li class="nav-item" role="none">
+              <button
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Asset Protection
+                <span class="chevron" aria-hidden="true">&#9660;</span>
+              </button>
+              <div
+                class="mega-menu"
+                role="menu"
+                aria-label="Asset Protection submenu"
+              >
+                <div class="mega-menu-grid">
+                  <div class="mega-menu-section">
+                    <h4>Services</h4>
+                    <a href="/asset-protection/nevada/" role="menuitem"
+                      >Nevada AP</a
+                    >
+                    <a href="/asset-protection/wyoming/" role="menuitem"
+                      >Wyoming AP</a
+                    >
+                    <a
+                      href="/asset-protection/charging-order-protection/"
+                      role="menuitem"
+                      >Charging Order Protection</a
+                    >
+                    <a
+                      href="/asset-protection/investment-holding-llc/"
+                      role="menuitem"
+                      >Investment Holding LLC</a
+                    >
+                    <a href="/asset-protection/real-estate/" role="menuitem"
+                      >Real Estate AP</a
+                    >
+                    <a
+                      href="/asset-protection/llc-vs-living-trust/"
+                      role="menuitem"
+                      >LLC vs Living Trust</a
+                    >
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Compare</h4>
+                    <a
+                      href="/compare/best-state-for-asset-protection/"
+                      role="menuitem"
+                      >Best State for AP</a
+                    >
+                    <a
+                      href="/compare/wyoming-vs-nevada-asset-protection/"
+                      role="menuitem"
+                      >WY vs NV for AP</a
+                    >
+                  </div>
+                  <div class="mega-menu-quick-links">
+                    <a href="/packages/wyoming-gold/">Gold Packages (AP)</a>
+                    <a href="/contact/">Schedule Consultation</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- Formation -->
+            <li class="nav-item" role="none">
+              <button
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Formation
+                <span class="chevron" aria-hidden="true">&#9660;</span>
+              </button>
+              <div class="mega-menu" role="menu" aria-label="Formation submenu">
+                <div class="mega-menu-grid">
+                  <div class="mega-menu-section">
+                    <h4>Services</h4>
+                    <a href="/formation/wyoming-llc/" role="menuitem"
+                      >Wyoming LLC</a
+                    >
+                    <a href="/formation/nevada-llc/" role="menuitem"
+                      >Nevada LLC</a
+                    >
+                    <a href="/formation/wyoming-corporation/" role="menuitem"
+                      >Wyoming Corporation</a
+                    >
+                    <a href="/formation/nevada-corporation/" role="menuitem"
+                      >Nevada Corporation</a
+                    >
+                    <a href="/formation/llc-vs-corporation/" role="menuitem"
+                      >LLC vs Corporation</a
+                    >
+                    <a href="/formation/shelf-companies/" role="menuitem"
+                      >Shelf Companies</a
+                    >
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Compare</h4>
+                    <a href="/compare/wyoming-vs-nevada-llc/" role="menuitem"
+                      >Wyoming vs Nevada LLC</a
+                    >
+                    <a href="/compare/best-state-for-llc/" role="menuitem"
+                      >Best State for LLC</a
+                    >
+                    <a href="/compare/llc-vs-corporation/" role="menuitem"
+                      >LLC vs Corporation</a
+                    >
+                  </div>
+                  <div class="mega-menu-quick-links">
+                    <a href="/compare-packages/">All Packages</a>
+                    <a href="/contact/">Schedule Consultation</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- Packages -->
+            <li class="nav-item" role="none">
+              <button
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Packages <span class="chevron" aria-hidden="true">&#9660;</span>
+              </button>
+              <div class="mega-menu" role="menu" aria-label="Packages submenu">
+                <div class="mega-menu-grid">
+                  <div class="mega-menu-section">
+                    <h4>Wyoming</h4>
+                    <a href="/packages/wyoming-gold/" role="menuitem"
+                      >Gold (Privacy)</a
+                    >
+                    <a href="/packages/wyoming-silver/" role="menuitem"
+                      >Silver (Formation)</a
+                    >
+                    <a href="/packages/wyoming-bronze/" role="menuitem"
+                      >Bronze</a
+                    >
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Nevada</h4>
+                    <a href="/packages/nevada-gold/" role="menuitem"
+                      >Gold (Privacy)</a
+                    >
+                    <a href="/packages/nevada-silver/" role="menuitem"
+                      >Silver (Formation)</a
+                    >
+                    <a href="/packages/nevada-bronze/" role="menuitem"
+                      >Bronze</a
+                    >
+                  </div>
+                  <div class="mega-menu-section">
+                    <h4>Shelf</h4>
+                    <a href="/formation/shelf-companies/" role="menuitem"
+                      >Shelf Companies</a
+                    >
+                  </div>
+                  <div class="mega-menu-quick-links">
+                    <a href="/compare-packages/">Compare All Packages &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- About -->
+            <li class="nav-item" role="none">
+              <button
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                About <span class="chevron" aria-hidden="true">&#9660;</span>
+              </button>
+              <div
+                class="mega-menu simple-dropdown"
+                role="menu"
+                aria-label="About submenu"
+              >
+                <div class="mega-menu-grid">
+                  <div class="mega-menu-section">
+                    <a href="/about/" role="menuitem">About Us</a>
+                    <a href="/contact/" role="menuitem">Contact</a>
+                    <a href="/testimonials/" role="menuitem">Testimonials</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="nav-right">
+            <a href="/login/" class="client-login-link">Client Login</a>
+            <a
+              href="/compare-packages/"
+              class="btn btn-primary"
+              style="height: 40px; font-size: var(--text-small)"
+              >Get Started &rarr;</a
+            >
+          </div>
+        </nav>
+
+        <!-- Hamburger -->
+        <button
+          class="hamburger"
+          id="hamburger-btn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav
+      class="mobile-nav"
+      id="mobile-nav"
+      aria-label="Mobile navigation"
+      role="navigation"
+    >
+      <div class="mobile-nav-top">
+        <a href="/compare-packages/" class="mn-packages"
+          >Packages &amp; Pricing</a
+        >
+        <a href="/login/" class="mn-login">Client Login</a>
+      </div>
+
+      <div class="mobile-accordion">
+        <button class="mobile-accordion-trigger" aria-expanded="false">
+          Privacy <span class="chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <a href="/privacy/anonymous-llc/">Anonymous LLC Formation</a>
+          <a href="/privacy/nominee-services/">Nominee Services</a>
+          <a href="/privacy/wyoming-private-incorporation/"
+            >Wyoming Private Incorporation</a
+          >
+          <a href="/privacy/nevada-private-incorporation/"
+            >Nevada Private Incorporation</a
+          >
+          <a href="/privacy/offshore-privacy/">Offshore Privacy</a>
+          <a href="/privacy/boi-reporting/">BOI Reporting</a>
+        </div>
+      </div>
+
+      <div class="mobile-accordion">
+        <button class="mobile-accordion-trigger" aria-expanded="false">
+          Asset Protection
+          <span class="chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <a href="/asset-protection/nevada/">Nevada AP</a>
+          <a href="/asset-protection/wyoming/">Wyoming AP</a>
+          <a href="/asset-protection/charging-order-protection/"
+            >Charging Order Protection</a
+          >
+          <a href="/asset-protection/investment-holding-llc/"
+            >Investment Holding LLC</a
+          >
+          <a href="/asset-protection/real-estate/">Real Estate AP</a>
+          <a href="/asset-protection/llc-vs-living-trust/"
+            >LLC vs Living Trust</a
+          >
+        </div>
+      </div>
+
+      <div class="mobile-accordion">
+        <button class="mobile-accordion-trigger" aria-expanded="false">
+          Formation <span class="chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <a href="/formation/wyoming-llc/">Wyoming LLC</a>
+          <a href="/formation/nevada-llc/">Nevada LLC</a>
+          <a href="/formation/wyoming-corporation/">Wyoming Corporation</a>
+          <a href="/formation/nevada-corporation/">Nevada Corporation</a>
+          <a href="/formation/llc-vs-corporation/">LLC vs Corporation</a>
+          <a href="/formation/shelf-companies/">Shelf Companies</a>
+        </div>
+      </div>
+
+      <div class="mobile-accordion">
+        <button class="mobile-accordion-trigger" aria-expanded="false">
+          About <span class="chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <a href="/about/">About Us</a>
+          <a href="/contact/">Contact</a>
+          <a href="/testimonials/">Testimonials</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============================================
+     MAIN CONTENT
+     ============================================ -->
+    <main id="main-content">
+      <!-- ============================================
+     2. HERO
+     ============================================ -->
+      <section
+        class="hero"
+        aria-label="Incorporate123 — Privacy, Asset Protection and Business Formation"
+      >
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-eyebrow">
+              Trusted Since 2000 &middot; Privacy Specialists
+            </p>
+            <h1 class="hero-headline">
+              Privacy, Asset Protection &amp; Business Formation —
+              <em>All-Inclusive, Nothing Hidden</em>
+            </h1>
+            <p class="hero-subheadline">
+              Year-round nominee services, offshore records, and expert
+              formation in Wyoming and Nevada. 25 years of specialized
+              experience protecting your privacy and assets.
+            </p>
+            <div class="hero-ctas">
+              <a href="/privacy/" class="btn btn-primary"
+                >Protect Your Privacy &rarr;</a
+              >
+              <a href="/compare-packages/" class="btn btn-secondary-light"
+                >View Packages &amp; Pricing &rarr;</a
+              >
+            </div>
+            <p class="hero-phone">
+              Have questions? Call <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </p>
+            <div class="hero-trust-strip" aria-label="Trust signals">
+              <span class="trust-item"
+                ><span class="icon" aria-hidden="true">&#9733;</span> 25
+                Years</span
+              >
+              <span class="trust-item"
+                ><span class="icon" aria-hidden="true">&#9679;</span> Real Reno
+                Office</span
+              >
+              <span class="trust-item"
+                ><span class="icon" aria-hidden="true">&#10003;</span> $1,275
+                All-Inclusive</span
+              >
+              <span class="trust-item"
+                ><span class="icon" aria-hidden="true">&#9854;</span> Money-Back
+                Guarantee</span
+              >
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="shield-composition">
+              <div class="shield-ring-2"></div>
+              <div class="shield-ring"></div>
+              <div class="shield-main"></div>
+              <div class="shield-lock">&#128274;</div>
+              <div class="shield-dot shield-dot-1"></div>
+              <div class="shield-dot shield-dot-2"></div>
+              <div class="shield-dot shield-dot-3"></div>
+              <div class="shield-dot shield-dot-4"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     3. PILLAR NAVIGATION CARDS
+     ============================================ -->
+      <section
+        class="pillars section-padding"
+        aria-labelledby="pillars-heading"
+      >
+        <div class="container">
+          <div class="section-header fade-up">
+            <p class="eyebrow">How Can We Help?</p>
+            <h2 id="pillars-heading" class="section-heading">
+              Choose Your Starting Point
+            </h2>
+            <p class="section-subtext">
+              Whether you need privacy protection, asset shielding, or business
+              formation — we specialize in all three.
+            </p>
+          </div>
+
+          <div class="pillar-grid stagger-grid">
+            <!-- Card 1: Privacy -->
+            <div class="pillar-card fade-up-item">
+              <div class="pillar-card-icon" aria-hidden="true">&#128274;</div>
+              <h3>Business Privacy</h3>
+              <p>
+                Anonymous LLCs, year-round nominee services, offshore records
+                custodian. Real privacy — not "nominee for a day."
+              </p>
+              <div class="pillar-services">
+                <span>Anonymous LLC Formation</span>
+                <span>Nominee Services</span>
+                <span>WY/NV Private Incorporation</span>
+                <span>Offshore Privacy</span>
+              </div>
+              <a href="/privacy/" class="btn-tertiary"
+                >Explore Privacy Solutions
+                <span class="arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+
+            <!-- Card 2: Asset Protection -->
+            <div class="pillar-card fade-up-item">
+              <div class="pillar-card-icon" aria-hidden="true">&#128737;</div>
+              <h3>Asset Protection</h3>
+              <p>
+                Charging order protection, holding structures, and multi-entity
+                strategies for individuals with $500K+ in assets.
+              </p>
+              <div class="pillar-services">
+                <span>Charging Order Protection</span>
+                <span>Wyoming/Nevada AP</span>
+                <span>Investment Holding LLC</span>
+                <span>Real Estate AP</span>
+              </div>
+              <a href="/asset-protection/" class="btn-tertiary"
+                >Protect Your Assets
+                <span class="arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+
+            <!-- Card 3: Formation -->
+            <div class="pillar-card fade-up-item">
+              <div class="pillar-card-icon" aria-hidden="true">&#127970;</div>
+              <h3>Business Incorporation</h3>
+              <p>
+                Expert LLC and Corporation formation in Wyoming and Nevada.
+                Everything included — registered agent, EIN, operating
+                agreement, state fees.
+              </p>
+              <div class="pillar-services">
+                <span>Wyoming LLC</span>
+                <span>Nevada LLC</span>
+                <span>Wyoming Corporation</span>
+                <span>Nevada Corporation</span>
+              </div>
+              <a href="/formation/" class="btn-tertiary"
+                >Start Your Company
+                <span class="arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+          </div>
+
+          <p class="pillars-compliance fade-up">
+            Already have a company?
+            <a href="/compliance/">Explore compliance services &rarr;</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================
+     4. PACKAGE QUICK LINKS
+     ============================================ -->
+      <section
+        class="packages section-padding"
+        aria-labelledby="packages-heading"
+      >
+        <div class="container">
+          <div class="section-header fade-up">
+            <p class="eyebrow">Ready to Get Started?</p>
+            <h2 id="packages-heading" class="section-heading">
+              All-Inclusive Packages — See Exactly What's Included
+            </h2>
+            <p class="section-subtext">
+              Transparent pricing with everything bundled. No hidden fees, no
+              surprise add-ons.
+            </p>
+          </div>
+
+          <div class="package-grid stagger-grid">
+            <!-- Wyoming Gold -->
+            <div class="package-card featured fade-up-item">
+              <span class="package-badge">Most Popular</span>
+              <h3>Wyoming Gold</h3>
+              <p
+                style="
+                  font-size: var(--text-small);
+                  color: var(--color-accent);
+                  font-weight: 600;
+                  margin-bottom: var(--space-sm);
+                "
+              >
+                Privacy Package
+              </p>
+              <div class="package-price">$1,275</div>
+              <div class="package-renewal">Renewal: $525/yr with nominees</div>
+              <ul class="package-includes">
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Year-Round Nominees
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Offshore Records Custodian
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Registered Agent
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span> EIN +
+                  Operating Agreement
+                </li>
+              </ul>
+              <a href="/packages/wyoming-gold/" class="btn btn-primary"
+                >View Wyoming Gold &rarr;</a
+              >
+            </div>
+
+            <!-- Nevada Gold -->
+            <div class="package-card fade-up-item">
+              <h3>Nevada Gold</h3>
+              <p
+                style="
+                  font-size: var(--text-small);
+                  color: var(--color-accent);
+                  font-weight: 600;
+                  margin-bottom: var(--space-sm);
+                "
+              >
+                Privacy Package
+              </p>
+              <div class="package-price">$1,800</div>
+              <div class="package-renewal">Renewal: $525/yr with nominees</div>
+              <ul class="package-includes">
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Year-Round Nominees
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Offshore Records Custodian
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Registered Agent
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span> EIN +
+                  Operating Agreement
+                </li>
+              </ul>
+              <a href="/packages/nevada-gold/" class="btn btn-secondary"
+                >View Nevada Gold &rarr;</a
+              >
+            </div>
+
+            <!-- Wyoming Silver -->
+            <div class="package-card fade-up-item">
+              <h3>Wyoming Silver</h3>
+              <p
+                style="
+                  font-size: var(--text-small);
+                  color: var(--color-text-secondary);
+                  font-weight: 600;
+                  margin-bottom: var(--space-sm);
+                "
+              >
+                Formation Package
+              </p>
+              <div class="package-price">$875</div>
+              <div class="package-renewal">Renewal: $325/yr</div>
+              <ul class="package-includes">
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Registered Agent
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span> EIN
+                  Filing
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Operating Agreement
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span> State
+                  Fees Included
+                </li>
+              </ul>
+              <a href="/packages/wyoming-silver/" class="btn btn-secondary"
+                >View Wyoming Silver &rarr;</a
+              >
+            </div>
+
+            <!-- Nevada Silver -->
+            <div class="package-card fade-up-item">
+              <h3>Nevada Silver</h3>
+              <p
+                style="
+                  font-size: var(--text-small);
+                  color: var(--color-text-secondary);
+                  font-weight: 600;
+                  margin-bottom: var(--space-sm);
+                "
+              >
+                Formation Package
+              </p>
+              <div class="package-price">$1,275</div>
+              <div class="package-renewal">Renewal: $325/yr</div>
+              <ul class="package-includes">
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Registered Agent
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span> EIN
+                  Filing
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span>
+                  Operating Agreement
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true">&#10003;</span> State
+                  Fees Included
+                </li>
+              </ul>
+              <a href="/packages/nevada-silver/" class="btn btn-secondary"
+                >View Nevada Silver &rarr;</a
+              >
+            </div>
+          </div>
+
+          <div class="packages-bottom fade-up">
+            <a href="/compare-packages/" class="btn btn-tertiary"
+              >Compare All Packages
+              <span class="arrow" aria-hidden="true">&rarr;</span></a
+            >
+            <p class="phone-safety">
+              Have questions about which package is right for you?
+              <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     5. DIFFERENTIATORS
+     ============================================ -->
+      <section
+        class="differentiators section-padding"
+        aria-labelledby="diff-heading"
+      >
+        <div class="container">
+          <div class="section-header fade-up">
+            <h2 id="diff-heading" class="section-heading">
+              Why Clients Choose Incorporate123
+            </h2>
+            <p class="section-subtext">
+              25 years of specialized privacy and formation expertise — not a
+              budget filing service, not a $5,000 consultation.
+            </p>
+          </div>
+
+          <div class="diff-grid stagger-grid">
+            <div class="diff-item fade-up-item">
+              <span class="icon" aria-hidden="true">&#128101;</span>
+              <h3>Year-Round Nominees Included</h3>
+              <p>
+                Not "nominee for a day" — our Gold packages include year-round
+                nominee officers and directors who serve as the public face of
+                your company, 365 days a year.
+              </p>
+            </div>
+            <div class="diff-item fade-up-item">
+              <span class="icon" aria-hidden="true">&#127758;</span>
+              <h3>Offshore Records Since 2012</h3>
+              <p>
+                Corporate records stored offshore by a professional records
+                custodian. An additional layer of privacy protection beyond
+                domestic filing.
+              </p>
+            </div>
+            <div class="diff-item fade-up-item">
+              <span class="icon" aria-hidden="true">&#128176;</span>
+              <h3>All-Inclusive Pricing</h3>
+              <p>
+                Formation, registered agent, EIN, operating agreement, and state
+                fees — all included. One price, no hidden fees, no surprise
+                add-ons at checkout.
+              </p>
+            </div>
+            <div class="diff-item fade-up-item">
+              <span class="icon" aria-hidden="true">&#127970;</span>
+              <h3>Real Reno Office</h3>
+              <p>
+                Not a P.O. box operation. We maintain a physical office in Reno,
+                Nevada with a dedicated team. Visit us in person or call anytime
+                during business hours.
+              </p>
+            </div>
+            <div class="diff-item fade-up-item">
+              <span class="icon" aria-hidden="true">&#128197;</span>
+              <h3>25 Years of Specialization</h3>
+              <p>
+                Focused exclusively on Wyoming and Nevada business formation,
+                privacy, and asset protection since 2000. We do not offer
+                general legal advice or tax preparation.
+              </p>
+            </div>
+            <div class="diff-item fade-up-item">
+              <span class="icon" aria-hidden="true">&#128222;</span>
+              <h3>Talk to a Real Person</h3>
+              <p>
+                Have questions? Call us directly at (775) xxx-xxxx. No chatbots,
+                no ticket systems, no waiting — speak with someone who knows the
+                details of Wyoming and Nevada formation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     6. TESTIMONIALS
+     ============================================ -->
+      <section
+        class="testimonials section-padding"
+        aria-labelledby="testimonials-heading"
+      >
+        <div class="container">
+          <div class="section-header fade-up">
+            <p class="eyebrow eyebrow-light">Social Proof</p>
+            <h2
+              id="testimonials-heading"
+              class="section-heading section-heading-light"
+            >
+              Trusted by Business Owners Nationwide
+            </h2>
+          </div>
+
+          <div
+            class="testimonial-carousel fade-up"
+            role="region"
+            aria-label="Client testimonials"
+            aria-roledescription="carousel"
+          >
+            <div class="testimonial-track" id="testimonial-track">
+              <!-- Testimonial 1 -->
+              <div
+                class="testimonial-card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Testimonial 1 of 3"
+              >
+                <div class="testimonial-card-inner">
+                  <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                  </div>
+                  <blockquote class="testimonial-quote">
+                    "The year-round nominee service gives me real peace of mind.
+                    Other companies offered nominees for filing day only —
+                    Incorporate123 provides genuine, ongoing privacy
+                    protection."
+                  </blockquote>
+                  <p class="testimonial-author">
+                    <strong>Michael R.</strong> &middot; California &middot;
+                    Client since 2019
+                  </p>
+                </div>
+              </div>
+              <!-- Testimonial 2 -->
+              <div
+                class="testimonial-card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Testimonial 2 of 3"
+              >
+                <div class="testimonial-card-inner">
+                  <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                  </div>
+                  <blockquote class="testimonial-quote">
+                    "Straightforward pricing with everything included. I
+                    compared five formation services and Incorporate123 was the
+                    only one where the price on the website was the price I
+                    actually paid."
+                  </blockquote>
+                  <p class="testimonial-author">
+                    <strong>Sarah T.</strong> &middot; Texas &middot; Client
+                    since 2021
+                  </p>
+                </div>
+              </div>
+              <!-- Testimonial 3 -->
+              <div
+                class="testimonial-card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Testimonial 3 of 3"
+              >
+                <div class="testimonial-card-inner">
+                  <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                  </div>
+                  <blockquote class="testimonial-quote">
+                    "I called with questions about asset protection structures
+                    and spoke with a knowledgeable person immediately. No sales
+                    pitch, just clear answers. That told me everything I needed
+                    to know."
+                  </blockquote>
+                  <p class="testimonial-author">
+                    <strong>David K.</strong> &middot; Florida &middot; Client
+                    since 2022
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="carousel-dots"
+              role="tablist"
+              aria-label="Testimonial navigation"
+            >
+              <button
+                class="carousel-dot active"
+                role="tab"
+                aria-selected="true"
+                aria-label="Show testimonial 1"
+                data-slide="0"
+              ></button>
+              <button
+                class="carousel-dot"
+                role="tab"
+                aria-selected="false"
+                aria-label="Show testimonial 2"
+                data-slide="1"
+              ></button>
+              <button
+                class="carousel-dot"
+                role="tab"
+                aria-selected="false"
+                aria-label="Show testimonial 3"
+                data-slide="2"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     7. TRUST SIGNALS BAR
+     ============================================ -->
+      <section class="trust-bar" aria-label="Trust signals">
+        <div class="container">
+          <div class="trust-bar-grid stagger-grid">
+            <div class="trust-signal fade-up-item">
+              <span class="icon" aria-hidden="true">&#128197;</span>
+              <span>Trusted Since 2000</span>
+            </div>
+            <div class="trust-signal fade-up-item">
+              <span class="icon" aria-hidden="true">&#127970;</span>
+              <span>Real Reno Office</span>
+            </div>
+            <div class="trust-signal fade-up-item">
+              <span class="icon" aria-hidden="true">&#9854;</span>
+              <span>30-Day Money-Back Guarantee</span>
+            </div>
+            <div class="trust-signal fade-up-item">
+              <span class="icon" aria-hidden="true">&#128222;</span>
+              <span>(775) xxx-xxxx &middot; Call Anytime</span>
+            </div>
+            <div class="trust-signal fade-up-item">
+              <span class="icon" aria-hidden="true">&#8383;</span>
+              <span>Crypto Payments for Privacy</span>
+            </div>
+            <div class="trust-signal fade-up-item">
+              <span class="icon" aria-hidden="true">&#128274;</span>
+              <span>Secure Checkout</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     8. HOW IT WORKS
+     ============================================ -->
+      <section
+        class="how-it-works section-padding"
+        aria-labelledby="hiw-heading"
+      >
+        <div class="container">
+          <div class="section-header fade-up">
+            <p class="eyebrow">Simple Process</p>
+            <h2 id="hiw-heading" class="section-heading">How It Works</h2>
+            <p class="section-subtext">
+              From research to fully formed and protected — we handle the
+              details.
+            </p>
+          </div>
+
+          <div class="steps-grid stagger-grid">
+            <div class="step fade-up-item">
+              <div class="step-number">1</div>
+              <h3>Choose Your Protection Level</h3>
+              <p>
+                Explore our Privacy, Asset Protection, or Formation guides to
+                understand which services match your situation and goals.
+              </p>
+            </div>
+            <div class="step fade-up-item">
+              <div class="step-number">2</div>
+              <h3>Select Your Package</h3>
+              <p>
+                Pick the package that fits your needs. Gold for full privacy
+                with nominees, Silver for comprehensive formation, or compare
+                all options.
+              </p>
+            </div>
+            <div class="step fade-up-item">
+              <div class="step-number">3</div>
+              <h3>We Handle the Filing</h3>
+              <p>
+                Complete a short form and we take care of everything — state
+                filing, registered agent setup, EIN, operating agreement, and
+                all paperwork.
+              </p>
+            </div>
+            <div class="step fade-up-item">
+              <div class="step-number">4</div>
+              <h3>You're Protected</h3>
+              <p>
+                Receive your formation documents, nominee confirmations, and
+                ongoing registered agent service. Your privacy and assets are
+                secured.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     9. COMPLIANCE CALLOUT
+     ============================================ -->
+      <section
+        class="compliance section-padding"
+        aria-labelledby="compliance-heading"
+      >
+        <div class="container">
+          <div class="compliance-inner fade-up">
+            <h2 id="compliance-heading">
+              Already Have an Entity? We Keep You Compliant.
+            </h2>
+            <p>
+              Registered agent renewals, annual reports, corporate minutes, and
+              BOI reporting. Whether you formed with us or somewhere else, we
+              handle your ongoing compliance so you never miss a deadline.
+            </p>
+            <div class="compliance-ctas">
+              <a href="/compliance/" class="btn btn-primary"
+                >Explore Compliance Services &rarr;</a
+              >
+              <a href="/login/" class="btn btn-secondary"
+                >Client Login &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================
+     10. FINAL CTA
+     ============================================ -->
+      <section
+        class="final-cta section-padding"
+        aria-labelledby="final-cta-heading"
+      >
+        <div class="container">
+          <div class="fade-up">
+            <h2 id="final-cta-heading">
+              Ready to Protect Your Privacy and Assets?
+            </h2>
+            <p>
+              Start with a package, or schedule a free consultation to discuss
+              your specific situation with our team.
+            </p>
+            <div class="final-cta-buttons">
+              <a href="/compare-packages/" class="btn btn-primary"
+                >View Packages &amp; Pricing &rarr;</a
+              >
+              <a href="/contact/" class="btn btn-secondary-light"
+                >Schedule a Consultation &rarr;</a
+              >
+            </div>
+            <p class="phone-line">
+              Prefer to talk? <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================
+     11. FOOTER
+     ============================================ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Privacy</h4>
+            <a href="/privacy/anonymous-llc/">Anonymous LLC Formation</a>
+            <a href="/privacy/nominee-services/">Nominee Services</a>
+            <a href="/privacy/wyoming-private-incorporation/"
+              >Wyoming Private Incorporation</a
+            >
+            <a href="/privacy/nevada-private-incorporation/"
+              >Nevada Private Incorporation</a
+            >
+            <a href="/privacy/offshore-privacy/">Offshore Privacy</a>
+            <a href="/privacy/boi-reporting/">BOI Reporting</a>
+          </div>
+          <div class="footer-col">
+            <h4>Asset Protection</h4>
+            <a href="/asset-protection/nevada/">Nevada Asset Protection</a>
+            <a href="/asset-protection/wyoming/">Wyoming Asset Protection</a>
+            <a href="/asset-protection/charging-order-protection/"
+              >Charging Order Protection</a
+            >
+            <a href="/asset-protection/investment-holding-llc/"
+              >Investment Holding LLC</a
+            >
+            <a href="/asset-protection/real-estate/">Real Estate AP</a>
+            <a href="/asset-protection/llc-vs-living-trust/"
+              >LLC vs Living Trust</a
+            >
+          </div>
+          <div class="footer-col">
+            <h4>Formation</h4>
+            <a href="/formation/wyoming-llc/">Wyoming LLC</a>
+            <a href="/formation/nevada-llc/">Nevada LLC</a>
+            <a href="/formation/wyoming-corporation/">Wyoming Corporation</a>
+            <a href="/formation/nevada-corporation/">Nevada Corporation</a>
+            <a href="/formation/llc-vs-corporation/">LLC vs Corporation</a>
+            <a href="/formation/shelf-companies/">Shelf Companies</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact</a>
+            <a href="/testimonials/">Testimonials</a>
+            <a href="/compare-packages/">All Packages</a>
+            <a href="/compliance/">Compliance Services</a>
+            <a href="/login/">Client Login</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <span
+              >&copy; 2000&ndash;2026 Incorporate123. All rights reserved.</span
+            >
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/disclaimer/">Disclaimer</a>
+          </div>
+          <div class="footer-contact-info">
+            <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            <span>Reno, Nevada</span>
+          </div>
+          <div class="footer-payments" aria-label="Accepted payment methods">
+            <span class="payment-icon">VISA</span>
+            <span class="payment-icon">MC</span>
+            <span class="payment-icon">AMEX</span>
+            <span class="payment-icon">BTC</span>
+            <span class="payment-icon">ETH</span>
+            <span class="payment-icon">XRP</span>
+            <span class="payment-icon">LTC</span>
+            <span class="payment-icon">XMR</span>
+          </div>
+          <p class="footer-crypto-note">
+            Cryptocurrency payments accepted for enhanced transaction privacy.
+            Contact us for details.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA Bar -->
+    <div
+      class="mobile-cta-bar"
+      id="mobile-cta-bar"
+      role="complementary"
+      aria-label="Quick actions"
+    >
+      <div class="mobile-cta-bar-inner">
+        <a href="/compare-packages/" class="btn-cta-main">Get Started &rarr;</a>
+        <a href="tel:+17750000000" class="btn-cta-phone" aria-label="Call us"
+          >&#128222;</a
+        >
+      </div>
+    </div>
+
+    <!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+    <script>
+      (function () {
+        "use strict";
+
+        /* --- Header shrink on scroll --- */
+        var header = document.getElementById("primary-header");
+        var heroSection = document.querySelector(".hero");
+        var mobileCTA = document.getElementById("mobile-cta-bar");
+        var lastScrollY = 0;
+
+        function onScroll() {
+          var scrollY = window.scrollY || window.pageYOffset;
+
+          /* Header shrink */
+          if (scrollY > 60) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+
+          /* Mobile CTA bar — show after scrolling past hero */
+          if (heroSection && mobileCTA) {
+            var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            if (scrollY > heroBottom) {
+              mobileCTA.classList.add("visible");
+            } else {
+              mobileCTA.classList.remove("visible");
+            }
+          }
+
+          lastScrollY = scrollY;
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        /* --- Mobile hamburger menu --- */
+        var hamburger = document.getElementById("hamburger-btn");
+        var mobileNav = document.getElementById("mobile-nav");
+
+        if (hamburger && mobileNav) {
+          hamburger.addEventListener("click", function () {
+            var isOpen = mobileNav.classList.toggle("open");
+            hamburger.classList.toggle("active");
+            hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            hamburger.setAttribute(
+              "aria-label",
+              isOpen ? "Close menu" : "Open menu",
+            );
+            document.body.style.overflow = isOpen ? "hidden" : "";
+          });
+        }
+
+        /* --- Mobile accordion menus --- */
+        var accordionTriggers = document.querySelectorAll(
+          ".mobile-accordion-trigger",
+        );
+        accordionTriggers.forEach(function (trigger) {
+          trigger.addEventListener("click", function () {
+            var content = this.nextElementSibling;
+            var isActive = this.classList.toggle("active");
+            this.setAttribute("aria-expanded", isActive ? "true" : "false");
+
+            if (isActive) {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+              content.style.maxHeight = "0";
+            }
+
+            /* Close other accordions */
+            accordionTriggers.forEach(function (other) {
+              if (other !== trigger && other.classList.contains("active")) {
+                other.classList.remove("active");
+                other.setAttribute("aria-expanded", "false");
+                other.nextElementSibling.style.maxHeight = "0";
+              }
+            });
+          });
+        });
+
+        /* --- Scroll reveal with IntersectionObserver --- */
+        var reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (!reducedMotion) {
+          var fadeObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  fadeObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1 },
+          );
+
+          document
+            .querySelectorAll(".fade-up, .stagger-grid")
+            .forEach(function (el) {
+              fadeObserver.observe(el);
+            });
+        } else {
+          /* Show everything immediately when reduced motion is preferred */
+          document
+            .querySelectorAll(".fade-up, .stagger-grid")
+            .forEach(function (el) {
+              el.classList.add("visible");
+            });
+        }
+
+        /* --- Testimonial carousel --- */
+        var track = document.getElementById("testimonial-track");
+        var dots = document.querySelectorAll(".carousel-dot");
+        var totalSlides = dots.length;
+        var currentSlide = 0;
+        var autoAdvanceInterval;
+        var carouselContainer = document.querySelector(".testimonial-carousel");
+
+        function goToSlide(index) {
+          currentSlide = index;
+          if (track) {
+            track.style.transform = "translateX(-" + currentSlide * 100 + "%)";
+          }
+          dots.forEach(function (dot, i) {
+            dot.classList.toggle("active", i === currentSlide);
+            dot.setAttribute(
+              "aria-selected",
+              i === currentSlide ? "true" : "false",
+            );
+          });
+        }
+
+        function nextSlide() {
+          goToSlide((currentSlide + 1) % totalSlides);
+        }
+
+        function startAutoAdvance() {
+          autoAdvanceInterval = setInterval(nextSlide, 6000);
+        }
+
+        function stopAutoAdvance() {
+          clearInterval(autoAdvanceInterval);
+        }
+
+        dots.forEach(function (dot) {
+          dot.addEventListener("click", function () {
+            goToSlide(parseInt(this.getAttribute("data-slide"), 10));
+            stopAutoAdvance();
+            startAutoAdvance();
+          });
+        });
+
+        if (carouselContainer) {
+          carouselContainer.addEventListener("mouseenter", stopAutoAdvance);
+          carouselContainer.addEventListener("mouseleave", startAutoAdvance);
+        }
+
+        /* Touch/swipe support */
+        var touchStartX = 0;
+        var touchEndX = 0;
+
+        if (carouselContainer) {
+          carouselContainer.addEventListener(
+            "touchstart",
+            function (e) {
+              touchStartX = e.changedTouches[0].screenX;
+              stopAutoAdvance();
+            },
+            { passive: true },
+          );
+
+          carouselContainer.addEventListener(
+            "touchend",
+            function (e) {
+              touchEndX = e.changedTouches[0].screenX;
+              var diff = touchStartX - touchEndX;
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                  goToSlide((currentSlide + 1) % totalSlides);
+                } else {
+                  goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+                }
+              }
+              startAutoAdvance();
+            },
+            { passive: true },
+          );
+        }
+
+        startAutoAdvance();
+
+        /* --- Desktop mega menu keyboard accessibility --- */
+        var navItems = document.querySelectorAll(
+          ".desktop-nav-links .nav-item",
+        );
+        navItems.forEach(function (item) {
+          var btn = item.querySelector("button");
+          var menu = item.querySelector(".mega-menu");
+
+          if (btn && menu) {
+            btn.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                var expanded = btn.getAttribute("aria-expanded") === "true";
+                btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+              }
+              if (e.key === "Escape") {
+                btn.setAttribute("aria-expanded", "false");
+                btn.focus();
+              }
+            });
+
+            menu.addEventListener("keydown", function (e) {
+              if (e.key === "Escape") {
+                btn.setAttribute("aria-expanded", "false");
+                btn.focus();
+              }
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

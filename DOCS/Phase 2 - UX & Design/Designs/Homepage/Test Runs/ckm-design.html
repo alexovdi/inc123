@@ -1,0 +1,2945 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Incorporate123 — Privacy, Asset Protection & Business Formation
+      Specialists
+    </title>
+    <meta
+      name="description"
+      content="Privacy, asset protection, and business formation specialists since 2000. All-inclusive Wyoming and Nevada LLC formation with year-round nominee services, offshore records, and expert guidance. Packages from $875."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Incorporate123",
+        "url": "https://incorporate123.com",
+        "telephone": "(775) 000-0000",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Reno",
+          "addressRegion": "NV"
+        },
+        "foundingDate": "2000",
+        "description": "Privacy, Asset Protection & Business Formation Specialists"
+      }
+    </script>
+
+    <style>
+      /* ============================================================
+   DESIGN TOKENS
+   A systematic token layer: primitives -> semantic -> component
+   ============================================================ */
+
+      :root {
+        /* --- Primitive Color Palette --- */
+        /* Navy scale — authority, trust, legal gravitas */
+        --color-navy-950: #0a0f1e;
+        --color-navy-900: #0f1629;
+        --color-navy-800: #162040;
+        --color-navy-700: #1e2d5a;
+        --color-navy-600: #2a3f7a;
+        --color-navy-500: #3a5296;
+        --color-navy-400: #5a72b0;
+        --color-navy-300: #8093c8;
+        --color-navy-200: #b0bde0;
+        --color-navy-100: #d8dff0;
+        --color-navy-50: #eef1f8;
+
+        /* Gold scale — premium, trust, established */
+        --color-gold-900: #5c3d00;
+        --color-gold-800: #7a5200;
+        --color-gold-700: #9a6a00;
+        --color-gold-600: #b8820a;
+        --color-gold-500: #d49b1a;
+        --color-gold-400: #e8b444;
+        --color-gold-300: #f0cc78;
+        --color-gold-200: #f5dda4;
+        --color-gold-100: #faefd2;
+        --color-gold-50: #fdf8ec;
+
+        /* Sage scale — calm, protection, growth */
+        --color-sage-900: #1a2e1a;
+        --color-sage-800: #264026;
+        --color-sage-700: #355a35;
+        --color-sage-600: #467a46;
+        --color-sage-500: #5a965a;
+        --color-sage-400: #78b078;
+        --color-sage-300: #9ac89a;
+        --color-sage-200: #c0e0c0;
+        --color-sage-100: #e0f0e0;
+        --color-sage-50: #f2f9f2;
+
+        /* Neutral scale */
+        --color-neutral-950: #111114;
+        --color-neutral-900: #1a1a1f;
+        --color-neutral-800: #2a2a32;
+        --color-neutral-700: #3d3d48;
+        --color-neutral-600: #5a5a68;
+        --color-neutral-500: #787888;
+        --color-neutral-400: #9898a5;
+        --color-neutral-300: #b8b8c2;
+        --color-neutral-200: #d5d5dc;
+        --color-neutral-100: #ebebef;
+        --color-neutral-50: #f7f7f9;
+
+        --color-white: #ffffff;
+        --color-black: #000000;
+
+        /* --- Semantic Color Tokens --- */
+        --sem-bg-primary: var(--color-white);
+        --sem-bg-secondary: var(--color-navy-50);
+        --sem-bg-tertiary: var(--color-neutral-50);
+        --sem-bg-dark: var(--color-navy-900);
+        --sem-bg-dark-subtle: var(--color-navy-800);
+        --sem-bg-accent: var(--color-gold-50);
+        --sem-bg-success: var(--color-sage-50);
+
+        --sem-text-primary: var(--color-navy-950);
+        --sem-text-secondary: var(--color-neutral-600);
+        --sem-text-tertiary: var(--color-neutral-500);
+        --sem-text-on-dark: var(--color-white);
+        --sem-text-on-dark-muted: var(--color-navy-200);
+        --sem-text-accent: var(--color-gold-700);
+        --sem-text-link: var(--color-navy-600);
+
+        --sem-border-default: var(--color-neutral-200);
+        --sem-border-subtle: var(--color-neutral-100);
+        --sem-border-accent: var(--color-gold-300);
+        --sem-border-dark: var(--color-navy-700);
+
+        --sem-action-primary-bg: var(--color-navy-800);
+        --sem-action-primary-text: var(--color-white);
+        --sem-action-primary-hover: var(--color-navy-700);
+        --sem-action-secondary-bg: transparent;
+        --sem-action-secondary-text: var(--color-navy-800);
+        --sem-action-secondary-border: var(--color-navy-300);
+        --sem-action-secondary-hover: var(--color-navy-50);
+        --sem-action-gold-bg: var(--color-gold-600);
+        --sem-action-gold-text: var(--color-white);
+        --sem-action-gold-hover: var(--color-gold-700);
+
+        /* --- Typography Scale (Major Third — 1.25) --- */
+        --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+        --font-body:
+          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+        --text-xs: 0.75rem; /* 12px */
+        --text-sm: 0.875rem; /* 14px */
+        --text-base: 1rem; /* 16px */
+        --text-md: 1.125rem; /* 18px */
+        --text-lg: 1.25rem; /* 20px */
+        --text-xl: 1.5rem; /* 24px */
+        --text-2xl: 1.875rem; /* 30px */
+        --text-3xl: 2.25rem; /* 36px */
+        --text-4xl: 2.8125rem; /* 45px */
+        --text-5xl: 3.5rem; /* 56px */
+
+        --leading-tight: 1.2;
+        --leading-snug: 1.3;
+        --leading-normal: 1.5;
+        --leading-relaxed: 1.65;
+
+        --tracking-tight: -0.02em;
+        --tracking-normal: 0;
+        --tracking-wide: 0.04em;
+        --tracking-wider: 0.08em;
+
+        --weight-regular: 400;
+        --weight-medium: 500;
+        --weight-semi: 600;
+        --weight-bold: 700;
+
+        /* --- Spacing Scale (4px base) --- */
+        --space-0: 0;
+        --space-1: 0.25rem; /* 4px */
+        --space-2: 0.5rem; /* 8px */
+        --space-3: 0.75rem; /* 12px */
+        --space-4: 1rem; /* 16px */
+        --space-5: 1.25rem; /* 20px */
+        --space-6: 1.5rem; /* 24px */
+        --space-8: 2rem; /* 32px */
+        --space-10: 2.5rem; /* 40px */
+        --space-12: 3rem; /* 48px */
+        --space-16: 4rem; /* 64px */
+        --space-20: 5rem; /* 80px */
+        --space-24: 6rem; /* 96px */
+        --space-32: 8rem; /* 128px */
+
+        /* --- Border Radius --- */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        /* --- Shadows --- */
+        --shadow-xs: 0 1px 2px rgba(10, 15, 30, 0.05);
+        --shadow-sm:
+          0 1px 3px rgba(10, 15, 30, 0.08), 0 1px 2px rgba(10, 15, 30, 0.04);
+        --shadow-md:
+          0 4px 6px rgba(10, 15, 30, 0.07), 0 2px 4px rgba(10, 15, 30, 0.04);
+        --shadow-lg:
+          0 10px 20px rgba(10, 15, 30, 0.08), 0 4px 8px rgba(10, 15, 30, 0.04);
+        --shadow-xl:
+          0 20px 40px rgba(10, 15, 30, 0.1), 0 8px 16px rgba(10, 15, 30, 0.05);
+        --shadow-gold:
+          0 10px 30px rgba(212, 155, 26, 0.15),
+          0 4px 12px rgba(212, 155, 26, 0.08);
+
+        /* --- Transitions --- */
+        --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        --duration-fast: 150ms;
+        --duration-normal: 250ms;
+        --duration-slow: 400ms;
+
+        /* --- Layout --- */
+        --container-max: 1200px;
+        --container-narrow: 800px;
+        --container-wide: 1400px;
+      }
+
+      /* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: var(--leading-normal);
+        color: var(--sem-text-primary);
+        background: var(--sem-bg-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: var(--sem-text-link);
+        text-decoration: none;
+        transition: color var(--duration-fast) var(--ease-out);
+      }
+      a:hover {
+        color: var(--color-navy-800);
+      }
+
+      /* Focus indicators — accessibility */
+      :focus-visible {
+        outline: 2px solid var(--color-navy-500);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+      }
+
+      /* ============================================================
+   SKIP NAVIGATION
+   ============================================================ */
+
+      .skip-nav {
+        position: absolute;
+        top: -100%;
+        left: var(--space-4);
+        padding: var(--space-3) var(--space-6);
+        background: var(--sem-action-primary-bg);
+        color: var(--sem-action-primary-text);
+        font-weight: var(--weight-semi);
+        font-size: var(--text-sm);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        z-index: 9999;
+        transition: top var(--duration-normal) var(--ease-out);
+      }
+      .skip-nav:focus {
+        top: 0;
+        outline-offset: 0;
+      }
+
+      /* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+      .container {
+        width: 100%;
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 var(--space-6);
+      }
+
+      .container--narrow {
+        max-width: var(--container-narrow);
+      }
+      .container--wide {
+        max-width: var(--container-wide);
+      }
+
+      .section-padding {
+        padding-top: var(--space-20);
+        padding-bottom: var(--space-20);
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semi);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--sem-text-accent);
+        margin-bottom: var(--space-4);
+      }
+
+      .eyebrow--light {
+        color: var(--color-gold-400);
+      }
+
+      .section-heading {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-weight: var(--weight-700);
+        line-height: var(--leading-tight);
+        letter-spacing: var(--tracking-tight);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-4);
+      }
+
+      .section-heading--light {
+        color: var(--sem-text-on-dark);
+      }
+
+      .section-subtext {
+        font-size: var(--text-md);
+        line-height: var(--leading-relaxed);
+        color: var(--sem-text-secondary);
+        max-width: 600px;
+      }
+
+      .section-subtext--light {
+        color: var(--sem-text-on-dark-muted);
+      }
+
+      .text-center {
+        text-align: center;
+      }
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ============================================================
+   COMPONENT: BUTTONS
+   ============================================================ */
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-3) var(--space-6);
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semi);
+        line-height: 1;
+        letter-spacing: var(--tracking-wide);
+        border-radius: var(--radius-md);
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: all var(--duration-normal) var(--ease-out);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .btn--primary {
+        background: var(--sem-action-primary-bg);
+        color: var(--sem-action-primary-text);
+        border-color: var(--sem-action-primary-bg);
+      }
+      .btn--primary:hover {
+        background: var(--sem-action-primary-hover);
+        border-color: var(--sem-action-primary-hover);
+        color: var(--sem-action-primary-text);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn--secondary {
+        background: var(--sem-action-secondary-bg);
+        color: var(--sem-action-secondary-text);
+        border-color: var(--sem-action-secondary-border);
+      }
+      .btn--secondary:hover {
+        background: var(--sem-action-secondary-hover);
+        color: var(--sem-action-secondary-text);
+      }
+
+      .btn--gold {
+        background: var(--sem-action-gold-bg);
+        color: var(--sem-action-gold-text);
+        border-color: var(--sem-action-gold-bg);
+      }
+      .btn--gold:hover {
+        background: var(--sem-action-gold-hover);
+        border-color: var(--sem-action-gold-hover);
+        color: var(--sem-action-gold-text);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-gold);
+      }
+
+      .btn--ghost {
+        background: transparent;
+        color: var(--sem-text-on-dark);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .btn--ghost:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--sem-text-on-dark);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .btn--lg {
+        padding: var(--space-4) var(--space-8);
+        font-size: var(--text-base);
+        border-radius: var(--radius-lg);
+      }
+
+      /* ============================================================
+   SECTION 2: GLOBAL HEADER
+   ============================================================ */
+
+      /* -- Utility Bar -- */
+      .utility-bar {
+        background: var(--sem-bg-dark);
+        border-bottom: 1px solid var(--sem-border-dark);
+        padding: var(--space-2) 0;
+      }
+
+      .utility-bar__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: var(--text-xs);
+        color: var(--sem-text-on-dark-muted);
+      }
+
+      .utility-bar__phone a {
+        color: var(--color-gold-400);
+        font-weight: var(--weight-medium);
+      }
+      .utility-bar__phone a:hover {
+        color: var(--color-gold-300);
+      }
+
+      .utility-bar__tagline {
+        letter-spacing: var(--tracking-wide);
+      }
+
+      .utility-bar__login a {
+        color: var(--sem-text-on-dark-muted);
+        font-weight: var(--weight-medium);
+        transition: color var(--duration-fast) var(--ease-out);
+      }
+      .utility-bar__login a:hover {
+        color: var(--sem-text-on-dark);
+      }
+
+      /* -- Primary Header -- */
+      .primary-header {
+        background: var(--sem-bg-primary);
+        border-bottom: 1px solid var(--sem-border-subtle);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow-xs);
+      }
+
+      .primary-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .logo {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: var(--weight-bold);
+        color: var(--color-navy-900);
+        text-decoration: none;
+        letter-spacing: var(--tracking-tight);
+      }
+      .logo:hover {
+        color: var(--color-navy-800);
+      }
+      .logo span {
+        color: var(--color-gold-600);
+      }
+
+      .primary-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+        list-style: none;
+      }
+
+      .primary-nav a {
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+        color: var(--sem-text-secondary);
+        transition: color var(--duration-fast) var(--ease-out);
+        padding: var(--space-2) 0;
+        position: relative;
+      }
+      .primary-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-gold-500);
+        transition: width var(--duration-normal) var(--ease-out);
+      }
+      .primary-nav a:hover {
+        color: var(--sem-text-primary);
+      }
+      .primary-nav a:hover::after {
+        width: 100%;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+      }
+
+      .header-login {
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+        color: var(--sem-text-secondary);
+      }
+      .header-login:hover {
+        color: var(--sem-text-primary);
+      }
+
+      .mobile-phone-icon {
+        display: none;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-full);
+        background: var(--color-sage-50);
+        color: var(--color-sage-700);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-2);
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--sem-text-primary);
+        border-radius: 1px;
+        transition: all var(--duration-normal) var(--ease-out);
+      }
+
+      /* Mobile nav overlay */
+      .mobile-nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 15, 30, 0.5);
+        z-index: 200;
+        opacity: 0;
+        transition: opacity var(--duration-normal) var(--ease-out);
+      }
+      .mobile-nav-overlay.active {
+        opacity: 1;
+      }
+
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 320px;
+        max-width: 85vw;
+        background: var(--sem-bg-primary);
+        z-index: 201;
+        transform: translateX(100%);
+        transition: transform var(--duration-slow) var(--ease-out);
+        overflow-y: auto;
+        padding: var(--space-6);
+      }
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .mobile-nav__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: var(--color-neutral-100);
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        margin-left: auto;
+        margin-bottom: var(--space-6);
+        font-size: var(--text-lg);
+        color: var(--sem-text-secondary);
+      }
+
+      .mobile-nav__priority {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-6);
+        padding-bottom: var(--space-6);
+        border-bottom: 1px solid var(--sem-border-subtle);
+      }
+
+      .mobile-nav__links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+      .mobile-nav__links a {
+        display: block;
+        padding: var(--space-3) var(--space-4);
+        font-size: var(--text-base);
+        font-weight: var(--weight-medium);
+        color: var(--sem-text-primary);
+        border-radius: var(--radius-md);
+        transition: background var(--duration-fast) var(--ease-out);
+      }
+      .mobile-nav__links a:hover {
+        background: var(--sem-bg-secondary);
+        color: var(--sem-text-primary);
+      }
+
+      /* Sticky mobile bottom CTA */
+      .mobile-bottom-cta {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        background: var(--sem-bg-primary);
+        border-top: 1px solid var(--sem-border-default);
+        padding: var(--space-3) var(--space-4);
+        box-shadow: 0 -4px 12px rgba(10, 15, 30, 0.08);
+      }
+      .mobile-bottom-cta__inner {
+        display: flex;
+        gap: var(--space-3);
+      }
+      .mobile-bottom-cta__primary {
+        flex: 7;
+      }
+      .mobile-bottom-cta__phone {
+        flex: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-sage-50);
+        color: var(--color-sage-700);
+        border-radius: var(--radius-md);
+        font-size: var(--text-lg);
+        text-decoration: none;
+      }
+
+      /* ============================================================
+   SECTION 3: HERO
+   ============================================================ */
+
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--color-navy-900) 0%,
+          var(--color-navy-800) 60%,
+          var(--color-navy-700) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(212, 155, 26, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(90, 150, 90, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-16);
+        align-items: center;
+        padding-top: var(--space-20);
+        padding-bottom: var(--space-20);
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semi);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--color-gold-400);
+        margin-bottom: var(--space-6);
+      }
+      .hero__eyebrow::before {
+        content: "";
+        width: 32px;
+        height: 1px;
+        background: var(--color-gold-500);
+      }
+
+      .hero h1 {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: var(--weight-bold);
+        line-height: var(--leading-tight);
+        letter-spacing: var(--tracking-tight);
+        color: var(--sem-text-on-dark);
+        margin-bottom: var(--space-6);
+      }
+
+      .hero__sub {
+        font-size: var(--text-md);
+        line-height: var(--leading-relaxed);
+        color: var(--sem-text-on-dark-muted);
+        margin-bottom: var(--space-8);
+        max-width: 540px;
+      }
+
+      .hero__ctas {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-6);
+      }
+
+      .hero__phone {
+        font-size: var(--text-sm);
+        color: var(--color-navy-300);
+        margin-bottom: var(--space-10);
+      }
+      .hero__phone a {
+        color: var(--color-gold-400);
+        font-weight: var(--weight-medium);
+      }
+
+      .hero__trust-strip {
+        display: flex;
+        gap: var(--space-6);
+        flex-wrap: wrap;
+        padding-top: var(--space-6);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero__trust-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semi);
+        color: var(--color-navy-200);
+        letter-spacing: var(--tracking-wide);
+      }
+      .hero__trust-item::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: var(--radius-full);
+        background: var(--color-gold-500);
+        flex-shrink: 0;
+      }
+
+      /* Hero visual (right side) */
+      .hero__visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero__shield {
+        width: 340px;
+        height: 380px;
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.06) 0%,
+          rgba(255, 255, 255, 0.02) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-2xl);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-6);
+        backdrop-filter: blur(20px);
+        position: relative;
+      }
+
+      .hero__shield-icon {
+        width: 80px;
+        height: 90px;
+        position: relative;
+      }
+      .hero__shield-icon::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          var(--color-gold-500),
+          var(--color-gold-700)
+        );
+        clip-path: polygon(
+          50% 0%,
+          100% 20%,
+          100% 70%,
+          50% 100%,
+          0% 70%,
+          0% 20%
+        );
+        opacity: 0.9;
+      }
+      .hero__shield-icon::after {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 28px;
+        border: 3px solid var(--color-navy-900);
+        border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        border-top: none;
+        box-sizing: border-box;
+      }
+
+      .hero__shield-text {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: var(--weight-semi);
+        color: var(--sem-text-on-dark);
+        text-align: center;
+        letter-spacing: var(--tracking-wide);
+      }
+
+      .hero__shield-stat {
+        display: flex;
+        gap: var(--space-8);
+      }
+      .hero__shield-stat-item {
+        text-align: center;
+      }
+      .hero__shield-stat-num {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-bold);
+        color: var(--color-gold-400);
+      }
+      .hero__shield-stat-label {
+        font-size: var(--text-xs);
+        color: var(--color-navy-300);
+        letter-spacing: var(--tracking-wide);
+      }
+
+      /* ============================================================
+   SECTION 4: PILLAR NAVIGATION CARDS
+   ============================================================ */
+
+      .pillars {
+        background: var(--sem-bg-secondary);
+      }
+
+      .pillars__header {
+        text-align: center;
+        margin-bottom: var(--space-12);
+      }
+
+      .pillars__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+        margin-bottom: var(--space-8);
+      }
+
+      .pillar-card {
+        background: var(--sem-bg-primary);
+        border: 1px solid var(--sem-border-subtle);
+        border-radius: var(--radius-xl);
+        padding: var(--space-8);
+        transition: all var(--duration-normal) var(--ease-out);
+        display: flex;
+        flex-direction: column;
+      }
+      .pillar-card:hover {
+        border-color: var(--sem-border-accent);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
+      }
+
+      .pillar-card--lead {
+        border-color: var(--color-gold-200);
+        background: linear-gradient(
+          180deg,
+          var(--color-gold-50) 0%,
+          var(--sem-bg-primary) 20%
+        );
+      }
+
+      .pillar-card__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--space-5);
+        font-size: var(--text-xl);
+      }
+
+      .pillar-card--lead .pillar-card__icon {
+        background: var(--color-gold-100);
+      }
+      .pillar-card:nth-child(2) .pillar-card__icon {
+        background: var(--color-sage-100);
+      }
+      .pillar-card:nth-child(3) .pillar-card__icon {
+        background: var(--color-navy-100);
+      }
+
+      .pillar-card__title {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: var(--weight-bold);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-3);
+      }
+
+      .pillar-card__desc {
+        font-size: var(--text-sm);
+        line-height: var(--leading-relaxed);
+        color: var(--sem-text-secondary);
+        margin-bottom: var(--space-5);
+      }
+
+      .pillar-card__services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        margin-bottom: var(--space-6);
+        flex-grow: 1;
+      }
+
+      .pillar-card__tag {
+        display: inline-block;
+        padding: var(--space-1) var(--space-3);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-medium);
+        color: var(--sem-text-secondary);
+        background: var(--sem-bg-tertiary);
+        border-radius: var(--radius-full);
+        border: 1px solid var(--sem-border-subtle);
+      }
+
+      .pillar-card__cta {
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semi);
+        color: var(--sem-text-link);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        margin-top: auto;
+      }
+      .pillar-card__cta:hover {
+        color: var(--color-navy-800);
+        gap: var(--space-3);
+      }
+
+      .pillars__footer {
+        text-align: center;
+        font-size: var(--text-sm);
+        color: var(--sem-text-secondary);
+      }
+      .pillars__footer a {
+        font-weight: var(--weight-medium);
+      }
+
+      /* ============================================================
+   SECTION 5: PACKAGE QUICK LINKS
+   ============================================================ */
+
+      .packages__header {
+        text-align: center;
+        margin-bottom: var(--space-12);
+      }
+
+      .packages__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+        margin-bottom: var(--space-8);
+      }
+
+      .package-card {
+        background: var(--sem-bg-primary);
+        border: 1px solid var(--sem-border-default);
+        border-radius: var(--radius-xl);
+        padding: var(--space-6);
+        transition: all var(--duration-normal) var(--ease-out);
+        position: relative;
+      }
+      .package-card:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .package-card--gold {
+        border-color: var(--color-gold-300);
+        background: linear-gradient(
+          180deg,
+          var(--color-gold-50) 0%,
+          var(--sem-bg-primary) 30%
+        );
+        box-shadow: var(--shadow-gold);
+      }
+      .package-card--gold:hover {
+        box-shadow:
+          0 16px 40px rgba(212, 155, 26, 0.2),
+          0 6px 16px rgba(212, 155, 26, 0.1);
+      }
+
+      .package-card__badge {
+        position: absolute;
+        top: var(--space-4);
+        right: var(--space-4);
+        padding: var(--space-1) var(--space-3);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semi);
+        letter-spacing: var(--tracking-wide);
+        background: var(--color-gold-600);
+        color: var(--color-white);
+        border-radius: var(--radius-full);
+      }
+
+      .package-card__name {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: var(--weight-bold);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-1);
+      }
+
+      .package-card__type {
+        font-size: var(--text-xs);
+        font-weight: var(--weight-medium);
+        color: var(--sem-text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wider);
+        margin-bottom: var(--space-4);
+      }
+
+      .package-card__pricing {
+        display: flex;
+        align-items: baseline;
+        gap: var(--space-2);
+        margin-bottom: var(--space-1);
+      }
+
+      .package-card__price {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-bold);
+        color: var(--sem-text-primary);
+      }
+
+      .package-card__renewal {
+        font-size: var(--text-xs);
+        color: var(--sem-text-tertiary);
+        margin-bottom: var(--space-5);
+      }
+
+      .package-card__includes {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .package-card__includes li {
+        font-size: var(--text-sm);
+        color: var(--sem-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+      }
+      .package-card__includes li::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border-radius: var(--radius-full);
+        background: var(--color-sage-100);
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .package-card--gold .package-card__includes li::before {
+        background: var(--color-gold-100);
+      }
+
+      .packages__footer {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-3);
+      }
+      .packages__footer-phone {
+        font-size: var(--text-sm);
+        color: var(--sem-text-secondary);
+      }
+      .packages__footer-phone a {
+        color: var(--sem-text-accent);
+        font-weight: var(--weight-medium);
+      }
+
+      /* ============================================================
+   SECTION 6: DIFFERENTIATORS
+   ============================================================ */
+
+      .differentiators {
+        background: var(--sem-bg-secondary);
+      }
+
+      .differentiators__header {
+        text-align: center;
+        margin-bottom: var(--space-12);
+      }
+
+      .differentiators__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+      }
+
+      .diff-card {
+        background: var(--sem-bg-primary);
+        border: 1px solid var(--sem-border-subtle);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        transition: all var(--duration-normal) var(--ease-out);
+      }
+      .diff-card:hover {
+        box-shadow: var(--shadow-sm);
+        border-color: var(--sem-border-default);
+      }
+
+      .diff-card__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-md);
+        background: var(--color-navy-50);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--space-4);
+        font-size: var(--text-lg);
+      }
+
+      .diff-card__title {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semi);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-2);
+      }
+
+      .diff-card__desc {
+        font-size: var(--text-sm);
+        line-height: var(--leading-relaxed);
+        color: var(--sem-text-secondary);
+      }
+
+      /* ============================================================
+   SECTION 7: TESTIMONIALS
+   ============================================================ */
+
+      .testimonials {
+        background: var(--sem-bg-primary);
+      }
+
+      .testimonials__header {
+        text-align: center;
+        margin-bottom: var(--space-12);
+      }
+
+      .testimonials__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+      }
+
+      .testimonial-card {
+        background: var(--sem-bg-primary);
+        border: 1px solid var(--sem-border-subtle);
+        border-radius: var(--radius-xl);
+        padding: var(--space-8);
+        position: relative;
+      }
+
+      .testimonial-card__stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: var(--space-4);
+      }
+      .testimonial-card__star {
+        color: var(--color-gold-500);
+        font-size: var(--text-md);
+      }
+
+      .testimonial-card__quote {
+        font-size: var(--text-base);
+        line-height: var(--leading-relaxed);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-6);
+        font-style: italic;
+      }
+
+      .testimonial-card__quote::before {
+        content: "\201C";
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        color: var(--color-gold-300);
+        display: block;
+        line-height: 1;
+        margin-bottom: var(--space-2);
+      }
+
+      .testimonial-card__author {
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semi);
+        color: var(--sem-text-primary);
+      }
+
+      .testimonial-card__meta {
+        font-size: var(--text-xs);
+        color: var(--sem-text-tertiary);
+        margin-top: var(--space-1);
+      }
+
+      /* ============================================================
+   SECTION 8: TRUST SIGNALS BAR
+   ============================================================ */
+
+      .trust-bar {
+        background: var(--sem-bg-dark);
+        padding: var(--space-10) 0;
+      }
+
+      .trust-bar__grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--space-6);
+      }
+
+      .trust-bar__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-3);
+      }
+
+      .trust-bar__icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-lg);
+      }
+
+      .trust-bar__label {
+        font-size: var(--text-xs);
+        font-weight: var(--weight-medium);
+        color: var(--sem-text-on-dark-muted);
+        letter-spacing: var(--tracking-wide);
+        line-height: var(--leading-snug);
+      }
+
+      /* ============================================================
+   SECTION 9: HOW IT WORKS
+   ============================================================ */
+
+      .how-it-works {
+        background: var(--sem-bg-primary);
+      }
+
+      .how-it-works__header {
+        text-align: center;
+        margin-bottom: var(--space-12);
+      }
+
+      .how-it-works__steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-6);
+        position: relative;
+      }
+
+      /* Connecting line */
+      .how-it-works__steps::before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: calc(12.5% + var(--space-3));
+        right: calc(12.5% + var(--space-3));
+        height: 2px;
+        background: var(--sem-border-default);
+        z-index: 0;
+      }
+
+      .step-card {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .step-card__number {
+        width: 64px;
+        height: 64px;
+        border-radius: var(--radius-full);
+        background: var(--sem-bg-primary);
+        border: 2px solid var(--color-gold-300);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--space-5);
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: var(--weight-bold);
+        color: var(--color-gold-700);
+      }
+
+      .step-card__title {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semi);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-2);
+      }
+
+      .step-card__desc {
+        font-size: var(--text-sm);
+        color: var(--sem-text-secondary);
+        line-height: var(--leading-relaxed);
+      }
+
+      /* ============================================================
+   SECTION 10: COMPLIANCE CALLOUT
+   ============================================================ */
+
+      .compliance-callout {
+        background: var(--sem-bg-secondary);
+      }
+
+      .compliance-callout__inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--space-10);
+        align-items: center;
+        background: var(--sem-bg-primary);
+        border: 1px solid var(--sem-border-default);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-12);
+      }
+
+      .compliance-callout__content h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-bold);
+        color: var(--sem-text-primary);
+        margin-bottom: var(--space-4);
+      }
+
+      .compliance-callout__content p {
+        font-size: var(--text-md);
+        line-height: var(--leading-relaxed);
+        color: var(--sem-text-secondary);
+        margin-bottom: var(--space-6);
+        max-width: 560px;
+      }
+
+      .compliance-callout__ctas {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+      }
+
+      /* ============================================================
+   SECTION 11: FINAL CTA
+   ============================================================ */
+
+      .final-cta {
+        background: linear-gradient(
+          135deg,
+          var(--color-navy-900) 0%,
+          var(--color-navy-800) 100%
+        );
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final-cta::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(212, 155, 26, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .final-cta__inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .final-cta h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-weight: var(--weight-bold);
+        color: var(--sem-text-on-dark);
+        margin-bottom: var(--space-4);
+      }
+
+      .final-cta__sub {
+        font-size: var(--text-md);
+        color: var(--sem-text-on-dark-muted);
+        margin-bottom: var(--space-8);
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: var(--leading-relaxed);
+      }
+
+      .final-cta__buttons {
+        display: flex;
+        gap: var(--space-4);
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: var(--space-6);
+      }
+
+      .final-cta__phone {
+        font-size: var(--text-sm);
+        color: var(--color-navy-300);
+      }
+      .final-cta__phone a {
+        color: var(--color-gold-400);
+        font-weight: var(--weight-medium);
+      }
+
+      /* ============================================================
+   SECTION 12: FOOTER
+   ============================================================ */
+
+      .site-footer {
+        background: var(--color-navy-950);
+        color: var(--sem-text-on-dark-muted);
+        padding: var(--space-16) 0 0;
+      }
+
+      .footer__grid {
+        display: grid;
+        grid-template-columns: 1.5fr repeat(3, 1fr);
+        gap: var(--space-10);
+        margin-bottom: var(--space-12);
+      }
+
+      .footer__brand-col .logo {
+        color: var(--sem-text-on-dark);
+        margin-bottom: var(--space-4);
+        display: inline-block;
+      }
+
+      .footer__brand-desc {
+        font-size: var(--text-sm);
+        line-height: var(--leading-relaxed);
+        color: var(--color-navy-300);
+        margin-bottom: var(--space-5);
+        max-width: 280px;
+      }
+
+      .footer__contact-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-sm);
+        color: var(--color-navy-300);
+        margin-bottom: var(--space-2);
+      }
+      .footer__contact-item a {
+        color: var(--color-gold-400);
+      }
+
+      .footer__col-title {
+        font-family: var(--font-display);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semi);
+        color: var(--sem-text-on-dark);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wider);
+        margin-bottom: var(--space-5);
+      }
+
+      .footer__links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      .footer__links a {
+        font-size: var(--text-sm);
+        color: var(--color-navy-300);
+        transition: color var(--duration-fast) var(--ease-out);
+      }
+      .footer__links a:hover {
+        color: var(--sem-text-on-dark);
+      }
+
+      .footer__bottom {
+        border-top: 1px solid var(--color-navy-800);
+        padding: var(--space-6) 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+      }
+
+      .footer__legal {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        font-size: var(--text-xs);
+        color: var(--color-navy-400);
+      }
+      .footer__legal a {
+        color: var(--color-navy-400);
+      }
+      .footer__legal a:hover {
+        color: var(--color-navy-200);
+      }
+
+      .footer__bottom-contact {
+        font-size: var(--text-xs);
+        color: var(--color-navy-400);
+      }
+      .footer__bottom-contact a {
+        color: var(--color-gold-400);
+      }
+
+      .footer__payments {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        font-size: var(--text-xs);
+        color: var(--color-navy-400);
+      }
+      .footer__pay-icon {
+        width: 36px;
+        height: 24px;
+        border-radius: var(--radius-sm);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: var(--weight-semi);
+        color: var(--color-navy-300);
+      }
+
+      /* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+
+      @media (max-width: 1024px) {
+        .utility-bar {
+          display: none;
+        }
+
+        .hero__inner {
+          grid-template-columns: 1fr;
+          gap: var(--space-10);
+        }
+
+        .hero__visual {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: var(--text-3xl);
+        }
+
+        .pillars__grid {
+          grid-template-columns: 1fr;
+          max-width: 560px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .packages__grid {
+          grid-template-columns: 1fr;
+          max-width: 480px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .differentiators__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .testimonials__grid {
+          grid-template-columns: 1fr;
+          max-width: 520px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .trust-bar__grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-8);
+        }
+
+        .how-it-works__steps {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--space-8);
+        }
+        .how-it-works__steps::before {
+          display: none;
+        }
+
+        .compliance-callout__inner {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .compliance-callout__content p {
+          max-width: none;
+        }
+        .compliance-callout__ctas {
+          justify-content: center;
+        }
+
+        .footer__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer__bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+
+      @media (max-width: 768px) {
+        :root {
+          --text-5xl: 2.5rem;
+          --text-4xl: 2rem;
+          --text-3xl: 1.75rem;
+          --text-2xl: 1.5rem;
+        }
+
+        .section-padding {
+          padding-top: var(--space-12);
+          padding-bottom: var(--space-12);
+        }
+
+        .container {
+          padding: 0 var(--space-4);
+        }
+
+        /* Header mobile */
+        .primary-nav {
+          display: none;
+        }
+        .header-login {
+          display: none;
+        }
+        .header-actions .btn {
+          display: none;
+        }
+        .mobile-phone-icon {
+          display: flex;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .mobile-nav {
+          display: block;
+        }
+        .mobile-bottom-cta {
+          display: block;
+        }
+
+        body {
+          padding-bottom: 72px;
+        }
+
+        /* Hero mobile */
+        .hero__inner {
+          padding-top: var(--space-12);
+          padding-bottom: var(--space-12);
+        }
+
+        .hero__ctas {
+          flex-direction: column;
+        }
+        .hero__ctas .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero__trust-strip {
+          flex-direction: column;
+          gap: var(--space-3);
+        }
+
+        /* Differentiators */
+        .differentiators__grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Trust bar */
+        .trust-bar__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* How it works */
+        .how-it-works__steps {
+          grid-template-columns: 1fr;
+          max-width: 320px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Footer */
+        .footer__grid {
+          grid-template-columns: 1fr;
+        }
+
+        .final-cta__buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+        .final-cta__buttons .btn {
+          width: 100%;
+          max-width: 320px;
+          justify-content: center;
+        }
+      }
+
+      /* ============================================================
+   PRINT
+   ============================================================ */
+
+      @media print {
+        .utility-bar,
+        .primary-header,
+        .mobile-bottom-cta,
+        .mobile-nav,
+        .mobile-nav-overlay {
+          display: none;
+        }
+        .hero {
+          background: #fff;
+          color: #000;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- ========== SECTION 2: GLOBAL HEADER ========== -->
+
+    <!-- Utility Bar (Desktop) -->
+    <div
+      class="utility-bar"
+      role="complementary"
+      aria-label="Utility navigation"
+    >
+      <div class="container">
+        <div class="utility-bar__inner">
+          <div class="utility-bar__phone">
+            <a href="tel:+17750000000" aria-label="Call us at (775) 000-0000"
+              >(775) xxx-xxxx</a
+            >
+          </div>
+          <div class="utility-bar__tagline">
+            Privacy, Asset Protection &amp; Business Formation Specialists
+          </div>
+          <div class="utility-bar__login">
+            <a href="/login/">Client Login &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primary Header -->
+    <header class="primary-header" role="banner">
+      <div class="container">
+        <div class="primary-header__inner">
+          <a href="/" class="logo" aria-label="Incorporate123 Home"
+            >Incorporate<span>123</span></a
+          >
+
+          <nav aria-label="Primary navigation">
+            <ul class="primary-nav">
+              <li><a href="/privacy/">Privacy</a></li>
+              <li><a href="/asset-protection/">Asset Protection</a></li>
+              <li><a href="/formation/">Formation</a></li>
+              <li><a href="/compare-packages/">Packages</a></li>
+              <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+
+          <div class="header-actions">
+            <a href="/login/" class="header-login">Client Login</a>
+            <a href="/compare-packages/" class="btn btn--primary"
+              >Get Started</a
+            >
+            <a
+              href="tel:+17750000000"
+              class="mobile-phone-icon"
+              aria-label="Call us"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+            </a>
+            <button
+              class="hamburger"
+              aria-label="Open menu"
+              aria-expanded="false"
+              onclick="toggleMobileNav()"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div
+      class="mobile-nav-overlay"
+      id="mobileNavOverlay"
+      onclick="toggleMobileNav()"
+    ></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <button
+        class="mobile-nav__close"
+        aria-label="Close menu"
+        onclick="toggleMobileNav()"
+      >
+        &times;
+      </button>
+      <div class="mobile-nav__priority">
+        <a
+          href="/compare-packages/"
+          class="btn btn--primary btn--lg"
+          style="width: 100%; justify-content: center"
+          >View Packages</a
+        >
+        <a
+          href="/login/"
+          class="btn btn--secondary"
+          style="width: 100%; justify-content: center"
+          >Client Login</a
+        >
+      </div>
+      <div class="mobile-nav__links">
+        <a href="/privacy/">Privacy</a>
+        <a href="/asset-protection/">Asset Protection</a>
+        <a href="/formation/">Formation</a>
+        <a href="/compare-packages/">Packages &amp; Pricing</a>
+        <a href="/about/">About</a>
+        <a href="/compliance/">Compliance</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Sticky Mobile Bottom CTA -->
+    <div class="mobile-bottom-cta" aria-label="Quick actions">
+      <div class="mobile-bottom-cta__inner">
+        <a
+          href="/compare-packages/"
+          class="btn btn--primary btn--lg mobile-bottom-cta__primary"
+          style="justify-content: center"
+          >Get Started &rarr;</a
+        >
+        <a
+          href="tel:+17750000000"
+          class="mobile-bottom-cta__phone"
+          aria-label="Call us"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="main-content">
+      <!-- ========== SECTION 3: HERO ========== -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <div class="hero__inner">
+            <div class="hero__content">
+              <div class="hero__eyebrow">
+                Trusted Since 2000 &middot; Privacy Specialists
+              </div>
+              <h1 id="hero-heading">
+                Privacy, Asset Protection &amp; Business Formation&nbsp;&mdash;
+                All&#8209;Inclusive, Nothing&nbsp;Hidden
+              </h1>
+              <p class="hero__sub">
+                Year-round nominee services, offshore records, and expert
+                formation in Wyoming and Nevada. 25&nbsp;years of specialized
+                experience protecting your privacy and assets.
+              </p>
+              <div class="hero__ctas">
+                <a href="/privacy/" class="btn btn--gold btn--lg"
+                  >Protect Your Privacy &rarr;</a
+                >
+                <a href="/compare-packages/" class="btn btn--ghost btn--lg"
+                  >View Packages &amp; Pricing &rarr;</a
+                >
+              </div>
+              <p class="hero__phone">
+                Have questions? Call
+                <a href="tel:+17750000000">(775) xxx-xxxx</a>
+              </p>
+              <div
+                class="hero__trust-strip"
+                role="list"
+                aria-label="Trust indicators"
+              >
+                <div class="hero__trust-item" role="listitem">25 Years</div>
+                <div class="hero__trust-item" role="listitem">
+                  Real Reno Office
+                </div>
+                <div class="hero__trust-item" role="listitem">
+                  $1,275 All-Inclusive
+                </div>
+                <div class="hero__trust-item" role="listitem">
+                  Money-Back Guarantee
+                </div>
+              </div>
+            </div>
+            <div class="hero__visual" aria-hidden="true">
+              <div class="hero__shield">
+                <div class="hero__shield-icon"></div>
+                <div class="hero__shield-text">
+                  Your Privacy.<br />Protected.
+                </div>
+                <div class="hero__shield-stat">
+                  <div class="hero__shield-stat-item">
+                    <div class="hero__shield-stat-num">25</div>
+                    <div class="hero__shield-stat-label">Years</div>
+                  </div>
+                  <div class="hero__shield-stat-item">
+                    <div class="hero__shield-stat-num">2</div>
+                    <div class="hero__shield-stat-label">States</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 4: PILLAR NAVIGATION CARDS ========== -->
+      <section
+        class="pillars section-padding"
+        aria-labelledby="pillars-heading"
+      >
+        <div class="container">
+          <div class="pillars__header">
+            <span class="eyebrow">How Can We Help?</span>
+            <h2 class="section-heading" id="pillars-heading">
+              Choose Your Starting Point
+            </h2>
+            <p class="section-subtext mx-auto">
+              Whether you need privacy protection, asset shielding, or business
+              formation&nbsp;&mdash; we specialize in all three.
+            </p>
+          </div>
+
+          <div class="pillars__grid">
+            <!-- Card 1: Business Privacy (Lead) -->
+            <article class="pillar-card pillar-card--lead">
+              <div class="pillar-card__icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <h3 class="pillar-card__title">Business Privacy</h3>
+              <p class="pillar-card__desc">
+                Anonymous LLCs, year-round nominee services, offshore records
+                custodian. Real privacy&nbsp;&mdash; not &ldquo;nominee for a
+                day.&rdquo;
+              </p>
+              <div class="pillar-card__services">
+                <span class="pillar-card__tag">Anonymous LLC Formation</span>
+                <span class="pillar-card__tag">Nominee Services</span>
+                <span class="pillar-card__tag"
+                  >Wyoming/Nevada Private Incorporation</span
+                >
+                <span class="pillar-card__tag">Offshore Privacy</span>
+              </div>
+              <a href="/privacy/" class="pillar-card__cta"
+                >Explore Privacy Solutions &rarr;</a
+              >
+            </article>
+
+            <!-- Card 2: Asset Protection -->
+            <article class="pillar-card">
+              <div class="pillar-card__icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3 class="pillar-card__title">Asset Protection</h3>
+              <p class="pillar-card__desc">
+                Charging order protection, holding structures, and multi-entity
+                strategies for individuals with $500K+ in assets.
+              </p>
+              <div class="pillar-card__services">
+                <span class="pillar-card__tag">Charging Order Protection</span>
+                <span class="pillar-card__tag">Wyoming/Nevada AP</span>
+                <span class="pillar-card__tag">Investment Holding LLC</span>
+                <span class="pillar-card__tag">Real Estate AP</span>
+              </div>
+              <a href="/asset-protection/" class="pillar-card__cta"
+                >Protect Your Assets &rarr;</a
+              >
+            </article>
+
+            <!-- Card 3: Business Incorporation -->
+            <article class="pillar-card">
+              <div class="pillar-card__icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+              </div>
+              <h3 class="pillar-card__title">Business Incorporation</h3>
+              <p class="pillar-card__desc">
+                Expert LLC and Corporation formation in Wyoming and Nevada.
+                Everything included&nbsp;&mdash; registered agent, EIN,
+                operating agreement, state fees.
+              </p>
+              <div class="pillar-card__services">
+                <span class="pillar-card__tag">Wyoming LLC</span>
+                <span class="pillar-card__tag">Nevada LLC</span>
+                <span class="pillar-card__tag">Wyoming Corporation</span>
+                <span class="pillar-card__tag">Nevada Corporation</span>
+              </div>
+              <a href="/formation/" class="pillar-card__cta"
+                >Start Your Company &rarr;</a
+              >
+            </article>
+          </div>
+
+          <p class="pillars__footer">
+            Already have a company?
+            <a href="/compliance/">Explore compliance services &rarr;</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 5: PACKAGE QUICK LINKS ========== -->
+      <section
+        class="packages section-padding"
+        aria-labelledby="packages-heading"
+      >
+        <div class="container">
+          <div class="packages__header">
+            <span class="eyebrow">Ready to Get Started?</span>
+            <h2 class="section-heading" id="packages-heading">
+              All-Inclusive Packages&nbsp;&mdash; See Exactly What&rsquo;s
+              Included
+            </h2>
+            <p class="section-subtext mx-auto">
+              Transparent pricing with everything bundled. No hidden fees, no
+              surprise add-ons.
+            </p>
+          </div>
+
+          <div class="packages__grid">
+            <!-- Wyoming Gold -->
+            <article class="package-card package-card--gold">
+              <span class="package-card__badge">Most Popular</span>
+              <h3 class="package-card__name">Wyoming Gold</h3>
+              <div class="package-card__type">Privacy Package</div>
+              <div class="package-card__pricing">
+                <span class="package-card__price">$1,275</span>
+              </div>
+              <div class="package-card__renewal">Renewal: $525/yr</div>
+              <ul class="package-card__includes">
+                <li>Year-Round Nominees</li>
+                <li>Offshore Records</li>
+                <li>Registered Agent</li>
+                <li>EIN + Operating Agreement</li>
+              </ul>
+            </article>
+
+            <!-- Nevada Gold -->
+            <article class="package-card package-card--gold">
+              <h3 class="package-card__name">Nevada Gold</h3>
+              <div class="package-card__type">Privacy Package</div>
+              <div class="package-card__pricing">
+                <span class="package-card__price">$1,800</span>
+              </div>
+              <div class="package-card__renewal">Renewal: $525/yr</div>
+              <ul class="package-card__includes">
+                <li>Year-Round Nominees</li>
+                <li>Offshore Records</li>
+                <li>Registered Agent</li>
+                <li>EIN + Operating Agreement</li>
+              </ul>
+            </article>
+
+            <!-- Wyoming Silver -->
+            <article class="package-card">
+              <h3 class="package-card__name">Wyoming Silver</h3>
+              <div class="package-card__type">Formation Package</div>
+              <div class="package-card__pricing">
+                <span class="package-card__price">$875</span>
+              </div>
+              <div class="package-card__renewal">Renewal: $325/yr</div>
+              <ul class="package-card__includes">
+                <li>Registered Agent</li>
+                <li>EIN Filing</li>
+                <li>Operating Agreement</li>
+                <li>State Fees Included</li>
+              </ul>
+            </article>
+
+            <!-- Nevada Silver -->
+            <article class="package-card">
+              <h3 class="package-card__name">Nevada Silver</h3>
+              <div class="package-card__type">Formation Package</div>
+              <div class="package-card__pricing">
+                <span class="package-card__price">$1,275</span>
+              </div>
+              <div class="package-card__renewal">Renewal: $325/yr</div>
+              <ul class="package-card__includes">
+                <li>Registered Agent</li>
+                <li>EIN Filing</li>
+                <li>Operating Agreement</li>
+                <li>State Fees Included</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="packages__footer">
+            <a href="/compare-packages/" class="btn btn--primary"
+              >Compare All Packages &rarr;</a
+            >
+            <p class="packages__footer-phone">
+              Have questions? Call <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 6: DIFFERENTIATORS ========== -->
+      <section
+        class="differentiators section-padding"
+        aria-labelledby="diff-heading"
+      >
+        <div class="container">
+          <div class="differentiators__header">
+            <h2 class="section-heading" id="diff-heading">
+              Why Clients Choose Incorporate123
+            </h2>
+            <p class="section-subtext mx-auto">
+              25 years of specialized privacy and formation
+              expertise&nbsp;&mdash; not a budget filing service, not a $5,000
+              consultation.
+            </p>
+          </div>
+
+          <div class="differentiators__grid">
+            <article class="diff-card">
+              <div class="diff-card__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="diff-card__title">Year-Round Nominees Included</h3>
+              <p class="diff-card__desc">
+                Not &ldquo;nominee for a day&rdquo;&nbsp;&mdash; your nominees
+                serve all year, every year. Included in Gold packages at no
+                extra cost.
+              </p>
+            </article>
+
+            <article class="diff-card">
+              <div class="diff-card__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  />
+                </svg>
+              </div>
+              <h3 class="diff-card__title">Offshore Records Since 2012</h3>
+              <p class="diff-card__desc">
+                Corporate records stored offshore for genuine privacy. Free with
+                every Gold package&nbsp;&mdash; competitors charge
+                $400&ndash;$5,000/year.
+              </p>
+            </article>
+
+            <article class="diff-card">
+              <div class="diff-card__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <h3 class="diff-card__title">All-Inclusive Pricing</h3>
+              <p class="diff-card__desc">
+                Formation, registered agent, EIN, operating agreement, and state
+                fees&nbsp;&mdash; all bundled. No surprise add-ons at checkout.
+              </p>
+            </article>
+
+            <article class="diff-card">
+              <div class="diff-card__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <h3 class="diff-card__title">Real Reno Office</h3>
+              <p class="diff-card__desc">
+                Not a P.O. box operation. Professional offices in Reno, Nevada
+                with real staff and a physical address you can visit.
+              </p>
+            </article>
+
+            <article class="diff-card">
+              <div class="diff-card__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <h3 class="diff-card__title">25 Years of Specialization</h3>
+              <p class="diff-card__desc">
+                Focused exclusively on Wyoming and Nevada privacy formation
+                since 2000. Depth over breadth.
+              </p>
+            </article>
+
+            <article class="diff-card">
+              <div class="diff-card__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </div>
+              <h3 class="diff-card__title">Talk to a Real Person</h3>
+              <p class="diff-card__desc">
+                Have questions? Call us directly. No chatbots, no offshore call
+                centers, no sales pressure.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 7: TESTIMONIALS ========== -->
+      <section
+        class="testimonials section-padding"
+        aria-labelledby="testimonials-heading"
+      >
+        <div class="container">
+          <div class="testimonials__header">
+            <h2 class="section-heading" id="testimonials-heading">
+              Trusted by Business Owners Nationwide
+            </h2>
+          </div>
+
+          <div class="testimonials__grid">
+            <article class="testimonial-card">
+              <div
+                class="testimonial-card__stars"
+                aria-label="5 out of 5 stars"
+              >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+              </div>
+              <blockquote class="testimonial-card__quote">
+                The year-round nominee service gives me real peace of mind.
+                Other providers only offered nominees at signing&nbsp;&mdash;
+                Incorporate123 keeps them active all year. Worth every penny.
+              </blockquote>
+              <div class="testimonial-card__author">Michael</div>
+              <div class="testimonial-card__meta">Texas &middot; 2024</div>
+            </article>
+
+            <article class="testimonial-card">
+              <div
+                class="testimonial-card__stars"
+                aria-label="5 out of 5 stars"
+              >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+              </div>
+              <blockquote class="testimonial-card__quote">
+                I called with questions before purchasing and spoke with an
+                actual person who knew what they were talking about. The
+                formation was handled quickly and the all-inclusive pricing
+                meant no surprises.
+              </blockquote>
+              <div class="testimonial-card__author">Sarah</div>
+              <div class="testimonial-card__meta">California &middot; 2023</div>
+            </article>
+
+            <article class="testimonial-card">
+              <div
+                class="testimonial-card__stars"
+                aria-label="5 out of 5 stars"
+              >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+                <span class="testimonial-card__star" aria-hidden="true"
+                  >&#9733;</span
+                >
+              </div>
+              <blockquote class="testimonial-card__quote">
+                Been using them for three LLCs now. The offshore records storage
+                is included free&nbsp;&mdash; I was paying $1,200/year elsewhere
+                for the same thing. Professional, responsive, and genuinely
+                knowledgeable.
+              </blockquote>
+              <div class="testimonial-card__author">David</div>
+              <div class="testimonial-card__meta">Florida &middot; 2024</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 8: TRUST SIGNALS BAR ========== -->
+      <section class="trust-bar" aria-label="Trust signals">
+        <div class="container">
+          <div class="trust-bar__grid">
+            <div class="trust-bar__item">
+              <div class="trust-bar__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b0bde0"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <span class="trust-bar__label">Trusted<br />Since 2000</span>
+            </div>
+            <div class="trust-bar__item">
+              <div class="trust-bar__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b0bde0"
+                  stroke-width="2"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <span class="trust-bar__label">Real<br />Reno Office</span>
+            </div>
+            <div class="trust-bar__item">
+              <div class="trust-bar__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b0bde0"
+                  stroke-width="2"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <span class="trust-bar__label"
+                >30-Day Money-Back<br />Guarantee</span
+              >
+            </div>
+            <div class="trust-bar__item">
+              <div class="trust-bar__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b0bde0"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </div>
+              <span class="trust-bar__label"
+                >(775) xxx-xxxx<br />Call Anytime</span
+              >
+            </div>
+            <div class="trust-bar__item">
+              <div class="trust-bar__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b0bde0"
+                  stroke-width="2"
+                >
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <span class="trust-bar__label"
+                >Crypto Payments<br />for Privacy</span
+              >
+            </div>
+            <div class="trust-bar__item">
+              <div class="trust-bar__icon" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#b0bde0"
+                  stroke-width="2"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <span class="trust-bar__label">Secure<br />Checkout</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 9: HOW IT WORKS ========== -->
+      <section
+        class="how-it-works section-padding"
+        aria-labelledby="how-heading"
+      >
+        <div class="container">
+          <div class="how-it-works__header">
+            <h2 class="section-heading" id="how-heading">How It Works</h2>
+            <p class="section-subtext mx-auto">
+              From research to fully formed and protected&nbsp;&mdash; we handle
+              the details.
+            </p>
+          </div>
+
+          <div class="how-it-works__steps" role="list">
+            <div class="step-card" role="listitem">
+              <div class="step-card__number" aria-hidden="true">1</div>
+              <h3 class="step-card__title">Choose Your Protection Level</h3>
+              <p class="step-card__desc">
+                Decide between privacy-focused Gold packages or streamlined
+                Silver formation packages.
+              </p>
+            </div>
+            <div class="step-card" role="listitem">
+              <div class="step-card__number" aria-hidden="true">2</div>
+              <h3 class="step-card__title">Select Your Package</h3>
+              <p class="step-card__desc">
+                Pick Wyoming or Nevada based on your needs. Everything is
+                clearly priced, nothing hidden.
+              </p>
+            </div>
+            <div class="step-card" role="listitem">
+              <div class="step-card__number" aria-hidden="true">3</div>
+              <h3 class="step-card__title">We Handle the Filing</h3>
+              <p class="step-card__desc">
+                Our team processes your formation, secures your EIN, and sets up
+                nominees and records.
+              </p>
+            </div>
+            <div class="step-card" role="listitem">
+              <div class="step-card__number" aria-hidden="true">4</div>
+              <h3 class="step-card__title">You&rsquo;re Protected</h3>
+              <p class="step-card__desc">
+                Your entity is formed, your privacy is secured, and ongoing
+                support is a phone call away.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 10: COMPLIANCE CALLOUT ========== -->
+      <section
+        class="compliance-callout section-padding"
+        aria-labelledby="compliance-heading"
+      >
+        <div class="container">
+          <div class="compliance-callout__inner">
+            <div class="compliance-callout__content">
+              <h2 id="compliance-heading">
+                Already Have an Entity? We Keep You Compliant.
+              </h2>
+              <p>
+                Annual renewals, registered agent service, annual reports,
+                corporate minutes, and ongoing nominee maintenance. Stay in good
+                standing without the hassle&nbsp;&mdash; we handle the paperwork
+                so you can focus on your business.
+              </p>
+              <div class="compliance-callout__ctas">
+                <a href="/compliance/" class="btn btn--primary"
+                  >Explore Compliance Services &rarr;</a
+                >
+                <a href="/login/" class="btn btn--secondary"
+                  >Client Login &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 11: FINAL CTA ========== -->
+      <section
+        class="final-cta section-padding"
+        aria-labelledby="final-cta-heading"
+      >
+        <div class="container">
+          <div class="final-cta__inner">
+            <span class="eyebrow eyebrow--light">Ready?</span>
+            <h2 id="final-cta-heading">
+              Ready to Protect Your Privacy and Assets?
+            </h2>
+            <p class="final-cta__sub">
+              Start with a package, or schedule a free consultation to discuss
+              your specific needs.
+            </p>
+            <div class="final-cta__buttons">
+              <a href="/compare-packages/" class="btn btn--gold btn--lg"
+                >View Packages &amp; Pricing &rarr;</a
+              >
+              <a href="/contact/" class="btn btn--ghost btn--lg"
+                >Schedule a Consultation &rarr;</a
+              >
+            </div>
+            <p class="final-cta__phone">
+              Or call us directly: <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== SECTION 12: GLOBAL FOOTER ========== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__grid">
+          <!-- Brand Column -->
+          <div class="footer__brand-col">
+            <a href="/" class="logo" aria-label="Incorporate123 Home"
+              >Incorporate<span>123</span></a
+            >
+            <p class="footer__brand-desc">
+              Privacy, asset protection, and business formation specialists.
+              Serving clients nationwide from our Reno, Nevada offices since
+              2000.
+            </p>
+            <div class="footer__contact-item">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              <a href="tel:+17750000000">(775) xxx-xxxx</a>
+            </div>
+            <div class="footer__contact-item">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Reno, Nevada
+            </div>
+          </div>
+
+          <!-- Services Column -->
+          <div>
+            <h3 class="footer__col-title">Services</h3>
+            <ul class="footer__links">
+              <li><a href="/privacy/">Business Privacy</a></li>
+              <li><a href="/asset-protection/">Asset Protection</a></li>
+              <li><a href="/formation/">Business Formation</a></li>
+              <li><a href="/compliance/">Compliance Services</a></li>
+              <li><a href="/compare-packages/">Packages &amp; Pricing</a></li>
+            </ul>
+          </div>
+
+          <!-- Formation Column -->
+          <div>
+            <h3 class="footer__col-title">Formation</h3>
+            <ul class="footer__links">
+              <li><a href="/formation/wyoming-llc/">Wyoming LLC</a></li>
+              <li><a href="/formation/nevada-llc/">Nevada LLC</a></li>
+              <li>
+                <a href="/formation/wyoming-corporation/"
+                  >Wyoming Corporation</a
+                >
+              </li>
+              <li>
+                <a href="/formation/nevada-corporation/">Nevada Corporation</a>
+              </li>
+              <li>
+                <a href="/formation/registered-agent/">Registered Agent</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Company Column -->
+          <div>
+            <h3 class="footer__col-title">Company</h3>
+            <ul class="footer__links">
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/contact/">Contact</a></li>
+              <li><a href="/login/">Client Login</a></li>
+              <li><a href="/faq/">FAQ</a></li>
+              <li><a href="/blog/">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__legal">
+            <span
+              >&copy; 2000&ndash;2026 Incorporate123. All rights reserved.</span
+            >
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/disclaimer/">Disclaimer</a>
+          </div>
+          <div class="footer__bottom-contact">
+            <a href="tel:+17750000000">(775) xxx-xxxx</a> &middot; Reno, Nevada
+          </div>
+          <div class="footer__payments">
+            <div class="footer__pay-icon">VISA</div>
+            <div class="footer__pay-icon">MC</div>
+            <div class="footer__pay-icon">AMEX</div>
+            <div class="footer__pay-icon" style="font-size: 8px">BTC</div>
+            <div class="footer__pay-icon" style="font-size: 8px">ETH</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Nav Script -->
+    <script>
+      function toggleMobileNav() {
+        const nav = document.getElementById("mobileNav");
+        const overlay = document.getElementById("mobileNavOverlay");
+        const hamburger = document.querySelector(".hamburger");
+        const isOpen = nav.classList.contains("active");
+
+        if (isOpen) {
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+          overlay.style.display = "none";
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        } else {
+          overlay.style.display = "block";
+          requestAnimationFrame(() => {
+            nav.classList.add("active");
+            overlay.classList.add("active");
+          });
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      // Close on Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          const nav = document.getElementById("mobileNav");
+          if (nav.classList.contains("active")) toggleMobileNav();
+        }
+      });
+    </script>
+  </body>
+</html>
