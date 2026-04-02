@@ -1,0 +1,2285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Your Package — Incorporate123</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Design Tokens ── */
+      :root {
+        --navy: #1e3a5f;
+        --amber: #d97706;
+        --amber-hover: #b45309;
+        --blue: #2563eb;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --fg: #0f172a;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --green: #16a34a;
+        --amber-light: #fffbeb;
+        --navy-light: #eef2f7;
+        --green-light: #f0fdf4;
+        --radius: 12px;
+        --shadow-sm:
+          0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --shadow-md:
+          0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+        --shadow-lg:
+          0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --font-display: "Outfit", sans-serif;
+        --font-body: "Inter", sans-serif;
+      }
+
+      /* ── Reset & Base ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Shell ── */
+      .wizard-shell {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+      }
+
+      /* ── Header ── */
+      .wizard-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .wizard-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        text-decoration: none;
+        color: var(--navy);
+      }
+
+      .wizard-logo svg {
+        width: 36px;
+        height: 36px;
+      }
+
+      .wizard-logo span {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .wizard-title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.2;
+        color: var(--navy);
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+      }
+
+      .wizard-subtitle {
+        font-size: 16px;
+        color: var(--muted);
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      /* ── Progress Dots ── */
+      .progress-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 40px;
+      }
+
+      .progress-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: var(--border);
+        transition: all 0.4s var(--ease-out-expo);
+      }
+
+      .progress-dot.active {
+        width: 28px;
+        background: var(--amber);
+      }
+
+      .progress-dot.completed {
+        background: var(--amber);
+      }
+
+      /* ── Step Container ── */
+      .step-container {
+        position: relative;
+        min-height: 320px;
+      }
+
+      .step {
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .step.active {
+        display: flex;
+      }
+
+      .step-question {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 22px;
+        color: var(--navy);
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+
+      .step-description {
+        font-size: 15px;
+        color: var(--muted);
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      /* ── Card Grid ── */
+      .card-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card-grid.cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card-grid.cols-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      /* ── Choice Card ── */
+      .choice-card {
+        position: relative;
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        cursor: pointer;
+        transition: all 0.25s var(--ease-out-expo);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        min-height: 120px;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .choice-card:hover {
+        border-color: var(--amber);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .choice-card:active {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .choice-card.selected {
+        border-color: var(--amber);
+        background: var(--amber-light);
+      }
+
+      .choice-card .card-icon {
+        width: 48px;
+        height: 48px;
+        color: var(--navy);
+        flex-shrink: 0;
+      }
+
+      .choice-card .card-title {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 18px;
+        color: var(--fg);
+        line-height: 1.3;
+      }
+
+      .choice-card .card-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* ── Privacy Decision Card (special variant) ── */
+      .privacy-card {
+        position: relative;
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px 28px;
+        cursor: pointer;
+        transition: all 0.25s var(--ease-out-expo);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .privacy-card:hover {
+        border-color: var(--amber);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .privacy-card:active {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .privacy-card .privacy-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .privacy-card .privacy-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .privacy-card .privacy-icon.shield-icon {
+        background: var(--navy-light);
+        color: var(--navy);
+      }
+
+      .privacy-card .privacy-icon.doc-icon {
+        background: var(--green-light);
+        color: var(--green);
+      }
+
+      .privacy-card .privacy-title {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 18px;
+        color: var(--fg);
+        line-height: 1.3;
+      }
+
+      .privacy-card .privacy-subtitle {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 280px;
+      }
+
+      /* ── Badge ── */
+      .badge {
+        position: absolute;
+        top: -10px;
+        right: 16px;
+        background: var(--amber);
+        color: #fff;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 3px 12px;
+        border-radius: 20px;
+        line-height: 1.6;
+      }
+
+      /* ── Tier Card (pricing step) ── */
+      .tier-card {
+        position: relative;
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px 24px;
+        cursor: pointer;
+        transition: all 0.25s var(--ease-out-expo);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .tier-card:hover {
+        border-color: var(--amber);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .tier-card:active {
+        transform: translateY(-2px);
+      }
+
+      .tier-card .tier-name {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--navy);
+      }
+
+      .tier-card .tier-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+        margin-bottom: 4px;
+      }
+
+      .tier-card .tier-prices {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+
+      .tier-card .tier-price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tier-card .tier-price .price-amount {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 26px;
+        color: var(--fg);
+        line-height: 1.2;
+      }
+
+      .tier-card .tier-price .price-label {
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 500;
+      }
+
+      .tier-card .tier-divider {
+        width: 1px;
+        height: 28px;
+        background: var(--border);
+        align-self: center;
+      }
+
+      /* ── Nav Controls ── */
+      .step-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 32px;
+        min-height: 44px;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .back-btn:hover {
+        color: var(--fg);
+        background: var(--navy-light);
+      }
+
+      .back-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .browse-link {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .browse-link:hover {
+        color: var(--amber);
+      }
+
+      .shelf-link {
+        text-align: center;
+        margin-top: 4px;
+      }
+
+      .shelf-link a {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .shelf-link a:hover {
+        color: var(--amber);
+      }
+
+      /* ── Recommendation Screen ── */
+      .rec-screen {
+        display: none;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .rec-screen.active {
+        display: flex;
+      }
+
+      .rec-heading {
+        text-align: center;
+      }
+
+      .rec-heading h2 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 28px;
+        color: var(--navy);
+        margin-bottom: 6px;
+        letter-spacing: -0.02em;
+      }
+
+      .rec-heading .rec-context {
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      /* Context note (highlighted box above primary card) */
+      .rec-context-note {
+        background: var(--amber-light);
+        border: 1px solid #fde68a;
+        border-radius: var(--radius);
+        padding: 16px 20px;
+        font-size: 15px;
+        color: var(--fg);
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .rec-context-note svg {
+        width: 18px;
+        height: 18px;
+        color: var(--amber);
+        vertical-align: -3px;
+        margin-right: 6px;
+      }
+
+      /* Primary recommendation */
+      .rec-primary {
+        background: var(--surface);
+        border: 2px solid var(--amber);
+        border-top: 4px solid var(--amber);
+        border-radius: var(--radius);
+        padding: 32px 28px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .rec-primary .rec-badge {
+        display: inline-block;
+        background: var(--amber);
+        color: #fff;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 3px 12px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .rec-primary .rec-name {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 24px;
+        color: var(--navy);
+        margin-bottom: 12px;
+      }
+
+      .rec-primary .rec-prices {
+        display: flex;
+        gap: 20px;
+        align-items: baseline;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .rec-primary .rec-price-item {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+      }
+
+      .rec-primary .rec-price-amount {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 32px;
+        color: var(--fg);
+      }
+
+      .rec-primary .rec-price-label {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .rec-primary .rec-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .rec-primary .rec-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        color: var(--fg);
+      }
+
+      .rec-primary .rec-features li svg {
+        width: 18px;
+        height: 18px;
+        color: var(--green);
+        flex-shrink: 0;
+      }
+
+      .rec-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--amber);
+        color: #fff;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 16px;
+        padding: 14px 28px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+
+      .rec-cta:hover {
+        background: var(--amber-hover);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .rec-cta svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Alternative packages */
+      .rec-alts-heading {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--muted);
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .rec-alts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .rec-alt-card {
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.25s var(--ease-out-expo);
+      }
+
+      .rec-alt-card:hover {
+        border-color: var(--amber);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .rec-alt-card .alt-name {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--navy);
+        margin-bottom: 4px;
+      }
+
+      .rec-alt-card .alt-prices {
+        font-size: 14px;
+        color: var(--fg);
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .rec-alt-card .alt-reason {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+        margin-bottom: 0;
+      }
+
+      .rec-alt-card .alt-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .rec-alt-card .alt-features li {
+        font-size: 13px;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .rec-alt-card .alt-features li svg {
+        width: 14px;
+        height: 14px;
+        color: var(--green);
+        flex-shrink: 0;
+      }
+
+      /* Add-on note */
+      .rec-addon {
+        background: var(--navy-light);
+        border-radius: var(--radius);
+        padding: 16px 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--fg);
+      }
+
+      .rec-addon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--blue);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* Trust bar */
+      .trust-bar {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        padding: 24px 0 8px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--muted);
+      }
+
+      .trust-item svg {
+        width: 18px;
+        height: 18px;
+        color: var(--navy);
+      }
+
+      .restart-link {
+        text-align: center;
+        margin-top: 4px;
+      }
+
+      .restart-link a {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .restart-link a:hover {
+        color: var(--amber);
+      }
+
+      /* ── Animations ── */
+      .fade-up-enter {
+        animation: fadeUp 0.4s var(--ease-out-expo) forwards;
+        opacity: 0;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-out-left {
+        animation: slideOutLeft 0.3s var(--ease-out-expo) forwards;
+      }
+
+      @keyframes slideOutLeft {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+      }
+
+      .slide-in-right {
+        animation: slideInRight 0.35s var(--ease-out-expo) forwards;
+        opacity: 0;
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .slide-in-left {
+        animation: slideInLeft 0.35s var(--ease-out-expo) forwards;
+        opacity: 0;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .stagger-1 {
+        animation-delay: 0ms;
+      }
+      .stagger-2 {
+        animation-delay: 80ms;
+      }
+      .stagger-3 {
+        animation-delay: 160ms;
+      }
+
+      /* ── Reduced Motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-delay: 0ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* ── Responsive: Tablet ── */
+      @media (max-width: 768px) {
+        .wizard-shell {
+          padding: 32px 20px 48px;
+        }
+
+        .wizard-title {
+          font-size: 26px;
+        }
+
+        .wizard-subtitle {
+          font-size: 15px;
+        }
+
+        .card-grid.cols-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .rec-primary .rec-price-amount {
+          font-size: 28px;
+        }
+
+        .rec-alts {
+          grid-template-columns: 1fr;
+        }
+
+        .trust-bar {
+          gap: 20px;
+        }
+
+        .privacy-card .privacy-subtitle {
+          max-width: 100%;
+        }
+      }
+
+      /* ── Responsive: Mobile ── */
+      @media (max-width: 480px) {
+        .wizard-shell {
+          padding: 24px 16px 40px;
+        }
+
+        .wizard-title {
+          font-size: 22px;
+        }
+
+        .wizard-subtitle {
+          font-size: 14px;
+        }
+
+        .step-question {
+          font-size: 19px;
+        }
+
+        .card-grid.cols-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .choice-card {
+          padding: 20px 18px;
+          min-height: auto;
+        }
+
+        .privacy-card {
+          padding: 24px 20px;
+        }
+
+        .tier-card {
+          padding: 22px 18px 20px;
+        }
+
+        .tier-card .tier-price .price-amount {
+          font-size: 22px;
+        }
+
+        .progress-dots {
+          gap: 6px;
+          margin-bottom: 28px;
+        }
+
+        .progress-dot {
+          width: 8px;
+          height: 8px;
+        }
+
+        .progress-dot.active {
+          width: 22px;
+        }
+
+        .rec-primary {
+          padding: 24px 20px;
+        }
+
+        .rec-primary .rec-name {
+          font-size: 20px;
+        }
+
+        .rec-primary .rec-price-amount {
+          font-size: 24px;
+        }
+
+        .rec-cta {
+          width: 100%;
+          justify-content: center;
+          padding: 14px 24px;
+        }
+
+        .trust-bar {
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wizard-shell">
+      <!-- Header -->
+      <header class="wizard-header">
+        <a class="wizard-logo" href="#">
+          <svg
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="36" height="36" rx="8" fill="#1e3a5f" />
+            <path d="M10 10h6v16h-6zM20 10h6v10h-6z" fill="#d97706" />
+            <circle cx="23" cy="26" r="3" fill="#d97706" />
+          </svg>
+          <span>Incorporate123</span>
+        </a>
+        <h1 class="wizard-title">Find Your Package in 60 Seconds</h1>
+        <p class="wizard-subtitle">
+          Answer a few quick questions and we'll recommend the right package for
+          your needs.
+        </p>
+      </header>
+
+      <!-- Progress Dots -->
+      <div class="progress-dots" id="progressDots"></div>
+
+      <!-- Step Container -->
+      <div class="step-container" id="stepContainer">
+        <!-- Step 1: Intent — "What brings you here?" -->
+        <div class="step active" id="step-start" data-step="start">
+          <p class="step-question">What brings you here?</p>
+          <div class="card-grid cols-2">
+            <div
+              class="choice-card fade-up-enter stagger-1"
+              data-choice="formation"
+              onclick="wizard.select('start', 'formation')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="6"
+                  y="20"
+                  width="36"
+                  height="24"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <path
+                  d="M24 8l18 12H6L24 8z"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linejoin="round"
+                />
+                <rect
+                  x="14"
+                  y="28"
+                  width="6"
+                  height="10"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <rect
+                  x="28"
+                  y="28"
+                  width="6"
+                  height="10"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <line
+                  x1="6"
+                  y1="44"
+                  x2="42"
+                  y2="44"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+              </svg>
+              <span class="card-title">Business Formation</span>
+              <span class="card-desc"
+                >Start an LLC or Corporation — form your business the right
+                way</span
+              >
+            </div>
+            <div
+              class="choice-card fade-up-enter stagger-2"
+              data-choice="ap"
+              onclick="wizard.select('start', 'ap')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24 4L6 14v12c0 11 8 18 18 22 10-4 18-11 18-22V14L24 4z"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M17 24l5 5 9-10"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="card-title">Asset Protection</span>
+              <span class="card-desc"
+                >Shield your personal assets from business liabilities</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2A: Formation — "What type of business?" -->
+        <div class="step" id="step-business-type" data-step="business-type">
+          <p class="step-question">What type of business?</p>
+          <div class="card-grid cols-2">
+            <div
+              class="choice-card fade-up-enter stagger-1"
+              data-choice="virtual"
+              onclick="wizard.select('business-type', 'virtual')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="6"
+                  y="8"
+                  width="36"
+                  height="24"
+                  rx="3"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <line
+                  x1="6"
+                  y1="14"
+                  x2="42"
+                  y2="14"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <circle cx="10" cy="11" r="1.5" fill="currentColor" />
+                <circle cx="15" cy="11" r="1.5" fill="currentColor" />
+                <circle cx="20" cy="11" r="1.5" fill="currentColor" />
+                <path
+                  d="M20 40h8M24 32v8"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="14"
+                  y="20"
+                  width="20"
+                  height="6"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-dasharray="3 2"
+                />
+              </svg>
+              <span class="card-title">Virtual / Remote</span>
+              <span class="card-desc"
+                >Operate from anywhere — no physical location required</span
+              >
+            </div>
+            <div
+              class="choice-card fade-up-enter stagger-2"
+              data-choice="brick-mortar"
+              onclick="wizard.select('business-type', 'brick-mortar')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="6"
+                  y="16"
+                  width="36"
+                  height="28"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <path
+                  d="M6 16l6-10h24l6 10"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linejoin="round"
+                />
+                <rect
+                  x="18"
+                  y="30"
+                  width="12"
+                  height="14"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <line
+                  x1="24"
+                  y1="30"
+                  x2="24"
+                  y2="44"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="11"
+                  y="22"
+                  width="8"
+                  height="6"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+                <rect
+                  x="29"
+                  y="22"
+                  width="8"
+                  height="6"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+              </svg>
+              <span class="card-title">Brick-and-Mortar</span>
+              <span class="card-desc"
+                >Physical presence in a specific state</span
+              >
+            </div>
+          </div>
+          <div class="shelf-link">
+            <a href="#"
+              >Looking for a pre-aged company? View shelf companies &rarr;</a
+            >
+          </div>
+        </div>
+
+        <!-- Step 2B: Asset Protection — "Where do you want to form?" -->
+        <div class="step" id="step-ap-state" data-step="ap-state">
+          <p class="step-question">Where do you want to form?</p>
+          <div class="card-grid cols-2">
+            <div
+              class="choice-card fade-up-enter stagger-1"
+              data-choice="wyoming"
+              onclick="wizard.select('ap-state', 'wyoming')"
+            >
+              <span class="badge">Recommended</span>
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 10h32v28H8z"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <path
+                  d="M12 18l4 8 4-6 4 6 4-8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle
+                  cx="34"
+                  cy="18"
+                  r="3"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+                <path
+                  d="M14 30h20M14 34h14"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span class="card-title">Wyoming</span>
+              <span class="card-desc"
+                >Lowest cost, strongest privacy, excellent asset
+                protection</span
+              >
+            </div>
+            <div
+              class="choice-card fade-up-enter stagger-2"
+              data-choice="nevada"
+              onclick="wizard.select('ap-state', 'nevada')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 10l8 28h12l8-28"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linejoin="round"
+                />
+                <circle
+                  cx="24"
+                  cy="22"
+                  r="5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <path
+                  d="M22 22l2 2 3-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 14h16"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span class="card-title">Nevada</span>
+              <span class="card-desc"
+                >Strongest charging order protection, no IRS info-sharing</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2C: Brick-and-Mortar — "Which state?" -->
+        <div class="step" id="step-bm-state" data-step="bm-state">
+          <p class="step-question">Which state?</p>
+          <p class="step-description">
+            We'll form your company in Wyoming for privacy, then register it in
+            your state.
+          </p>
+          <div class="card-grid cols-3">
+            <div
+              class="choice-card fade-up-enter stagger-1"
+              data-choice="california"
+              onclick="wizard.select('bm-state', 'california')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="24"
+                  cy="20"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <path
+                  d="M20 18c0 0 2 4 8 2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M18 32l-4 10h20l-4-10"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linejoin="round"
+                />
+                <circle cx="21" cy="17" r="1.5" fill="currentColor" />
+                <circle cx="27" cy="17" r="1.5" fill="currentColor" />
+              </svg>
+              <span class="card-title">California</span>
+              <span class="card-desc"
+                >Wyoming formation + California registration</span
+              >
+            </div>
+            <div
+              class="choice-card fade-up-enter stagger-2"
+              data-choice="florida"
+              onclick="wizard.select('bm-state', 'florida')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="24"
+                  cy="16"
+                  r="8"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <path
+                  d="M17 22c0 8 4 16 7 20 3-4 7-12 7-20"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <path
+                  d="M20 14l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="card-title">Florida</span>
+              <span class="card-desc"
+                >Wyoming formation + Florida registration</span
+              >
+            </div>
+            <div
+              class="choice-card fade-up-enter stagger-3"
+              data-choice="other"
+              onclick="wizard.select('bm-state', 'other')"
+            >
+              <svg
+                class="card-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="8"
+                  y="8"
+                  width="32"
+                  height="32"
+                  rx="4"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  fill="none"
+                />
+                <circle
+                  cx="24"
+                  cy="24"
+                  r="8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <path
+                  d="M16 24h16M24 16v16"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span class="card-title">Another State</span>
+              <span class="card-desc"
+                >Wyoming formation + your state's registration</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Privacy Question — "Do you want your name kept off public records?" -->
+        <div class="step" id="step-privacy" data-step="privacy">
+          <p class="step-question">
+            Do you want your name kept off public records?
+          </p>
+          <p class="step-description">
+            This is the biggest decision — it determines which package is right
+            for you.
+          </p>
+          <div class="card-grid cols-2">
+            <div
+              class="privacy-card fade-up-enter stagger-1"
+              onclick="wizard.select('privacy', true)"
+            >
+              <div class="privacy-icon shield-icon">
+                <svg
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 3L5 9v7c0 7.5 5 12.5 11 14.5 6-2 11-7 11-14.5V9L16 3z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linejoin="round"
+                  />
+                  <rect
+                    x="12"
+                    y="13"
+                    width="8"
+                    height="7"
+                    rx="1"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                  <path
+                    d="M13.5 13v-2a2.5 2.5 0 0 1 5 0v2"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="16" cy="17" r="1" fill="currentColor" />
+                </svg>
+              </div>
+              <span class="privacy-title">Yes — keep my name private</span>
+              <span class="privacy-subtitle"
+                >Our nominee team appears on all public filings instead of you.
+                Your ownership stays completely confidential.</span
+              >
+            </div>
+            <div
+              class="privacy-card fade-up-enter stagger-2"
+              onclick="wizard.select('privacy', false)"
+            >
+              <div class="privacy-icon doc-icon">
+                <svg
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="7"
+                    y="4"
+                    width="18"
+                    height="24"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <path
+                    d="M12 10h8M12 14h8M12 18h5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M18 22l2.5 2.5L25 20"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="privacy-title"
+                >No — I just need a properly formed company</span
+              >
+              <span class="privacy-subtitle"
+                >Your name will appear on public state records, which is
+                standard for most businesses.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation Screen -->
+      <div class="rec-screen" id="recScreen"></div>
+
+      <!-- Nav Controls -->
+      <div class="step-nav" id="stepNav">
+        <button
+          class="back-btn"
+          id="backBtn"
+          onclick="wizard.goBack()"
+          style="visibility: hidden"
+        >
+          <svg viewBox="0 0 16 16" fill="none">
+            <path
+              d="M10 3L5 8l5 5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Back
+        </button>
+        <a class="browse-link" href="#">Or browse all packages &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        // ── Package Data ──
+        const packages = {
+          "wyoming-gold": {
+            id: "wyoming-gold",
+            name: "Wyoming Gold",
+            state: "WY",
+            tier: "gold",
+            llc: 1275,
+            corp: 1575,
+            features: [
+              "Year-round nominee directors & officers",
+              "Offshore records storage",
+              "Virtual office & mail forwarding",
+              "Full compliance management",
+            ],
+            badge: "Most Popular",
+          },
+          "wyoming-silver": {
+            id: "wyoming-silver",
+            name: "Wyoming Silver",
+            state: "WY",
+            tier: "silver",
+            llc: 875,
+            corp: 1175,
+            features: [
+              "Virtual office address",
+              "Weekly mail forwarding",
+              "Annual reports & compliance",
+              "Corporate seal included",
+            ],
+            badge: null,
+          },
+          "wyoming-bronze": {
+            id: "wyoming-bronze",
+            name: "Wyoming Bronze",
+            state: "WY",
+            tier: "bronze",
+            llc: 625,
+            corp: 625,
+            features: [
+              "Registered agent (1 year)",
+              "State filing fees included",
+              "Document preparation",
+              "Compliance management",
+            ],
+            badge: null,
+          },
+          "nevada-gold": {
+            id: "nevada-gold",
+            name: "Nevada Gold",
+            state: "NV",
+            tier: "gold",
+            llc: 1800,
+            corp: 2100,
+            features: [
+              "Year-round nominee directors & officers",
+              "Offshore records storage",
+              "NV business license included",
+              "Strongest charging order protection",
+            ],
+            badge: "Premium",
+          },
+          "nevada-silver": {
+            id: "nevada-silver",
+            name: "Nevada Silver",
+            state: "NV",
+            tier: "silver",
+            llc: 1275,
+            corp: 1575,
+            features: [
+              "Virtual office address",
+              "Weekly mail forwarding",
+              "NV business license included",
+              "Full compliance management",
+            ],
+            badge: null,
+          },
+          "nevada-bronze": {
+            id: "nevada-bronze",
+            name: "Nevada Bronze",
+            state: "NV",
+            tier: "bronze",
+            llc: 699,
+            corp: 899,
+            features: [
+              "Registered agent (1 year)",
+              "NV business license included",
+              "State filing fees included",
+              "Compliance management",
+            ],
+            badge: null,
+          },
+          "california-private": {
+            id: "california-private",
+            name: "California Private",
+            state: "CA",
+            tier: "gold",
+            llc: 1475,
+            corp: 1775,
+            features: [
+              "WY Gold formation included",
+              "CA foreign registration",
+              "Year-round nominees",
+              "Full compliance in both states",
+            ],
+            badge: "All-in-One",
+          },
+          "florida-private": {
+            id: "florida-private",
+            name: "Florida Private",
+            state: "FL",
+            tier: "gold",
+            llc: 1475,
+            corp: 1775,
+            features: [
+              "WY Gold formation included",
+              "FL foreign registration",
+              "Year-round nominees",
+              "Full compliance in both states",
+            ],
+            badge: "All-in-One",
+          },
+        };
+
+        // ── State ──
+        const state = {
+          step: "start", // start, business-type, ap-state, bm-state, privacy, result
+          branch: null, // 'formation' or 'ap'
+          businessType: null, // 'virtual' or 'brick-mortar'
+          formationState: null, // 'wyoming' or 'nevada'
+          operatingState: null, // 'california', 'florida', 'other' (for B&M)
+          wantsPrivacy: null, // true or false (null for AP — auto-true)
+          recommended: null, // package key
+          alternatives: [], // array of {key, reason}
+          history: ["start"],
+          currentStep: "start",
+        };
+
+        // ── DOM Refs ──
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+
+        // ── Utility ──
+        function formatPrice(n) {
+          return "$" + n.toLocaleString("en-US");
+        }
+
+        // SVG templates
+        const checkSvg =
+          '<svg viewBox="0 0 18 18" fill="none"><path d="M4 9l3.5 3.5L14 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const checkSmallSvg =
+          '<svg viewBox="0 0 14 14" fill="none"><path d="M3 7l2.5 2.5L11 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const arrowRightSvg =
+          '<svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const infoSvg =
+          '<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+        const lightbulbSvg =
+          '<svg viewBox="0 0 18 18" fill="none"><path d="M9 2a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M7.5 15h3M8 13h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+
+        // ── Progress Dots ──
+        function getTotalDots() {
+          // AP path: 2 dots (start → ap-state → result)
+          if (state.branch === "ap") return 2;
+          // Formation → Virtual: 3 dots (start → business-type → privacy → result)
+          if (state.branch === "formation" && state.businessType === "virtual")
+            return 3;
+          // Formation → B&M: 4 dots (start → business-type → bm-state → privacy → result)
+          if (
+            state.branch === "formation" &&
+            state.businessType === "brick-mortar"
+          )
+            return 4;
+          // Formation chosen but no type yet: estimate 3
+          if (state.branch === "formation") return 3;
+          // Default
+          return 3;
+        }
+
+        function renderProgress() {
+          const dots = $("#progressDots");
+          const total = getTotalDots();
+          const activeIndex =
+            state.currentStep === "result" ? total : state.history.length - 1;
+
+          let html = "";
+          for (let i = 0; i <= total; i++) {
+            let cls = "progress-dot";
+            if (i === activeIndex) cls += " active";
+            else if (i < activeIndex) cls += " completed";
+            html += '<div class="' + cls + '"></div>';
+          }
+          dots.innerHTML = html;
+        }
+
+        // ── Step Transitions ──
+        function showStep(stepId, direction) {
+          direction = direction || "forward";
+          const allSteps = $$(".step");
+          const recScreen = $("#recScreen");
+
+          if (stepId === "result") {
+            // Hide all steps and the step container
+            allSteps.forEach(function (s) {
+              s.classList.remove("active");
+            });
+            $("#stepContainer").style.display = "none";
+            recScreen.classList.add("active");
+            recScreen.className =
+              "rec-screen active " +
+              (direction === "forward" ? "slide-in-right" : "slide-in-left");
+            renderRecommendation();
+            // Hide nav for recommendation
+            $("#stepNav").style.display = "none";
+          } else {
+            recScreen.classList.remove("active");
+            $("#stepContainer").style.display = "";
+            $("#stepNav").style.display = "";
+            allSteps.forEach(function (s) {
+              s.classList.remove("active");
+            });
+            const next = $("#step-" + stepId);
+            if (next) {
+              next.classList.add("active");
+              next.className =
+                "step active " +
+                (direction === "forward" ? "slide-in-right" : "slide-in-left");
+              // Re-trigger card stagger animations
+              const cards = next.querySelectorAll(
+                ".choice-card, .tier-card, .privacy-card",
+              );
+              cards.forEach(function (card, i) {
+                card.classList.remove(
+                  "fade-up-enter",
+                  "stagger-1",
+                  "stagger-2",
+                  "stagger-3",
+                );
+                void card.offsetWidth; // force reflow
+                card.classList.add("fade-up-enter", "stagger-" + (i + 1));
+              });
+            }
+          }
+
+          // Back button visibility
+          var backBtn = $("#backBtn");
+          if (state.history.length > 1 && stepId !== "result") {
+            backBtn.style.visibility = "visible";
+          } else if (stepId === "result") {
+            // handled by hiding nav
+          } else {
+            backBtn.style.visibility = "hidden";
+          }
+
+          state.currentStep = stepId;
+          renderProgress();
+        }
+
+        function navigateTo(stepId) {
+          if (state.currentStep !== stepId) {
+            state.history.push(stepId);
+          }
+          showStep(stepId, "forward");
+        }
+
+        // ── Recommendation Engine ──
+        // Resolves which package to recommend and which alternatives + reasons to show
+        function resolveRecommendation() {
+          var rec = null;
+          var alts = [];
+          var contextNote = "";
+          var addonNote = null;
+
+          // ── AP paths (2 clicks, no privacy question) ──
+          if (state.branch === "ap") {
+            if (state.formationState === "wyoming") {
+              rec = "wyoming-gold";
+              contextNote =
+                "Because you want asset protection, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records.";
+              alts = [
+                {
+                  key: "wyoming-silver",
+                  reason:
+                    "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+                },
+                {
+                  key: "nevada-gold",
+                  reason:
+                    "If you need Nevada specifically for stronger charging order protection.",
+                },
+              ];
+            } else {
+              // nevada
+              rec = "nevada-gold";
+              contextNote =
+                "Because you want asset protection, we recommend our Nevada Gold package \u2014 it includes year-round nominees and the strongest charging order protection in the country.";
+              alts = [
+                {
+                  key: "wyoming-gold",
+                  reason:
+                    "Same privacy and nominees at a lower cost. Wyoming has excellent asset protection too.",
+                },
+                {
+                  key: "nevada-silver",
+                  reason:
+                    "Same Nevada benefits, virtual office included \u2014 without nominee privacy. Save $525.",
+                },
+              ];
+            }
+          }
+
+          // ── Formation → Virtual paths (3 clicks) ──
+          if (
+            state.branch === "formation" &&
+            state.businessType === "virtual"
+          ) {
+            if (state.wantsPrivacy === true) {
+              // Virtual + wants privacy → WY Gold
+              rec = "wyoming-gold";
+              contextNote =
+                "Because you want privacy, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records.";
+              alts = [
+                {
+                  key: "wyoming-silver",
+                  reason:
+                    "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+                },
+                {
+                  key: "nevada-gold",
+                  reason:
+                    "If you need Nevada specifically for stronger charging order protection.",
+                },
+              ];
+            } else {
+              // Virtual + no privacy → WY Silver
+              rec = "wyoming-silver";
+              contextNote =
+                "For your virtual business, our Silver package includes a Wyoming business address and mail forwarding \u2014 everything you need to operate professionally without a physical office.";
+              alts = [
+                {
+                  key: "wyoming-gold",
+                  reason:
+                    "Add nominee privacy so your name stays off all public records.",
+                },
+                {
+                  key: "wyoming-bronze",
+                  reason:
+                    "If you don't need a business address or mail forwarding.",
+                },
+              ];
+            }
+          }
+
+          // ── Formation → B&M → CA/FL paths (4 clicks) ──
+          if (
+            state.branch === "formation" &&
+            state.businessType === "brick-mortar" &&
+            (state.operatingState === "california" ||
+              state.operatingState === "florida")
+          ) {
+            var stateLabel =
+              state.operatingState === "california" ? "California" : "Florida";
+            var otherStateLabel =
+              state.operatingState === "california" ? "Florida" : "California";
+            var privatePkgId =
+              state.operatingState === "california"
+                ? "california-private"
+                : "florida-private";
+            var otherPrivatePkgId =
+              state.operatingState === "california"
+                ? "florida-private"
+                : "california-private";
+
+            if (state.wantsPrivacy === true) {
+              // B&M → CA/FL → wants privacy → State Private
+              rec = privatePkgId;
+              contextNote =
+                "Our " +
+                stateLabel +
+                " Private package bundles Wyoming privacy formation with " +
+                stateLabel +
+                " registration \u2014 one package, full compliance in both states.";
+              alts = [
+                {
+                  key: "wyoming-gold",
+                  reason:
+                    "Formation only, add " +
+                    stateLabel +
+                    " registration separately ($149).",
+                },
+                {
+                  key: otherPrivatePkgId,
+                  reason: "If you operate in " + otherStateLabel + " instead.",
+                },
+              ];
+            } else {
+              // B&M → CA/FL → no privacy → WY Bronze + state reg
+              rec = "wyoming-bronze";
+              contextNote =
+                "We'll form a Wyoming company and register it in " +
+                stateLabel +
+                ". Since you don't need privacy, the Bronze package plus " +
+                stateLabel +
+                " registration is the most cost-effective option.";
+              addonNote =
+                "You'll also need " +
+                stateLabel +
+                " foreign registration ($149). We can add this during checkout.";
+              alts = [
+                {
+                  key: "wyoming-silver",
+                  reason:
+                    "Adds a Wyoming business address and mail forwarding.",
+                },
+                {
+                  key: "wyoming-gold",
+                  reason:
+                    "Add full privacy with nominees keeping your name off records.",
+                },
+              ];
+            }
+          }
+
+          // ── Formation → B&M → Other state paths (4 clicks) ──
+          if (
+            state.branch === "formation" &&
+            state.businessType === "brick-mortar" &&
+            state.operatingState === "other"
+          ) {
+            if (state.wantsPrivacy === true) {
+              // B&M → Other → wants privacy → WY Gold + foreign reg
+              rec = "wyoming-gold";
+              contextNote =
+                "Because you want privacy, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records. We'll also help with your state registration.";
+              addonNote =
+                "You'll also need foreign registration in your state. We'll help you set that up after checkout.";
+              alts = [
+                {
+                  key: "wyoming-silver",
+                  reason:
+                    "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+                },
+                {
+                  key: "wyoming-bronze",
+                  reason:
+                    "Basic formation only, if you don't need privacy or a virtual office.",
+                },
+              ];
+            } else {
+              // B&M → Other → no privacy → WY Bronze + foreign reg
+              rec = "wyoming-bronze";
+              contextNote =
+                "Since you already have a physical location, our Bronze package covers formation and full compliance \u2014 we handle all the paperwork and annual filings.";
+              addonNote =
+                "You'll also need foreign registration in your state. We'll help you set that up after checkout.";
+              alts = [
+                {
+                  key: "wyoming-silver",
+                  reason:
+                    "Adds a Wyoming business address and mail forwarding.",
+                },
+                {
+                  key: "wyoming-gold",
+                  reason:
+                    "Add full privacy with nominees keeping your name off records.",
+                },
+              ];
+            }
+          }
+
+          state.recommended = rec;
+          state.alternatives = alts;
+          return {
+            recommended: rec,
+            alternatives: alts,
+            contextNote: contextNote,
+            addonNote: addonNote,
+          };
+        }
+
+        // ── Recommendation Rendering ──
+        function renderRecommendation() {
+          var result = resolveRecommendation();
+          var pkg = packages[result.recommended];
+          var alts = result.alternatives;
+          var contextNote = result.contextNote;
+          var addonNote = result.addonNote;
+
+          if (!pkg) return;
+
+          var html = "";
+
+          // Heading
+          html += '<div class="rec-heading fade-up-enter">';
+          html += "<h2>Here's Your Perfect Match</h2>";
+          html += "</div>";
+
+          // Context note (prominent, above the package card)
+          if (contextNote) {
+            html +=
+              '<div class="rec-context-note fade-up-enter" style="animation-delay: 60ms;">';
+            html += lightbulbSvg;
+            html += contextNote;
+            html += "</div>";
+          }
+
+          // Primary card
+          html +=
+            '<div class="rec-primary fade-up-enter" style="animation-delay: 120ms;">';
+          if (pkg.badge)
+            html += '<span class="rec-badge">' + pkg.badge + "</span>";
+          html += '<div class="rec-name">' + pkg.name + "</div>";
+          html += '<div class="rec-prices">';
+          html +=
+            '<div class="rec-price-item"><span class="rec-price-amount">' +
+            formatPrice(pkg.llc) +
+            '</span><span class="rec-price-label">LLC</span></div>';
+          html +=
+            '<div class="rec-price-item"><span class="rec-price-amount">' +
+            formatPrice(pkg.corp) +
+            '</span><span class="rec-price-label">Corp</span></div>';
+          html += "</div>";
+          html += '<ul class="rec-features">';
+          pkg.features.forEach(function (f) {
+            html += "<li>" + checkSvg + " " + f + "</li>";
+          });
+          html += "</ul>";
+          html +=
+            '<a class="rec-cta" href="#">View Package Details ' +
+            arrowRightSvg +
+            "</a>";
+          html += "</div>";
+
+          // Add-on note
+          if (addonNote) {
+            html +=
+              '<div class="rec-addon fade-up-enter" style="animation-delay: 200ms;">';
+            html += infoSvg;
+            html += "<span>" + addonNote + "</span>";
+            html += "</div>";
+          }
+
+          // Alternatives with reasons
+          if (alts.length > 0) {
+            html +=
+              '<p class="rec-alts-heading fade-up-enter" style="animation-delay: 240ms;">Also worth considering</p>';
+            html += '<div class="rec-alts">';
+            alts.forEach(function (alt, idx) {
+              var altPkg = packages[alt.key];
+              if (!altPkg) return;
+              html +=
+                '<div class="rec-alt-card fade-up-enter" style="animation-delay: ' +
+                (280 + idx * 80) +
+                'ms;">';
+              html += '<div class="alt-name">' + altPkg.name + "</div>";
+              html +=
+                '<div class="alt-prices">' +
+                formatPrice(altPkg.llc) +
+                " LLC &middot; " +
+                formatPrice(altPkg.corp) +
+                " Corp</div>";
+              html += '<p class="alt-reason">' + alt.reason + "</p>";
+              html += "</div>";
+            });
+            html += "</div>";
+          }
+
+          // Trust bar
+          html +=
+            '<div class="trust-bar fade-up-enter" style="animation-delay: 400ms;">';
+          html +=
+            '<div class="trust-item"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2L3 5.5v4.5c0 4 2.6 7.2 6 8 3.4-.8 6-4 6-8V5.5L9 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>25 Years</div>';
+          html +=
+            '<div class="trust-item"><svg viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M6 9h4V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>All-Inclusive Pricing</div>';
+          html +=
+            '<div class="trust-item"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l3.5 3.5L14 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>30-Day Guarantee</div>';
+          html += "</div>";
+
+          // Restart
+          html +=
+            '<div class="restart-link fade-up-enter" style="animation-delay: 440ms;">';
+          html +=
+            '<a onclick="wizard.restart(); return false;" href="#">Not quite right? Start over</a>';
+          html += "</div>";
+
+          $("#recScreen").innerHTML = html;
+        }
+
+        // ── Public API ──
+        window.wizard = {
+          select: function (stepId, choice) {
+            if (stepId === "start") {
+              // Step 1: What brings you here?
+              if (choice === "formation") {
+                state.branch = "formation";
+                navigateTo("business-type");
+              } else {
+                // ap
+                state.branch = "ap";
+                navigateTo("ap-state");
+              }
+            } else if (stepId === "business-type") {
+              // Step 2A: What type of business?
+              state.businessType = choice;
+              if (choice === "virtual") {
+                // Virtual → go to privacy question
+                navigateTo("privacy");
+              } else {
+                // Brick-and-mortar → which state?
+                navigateTo("bm-state");
+              }
+            } else if (stepId === "ap-state") {
+              // Step 2B: AP → Where do you want to form?
+              state.formationState = choice; // 'wyoming' or 'nevada'
+              state.wantsPrivacy = null; // AP clients auto-get privacy, skip question
+              // Auto-recommend Gold — go directly to result
+              navigateTo("result");
+            } else if (stepId === "bm-state") {
+              // Step 2C: B&M → Which state?
+              state.operatingState = choice; // 'california', 'florida', 'other'
+              // All B&M paths go to privacy question
+              navigateTo("privacy");
+            } else if (stepId === "privacy") {
+              // Step 3: The privacy question
+              state.wantsPrivacy = choice; // true or false
+              navigateTo("result");
+            }
+          },
+
+          goBack: function () {
+            if (state.history.length <= 1) return;
+            state.history.pop();
+            var prevStep = state.history[state.history.length - 1];
+
+            // Reset dependent state
+            if (prevStep === "start") {
+              state.branch = null;
+              state.businessType = null;
+              state.formationState = null;
+              state.operatingState = null;
+              state.wantsPrivacy = null;
+              state.recommended = null;
+              state.alternatives = [];
+            } else if (prevStep === "business-type") {
+              state.businessType = null;
+              state.operatingState = null;
+              state.wantsPrivacy = null;
+              state.recommended = null;
+              state.alternatives = [];
+            } else if (prevStep === "ap-state") {
+              state.formationState = null;
+              state.wantsPrivacy = null;
+              state.recommended = null;
+              state.alternatives = [];
+            } else if (prevStep === "bm-state") {
+              state.operatingState = null;
+              state.wantsPrivacy = null;
+              state.recommended = null;
+              state.alternatives = [];
+            } else if (prevStep === "privacy") {
+              state.wantsPrivacy = null;
+              state.recommended = null;
+              state.alternatives = [];
+            }
+
+            showStep(prevStep, "backward");
+          },
+
+          restart: function () {
+            state.step = "start";
+            state.branch = null;
+            state.businessType = null;
+            state.formationState = null;
+            state.operatingState = null;
+            state.wantsPrivacy = null;
+            state.recommended = null;
+            state.alternatives = [];
+            state.history = ["start"];
+            state.currentStep = "start";
+            $("#recScreen").classList.remove("active");
+            $("#stepContainer").style.display = "";
+            $("#stepNav").style.display = "";
+            showStep("start", "backward");
+          },
+        };
+
+        // ── Init ──
+        renderProgress();
+      })();
+    </script>
+  </body>
+</html>
