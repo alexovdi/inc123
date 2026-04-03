@@ -2,7 +2,7 @@
 
 **URL:** `/contact/` · **Template:** Utility Page (unique)  
 **Phase:** 2 — UX & Interactive Prototyping  
-**Based on:** Contact Page Wireframe Spec, Brand Guide v2, User Journey Mapping  
+**Based on:** Contact Page Wireframe Spec, Brand Guide v2, User Journey Mapping
 
 ---
 
@@ -44,10 +44,10 @@ Card 2 says "we'll respond within 1 business day" for the form, but the direct e
 
 ## Contact Hero
 
-| Element | Content | Voice Notes |
-|---------|---------|-------------|
-| **Eyebrow** | "Get in Touch" | |
-| **H1** | "Talk to a Privacy Specialist" | Not "Contact Us" — that's generic. "Talk to a Privacy Specialist" reinforces the brand positioning and signals expertise. |
+| Element         | Content                                                                                                                                                                           | Voice Notes                                                                                                                          |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Eyebrow**     | "Get in Touch"                                                                                                                                                                    |                                                                                                                                      |
+| **H1**          | "Talk to a Privacy Specialist"                                                                                                                                                    | Not "Contact Us" — that's generic. "Talk to a Privacy Specialist" reinforces the brand positioning and signals expertise.            |
 | **Subheadline** | "Have questions before you order? Need help choosing between packages? Want to discuss a complex structure? We're here to help — no sales pressure, no chatbots, no phone trees." | Three questions mirror three visitor types (pre-purchase, undecided, complex). Three "no" statements differentiate from competitors. |
 
 ---
@@ -58,58 +58,58 @@ Card 2 says "we'll respond within 1 business day" for the form, but the direct e
 
 ### Card 1: Call Us
 
-| Element | Content |
-|---------|---------|
-| **Icon** | Phone |
-| **Title** | "Call Us Directly" |
-| **Phone** | "(775) xxx-xxxx" — large, prominent, tap-to-call. This is the single most important element on the page. |
-| **Description** | "Speak directly with a privacy formation specialist. No phone tree — a real person answers." |
-| **Hours** | "Monday–Friday, 9:00 AM – 5:00 PM Pacific" |
-| **After-hours note** | "After hours? Leave a voicemail and we'll return your call the next business day." |
+| Element              | Content                                                                                                  |
+| -------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Icon**             | Phone                                                                                                    |
+| **Title**            | "Call Us Directly"                                                                                       |
+| **Phone**            | "(775) xxx-xxxx" — large, prominent, tap-to-call. This is the single most important element on the page. |
+| **Description**      | "Speak directly with a privacy formation specialist. No phone tree — a real person answers."             |
+| **Hours**            | "Monday–Friday, 9:00 AM – 5:00 PM Pacific"                                                               |
+| **After-hours note** | "After hours? Leave a voicemail and we'll return your call the next business day."                       |
 
 ### Card 2: Send a Message
 
-| Element | Content |
-|---------|---------|
-| **Icon** | Mail |
-| **Title** | "Send Us a Message" |
-| **Action** | "Use the form below ↓" — scrolls to form |
-| **Description** | "Describe your situation and we'll respond within 1 business day." |
+| Element               | Content                                                                        |
+| --------------------- | ------------------------------------------------------------------------------ |
+| **Icon**              | Mail                                                                           |
+| **Title**             | "Send Us a Message"                                                            |
+| **Action**            | "Use the form below ↓" — scrolls to form                                       |
+| **Description**       | "Describe your situation and we'll respond within 1 business day."             |
 | **Email alternative** | "Or email directly: info@incorporate123.com — Response within 1 business day." |
-| **Callback note** | "Include your phone number if you'd prefer a callback." |
+| **Callback note**     | "Include your phone number if you'd prefer a callback."                        |
 
 ### Card 3: Visit Our Office
 
-| Element | Content |
-|---------|---------|
-| **Icon** | MapPin |
-| **Title** | "Visit Our Reno Office" |
-| **Address** | Kingsbury Executive Suites, [Full Address], Reno, Nevada |
-| **Hours** | "Monday–Friday, 9:00 AM – 5:00 PM Pacific" |
+| Element         | Content                                                                       |
+| --------------- | ----------------------------------------------------------------------------- |
+| **Icon**        | MapPin                                                                        |
+| **Title**       | "Visit Our Reno Office"                                                       |
+| **Address**     | Kingsbury Executive Suites, [Full Address], Reno, Nevada                      |
+| **Hours**       | "Monday–Friday, 9:00 AM – 5:00 PM Pacific"                                    |
 | **Description** | "Walk-ins welcome. Our office is minutes from the Nevada Secretary of State." |
-| **Note** | "Call ahead to schedule a dedicated consultation." |
+| **Note**        | "Call ahead to schedule a dedicated consultation."                            |
 
 ---
 
 ## Contact Form
 
-| Element | Content |
-|---------|---------|
-| **H2** | "Send Us a Message" |
-| **Subtext** | "Tell us what you're looking for. We respond within 1 business day. Fields marked * are required." |
+| Element     | Content                                                                                             |
+| ----------- | --------------------------------------------------------------------------------------------------- |
+| **H2**      | "Send Us a Message"                                                                                 |
+| **Subtext** | "Tell us what you're looking for. We respond within 1 business day. Fields marked \* are required." |
 
 ### Form Fields
 
-| Row | Field | Type | Required | Notes |
-|-----|-------|------|----------|-------|
-| 1 | Full Name | Text | Yes* | |
-| 1 | Email Address | Email | Yes* | |
-| 2 | Phone Number | Tel | No | |
-| 2 | Preferred Contact | Radio | No | Email (default) · Phone · Either |
-| 3 | Inquiry Type | Select | Yes* | Privacy / Nominee Services · Asset Protection · New LLC or Corporation · Offshore / International · Existing Entity — Compliance · Existing Entity — Domestication · Packages & Pricing · Other |
-| 4 | State of Interest | Select | No | Not sure yet · Wyoming · Nevada · California · Florida · Other / Multiple |
-| 5 | Your Message | Textarea | Yes* | "Tell us about your situation, what you're looking to accomplish, and any questions you have." |
-| 6 | How did you find us? | Select | No | Referral from Accountant/Attorney · Referral from a Client · Google Search · Blog / Article · Social Media · Returning Client · Other |
+| Row | Field                | Type     | Required | Notes                                                                                                                                                                                           |
+| --- | -------------------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Full Name            | Text     | Yes\*    |                                                                                                                                                                                                 |
+| 1   | Email Address        | Email    | Yes\*    |                                                                                                                                                                                                 |
+| 2   | Phone Number         | Tel      | No       |                                                                                                                                                                                                 |
+| 2   | Preferred Contact    | Radio    | No       | Email (default) · Phone · Either                                                                                                                                                                |
+| 3   | Inquiry Type         | Select   | Yes\*    | Privacy / Nominee Services · Asset Protection · New LLC or Corporation · Offshore / International · Existing Entity — Compliance · Existing Entity — Domestication · Packages & Pricing · Other |
+| 4   | State of Interest    | Select   | No       | Not sure yet · Wyoming · Nevada · California · Florida · Other / Multiple                                                                                                                       |
+| 5   | Your Message         | Textarea | Yes\*    | "Tell us about your situation, what you're looking to accomplish, and any questions you have."                                                                                                  |
+| 6   | How did you find us? | Select   | No       | Referral from Accountant/Attorney · Referral from a Client · Google Search · Blog / Article · Social Media · Returning Client · Other                                                           |
 
 ### Submit Button
 
@@ -139,27 +139,26 @@ Form replaced by success message:
 
 Below form. 4 trust points in a horizontal strip.
 
-| Icon | Text |
-|------|------|
-| Clock | "Response within 1 business day" |
+| Icon   | Text                                    |
+| ------ | --------------------------------------- |
+| Clock  | "Response within 1 business day"        |
 | Shield | "Your information is kept confidential" |
-| Phone | "Real person answers — no chatbots" |
-| Award | "25 years of specialized experience" |
+| Phone  | "Real person answers — no chatbots"     |
+| Award  | "25 years of specialized experience"    |
 
 ---
 
 ## Quick Links Section
 
-| Element | Content |
-|---------|---------|
-| **H2** | "You Might Also Find These Helpful" |
+| Element | Content                             |
+| ------- | ----------------------------------- |
+| **H2**  | "You Might Also Find These Helpful" |
 
-| Card | Title | CTA |
-|------|-------|-----|
-| 1 | "Compare All Packages" | "View Packages →" → `/compare-packages/` |
-| 2 | "Frequently Asked Questions" | "Browse FAQs →" → `/faq/` |
-| 3 | "Anonymous LLC Guide" | "Read the Guide →" → `/anonymous-llc/` |
-| 4 | "Client Login" | "Client Login →" → `/login/` |
+| Card | Title                        | CTA                                      |
+| ---- | ---------------------------- | ---------------------------------------- |
+| 1    | "Compare All Packages"       | "View Packages →" → `/compare-packages/` |
+| 2    | "Frequently Asked Questions" | "Browse FAQs →" → `/faq/`                |
+| 3    | "Anonymous LLC Guide"        | "Read the Guide →" → `/anonymous-llc/`   |
 
 ---
 
@@ -178,4 +177,4 @@ Embedded map showing Kingsbury Executive Suites, Reno. Address and phone repeate
 
 ---
 
-*Confidential — BIT Studios × Incorporate123 — March 2026*
+_Confidential — BIT Studios × Incorporate123 — March 2026_

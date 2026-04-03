@@ -144,9 +144,6 @@ function MobileNav({
           <Button variant="cta" fullWidth asChild>
             <a href="/checkout/configure">Order Now</a>
           </Button>
-          <Button variant="secondary" fullWidth asChild>
-            <a href="/login">Client Login</a>
-          </Button>
         </div>
 
         {/* Phone tap-to-call */}

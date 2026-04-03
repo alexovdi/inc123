@@ -55,7 +55,6 @@ Used on every single page. Built first (Phase A: Foundation).
 **Behavior:**
 - Desktop: hover-triggered dropdown with 200ms close delay
 - Mobile: accordion expand per pillar on tap
-- Packages and Client Login above fold in mobile menu
 - Phone number with tap-to-call persistent in mobile menu
 
 ---
@@ -66,12 +65,10 @@ Used on every single page. Built first (Phase A: Foundation).
 |----------|--------|
 | **Used On** | Every page (mobile viewports inside SiteHeader) |
 | **First Built** | Homepage |
-| **Contains** | Hamburger toggle, accordion pillar sections, package links, Client Login, phone tap-to-call |
 
 **Behavior:**
 - Hamburger icon toggles full-screen or slide-in nav panel
 - Accordion expand for each pillar (maintains pillar structure, not alphabetical)
-- Packages and Client Login positioned above fold
 
 ---
 
@@ -528,7 +525,6 @@ Used on only one page type. Listed by page.
 |-----------|-------------|
 | **HomepageHero** | Full-width split layout: headline/CTAs left, visual right. Eyebrow, H1, subheadline, dual CTAs, trust badge strip. |
 | **HowItWorks** | 4-step process visualization. Horizontal connected steps (desktop), vertical timeline (mobile). Numbered circles, icons, titles, descriptions. |
-| **ComplianceCallout** | Full-width card with compliance pillar accent (purple). "Already Have an Entity?" with dual CTAs to compliance and client login. |
 | **DifferentiatorGrid** | Dark section. 2×3 grid of icon + title + description value props on navy background with white text and amber icons. |
 
 ### Privacy Pillar
@@ -606,7 +602,6 @@ Used on only one page type. Listed by page.
 | **ContactMethodCards** | 3 cards: Call Us (phone prominent, tap-to-call), Send a Message (scrolls to form), Visit Our Office (address, hours). Phone card is most prominent. |
 | **ContactForm** | 6-row form: name/email, phone/preferred contact, inquiry type select, state interest select, message textarea, referral source. Validation on blur. Submit with loading state. Success state replaces form with confirmation message. |
 | **MapPlaceholder** | Static map placeholder with MapPin icon and address. Production: Google Maps embed. |
-| **QuickLinkCards** | 4 small cards linking to Packages, FAQ, Anonymous LLC Guide, Client Login. Adapted from WhereToGoNext with descriptions. |
 
 ---
 

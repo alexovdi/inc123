@@ -51,13 +51,13 @@ Each pillar has its own visual identity. Privacy always dominates. The identitie
 ### 1. Persistent Navigation
 
 Present on every viewport. Contains:
+
 - Logo → `/`
 - Nav: Privacy (dropdown), Asset Protection (dropdown), Formation (dropdown), Packages (direct link → `/compare-packages/`), About (dropdown: About, Contact, Testimonials)
-- Client Login → `/login/` — always visible, never buried
 - Phone → `tel:7755551234` — always one tap away
 - "Get Started" → `/compare-packages/` — secondary style, never competing with page CTAs
 
-On mobile: hamburger preserving pillar structure (not alphabetical), Packages and Login immediately reachable, phone one tap away, compact on scroll.
+On mobile: hamburger preserving pillar structure (not alphabetical), Packages immediately reachable, phone one tap away, compact on scroll.
 
 ---
 
@@ -68,7 +68,7 @@ The first thing anyone sees. A CTA must be visible without scrolling.
 **Headline (h1):** Max 8 words. Privacy-first, outcome-focused. Never geography-first or entity-type-first.
 
 **Supporting line:** Max 25 words. Must include at least one specific number.
-*Placeholder: "25 years specializing in business privacy, asset protection, and incorporation for Wyoming and Nevada. All-inclusive packages — no hidden fees."*
+_Placeholder: "25 years specializing in business privacy, asset protection, and incorporation for Wyoming and Nevada. All-inclusive packages — no hidden fees."_
 
 **Primary action:** "Protect Your Privacy" → `/privacy/`
 **Secondary action:** "View Packages & Pricing" → `/compare-packages/`
@@ -86,17 +86,17 @@ How visitors find the right path based on their goal.
 
 **Privacy (always first, most prominent):**
 "Privacy you can't get elsewhere. Year-round nominee directors and officers keep your name off public records — not just at formation, but every day."
-*Aside: "Year-round nominees included — not 'nominee for a day'"*
+_Aside: "Year-round nominees included — not 'nominee for a day'"_
 "Explore Privacy Options" → `/privacy/`
 
 **Asset Protection:**
 "Protect what you've built. Wyoming and Nevada LLCs with charging order protection — the strongest structural defense for your business assets."
-*Aside: "For individuals with $500K+ in assets"*
+_Aside: "For individuals with $500K+ in assets"_
 "Protect Your Assets" → `/asset-protection/`
 
 **Business Incorporation (always last):**
 "Expert formation, all-inclusive. Wyoming and Nevada LLCs and Corporations with everything included — state fees, registered agent, operating agreement, EIN."
-*Aside: "25 years forming Wyoming and Nevada entities"*
+_Aside: "25 years forming Wyoming and Nevada entities"_
 "Start Your Company" → `/formation/`
 
 Each pillar's visual identity must be present. Each gets one soft action (not a primary button).
@@ -140,6 +140,7 @@ Why Incorporate123 over everyone else. Six claims, all verifiable:
 ### 6. Trust Reinforcement
 
 Concentrated proof. Compact — no explanations, just signals:
+
 - Trusted Since 2000
 - (775) 555-1234 (clickable)
 - 30-Day Money-Back Guarantee
@@ -188,7 +189,7 @@ Should feel like it belongs to the same visual family as the opening.
 
 ### 10. Sitemap & Legal
 
-**Links organized by:** Privacy pillar, Asset Protection pillar, Business Incorporation pillar, Company (About/Contact/FAQ/Blog/Testimonials/Login), Packages (all tiers, Gold first), States (Wyoming/Nevada/California/Florida/Offshore)
+**Links organized by:** Privacy pillar, Asset Protection pillar, Business Incorporation pillar, Company (About/Contact/FAQ/Blog/Testimonials), Packages (all tiers, Gold first), States (Wyoming/Nevada/California/Florida/Offshore)
 
 **Legal:** © 2026 Incorporate123 · Privacy Policy · Terms of Service · Kingsbury Executive Suites, Reno, NV · (775) 555-1234 · Crypto: BTC/ETH/XRP/LTC/XMR
 

@@ -88,7 +88,6 @@ The sticky bottom bar on mobile (Section 13.1) routes to `/compare-packages/` wi
 |---------|---------|-------------|
 | Phone | `(775) xxx-xxxx` | Use actual phone number once confirmed. Format with area code in parentheses. Tap-to-call on all viewports. |
 | Tagline | "Privacy, Asset Protection & Business Formation Specialists" | This IS the repositioning statement. It appears on every page via the header. Do not abbreviate or rephrase. |
-| Client Login | "Client Login →" | Arrow indicates navigation. Routes to `/login/`. Must be visible on every page — returning clients look for this first. |
 
 **Implementation note:** The utility bar is a secondary information strip. It should feel informational, not promotional. Small type (12–14px Inter), muted color (use `--muted` text color on white or light background). It should visually separate from the primary nav below it.
 
@@ -99,7 +98,6 @@ The sticky bottom bar on mobile (Section 13.1) routes to `/compare-packages/` wi
 | Logo | Left | Incorporate123 wordmark | Links to `/`. Logo should work at small sizes for mobile. If logomark + wordmark are separate assets, use logomark only on mobile. |
 | Primary Nav | Center | Privacy · Asset Protection · Formation · Packages · About | Five items. First three trigger mega menus. "Packages" triggers a dropdown. "About" triggers a simple dropdown. |
 | Get Started CTA | Right | "Get Started →" | **Amber button** (`--accent` #d97706). Routes to `/compare-packages/`. This is the persistent conversion shortcut across the entire site. |
-| Client Login | Right | Text link or ghost button | Secondary to "Get Started." Always visible. Do not visually compete with the amber CTA. |
 | Phone Icon | Right (mobile) | Tap-to-call icon | Mobile only. Replaces visible phone number on small viewports. |
 
 **Brand voice on nav labels:** Use "Privacy" not "Business Privacy" in nav (space constraint). "Asset Protection" stays full. David prefers "Business Incorporation" over "Company Formation" — however, in the nav the label should remain "Formation" for brevity; full pillar pages use David's preferred terminology.
@@ -146,7 +144,6 @@ The mega menus serve two roles: navigation and education. Each menu shows cluste
 ### 1D. Mobile Navigation
 
 - Hamburger icon replaces nav items
-- **Packages and Client Login appear first** in the mobile menu (above pillar accordions) — mobile visitors who know what they want shouldn't have to scroll through educational nav
 - Each pillar name is tappable to expand an accordion revealing cluster links
 - Persistent phone number with tap-to-call
 - Sticky bottom CTA bar (see Section 13)
@@ -441,7 +438,6 @@ Step descriptions should feel like a conversation, not a legal process. Each is 
 | **Headline (H2)** | "Already Have an Entity? We Keep You Compliant." | Speaks directly to returning clients. "We Keep You Compliant" frames Incorporate123 as an ongoing partner, not a one-time service. |
 | **Description** | "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox." | The "not just a mailbox" line differentiates from budget registered agent services that provide an address and nothing else. |
 | **Primary CTA** | "Explore Compliance Services →" | Purple-themed button. Routes to `/compliance/`. |
-| **Secondary CTA** | "Client Login →" | Ghost/outline button. Routes to `/login/`. For returning clients who know exactly where they're going. |
 
 ### Content Direction for David
 
@@ -537,7 +533,6 @@ The footer serves as a complete sitemap. Every cluster page, comparison page, pa
 | Testimonials | `/testimonials/` |
 | Blog | `/blog/` |
 | FAQ | `/faq/` |
-| Client Login | `/login/` |
 | **Compliance** (header) | `/compliance/` |
 | Registered Agent | `/registered-agent/` |
 | Annual Reports | `/annual-reports/` |

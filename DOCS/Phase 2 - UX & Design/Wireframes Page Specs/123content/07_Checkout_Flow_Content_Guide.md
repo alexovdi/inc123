@@ -3,7 +3,7 @@
 **URLs:** `/checkout/configure/` → `/checkout/details/` → `/checkout/payment/` → `/checkout/confirmation/`  
 **Template:** Checkout Flow (4 steps) · **All pages:** `noindex, nofollow`  
 **Phase:** 2 — UX & Interactive Prototyping  
-**Based on:** Checkout Flow Wireframe Spec, Brand Guide v2, Competitive Analysis  
+**Based on:** Checkout Flow Wireframe Spec, Brand Guide v2, Competitive Analysis
 
 ---
 
@@ -49,11 +49,11 @@ Visitors entering complex multi-member structures may need to gather information
 
 **URL:** `/checkout/configure/`
 
-| Element | Content | Voice Notes |
-|---------|---------|-------------|
-| **Step Label** | "Step 1 of 4" | Visible in step indicator |
-| **Headline** | "Configure Your Package" | Direct, action-oriented |
-| **Subtext** | "Confirm your selections below. Your order summary updates in real time." | Sets expectation: this is configuration, not a quiz |
+| Element        | Content                                                                   | Voice Notes                                         |
+| -------------- | ------------------------------------------------------------------------- | --------------------------------------------------- |
+| **Step Label** | "Step 1 of 4"                                                             | Visible in step indicator                           |
+| **Headline**   | "Configure Your Package"                                                  | Direct, action-oriented                             |
+| **Subtext**    | "Confirm your selections below. Your order summary updates in real time." | Sets expectation: this is configuration, not a quiz |
 
 ### Form Sections
 
@@ -77,27 +77,31 @@ This step should feel like building something, not filling out a form. The tier 
 
 **URL:** `/checkout/details/`
 
-| Element | Content |
-|---------|---------|
-| **Headline** | "Your Entity Details" |
-| **Subtext** | "We use this information to prepare and file your formation documents." |
+| Element      | Content                                                                 |
+| ------------ | ----------------------------------------------------------------------- |
+| **Headline** | "Your Entity Details"                                                   |
+| **Subtext**  | "We use this information to prepare and file your formation documents." |
 
 ### Form Cards
 
 **Card 2a: Company Information**
+
 - Company Name (1st, 2nd, 3rd choice) — help text: "We check availability. Backups are used in order if first choice is taken."
 - Business Purpose — optional, defaults to "any lawful purpose"
 
 **Card 2b: Ownership / Officers**
+
 - For LLC: Member name, address, ownership %, role. "Add Another Member" button.
 - For Corp: Officer name, title, address. "Add Another Officer" button.
 - **Gold Package Privacy Callout:** Shield icon + Privacy Blue accent. "Your privacy is protected. A year-round nominee officer will appear on all public state filings. The information you enter here is kept strictly confidential — used only for internal records and IRS filings."
 
 **Card 2c: Registered Agent (informational)**
+
 - Pre-filled: "Incorporate123 — Reno, Nevada" with address
 - "Registered agent service is included. No action needed."
 
 **Card 2d: Contact Information**
+
 - Full name, email, phone, preferred contact method
 
 **Special Instructions:** Optional textarea. "Anything else we should know?"
@@ -112,30 +116,30 @@ This step should feel like building something, not filling out a form. The tier 
 
 **URL:** `/checkout/payment/`
 
-| Element | Content |
-|---------|---------|
-| **Headline** | "Secure Payment" |
-| **Subtext** | "Your payment is encrypted and processed securely through Stripe." |
+| Element      | Content                                                            |
+| ------------ | ------------------------------------------------------------------ |
+| **Headline** | "Secure Payment"                                                   |
+| **Subtext**  | "Your payment is encrypted and processed securely through Stripe." |
 
 ### Trust Signal Placement (Critical)
 
 Trust signals must flank the payment form — not buried below. Research shows ~20% of shoppers abandon at payment due to trust concerns.
 
-| Placement | Element |
-|-----------|---------|
-| Next to card fields | Lock icon + "256-bit SSL Encryption" |
-| Below payment form | "30-Day Money-Back Guarantee" badge |
-| Below guarantee | "Trusted Since 2000 · 25 Years" |
-| Near card input | Visa, Mastercard, AMEX, BTC, ETH logos |
+| Placement           | Element                                     |
+| ------------------- | ------------------------------------------- |
+| Next to card fields | Lock icon + "256-bit SSL Encryption"        |
+| Below payment form  | "30-Day Money-Back Guarantee" badge         |
+| Below guarantee     | "Trusted Since 2000 · 25 Years"             |
+| Near card input     | Visa, Mastercard, AMEX, BTC, ETH logos      |
 | Below trust signals | "(775) xxx-xxxx · Questions before paying?" |
 
 ### Payment Methods
 
-| Method | UX |
-|--------|-----|
-| **Credit/Debit** (default) | Stripe Elements-style card input. Clean, single-line or split fields. |
-| **PayPal** | "You'll be redirected to PayPal to complete payment." Yellow PayPal button. |
-| **Crypto** | Select cryptocurrency → "After placing your order, you'll receive a wallet address by email. Formation begins upon payment confirmation." BTC/ETH/XRP/LTC/XMR selectable. |
+| Method                     | UX                                                                                                                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Credit/Debit** (default) | Stripe Elements-style card input. Clean, single-line or split fields.                                                                                                     |
+| **PayPal**                 | "You'll be redirected to PayPal to complete payment." Yellow PayPal button.                                                                                               |
+| **Crypto**                 | Select cryptocurrency → "After placing your order, you'll receive a wallet address by email. Formation begins upon payment confirmation." BTC/ETH/XRP/LTC/XMR selectable. |
 
 ### Order Review
 
@@ -151,10 +155,10 @@ Final summary before submit: Package + add-ons + total + renewal note.
 
 **URL:** `/checkout/confirmation/`
 
-| Element | Content |
-|---------|---------|
-| **Icon** | Large green checkmark (success) |
-| **Headline** | "Your Order is Confirmed!" |
+| Element         | Content                                                                                |
+| --------------- | -------------------------------------------------------------------------------------- |
+| **Icon**        | Large green checkmark (success)                                                        |
+| **Headline**    | "Your Order is Confirmed!"                                                             |
 | **Subheadline** | "Thank you for choosing Incorporate123. We're preparing your formation documents now." |
 
 ### Order Receipt
@@ -163,32 +167,31 @@ Full-width card showing: order number, date, email confirmation sent, package na
 
 ### "What Happens Next" Timeline
 
-| Step | Timeline | Description |
-|------|----------|-------------|
-| 1 | "Now" | "We're checking name availability with the [State] Secretary of State." |
-| 2 | "1–2 business days" | "Your Articles of Organization are filed. (24 hours with expedited.)" |
-| 3 | "3–5 business days" | "Your EIN is obtained from the IRS." |
-| 4 | "5–10 business days" | "Complete formation package delivered: articles, operating agreement, EIN, nominee confirmation, registered agent details." |
-| 5 | "Ongoing" | "Year-round nominee services, registered agent, and compliance support are active immediately." |
+| Step | Timeline             | Description                                                                                                                 |
+| ---- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 1    | "Now"                | "We're checking name availability with the [State] Secretary of State."                                                     |
+| 2    | "1–2 business days"  | "Your Articles of Organization are filed. (24 hours with expedited.)"                                                       |
+| 3    | "3–5 business days"  | "Your EIN is obtained from the IRS."                                                                                        |
+| 4    | "5–10 business days" | "Complete formation package delivered: articles, operating agreement, EIN, nominee confirmation, registered agent details." |
+| 5    | "Ongoing"            | "Year-round nominee services, registered agent, and compliance support are active immediately."                             |
 
 **Crypto variant:** Step 1 becomes "Awaiting payment confirmation" with estimated times: "Bitcoin: 10–60 minutes. Ethereum: 2–5 minutes. Formation begins upon confirmation."
 
 ### Action Buttons
 
-| Button | Routes To |
-|--------|-----------|
-| "Print / Download Receipt" | Generates PDF receipt |
-| "Return to Homepage →" | `/` |
-| "Set Up Client Login →" | `/login/` |
-| Phone | "(775) xxx-xxxx · Questions?" |
+| Button                     | Routes To                     |
+| -------------------------- | ----------------------------- |
+| "Print / Download Receipt" | Generates PDF receipt         |
+| "Return to Homepage →"     | `/`                           |
+| Phone                      | "(775) xxx-xxxx · Questions?" |
 
 ### Subtle Cross-Sell (Below receipt)
 
-| Element | Content |
-|---------|---------|
-| **Headline** | "Protect Your Other Assets Too" |
+| Element         | Content                                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------- |
+| **Headline**    | "Protect Your Other Assets Too"                                                                      |
 | **Description** | "Now that your entity is formed, explore how asset protection structures can safeguard your wealth." |
-| **CTA** | "Learn About Asset Protection →" → `/asset-protection/` |
+| **CTA**         | "Learn About Asset Protection →" → `/asset-protection/`                                              |
 
 **Placement rule:** BELOW the receipt and timeline. This must not feel like a checkout upsell — it's a post-purchase educational suggestion. Subtle design, not promotional.
 
@@ -196,12 +199,12 @@ Full-width card showing: order number, date, email confirmation sent, package na
 
 ## Order Summary Sidebar (Steps 1–3)
 
-| Element | Detail |
-|---------|--------|
-| **Desktop** | Right sidebar (30%), sticky on scroll |
-| **Mobile** | Collapsed by default (Steps 1–2). Expanded on Step 3 (payment). |
-| **Content** | Package name, entity type, base price, add-on line items, divider, total, renewal note, trust badges, phone number |
-| **Behavior** | Updates in real time as selections change on Step 1. Carries forward through Steps 2–3. |
+| Element      | Detail                                                                                                             |
+| ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| **Desktop**  | Right sidebar (30%), sticky on scroll                                                                              |
+| **Mobile**   | Collapsed by default (Steps 1–2). Expanded on Step 3 (payment).                                                    |
+| **Content**  | Package name, entity type, base price, add-on line items, divider, total, renewal note, trust badges, phone number |
+| **Behavior** | Updates in real time as selections change on Step 1. Carries forward through Steps 2–3.                            |
 
 ---
 
@@ -216,4 +219,4 @@ Full-width card showing: order number, date, email confirmation sent, package na
 
 ---
 
-*Confidential — BIT Studios × Incorporate123 — March 2026*
+_Confidential — BIT Studios × Incorporate123 — March 2026_

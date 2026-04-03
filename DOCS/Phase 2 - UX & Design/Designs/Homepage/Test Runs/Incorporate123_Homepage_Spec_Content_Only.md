@@ -16,7 +16,6 @@ The homepage serves three functions simultaneously:
 
 1. **Intent router** for new visitors — identify your need, enter the right pillar
 2. **Package shortcut** for informed buyers — skip education, go directly to pricing
-3. **Returning-client portal** — find Client Login without navigating through new-visitor content
 
 It replaces the current geography-first model (pick a state → find services) with an intent-first model (identify your need → explore solutions → compare → purchase).
 
@@ -28,7 +27,6 @@ It replaces the current geography-first model (pick a state → find services) w
 | Asset Protector | LLC protection, charging orders, holding structures | `/asset-protection/` → clusters → Gold package |
 | Formation Researcher | LLC or Corp in Wyoming or Nevada | `/formation/` → clusters → Silver or Gold |
 | Informed Buyer | Already knows what they want | `/compare-packages/` or individual package page |
-| Returning Client | Compliance, renewal, account access | `/login/` or `/compliance/` |
 | CA/FL Business Owner | Privacy from state disclosure laws | `/privacy/` → state-specific clusters |
 
 ---
@@ -43,7 +41,6 @@ Persistent on every page. Does not change between page types except for active n
 |---------|---------|----------|
 | Phone | (775) xxx-xxxx | Tap-to-call on all devices |
 | Tagline | "Privacy, Asset Protection & Business Formation Specialists" | Hidden on mobile |
-| Client Login | "Client Login →" | Routes to `/login/` |
 
 ### Primary Header
 
@@ -52,7 +49,6 @@ Persistent on every page. Does not change between page types except for active n
 | Logo | Incorporate123 wordmark | `/` |
 | Navigation | Privacy · Asset Protection · Formation · Packages · About | Mega menus (see below) |
 | Get Started button | "Get Started →" | `/compare-packages/` |
-| Client Login | Text link, always visible | `/login/` |
 | Phone icon (mobile only) | Tap-to-call | `tel:` link |
 
 ### Mega Menus
@@ -95,7 +91,6 @@ Persistent on every page. Does not change between page types except for active n
 ### Mobile Navigation
 
 - Hamburger menu replaces nav items
-- Packages and Client Login appear first in menu (above pillar accordions)
 - Each pillar name expands an accordion revealing its cluster links
 - Phone number always visible with tap-to-call
 - Sticky bottom CTA bar: "Get Started →" (70% width) + phone icon (30% width)
@@ -270,7 +265,6 @@ Six icon-and-label pairs:
 | H2 | "Already Have an Entity? We Keep You Compliant." | — |
 | Description | "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox." | — |
 | Primary CTA | "Explore Compliance Services →" | `/compliance/` |
-| Secondary CTA | "Client Login →" | `/login/` |
 
 ---
 
@@ -344,7 +338,6 @@ Persistent on every page. Functions as a complete sitemap.
 | Testimonials | `/testimonials/` |
 | Blog | `/blog/` |
 | FAQ | `/faq/` |
-| Client Login | `/login/` |
 | **Compliance** | `/compliance/` |
 | Registered Agent | `/registered-agent/` |
 | Annual Reports | `/annual-reports/` |
@@ -503,7 +496,6 @@ Every link on the homepage and where it goes:
 | Nav: Packages | Dropdown → state/tier package links |
 | Nav: About | Dropdown → About, Contact, Testimonials |
 | Get Started button | `/compare-packages/` |
-| Client Login (header) | `/login/` |
 | Hero: "Protect Your Privacy →" | `/privacy/` |
 | Hero: "View Packages & Pricing →" | `/compare-packages/` |
 | Hero: phone safety net | `tel:` link |
@@ -518,7 +510,6 @@ Every link on the homepage and where it goes:
 | "Compare All Packages →" | `/compare-packages/` |
 | Package phone safety net | `tel:` link |
 | Compliance: "Explore Compliance →" | `/compliance/` |
-| Compliance: "Client Login →" | `/login/` |
 | Final CTA: "View Packages →" | `/compare-packages/` |
 | Final CTA: "Schedule Consultation →" | `/contact/` |
 | Final CTA: phone | `tel:` link |

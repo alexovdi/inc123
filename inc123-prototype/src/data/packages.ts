@@ -156,6 +156,31 @@ export const packages: PackageTier[] = [
     ],
     addOns: sharedAddOns,
   },
+  {
+    id: "wyoming-bronze",
+    flatSlug: "bronze?state=wyoming",
+    name: "Wyoming Bronze LLC",
+    tier: "bronze",
+    state: "Wyoming",
+    prices: {
+      llc: { formation: 625, renewal: 225 },
+      corp: { formation: 625, renewal: 225 },
+    },
+    description:
+      "Basic formation with registered agent. You manage your own annual compliance.",
+    features: [
+      { name: "State Filing Fees Included", status: "included" },
+      { name: "Registered Agent (1 Year)", status: "included" },
+      { name: "Year-Round Nominee Directors", status: "not-included" },
+      { name: "Year-Round Nominee Officers", status: "not-included" },
+      { name: "Offshore Record Storage", status: "not-included" },
+      { name: "Corporate Minutes Maintenance", status: "not-included" },
+      { name: "Annual Report Filing", status: "not-included" },
+      { name: "Certificate of Good Standing", status: "not-included" },
+      { name: "Custom Operating Agreement", status: "add-on" },
+    ],
+    addOns: sharedAddOns,
+  },
   // Nevada
   {
     id: "nevada-gold",
@@ -357,7 +382,7 @@ export const tierDefinitions: TierDefinition[] = [
     tagline: "Basic Formation",
     description:
       "Basic formation at an affordable price. Includes state filing fees and registered agent — a solid starting point.",
-    availableStates: ["Nevada"],
+    availableStates: ["Wyoming", "Nevada"],
     features: [
       { name: "State Filing Fees Included", status: "included" },
       { name: "Registered Agent (1 Year)", status: "included" },
@@ -370,6 +395,16 @@ export const tierDefinitions: TierDefinition[] = [
       { name: "Custom Operating Agreement", status: "add-on" },
     ],
     stateVariants: {
+      Wyoming: {
+        state: "Wyoming",
+        abbreviation: "WY",
+        prices: {
+          llc: { formation: 625, renewal: 225 },
+          corp: { formation: 625, renewal: 225 },
+        },
+        extraFeatures: [],
+        legacyId: "wyoming-bronze",
+      },
       Nevada: {
         state: "Nevada",
         abbreviation: "NV",

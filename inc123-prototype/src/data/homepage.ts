@@ -6,13 +6,12 @@ import type { CarouselTestimonial } from "@/design-system/components/Testimonial
    ------------------------------------------------ */
 export const homepageData: HomepageData = {
   hero: {
-    headline:
-      "Privacy, Asset Protection & Business Formation — All-Inclusive, Nothing Hidden",
+    headline: "Your Name Off the Record. Your Assets Protected.",
     subheadline:
-      "Year-round nominee services, offshore records, and expert formation in Wyoming and Nevada. 25 years of specialized experience protecting your privacy and assets.",
-    primaryCTA: { label: "Protect Your Privacy →", href: "/privacy" },
+      "Wyoming & Nevada formation with year-round nominees, offshore records, and all-inclusive pricing. 25 years of expertise.",
+    primaryCTA: { label: "Find Your Package →", href: "#wizard" },
     secondaryCTA: {
-      label: "View Packages & Pricing →",
+      label: "Compare All Packages →",
       href: "/compare-packages",
     },
     trustSnippets: [
@@ -21,7 +20,7 @@ export const homepageData: HomepageData = {
       "$1,275 All-Inclusive",
       "Money-Back Guarantee",
     ],
-    eyebrow: "Trusted Since 2000 · Privacy Specialists",
+    eyebrow: "Trusted Since 2000 · Privacy-Focused Formation",
     safetyNet: "Have questions? Call (775) 313-4155",
   },
   differentiators: [
@@ -93,7 +92,7 @@ export const homepageData: HomepageData = {
     description:
       "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox.",
     cta: { label: "Explore Compliance Services →", href: "/compliance" },
-    secondaryCTA: { label: "Client Login →", href: "/login" },
+    secondaryCTA: { label: "Call (775) 313-4155 →", href: "tel:+17753134155" },
   },
 };
 

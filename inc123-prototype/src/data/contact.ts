@@ -153,11 +153,5 @@ export const contactData: ContactData = {
         "Learn how anonymous LLCs work and why Wyoming leads the way.",
       href: "/anonymous-llc",
     },
-    {
-      icon: "LogIn",
-      title: "Client Login",
-      description: "Access your account, documents, and compliance dashboard.",
-      href: "/login",
-    },
   ],
 };

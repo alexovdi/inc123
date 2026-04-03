@@ -54,7 +54,6 @@ This document defines the section-by-section layout of the Incorporate123 homepa
 | **Logo** | Incorporate123 logo, links to `/`. Left-aligned. |
 | **Primary Nav** | Four items: Privacy, Asset Protection, Formation, Packages. Each triggers mega menu on hover (except Packages — direct link to `/compare-packages/`). |
 | **Secondary Nav** | About (dropdown: About, Contact, Testimonials). |
-| **Client Login** | Persistent link, always visible. Not hidden in a dropdown. |
 | **Phone Number** | Clickable `tel:` link. Visible in header at all times. Format: `(XXX) XXX-XXXX`. |
 | **Primary CTA** | "Get Started →" button. Secondary blue (`#2563EB`), not amber — amber is reserved for in-page conversion CTAs. Ghost/outline style to avoid competing with page-level CTAs. |
 
@@ -552,7 +551,6 @@ Full-width section. CTAs stack vertically, full-width buttons. Phone number as t
 | Element | Specification |
 |---------|--------------|
 | **Pillar columns** | All four pillars with their cluster and comparison page links. Complete sitemap for SEO crawling. |
-| **Company column** | About, Contact, FAQ, Blog, Testimonials, Client Login. |
 | **Packages column** | All 8 packages listed by tier. |
 | **States column** | WY, NV, CA, FL hub links. Offshore hub link (footer presence for SEO without main nav prominence). |
 | **Legal strip** | Copyright, Privacy Policy, Terms of Service links. Physical address. Phone number. |

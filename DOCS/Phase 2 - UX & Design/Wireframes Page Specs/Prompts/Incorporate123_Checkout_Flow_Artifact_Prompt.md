@@ -60,6 +60,7 @@ Renewals: Gold $525/year, Silver $325/year, Bronze $275/year
 ### Persistent Elements (all steps)
 
 **Step Indicator** — horizontal bar at top showing all 4 steps:
+
 - Steps: ① Configure → ② Details → ③ Payment → ④ Confirmation
 - Current step: filled circle, bold label
 - Completed steps: checkmark, clickable (allows going back)
@@ -67,6 +68,7 @@ Renewals: Gold $525/year, Silver $325/year, Bronze $275/year
 - Mobile: compact "Step 2 of 4 — Entity Details" with progress bar fill
 
 **Order Summary Sidebar** (Steps 1–3):
+
 - Desktop: sticky right sidebar (30% width)
 - Shows: package name, entity type, base price, each add-on with price, divider, total (large), renewal note, trust badges, phone number
 - Updates in real time as Step 1 selections change
@@ -167,7 +169,7 @@ Full-width layout (no sidebar — becomes the receipt):
    - 5–10 days: complete formation package delivered
    - Ongoing: compliance support active
 
-5. **Action Buttons**: "Print Receipt" + "Return to Homepage →" + "Set Up Client Login →"
+5. **Action Buttons**: "Print Receipt" + "Return to Homepage →"
 
 6. **Subtle Cross-Sell** — small card at bottom: "Protect Your Other Assets Too" with link to Asset Protection pillar. NOT an aggressive upsell.
 

@@ -24,7 +24,6 @@ Full-width split layout hero section.
 
 #### ComplianceCallout
 Full-width card for existing entity owners.
-- **Structure:** Compliance pillar accent (purple), "Already Have an Entity?" headline, subtext, dual CTAs to compliance pillar and client login
 - **Behavior:** Positioned after main content sections. Purple left border or background tint matching compliance pillar color.
 
 ### Existing Composites Used
@@ -450,7 +449,6 @@ Static map placeholder for office location.
 
 #### QuickLinkCards
 Navigation cards for common next steps.
-- **Structure:** 4 small cards linking to key pages: (1) View Packages, (2) Browse FAQ, (3) Anonymous LLC Guide, (4) Client Login. Each card: icon, title, 1-sentence description, arrow link.
 - **Behavior:** Desktop: 4-column grid. Mobile: 2×2 grid. Hover: shadow + slight lift.
 - **Adapted from:** WhereToGoNext (3.25) — richer cards with descriptions and icons.
 

@@ -535,7 +535,6 @@ These are clearly marked as placeholders. David must replace with real client qu
 | 1 | "Privacy" | All Privacy pillar cluster pages + comparison pages |
 | 2 | "Asset Protection" | All AP cluster pages + comparison pages |
 | 3 | "Business Incorporation" | All Formation cluster pages + comparison pages |
-| 4 | "Company" | About, Contact, FAQ, Blog, Testimonials, Client Login |
 | 5 | "Packages" | All 8 packages listed by tier (Gold first) |
 | 6 | "States" | Wyoming, Nevada, California, Florida + Offshore |
 

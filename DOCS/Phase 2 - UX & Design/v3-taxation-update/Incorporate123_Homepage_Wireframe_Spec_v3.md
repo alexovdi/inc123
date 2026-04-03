@@ -49,7 +49,6 @@ The homepage replaces the current geography-first structure (pick a state → fi
 - Route visitors into one of three intent paths: Privacy, Asset Protection, or Formation
 - Provide a direct shortcut to packages for visitors who already know what they want
 - Surface trust signals that compensate for zero public reviews at launch
-- Ensure returning clients can find Client Login instantly
 - Support both self-service and consultation conversion funnels
 
 ### Target Audiences on Homepage
@@ -60,7 +59,6 @@ The homepage replaces the current geography-first structure (pick a state → fi
 | Asset Protector | LLC protection, charging orders, holding structures | Asset Protection pillar → clusters → Gold package |
 | Formation Researcher | LLC/Corp in Wyoming or Nevada | Formation pillar → clusters → Silver/Gold package |
 | Informed Buyer | Already knows what they want, ready to buy | Direct to packages or checkout |
-| Returning Client | Needs compliance services, renewal, login | Client Login or Compliance pillar |
 | CA/FL Business Owner | Privacy from state disclosure requirements | Privacy pillar → state-specific clusters |
 
 ---
@@ -75,7 +73,6 @@ The header is persistent across all pages. It appears on every viewport and does
 |---------|---------|----------|
 | Phone Number | (775) xxx-xxxx | Tap-to-call on mobile; visible on all viewports |
 | Tagline | "Privacy, Asset Protection & Business Formation Specialists" | Desktop only; hidden on mobile |
-| Client Login Link | "Client Login →" | Routes to `/login/`; persistent on every page |
 
 ### 2.2 Primary Header Bar
 
@@ -84,7 +81,6 @@ The header is persistent across all pages. It appears on every viewport and does
 | Logo | Left-aligned | Links to homepage `/`; includes "Incorporate123" wordmark |
 | Primary Navigation | Center | 5 items: Privacy · Asset Protection · Formation · Packages · About |
 | Get Started CTA | Right | Primary button; routes to `/compare-packages/` |
-| Client Login | Right (secondary) | Text link or ghost button; always visible |
 | Phone Icon | Right (mobile only) | Tap-to-call; visible on mobile header |
 
 ### 2.3 Mega Menu Behavior
@@ -129,7 +125,6 @@ Each of the first three nav items (Privacy, Asset Protection, Formation) trigger
 **Mobile Navigation:**
 - Hamburger menu icon replaces nav items
 - Accordion expand for each pillar (tap pillar name → reveals cluster list)
-- Packages and Client Login appear above fold in mobile menu
 - Persistent phone number with tap-to-call
 - Sticky bottom CTA bar on mobile: primary action button + phone icon
 
@@ -376,7 +371,6 @@ Layout: Full-width card with split content — left side text, right side icon o
 | Headline | "Already Have an Entity? We Keep You Compliant." |
 | Description | "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox." |
 | Primary CTA | "Explore Compliance Services →" → `/compliance/` |
-| Secondary CTA | "Client Login →" → `/login/` |
 
 ---
 
@@ -461,7 +455,6 @@ Layout: 4-column grid (desktop); stacked accordion (mobile).
 | Testimonials | `/testimonials/` |
 | Blog | `/blog/` |
 | FAQ | `/faq/` |
-| Client Login | `/login/` |
 | **Compliance** (header) | `/compliance/` |
 | Registered Agent | `/registered-agent/` |
 | Annual Reports | `/annual-reports/` |

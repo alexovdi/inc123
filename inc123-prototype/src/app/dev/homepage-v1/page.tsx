@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
-import {
-  Clock,
-  Globe,
-  DollarSign,
-  Award,
-  Phone,
-  Check,
-  Users,
-} from "lucide-react";
+import { Clock, Globe, DollarSign, MapPin, Award, Phone } from "lucide-react";
 
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
@@ -19,12 +11,8 @@ import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
 import { PackageWizard } from "@/design-system/components/PackageWizard";
 import { PillarCard } from "@/design-system/components/PillarCard";
-import { PrivacyBridge } from "@/design-system/components/PrivacyBridge";
-import { StatsBar } from "@/design-system/components/StatsBar";
-import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
 import { TestimonialCarousel } from "@/design-system/components/TestimonialCarousel";
 import { TrustSignals } from "@/design-system/components/TrustSignals";
-import { TrustTicker } from "@/design-system/components/TrustTicker";
 
 import { pillars } from "@/data/pillars";
 import { tierDefinitions, getTierMinPrice } from "@/data/packages";
@@ -40,7 +28,7 @@ import {
    Metadata
    ------------------------------------------------ */
 export const metadata: Metadata = {
-  title: "Incorporate123 — Privacy, Asset Protection & Business Formation",
+  title: "[ARCHIVE v1] Homepage — Original",
   description:
     "Privacy-focused business formation specialists. Wyoming & Nevada LLCs with year-round nominee services, offshore records, and all-inclusive pricing. 25 years of expertise from Reno, NV.",
   alternates: {
@@ -109,35 +97,25 @@ function OrganizationSchema() {
 }
 
 /* ------------------------------------------------
-   Differentiator icon map
+   Differentiator icon map (spec v1.1)
    ------------------------------------------------ */
 const differentiatorIcons: Record<string, React.ReactNode> = {
-  Clock: <Clock className="h-6 w-6" aria-hidden="true" />,
-  Globe: <Globe className="h-6 w-6" aria-hidden="true" />,
-  DollarSign: <DollarSign className="h-6 w-6" aria-hidden="true" />,
-  Users: <Users className="h-6 w-6" aria-hidden="true" />,
-  Award: <Award className="h-6 w-6" aria-hidden="true" />,
-  Phone: <Phone className="h-6 w-6" aria-hidden="true" />,
+  Clock: <Clock className="h-8 w-8" aria-hidden="true" />,
+  Globe: <Globe className="h-8 w-8" aria-hidden="true" />,
+  DollarSign: <DollarSign className="h-8 w-8" aria-hidden="true" />,
+  MapPin: <MapPin className="h-8 w-8" aria-hidden="true" />,
+  Award: <Award className="h-8 w-8" aria-hidden="true" />,
+  Phone: <Phone className="h-8 w-8" aria-hidden="true" />,
 };
 
 /* ------------------------------------------------
    Tier cards to display (Gold, Silver, Bronze)
+   Ordered by tier level — Gold first (highlighted)
    ------------------------------------------------ */
 const tierOrder: Record<string, number> = { gold: 0, silver: 1, bronze: 2 };
 const homepageTiers = [...tierDefinitions].sort(
   (a, b) => (tierOrder[a.tier] ?? 9) - (tierOrder[b.tier] ?? 9),
 );
-
-/* ------------------------------------------------
-   Compliance checklist items
-   ------------------------------------------------ */
-const complianceItems = [
-  "Annual Report Filing",
-  "Registered Agent Renewal",
-  "Corporate Minutes Maintenance",
-  "Certificate of Good Standing",
-  "Nominee Service Renewal",
-];
 
 /* ------------------------------------------------
    Page
@@ -163,18 +141,7 @@ export default function HomePage() {
       />
 
       {/* ==========================================
-          Trust Ticker — continuous scrolling signals
-          ========================================== */}
-      <TrustTicker />
-
-      {/* ==========================================
-          Section 2: "Why Privacy Matters" Bridge
-          — teaches the PROBLEM before selling
-          ========================================== */}
-      <PrivacyBridge className="bg-background" />
-
-      {/* ==========================================
-          Section 3: Package Wizard
+          Section 1b: Package Wizard
           — interactive recommendation tool
           ========================================== */}
       <section className="bg-background py-section-y-sm">
@@ -186,7 +153,8 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 4: Pillar Navigation Cards
+          Section 2: Pillar Navigation Cards
+          — left-aligned intro + subtle gradient bg
           ========================================== */}
       <section
         className="py-section-y"
@@ -196,12 +164,13 @@ export default function HomePage() {
         }}
       >
         <div className="mx-auto max-w-content px-container-x">
+          {/* Section header — left-aligned for variety */}
           <ScrollReveal>
             <div className="mb-12">
               <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
                 How Can We Help?
               </p>
-              <h2 className="font-display text-display-sm font-semibold text-foreground max-w-[36ch]">
+              <h2 className="font-display text-heading-lg font-bold text-foreground max-w-[36ch]">
                 Choose Your Starting Point
               </h2>
               <p className="mt-3 text-body-lg text-muted max-w-narrow">
@@ -211,6 +180,7 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
+          {/* 3 Pillar Cards with spec overrides */}
           <div className="grid gap-6 md:grid-cols-3">
             {pillars
               .filter((p) => p.id !== "compliance")
@@ -232,6 +202,7 @@ export default function HomePage() {
               })}
           </div>
 
+          {/* "Already have a company?" link */}
           <ScrollReveal delay={300}>
             <div className="mt-8 text-center">
               <NextLink
@@ -249,16 +220,17 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 5: Package Quick Links
+          Section 3: Package Quick Links
           ========================================== */}
       <section className="bg-surface py-section-y">
         <div className="mx-auto max-w-content px-container-x">
+          {/* Section header */}
           <ScrollReveal>
             <div className="text-center mb-12">
               <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
                 Ready to Get Started?
               </p>
-              <h2 className="font-display text-display-sm font-semibold text-foreground">
+              <h2 className="font-display text-heading-lg font-bold text-foreground">
                 All-Inclusive Packages — See Exactly What&apos;s Included
               </h2>
               <p className="mt-3 text-body-lg text-muted max-w-narrow mx-auto">
@@ -268,6 +240,7 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
+          {/* 3 Tier Cards (Gold, Silver, Bronze) with "from" pricing */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {homepageTiers.map((tier, index) => {
               const minPrice = getTierMinPrice(tier, "llc");
@@ -300,23 +273,9 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Competitor comparison callout */}
+          {/* Compare All + Consultation Safety Net */}
           <ScrollReveal delay={200}>
-            <div className="mt-10 rounded-card border border-border bg-background p-6 text-center">
-              <p className="text-body font-semibold text-foreground">
-                Offshore Records Custody:{" "}
-                <span className="text-muted font-normal">
-                  Competitors charge $400–$5,000/year.
-                </span>{" "}
-                <span className="text-success font-bold">
-                  Included free with every Gold package.
-                </span>
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={250}>
-            <div className="mt-6 text-center space-y-3">
+            <div className="mt-8 text-center space-y-3">
               <NextLink
                 href="/compare-packages"
                 className="inline-flex items-center gap-1.5 text-body font-medium text-link hover:text-link/80 transition-colors"
@@ -334,58 +293,48 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 6: Stats Bar (dark)
-          ========================================== */}
-      <StatsBar />
-
-      {/* ==========================================
-          Section 7: Differentiator Grid (dark bg)
-          — numbered 01-06 layout
+          Section 4: Differentiator Grid (dark bg)
+          — increased typography drama
           ========================================== */}
       <section className="bg-primary py-section-y">
         <div className="mx-auto max-w-content px-container-x">
+          {/* Section header — dramatic narrow heading */}
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2
-                className="font-display text-display font-medium text-white max-w-[28ch] mx-auto"
+                className="font-display text-display font-bold text-white max-w-[28ch] mx-auto"
                 style={{ textWrap: "balance" }}
               >
                 Why Clients Choose Incorporate123
               </h2>
-              <p className="mt-3 text-body-lg text-white/70 max-w-narrow mx-auto">
-                Not a budget filing service. Not a $5,000 consultation. 25 years
-                of specialized expertise in the space between.
+              <p className="mt-3 text-body-lg text-white/80 max-w-narrow mx-auto">
+                25 years of specialized privacy and formation expertise — not a
+                budget filing service, not a $5,000 consultation.
               </p>
             </div>
           </ScrollReveal>
 
-          {/* Numbered 01-06 grid */}
+          {/* 2x3 grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {differentiators.map((item, index) => (
               <ScrollReveal key={index} delay={index * 80}>
                 <div className="rounded-card bg-white/5 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    {/* Number */}
-                    <span className="font-mono text-caption font-bold text-white/20">
-                      {String(index + 1).padStart(2, "0")}
+                  {/* Icon in circular container */}
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
+                    <span className="text-white/80">
+                      {differentiatorIcons[item.icon] ?? (
+                        <Icon
+                          name={item.icon}
+                          size="xl"
+                          className="text-white/80"
+                        />
+                      )}
                     </span>
-                    {/* Icon */}
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
-                      <span className="text-white/80">
-                        {differentiatorIcons[item.icon] ?? (
-                          <Icon
-                            name={item.icon}
-                            size="lg"
-                            className="text-white/80"
-                          />
-                        )}
-                      </span>
-                    </div>
                   </div>
                   <h3 className="font-display text-body-lg font-semibold text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-body-sm text-white/70 leading-relaxed">
+                  <p className="mt-2 text-body text-white/80">
                     {item.description}
                   </p>
                 </div>
@@ -396,13 +345,13 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 8: Testimonials
+          Section 5: Testimonials
           ========================================== */}
       <section className="bg-background py-section-y">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="font-display text-display-sm font-semibold text-foreground">
+              <h2 className="font-display text-heading-lg font-bold text-foreground">
                 Trusted by Business Owners Nationwide
               </h2>
             </div>
@@ -421,7 +370,8 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 9: Trust Signals
+          Section 6: Trust Signals
+          — bordered band treatment
           ========================================== */}
       <section className="bg-primary-50 border-y border-border py-12 lg:py-16">
         <div className="mx-auto max-w-content px-container-x">
@@ -432,16 +382,17 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 10: How It Works
+          Section 7: How It Works
           ========================================== */}
       <section className="bg-background py-section-y">
         <div className="mx-auto max-w-content px-container-x">
+          {/* Section header */}
           <ScrollReveal>
             <div className="text-center mb-12">
               <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
                 Our Process
               </p>
-              <h2 className="font-display text-display-sm font-semibold text-foreground">
+              <h2 className="font-display text-heading-lg font-bold text-foreground">
                 How It Works
               </h2>
               <p className="mt-3 text-body-lg text-muted max-w-narrow mx-auto">
@@ -462,53 +413,28 @@ export default function HomePage() {
       </section>
 
       {/* ==========================================
-          Section 11: Compliance Callout (dark)
-          — with visual checklist
+          Section 8: Compliance Callout
+          — full-width dark treatment (bookend effect)
           ========================================== */}
       <section className="bg-primary py-section-y-sm">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-              {/* Left: copy + CTA */}
-              <div className="flex-1">
-                <ComplianceCallout
-                  headline={complianceCallout.headline}
-                  description={complianceCallout.description}
-                  cta={complianceCallout.cta}
-                  secondaryCTA={complianceCallout.secondaryCTA}
-                  variant="dark"
-                />
-              </div>
-              {/* Right: visual checklist */}
-              <div className="mt-8 lg:mt-0 lg:basis-1/3">
-                <div className="rounded-card bg-white/5 p-6">
-                  <p className="text-caption font-semibold text-white/50 uppercase tracking-[0.15em] mb-4">
-                    We Handle
-                  </p>
-                  <ul className="space-y-3">
-                    {complianceItems.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-3 text-body-sm text-white/80"
-                      >
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success/20 text-success">
-                          <Check className="h-3 w-3" strokeWidth={3} />
-                        </span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <ComplianceCallout
+              headline={complianceCallout.headline}
+              description={complianceCallout.description}
+              cta={complianceCallout.cta}
+              secondaryCTA={complianceCallout.secondaryCTA}
+              variant="dark"
+            />
           </ScrollReveal>
         </div>
       </section>
 
       {/* ==========================================
-          Section 12: Final CTA Block
+          Section 9: Final CTA Block
+          — more breathing room + display heading
           ========================================== */}
-      <section className="py-section-y">
+      <section className="py-section-y mt-16">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <CTABlock
@@ -528,18 +454,6 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-
-      {/* ==========================================
-          Sticky Mobile CTA Bar
-          ========================================== */}
-      <StickyMobileCTA
-        primaryCTA={{
-          variant: "cta",
-          children: "Find Your Package",
-          href: "#wizard",
-        }}
-        phone="(775) 313-4155"
-      />
     </>
   );
 }

@@ -104,10 +104,8 @@ The spec explicitly states: "All URLs use a flat structure with no deep director
 **Spec (Homepage Wireframe Spec, Section 2):**
 
 - [DONE] Primary nav: Privacy, Asset Protection, Formation, Packages, About
-- [ ] P0 — Top utility bar (desktop only): phone number + tagline + Client Login link
 - [ ] P0 — Mega menu content must match spec exactly per pillar (Privacy has 7 clusters + 2 comparisons + quick links, etc.)
 - [ ] P1 — "Get Started" CTA button right-aligned in header — routes to `/compare-packages/`
-- [ ] P1 — Client Login link always visible in header (both desktop and mobile)
 - [ ] P1 — Phone icon on mobile header with tap-to-call
 - [ ] P2 — Mega menu hover delay before close (desktop)
 - [ ] P2 — Header shrinks to compact version on scroll (desktop)
@@ -376,7 +374,6 @@ Contact page exists with hero, contact method cards, form, trust strip.
 - [ ] P1 — **3 Contact Method Cards**: Call Us, Send a Message, Visit Our Office — each with full detail per spec
 - [ ] P1 — **Form fields**: Inquiry Type dropdown (8 options), State of Interest (conditional), How did you find us? (referral tracking)
 - [ ] P1 — **Form success state**: form replaced by success message (not alert dialog)
-- [ ] P1 — **Quick Links section**: 4 cards (Compare Packages, FAQ, Anonymous LLC Guide, Client Login)
 - [ ] P1 — **Map section**: placeholder box with MapPin icon
 
 ---

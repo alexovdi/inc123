@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import NextLink from "next/link";
-import { Menu, X, Phone, LogIn } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
 import type { SiteNavigation } from "@/lib/types";
@@ -54,13 +54,9 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
           <span className="text-white/60">
             25 Years of Privacy-Focused Business Formation
           </span>
-          <NextLink
-            href="/login"
-            className="flex items-center gap-1.5 text-white/80 transition-colors hover:text-white"
-          >
-            <LogIn className="h-3 w-3" />
-            <span>Client Login</span>
-          </NextLink>
+          <span className="text-white/60 text-caption">
+            info@incorporate123.co
+          </span>
         </div>
       </div>
 
@@ -207,11 +203,6 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
               <Button variant="cta" fullWidth asChild>
                 <NextLink href="/packages" onClick={() => setMobileOpen(false)}>
                   Order Now
-                </NextLink>
-              </Button>
-              <Button variant="secondary" fullWidth asChild>
-                <NextLink href="/login" onClick={() => setMobileOpen(false)}>
-                  Client Login
                 </NextLink>
               </Button>
               <a

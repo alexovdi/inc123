@@ -109,8 +109,8 @@ function ComplianceCallout({
                   : undefined
               }
             >
-              <a href={secondaryCTA?.href ?? "/login"}>
-                {secondaryCTA?.label ?? "Client Login"}
+              <a href={secondaryCTA?.href ?? "/contact"}>
+                {secondaryCTA?.label ?? "Talk to Our Team"}
               </a>
             </Button>
           </div>

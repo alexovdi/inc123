@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/dev/", "/checkout/", "/login"],
+      disallow: ["/dev/", "/checkout/"],
     },
     sitemap: "https://incorporate123.co/sitemap.xml",
   };

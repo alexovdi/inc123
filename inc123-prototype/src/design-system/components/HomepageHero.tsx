@@ -130,7 +130,7 @@ function HomepageHero({
 }: HomepageHeroProps) {
   return (
     <section className={cn("bg-primary", className)}>
-      <div className="mx-auto max-w-content px-container-x py-24 lg:py-32">
+      <div className="mx-auto max-w-content px-container-x py-28 lg:py-40">
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
           {/* Left content — 2/3 */}
           <div className="flex-1 lg:basis-2/3">
@@ -144,9 +144,9 @@ function HomepageHero({
               {eyebrow ?? "Trusted Since 2000 \u00b7 Privacy Specialists"}
             </p>
 
-            {/* H1 Headline */}
+            {/* H1 Headline — v4: weight 500, tight line-height for editorial gravitas */}
             <h1
-              className="font-display text-display font-black tracking-tight text-white leading-tight md:text-display-lg lg:text-display-xl"
+              className="font-display text-display font-medium text-white md:text-display-lg lg:text-display-xl"
               style={{
                 animation: "hero-fade-up 800ms var(--ease-out-expo) 0ms both",
               }}
@@ -156,7 +156,7 @@ function HomepageHero({
 
             {/* Subheadline */}
             <p
-              className="mt-4 text-body-lg text-white/80 max-w-narrow"
+              className="mt-6 text-body-lg text-white/70 max-w-[38ch] leading-relaxed"
               style={{
                 animation: "hero-fade-up 600ms var(--ease-out-expo) 200ms both",
               }}

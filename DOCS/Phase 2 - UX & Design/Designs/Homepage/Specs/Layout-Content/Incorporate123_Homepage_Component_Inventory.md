@@ -124,7 +124,6 @@ Multi-element components combining primitives. These are the building blocks of 
 
 | Property             | Specification                                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **Contains**         | Logo, primary nav (4 items), secondary nav (About dropdown), Client Login link, phone number, "Get Started" button |
 | **Behaviors**        | Sticky on scroll (compact mode), mega menu trigger on hover/tap                                                    |
 | **Responsive**       | Desktop: full nav bar · Mobile: hamburger + logo + phone icon + login                                              |
 | **Homepage section** | Section 0                                                                                                          |

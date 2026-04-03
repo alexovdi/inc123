@@ -19,24 +19,24 @@
 
 ## Voice Rules (Non-Negotiable)
 
-| Attribute | Meaning |
-|---|---|
-| Authoritative | Cite specific numbers. Never vague claims. |
-| Educational | Explain outcomes, not mechanisms. Save deep explanations for inner pages. |
-| Transparent | Show real prices. Show renewal rates alongside formation prices. Never "starting at." |
-| Reassuring | Emphasize track record, real office, ongoing support. Never create anxiety. |
-| Precise | Every number is specific and verifiable. "25 years" not "decades." "$1,275" not "around $1,300." |
+| Attribute     | Meaning                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| Authoritative | Cite specific numbers. Never vague claims.                                                       |
+| Educational   | Explain outcomes, not mechanisms. Save deep explanations for inner pages.                        |
+| Transparent   | Show real prices. Show renewal rates alongside formation prices. Never "starting at."            |
+| Reassuring    | Emphasize track record, real office, ongoing support. Never create anxiety.                      |
+| Precise       | Every number is specific and verifiable. "25 years" not "decades." "$1,275" not "around $1,300." |
 
 ### Terminology
 
-| Always Use | Never Use | Reason |
-|---|---|---|
-| "Business Incorporation" | "Company Formation" | Client preference — more American-sounding |
-| "All-inclusive" | "Starting at" | Brand promise: no hidden fees |
-| "Year-round nominees" | "Nominee services" (alone) | Differentiates from "nominee for a day" competitors |
-| "Privacy" | "Anonymity" (as lead term) | Privacy is positive framing; anonymity feels evasive |
-| Specific prices ($1,275) | "Affordable" / "competitive pricing" | Premium positioning — never compete on price |
-| "Protect Your Privacy" | "Hide Your Identity" | Active/positive vs. passive/negative framing |
+| Always Use               | Never Use                            | Reason                                               |
+| ------------------------ | ------------------------------------ | ---------------------------------------------------- |
+| "Business Incorporation" | "Company Formation"                  | Client preference — more American-sounding           |
+| "All-inclusive"          | "Starting at"                        | Brand promise: no hidden fees                        |
+| "Year-round nominees"    | "Nominee services" (alone)           | Differentiates from "nominee for a day" competitors  |
+| "Privacy"                | "Anonymity" (as lead term)           | Privacy is positive framing; anonymity feels evasive |
+| Specific prices ($1,275) | "Affordable" / "competitive pricing" | Premium positioning — never compete on price         |
+| "Protect Your Privacy"   | "Hide Your Identity"                 | Active/positive vs. passive/negative framing         |
 
 ### Anti-Patterns
 
@@ -51,23 +51,23 @@
 
 These are the only numbers approved for use on the homepage. Do not invent or approximate others.
 
-| Proof Point | Value | Notes |
-|---|---|---|
-| Years in business | 25 (since ~2000) | Confirmed |
-| Gold Package — WY | $1,275 all-inclusive | Current pricing |
-| Gold Package — NV | $1,800 all-inclusive | Current pricing |
-| Silver Package — WY | $875 | Current pricing |
-| Silver Package — NV | $1,275 | Current pricing |
-| Annual renewal (Gold) | $525/yr with nominees | Current pricing |
-| Annual renewal (Silver) | $325/yr | Current pricing |
-| Competitor nominee cost | $400–$5,000/yr | Competitive analysis |
-| Year 1 included value | $2,000+ | Positioning Framework |
-| Free offshore nominees since | 2012 | Confirmed |
-| Money-back guarantee | 30 days | Current policy |
-| Bronze Package — NV | $699 (placeholder) | Pending confirmation |
-| Bronze renewal | $275/yr (placeholder) | Pending confirmation |
-| Entities formed | TBD — placeholder OK | Pending from client |
-| Formation turnaround | 5–7 business days (placeholder) | Pending confirmation |
+| Proof Point                  | Value                           | Notes                 |
+| ---------------------------- | ------------------------------- | --------------------- |
+| Years in business            | 25 (since ~2000)                | Confirmed             |
+| Gold Package — WY            | $1,275 all-inclusive            | Current pricing       |
+| Gold Package — NV            | $1,800 all-inclusive            | Current pricing       |
+| Silver Package — WY          | $875                            | Current pricing       |
+| Silver Package — NV          | $1,275                          | Current pricing       |
+| Annual renewal (Gold)        | $525/yr with nominees           | Current pricing       |
+| Annual renewal (Silver)      | $325/yr                         | Current pricing       |
+| Competitor nominee cost      | $400–$5,000/yr                  | Competitive analysis  |
+| Year 1 included value        | $2,000+                         | Positioning Framework |
+| Free offshore nominees since | 2012                            | Confirmed             |
+| Money-back guarantee         | 30 days                         | Current policy        |
+| Bronze Package — NV          | $699 (placeholder)              | Pending confirmation  |
+| Bronze renewal               | $275/yr (placeholder)           | Pending confirmation  |
+| Entities formed              | TBD — placeholder OK            | Pending from client   |
+| Formation turnaround         | 5–7 business days (placeholder) | Pending confirmation  |
 
 **Phone number:** (775) 555-1234 (placeholder — client to confirm)
 
@@ -77,12 +77,12 @@ These are the only numbers approved for use on the homepage. Do not invent or ap
 
 The site has three primary pillars and one supporting pillar. Each should have a distinct visual identity that is consistent everywhere it appears on the homepage (and carries through to the full site). The identities should be meaningfully different from each other and from the primary CTA styling.
 
-| Pillar | Priority | Role |
-|---|---|---|
-| **Privacy** | #1 — always first, highest visual weight | Lead pillar. The repositioned core identity. |
-| **Asset Protection** | #2 — middle position | High-value audience ($500K+ assets). |
-| **Business Incorporation** | #3 — always last of three | The "table stakes" service. Important but not the lead message. |
-| **Compliance** | Supporting — optional on homepage | Not a primary entry point. Navigation presence only, or small secondary element. |
+| Pillar                     | Priority                                 | Role                                                                             |
+| -------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------- |
+| **Privacy**                | #1 — always first, highest visual weight | Lead pillar. The repositioned core identity.                                     |
+| **Asset Protection**       | #2 — middle position                     | High-value audience ($500K+ assets).                                             |
+| **Business Incorporation** | #3 — always last of three                | The "table stakes" service. Important but not the lead message.                  |
+| **Compliance**             | Supporting — optional on homepage        | Not a primary entry point. Navigation presence only, or small secondary element. |
 
 ---
 
@@ -94,21 +94,22 @@ The homepage contains 10 sections in this order. Each section defines its strate
 
 ### Section 0: Site Header (Global)
 
-**Purpose:** Persistent navigation, trust anchor (phone number), login access, primary CTA.
+**Purpose:** Persistent navigation, trust anchor (phone number), primary CTA.
 
 **Required elements:**
+
 - Logo linking to `/`
 - Primary nav items in this order: Privacy, Asset Protection, Formation, Packages, About
   - Privacy, Asset Protection, Formation: trigger dropdown/mega menu showing cluster pages
   - Packages: direct link to `/compare-packages/` (no dropdown)
   - About: small dropdown with About, Contact, Testimonials
-- Client Login link — always visible, never hidden in a dropdown → `/login/`
 - Phone number — clickable `tel:` link, always visible on desktop → `tel:7755551234`
 - "Get Started →" CTA → `/compare-packages/` — must be secondary style (not primary) to avoid competing with page-level CTAs
 
 **Mobile requirements:**
+
 - Hamburger menu opens overlay maintaining pillar structure (not alphabetical list)
-- Packages and Login appear above pillar sections in mobile menu (reachable in one tap)
+- Packages appear above pillar sections in mobile menu (reachable in one tap)
 - Phone icon always one tap away, never buried in menu
 - Becomes compact/sticky on scroll
 
@@ -125,7 +126,6 @@ The homepage contains 10 sections in this order. Each section defines its strate
    - Privacy-first, outcome-focused
    - Must NOT lead with geography ("Nevada") or entity type ("LLC")
    - Direction options: "Your Business. Your Privacy. Our Expertise." / "Business Privacy Starts Here" / "Protect Your Identity. Protect Your Assets." — or any original variation that meets the rules
-   
 2. **Subhead**
    - Max 25 words (1–2 lines)
    - Must include at least one specific number (years, entity count, or price)
@@ -161,18 +161,21 @@ The homepage contains 10 sections in this order. Each section defines its strate
 **Required content (3 cards, always in this order):**
 
 **Card 1 — Privacy (always first):**
+
 - Label: "Business Privacy"
 - Message: "Privacy you can't get elsewhere. Year-round nominee directors and officers keep your name off public records — not just at formation, but every day."
 - Trust element: "Year-round nominees included — not 'nominee for a day'"
 - CTA: "Explore Privacy Options →" → `/privacy/`
 
 **Card 2 — Asset Protection:**
+
 - Label: "Asset Protection"
 - Message: "Protect what you've built. Wyoming and Nevada LLCs with charging order protection — the strongest structural defense for your business assets."
 - Trust element: "For individuals with $500K+ in assets"
 - CTA: "Protect Your Assets →" → `/asset-protection/`
 
 **Card 3 — Business Incorporation (always last):**
+
 - Label: "Business Incorporation"
 - Message: "Expert formation, all-inclusive. Wyoming and Nevada LLCs and Corporations with everything included — state fees, registered agent, operating agreement, EIN."
 - Trust element: "25 years forming Wyoming and Nevada entities"
@@ -192,6 +195,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
 **Section subtext:** "All-inclusive packages — state fees, registered agent, and compliance included in every tier."
 
 **Gold card (must be visually dominant — "Most Popular"):**
+
 - Badge: "★ Most Popular"
 - Tier: "Gold — Privacy"
 - WY: $1,275 / NV: $1,800
@@ -202,6 +206,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
 - Safety net: "Schedule a consultation" → `/contact/`
 
 **Silver card (subordinate to Gold):**
+
 - Tier: "Silver — Formation"
 - WY: $875 / NV: $1,275
 - Renewal: $325/yr
@@ -210,6 +215,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
 - Upgrade nudge: "Add privacy for $375 more →"
 
 **Bronze card (minimal presence):**
+
 - Tier: "Bronze — Nevada"
 - NV: $699
 - Renewal: $275/yr
@@ -219,6 +225,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
 **Below cards:** "Compare all packages in detail →" → `/compare-packages/`
 
 **Package rules:**
+
 - Gold always most prominent (center, elevated, highlighted — however the design interprets "prominence")
 - Bronze never positioned first or given equal weight
 - Formation price and renewal rate always shown together — renewal never hidden
@@ -254,6 +261,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
 **Purpose:** Concentrated horizontal strip of trust indicators. Badge/icon + label format — no prose.
 
 **Required signals:**
+
 1. "Trusted Since 2000" (calendar/shield icon)
 2. "Call Us: (775) 555-1234" (phone icon, clickable `tel:` link)
 3. "30-Day Money-Back Guarantee" (checkmark/shield icon)
@@ -272,6 +280,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
 **Section subtext:** "From selection to formation — we handle every step."
 
 **Four steps:**
+
 1. **Choose Your Package** — "Select Gold, Silver, or Bronze. Compare features and pick what fits your goals."
 2. **We Form Your Entity** — "We handle all state filings, paperwork, and fees. Typical turnaround: 5–7 business days."
 3. **Nominees Protect You** — "Year-round nominee directors and officers keep your name off public records."
@@ -299,6 +308,7 @@ The homepage contains 10 sections in this order. Each section defines its strate
    — Sarah M., Wyoming LLC Owner
 
 **Rules:**
+
 - First name + last initial only (privacy alignment)
 - State or industry descriptor for attribution
 - Star ratings (5 stars) if sourced from review platform
@@ -326,14 +336,16 @@ The homepage contains 10 sections in this order. Each section defines its strate
 **Purpose:** Complete sitemap for SEO, legal links, secondary navigation.
 
 **Column structure:**
+
 1. **Privacy** — All Privacy pillar cluster pages + comparison pages
 2. **Asset Protection** — All AP cluster pages + comparison pages
 3. **Business Incorporation** — All Formation cluster pages + comparison pages
-4. **Company** — About, Contact, FAQ, Blog, Testimonials, Client Login
+4. **Company** — About, Contact, FAQ, Blog, Testimonials
 5. **Packages** — All packages listed by tier (Gold first): WY Gold, NV Gold, WY Silver, NV Silver, NV Bronze, Compare All
 6. **States** — Wyoming, Nevada, California, Florida, Offshore
 
 **Legal strip:**
+
 - © 2026 Incorporate123. All rights reserved.
 - Privacy Policy · Terms of Service
 - Kingsbury Executive Suites, Reno, NV
@@ -362,7 +374,7 @@ These rules govern every CTA on the homepage. They come from the Brand Guide and
 ## Mobile Requirements
 
 - **Sticky bottom CTA bar** appears after scrolling past the hero. Contains: primary CTA button + tap-to-call phone icon. Persists for the entire page.
-- **Hamburger menu** maintains pillar structure — NOT an alphabetical page list. Packages and Login above the fold in mobile menu.
+- **Hamburger menu** maintains pillar structure — NOT an alphabetical page list. Packages above the fold in mobile menu.
 - **Tap targets:** Minimum 44×44px for all interactive elements.
 - **Font scaling:** Headlines drop one step. Body text minimum 16px.
 - **CTAs stack vertically** as full-width buttons on mobile.

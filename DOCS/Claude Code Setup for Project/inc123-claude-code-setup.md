@@ -253,7 +253,6 @@ const buttonVariants = cva(
 
 ### Navigation Requirements
 - Intent-first main nav: Privacy · Asset Protection · Formation · Packages · About
-- Persistent Client Login in header
 - Mega menu showing clusters under each pillar
 - Breadcrumbs on every cluster, comparison, and package page
 - "Where to Go Next" block at end of every content page

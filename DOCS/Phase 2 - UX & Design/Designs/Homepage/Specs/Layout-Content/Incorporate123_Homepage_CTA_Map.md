@@ -32,7 +32,6 @@ The homepage contains **19 distinct CTA touchpoints** across 10 sections. This i
 | --- | ----------------- | ------------------------------------------ | ------------------------------------------------- | --------------------------------- | -------------------- |
 | H1  | Header            | "Get Started →"                            | `/compare-packages/`                              | Informed Buyer (D)                | Persistent utility   |
 | H2  | Header            | Phone number                               | `tel:XXXXXXXXXX`                                  | All                               | Persistent utility   |
-| H3  | Header            | "Client Login"                             | `/login/`                                         | Returning Client (F)              | Persistent utility   |
 | 1a  | Hero              | "Protect Your Privacy →"                   | `/privacy/`                                       | Privacy Researcher (A)            | **Primary**          |
 | 1b  | Hero              | "View Packages & Pricing →"                | `/compare-packages/`                              | Informed Buyer (D)                | Secondary            |
 | 1c  | Hero              | "Prefer to talk? Call us — (XXX) XXX-XXXX" | `tel:XXXXXXXXXX`                                  | All                               | Safety net           |
@@ -106,7 +105,6 @@ This table shows how each persona finds their optimal path from the homepage. Th
 
 | Step                        | What They Click    | CTA #  | Where It Takes Them       |
 | --------------------------- | ------------------ | ------ | ------------------------- |
-| Most likely                 | "Client Login"     | H3     | `/login/` — portal access |
 | Alternative                 | Phone number       | H2, 5a | Calls directly            |
 | If needs compliance service | "Stay Compliant →" | 2d     | `/compliance/`            |
 
@@ -215,7 +213,6 @@ All unique destinations linked from the homepage. Confirms no orphan targets and
 | `/wyoming-incorporation/` | 3c                        | Package page    |
 | `/nevada-incorporation/`  | 3d                        | Package page    |
 | `/contact/`               | 3b, 8b                    | Utility page    |
-| `/login/`                 | H3                        | Utility page    |
 | `tel:XXXXXXXXXX`          | H2, 1c, 5a, 8c, M2        | Phone call      |
 
 **12 unique destinations.** No external links on the homepage. Every CTA keeps visitors within the site.

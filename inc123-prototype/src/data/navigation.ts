@@ -2,7 +2,7 @@ import type { SiteNavigation } from "@/lib/types";
 
 export const siteNavigation: SiteNavigation = {
   phone: "(775) 313-4155",
-  utility: [{ label: "Client Login", href: "/login", icon: "LogIn" }],
+  utility: [],
   main: [
     {
       label: "Business Privacy",

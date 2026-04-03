@@ -1,124 +1,227 @@
 import {
-  type WizardIntent,
-  type WizardTier,
-  type WizardState,
+  type WizardBranch,
+  type WizardBusinessType,
+  type WizardFormationState,
+  type WizardOperatingState,
   type WizardPackage,
-  type EntityType,
   wizardPackages,
 } from "@/data/wizard";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Wizard Logic — Pure functions for package recommendation
-   Flow: Goal → State → Tier/Entity → Result
+   Wizard Logic v2 — Recommendation engine for 2-branch flow
+   Privacy question auto-determines tier. AP auto-recommends Gold.
    ═══════════════════════════════════════════════════════════════════════════ */
+
+export interface WizardAlternative {
+  pkg: WizardPackage;
+  reason: string;
+}
 
 export interface WizardResult {
   primary: WizardPackage;
-  alternatives: WizardPackage[];
-  note?: string;
+  alternatives: WizardAlternative[];
+  contextNote: string;
+  addonNote?: string;
+}
+
+interface RecommendationInput {
+  branch: WizardBranch;
+  businessType: WizardBusinessType | null;
+  formationState: WizardFormationState | null;
+  operatingState: WizardOperatingState | null;
+  wantsPrivacy: boolean | null;
 }
 
 /**
- * Maps wizard answers to a package recommendation with alternatives.
+ * Resolves which package to recommend based on wizard answers.
+ * Ported from the interactive HTML reference (Package_Wizard_Interactive.html).
  */
-export function getRecommendation(
-  intent: WizardIntent,
-  tier: WizardTier | null,
-  state: WizardState | null,
-): WizardResult {
-  // Shelf shortcut
-  if (intent === "shelf") {
+export function getRecommendation(input: RecommendationInput): WizardResult {
+  const { branch, businessType, formationState, operatingState, wantsPrivacy } =
+    input;
+
+  // ── AP paths (2 clicks, no privacy question — auto Gold) ──
+  if (branch === "ap") {
+    if (formationState === "nevada") {
+      return {
+        primary: wizardPackages["nevada-gold"],
+        contextNote:
+          "Because you want asset protection, we recommend our Nevada Gold package \u2014 it includes year-round nominees and the strongest charging order protection in the country.",
+        alternatives: [
+          {
+            pkg: wizardPackages["wyoming-gold"],
+            reason:
+              "Same privacy and nominees at a lower cost. Wyoming has excellent asset protection too.",
+          },
+          {
+            pkg: wizardPackages["nevada-silver"],
+            reason:
+              "Same Nevada benefits, virtual office included \u2014 without nominee privacy. Save $525.",
+          },
+        ],
+      };
+    }
+    // Default: Wyoming
     return {
-      primary: wizardPackages["shelf"],
+      primary: wizardPackages["wyoming-gold"],
+      contextNote:
+        "Because you want asset protection, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records.",
       alternatives: [
-        wizardPackages["wyoming-gold"],
-        wizardPackages["nevada-gold"],
+        {
+          pkg: wizardPackages["wyoming-silver"],
+          reason:
+            "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+        },
+        {
+          pkg: wizardPackages["nevada-gold"],
+          reason:
+            "If you need Nevada specifically for stronger charging order protection.",
+        },
       ],
     };
   }
 
-  // CA/FL — always Gold-equivalent Private package
-  if (state === "california" || state === "florida") {
-    const slug = `${state}-private`;
-    const otherState = state === "california" ? "florida" : "california";
-    return {
-      primary: wizardPackages[slug],
-      alternatives: [
-        wizardPackages[`${otherState}-private`],
-        wizardPackages["wyoming-gold"],
-      ],
-    };
-  }
-
-  // Standard path: intent + state + tier
-  const resolvedTier = tier ?? "gold";
-  const resolvedState = state ?? "wyoming";
-
-  // Edge case: Bronze doesn't exist for Wyoming
-  if (resolvedTier === "bronze" && resolvedState === "wyoming") {
+  // ── Formation → Virtual paths (3 clicks) ──
+  if (businessType === "virtual") {
+    if (wantsPrivacy) {
+      return {
+        primary: wizardPackages["wyoming-gold"],
+        contextNote:
+          "Because you want privacy, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records.",
+        alternatives: [
+          {
+            pkg: wizardPackages["wyoming-silver"],
+            reason:
+              "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+          },
+          {
+            pkg: wizardPackages["nevada-gold"],
+            reason:
+              "If you need Nevada specifically for stronger charging order protection.",
+          },
+        ],
+      };
+    }
+    // Virtual + no privacy → Silver (needs business address)
     return {
       primary: wizardPackages["wyoming-silver"],
+      contextNote:
+        "For your virtual business, our Silver package includes a Wyoming business address and mail forwarding \u2014 everything you need to operate professionally without a physical office.",
       alternatives: [
-        wizardPackages["wyoming-gold"],
-        wizardPackages["nevada-bronze"],
+        {
+          pkg: wizardPackages["wyoming-gold"],
+          reason:
+            "Add nominee privacy so your name stays off all public records.",
+        },
+        {
+          pkg: wizardPackages["wyoming-bronze"],
+          reason:
+            "If you don\u2019t need a business address or mail forwarding.",
+        },
       ],
-      note: "Wyoming\u2019s most affordable option is the Silver package.",
     };
   }
 
-  const slug = `${resolvedState}-${resolvedTier}`;
-  const primary = wizardPackages[slug];
-  const alternatives = getAlternatives(intent, resolvedTier, resolvedState);
+  // ── Formation → B&M → CA/FL paths (4 clicks) ──
+  if (operatingState === "california" || operatingState === "florida") {
+    const stateLabel =
+      operatingState === "california" ? "California" : "Florida";
+    const otherStateLabel =
+      operatingState === "california" ? "Florida" : "California";
+    const privatePkgId =
+      operatingState === "california"
+        ? "california-private"
+        : "florida-private";
+    const otherPrivatePkgId =
+      operatingState === "california"
+        ? "florida-private"
+        : "california-private";
 
-  return { primary, alternatives };
-}
-
-function getAlternatives(
-  intent: WizardIntent,
-  tier: WizardTier,
-  state: string,
-): WizardPackage[] {
-  const alts: WizardPackage[] = [];
-  const otherState = state === "wyoming" ? "nevada" : "wyoming";
-
-  if (intent === "privacy") {
-    const otherSlug = `${otherState}-${tier}`;
-    if (wizardPackages[otherSlug]) alts.push(wizardPackages[otherSlug]);
-    if (tier === "gold") {
-      alts.push(wizardPackages[`${state}-silver`]);
+    if (wantsPrivacy) {
+      return {
+        primary: wizardPackages[privatePkgId],
+        contextNote: `Our ${stateLabel} Private package bundles Wyoming privacy formation with ${stateLabel} registration \u2014 one package, full compliance in both states.`,
+        alternatives: [
+          {
+            pkg: wizardPackages["wyoming-gold"],
+            reason: `Formation only, add ${stateLabel} registration separately.`,
+          },
+          {
+            pkg: wizardPackages[otherPrivatePkgId],
+            reason: `If you operate in ${otherStateLabel} instead.`,
+          },
+        ],
+      };
     }
-  } else if (intent === "asset-protection") {
-    if (state === "nevada" && tier === "gold") {
-      alts.push(wizardPackages["wyoming-gold"]);
-      alts.push(wizardPackages["nevada-silver"]);
-    } else {
-      const otherSlug = `${otherState}-${tier}`;
-      if (wizardPackages[otherSlug]) alts.push(wizardPackages[otherSlug]);
-      alts.push(wizardPackages["nevada-gold"]);
-    }
-  } else {
-    if (tier === "gold") {
-      alts.push(wizardPackages[`${state}-silver`]);
-    } else if (tier === "silver") {
-      alts.push(wizardPackages[`${state}-gold`]);
-      const bronzeSlug = `${state}-bronze`;
-      if (wizardPackages[bronzeSlug]) alts.push(wizardPackages[bronzeSlug]);
-    } else {
-      alts.push(wizardPackages[`${state}-silver`]);
-      alts.push(wizardPackages[`${state}-gold`]);
-    }
+    // B&M + CA/FL + no privacy → Bronze + state reg
+    return {
+      primary: wizardPackages["wyoming-bronze"],
+      contextNote: `We\u2019ll form a Wyoming company and register it in ${stateLabel}. Since you don\u2019t need privacy, the Bronze package plus ${stateLabel} registration is the most cost-effective option.`,
+      addonNote: `You\u2019ll also need ${stateLabel} foreign registration. We can add this during checkout.`,
+      alternatives: [
+        {
+          pkg: wizardPackages["wyoming-silver"],
+          reason: "Adds a Wyoming business address and mail forwarding.",
+        },
+        {
+          pkg: wizardPackages["wyoming-gold"],
+          reason:
+            "Add full privacy with nominees keeping your name off records.",
+        },
+      ],
+    };
   }
 
-  return alts.filter(Boolean).slice(0, 2);
-}
+  // ── Formation → B&M → Other State paths (4 clicks) ──
+  if (operatingState === "other") {
+    if (wantsPrivacy) {
+      return {
+        primary: wizardPackages["wyoming-gold"],
+        contextNote:
+          "Because you want privacy, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records. We\u2019ll also help with your state registration.",
+        addonNote:
+          "You\u2019ll also need foreign registration in your state. We\u2019ll help you set that up after checkout.",
+        alternatives: [
+          {
+            pkg: wizardPackages["wyoming-silver"],
+            reason:
+              "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+          },
+          {
+            pkg: wizardPackages["wyoming-bronze"],
+            reason:
+              "Basic formation only, if you don\u2019t need privacy or a virtual office.",
+          },
+        ],
+      };
+    }
+    // B&M + Other + no privacy → Bronze + foreign reg
+    return {
+      primary: wizardPackages["wyoming-bronze"],
+      contextNote:
+        "Since you already have a physical location, our Bronze package covers formation \u2014 we handle all the paperwork.",
+      addonNote:
+        "You\u2019ll also need foreign registration in your state. We\u2019ll help you set that up after checkout.",
+      alternatives: [
+        {
+          pkg: wizardPackages["wyoming-silver"],
+          reason: "Adds a Wyoming business address and mail forwarding.",
+        },
+        {
+          pkg: wizardPackages["wyoming-gold"],
+          reason:
+            "Add full privacy with nominees keeping your name off records.",
+        },
+      ],
+    };
+  }
 
-/**
- * Determines how many total steps this wizard path requires.
- */
-export function getTotalSteps(intent: WizardIntent): number {
-  if (intent === "shelf") return 1;
-  if (intent === "ca-fl") return 2;
-  return 3;
+  // Fallback (shouldn't reach here)
+  return {
+    primary: wizardPackages["wyoming-gold"],
+    contextNote: "Our most popular package for privacy and formation.",
+    alternatives: [],
+  };
 }
 
 /**
@@ -126,24 +229,4 @@ export function getTotalSteps(intent: WizardIntent): number {
  */
 export function formatPrice(amount: number): string {
   return `$${amount.toLocaleString()}`;
-}
-
-/**
- * Get the resolved package ID from state + tier.
- */
-export function getPackageId(
-  state: WizardState | null,
-  tier: WizardTier | null,
-): string | null {
-  if (!state || !tier) return null;
-  if (state === "california") return "california-private";
-  if (state === "florida") return "florida-private";
-  return `${state}-${tier}`;
-}
-
-/**
- * Check if a state is CA or FL (private package path).
- */
-export function isCaFl(state: WizardState | null): boolean {
-  return state === "california" || state === "florida";
 }

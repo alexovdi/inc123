@@ -23,7 +23,7 @@ The Discovery & Strategy phase exists to answer a single critical question: **Wh
 
 ### 2.1 Strategic Objectives
 
-- **Reposition Incorporate123** *from* "Nevada incorporation company" *to* "Privacy, Asset Protection & Business Formation Specialists."
+- **Reposition Incorporate123** _from_ "Nevada incorporation company" _to_ "Privacy, Asset Protection & Business Formation Specialists."
 - Validate the four-pillar content architecture (Business Privacy, Asset Protection, Company Formation, Compliance) against actual site data and competitive landscape.
 - Map the complete conversion flow: Education → Specifics → Comparison → Package → Conversion.
 - Identify SEO authority opportunities in privacy and asset protection keywords where competitors have limited presence.
@@ -45,14 +45,14 @@ The current Incorporate123 website contains approximately 171 URLs across 15 tem
 
 ### 3.1 Current Site Metrics
 
-| Metric | Count | Notes |
-|---|---|---|
-| **Total Current URLs** | ~171 | Including all paths and duplicates |
-| **Unique Content Pages** | ~129 | After removing ~42 duplicate FAQ URLs |
-| **Current Template Types** | 15 | Many serve only 1–3 pages |
-| **Learning Center FAQ Items** | ~111 | Across overlapping category paths |
-| **New Site Pages (Target)** | ~71 | Across 8–10 custom templates |
-| **301 Redirects Required** | ~170 | Every current URL mapped to new structure |
+| Metric                        | Count | Notes                                     |
+| ----------------------------- | ----- | ----------------------------------------- |
+| **Total Current URLs**        | ~171  | Including all paths and duplicates        |
+| **Unique Content Pages**      | ~129  | After removing ~42 duplicate FAQ URLs     |
+| **Current Template Types**    | 15    | Many serve only 1–3 pages                 |
+| **Learning Center FAQ Items** | ~111  | Across overlapping category paths         |
+| **New Site Pages (Target)**   | ~71   | Across 8–10 custom templates              |
+| **301 Redirects Required**    | ~170  | Every current URL mapped to new structure |
 
 ### 3.2 Why 129 Pages Becomes 71
 
@@ -62,14 +62,14 @@ The new 71-page architecture consolidates all of this into focused, authoritativ
 
 ### 3.3 The Core Problem
 
-| Current State | Proposed State |
-|---|---|
-| Geography-first navigation | Intent-first navigation |
-| Packages buried in services menu | Packages as clear conversion endpoints |
-| No comparison pages or organized flow | Clear pillar/cluster funnel with comparison pages |
-| 1999 design undermines trust | Modern, trust-building design |
-| Flat, chaotic site structure | SEO-optimized pillar/cluster architecture |
-| Package pages overwhelm with content | Progressive disclosure — scanners & readers both served |
+| Current State                         | Proposed State                                          |
+| ------------------------------------- | ------------------------------------------------------- |
+| Geography-first navigation            | Intent-first navigation                                 |
+| Packages buried in services menu      | Packages as clear conversion endpoints                  |
+| No comparison pages or organized flow | Clear pillar/cluster funnel with comparison pages       |
+| 1999 design undermines trust          | Modern, trust-building design                           |
+| Flat, chaotic site structure          | SEO-optimized pillar/cluster architecture               |
+| Package pages overwhelm with content  | Progressive disclosure — scanners & readers both served |
 
 ---
 
@@ -77,15 +77,15 @@ The new 71-page architecture consolidates all of this into focused, authoritativ
 
 Phase 1 comprises seven core tasks executed over Weeks 1–2, totaling 36 hours of effort. Each task is described below with its scope, activities, and contribution to the phase deliverables.
 
-| Task | Description |
-|---|---|
-| **1. Current Site Audit** | Crawl and inventory all ~171 URLs, identify content to preserve vs. consolidate |
-| **2. Content Mapping** | Map ~129 unique pages to new 71-page architecture, identify gaps and redundancies |
-| **3. Competitive Analysis** | Analyze top 5 competitors' site structure, SEO positioning, and package presentation |
-| **4. User Journey Mapping** | Define primary user paths for privacy, asset protection, and formation intents |
-| **5. Discovery Report** | Compile findings, strategic recommendations, and validated architecture |
-| **6. Redirect Planning** | Create initial mapping of ~170 current URLs to new destinations |
-| **7. Stakeholder Alignment** | Client meetings, strategy review, and approval process |
+| Task                         | Description                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| **1. Current Site Audit**    | Crawl and inventory all ~171 URLs, identify content to preserve vs. consolidate      |
+| **2. Content Mapping**       | Map ~129 unique pages to new 71-page architecture, identify gaps and redundancies    |
+| **3. Competitive Analysis**  | Analyze top 5 competitors' site structure, SEO positioning, and package presentation |
+| **4. User Journey Mapping**  | Define primary user paths for privacy, asset protection, and formation intents       |
+| **5. Discovery Report**      | Compile findings, strategic recommendations, and validated architecture              |
+| **6. Redirect Planning**     | Create initial mapping of ~170 current URLs to new destinations                      |
+| **7. Stakeholder Alignment** | Client meetings, strategy review, and approval process                               |
 
 ---
 
@@ -256,19 +256,19 @@ The redesigned site is organized around four content pillars based on customer i
 
 This is the primary pillar. Most prospects arrive searching for privacy solutions. This pillar educates on keeping ownership and operations private, and funnels visitors toward Gold privacy packages.
 
-| Page | Type | URL | Purpose |
-|---|---|---|---|
-| Business Privacy | Pillar | `/privacy/` | Main education hub — why privacy matters |
-| Anonymous LLC | Cluster | `/anonymous-llc/` | How to form an LLC with no public record |
-| Anonymous Corporation | Cluster | `/anonymous-corporation/` | Corporate privacy structures |
-| Nominee Services | Cluster | `/nominee-services/` | Year-round nominees vs competitor "for a day" |
-| Wyoming Privacy | Cluster | `/wyoming-privacy/` | WY-specific privacy advantages |
-| Nevada Privacy | Cluster | `/nevada-privacy/` | NV-specific privacy advantages |
-| California Private Inc. | Cluster | `/california-private-incorporation/` | WY formation + CA foreign registration |
-| Florida Private Inc. | Cluster | `/florida-private-incorporation/` | WY formation + FL foreign registration |
-| BOI Reporting | Cluster | `/beneficial-ownership-reporting/` | Reporting requirements and privacy impact |
-| Best State for Privacy | Comparison | `/best-state-for-privacy/` | Multi-state comparison for privacy |
-| WY vs NV for Privacy | Comparison | `/wyoming-vs-nevada-privacy/` | Head-to-head privacy comparison |
+| Page                    | Type       | URL                                  | Purpose                                       |
+| ----------------------- | ---------- | ------------------------------------ | --------------------------------------------- |
+| Business Privacy        | Pillar     | `/privacy/`                          | Main education hub — why privacy matters      |
+| Anonymous LLC           | Cluster    | `/anonymous-llc/`                    | How to form an LLC with no public record      |
+| Anonymous Corporation   | Cluster    | `/anonymous-corporation/`            | Corporate privacy structures                  |
+| Nominee Services        | Cluster    | `/nominee-services/`                 | Year-round nominees vs competitor "for a day" |
+| Wyoming Privacy         | Cluster    | `/wyoming-privacy/`                  | WY-specific privacy advantages                |
+| Nevada Privacy          | Cluster    | `/nevada-privacy/`                   | NV-specific privacy advantages                |
+| California Private Inc. | Cluster    | `/california-private-incorporation/` | WY formation + CA foreign registration        |
+| Florida Private Inc.    | Cluster    | `/florida-private-incorporation/`    | WY formation + FL foreign registration        |
+| BOI Reporting           | Cluster    | `/beneficial-ownership-reporting/`   | Reporting requirements and privacy impact     |
+| Best State for Privacy  | Comparison | `/best-state-for-privacy/`           | Multi-state comparison for privacy            |
+| WY vs NV for Privacy    | Comparison | `/wyoming-vs-nevada-privacy/`        | Head-to-head privacy comparison               |
 
 ### 5.2 Pillar 2: Asset Protection
 
@@ -276,15 +276,15 @@ This is the primary pillar. Most prospects arrive searching for privacy solution
 
 Educates on the critical difference between privacy and asset protection — concepts commonly confused by prospects. Funnels visitors toward packages with asset protection features.
 
-| Page | Type | URL | Purpose |
-|---|---|---|---|
-| Asset Protection | Pillar | `/asset-protection/` | Main education hub — why AP matters |
-| Nevada Asset Protection | Cluster | `/nevada-asset-protection/` | NV-specific AP laws and structures |
-| Wyoming Asset Protection | Cluster | `/wyoming-asset-protection/` | WY-specific AP advantages |
-| Investment Holding LLC | Cluster | `/investment-holding-llc/` | Holding structures for investors |
-| Charging Order Protection | Cluster | `/charging-order-protection/` | Single-member LLC protections |
-| Best State for AP | Comparison | `/best-state-for-asset-protection/` | Multi-state AP comparison |
-| WY vs NV for AP | Comparison | `/wyoming-vs-nevada-asset-protection/` | Head-to-head AP comparison |
+| Page                      | Type       | URL                                    | Purpose                             |
+| ------------------------- | ---------- | -------------------------------------- | ----------------------------------- |
+| Asset Protection          | Pillar     | `/asset-protection/`                   | Main education hub — why AP matters |
+| Nevada Asset Protection   | Cluster    | `/nevada-asset-protection/`            | NV-specific AP laws and structures  |
+| Wyoming Asset Protection  | Cluster    | `/wyoming-asset-protection/`           | WY-specific AP advantages           |
+| Investment Holding LLC    | Cluster    | `/investment-holding-llc/`             | Holding structures for investors    |
+| Charging Order Protection | Cluster    | `/charging-order-protection/`          | Single-member LLC protections       |
+| Best State for AP         | Comparison | `/best-state-for-asset-protection/`    | Multi-state AP comparison           |
+| WY vs NV for AP           | Comparison | `/wyoming-vs-nevada-asset-protection/` | Head-to-head AP comparison          |
 
 ### 5.3 Pillar 3: Company Formation
 
@@ -292,17 +292,17 @@ Educates on the critical difference between privacy and asset protection — con
 
 Core formation education and state guidance. Serves visitors who know they need to form a company and are comparing options. Entity type and state selection guidance funnels to the appropriate package.
 
-| Page | Type | URL | Purpose |
-|---|---|---|---|
-| Company Formation | Pillar | `/formation/` | Main education hub — entity selection |
-| Wyoming LLC | Cluster | `/wyoming-llc/` | WY LLC formation details |
-| Wyoming Corporation | Cluster | `/wyoming-corporation/` | WY Corp formation details |
-| Nevada LLC | Cluster | `/nevada-llc/` | NV LLC formation details |
-| Nevada Corporation | Cluster | `/nevada-corporation/` | NV Corp formation details |
-| Shelf Companies | Cluster | `/shelf-companies/` | Aged entity options and benefits |
-| LLC vs Corporation | Cluster | `/llc-vs-corporation/` | Entity type comparison |
-| Wyoming vs Nevada | Comparison | `/wyoming-vs-nevada/` | State-level formation comparison |
-| Shelf vs New Formation | Comparison | `/shelf-company-vs-new-formation/` | Formation approach comparison |
+| Page                   | Type       | URL                                | Purpose                               |
+| ---------------------- | ---------- | ---------------------------------- | ------------------------------------- |
+| Company Formation      | Pillar     | `/formation/`                      | Main education hub — entity selection |
+| Wyoming LLC            | Cluster    | `/wyoming-llc/`                    | WY LLC formation details              |
+| Wyoming Corporation    | Cluster    | `/wyoming-corporation/`            | WY Corp formation details             |
+| Nevada LLC             | Cluster    | `/nevada-llc/`                     | NV LLC formation details              |
+| Nevada Corporation     | Cluster    | `/nevada-corporation/`             | NV Corp formation details             |
+| Shelf Companies        | Cluster    | `/shelf-companies/`                | Aged entity options and benefits      |
+| LLC vs Corporation     | Cluster    | `/llc-vs-corporation/`             | Entity type comparison                |
+| Wyoming vs Nevada      | Comparison | `/wyoming-vs-nevada/`              | State-level formation comparison      |
+| Shelf vs New Formation | Comparison | `/shelf-company-vs-new-formation/` | Formation approach comparison         |
 
 ### 5.4 Pillar 4: Compliance
 
@@ -310,15 +310,15 @@ Core formation education and state guidance. Serves visitors who know they need 
 
 Post-formation support and ongoing compliance. Supports the "minimum necessary compliance" messaging and differentiates Incorporate123's year-round support from competitors' minimal service offerings.
 
-| Page | Type | URL | Purpose |
-|---|---|---|---|
-| Compliance | Pillar | `/compliance/` | Main compliance hub |
-| Registered Agent Services | Cluster | `/registered-agent/` | What RA services include |
-| Wyoming Registered Agent | Cluster | `/wyoming-registered-agent/` | WY-specific RA information |
-| Nevada Registered Agent | Cluster | `/nevada-registered-agent/` | NV-specific RA information |
-| Annual Reports | Cluster | `/annual-reports/` | Reporting requirements by state |
-| Foreign State Registration | Cluster | `/foreign-state-registration/` | Operating in your home state |
-| Domestication | Cluster | `/domestication/` | Moving existing entities to WY/NV |
+| Page                       | Type    | URL                            | Purpose                           |
+| -------------------------- | ------- | ------------------------------ | --------------------------------- |
+| Compliance                 | Pillar  | `/compliance/`                 | Main compliance hub               |
+| Registered Agent Services  | Cluster | `/registered-agent/`           | What RA services include          |
+| Wyoming Registered Agent   | Cluster | `/wyoming-registered-agent/`   | WY-specific RA information        |
+| Nevada Registered Agent    | Cluster | `/nevada-registered-agent/`    | NV-specific RA information        |
+| Annual Reports             | Cluster | `/annual-reports/`             | Reporting requirements by state   |
+| Foreign State Registration | Cluster | `/foreign-state-registration/` | Operating in your home state      |
+| Domestication              | Cluster | `/domestication/`              | Moving existing entities to WY/NV |
 
 ### 5.5 Package Pages, State Hubs & Utility Pages
 
@@ -350,7 +350,6 @@ In addition to the four pillars, the architecture includes 8 package pages servi
 - FAQ (`/faq/`) — Consolidated from ~111 Learning Center items.
 - Blog (`/blog/`) — Ongoing content marketing.
 - Testimonials (`/testimonials/`) — Client stories and social proof.
-- Client Login (`/login/`) — Existing client portal access.
 - Privacy Policy (`/privacy-policy/`) — Legal compliance.
 - Terms of Service (`/terms/`) — Legal compliance.
 - Offshore (`/offshore/`) — Retained for SEO authority, de-emphasized in navigation.
@@ -368,13 +367,13 @@ All URLs use a flat structure with no deep hierarchy. For example: `/wyoming-pri
 
 ### 6.2 Internal Linking Map
 
-| From | Links To |
-|---|---|
-| **Pillar pages** | All related clusters, comparison pages, relevant packages |
-| **Cluster pages** | Back to pillar, related clusters, relevant comparison, relevant package |
-| **Comparison pages** | Back to pillar, to relevant packages |
-| **Package pages** | Related packages ("Also consider..."), back to pillar |
-| **State hubs** | All content for that state across all pillars |
+| From                 | Links To                                                                |
+| -------------------- | ----------------------------------------------------------------------- |
+| **Pillar pages**     | All related clusters, comparison pages, relevant packages               |
+| **Cluster pages**    | Back to pillar, related clusters, relevant comparison, relevant package |
+| **Comparison pages** | Back to pillar, to relevant packages                                    |
+| **Package pages**    | Related packages ("Also consider..."), back to pillar                   |
+| **State hubs**       | All content for that state across all pillars                           |
 
 ---
 
@@ -382,13 +381,13 @@ All URLs use a flat structure with no deep hierarchy. For example: `/wyoming-pri
 
 Phase 1 produces five formal deliverables, each of which feeds directly into subsequent workstreams. These deliverables are submitted for client review and approval before UX & Design begins.
 
-| Deliverable | Description | Used By |
-|---|---|---|
-| **Discovery Report** | Comprehensive findings document with strategic recommendations, audit results, and competitive insights | All workstreams |
-| **Finalized Site Architecture** | Complete 71+ page site map with URL structure, page types, pillar/cluster assignments, and navigation hierarchy | UX, Design, SEO, Dev |
-| **Content Migration Map** | Page-by-page mapping of ~129 current pages to new structure with content disposition (preserve, consolidate, enhance, retire) | SEO, Dev, Content |
-| **Redirect Plan (Draft)** | Initial mapping of ~170 current URLs to new destinations, refined during development | Dev, SEO, QA |
-| **Positioning Framework** | Strategic positioning document defining messaging, differentiation, and target audience for all content creation | Content, Design, SEO |
+| Deliverable                     | Description                                                                                                                   | Used By              |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| **Discovery Report**            | Comprehensive findings document with strategic recommendations, audit results, and competitive insights                       | All workstreams      |
+| **Finalized Site Architecture** | Complete 71+ page site map with URL structure, page types, pillar/cluster assignments, and navigation hierarchy               | UX, Design, SEO, Dev |
+| **Content Migration Map**       | Page-by-page mapping of ~129 current pages to new structure with content disposition (preserve, consolidate, enhance, retire) | SEO, Dev, Content    |
+| **Redirect Plan (Draft)**       | Initial mapping of ~170 current URLs to new destinations, refined during development                                          | Dev, SEO, QA         |
+| **Positioning Framework**       | Strategic positioning document defining messaging, differentiation, and target audience for all content creation              | Content, Design, SEO |
 
 ---
 
@@ -414,29 +413,29 @@ Phase 1 concludes with a formal milestone checkpoint. This is the gate that unlo
 
 Once the site architecture is confirmed, the project transitions into parallel workstreams. UX prototyping and visual design begin immediately (Weeks 2–5), with SEO specification work starting as soon as the structure is locked (Week 3). The approved Phase 1 deliverables serve as the authoritative reference for all downstream decisions.
 
-| Next Workstream | Weeks | Depends On |
-|---|---|---|
-| **UX & Interactive Prototyping** | 2–5 | Finalized site architecture, user journey maps |
-| **Visual Design & Design System** | 2–5 | Approved prototypes (rolling), positioning framework |
-| **SEO Strategy & Implementation** | 3–8 | Locked site structure, content migration map |
-| **Development** | 4–9 | Approved designs (rolling), SEO specs, redirect plan |
-| **Testing & Launch** | 8–10 | Completed development, all redirects finalized |
+| Next Workstream                   | Weeks | Depends On                                           |
+| --------------------------------- | ----- | ---------------------------------------------------- |
+| **UX & Interactive Prototyping**  | 2–5   | Finalized site architecture, user journey maps       |
+| **Visual Design & Design System** | 2–5   | Approved prototypes (rolling), positioning framework |
+| **SEO Strategy & Implementation** | 3–8   | Locked site structure, content migration map         |
+| **Development**                   | 4–9   | Approved designs (rolling), SEO specs, redirect plan |
+| **Testing & Launch**              | 8–10  | Completed development, all redirects finalized       |
 
 ---
 
 ## 9. Effort & Investment Summary
 
-| Task | Est. Hours | Timeline |
-|---|---|---|
-| Current Site Audit | ~6 hours | Week 1 |
-| Content Mapping | ~6 hours | Week 1 |
-| Competitive Analysis | ~6 hours | Week 1–2 |
-| User Journey Mapping | ~5 hours | Week 2 |
-| Discovery Report | ~6 hours | Week 2 |
-| Redirect Planning | ~3 hours | Week 2 |
-| Stakeholder Alignment | ~4 hours | Week 2 |
-| **TOTAL PHASE 1** | **36 hours** | **Weeks 1–2** |
+| Task                  | Est. Hours   | Timeline      |
+| --------------------- | ------------ | ------------- |
+| Current Site Audit    | ~6 hours     | Week 1        |
+| Content Mapping       | ~6 hours     | Week 1        |
+| Competitive Analysis  | ~6 hours     | Week 1–2      |
+| User Journey Mapping  | ~5 hours     | Week 2        |
+| Discovery Report      | ~6 hours     | Week 2        |
+| Redirect Planning     | ~3 hours     | Week 2        |
+| Stakeholder Alignment | ~4 hours     | Week 2        |
+| **TOTAL PHASE 1**     | **36 hours** | **Weeks 1–2** |
 
 ---
 
-*Confidential — BIT Studios × Incorporate123 — February 2026*
+_Confidential — BIT Studios × Incorporate123 — February 2026_

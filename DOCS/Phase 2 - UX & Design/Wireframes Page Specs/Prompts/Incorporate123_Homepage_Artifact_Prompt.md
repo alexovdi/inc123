@@ -45,7 +45,7 @@ Pillar Identity:
 
 Build every section from the spec. Here's the sequence with key implementation notes:
 
-1. **Header** — Sticky top. Logo left, 5 nav items center, "Get Started" amber CTA + "Client Login" ghost button right. Hamburger on mobile. Mega menu as a dropdown panel on click (not hover — artifacts don't have reliable hover). Phone number visible on mobile header.
+1. **Header** — Sticky top. Logo left, 5 nav items center, "Get Started" amber CTA right. Hamburger on mobile. Mega menu as a dropdown panel on click (not hover — artifacts don't have reliable hover). Phone number visible on mobile header.
 
 2. **Hero** — Full-width, min-h-[560px] on desktop. Split layout: left text column (eyebrow, H1, subheadline, dual CTAs, trust badge strip), right side a subtle gradient/abstract visual or a large shield/lock icon composition. Background: light gradient from bg-[#f8fafc] to white. The H1 is: "Privacy, Asset Protection & Business Formation — All-Inclusive, Nothing Hidden"
 
@@ -61,7 +61,7 @@ Build every section from the spec. Here's the sequence with key implementation n
 
 8. **How It Works** — White bg. 4 steps in horizontal row with connector lines (desktop) or vertical timeline (mobile). Numbered circles in blue. Steps: Choose Protection Level → Select Package → We Handle Filing → You're Protected. Each has icon + short description.
 
-9. **Compliance Callout** — Light purple tint bg-[#f3e8ff] with left purple border. Split: left text ("Already Have an Entity? We Keep You Compliant."), right side has two CTAs: "Explore Compliance →" and "Client Login →".
+9. **Compliance Callout** — Light purple tint bg-[#f3e8ff] with left purple border. Split: left text ("Already Have an Entity? We Keep You Compliant."), right side has two CTAs: "Explore Compliance →" and "Contact Us →".
 
 10. **Final CTA** — Dark navy bg-[#1e3a5f]. Centered text: "Ready to Protect Your Privacy and Assets?" with amber primary CTA and white outline secondary CTA. Phone number below.
 

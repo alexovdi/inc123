@@ -1,36 +1,36 @@
 import {
-  Shield,
-  Lock,
   Building2,
-  Clock,
+  Shield,
+  Globe,
   MapPin,
-  HelpCircle,
+  ShieldCheck,
+  Eye,
+  EyeOff,
   type LucideIcon,
 } from "lucide-react";
 import { packages } from "./packages";
 import type { EntityType } from "@/lib/types";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Package Wizard — Data definitions
-   Flow: Goal → State → Tier/Entity → Result
+   Package Wizard — Data definitions (v2)
+   Flow: Branch → Business Type / AP State → Privacy Question → Result
+   2-branch model per David's April 1 meeting
    ═══════════════════════════════════════════════════════════════════════════ */
 
 // ── Types ──
 
-export type WizardIntent =
-  | "privacy"
-  | "asset-protection"
-  | "formation"
-  | "shelf"
-  | "ca-fl";
-
+export type WizardBranch = "formation" | "ap";
+export type WizardBusinessType = "virtual" | "brick-mortar";
+export type WizardFormationState = "wyoming" | "nevada";
+export type WizardOperatingState = "california" | "florida" | "other";
 export type WizardTier = "gold" | "silver" | "bronze";
-export type WizardState =
-  | "wyoming"
-  | "nevada"
-  | "california"
-  | "florida"
-  | "unsure";
+export type WizardStepId =
+  | "start"
+  | "business-type"
+  | "ap-state"
+  | "bm-state"
+  | "privacy"
+  | "result";
 
 export type { EntityType };
 
@@ -43,7 +43,6 @@ export interface WizardOption {
 }
 
 export interface WizardQuestion {
-  key: string;
   heading: string;
   subheading: string;
 }
@@ -56,313 +55,129 @@ export interface WizardPackage {
   badge?: string;
   href: string;
   shortDescription: string;
-}
-
-export interface WizardFeature {
-  name: string;
-  gold: boolean;
-  silver: boolean;
-  bronze: boolean;
+  features: string[];
 }
 
 // ── Questions ──
 
 export const questions: Record<string, WizardQuestion> = {
-  intent: {
-    key: "intent",
-    heading: "What\u2019s your primary goal?",
-    subheading:
-      "Choose what matters most \u2014 this determines your recommended package.",
+  start: {
+    heading: "What brings you here?",
+    subheading: "We\u2019ll recommend the best package for your needs.",
   },
-  state: {
-    key: "state",
-    heading: "Where will you primarily operate?",
-    subheading: "Your state determines pricing and available features.",
+  businessType: {
+    heading: "What type of business?",
+    subheading: "This determines which state and structure works best for you.",
   },
-  caFlState: {
-    key: "caFlState",
+  apState: {
+    heading: "Where do you want to form?",
+    subheading: "Wyoming is recommended for most asset protection needs.",
+  },
+  bmState: {
     heading: "Which state do you operate in?",
     subheading:
-      "We\u2019ll bundle a privacy formation with your home-state registration.",
+      "We\u2019ll form in Wyoming and register in your state for full compliance.",
   },
-  tier: {
-    key: "tier",
-    heading: "Choose your entity type and service level",
-    subheading:
-      "Pick your entity type first, then select how much ongoing support you need.",
-  },
-  tierCaFl: {
-    key: "tierCaFl",
-    heading: "Choose your entity type",
-    subheading:
-      "The Private package includes full Gold-level formation bundled with your home state registration.",
+  privacy: {
+    heading: "Do you want your name kept off public records?",
+    subheading: "This is the key difference between our packages.",
   },
 };
 
-// ── Step 1: Intent Options (5 cards including CA/FL) ──
+// ── Step 1: Branch Options (2 cards) ──
 
-export const intentOptions: WizardOption[] = [
-  {
-    id: "privacy",
-    icon: Shield,
-    title: "Business Privacy",
-    subtitle:
-      "Keep your name off public records with year-round nominee services",
-  },
-  {
-    id: "asset-protection",
-    icon: Lock,
-    title: "Asset Protection",
-    subtitle:
-      "Shield personal assets from business liabilities with charging order protection",
-  },
+export const branchOptions: WizardOption[] = [
   {
     id: "formation",
     icon: Building2,
-    title: "Form a Business",
-    subtitle: "Set up an LLC or Corporation quickly and correctly",
-  },
-  {
-    id: "shelf",
-    icon: Clock,
-    title: "Established Entity",
-    subtitle: "Acquire a pre-aged company with an established history",
-  },
-  {
-    id: "ca-fl",
-    icon: MapPin,
-    title: "I Operate in CA or FL",
+    title: "Business Formation",
     subtitle:
-      "Get a privacy-focused formation bundled with your home-state registration",
+      "Start an LLC or Corporation \u2014 form your business the right way",
+  },
+  {
+    id: "ap",
+    icon: Shield,
+    title: "Asset Protection",
+    subtitle: "Shield your personal assets from business liabilities",
   },
 ];
 
-// ── Step 2: State Options ──
+// ── Step 2a: Business Type Options ──
 
-export const stateOptions: WizardOption[] = [
+export const businessTypeOptions: WizardOption[] = [
+  {
+    id: "virtual",
+    icon: Globe,
+    title: "Virtual / Remote",
+    subtitle: "Operate from anywhere \u2014 no physical location required",
+  },
+  {
+    id: "brick-mortar",
+    icon: MapPin,
+    title: "Brick-and-Mortar",
+    subtitle: "Physical presence in a specific state",
+  },
+];
+
+// ── Step 2b: AP State Options ──
+
+export const apStateOptions: WizardOption[] = [
   {
     id: "wyoming",
-    icon: MapPin,
+    icon: ShieldCheck,
     title: "Wyoming",
-    subtitle: "Lowest cost, excellent privacy, minimal annual fees ($50/yr)",
+    subtitle: "Lowest cost, strongest privacy, excellent asset protection",
+    badge: "Recommended",
   },
   {
     id: "nevada",
-    icon: MapPin,
+    icon: ShieldCheck,
     title: "Nevada",
-    subtitle: "Strongest asset protection, no IRS info sharing",
+    subtitle: "Strongest charging order protection, no IRS info-sharing",
   },
+];
+
+// ── Step 2c: Brick-and-Mortar State Options ──
+
+export const bmStateOptions: WizardOption[] = [
   {
     id: "california",
     icon: MapPin,
     title: "California",
-    subtitle: "I live or operate in CA and need my entity registered there",
+    subtitle: "WY formation + CA foreign registration",
   },
   {
     id: "florida",
     icon: MapPin,
     title: "Florida",
-    subtitle: "I live or operate in FL and need my entity registered there",
+    subtitle: "WY formation + FL foreign registration",
   },
   {
-    id: "unsure",
-    icon: HelpCircle,
-    title: "Not sure yet",
-    subtitle: "Help me decide \u2014 show me a comparison",
+    id: "other",
+    icon: MapPin,
+    title: "Another State",
+    subtitle: "WY formation + foreign registration in your state",
   },
 ];
 
-// ── Step 3: Tier Options ──
+// ── Step 3: Privacy Decision Options ──
 
-export interface TierOption {
-  id: WizardTier;
-  label: string;
-  description: string;
-}
-
-export const tierOptions: TierOption[] = [
+export const privacyOptions: WizardOption[] = [
   {
-    id: "gold",
-    label: "Gold",
-    description:
-      "Full privacy + compliance. Year-round nominees, offshore records, all filings handled.",
+    id: "yes",
+    icon: Eye,
+    title: "Yes \u2014 keep my name private",
+    subtitle:
+      "Year-round nominees appear on all public filings instead of your name",
   },
   {
-    id: "silver",
-    label: "Silver",
-    description:
-      "Formation + managed compliance. Annual reports, corporate minutes, good standing.",
-  },
-  {
-    id: "bronze",
-    label: "Bronze",
-    description:
-      "Basic formation + registered agent. You handle annual compliance yourself.",
+    id: "no",
+    icon: EyeOff,
+    title: "No \u2014 I don\u2019t need that",
+    subtitle:
+      "Your name will appear on state records, but you\u2019ll save on costs",
   },
 ];
-
-// ── State Comparison Data ──
-
-export const stateComparison = {
-  headers: ["", "Wyoming", "Nevada", "California", "Florida"],
-  rows: [
-    ["Gold LLC", "$1,275", "$1,800", "$1,475", "$1,475"],
-    ["Annual State Fees", "~$50/yr", "~$350/yr", "~$820/yr*", "~$139/yr"],
-    [
-      "Privacy",
-      "Excellent",
-      "Excellent",
-      "Good (via WY/NV)",
-      "Good (via WY/NV)",
-    ],
-    ["Asset Protection", "Strong", "Strongest", "Moderate", "Strong"],
-    [
-      "Best For",
-      "Privacy + value",
-      "Privacy + AP",
-      "CA residents",
-      "FL residents",
-    ],
-  ],
-  footnote:
-    "*CA includes $800/yr minimum franchise tax for LLCs. CA & FL Private packages bundle a WY/NV Gold formation with foreign state registration.",
-};
-
-// ── State Context Notes ──
-
-export function getStateContextNote(intent: WizardIntent): string | null {
-  if (intent === "privacy") {
-    return "Both Wyoming and Nevada offer excellent privacy. Wyoming is more affordable; Nevada adds stronger asset protection.";
-  }
-  if (intent === "asset-protection") {
-    return "Nevada has the strongest charging order protection. Wyoming is strong and significantly more affordable.";
-  }
-  if (intent === "ca-fl") {
-    return "Both California and Florida Private packages include a WY or NV Gold formation with foreign registration in your state.";
-  }
-  return null;
-}
-
-// ── Default Tier by Intent ──
-
-export function getDefaultTier(intent: WizardIntent): WizardTier {
-  if (
-    intent === "privacy" ||
-    intent === "asset-protection" ||
-    intent === "ca-fl"
-  )
-    return "gold";
-  return "silver";
-}
-
-// ── Features by Goal (shown on result) ──
-
-export const featuresByGoal: Record<string, WizardFeature[]> = {
-  privacy: [
-    {
-      name: "Year-Round Nominee Directors",
-      gold: true,
-      silver: false,
-      bronze: false,
-    },
-    {
-      name: "Year-Round Nominee Officers",
-      gold: true,
-      silver: false,
-      bronze: false,
-    },
-    {
-      name: "Offshore Record Storage",
-      gold: true,
-      silver: false,
-      bronze: false,
-    },
-    {
-      name: "State Filing Fees Included",
-      gold: true,
-      silver: true,
-      bronze: true,
-    },
-    {
-      name: "Registered Agent (1 Year)",
-      gold: true,
-      silver: true,
-      bronze: true,
-    },
-    {
-      name: "Corporate Minutes Maintenance",
-      gold: true,
-      silver: true,
-      bronze: false,
-    },
-  ],
-  "asset-protection": [
-    {
-      name: "Charging Order Protection",
-      gold: true,
-      silver: true,
-      bronze: true,
-    },
-    {
-      name: "Year-Round Nominee Privacy",
-      gold: true,
-      silver: false,
-      bronze: false,
-    },
-    {
-      name: "Offshore Record Storage",
-      gold: true,
-      silver: false,
-      bronze: false,
-    },
-    {
-      name: "Corporate Minutes Maintenance",
-      gold: true,
-      silver: true,
-      bronze: false,
-    },
-    { name: "Annual Report Filing", gold: true, silver: true, bronze: false },
-    {
-      name: "Certificate of Good Standing",
-      gold: true,
-      silver: true,
-      bronze: false,
-    },
-  ],
-  formation: [
-    {
-      name: "State Filing Fees Included",
-      gold: true,
-      silver: true,
-      bronze: true,
-    },
-    {
-      name: "Registered Agent (1 Year)",
-      gold: true,
-      silver: true,
-      bronze: true,
-    },
-    { name: "Annual Report Filing", gold: true, silver: true, bronze: false },
-    {
-      name: "Corporate Minutes Maintenance",
-      gold: true,
-      silver: true,
-      bronze: false,
-    },
-    {
-      name: "Certificate of Good Standing",
-      gold: true,
-      silver: true,
-      bronze: false,
-    },
-    {
-      name: "Year-Round Nominee Privacy",
-      gold: true,
-      silver: false,
-      bronze: false,
-    },
-  ],
-};
 
 // ── Package Data (prices derived from canonical packages.ts) ──
 
@@ -387,6 +202,12 @@ export const wizardPackages: Record<string, WizardPackage> = {
     badge: "Most Popular",
     href: "/gold?state=Wyoming",
     shortDescription: "Maximum privacy with lowest formation cost",
+    features: [
+      "Year-round nominee directors & officers",
+      "Offshore records storage",
+      "Virtual office & mail forwarding",
+      "Full compliance management",
+    ],
   },
   "wyoming-silver": {
     slug: "wyoming-silver",
@@ -394,6 +215,25 @@ export const wizardPackages: Record<string, WizardPackage> = {
     ...canonicalPrices["wyoming-silver"],
     href: "/silver?state=Wyoming",
     shortDescription: "Professional compliance without nominees",
+    features: [
+      "Virtual office address",
+      "Weekly mail forwarding",
+      "Annual reports & compliance",
+      "All state fees included",
+    ],
+  },
+  "wyoming-bronze": {
+    slug: "wyoming-bronze",
+    name: "Wyoming Bronze",
+    ...canonicalPrices["wyoming-bronze"],
+    href: "/bronze?state=Wyoming",
+    shortDescription: "Basic formation, you manage compliance",
+    features: [
+      "Registered agent (1 year)",
+      "State filing fees included",
+      "Document preparation",
+      "Formation documents delivered",
+    ],
   },
   "nevada-gold": {
     slug: "nevada-gold",
@@ -402,6 +242,12 @@ export const wizardPackages: Record<string, WizardPackage> = {
     badge: "Premium",
     href: "/gold?state=Nevada",
     shortDescription: "Strongest asset protection + full privacy",
+    features: [
+      "Year-round nominee directors & officers",
+      "Offshore records storage",
+      "NV business license included",
+      "Strongest charging order protection",
+    ],
   },
   "nevada-silver": {
     slug: "nevada-silver",
@@ -409,6 +255,12 @@ export const wizardPackages: Record<string, WizardPackage> = {
     ...canonicalPrices["nevada-silver"],
     href: "/silver?state=Nevada",
     shortDescription: "Professional NV formation with compliance",
+    features: [
+      "Virtual office address",
+      "Weekly mail forwarding",
+      "NV business license included",
+      "Full compliance management",
+    ],
   },
   "nevada-bronze": {
     slug: "nevada-bronze",
@@ -416,41 +268,39 @@ export const wizardPackages: Record<string, WizardPackage> = {
     ...canonicalPrices["nevada-bronze"],
     href: "/bronze?state=Nevada",
     shortDescription: "Affordable NV formation, you manage compliance",
+    features: [
+      "Registered agent (1 year)",
+      "NV business license included",
+      "State filing fees included",
+      "Formation documents delivered",
+    ],
   },
   "california-private": {
     slug: "california-private",
     name: "California Private",
     ...canonicalPrices["california-private"],
+    badge: "All-in-One",
     href: "/gold?state=California",
-    shortDescription: "Privacy formation bundled with CA registration",
+    shortDescription: "WY Gold + CA foreign registration bundled",
+    features: [
+      "WY Gold formation included",
+      "CA foreign registration",
+      "Year-round nominees",
+      "Full compliance in both states",
+    ],
   },
   "florida-private": {
     slug: "florida-private",
     name: "Florida Private",
     ...canonicalPrices["florida-private"],
+    badge: "All-in-One",
     href: "/gold?state=Florida",
-    shortDescription: "Privacy formation bundled with FL registration",
-  },
-  shelf: {
-    slug: "shelf",
-    name: "Shelf Companies",
-    ...canonicalPrices["shelf-companies"],
-    href: "/packages",
-    shortDescription: "Pre-formed companies with established history",
+    shortDescription: "WY Gold + FL foreign registration bundled",
+    features: [
+      "WY Gold formation included",
+      "FL foreign registration",
+      "Year-round nominees",
+      "Full compliance in both states",
+    ],
   },
 };
-
-// ── Price Helpers ──
-
-export function getPackagePrice(
-  stateId: string,
-  tier: WizardTier,
-  entity: EntityType,
-): number | null {
-  if (stateId === "california" || stateId === "florida") {
-    const pkg = wizardPackages[`${stateId}-private`];
-    return pkg ? pkg.prices[entity] : null;
-  }
-  const pkg = wizardPackages[`${stateId}-${tier}`];
-  return pkg ? pkg.prices[entity] : null;
-}

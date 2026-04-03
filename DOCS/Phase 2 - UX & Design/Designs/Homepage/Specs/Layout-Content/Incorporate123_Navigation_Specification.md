@@ -38,7 +38,6 @@ The header is the persistent navigation bar visible on every page at every viewp
 | **Formation**        | Nav position 3        | Hover triggers mega menu column 3                     | `/formation/`        |
 | **Packages**         | Nav position 4        | Direct link — no dropdown                             | `/compare-packages/` |
 | **About**            | Nav position 5        | Small dropdown: About, Contact, Testimonials          | `/about/`            |
-| **Client Login**     | Right utility cluster | Persistent — always visible, never hidden in dropdown | `/login/`            |
 | **Phone Number**     | Right utility cluster | Clickable `tel:` link. Format: `(XXX) XXX-XXXX`       | `tel:XXXXXXXXXX`     |
 | **"Get Started →"**  | Far right             | Secondary-style button (not primary)                  | `/compare-packages/` |
 
@@ -59,7 +58,6 @@ The header CTA uses secondary styling to avoid visual competition with in-page p
 | Req ID | Requirement                   | How Addressed                                                               |
 | ------ | ----------------------------- | --------------------------------------------------------------------------- |
 | N-1    | Intent-first main nav         | Privacy · AP · Formation · Packages · About — intent labels, not geography  |
-| N-2    | Persistent Client Login       | Visible in header on every page, never behind a dropdown                    |
 | N-3    | Direct package access         | "Packages" is a top-level nav item linking directly to `/compare-packages/` |
 | N-4    | Phone number with tap-to-call | In header utility cluster, clickable on all viewports                       |
 | N-5    | Mega menu with clusters       | Hover-triggered mega dropdown per pillar (see Section 2)                    |
@@ -208,7 +206,6 @@ Simple dropdown, not a mega menu:
 | **Hamburger icon** | Left-aligned. Tap opens full-screen menu overlay.  |
 | **Logo**           | Centered. Links to `/`.                            |
 | **Phone icon**     | Right side. Tap-to-call. Always one tap away.      |
-| **Login**          | Right side, next to phone. Text link to `/login/`. |
 
 ### Mobile Menu Overlay
 
@@ -220,7 +217,6 @@ When the hamburger is tapped, a full-screen overlay slides in from the left (or 
 │                              │
 │  [Get Started →]  (button)   │
 │  [Compare Packages →]        │
-│  Client Login                │
 │                              │
 │  ──────────────────────────  │
 │                              │
@@ -450,7 +446,6 @@ The footer is the complete sitemap for SEO and deep-linking. It appears on every
 │  Nominee Svc.    Charging Order     Nevada LLC        FAQ                  │
 │  WY Privacy      Holding LLC        Nevada Corp.      Blog                 │
 │  NV Privacy      Real Estate AP     Shelf Companies   Testimonials         │
-│  CA Private      LLC vs Trust       LLC vs Corp.      Client Login         │
 │  FL Private                         Foreign Reg.                            │
 │  BOI Reporting   ── Compare ──      ── Compare ──                           │
 │                  Best State AP      WY vs NV                                │
@@ -483,7 +478,6 @@ The footer is the complete sitemap for SEO and deep-linking. It appears on every
 | 1      | "Privacy"                | All Privacy clusters + comparisons                    | 10         |
 | 2      | "Asset Protection"       | All AP clusters + comparisons                         | 8          |
 | 3      | "Business Incorporation" | All Formation clusters + comparisons                  | 9          |
-| 4      | "Company"                | About, Contact, FAQ, Blog, Testimonials, Client Login | 6          |
 | 5      | "Packages"               | All 8 packages, Gold first with ★ indicator           | 8          |
 | 6      | "States & Offshore"      | WY, NV, CA, FL hubs + Offshore + Compliance hub       | 6          |
 

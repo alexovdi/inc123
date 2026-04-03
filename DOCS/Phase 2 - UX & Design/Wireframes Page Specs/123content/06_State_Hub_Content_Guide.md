@@ -60,7 +60,6 @@ The Package Quick Links section shows Gold and Silver cards but lacks a "Not sur
 | 1 | Privacy (Blue) | "[State] for Privacy" | [State]'s privacy advantages + anonymous LLCs + nominee services. | "[State] Gold — $[price] →" |
 | 2 | AP (Green) | "[State] for Asset Protection" | Charging order protection, holding structures, investment AP. | "[State] Gold — $[price] →" |
 | 3 | Formation (Amber) | "[State] LLC & Corporation" | Expert formation, all-inclusive, low fees. | "[State] Silver — $[price] →" |
-| 4 | Compliance (Purple) | "[State] Compliance & Registered Agent" | Ongoing support, annual reports, RA service. | "Client Login →" |
 
 ### CA/FL Hub Pattern (3 cards — different structure)
 

@@ -469,7 +469,6 @@ Full-screen mobile navigation overlay.
 - `onClose`: callback
 - `className`
 
-**Behavior:** Slides in from right (or full-screen overlay). Pillar sections are accordions showing cluster links. Prominent "Order Now" and "Client Login" buttons above fold. Touch-friendly tap targets (minimum 44px). Closes on backdrop tap, Escape key, or X button.
 
 **Used on:** Global (SiteHeader only — mobile/tablet viewport)
 
@@ -927,7 +926,6 @@ Components used on only one page type. Built during the step that prototypes tha
 
 **5.1 HomepageHero** — Full-width split layout: headline/CTAs left, visual placeholder right. Eyebrow ("Privacy, Asset Protection & Business Formation Specialists"), H1, subheadline, dual CTA buttons (primary: "Protect Your Privacy", secondary: "Form Your Company"), trust badge strip below CTAs. Used on HP only.
 
-**5.2 ComplianceCallout** — Full-width card with compliance pillar accent (purple). Targets returning clients: "Already Have an Entity?" heading with dual CTAs to compliance pillar and client login. Used on HP only.
 
 ---
 
@@ -1023,7 +1021,6 @@ Global header persistent across all pages.
 **Content:**
 - Logo (left) — links to homepage
 - Primary nav (center): Business Privacy, Asset Protection, Company Formation, Compliance, Packages
-- Utility nav (right): Client Login link, phone number (tap-to-call on mobile), "Order Now" CTA button
 - On scroll: compact mode (smaller height, drop shadow)
 
 **Used on:** Global
