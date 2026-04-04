@@ -131,13 +131,14 @@ export default function HomePage() {
           Section 1: Hero (dark anchor)
           ========================================== */}
       <HomepageHero
-        headline={hero.headline}
+        headlineLines={hero.headlineLines}
         subheadline={hero.subheadline}
         primaryCTA={hero.primaryCTA}
         secondaryCTA={hero.secondaryCTA}
-        trustSnippets={hero.trustSnippets}
         eyebrow={hero.eyebrow}
-        safetyNet={hero.safetyNet}
+        phone={hero.phone}
+        consultationHref={hero.consultationHref}
+        stats={hero.stats}
       />
 
       {/* ==========================================

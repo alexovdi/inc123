@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Footer Structure Visual</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --ink: #0f172a;
+        --ink-2: #334155;
+        --ink-3: #64748b;
+        --ink-4: #94a3b8;
+        --border: #e2e8f0;
+        --card: #ffffff;
+        --blue: #2563eb;
+        --green: #16a34a;
+        --amber: #d97706;
+        --purple: #9333ea;
+        --cyan: #0891b2;
+        --slate-dark: #0f172a;
+        --rose: #e11d48;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page-header {
+        background: var(--slate-dark);
+        padding: 40px 0;
+        text-align: center;
+      }
+      .page-header h1 {
+        font-family: "Outfit", sans-serif;
+        font-size: 32px;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .page-header p {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 14px;
+        margin-top: 6px;
+      }
+      .page-header .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+
+      .url-rule {
+        max-width: 1320px;
+        margin: 24px auto 0;
+        padding: 0 32px;
+      }
+      .url-rule-box {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 12px;
+        color: #92400e;
+      }
+      .url-rule-box strong {
+        font-weight: 700;
+      }
+
+      .canvas {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 32px 32px 80px;
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink-4);
+        margin-bottom: 16px;
+        margin-top: 48px;
+      }
+      .section-label:first-child {
+        margin-top: 0;
+      }
+
+      /* BRANDING STRIP */
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 36px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .footer-brand-left {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .footer-brand-logo {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        color: #fff;
+        letter-spacing: -0.3px;
+      }
+      .footer-brand-logo span {
+        color: var(--blue);
+      }
+      .footer-brand-tagline {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .footer-brand-right {
+        display: flex;
+        gap: 12px;
+      }
+      .footer-brand-btn {
+        padding: 9px 20px;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        font-weight: 500;
+        background: transparent;
+        cursor: default;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
+        text-decoration: none;
+      }
+      .footer-brand-btn:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        color: #fff;
+      }
+
+      /* FOOTER PREVIEW */
+      .footer-preview {
+        background: var(--slate-dark);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      }
+      .footer-columns {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0;
+        padding: 48px 36px 32px;
+      }
+      .footer-col {
+        padding: 0 14px;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .footer-col:last-child {
+        border-right: none;
+      }
+      .footer-col-header {
+        font-weight: 700;
+        font-size: 12px;
+        color: #fff;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .footer-col-header .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col li {
+        padding: 2.5px 0;
+      }
+      .footer-col li a {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        transition: color 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+      .footer-col li a:hover {
+        color: #fff;
+      }
+      .footer-col li a .star {
+        color: var(--amber);
+        font-size: 10px;
+      }
+      .footer-col .divider {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 8px 0 5px;
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.2);
+      }
+      .footer-col .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .footer-col .sub-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.06);
+        margin: 8px 0;
+      }
+      .footer-col .sub-header {
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        margin: 8px 0 4px;
+      }
+
+      /* Legal strip */
+      .footer-legal {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 24px 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-legal-top {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .footer-legal-top a {
+        color: rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+      }
+      .footer-legal-top a:hover {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: underline;
+      }
+      .footer-legal-top .sep {
+        color: rgba(255, 255, 255, 0.15);
+      }
+      .footer-legal-address {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.2);
+        text-align: center;
+      }
+      .footer-crypto {
+        display: flex;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .crypto-badge {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 3px 8px;
+        border-radius: 4px;
+      }
+
+      /* ANNOTATED VERSION */
+      .annotated-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .annotated-col {
+        background: var(--card);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        padding: 14px;
+        position: relative;
+      }
+      .annotated-col-header {
+        font-weight: 700;
+        font-size: 12px;
+        margin-bottom: 3px;
+      }
+      .annotated-col-count {
+        font-size: 10px;
+        color: var(--ink-4);
+        margin-bottom: 10px;
+      }
+      .annotated-col ul {
+        list-style: none;
+      }
+      .annotated-col li {
+        padding: 3px 0;
+        font-size: 11px;
+        color: var(--ink-2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .annotated-col li .url {
+        font-size: 8px;
+        color: var(--ink-4);
+        font-family: "Courier New", monospace;
+        margin-left: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+      }
+      .annotated-type {
+        font-size: 7px;
+        font-weight: 700;
+        padding: 1px 4px;
+        border-radius: 3px;
+        letter-spacing: 0.3px;
+        flex-shrink: 0;
+      }
+      .annotated-type.cluster {
+        background: #f1f5f9;
+        color: #475569;
+      }
+      .annotated-type.compare {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .annotated-type.page {
+        background: #eff6ff;
+        color: #1d4ed8;
+      }
+      .annotated-type.hub {
+        background: #ecfeff;
+        color: #0e7490;
+      }
+      .annotated-type.package {
+        background: #fff1f2;
+        color: #be123c;
+      }
+      .annotated-divider {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 6px 0 3px;
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--ink-4);
+      }
+      .annotated-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .color-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .stats-bar {
+        display: flex;
+        gap: 24px;
+        margin-top: 48px;
+        padding: 24px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+      .stat-item {
+        text-align: center;
+        flex: 1;
+      }
+      .stat-value {
+        font-family: "Outfit", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .stat-label {
+        font-size: 11px;
+        color: var(--ink-4);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+
+      /* Mobile footer */
+      .mobile-frame {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-radius: 24px;
+        width: 375px;
+        margin: 16px auto 0;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+      .mobile-status-bar {
+        height: 36px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: var(--ink-3);
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-footer-preview {
+        background: var(--slate-dark);
+        padding: 24px 20px;
+      }
+      .mobile-accordion {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px 0;
+      }
+      .mobile-accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .mobile-accordion-header .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      .mobile-accordion-header .left {
+        display: flex;
+        align-items: center;
+      }
+      .mobile-accordion-header .arrow {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 11px;
+      }
+      .mobile-legal {
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: center;
+      }
+      .mobile-legal p {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.25);
+        line-height: 1.8;
+      }
+      .mobile-legal a {
+        color: rgba(255, 255, 255, 0.35);
+        text-decoration: none;
+      }
+      .mobile-crypto {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .mobile-crypto-badge {
+        font-size: 8px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="badge">Phase 2 — Navigation Architecture</div>
+      <h1>Footer Structure</h1>
+      <p>
+        Final structure — April 3, 2026 — BIT Studios &times; Incorporate123
+      </p>
+    </div>
+
+    <div class="url-rule">
+      <div class="url-rule-box">
+        <strong>URL Rule:</strong> All URLs are flat — no directory nesting.
+        Package pages use descriptive slugs (e.g.
+        <code>/wyoming-private-incorporation/</code>), not
+        <code>/packages/wyoming-gold/</code>. Only exceptions:
+        <code>/offshore/*</code> and <code>/checkout/*</code>.
+      </div>
+    </div>
+
+    <div class="canvas">
+      <div class="section-label">Desktop Footer — As Rendered</div>
+
+      <div class="footer-preview">
+        <!-- Branding Strip -->
+        <div class="footer-brand">
+          <div class="footer-brand-left">
+            <div class="footer-brand-logo">incorporate<span>123</span></div>
+            <div class="footer-brand-tagline">
+              Privacy, Asset Protection &amp; Business Formation Specialists.
+              Trusted since 2000.
+            </div>
+          </div>
+          <div class="footer-brand-right">
+            <a class="footer-brand-btn" href="#">View Packages</a>
+            <a class="footer-brand-btn" href="#">Contact Us</a>
+            <a class="footer-brand-btn" href="#">(775) 313-4155</a>
+          </div>
+        </div>
+
+        <div class="footer-columns">
+          <!-- Col 1: Privacy -->
+          <div class="footer-col">
+            <div class="footer-col-header">
+              <span class="dot" style="background: var(--blue)"></span> Privacy
+            </div>
+            <ul>
+              <li><a href="#">Anonymous LLC</a></li>
+              <li><a href="#">Anonymous Corporation</a></li>
+              <li><a href="#">Nominee Services</a></li>
+              <li><a href="#">Wyoming Privacy</a></li>
+              <li><a href="#">Nevada Privacy</a></li>
+              <li><a href="#">CA Private Inc.</a></li>
+              <li><a href="#">FL Private Inc.</a></li>
+            </ul>
+            <div class="divider">Compare</div>
+            <ul>
+              <li><a href="#">Best State for Privacy</a></li>
+              <li><a href="#">WY vs NV Privacy</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 2: Asset Protection -->
+          <div class="footer-col">
+            <div class="footer-col-header">
+              <span class="dot" style="background: var(--green)"></span> Asset
+              Protection
+            </div>
+            <ul>
+              <li><a href="#">Nevada Asset Protection</a></li>
+              <li><a href="#">Wyoming Asset Protection</a></li>
+              <li><a href="#">Charging Order Protection</a></li>
+              <li><a href="#">Investment Holding LLC</a></li>
+            </ul>
+            <div class="divider">Compare</div>
+            <ul>
+              <li><a href="#">Best State for AP</a></li>
+              <li><a href="#">WY vs NV for AP</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Company Formation -->
+          <div class="footer-col">
+            <div class="footer-col-header">
+              <span class="dot" style="background: var(--amber)"></span> Company
+              Formation
+            </div>
+            <ul>
+              <li><a href="#">Wyoming LLC</a></li>
+              <li><a href="#">Wyoming Corporation</a></li>
+              <li><a href="#">Nevada LLC</a></li>
+              <li><a href="#">Nevada Corporation</a></li>
+              <li><a href="#">Shelf Companies</a></li>
+              <li><a href="#">Entity Tax Guide</a></li>
+              <li><a href="#">LLC vs Corporation</a></li>
+            </ul>
+            <div class="divider">Compare</div>
+            <ul>
+              <li><a href="#">Wyoming vs Nevada</a></li>
+              <li><a href="#">Shelf vs New Formation</a></li>
+              <li><a href="#">LLC vs S/C-Corp Tax</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Compliance -->
+          <div class="footer-col">
+            <div class="footer-col-header">
+              <span class="dot" style="background: var(--purple)"></span>
+              Compliance
+            </div>
+            <ul>
+              <li><a href="#">Registered Agent</a></li>
+              <li><a href="#">Wyoming RA</a></li>
+              <li><a href="#">Nevada RA</a></li>
+              <li><a href="#">Annual Reports</a></li>
+              <li><a href="#">Foreign Registration</a></li>
+              <li><a href="#">Domestication</a></li>
+              <li><a href="#">2nd-Tier Filings</a></li>
+              <li><a href="#">Shares &amp; Records</a></li>
+              <li><a href="#">Tax Obligations</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Packages -->
+          <div class="footer-col">
+            <div class="footer-col-header">
+              <span class="dot" style="background: var(--rose)"></span> Packages
+            </div>
+            <ul>
+              <li>
+                <a href="#"
+                  ><span class="star">&#9733;</span> WY Gold (Private)</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="star">&#9733;</span> NV Gold (Private)</a
+                >
+              </li>
+              <li><a href="#">Wyoming Silver</a></li>
+              <li><a href="#">Nevada Silver</a></li>
+              <li><a href="#">Nevada Bronze</a></li>
+              <li><a href="#">California Private</a></li>
+              <li><a href="#">Florida Private</a></li>
+              <li><a href="#">Shelf Companies</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 6: Company & States -->
+          <div class="footer-col">
+            <div class="footer-col-header">
+              <span class="dot" style="background: var(--ink-4)"></span> Company
+              &amp; States
+            </div>
+            <div class="sub-header">Company</div>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Testimonials</a></li>
+            </ul>
+            <div class="sub-divider"></div>
+            <div class="sub-header">States</div>
+            <ul>
+              <li><a href="#">Wyoming</a></li>
+              <li><a href="#">Nevada</a></li>
+              <li><a href="#">California</a></li>
+              <li><a href="#">Florida</a></li>
+            </ul>
+            <div class="sub-divider"></div>
+            <ul>
+              <li><a href="#">Offshore</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Legal Strip -->
+        <div class="footer-legal">
+          <div class="footer-legal-top">
+            <span>&copy; 2026 Incorporate123</span>
+            <span class="sep">&middot;</span>
+            <a href="#">Privacy Policy</a>
+            <span class="sep">&middot;</span>
+            <a href="#">Terms of Service</a>
+          </div>
+          <div class="footer-legal-address">
+            1795 Meadow Wood Lane, Suite 100, Reno, NV 89502
+            &nbsp;&middot;&nbsp; (775) 313-4155
+          </div>
+          <div class="footer-crypto">
+            <span class="crypto-badge">BTC</span>
+            <span class="crypto-badge">ETH</span>
+            <span class="crypto-badge">XRP</span>
+            <span class="crypto-badge">LTC</span>
+            <span class="crypto-badge">XMR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANNOTATED VERSION -->
+      <div class="section-label">
+        Annotated Structure — URLs &amp; Page Types
+      </div>
+
+      <div class="annotated-grid">
+        <!-- Col 1 -->
+        <div class="annotated-col">
+          <div class="color-accent" style="background: var(--blue)"></div>
+          <div class="annotated-col-header" style="color: var(--blue)">
+            Privacy
+          </div>
+          <div class="annotated-col-count">9 links</div>
+          <ul>
+            <li>
+              <span class="annotated-type cluster">C</span> Anonymous LLC
+              <span class="url">/anonymous-llc/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Anonymous Corp.
+              <span class="url">/anonymous-corporation/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Nominee Services
+              <span class="url">/nominee-services/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Wyoming Privacy
+              <span class="url">/wyoming-privacy/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Nevada Privacy
+              <span class="url">/nevada-privacy/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> CA Private Inc.
+              <span class="url">/california-private-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> FL Private Inc.
+              <span class="url">/florida-private-...</span>
+            </li>
+          </ul>
+          <div class="annotated-divider">Compare</div>
+          <ul>
+            <li>
+              <span class="annotated-type compare">Cmp</span> Best State
+              <span class="url">/best-state-for-privacy/</span>
+            </li>
+            <li>
+              <span class="annotated-type compare">Cmp</span> WY vs NV
+              <span class="url">/wyoming-vs-nevada-...</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="annotated-col">
+          <div class="color-accent" style="background: var(--green)"></div>
+          <div class="annotated-col-header" style="color: var(--green)">
+            Asset Protection
+          </div>
+          <div class="annotated-col-count">6 links</div>
+          <ul>
+            <li>
+              <span class="annotated-type cluster">C</span> Nevada AP
+              <span class="url">/nevada-asset-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Wyoming AP
+              <span class="url">/wyoming-asset-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Charging Order
+              <span class="url">/charging-order-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Holding LLC
+              <span class="url">/investment-holding-...</span>
+            </li>
+          </ul>
+          <div class="annotated-divider">Compare</div>
+          <ul>
+            <li>
+              <span class="annotated-type compare">Cmp</span> Best State
+              <span class="url">/best-state-asset-...</span>
+            </li>
+            <li>
+              <span class="annotated-type compare">Cmp</span> WY vs NV
+              <span class="url">/wyoming-vs-nevada-...</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="annotated-col">
+          <div class="color-accent" style="background: var(--amber)"></div>
+          <div class="annotated-col-header" style="color: var(--amber)">
+            Company Formation
+          </div>
+          <div class="annotated-col-count">10 links</div>
+          <ul>
+            <li>
+              <span class="annotated-type cluster">C</span> Wyoming LLC
+              <span class="url">/wyoming-llc/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Wyoming Corp.
+              <span class="url">/wyoming-corporation/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Nevada LLC
+              <span class="url">/nevada-llc/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Nevada Corp.
+              <span class="url">/nevada-corporation/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Shelf Companies
+              <span class="url">/shelf-companies/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Entity Tax Guide
+              <span class="url">/entity-tax-guide/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> LLC vs Corp.
+              <span class="url">/llc-vs-corporation/</span>
+            </li>
+          </ul>
+          <div class="annotated-divider">Compare</div>
+          <ul>
+            <li>
+              <span class="annotated-type compare">Cmp</span> WY vs NV
+              <span class="url">/wyoming-vs-nevada/</span>
+            </li>
+            <li>
+              <span class="annotated-type compare">Cmp</span> Shelf vs New
+              <span class="url">/shelf-company-vs-...</span>
+            </li>
+            <li>
+              <span class="annotated-type compare">Cmp</span> LLC vs S/C Tax
+              <span class="url">/llc-vs-scorp-vs-...</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="annotated-col">
+          <div class="color-accent" style="background: var(--purple)"></div>
+          <div class="annotated-col-header" style="color: var(--purple)">
+            Compliance
+          </div>
+          <div class="annotated-col-count">9 links</div>
+          <ul>
+            <li>
+              <span class="annotated-type cluster">C</span> Registered Agent
+              <span class="url">/registered-agent/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Wyoming RA
+              <span class="url">/wyoming-registered-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Nevada RA
+              <span class="url">/nevada-registered-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Annual Reports
+              <span class="url">/annual-reports/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Foreign Reg.
+              <span class="url">/foreign-state-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Domestication
+              <span class="url">/domestication/</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> 2nd-Tier Filings
+              <span class="url">/second-tier-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Shares &amp; Records
+              <span class="url">/shares-corporate-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Tax Obligations
+              <span class="url">/tax-obligations/</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 5 -->
+        <div class="annotated-col">
+          <div class="color-accent" style="background: var(--rose)"></div>
+          <div class="annotated-col-header" style="color: var(--rose)">
+            Packages
+          </div>
+          <div class="annotated-col-count">8 links</div>
+          <ul>
+            <li>
+              <span class="annotated-type package">Pkg</span> &#9733; WY Gold
+              <span class="url">/wyoming-private-...</span>
+            </li>
+            <li>
+              <span class="annotated-type package">Pkg</span> &#9733; NV Gold
+              <span class="url">/nevada-private-...</span>
+            </li>
+            <li>
+              <span class="annotated-type package">Pkg</span> WY Silver
+              <span class="url">/wyoming-incorporation/</span>
+            </li>
+            <li>
+              <span class="annotated-type package">Pkg</span> NV Silver
+              <span class="url">/nevada-incorporation/</span>
+            </li>
+            <li>
+              <span class="annotated-type package">Pkg</span> NV Bronze
+              <span class="url">/nevada-basic-...</span>
+            </li>
+            <li>
+              <span class="annotated-type package">Pkg</span> CA Private
+              <span class="url">/california-private-...</span>
+            </li>
+            <li>
+              <span class="annotated-type package">Pkg</span> FL Private
+              <span class="url">/florida-private-...</span>
+            </li>
+            <li>
+              <span class="annotated-type cluster">C</span> Shelf Cos.
+              <span class="url">/shelf-companies/</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 6 -->
+        <div class="annotated-col">
+          <div class="color-accent" style="background: var(--ink-4)"></div>
+          <div class="annotated-col-header" style="color: var(--ink-2)">
+            Company &amp; States
+          </div>
+          <div class="annotated-col-count">10 links</div>
+          <div class="annotated-divider">Company</div>
+          <ul>
+            <li>
+              <span class="annotated-type page">Page</span> About Us
+              <span class="url">/about/</span>
+            </li>
+            <li>
+              <span class="annotated-type page">Page</span> Contact
+              <span class="url">/contact/</span>
+            </li>
+            <li>
+              <span class="annotated-type page">Page</span> FAQ
+              <span class="url">/faq/</span>
+            </li>
+            <li>
+              <span class="annotated-type page">Page</span> Blog
+              <span class="url">/blog/</span>
+            </li>
+            <li>
+              <span class="annotated-type page">Page</span> Testimonials
+              <span class="url">/testimonials/</span>
+            </li>
+          </ul>
+          <div class="annotated-divider">States</div>
+          <ul>
+            <li>
+              <span class="annotated-type hub">Hub</span> Wyoming
+              <span class="url">/wyoming/</span>
+            </li>
+            <li>
+              <span class="annotated-type hub">Hub</span> Nevada
+              <span class="url">/nevada/</span>
+            </li>
+            <li>
+              <span class="annotated-type hub">Hub</span> California
+              <span class="url">/california/</span>
+            </li>
+            <li>
+              <span class="annotated-type hub">Hub</span> Florida
+              <span class="url">/florida/</span>
+            </li>
+          </ul>
+          <div class="annotated-divider">Other</div>
+          <ul>
+            <li>
+              <span class="annotated-type hub">Hub</span> Offshore
+              <span class="url">/offshore/</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Columns</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">54</div>
+          <div class="stat-label">Total links</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">27</div>
+          <div class="stat-label">Cluster pages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">8</div>
+          <div class="stat-label">Comparisons</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">8</div>
+          <div class="stat-label">Packages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">4</div>
+          <div class="stat-label">State hubs</div>
+        </div>
+      </div>
+
+      <!-- MOBILE FOOTER -->
+      <div class="section-label">Mobile Footer — Accordion Layout</div>
+
+      <div class="mobile-frame">
+        <div class="mobile-status-bar">
+          375px viewport &mdash; Mobile Footer
+        </div>
+        <div class="mobile-footer-preview">
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span class="left"
+                ><span class="dot" style="background: var(--blue)"></span>
+                Privacy</span
+              >
+              <span class="arrow">&#9656;</span>
+            </div>
+          </div>
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span class="left"
+                ><span class="dot" style="background: var(--green)"></span>
+                Asset Protection</span
+              >
+              <span class="arrow">&#9656;</span>
+            </div>
+          </div>
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span class="left"
+                ><span class="dot" style="background: var(--amber)"></span>
+                Company Formation</span
+              >
+              <span class="arrow">&#9656;</span>
+            </div>
+          </div>
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span class="left"
+                ><span class="dot" style="background: var(--purple)"></span>
+                Compliance</span
+              >
+              <span class="arrow">&#9656;</span>
+            </div>
+          </div>
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span class="left"
+                ><span class="dot" style="background: var(--rose)"></span>
+                Packages</span
+              >
+              <span class="arrow">&#9656;</span>
+            </div>
+          </div>
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span class="left"
+                ><span class="dot" style="background: var(--ink-4)"></span>
+                Company &amp; States</span
+              >
+              <span class="arrow">&#9656;</span>
+            </div>
+          </div>
+
+          <div class="mobile-legal">
+            <p>&copy; 2026 Incorporate123</p>
+            <p>
+              <a href="#">Privacy Policy</a> &middot;
+              <a href="#">Terms of Service</a>
+            </p>
+            <p style="margin-top: 4px">
+              1795 Meadow Wood Ln, Suite 100, Reno, NV
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.4)">
+              &#128222; (775) 313-4155
+            </p>
+            <div class="mobile-crypto">
+              <span class="mobile-crypto-badge">BTC</span>
+              <span class="mobile-crypto-badge">ETH</span>
+              <span class="mobile-crypto-badge">XRP</span>
+              <span class="mobile-crypto-badge">LTC</span>
+              <span class="mobile-crypto-badge">XMR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

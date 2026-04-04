@@ -2,10 +2,34 @@
 
 import { useState, useEffect } from "react";
 import NextLink from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
 import type { SiteNavigation } from "@/lib/types";
+
+/* ------------------------------------------------
+   Pillar color maps for mega menu accents
+   ------------------------------------------------ */
+const pillarAccentBorder: Record<string, string> = {
+  privacy: "border-t-[var(--pillar-privacy)]",
+  asset: "border-t-[var(--pillar-asset)]",
+  formation: "border-t-[var(--pillar-formation)]",
+  compliance: "border-t-[var(--pillar-compliance)]",
+};
+
+const pillarAccentText: Record<string, string> = {
+  privacy: "text-[var(--pillar-privacy)]",
+  asset: "text-[var(--pillar-asset)]",
+  formation: "text-[var(--pillar-formation)]",
+  compliance: "text-[var(--pillar-compliance)]",
+};
+
+const pillarDotBg: Record<string, string> = {
+  privacy: "bg-[var(--pillar-privacy)]",
+  asset: "bg-[var(--pillar-asset)]",
+  formation: "bg-[var(--pillar-formation)]",
+  compliance: "bg-[var(--pillar-compliance)]",
+};
 
 export interface SiteHeaderProps {
   navigation: SiteNavigation;
@@ -36,30 +60,6 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
 
   return (
     <>
-      {/* Top Utility Bar (desktop only) */}
-      <div
-        className={cn(
-          "hidden w-full bg-primary text-white transition-all duration-200 lg:block",
-          scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100",
-        )}
-      >
-        <div className="mx-auto flex max-w-wide items-center justify-between px-container-x py-1.5 text-caption">
-          <a
-            href={`tel:${navigation.phone.replace(/[^+\d]/g, "")}`}
-            className="flex items-center gap-1.5 text-white/80 transition-colors hover:text-white"
-          >
-            <Phone className="h-3 w-3" />
-            <span>{navigation.phone}</span>
-          </a>
-          <span className="text-white/60">
-            25 Years of Privacy-Focused Business Formation
-          </span>
-          <span className="text-white/60 text-caption">
-            info@incorporate123.co
-          </span>
-        </div>
-      </div>
-
       <header
         className={cn(
           "sticky top-0 z-50 w-full bg-surface transition-all duration-200",
@@ -69,7 +69,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
       >
         <div className="mx-auto flex max-w-wide items-center justify-between px-container-x">
           {/* Logo */}
-          <NextLink href="/" className="flex items-center gap-2">
+          <NextLink href="/" className="flex items-center gap-1">
             <span className="font-display text-heading-sm font-bold text-primary">
               Incorporate
             </span>
@@ -80,58 +80,101 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
 
           {/* Desktop Nav */}
           <nav
-            className="hidden items-center gap-1 lg:flex"
+            className="hidden items-center gap-0.5 lg:flex"
             aria-label="Main navigation"
           >
             {navigation.main.map((item) => (
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => item.children && setActiveMenu(item.label)}
+                onMouseEnter={() =>
+                  (item.children || item.dropdownLinks) &&
+                  setActiveMenu(item.label)
+                }
                 onMouseLeave={() => setActiveMenu(null)}
               >
                 <NextLink
                   href={item.href}
                   className={cn(
-                    "inline-flex items-center px-3 py-2 text-body-sm font-medium text-foreground transition-colors hover:text-secondary",
+                    "inline-flex items-center gap-1 px-3 py-2 text-body-sm font-medium text-foreground transition-colors hover:text-secondary",
                     activeMenu === item.label && "text-secondary",
                   )}
                 >
                   {item.label}
+                  {(item.children || item.dropdownLinks) && (
+                    <ChevronDown className="h-3 w-3 text-muted" />
+                  )}
                 </NextLink>
 
-                {/* Mega Menu Panel */}
+                {/* Mega Menu Panel (pillar columns) */}
                 {item.children && activeMenu === item.label && (
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
-                    <div className="w-[min(600px,90vw)] rounded-card bg-surface p-6 shadow-dropdown border border-border">
+                    <div className="w-[min(640px,90vw)] rounded-card bg-surface p-5 shadow-dropdown border border-border">
                       {item.children.map((pillar) => (
                         <div key={pillar.pillar}>
-                          <div className="mb-3">
-                            <p className="text-body-sm font-semibold text-foreground">
+                          {/* Pillar header with accent */}
+                          <div
+                            className={cn(
+                              "mb-3 pb-2 border-t-[3px]",
+                              pillarAccentBorder[pillar.pillar],
+                            )}
+                          >
+                            <NextLink
+                              href={pillar.href}
+                              className={cn(
+                                "text-body-sm font-bold mt-2 inline-block",
+                                pillarAccentText[pillar.pillar],
+                              )}
+                            >
                               {pillar.label}
-                            </p>
-                            <p className="text-caption text-muted">
+                            </NextLink>
+                            <p className="text-caption text-muted mt-0.5">
                               {pillar.description}
                             </p>
                           </div>
-                          <div className="grid grid-cols-2 gap-2 mb-4">
+
+                          {/* Cluster links */}
+                          <div className="grid grid-cols-2 gap-1.5 mb-2">
                             {pillar.clusters.map((cluster) => (
                               <NextLink
                                 key={cluster.href}
                                 href={cluster.href}
-                                className="block rounded-button p-3 text-body-sm transition-colors hover:bg-primary-50"
+                                className="block rounded-button px-3 py-2 text-body-sm transition-colors hover:bg-primary-50"
                               >
                                 <span className="font-medium text-foreground">
                                   {cluster.title}
                                 </span>
                                 {cluster.description && (
-                                  <span className="mt-0.5 block text-caption text-muted">
+                                  <span className="mt-0.5 block text-caption text-muted line-clamp-1">
                                     {cluster.description}
                                   </span>
                                 )}
                               </NextLink>
                             ))}
                           </div>
+
+                          {/* Comparison links */}
+                          {pillar.comparisons &&
+                            pillar.comparisons.length > 0 && (
+                              <div className="mb-3">
+                                <p className="px-3 mb-1 text-caption font-semibold uppercase tracking-wider text-muted/60">
+                                  Compare
+                                </p>
+                                <div className="grid grid-cols-2 gap-1.5">
+                                  {pillar.comparisons.map((cmp) => (
+                                    <NextLink
+                                      key={cmp.href}
+                                      href={cmp.href}
+                                      className="block rounded-button px-3 py-1.5 text-caption font-medium text-muted transition-colors hover:bg-primary-50 hover:text-foreground"
+                                    >
+                                      {cmp.title}
+                                    </NextLink>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                          {/* Featured link */}
                           {pillar.featuredLink && (
                             <NextLink
                               href={pillar.featuredLink.href}
@@ -145,7 +188,37 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                               </span>
                             </NextLink>
                           )}
+
+                          {/* Explore All link */}
+                          <div className="mt-2 border-t border-border pt-2">
+                            <NextLink
+                              href={pillar.href}
+                              className={cn(
+                                "text-body-sm font-semibold",
+                                pillarAccentText[pillar.pillar],
+                              )}
+                            >
+                              Explore All {pillar.label} →
+                            </NextLink>
+                          </div>
                         </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Simple Dropdown (About menu) */}
+                {item.dropdownLinks && activeMenu === item.label && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
+                    <div className="w-48 rounded-card bg-surface py-2 shadow-dropdown border border-border">
+                      {item.dropdownLinks.map((link) => (
+                        <NextLink
+                          key={link.href}
+                          href={link.href}
+                          className="block px-4 py-2 text-body-sm text-foreground transition-colors hover:bg-primary-50 hover:text-secondary"
+                        >
+                          {link.label}
+                        </NextLink>
                       ))}
                     </div>
                   </div>
@@ -154,10 +227,22 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
             ))}
           </nav>
 
-          {/* CTA Button (right-aligned) */}
-          <div className="hidden items-center gap-3 lg:flex">
-            <Button variant="cta" size="sm" asChild>
-              <NextLink href="/compare-packages">Compare Packages</NextLink>
+          {/* Right: Phone + CTA */}
+          <div className="hidden items-center gap-4 lg:flex">
+            <a
+              href={`tel:${navigation.phone.replace(/[^+\d]/g, "")}`}
+              className="flex items-center gap-1.5 text-body-sm text-muted transition-colors hover:text-foreground"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              <span>{navigation.phone}</span>
+            </a>
+            <Button
+              variant="secondary"
+              size="sm"
+              asChild
+              className="border-secondary text-secondary hover:bg-secondary hover:text-white"
+            >
+              <NextLink href="/compare-packages">Find Your Package →</NextLink>
             </Button>
           </div>
 
@@ -199,10 +284,19 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
               </button>
             </div>
 
+            {/* Mobile CTA + Phone */}
             <div className="mb-6 flex flex-col gap-3">
-              <Button variant="cta" fullWidth asChild>
-                <NextLink href="/packages" onClick={() => setMobileOpen(false)}>
-                  Order Now
+              <Button
+                variant="secondary"
+                fullWidth
+                asChild
+                className="border-secondary text-secondary"
+              >
+                <NextLink
+                  href="/compare-packages"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Find Your Package →
                 </NextLink>
               </Button>
               <a
@@ -214,6 +308,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
               </a>
             </div>
 
+            {/* Mobile nav items */}
             <div className="space-y-1">
               {navigation.main.map((item) => (
                 <MobileNavSection
@@ -239,7 +334,8 @@ function MobileNavSection({
 }) {
   const [open, setOpen] = useState(false);
 
-  if (!item.children) {
+  // Simple link (no children or dropdown)
+  if (!item.children && !item.dropdownLinks) {
     return (
       <NextLink
         href={item.href}
@@ -251,13 +347,60 @@ function MobileNavSection({
     );
   }
 
+  // Simple dropdown links (About)
+  if (item.dropdownLinks) {
+    return (
+      <div>
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex w-full items-center justify-between rounded-button px-3 py-3 text-body font-medium text-foreground hover:bg-primary-50"
+        >
+          <span>{item.label}</span>
+          <span
+            className={cn(
+              "text-muted transition-transform",
+              open && "rotate-180",
+            )}
+          >
+            ▾
+          </span>
+        </button>
+        {open && (
+          <div className="ml-3 space-y-1 pl-3 border-l-2 border-border">
+            {item.dropdownLinks.map((link) => (
+              <NextLink
+                key={link.href}
+                href={link.href}
+                onClick={onNavigate}
+                className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
+              >
+                {link.label}
+              </NextLink>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Mega menu pillar accordion
+  const pillar = item.children?.[0];
+  const pillarId = pillar?.pillar;
+
   return (
     <div>
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between rounded-button px-3 py-3 text-body font-medium text-foreground hover:bg-primary-50"
       >
-        <span>{item.label}</span>
+        <span className="flex items-center gap-2">
+          {pillarId && (
+            <span
+              className={cn("h-2 w-2 rounded-full", pillarDotBg[pillarId])}
+            />
+          )}
+          {item.label}
+        </span>
         <span
           className={cn(
             "text-muted transition-transform",
@@ -267,20 +410,45 @@ function MobileNavSection({
           ▾
         </span>
       </button>
-      {open && (
-        <div className="ml-3 space-y-1 pl-3">
-          {item.children!.map((pillar) =>
-            pillar.clusters.map((cluster) => (
-              <NextLink
-                key={cluster.href}
-                href={cluster.href}
-                onClick={onNavigate}
-                className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
-              >
-                {cluster.title}
-              </NextLink>
-            )),
+      {open && pillar && (
+        <div className="ml-3 space-y-1 pl-3 border-l-2 border-border">
+          {pillar.clusters.map((cluster) => (
+            <NextLink
+              key={cluster.href}
+              href={cluster.href}
+              onClick={onNavigate}
+              className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
+            >
+              {cluster.title}
+            </NextLink>
+          ))}
+          {pillar.comparisons && pillar.comparisons.length > 0 && (
+            <>
+              <p className="px-3 pt-2 text-caption font-semibold uppercase tracking-wider text-muted/50">
+                Compare
+              </p>
+              {pillar.comparisons.map((cmp) => (
+                <NextLink
+                  key={cmp.href}
+                  href={cmp.href}
+                  onClick={onNavigate}
+                  className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
+                >
+                  {cmp.title}
+                </NextLink>
+              ))}
+            </>
           )}
+          <NextLink
+            href={pillar.href}
+            onClick={onNavigate}
+            className={cn(
+              "block rounded-button px-3 py-2 text-body-sm font-semibold",
+              pillarAccentText[pillarId ?? ""],
+            )}
+          >
+            Explore All {pillar.label} →
+          </NextLink>
         </div>
       )}
     </div>

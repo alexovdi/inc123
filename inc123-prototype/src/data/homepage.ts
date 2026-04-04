@@ -2,26 +2,35 @@ import type { HomepageData } from "@/lib/types";
 import type { CarouselTestimonial } from "@/design-system/components/TestimonialCarousel";
 
 /* ------------------------------------------------
-   Homepage Data — Spec v1.1 aligned
+   Homepage Data — v10 design aligned
    ------------------------------------------------ */
 export const homepageData: HomepageData = {
   hero: {
-    headline: "Your Name Off the Record. Your Assets Protected.",
+    headlineLines: [
+      [{ text: "Incorporate" }, { text: "Privately." }],
+      [
+        { text: "Your" },
+        { text: "Name" },
+        { text: "Never", highlight: true },
+        { text: "Hits", highlight: true },
+      ],
+      [{ text: "Public" }, { text: "Records." }],
+    ],
     subheadline:
-      "Wyoming & Nevada formation with year-round nominees, offshore records, and all-inclusive pricing. 25 years of expertise.",
+      "Year-round nominee services and all-inclusive pricing — everything included from day one. Wyoming & Nevada specialists since 2000.",
     primaryCTA: { label: "Find Your Package →", href: "#wizard" },
     secondaryCTA: {
-      label: "Compare All Packages →",
-      href: "/compare-packages",
+      label: "Learn About Privacy →",
+      href: "/privacy",
     },
-    trustSnippets: [
-      "25 Years",
-      "Thousands Formed",
-      "$1,275 All-Inclusive",
-      "Money-Back Guarantee",
+    eyebrow: "Privacy & Asset Protection Specialists",
+    phone: "(775) 313-4155",
+    consultationHref: "/contact",
+    stats: [
+      { value: "25", unit: "yrs", label: "Specialized Experience" },
+      { value: "4", unit: "states", label: "WY · NV · CA · FL" },
+      { value: "365", unit: "days", label: "Year-Round Nominees" },
     ],
-    eyebrow: "Trusted Since 2000 · Privacy-Focused Formation",
-    safetyNet: "Have questions? Call (775) 313-4155",
   },
   differentiators: [
     {

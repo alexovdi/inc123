@@ -1,24 +1,35 @@
 import type { SiteNavigation } from "@/lib/types";
 
+/* ------------------------------------------------
+   Header Navigation — Final (aligned with Site Map Final)
+   URL Rule: All URLs are flat, no directory nesting.
+   Only exceptions: /offshore/* and /checkout/*
+   ------------------------------------------------ */
 export const siteNavigation: SiteNavigation = {
   phone: "(775) 313-4155",
   utility: [],
   main: [
+    /* ---- Privacy (Blue) ---- */
     {
-      label: "Business Privacy",
+      label: "Privacy",
       href: "/privacy",
       children: [
         {
           pillar: "privacy",
-          label: "Business Privacy",
+          label: "Privacy",
           description:
             "Privacy You Can't Get Elsewhere — year-round nominees, offshore records, genuine anonymity",
           href: "/privacy",
           clusters: [
             {
-              title: "Anonymous LLC Formation",
+              title: "Anonymous LLC",
               href: "/anonymous-llc",
               description: "Form an LLC with no public ties to your name",
+            },
+            {
+              title: "Anonymous Corporation",
+              href: "/anonymous-corporation",
+              description: "Corporate formation with nominee directors",
             },
             {
               title: "Nominee Services",
@@ -26,26 +37,47 @@ export const siteNavigation: SiteNavigation = {
               description: "Year-round nominee directors and officers",
             },
             {
-              title: "Private Incorporation",
-              href: "/private-incorporation",
-              description:
-                "Privacy-first corporate formation in WY, NV, CA, FL",
+              title: "Wyoming Privacy",
+              href: "/wyoming-privacy",
+              description: "Wyoming's privacy advantages for business owners",
             },
             {
-              title: "Offshore Privacy",
-              href: "/offshore-privacy",
-              description: "Records stored outside U.S. jurisdiction",
+              title: "Nevada Privacy",
+              href: "/nevada-privacy",
+              description: "Nevada's privacy features and protections",
+            },
+            {
+              title: "California Private Inc.",
+              href: "/california-private-incorporation",
+              description: "WY formation + CA foreign registration",
+            },
+            {
+              title: "Florida Private Inc.",
+              href: "/florida-private-incorporation",
+              description: "WY formation + FL foreign registration",
+            },
+          ],
+          comparisons: [
+            {
+              title: "Best State for Privacy",
+              href: "/best-state-for-privacy",
+            },
+            {
+              title: "WY vs NV for Privacy",
+              href: "/wyoming-vs-nevada-privacy",
             },
           ],
           featuredLink: {
             title: "Wyoming Gold Privacy LLC",
-            href: "/gold?state=wyoming",
+            href: "/wyoming-private-incorporation",
             description:
-              "Our most popular privacy package — $1,275 all-inclusive",
+              "Our most popular privacy package — full nominee services included",
           },
         },
       ],
     },
+
+    /* ---- Asset Protection (Green) ---- */
     {
       label: "Asset Protection",
       href: "/asset-protection",
@@ -54,13 +86,13 @@ export const siteNavigation: SiteNavigation = {
           pillar: "asset",
           label: "Asset Protection",
           description:
-            "Protect What You've Built — charging order protection, holding structures, multi-entity strategies",
+            "Protect What You've Built — charging order protection, holding structures",
           href: "/asset-protection",
           clusters: [
             {
-              title: "Charging Order Protection",
-              href: "/charging-order-protection",
-              description: "Shield LLC assets from personal creditors",
+              title: "Nevada Asset Protection",
+              href: "/nevada-asset-protection",
+              description: "Nevada's asset protection statutes",
             },
             {
               title: "Wyoming Asset Protection",
@@ -68,30 +100,36 @@ export const siteNavigation: SiteNavigation = {
               description: "The strongest state for asset protection",
             },
             {
-              title: "Nevada Asset Protection",
-              href: "/nevada-asset-protection",
-              description: "Close-knit statutes for Nevada entities",
+              title: "Charging Order Protection",
+              href: "/charging-order-protection",
+              description: "Shield LLC assets from personal creditors",
             },
             {
               title: "Investment Holding LLC",
               href: "/investment-holding-llc",
               description: "Separate investment assets from operations",
             },
+          ],
+          comparisons: [
             {
-              title: "Real Estate Asset Protection",
-              href: "/real-estate",
-              description:
-                "Protect rental properties and real estate investments",
+              title: "Best State for AP",
+              href: "/best-state-for-asset-protection",
+            },
+            {
+              title: "WY vs NV for AP",
+              href: "/wyoming-vs-nevada-asset-protection",
             },
           ],
           featuredLink: {
             title: "Wyoming Gold Asset Protection LLC",
-            href: "/gold?state=wyoming",
-            description: "Full privacy + charging order protection — $1,275",
+            href: "/wyoming-private-incorporation",
+            description: "Full privacy + charging order protection",
           },
         },
       ],
     },
+
+    /* ---- Company Formation (Amber) ---- */
     {
       label: "Company Formation",
       href: "/formation",
@@ -100,7 +138,7 @@ export const siteNavigation: SiteNavigation = {
           pillar: "formation",
           label: "Company Formation",
           description:
-            "Expert Formation, All-Inclusive — everything you need to start, nothing hidden",
+            "Expert Formation, All-Inclusive — everything you need to start",
           href: "/formation",
           clusters: [
             {
@@ -109,14 +147,14 @@ export const siteNavigation: SiteNavigation = {
               description: "America's most business-friendly state",
             },
             {
-              title: "Nevada LLC",
-              href: "/nevada-llc",
-              description: "No state income tax, strong privacy statutes",
-            },
-            {
               title: "Wyoming Corporation",
               href: "/wyoming-corporation",
               description: "Corporate formation with close-knit statutes",
+            },
+            {
+              title: "Nevada LLC",
+              href: "/nevada-llc",
+              description: "No state income tax, strong privacy statutes",
             },
             {
               title: "Nevada Corporation",
@@ -133,15 +171,37 @@ export const siteNavigation: SiteNavigation = {
               href: "/entity-tax-guide",
               description: "How entity type affects your taxes",
             },
+            {
+              title: "LLC vs Corporation",
+              href: "/llc-vs-corporation",
+              description:
+                "Side-by-side comparison of LLC and corporate structures",
+            },
+          ],
+          comparisons: [
+            {
+              title: "Wyoming vs Nevada",
+              href: "/wyoming-vs-nevada",
+            },
+            {
+              title: "Shelf vs New Formation",
+              href: "/shelf-company-vs-new-formation",
+            },
+            {
+              title: "LLC vs S-Corp vs C-Corp Tax",
+              href: "/llc-vs-scorp-vs-ccorp-tax",
+            },
           ],
           featuredLink: {
             title: "Compare All Packages",
-            href: "/packages",
+            href: "/compare-packages",
             description: "See all formation packages side by side",
           },
         },
       ],
     },
+
+    /* ---- Compliance (Purple) ---- */
     {
       label: "Compliance",
       href: "/compliance",
@@ -150,13 +210,23 @@ export const siteNavigation: SiteNavigation = {
           pillar: "compliance",
           label: "Compliance",
           description:
-            "Ongoing Support, Not Just a Mailbox — year-round registered agent, annual reports, corporate minutes",
+            "Ongoing Support, Not Just a Mailbox — registered agent, annual reports, corporate minutes",
           href: "/compliance",
           clusters: [
             {
-              title: "Registered Agent Service",
+              title: "Registered Agent Services",
               href: "/registered-agent",
               description: "Professional registered agent in WY and NV",
+            },
+            {
+              title: "Wyoming Registered Agent",
+              href: "/wyoming-registered-agent",
+              description: "Wyoming-specific RA service from Cheyenne",
+            },
+            {
+              title: "Nevada Registered Agent",
+              href: "/nevada-registered-agent",
+              description: "Nevada-specific RA service from Reno",
             },
             {
               title: "Annual Reports",
@@ -164,31 +234,24 @@ export const siteNavigation: SiteNavigation = {
               description: "Timely filing of state annual reports",
             },
             {
-              title: "Corporate Minutes",
-              href: "/corporate-minutes",
-              description: "Professional minute book maintenance",
+              title: "Foreign State Registration",
+              href: "/foreign-state-registration",
+              description: "Register your entity in another state",
             },
             {
-              title: "Virtual Office",
-              href: "/virtual-office",
-              description: "Professional business address and mail forwarding",
-            },
-            {
-              title: "Foreign Registration",
-              href: "/foreign-registration",
-              description:
-                "Register your entity to do business in another state",
+              title: "Domestication",
+              href: "/domestication",
+              description: "Move your entity to Wyoming or Nevada",
             },
             {
               title: "2nd-Tier State Filings",
               href: "/second-tier-state-filings",
-              description: "Multi-state filings beyond WY and NV",
+              description: "Multi-state filing coordination",
             },
             {
               title: "Shares & Corporate Records",
               href: "/shares-corporate-records",
-              description:
-                "Share certificates, stock ledgers, and record books",
+              description: "Stock certificates, ledgers, and record books",
             },
             {
               title: "Tax Filing & Obligations",
@@ -199,85 +262,141 @@ export const siteNavigation: SiteNavigation = {
         },
       ],
     },
+
+    /* ---- About (simple dropdown) ---- */
     {
-      label: "Packages",
-      href: "/packages",
+      label: "About",
+      href: "/about",
+      dropdownLinks: [
+        { label: "About Us", href: "/about" },
+        { label: "Contact", href: "/contact" },
+        { label: "Testimonials", href: "/testimonials" },
+      ],
     },
   ],
 };
 
+/* ------------------------------------------------
+   Footer Navigation — Final (6 columns + branding strip)
+   ------------------------------------------------ */
 export const footerNavigation = {
+  /* Branding strip */
+  brand: {
+    tagline:
+      "Privacy, Asset Protection & Business Formation Specialists. Trusted since 2000.",
+    ctas: [
+      { label: "View Packages", href: "/compare-packages" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+  },
+
+  /* 6 columns */
   columns: [
     {
-      title: "Business Privacy",
+      title: "Privacy",
       links: [
         { label: "Anonymous LLC", href: "/anonymous-llc" },
+        { label: "Anonymous Corporation", href: "/anonymous-corporation" },
         { label: "Nominee Services", href: "/nominee-services" },
-        { label: "Private Incorporation", href: "/private-incorporation" },
-        { label: "Offshore Privacy", href: "/offshore-privacy" },
+        { label: "Wyoming Privacy", href: "/wyoming-privacy" },
+        { label: "Nevada Privacy", href: "/nevada-privacy" },
+        { label: "CA Private Inc.", href: "/california-private-incorporation" },
+        { label: "FL Private Inc.", href: "/florida-private-incorporation" },
+      ],
+      comparisons: [
+        { label: "Best State for Privacy", href: "/best-state-for-privacy" },
+        { label: "WY vs NV Privacy", href: "/wyoming-vs-nevada-privacy" },
       ],
     },
     {
-      title: "Asset Protection & Formation",
-      sections: [
+      title: "Asset Protection",
+      links: [
+        { label: "Nevada Asset Protection", href: "/nevada-asset-protection" },
         {
-          heading: "Asset Protection",
-          links: [
-            {
-              label: "Charging Order Protection",
-              href: "/charging-order-protection",
-            },
-            { label: "Wyoming AP", href: "/wyoming-asset-protection" },
-            { label: "Nevada AP", href: "/nevada-asset-protection" },
-            {
-              label: "Investment Holding LLC",
-              href: "/investment-holding-llc",
-            },
-            { label: "Real Estate AP", href: "/real-estate" },
-          ],
+          label: "Wyoming Asset Protection",
+          href: "/wyoming-asset-protection",
         },
         {
-          heading: "Company Formation",
-          links: [
-            { label: "Wyoming LLC", href: "/wyoming-llc" },
-            { label: "Nevada LLC", href: "/nevada-llc" },
-            { label: "Wyoming Corp", href: "/wyoming-corporation" },
-            { label: "Nevada Corp", href: "/nevada-corporation" },
-            { label: "Shelf Companies", href: "/shelf-companies" },
-          ],
+          label: "Charging Order Protection",
+          href: "/charging-order-protection",
         },
+        { label: "Investment Holding LLC", href: "/investment-holding-llc" },
       ],
-    },
-    {
-      title: "Packages & States",
-      sections: [
+      comparisons: [
         {
-          heading: "Packages",
-          links: [
-            { label: "Compare All Packages", href: "/packages" },
-            {
-              label: "Wyoming Gold LLC",
-              href: "/gold?state=wyoming",
-            },
-            { label: "Wyoming Silver LLC", href: "/silver?state=wyoming" },
-            { label: "Nevada Gold LLC", href: "/gold?state=nevada" },
-            { label: "Nevada Silver LLC", href: "/silver?state=nevada" },
-            { label: "Nevada Bronze LLC", href: "/bronze?state=nevada" },
-          ],
+          label: "Best State for AP",
+          href: "/best-state-for-asset-protection",
         },
         {
-          heading: "States",
-          links: [
-            { label: "Wyoming", href: "/wyoming" },
-            { label: "Nevada", href: "/nevada" },
-            { label: "California", href: "/california" },
-            { label: "Florida", href: "/florida" },
-          ],
+          label: "WY vs NV for AP",
+          href: "/wyoming-vs-nevada-asset-protection",
         },
       ],
     },
     {
-      title: "Company & Compliance",
+      title: "Company Formation",
+      links: [
+        { label: "Wyoming LLC", href: "/wyoming-llc" },
+        { label: "Wyoming Corporation", href: "/wyoming-corporation" },
+        { label: "Nevada LLC", href: "/nevada-llc" },
+        { label: "Nevada Corporation", href: "/nevada-corporation" },
+        { label: "Shelf Companies", href: "/shelf-companies" },
+        { label: "Entity Tax Guide", href: "/entity-tax-guide" },
+        { label: "LLC vs Corporation", href: "/llc-vs-corporation" },
+      ],
+      comparisons: [
+        { label: "Wyoming vs Nevada", href: "/wyoming-vs-nevada" },
+        {
+          label: "Shelf vs New Formation",
+          href: "/shelf-company-vs-new-formation",
+        },
+        {
+          label: "LLC vs S/C-Corp Tax",
+          href: "/llc-vs-scorp-vs-ccorp-tax",
+        },
+      ],
+    },
+    {
+      title: "Compliance",
+      links: [
+        { label: "Registered Agent", href: "/registered-agent" },
+        { label: "Wyoming RA", href: "/wyoming-registered-agent" },
+        { label: "Nevada RA", href: "/nevada-registered-agent" },
+        { label: "Annual Reports", href: "/annual-reports" },
+        { label: "Foreign Registration", href: "/foreign-state-registration" },
+        { label: "Domestication", href: "/domestication" },
+        { label: "2nd-Tier Filings", href: "/second-tier-state-filings" },
+        { label: "Shares & Records", href: "/shares-corporate-records" },
+        { label: "Tax Obligations", href: "/tax-obligations" },
+      ],
+    },
+    {
+      title: "Packages",
+      links: [
+        {
+          label: "★ Wyoming Gold",
+          href: "/wyoming-private-incorporation",
+        },
+        {
+          label: "★ Nevada Gold",
+          href: "/nevada-private-incorporation",
+        },
+        { label: "Wyoming Silver", href: "/wyoming-incorporation" },
+        { label: "Nevada Silver", href: "/nevada-incorporation" },
+        { label: "Nevada Bronze", href: "/nevada-basic-incorporation" },
+        {
+          label: "California Private",
+          href: "/california-private-incorporation",
+        },
+        {
+          label: "Florida Private",
+          href: "/florida-private-incorporation",
+        },
+        { label: "Shelf Companies", href: "/shelf-companies" },
+      ],
+    },
+    {
+      title: "Company & States",
       sections: [
         {
           heading: "Company",
@@ -290,14 +409,17 @@ export const footerNavigation = {
           ],
         },
         {
-          heading: "Compliance",
+          heading: "States",
           links: [
-            { label: "Registered Agent", href: "/registered-agent" },
-            { label: "Annual Reports", href: "/annual-reports" },
-            { label: "Corporate Minutes", href: "/corporate-minutes" },
-            { label: "Virtual Office", href: "/virtual-office" },
-            { label: "Foreign Registration", href: "/foreign-registration" },
+            { label: "Wyoming", href: "/wyoming" },
+            { label: "Nevada", href: "/nevada" },
+            { label: "California", href: "/california" },
+            { label: "Florida", href: "/florida" },
           ],
+        },
+        {
+          heading: "",
+          links: [{ label: "Offshore", href: "/offshore" }],
         },
       ],
     },
@@ -312,4 +434,5 @@ export const footerNavigation = {
     phone: "(775) 313-4155",
     email: "info@incorporate123.com",
   },
+  crypto: ["BTC", "ETH", "XRP", "LTC", "XMR"],
 };

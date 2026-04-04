@@ -1,116 +1,117 @@
+"use client";
+
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
-import { CheckCircle } from "lucide-react";
+import { Lock, FileText, Shield } from "lucide-react";
 
 /* ------------------------------------------------
-   Props
+   Types
    ------------------------------------------------ */
+export interface HeadlineSegment {
+  text: string;
+  highlight?: boolean;
+}
+
+export interface HeroStat {
+  value: string;
+  unit: string;
+  label: string;
+}
+
 export interface HomepageHeroProps {
-  /** Main H1 headline */
-  headline: string;
+  /** Structured headline with optional gradient highlights */
+  headlineLines: HeadlineSegment[][];
   /** Supporting subheadline paragraph */
   subheadline: string;
   /** Primary call-to-action */
   primaryCTA: { label: string; href: string };
   /** Secondary call-to-action */
   secondaryCTA: { label: string; href: string };
-  /** 4 trust snippets shown in a horizontal row below CTAs */
-  trustSnippets: string[];
-  /** Override the hardcoded eyebrow text */
+  /** Eyebrow badge text */
   eyebrow?: string;
-  /** Subtle text below CTAs (e.g. "Have questions? Call …") */
-  safetyNet?: string;
+  /** Phone number for safety net */
+  phone?: string;
+  /** Consultation link text */
+  consultationHref?: string;
+  /** Stats displayed at bottom of hero */
+  stats?: HeroStat[];
   /** Additional class names */
   className?: string;
 }
 
 /* ------------------------------------------------
-   Decorative SVG shield (pure CSS + SVG, no assets)
+   Floating Pillar Badges (right visual)
    ------------------------------------------------ */
-function HeroShield() {
+function HeroVisual() {
   return (
     <div
-      className="relative flex items-center justify-center"
+      className="relative w-full h-full min-h-[400px] flex items-center justify-center"
       aria-hidden="true"
     >
-      {/* Radial glow behind shield */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="h-64 w-64 rounded-full bg-white/8 blur-3xl" />
+      {/* Central shield icon */}
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="h-48 w-48 rounded-full bg-secondary/10 blur-3xl" />
+        </div>
+        <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <Lock className="h-12 w-12 text-secondary/60" strokeWidth={1.5} />
+        </div>
       </div>
-      <svg
-        viewBox="0 0 200 240"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="relative h-64 w-56 lg:h-80 lg:w-72"
+
+      {/* Privacy badge — top right */}
+      <div
+        className="absolute top-12 right-4 flex items-center gap-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] px-4 py-3 backdrop-blur-sm"
+        style={{
+          animation: "hero-fade-up 800ms var(--ease-out-expo) 600ms both",
+        }}
       >
-        {/* Shield outline */}
-        <path
-          d="M100 10 L180 50 L180 130 Q180 190 100 230 Q20 190 20 130 L20 50 Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-white/20"
-          fill="none"
-        />
-        {/* Inner shield */}
-        <path
-          d="M100 30 L165 62 L165 125 Q165 178 100 212 Q35 178 35 125 L35 62 Z"
-          stroke="currentColor"
-          strokeWidth="0.75"
-          className="text-white/[0.12]"
-          fill="url(#shieldGradient)"
-        />
-        <defs>
-          <linearGradient
-            id="shieldGradient"
-            x1="100"
-            y1="30"
-            x2="100"
-            y2="212"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop offset="0%" stopColor="white" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        {/* Grid pattern lines */}
-        <line
-          x1="100"
-          y1="30"
-          x2="100"
-          y2="212"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          className="text-white/[0.08]"
-        />
-        <line
-          x1="35"
-          y1="95"
-          x2="165"
-          y2="95"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          className="text-white/[0.08]"
-        />
-        <line
-          x1="35"
-          y1="140"
-          x2="165"
-          y2="140"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          className="text-white/[0.08]"
-        />
-        {/* Checkmark inside */}
-        <path
-          d="M72 115 L92 135 L128 99"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-white/25"
-          fill="none"
-        />
-      </svg>
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10">
+          <Lock className="h-5 w-5 text-secondary/80" />
+        </div>
+        <div>
+          <p className="text-body-sm font-semibold text-white">Privacy</p>
+          <p className="text-caption text-white/40 font-mono">
+            Year-round nominees
+          </p>
+        </div>
+      </div>
+
+      {/* Formation badge — middle right */}
+      <div
+        className="absolute top-1/2 -translate-y-1/4 right-0 flex items-center gap-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] px-4 py-3 backdrop-blur-sm"
+        style={{
+          animation: "hero-fade-up 800ms var(--ease-out-expo) 800ms both",
+        }}
+      >
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10">
+          <FileText className="h-5 w-5 text-secondary/80" />
+        </div>
+        <div>
+          <p className="text-body-sm font-semibold text-white">Formation</p>
+          <p className="text-caption text-white/40 font-mono">All-inclusive</p>
+        </div>
+      </div>
+
+      {/* Protection badge — bottom left */}
+      <div
+        className="absolute bottom-24 left-0 flex items-center gap-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] px-4 py-3 backdrop-blur-sm"
+        style={{
+          animation: "hero-fade-up 800ms var(--ease-out-expo) 1000ms both",
+        }}
+      >
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-success/10">
+          <Shield className="h-5 w-5 text-success/80" />
+        </div>
+        <div>
+          <p className="text-body-sm font-semibold text-white">Protection</p>
+          <p className="text-caption text-white/40 font-mono">Charging order</p>
+        </div>
+      </div>
+
+      {/* Decorative dots */}
+      <div className="absolute top-8 right-32 h-2 w-2 rounded-full bg-secondary/60" />
+      <div className="absolute top-[45%] right-12 h-1.5 w-1.5 rounded-full bg-accent/60" />
+      <div className="absolute bottom-16 left-24 h-2 w-2 rounded-full bg-success/60" />
     </div>
   );
 }
@@ -119,46 +120,107 @@ function HeroShield() {
    Component
    ------------------------------------------------ */
 function HomepageHero({
-  headline,
+  headlineLines,
   subheadline,
   primaryCTA,
   secondaryCTA,
-  trustSnippets,
   eyebrow,
-  safetyNet,
+  phone,
+  consultationHref,
+  stats,
   className,
 }: HomepageHeroProps) {
   return (
-    <section className={cn("bg-primary", className)}>
-      <div className="mx-auto max-w-content px-container-x py-28 lg:py-40">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-          {/* Left content — 2/3 */}
-          <div className="flex-1 lg:basis-2/3">
-            {/* Eyebrow */}
-            <p
-              className="text-body-sm font-medium text-white/60 mb-3 tracking-[0.15em] uppercase"
-              style={{
-                animation: "hero-fade-up 600ms var(--ease-out-expo) 100ms both",
-              }}
-            >
-              {eyebrow ?? "Trusted Since 2000 \u00b7 Privacy Specialists"}
-            </p>
+    <section className={cn("relative overflow-hidden", className)}>
+      {/* Background layers */}
+      <div className="absolute inset-0 bg-primary" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: [
+            "radial-gradient(ellipse 70% 50% at 65% 45%, rgba(37,99,235,0.16), transparent 60%)",
+            "radial-gradient(ellipse 50% 60% at 25% 75%, rgba(147,51,234,0.06), transparent 50%)",
+            "radial-gradient(ellipse 40% 40% at 80% 85%, rgba(217,119,6,0.05), transparent 50%)",
+          ].join(","),
+        }}
+      />
+      {/* Vignette */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(12,30,53,0.7))",
+        }}
+      />
+      {/* Grain texture */}
+      <div
+        className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E")`,
+        }}
+      />
 
-            {/* H1 Headline — v4: weight 500, tight line-height for editorial gravitas */}
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-content px-container-x pt-28 pb-16 lg:pt-40 lg:pb-20">
+        <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-12 lg:gap-16 items-center">
+          {/* Left content */}
+          <div>
+            {/* Eyebrow chip */}
+            {eyebrow && (
+              <div
+                className="inline-flex items-center gap-2.5 rounded-full border border-secondary/10 bg-secondary/[0.06] px-5 py-2.5 mb-9"
+                style={{
+                  animation:
+                    "hero-fade-up 800ms var(--ease-out-expo) 200ms both",
+                }}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary/60 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
+                </span>
+                <span className="text-caption font-semibold tracking-[0.14em] uppercase text-secondary/80">
+                  {eyebrow}
+                </span>
+              </div>
+            )}
+
+            {/* Headline with gradient highlights */}
             <h1
-              className="font-display text-display font-medium text-white md:text-display-lg lg:text-display-xl"
+              className="font-display font-black text-white leading-[0.96] tracking-[-0.05em]"
               style={{
-                animation: "hero-fade-up 800ms var(--ease-out-expo) 0ms both",
+                fontSize: "clamp(38px, 5vw, 60px)",
               }}
             >
-              {headline}
+              {headlineLines.map((line, lineIndex) => (
+                <span key={lineIndex}>
+                  {lineIndex > 0 && <br />}
+                  {line.map((segment, segIndex) => (
+                    <span
+                      key={segIndex}
+                      className={cn(
+                        "inline-block",
+                        segment.highlight && "hero-gradient-text",
+                      )}
+                      style={{
+                        animation: segment.highlight
+                          ? `hero-fade-up 800ms var(--ease-out-expo) ${lineIndex * 250 + segIndex * 120 + 400}ms both, shimmer 10s ease infinite`
+                          : `hero-fade-up 800ms var(--ease-out-expo) ${lineIndex * 250 + segIndex * 120 + 400}ms both`,
+                      }}
+                    >
+                      {segment.text}
+                      {segIndex < line.length - 1 && "\u00A0"}
+                    </span>
+                  ))}
+                </span>
+              ))}
             </h1>
 
             {/* Subheadline */}
             <p
-              className="mt-6 text-body-lg text-white/70 max-w-[38ch] leading-relaxed"
+              className="mt-8 text-[18px] leading-[1.8] text-white/[0.42] max-w-[480px] tracking-[-0.02em]"
               style={{
-                animation: "hero-fade-up 600ms var(--ease-out-expo) 200ms both",
+                animation:
+                  "hero-fade-up 1000ms var(--ease-out-expo) 900ms both",
               }}
             >
               {subheadline}
@@ -166,65 +228,92 @@ function HomepageHero({
 
             {/* Dual CTAs */}
             <div
-              className="mt-8 flex flex-col gap-3 sm:flex-row"
+              className="mt-10 flex flex-col gap-3.5 sm:flex-row"
               style={{
-                animation: "hero-fade-up 600ms var(--ease-out-expo) 400ms both",
+                animation:
+                  "hero-fade-up 1000ms var(--ease-out-expo) 1100ms both",
               }}
             >
-              <Button variant="cta" size="lg" asChild>
+              <Button variant="cta" size="lg" asChild className="rounded-xl">
                 <a href={primaryCTA.href}>{primaryCTA.label}</a>
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
                 asChild
-                className="border-white/30 text-white hover:bg-white/10"
+                className="rounded-xl border-white/20 text-white hover:bg-white/10"
               >
                 <a href={secondaryCTA.href}>{secondaryCTA.label}</a>
               </Button>
             </div>
 
-            {/* Consultation Safety Net */}
-            {safetyNet && (
+            {/* Safety net with links */}
+            {phone && (
               <p
-                className="mt-4 text-body-sm text-white/50"
+                className="mt-5 text-body-sm text-white/[0.28]"
                 style={{
                   animation:
-                    "hero-fade-in 600ms var(--ease-out-expo) 500ms both",
+                    "hero-fade-in 1000ms var(--ease-out-expo) 1300ms both",
                 }}
               >
-                {safetyNet}
+                Prefer to talk?{" "}
+                <a
+                  href={`tel:${phone.replace(/\D/g, "")}`}
+                  className="text-white/[0.48] underline underline-offset-[3px] decoration-white/[0.12] hover:text-white hover:decoration-white transition-all"
+                >
+                  Call {phone}
+                </a>
+                {consultationHref && (
+                  <>
+                    {" · "}
+                    <a
+                      href={consultationHref}
+                      className="text-white/[0.48] underline underline-offset-[3px] decoration-white/[0.12] hover:text-white hover:decoration-white transition-all"
+                    >
+                      Schedule a consultation
+                    </a>
+                  </>
+                )}
               </p>
             )}
 
-            {/* Trust Strip */}
-            {trustSnippets.length > 0 && (
+            {/* Hero Stats Bar */}
+            {stats && stats.length > 0 && (
               <div
-                className="mt-8 flex flex-wrap gap-x-6 gap-y-3"
+                className="mt-16 flex rounded-[20px] bg-white/[0.03] border border-white/[0.04] overflow-hidden"
                 style={{
                   animation:
-                    "hero-fade-in 600ms var(--ease-out-expo) 600ms both",
+                    "hero-fade-up 1000ms var(--ease-out-expo) 1400ms both",
                 }}
               >
-                {trustSnippets.map((snippet) => (
+                {stats.map((stat, index) => (
                   <div
-                    key={snippet}
-                    className="flex items-center gap-2 text-body-sm text-white/60"
+                    key={stat.label}
+                    className={cn(
+                      "flex-1 py-5 px-6 text-center",
+                      index > 0 && "border-l border-white/[0.06]",
+                    )}
                   >
-                    <CheckCircle
-                      className="h-4 w-4 shrink-0 text-white/40"
-                      aria-hidden="true"
-                    />
-                    <span>{snippet}</span>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="font-display text-[28px] font-semibold text-white/90 tracking-tight">
+                        {stat.value}
+                      </span>
+                      <span className="text-body-sm text-white/30">
+                        {stat.unit}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-caption text-white/25">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Right decorative shield — 1/3, hidden on mobile */}
-          <div className="hidden lg:flex lg:basis-1/3 items-center justify-center">
-            <HeroShield />
+          {/* Right visual — hidden on mobile */}
+          <div className="hidden lg:block">
+            <HeroVisual />
           </div>
         </div>
       </div>

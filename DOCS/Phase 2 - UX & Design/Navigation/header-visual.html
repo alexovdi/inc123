@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Header &amp; Mega Menu Flowchart</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --ink: #0f172a;
+        --ink-2: #334155;
+        --ink-3: #64748b;
+        --ink-4: #94a3b8;
+        --border: #e2e8f0;
+        --card: #ffffff;
+        --blue: #2563eb;
+        --blue-light: #eff6ff;
+        --green: #16a34a;
+        --green-light: #f0fdf4;
+        --amber: #d97706;
+        --amber-light: #fffbeb;
+        --purple: #9333ea;
+        --purple-light: #faf5ff;
+        --slate-dark: #0f172a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page-header {
+        background: var(--slate-dark);
+        padding: 40px 0;
+        text-align: center;
+      }
+      .page-header h1 {
+        font-family: "Outfit", sans-serif;
+        font-size: 32px;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .page-header p {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 14px;
+        margin-top: 6px;
+      }
+      .page-header .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+
+      .url-rule {
+        max-width: 1320px;
+        margin: 24px auto 0;
+        padding: 0 32px;
+      }
+      .url-rule-box {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 12px;
+        color: #92400e;
+      }
+      .url-rule-box strong {
+        font-weight: 700;
+      }
+
+      .canvas {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 32px 32px 80px;
+      }
+
+      .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink-4);
+        margin-bottom: 16px;
+        margin-top: 48px;
+      }
+      .section-label:first-child {
+        margin-top: 0;
+      }
+
+      .header-bar {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .logo {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--ink);
+      }
+      .logo span {
+        color: var(--blue);
+      }
+      .nav-items {
+        display: flex;
+        gap: 2px;
+      }
+      .nav-item {
+        padding: 8px 12px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink-2);
+        border-radius: 8px;
+        cursor: default;
+      }
+      .nav-item .chevron {
+        font-size: 10px;
+        margin-left: 3px;
+        color: var(--ink-4);
+      }
+      .phone-link {
+        font-size: 13px;
+        color: var(--ink-3);
+        font-weight: 500;
+      }
+      .cta-btn {
+        padding: 8px 18px;
+        border: 2px solid var(--blue);
+        border-radius: 8px;
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 600;
+        background: transparent;
+      }
+
+      .connector {
+        display: flex;
+        justify-content: center;
+        padding: 12px 0;
+      }
+      .connector-line {
+        width: 2px;
+        height: 24px;
+        background: var(--border);
+      }
+
+      .mega-menu {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+      }
+      .mega-menu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .mega-column {
+        padding: 20px;
+        border-right: 1px solid var(--border);
+      }
+      .mega-column:last-child {
+        border-right: none;
+      }
+      .mega-column-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid var(--border);
+      }
+      .mega-column[data-pillar="privacy"] .mega-column-header {
+        border-bottom-color: var(--blue);
+      }
+      .mega-column[data-pillar="ap"] .mega-column-header {
+        border-bottom-color: var(--green);
+      }
+      .mega-column[data-pillar="formation"] .mega-column-header {
+        border-bottom-color: var(--amber);
+      }
+      .mega-column[data-pillar="compliance"] .mega-column-header {
+        border-bottom-color: var(--purple);
+      }
+      .mega-column-title {
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .mega-column[data-pillar="privacy"] .mega-column-title {
+        color: var(--blue);
+      }
+      .mega-column[data-pillar="ap"] .mega-column-title {
+        color: var(--green);
+      }
+      .mega-column[data-pillar="formation"] .mega-column-title {
+        color: var(--amber);
+      }
+      .mega-column[data-pillar="compliance"] .mega-column-title {
+        color: var(--purple);
+      }
+      .mega-column-url {
+        font-size: 10px;
+        color: var(--ink-4);
+        font-family: "Courier New", monospace;
+      }
+      .mega-links {
+        list-style: none;
+      }
+      .mega-links li {
+        padding: 4px 0;
+        font-size: 12px;
+        color: var(--ink-2);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .mega-links li .url {
+        font-size: 9px;
+        color: var(--ink-4);
+        font-family: "Courier New", monospace;
+        margin-left: auto;
+        white-space: nowrap;
+      }
+      .mega-divider {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0 6px;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--ink-4);
+      }
+      .mega-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .mega-footer-link {
+        margin-top: 14px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .mega-column[data-pillar="privacy"] .mega-footer-link {
+        color: var(--blue);
+      }
+      .mega-column[data-pillar="ap"] .mega-footer-link {
+        color: var(--green);
+      }
+      .mega-column[data-pillar="formation"] .mega-footer-link {
+        color: var(--amber);
+      }
+      .mega-column[data-pillar="compliance"] .mega-footer-link {
+        color: var(--purple);
+      }
+      .link-type {
+        font-size: 8px;
+        font-weight: 600;
+        padding: 1px 4px;
+        border-radius: 3px;
+        letter-spacing: 0.3px;
+        flex-shrink: 0;
+      }
+      .link-type.cluster {
+        background: #f1f5f9;
+        color: #475569;
+      }
+      .link-type.compare {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .about-dropdown {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        width: 260px;
+      }
+      .about-dropdown-title {
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--ink-3);
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+      .about-dropdown ul {
+        list-style: none;
+      }
+      .about-dropdown li {
+        padding: 6px 0;
+        font-size: 13px;
+        color: var(--ink-2);
+        display: flex;
+        justify-content: space-between;
+      }
+      .about-dropdown li .url {
+        font-size: 10px;
+        color: var(--ink-4);
+        font-family: monospace;
+      }
+
+      .mobile-frame {
+        background: var(--card);
+        border: 2px solid var(--border);
+        border-radius: 24px;
+        width: 375px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+      .mobile-status-bar {
+        height: 44px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: var(--ink-3);
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-header {
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-hamburger {
+        font-size: 20px;
+        color: var(--ink-2);
+      }
+      .mobile-logo {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .mobile-logo span {
+        color: var(--blue);
+      }
+      .mobile-phone {
+        font-size: 18px;
+      }
+      .mobile-menu {
+        padding: 16px;
+      }
+      .mobile-menu-cta {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        border: 2px solid var(--blue);
+        color: var(--blue);
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+      .mobile-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 8px 0;
+      }
+      .mobile-accordion {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .mobile-accordion-header .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .mobile-accordion-header .left {
+        display: flex;
+        align-items: center;
+      }
+      .mobile-accordion-header .arrow {
+        color: var(--ink-4);
+        font-size: 12px;
+      }
+      .mobile-plain-link {
+        display: block;
+        padding: 10px 0;
+        font-size: 14px;
+        color: var(--ink-2);
+      }
+      .mobile-phone-bottom {
+        padding: 16px 0;
+        font-size: 14px;
+        color: var(--ink-3);
+        text-align: center;
+      }
+
+      .stats-bar {
+        display: flex;
+        gap: 32px;
+        margin-top: 48px;
+        padding: 24px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+      .stat-item {
+        text-align: center;
+        flex: 1;
+      }
+      .stat-value {
+        font-family: "Outfit", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .stat-label {
+        font-size: 11px;
+        color: var(--ink-4);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      .legend {
+        display: flex;
+        gap: 24px;
+        margin-top: 16px;
+        padding: 16px 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 12px;
+        color: var(--ink-3);
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .split-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: start;
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="badge">Phase 2 — Navigation Architecture</div>
+      <h1>Header &amp; Mega Menu Structure</h1>
+      <p>
+        Final structure — April 3, 2026 — BIT Studios &times; Incorporate123
+      </p>
+    </div>
+
+    <div class="url-rule">
+      <div class="url-rule-box">
+        <strong>URL Rule:</strong> All URLs are flat — no directory nesting.
+        Only exceptions: <code>/offshore/*</code> and <code>/checkout/*</code>.
+        Package pages use descriptive slugs, not <code>/packages/</code> prefix.
+      </div>
+    </div>
+
+    <div class="canvas">
+      <div class="section-label">Desktop Header Bar</div>
+      <div class="header-bar">
+        <div class="header-left">
+          <div class="logo">incorporate<span>123</span></div>
+          <div class="nav-items">
+            <div class="nav-item">
+              Privacy <span class="chevron">&#9662;</span>
+            </div>
+            <div class="nav-item">
+              Asset Protection <span class="chevron">&#9662;</span>
+            </div>
+            <div class="nav-item">
+              Company Formation <span class="chevron">&#9662;</span>
+            </div>
+            <div class="nav-item">
+              Compliance <span class="chevron">&#9662;</span>
+            </div>
+            <div class="nav-item">
+              About <span class="chevron">&#9662;</span>
+            </div>
+          </div>
+        </div>
+        <div class="header-right">
+          <span class="phone-link">&#128222; (775) 313-4155</span>
+          <div class="cta-btn">Find Your Package &rarr;</div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-line"></div></div>
+      <div class="section-label" style="margin-top: 0">
+        Mega Menu — 4 Pillar Columns
+      </div>
+
+      <div class="mega-menu">
+        <div class="mega-menu-grid">
+          <!-- PRIVACY -->
+          <div class="mega-column" data-pillar="privacy">
+            <div class="mega-column-header">
+              <span class="mega-column-title">Privacy</span>
+              <span class="mega-column-url">/privacy/</span>
+            </div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type cluster">Cluster</span> Anonymous LLC
+                <span class="url">/anonymous-llc/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Anonymous Corp.
+                <span class="url">/anonymous-corporation/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Nominee Services
+                <span class="url">/nominee-services/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Wyoming Privacy
+                <span class="url">/wyoming-privacy/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Nevada Privacy
+                <span class="url">/nevada-privacy/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> CA Private Inc.
+                <span class="url">/california-private-incorporation/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> FL Private Inc.
+                <span class="url">/florida-private-incorporation/</span>
+              </li>
+            </ul>
+            <div class="mega-divider">Compare</div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type compare">Cmp</span> Best State for
+                Privacy <span class="url">/best-state-for-privacy/</span>
+              </li>
+              <li>
+                <span class="link-type compare">Cmp</span> WY vs NV Privacy
+                <span class="url">/wyoming-vs-nevada-privacy/</span>
+              </li>
+            </ul>
+            <div class="mega-footer-link">Explore All Privacy &rarr;</div>
+          </div>
+
+          <!-- ASSET PROTECTION -->
+          <div class="mega-column" data-pillar="ap">
+            <div class="mega-column-header">
+              <span class="mega-column-title">Asset Protection</span>
+              <span class="mega-column-url">/asset-protection/</span>
+            </div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type cluster">Cluster</span> Nevada AP
+                <span class="url">/nevada-asset-protection/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Wyoming AP
+                <span class="url">/wyoming-asset-protection/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Charging Order
+                <span class="url">/charging-order-protection/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Investment
+                Holding <span class="url">/investment-holding-llc/</span>
+              </li>
+            </ul>
+            <div class="mega-divider">Compare</div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type compare">Cmp</span> Best State for AP
+                <span class="url">/best-state-for-asset-protection/</span>
+              </li>
+              <li>
+                <span class="link-type compare">Cmp</span> WY vs NV for AP
+                <span class="url">/wyoming-vs-nevada-asset-protection/</span>
+              </li>
+            </ul>
+            <div class="mega-footer-link">
+              Explore All Asset Protection &rarr;
+            </div>
+          </div>
+
+          <!-- FORMATION -->
+          <div class="mega-column" data-pillar="formation">
+            <div class="mega-column-header">
+              <span class="mega-column-title">Company Formation</span>
+              <span class="mega-column-url">/formation/</span>
+            </div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type cluster">Cluster</span> Wyoming LLC
+                <span class="url">/wyoming-llc/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Wyoming Corp.
+                <span class="url">/wyoming-corporation/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Nevada LLC
+                <span class="url">/nevada-llc/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Nevada Corp.
+                <span class="url">/nevada-corporation/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Shelf Companies
+                <span class="url">/shelf-companies/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Entity Tax Guide
+                <span class="url">/entity-tax-guide/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> LLC vs
+                Corporation <span class="url">/llc-vs-corporation/</span>
+              </li>
+            </ul>
+            <div class="mega-divider">Compare</div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type compare">Cmp</span> Wyoming vs Nevada
+                <span class="url">/wyoming-vs-nevada/</span>
+              </li>
+              <li>
+                <span class="link-type compare">Cmp</span> Shelf vs New
+                <span class="url">/shelf-company-vs-new-formation/</span>
+              </li>
+              <li>
+                <span class="link-type compare">Cmp</span> LLC vs S/C-Corp Tax
+                <span class="url">/llc-vs-scorp-vs-ccorp-tax/</span>
+              </li>
+            </ul>
+            <div class="mega-footer-link">Explore All Formation &rarr;</div>
+          </div>
+
+          <!-- COMPLIANCE -->
+          <div class="mega-column" data-pillar="compliance">
+            <div class="mega-column-header">
+              <span class="mega-column-title">Compliance</span>
+              <span class="mega-column-url">/compliance/</span>
+            </div>
+            <ul class="mega-links">
+              <li>
+                <span class="link-type cluster">Cluster</span> Registered Agent
+                <span class="url">/registered-agent/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Wyoming RA
+                <span class="url">/wyoming-registered-agent/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Nevada RA
+                <span class="url">/nevada-registered-agent/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Annual Reports
+                <span class="url">/annual-reports/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Foreign
+                Registration
+                <span class="url">/foreign-state-registration/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Domestication
+                <span class="url">/domestication/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> 2nd-Tier Filings
+                <span class="url">/second-tier-state-filings/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Shares &amp;
+                Records <span class="url">/shares-corporate-records/</span>
+              </li>
+              <li>
+                <span class="link-type cluster">Cluster</span> Tax Obligations
+                <span class="url">/tax-obligations/</span>
+              </li>
+            </ul>
+            <div class="mega-footer-link">Explore All Compliance &rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPLIT: ABOUT + MOBILE -->
+      <div class="split-layout">
+        <div>
+          <div class="section-label" style="margin-top: 0">
+            About Dropdown (simple, not mega)
+          </div>
+          <div class="about-dropdown">
+            <div class="about-dropdown-title">About</div>
+            <ul>
+              <li>About Us <span class="url">/about/</span></li>
+              <li>Contact <span class="url">/contact/</span></li>
+              <li>Testimonials <span class="url">/testimonials/</span></li>
+            </ul>
+          </div>
+
+          <div class="legend" style="margin-top: 24px">
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--blue)"></div>
+              Privacy
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--green)"></div>
+              Asset Protection
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--amber)"></div>
+              Formation
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--purple)"></div>
+              Compliance
+            </div>
+          </div>
+
+          <div class="stats-bar" style="margin-top: 24px">
+            <div class="stat-item">
+              <div class="stat-value">4</div>
+              <div class="stat-label">Mega menu pillars</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">34</div>
+              <div class="stat-label">Mega menu links</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">8</div>
+              <div class="stat-label">Header elements</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">71</div>
+              <div class="stat-label">Pages reachable</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label" style="margin-top: 0">
+            Mobile Menu Overlay
+          </div>
+          <div class="mobile-frame">
+            <div class="mobile-status-bar">375px viewport &mdash; Mobile</div>
+            <div class="mobile-header">
+              <span class="mobile-hamburger">&#9776;</span>
+              <div class="mobile-logo">incorporate<span>123</span></div>
+              <span class="mobile-phone">&#128222;</span>
+            </div>
+            <div class="mobile-menu">
+              <div class="mobile-menu-cta">Find Your Package &rarr;</div>
+              <div class="mobile-accordion">
+                <div class="mobile-accordion-header">
+                  <span class="left"
+                    ><span class="dot" style="background: var(--blue)"></span>
+                    Privacy</span
+                  >
+                  <span class="arrow">&#9656;</span>
+                </div>
+              </div>
+              <div class="mobile-accordion">
+                <div class="mobile-accordion-header">
+                  <span class="left"
+                    ><span class="dot" style="background: var(--green)"></span>
+                    Asset Protection</span
+                  >
+                  <span class="arrow">&#9656;</span>
+                </div>
+              </div>
+              <div class="mobile-accordion">
+                <div class="mobile-accordion-header">
+                  <span class="left"
+                    ><span class="dot" style="background: var(--amber)"></span>
+                    Company Formation</span
+                  >
+                  <span class="arrow">&#9656;</span>
+                </div>
+              </div>
+              <div class="mobile-accordion">
+                <div class="mobile-accordion-header">
+                  <span class="left"
+                    ><span class="dot" style="background: var(--purple)"></span>
+                    Compliance</span
+                  >
+                  <span class="arrow">&#9656;</span>
+                </div>
+              </div>
+              <div class="mobile-divider"></div>
+              <a class="mobile-plain-link">About</a>
+              <a class="mobile-plain-link">Contact</a>
+              <a class="mobile-plain-link">Testimonials</a>
+              <a class="mobile-plain-link">FAQ</a>
+              <a class="mobile-plain-link">Blog</a>
+              <div class="mobile-divider"></div>
+              <div class="mobile-phone-bottom">&#128222; (775) 313-4155</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

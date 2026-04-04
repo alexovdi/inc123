@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import NextLink from "next/link";
-import { Phone, Mail, MapPin, Bitcoin, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 
 interface FooterLink {
@@ -19,6 +19,7 @@ interface FooterColumn {
   title: string;
   links?: FooterLink[];
   sections?: FooterSection[];
+  comparisons?: FooterLink[];
 }
 
 interface FooterCompany {
@@ -28,10 +29,17 @@ interface FooterCompany {
   email: string;
 }
 
+interface FooterBrand {
+  tagline: string;
+  ctas: { label: string; href: string }[];
+}
+
 export interface SiteFooterProps {
   columns: FooterColumn[];
   legal: FooterLink[];
   company: FooterCompany;
+  brand?: FooterBrand;
+  crypto?: string[];
   className?: string;
 }
 
@@ -45,10 +53,10 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
       {col.links && (
         <ul className="space-y-2">
           {col.links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href + link.label}>
               <NextLink
                 href={link.href}
-                className="text-caption text-white/70 transition-colors hover:text-white"
+                className="text-caption text-white/50 transition-colors hover:text-white hover:underline"
               >
                 {link.label}
               </NextLink>
@@ -57,20 +65,49 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
         </ul>
       )}
 
+      {/* Comparison links */}
+      {col.comparisons && col.comparisons.length > 0 && (
+        <div className="mt-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[9px] font-semibold uppercase tracking-wider text-white/20">
+              Compare
+            </span>
+            <span className="flex-1 h-px bg-white/[0.06]" />
+          </div>
+          <ul className="space-y-2">
+            {col.comparisons.map((link) => (
+              <li key={link.href}>
+                <NextLink
+                  href={link.href}
+                  className="text-caption text-white/50 transition-colors hover:text-white hover:underline"
+                >
+                  {link.label}
+                </NextLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Multi-section columns */}
       {col.sections && (
-        <div className="space-y-5">
+        <div className="space-y-4">
           {col.sections.map((section) => (
-            <div key={section.heading}>
-              <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/60">
-                {section.heading}
-              </h4>
+            <div key={section.heading || "other"}>
+              {section.heading && (
+                <h4 className="mb-2 text-[9px] font-semibold uppercase tracking-wider text-white/25">
+                  {section.heading}
+                </h4>
+              )}
+              {!section.heading && (
+                <div className="h-px bg-white/[0.06] mb-2" />
+              )}
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <NextLink
                       href={link.href}
-                      className="text-caption text-white/70 transition-colors hover:text-white"
+                      className="text-caption text-white/50 transition-colors hover:text-white hover:underline"
                     >
                       {link.label}
                     </NextLink>
@@ -92,20 +129,20 @@ function FooterAccordionItem({ col }: { col: FooterColumn }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-white/10 last:border-b-0">
+    <div className="border-b border-white/[0.06] last:border-b-0">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label={`${isOpen ? "Collapse" : "Expand"} ${col.title}`}
-        className="flex w-full items-center justify-between py-4 text-left"
+        className="flex w-full items-center justify-between py-3 text-left"
       >
-        <h3 className="font-display text-body-sm font-semibold text-white/90">
+        <h3 className="text-body-sm font-semibold text-white/80">
           {col.title}
         </h3>
         <ChevronDown
           className={cn(
-            "h-4 w-4 text-white/50 transition-transform duration-200",
+            "h-4 w-4 text-white/30 transition-transform duration-200",
             isOpen && "rotate-180",
           )}
           aria-hidden="true"
@@ -114,7 +151,7 @@ function FooterAccordionItem({ col }: { col: FooterColumn }) {
       <div
         className={cn(
           "overflow-hidden transition-[max-height,opacity] duration-200 ease-out",
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <div className="pb-4">
@@ -125,21 +162,78 @@ function FooterAccordionItem({ col }: { col: FooterColumn }) {
   );
 }
 
+/* ------------------------------------------------
+   SiteFooter
+   ------------------------------------------------ */
 export function SiteFooter({
   columns,
   legal,
   company,
+  brand,
+  crypto,
   className,
 }: SiteFooterProps) {
   return (
     <footer className={cn("bg-footer-dark text-white", className)}>
-      {/* Main Footer — 4 Columns */}
-      <div className="mx-auto max-w-wide px-container-x py-section-y-sm">
-        {/* Desktop: grid layout */}
-        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Branding Strip */}
+      {brand && (
+        <div className="border-b border-white/[0.06]">
+          <div className="mx-auto max-w-wide px-container-x py-7">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <NextLink href="/" className="inline-flex items-center gap-1">
+                  <span className="font-display text-[22px] font-bold text-white">
+                    incorporate
+                  </span>
+                  <span className="font-display text-[22px] font-bold text-secondary">
+                    123
+                  </span>
+                </NextLink>
+                <p className="mt-1.5 text-body-sm text-white/40">
+                  {brand.tagline}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {brand.ctas.map((cta) => (
+                  <NextLink
+                    key={cta.href}
+                    href={cta.href}
+                    className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/20 text-body-sm font-medium text-white/70 transition-all hover:border-white/40 hover:text-white"
+                  >
+                    {cta.label}
+                  </NextLink>
+                ))}
+                <a
+                  href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
+                  className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/20 text-body-sm font-medium text-white/70 transition-all hover:border-white/40 hover:text-white"
+                >
+                  {company.phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Main Footer — 6 Columns */}
+      <div className="mx-auto max-w-wide px-container-x py-12 lg:py-16">
+        {/* Desktop: 6-column grid */}
+        <div className="hidden lg:grid lg:grid-cols-6 gap-6">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="mb-4 font-display text-body-sm font-semibold text-white/90">
+              <h3 className="mb-4 text-body-sm font-bold text-white">
+                {col.title}
+              </h3>
+              <FooterColumnContent col={col} />
+            </div>
+          ))}
+        </div>
+
+        {/* Tablet: 3-column grid */}
+        <div className="hidden sm:grid sm:grid-cols-3 gap-6 lg:hidden">
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h3 className="mb-4 text-body-sm font-bold text-white">
                 {col.title}
               </h3>
               <FooterColumnContent col={col} />
@@ -153,63 +247,61 @@ export function SiteFooter({
             <FooterAccordionItem key={col.title} col={col} />
           ))}
         </div>
-
-        {/* Contact Row */}
-        <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-white/10 pt-8 text-caption text-white/60">
-          <a
-            href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
-            className="flex items-center gap-1.5 transition-colors hover:text-white"
-          >
-            <Phone className="h-3.5 w-3.5" />
-            {company.phone}
-          </a>
-          <a
-            href={`mailto:${company.email}`}
-            className="flex items-center gap-1.5 transition-colors hover:text-white"
-          >
-            <Mail className="h-3.5 w-3.5" />
-            {company.email}
-          </a>
-          <p className="flex items-start gap-1.5">
-            <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-            {company.address}
-          </p>
-        </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-wide flex-col items-center justify-between gap-4 px-container-x py-6 md:flex-row">
-          {/* Left: Brand + Trusted */}
-          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
-            <span className="font-display text-body-sm font-bold text-white/80">
-              Incorporate123
-            </span>
-            <span className="text-caption text-white/50">
-              Trusted Since 2000 | 25+ Years
-            </span>
-          </div>
+      {/* Legal Strip */}
+      <div className="border-t border-white/[0.08]">
+        <div className="mx-auto max-w-wide px-container-x py-6">
+          <div className="flex flex-col items-center gap-4">
+            {/* Copyright + Legal Links */}
+            <div className="flex flex-wrap items-center justify-center gap-3 text-caption text-white/30">
+              <span>
+                &copy; {new Date().getFullYear()} {company.name}
+              </span>
+              <span className="text-white/15">·</span>
+              {legal.map((link, i) => (
+                <span key={link.href} className="flex items-center gap-3">
+                  <NextLink
+                    href={link.href}
+                    className="text-white/40 transition-colors hover:text-white/70 hover:underline"
+                  >
+                    {link.label}
+                  </NextLink>
+                  {i < legal.length - 1 && (
+                    <span className="text-white/15">·</span>
+                  )}
+                </span>
+              ))}
+            </div>
 
-          {/* Center: Crypto note */}
-          <div className="flex items-center gap-1.5 text-caption text-white/50">
-            <Bitcoin className="h-3.5 w-3.5" />
-            <span>We accept cryptocurrency for maximum privacy</span>
-          </div>
-
-          {/* Right: Legal + Copyright */}
-          <div className="flex items-center gap-4 text-caption text-white/50">
-            {legal.map((link) => (
-              <NextLink
-                key={link.href}
-                href={link.href}
-                className="transition-colors hover:text-white/60"
+            {/* Address + Phone */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-caption text-white/20">
+              <span className="flex items-start gap-1">
+                <MapPin className="mt-0.5 h-3 w-3 shrink-0" />
+                {company.address}
+              </span>
+              <span className="text-white/10">·</span>
+              <a
+                href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
+                className="transition-colors hover:text-white/40"
               >
-                {link.label}
-              </NextLink>
-            ))}
-            <span>
-              &copy; {new Date().getFullYear()} {company.name}
-            </span>
+                {company.phone}
+              </a>
+            </div>
+
+            {/* Crypto badges */}
+            {crypto && crypto.length > 0 && (
+              <div className="flex gap-2.5 mt-1">
+                {crypto.map((symbol) => (
+                  <span
+                    key={symbol}
+                    className="text-[9px] font-bold tracking-wide text-white/25 bg-white/[0.05] px-2 py-1 rounded"
+                  >
+                    {symbol}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -24,6 +24,8 @@ export function HeaderFooterWrapper({
           columns={footerNavigation.columns}
           legal={footerNavigation.legal}
           company={footerNavigation.company}
+          brand={footerNavigation.brand}
+          crypto={footerNavigation.crypto}
         />
       )}
       {!isDev && <ThemeToggle />}

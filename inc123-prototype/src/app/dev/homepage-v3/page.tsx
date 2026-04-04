@@ -8,13 +8,15 @@ import {
   Phone,
   Check,
   Users,
+  CheckCircle,
 } from "lucide-react";
 
+import { cn } from "@/design-system/utils/cn";
 import { Icon } from "@/design-system/primitives/Icon";
+import { Button } from "@/design-system/primitives/Button";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { CTABlock } from "@/design-system/components/CTABlock";
 import { ComplianceCallout } from "@/design-system/components/ComplianceCallout";
-import { HomepageHero } from "@/design-system/components/HomepageHero";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
 import { PackageWizard } from "@/design-system/components/PackageWizard";
@@ -29,82 +31,218 @@ import { TrustTicker } from "@/design-system/components/TrustTicker";
 import { pillars } from "@/data/pillars";
 import { tierDefinitions, getTierMinPrice } from "@/data/packages";
 import {
-  homepageData,
   pillarCardOverrides,
   homepageTestimonials,
   packageRenewals,
   trustSignalItems,
 } from "@/data/homepage";
 
-/* ------------------------------------------------
-   Metadata
-   ------------------------------------------------ */
 export const metadata: Metadata = {
-  title: "Incorporate123 — Privacy, Asset Protection & Business Formation",
-  description:
-    "Privacy-focused business formation specialists. Wyoming & Nevada LLCs with year-round nominee services, offshore records, and all-inclusive pricing. 25 years of expertise from Reno, NV.",
-  alternates: {
-    canonical: "https://incorporate123.co",
-  },
+  title: "Homepage v3 (Pre-v10 Archive) — Incorporate123",
 };
 
 /* ------------------------------------------------
-   Organization + LocalBusiness Schema (JSON-LD)
+   V3 Hero Data (previous version)
    ------------------------------------------------ */
-function OrganizationSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
-    "@id": "https://incorporate123.co/#organization",
-    name: "Incorporate123",
-    url: "https://incorporate123.co",
-    logo: "https://incorporate123.co/logo.png",
-    description:
-      "Privacy-focused business formation specialists offering anonymous LLCs, nominee services, asset protection structures, and ongoing compliance in Wyoming, Nevada, California, and Florida. 25 years of expertise.",
-    foundingDate: "2000",
-    telephone: "(775) 313-4155",
-    email: "info@incorporate123.co",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "1795 Meadow Wood Lane, Suite 100",
-      addressLocality: "Reno",
-      addressRegion: "NV",
-      postalCode: "89502",
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 39.4806,
-      longitude: -119.7888,
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "United States",
-    },
-    sameAs: [],
-    priceRange: "$$",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
-    },
-    knowsAbout: [
-      "Anonymous LLC Formation",
-      "Nominee Services",
-      "Asset Protection",
-      "Business Privacy",
-      "Wyoming LLC",
-      "Nevada LLC",
-      "Offshore Records Custodian",
-    ],
-  };
+const v3Hero = {
+  headline: "Your Name Off the Record. Your Assets Protected.",
+  subheadline:
+    "Wyoming & Nevada formation with year-round nominees, offshore records, and all-inclusive pricing. 25 years of expertise.",
+  primaryCTA: { label: "Find Your Package →", href: "#wizard" },
+  secondaryCTA: {
+    label: "Compare All Packages →",
+    href: "/compare-packages",
+  },
+  trustSnippets: [
+    "25 Years",
+    "Thousands Formed",
+    "$1,275 All-Inclusive",
+    "Money-Back Guarantee",
+  ],
+  eyebrow: "Trusted Since 2000 · Privacy-Focused Formation",
+  safetyNet: "Have questions? Call (775) 313-4155",
+};
 
+/* ------------------------------------------------
+   V3 Hero Component (inlined — previous design)
+   ------------------------------------------------ */
+function HeroShield() {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <div
+      className="relative flex items-center justify-center"
+      aria-hidden="true"
+    >
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="h-64 w-64 rounded-full bg-white/8 blur-3xl" />
+      </div>
+      <svg
+        viewBox="0 0 200 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative h-64 w-56 lg:h-80 lg:w-72"
+      >
+        <path
+          d="M100 10 L180 50 L180 130 Q180 190 100 230 Q20 190 20 130 L20 50 Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          className="text-white/20"
+          fill="none"
+        />
+        <path
+          d="M100 30 L165 62 L165 125 Q165 178 100 212 Q35 178 35 125 L35 62 Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+          className="text-white/[0.12]"
+          fill="url(#shieldGradientV3)"
+        />
+        <defs>
+          <linearGradient
+            id="shieldGradientV3"
+            x1="100"
+            y1="30"
+            x2="100"
+            y2="212"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="white" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <line
+          x1="100"
+          y1="30"
+          x2="100"
+          y2="212"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          className="text-white/[0.08]"
+        />
+        <line
+          x1="35"
+          y1="95"
+          x2="165"
+          y2="95"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          className="text-white/[0.08]"
+        />
+        <line
+          x1="35"
+          y1="140"
+          x2="165"
+          y2="140"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          className="text-white/[0.08]"
+        />
+        <path
+          d="M72 115 L92 135 L128 99"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-white/25"
+          fill="none"
+        />
+      </svg>
+    </div>
+  );
+}
+
+function V3HomepageHero() {
+  const {
+    headline,
+    subheadline,
+    primaryCTA,
+    secondaryCTA,
+    trustSnippets,
+    eyebrow,
+    safetyNet,
+  } = v3Hero;
+  return (
+    <section className="bg-primary">
+      <div className="mx-auto max-w-content px-container-x py-28 lg:py-40">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+          <div className="flex-1 lg:basis-2/3">
+            <p
+              className="text-body-sm font-medium text-white/60 mb-3 tracking-[0.15em] uppercase"
+              style={{
+                animation: "hero-fade-up 600ms var(--ease-out-expo) 100ms both",
+              }}
+            >
+              {eyebrow}
+            </p>
+            <h1
+              className="font-display text-display font-medium text-white md:text-display-lg lg:text-display-xl"
+              style={{
+                animation: "hero-fade-up 800ms var(--ease-out-expo) 0ms both",
+              }}
+            >
+              {headline}
+            </h1>
+            <p
+              className="mt-6 text-body-lg text-white/70 max-w-[38ch] leading-relaxed"
+              style={{
+                animation: "hero-fade-up 600ms var(--ease-out-expo) 200ms both",
+              }}
+            >
+              {subheadline}
+            </p>
+            <div
+              className="mt-8 flex flex-col gap-3 sm:flex-row"
+              style={{
+                animation: "hero-fade-up 600ms var(--ease-out-expo) 400ms both",
+              }}
+            >
+              <Button variant="cta" size="lg" asChild>
+                <a href={primaryCTA.href}>{primaryCTA.label}</a>
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                asChild
+                className="border-white/30 text-white hover:bg-white/10"
+              >
+                <a href={secondaryCTA.href}>{secondaryCTA.label}</a>
+              </Button>
+            </div>
+            {safetyNet && (
+              <p
+                className="mt-4 text-body-sm text-white/50"
+                style={{
+                  animation:
+                    "hero-fade-in 600ms var(--ease-out-expo) 500ms both",
+                }}
+              >
+                {safetyNet}
+              </p>
+            )}
+            <div
+              className="mt-8 flex flex-wrap gap-x-6 gap-y-3"
+              style={{
+                animation: "hero-fade-in 600ms var(--ease-out-expo) 600ms both",
+              }}
+            >
+              {trustSnippets.map((snippet) => (
+                <div
+                  key={snippet}
+                  className="flex items-center gap-2 text-body-sm text-white/60"
+                >
+                  <CheckCircle
+                    className="h-4 w-4 shrink-0 text-white/40"
+                    aria-hidden="true"
+                  />
+                  <span>{snippet}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="hidden lg:flex lg:basis-1/3 items-center justify-center">
+            <HeroShield />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -120,17 +258,11 @@ const differentiatorIcons: Record<string, React.ReactNode> = {
   Phone: <Phone className="h-6 w-6" aria-hidden="true" />,
 };
 
-/* ------------------------------------------------
-   Tier cards to display (Gold, Silver, Bronze)
-   ------------------------------------------------ */
 const tierOrder: Record<string, number> = { gold: 0, silver: 1, bronze: 2 };
 const homepageTiers = [...tierDefinitions].sort(
   (a, b) => (tierOrder[a.tier] ?? 9) - (tierOrder[b.tier] ?? 9),
 );
 
-/* ------------------------------------------------
-   Compliance checklist items
-   ------------------------------------------------ */
 const complianceItems = [
   "Annual Report Filing",
   "Registered Agent Renewal",
@@ -139,45 +271,96 @@ const complianceItems = [
   "Nominee Service Renewal",
 ];
 
+const v3Differentiators = [
+  {
+    icon: "Clock",
+    title: "Year-Round Nominees Included",
+    description:
+      "Not 'nominee for a day' — your nominees serve all year, every year. Included in Gold packages at no extra cost.",
+  },
+  {
+    icon: "Globe",
+    title: "Offshore Records Since 2012",
+    description:
+      "Corporate records stored offshore for genuine privacy. Free with every Gold package — competitors charge $400–$5,000/year.",
+  },
+  {
+    icon: "DollarSign",
+    title: "$1,275 All-Inclusive Pricing",
+    description:
+      "Formation, registered agent, EIN, operating agreement, and state fees — all bundled. No surprise add-ons at checkout.",
+  },
+  {
+    icon: "Users",
+    title: "Specialist Team",
+    description:
+      "Privacy formation specialists — not a call center, not a chatbot. Real people who know your name and understand complex structures.",
+  },
+  {
+    icon: "Award",
+    title: "25 Years of Specialization",
+    description:
+      "Focused exclusively on Wyoming and Nevada privacy formation since 2000. Depth over breadth.",
+  },
+  {
+    icon: "Phone",
+    title: "Talk to a Real Person",
+    description:
+      "Have questions? Call us directly. No chatbots, no offshore call centers, no sales pressure.",
+  },
+];
+
+const v3HowItWorks = [
+  {
+    label: "Choose Your Protection Level",
+    description:
+      "Explore our Privacy, Asset Protection, or Formation guides — or jump straight to packages if you already know what you need.",
+  },
+  {
+    label: "Select Your Package",
+    description:
+      "Pick the package that fits your needs. Gold for full privacy with year-round nominees, Silver for expert formation with everything included.",
+  },
+  {
+    label: "We Handle the Filing",
+    description:
+      "Complete a short form with your entity details. We file with the state, obtain your EIN, prepare your operating agreement, and set up registered agent service.",
+  },
+  {
+    label: "You're Protected",
+    description:
+      "Receive your formation documents, nominee confirmations, and ongoing compliance support. Your privacy and assets are secured.",
+  },
+];
+
+const v3ComplianceCallout = {
+  headline: "Already Have an Entity? We Keep You Compliant.",
+  description:
+    "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox.",
+  cta: { label: "Explore Compliance Services →", href: "/compliance" },
+  secondaryCTA: { label: "Call (775) 313-4155 →", href: "tel:+17753134155" },
+};
+
 /* ------------------------------------------------
    Page
    ------------------------------------------------ */
-export default function HomePage() {
-  const { hero, differentiators, howItWorks, complianceCallout } = homepageData;
-
+export default function HomepageV3Archive() {
   return (
     <>
-      <OrganizationSchema />
+      {/* Archive banner */}
+      <div className="bg-amber-100 border-b border-amber-300 px-4 py-2 text-center text-sm text-amber-800 font-medium">
+        Archive: Homepage v3 (pre-v10 design) —{" "}
+        <NextLink href="/" className="underline">
+          View current homepage
+        </NextLink>
+      </div>
 
-      {/* ==========================================
-          Section 1: Hero (dark anchor)
-          ========================================== */}
-      <HomepageHero
-        headlineLines={hero.headlineLines}
-        subheadline={hero.subheadline}
-        primaryCTA={hero.primaryCTA}
-        secondaryCTA={hero.secondaryCTA}
-        eyebrow={hero.eyebrow}
-        phone={hero.phone}
-        consultationHref={hero.consultationHref}
-        stats={hero.stats}
-      />
+      <V3HomepageHero />
 
-      {/* ==========================================
-          Trust Ticker — continuous scrolling signals
-          ========================================== */}
       <TrustTicker />
 
-      {/* ==========================================
-          Section 2: "Why Privacy Matters" Bridge
-          — teaches the PROBLEM before selling
-          ========================================== */}
       <PrivacyBridge className="bg-background" />
 
-      {/* ==========================================
-          Section 3: Package Wizard
-          — interactive recommendation tool
-          ========================================== */}
       <section className="bg-background py-section-y-sm">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -186,9 +369,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==========================================
-          Section 4: Pillar Navigation Cards
-          ========================================== */}
       <section
         className="py-section-y"
         style={{
@@ -211,7 +391,6 @@ export default function HomePage() {
               </p>
             </div>
           </ScrollReveal>
-
           <div className="grid gap-6 md:grid-cols-3">
             {pillars
               .filter((p) => p.id !== "compliance")
@@ -232,26 +411,9 @@ export default function HomePage() {
                 );
               })}
           </div>
-
-          <ScrollReveal delay={300}>
-            <div className="mt-8 text-center">
-              <NextLink
-                href="/compliance"
-                className="text-body-sm text-muted hover:text-foreground transition-colors"
-              >
-                Already have a company?{" "}
-                <span className="text-secondary font-medium">
-                  Explore compliance services &rarr;
-                </span>
-              </NextLink>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
-      {/* ==========================================
-          Section 5: Package Quick Links
-          ========================================== */}
       <section className="bg-surface py-section-y">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -268,7 +430,6 @@ export default function HomePage() {
               </p>
             </div>
           </ScrollReveal>
-
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {homepageTiers.map((tier, index) => {
               const minPrice = getTierMinPrice(tier, "llc");
@@ -300,49 +461,11 @@ export default function HomePage() {
               );
             })}
           </div>
-
-          {/* Competitor comparison callout */}
-          <ScrollReveal delay={200}>
-            <div className="mt-10 rounded-card border border-border bg-background p-6 text-center">
-              <p className="text-body font-semibold text-foreground">
-                Offshore Records Custody:{" "}
-                <span className="text-muted font-normal">
-                  Competitors charge $400–$5,000/year.
-                </span>{" "}
-                <span className="text-success font-bold">
-                  Included free with every Gold package.
-                </span>
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={250}>
-            <div className="mt-6 text-center space-y-3">
-              <NextLink
-                href="/compare-packages"
-                className="inline-flex items-center gap-1.5 text-body font-medium text-link hover:text-link/80 transition-colors"
-              >
-                Compare All Packages
-                <Icon name="ArrowRight" size="sm" />
-              </NextLink>
-              <p className="text-body-sm text-muted">
-                Not sure which package? Call (775) 313-4155 for a free
-                consultation.
-              </p>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
-      {/* ==========================================
-          Section 6: Stats Bar (dark)
-          ========================================== */}
       <StatsBar />
 
-      {/* ==========================================
-          Section 7: Differentiator Grid (dark bg)
-          — numbered 01-06 layout
-          ========================================== */}
       <section className="bg-primary py-section-y">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -359,18 +482,14 @@ export default function HomePage() {
               </p>
             </div>
           </ScrollReveal>
-
-          {/* Numbered 01-06 grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {differentiators.map((item, index) => (
+            {v3Differentiators.map((item, index) => (
               <ScrollReveal key={index} delay={index * 80}>
                 <div className="rounded-card bg-white/5 p-6 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1">
                   <div className="flex items-center gap-3 mb-4">
-                    {/* Number */}
                     <span className="font-mono text-caption font-bold text-white/20">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    {/* Icon */}
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
                       <span className="text-white/80">
                         {differentiatorIcons[item.icon] ?? (
@@ -396,9 +515,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==========================================
-          Section 8: Testimonials
-          ========================================== */}
       <section className="bg-background py-section-y">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -408,7 +524,6 @@ export default function HomePage() {
               </h2>
             </div>
           </ScrollReveal>
-
           <ScrollReveal delay={150}>
             <div className="max-w-narrow mx-auto">
               <TestimonialCarousel
@@ -421,9 +536,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==========================================
-          Section 9: Trust Signals
-          ========================================== */}
       <section className="bg-primary-50 border-y border-border py-12 lg:py-16">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -432,9 +544,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==========================================
-          Section 10: How It Works
-          ========================================== */}
       <section className="bg-background py-section-y">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -445,42 +554,31 @@ export default function HomePage() {
               <h2 className="font-display text-display-sm font-semibold text-foreground">
                 How It Works
               </h2>
-              <p className="mt-3 text-body-lg text-muted max-w-narrow mx-auto">
-                From research to fully formed and protected — we handle the
-                details.
-              </p>
             </div>
           </ScrollReveal>
-
           <HowItWorks
-            steps={howItWorks.map((step, index) => ({
+            steps={v3HowItWorks.map((step, index) => ({
               number: index + 1,
               title: step.label,
-              description: step.description ?? "",
+              description: step.description,
             }))}
           />
         </div>
       </section>
 
-      {/* ==========================================
-          Section 11: Compliance Callout (dark)
-          — with visual checklist
-          ========================================== */}
       <section className="bg-primary py-section-y-sm">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-              {/* Left: copy + CTA */}
               <div className="flex-1">
                 <ComplianceCallout
-                  headline={complianceCallout.headline}
-                  description={complianceCallout.description}
-                  cta={complianceCallout.cta}
-                  secondaryCTA={complianceCallout.secondaryCTA}
+                  headline={v3ComplianceCallout.headline}
+                  description={v3ComplianceCallout.description}
+                  cta={v3ComplianceCallout.cta}
+                  secondaryCTA={v3ComplianceCallout.secondaryCTA}
                   variant="dark"
                 />
               </div>
-              {/* Right: visual checklist */}
               <div className="mt-8 lg:mt-0 lg:basis-1/3">
                 <div className="rounded-card bg-white/5 p-6">
                   <p className="text-caption font-semibold text-white/50 uppercase tracking-[0.15em] mb-4">
@@ -506,9 +604,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==========================================
-          Section 12: Final CTA Block
-          ========================================== */}
       <section className="py-section-y">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
@@ -530,9 +625,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==========================================
-          Sticky Mobile CTA Bar
-          ========================================== */}
       <StickyMobileCTA
         primaryCTA={{
           variant: "cta",

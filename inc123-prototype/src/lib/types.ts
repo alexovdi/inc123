@@ -13,6 +13,7 @@ export interface NavPillar {
   description: string;
   href: string;
   clusters: NavCluster[];
+  comparisons?: NavCluster[];
   featuredLink?: { title: string; href: string; description: string };
 }
 
@@ -20,6 +21,8 @@ export interface NavItem {
   label: string;
   href: string;
   children?: NavPillar[];
+  /** Simple dropdown links (e.g. About menu) — alternative to mega menu */
+  dropdownLinks?: { label: string; href: string }[];
 }
 
 export interface SiteNavigation {
@@ -154,15 +157,27 @@ export interface DifferentiatorItemData {
   description: string;
 }
 
+export interface HeadlineSegment {
+  text: string;
+  highlight?: boolean;
+}
+
+export interface HeroStat {
+  value: string;
+  unit: string;
+  label: string;
+}
+
 export interface HomepageData {
   hero: {
-    headline: string;
+    headlineLines: HeadlineSegment[][];
     subheadline: string;
     primaryCTA: { label: string; href: string };
     secondaryCTA: { label: string; href: string };
-    trustSnippets: string[];
     eyebrow?: string;
-    safetyNet?: string;
+    phone?: string;
+    consultationHref?: string;
+    stats?: HeroStat[];
   };
   differentiators: DifferentiatorItemData[];
   howItWorks: Step[];
