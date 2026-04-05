@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Clock,
   Globe,
@@ -17,12 +16,12 @@ import { Button } from "@/design-system/primitives/Button";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { CTABlock } from "@/design-system/components/CTABlock";
 import { ComplianceCallout } from "@/design-system/components/ComplianceCallout";
-import { HowItWorks } from "@/design-system/components/HowItWorks";
+// HowItWorks inlined below as V3HowItWorks
 import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
 import { PackageWizard } from "@/design-system/components/PackageWizard";
 import { PillarCard } from "@/design-system/components/PillarCard";
-import { PrivacyBridge } from "@/design-system/components/PrivacyBridge";
-import { StatsBar } from "@/design-system/components/StatsBar";
+import { Eye, Scale, ShieldCheck } from "lucide-react";
+// StatsBar inlined below as V3StatsBar
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
 import { TestimonialCarousel } from "@/design-system/components/TestimonialCarousel";
 import { TrustSignals } from "@/design-system/components/TrustSignals";
@@ -36,10 +35,6 @@ import {
   packageRenewals,
   trustSignalItems,
 } from "@/data/homepage";
-
-export const metadata: Metadata = {
-  title: "Homepage v3 (Pre-v10 Archive) — Incorporate123",
-};
 
 /* ------------------------------------------------
    V3 Hero Data (previous version)
@@ -342,6 +337,167 @@ const v3ComplianceCallout = {
 };
 
 /* ------------------------------------------------
+   V3 Privacy Bridge (inlined — previous design)
+   ------------------------------------------------ */
+const v3BridgeColumns = [
+  {
+    icon: Eye,
+    number: "01",
+    title: "Your Name Is Public",
+    description:
+      "When you form an LLC or corporation, your name, address, and role appear on state records. Anyone — lawsuits, competitors, data brokers — can look it up in seconds.",
+    accent: "text-destructive",
+    accentBg: "bg-destructive/10",
+  },
+  {
+    icon: Scale,
+    number: "02",
+    title: "That Makes You a Target",
+    description:
+      "Visible ownership invites frivolous lawsuits, asset searches, and unwanted solicitation. Business owners with public records are 3x more likely to face nuisance litigation.",
+    accent: "text-warning",
+    accentBg: "bg-warning/10",
+  },
+  {
+    icon: ShieldCheck,
+    number: "03",
+    title: "We Fix That",
+    description:
+      "Year-round nominees replace your name on every public filing. Offshore records keep your documents outside U.S. jurisdiction. Your ownership stays private — permanently.",
+    accent: "text-success",
+    accentBg: "bg-success/10",
+  },
+];
+
+function V3PrivacyBridge({ className }: { className?: string }) {
+  return (
+    <section className={cn("py-section-y", className)}>
+      <div className="mx-auto max-w-content px-container-x">
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
+              Why This Matters
+            </p>
+            <h2 className="font-display text-display-sm font-semibold text-foreground max-w-[32ch] mx-auto">
+              Your Name Is on Public Records. It Doesn&rsquo;t Have to Be.
+            </h2>
+          </div>
+        </ScrollReveal>
+        <div className="grid gap-8 md:grid-cols-3">
+          {v3BridgeColumns.map((col, index) => (
+            <ScrollReveal key={col.number} delay={index * 120}>
+              <div className="relative flex flex-col items-start gap-4 rounded-card bg-surface border border-border p-6 h-full">
+                <div className="flex items-center gap-3 w-full">
+                  <span className="font-mono text-caption font-bold text-muted/40">
+                    {col.number}
+                  </span>
+                  <div
+                    className={cn(
+                      "flex h-10 w-10 items-center justify-center rounded-full",
+                      col.accentBg,
+                    )}
+                  >
+                    <col.icon
+                      className={cn("h-5 w-5", col.accent)}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                </div>
+                <h3 className="font-display text-heading-sm font-semibold text-foreground">
+                  {col.title}
+                </h3>
+                <p className="text-body-sm text-muted leading-relaxed">
+                  {col.description}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------
+   V3 StatsBar (inlined — previous design)
+   ------------------------------------------------ */
+const v3Stats = [
+  { value: "25", label: "Years of Specialized Privacy" },
+  { value: "10,000+", label: "Entities Formed" },
+  { value: "2", label: "States (Wyoming & Nevada)" },
+  { value: "365", label: "Days of Nominee Coverage" },
+];
+
+function V3StatsBar({ className }: { className?: string }) {
+  return (
+    <section className={cn("bg-primary py-16 lg:py-20", className)}>
+      <div className="mx-auto max-w-content px-container-x">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-white/10">
+          {v3Stats.map((stat, index) => (
+            <ScrollReveal key={stat.label} delay={index * 100}>
+              <div className="flex flex-col items-center text-center lg:px-6">
+                <span className="font-display text-display-lg font-medium text-white tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="mt-1 text-body-sm text-white/60">
+                  {stat.label}
+                </span>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------
+   V3 HowItWorks (inlined — previous horizontal design)
+   ------------------------------------------------ */
+function V3HowItWorks({
+  steps,
+}: {
+  steps: { number: number; title: string; description: string }[];
+}) {
+  return (
+    <div className="flex flex-col md:flex-row md:items-start">
+      {steps.map((step, index) => {
+        const isLast = index === steps.length - 1;
+        return (
+          <ScrollReveal
+            key={step.number}
+            delay={index * 120}
+            className="md:flex-1"
+          >
+            <div className="relative flex flex-row items-start gap-4 pb-8 last:pb-0 md:flex-col md:items-center md:gap-0 md:pb-0 md:text-center">
+              <div className="relative flex flex-col items-center md:mb-4 md:w-full md:flex-row md:justify-center">
+                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-white shadow-card">
+                  <span className="font-display text-heading-sm font-bold">
+                    {step.number}
+                  </span>
+                </div>
+                {!isLast && (
+                  <div
+                    className="mt-1 h-full w-0 border-l-2 border-dashed border-primary-300 md:mt-0 md:absolute md:left-[calc(50%+32px)] md:top-1/2 md:h-0 md:w-[calc(100%-64px)] md:-translate-y-1/2 md:border-l-0 md:border-t-2"
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
+              <div className="flex-1 md:mt-4 md:px-3">
+                <h3 className="text-heading-sm font-display font-semibold text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-body text-muted">{step.description}</p>
+              </div>
+            </div>
+          </ScrollReveal>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ------------------------------------------------
    Page
    ------------------------------------------------ */
 export default function HomepageV3Archive() {
@@ -350,16 +506,16 @@ export default function HomepageV3Archive() {
       {/* Archive banner */}
       <div className="bg-amber-100 border-b border-amber-300 px-4 py-2 text-center text-sm text-amber-800 font-medium">
         Archive: Homepage v3 (pre-v10 design) —{" "}
-        <NextLink href="/" className="underline">
+        <RouterLink to="/" className="underline">
           View current homepage
-        </NextLink>
+        </RouterLink>
       </div>
 
       <V3HomepageHero />
 
       <TrustTicker />
 
-      <PrivacyBridge className="bg-background" />
+      <V3PrivacyBridge className="bg-background" />
 
       <section className="bg-background py-section-y-sm">
         <div className="mx-auto max-w-content px-container-x">
@@ -464,7 +620,7 @@ export default function HomepageV3Archive() {
         </div>
       </section>
 
-      <StatsBar />
+      <V3StatsBar />
 
       <section className="bg-primary py-section-y">
         <div className="mx-auto max-w-content px-container-x">
@@ -556,7 +712,7 @@ export default function HomepageV3Archive() {
               </h2>
             </div>
           </ScrollReveal>
-          <HowItWorks
+          <V3HowItWorks
             steps={v3HowItWorks.map((step, index) => ({
               number: index + 1,
               title: step.label,

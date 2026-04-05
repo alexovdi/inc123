@@ -73,27 +73,35 @@ export const homepageData: HomepageData = {
   howItWorks: [
     {
       id: "step-1",
-      label: "Choose Your Protection Level",
+      label: "Choose Your Package",
       description:
-        "Explore our Privacy, Asset Protection, or Formation guides — or jump straight to packages if you already know what you need.",
+        "Select Gold, Silver, or Bronze. Compare features, select your state, and pick the tier that fits your goals.",
+      tag: "Gold recommended for privacy",
+      color: "blue" as const,
     },
     {
       id: "step-2",
-      label: "Select Your Package",
+      label: "We Form Your Entity",
       description:
-        "Pick the package that fits your needs. Gold for full privacy with year-round nominees, Silver for expert formation with everything included.",
+        "We handle all state filings, paperwork, and fees. Everything is included — no surprise invoices after checkout.",
+      tag: "5–7 business days typical",
+      color: "green" as const,
     },
     {
       id: "step-3",
-      label: "We Handle the Filing",
+      label: "Nominees Protect You",
       description:
-        "Complete a short form with your entity details. We file with the state, obtain your EIN, prepare your operating agreement, and set up registered agent service.",
+        "Year-round nominee directors and officers keep your name off public records — maintained 365 days a year.",
+      tag: "Gold package feature",
+      color: "amber" as const,
     },
     {
       id: "step-4",
-      label: "You're Protected",
+      label: "Compliance, Handled",
       description:
-        "Receive your formation documents, nominee confirmations, and ongoing compliance support. Your privacy and assets are secured.",
+        "Registered agent, annual reports, and corporate minutes — maintained every year so your entity stays in good standing.",
+      tag: "Included in every package",
+      color: "purple" as const,
     },
   ],
   complianceCallout: {
@@ -125,10 +133,16 @@ export const pillarCardOverrides: Record<
     ctaLabel: "Protect Your Assets →",
   },
   formation: {
-    title: "Business Incorporation",
+    title: "Company Formation",
     description:
       "Expert LLC and Corporation formation in Wyoming and Nevada. Everything included — registered agent, EIN, operating agreement, state fees.",
     ctaLabel: "Start Your Company →",
+  },
+  compliance: {
+    title: "Compliance",
+    description:
+      "Registered agent, annual reports, corporate minutes — maintained every year. Sign up for a package and we take care of everything.",
+    ctaLabel: "Explore Compliance →",
   },
 };
 

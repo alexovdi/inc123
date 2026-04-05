@@ -1,4 +1,3 @@
-import { type ReactNode } from "react";
 import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 
@@ -6,129 +5,126 @@ import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
    Types
    ------------------------------------------------ */
 export interface HowItWorksStep {
-  /** Step number (displayed in the circle) */
   number: number;
-  /** Step title */
   title: string;
-  /** Step description */
   description: string;
-  /** Optional icon (ReactNode, e.g. lucide icon component) */
-  icon?: ReactNode;
+  tag?: string;
+  /** Accent color for circle and tag */
+  color?: "blue" | "green" | "amber" | "purple";
 }
 
 export interface HowItWorksProps {
-  /** Array of steps to display */
   steps: HowItWorksStep[];
-  /** Layout direction — defaults to responsive (vertical on mobile, horizontal on desktop) */
-  layout?: "horizontal" | "vertical";
-  /** Additional class names */
   className?: string;
 }
 
 /* ------------------------------------------------
-   Component
+   Color maps
    ------------------------------------------------ */
-function HowItWorks({ steps, layout, className }: HowItWorksProps) {
-  const isHorizontal = layout === "horizontal";
-  const isVertical = layout === "vertical";
-  // Default (no layout specified): responsive — vertical on mobile, horizontal on desktop
-  const isResponsive = !layout;
+const circleColors: Record<
+  string,
+  { border: string; bg: string; text: string }
+> = {
+  blue: {
+    border: "border-[var(--pillar-privacy)]",
+    bg: "group-hover:bg-[var(--pillar-privacy)]",
+    text: "text-[var(--pillar-privacy)] group-hover:text-white",
+  },
+  green: {
+    border: "border-[var(--pillar-asset)]",
+    bg: "group-hover:bg-[var(--pillar-asset)]",
+    text: "text-[var(--pillar-asset)] group-hover:text-white",
+  },
+  amber: {
+    border: "border-[var(--pillar-formation)]",
+    bg: "group-hover:bg-[var(--pillar-formation)]",
+    text: "text-[var(--pillar-formation)] group-hover:text-white",
+  },
+  purple: {
+    border: "border-[var(--pillar-compliance)]",
+    bg: "group-hover:bg-[var(--pillar-compliance)]",
+    text: "text-[var(--pillar-compliance)] group-hover:text-white",
+  },
+};
 
+const tagColors: Record<string, string> = {
+  blue: "bg-[var(--pillar-privacy)]/[0.08] text-[var(--pillar-privacy)]",
+  green: "bg-[var(--pillar-asset)]/[0.08] text-[var(--pillar-asset)]",
+  amber: "bg-[var(--pillar-formation)]/[0.08] text-[var(--pillar-formation)]",
+  purple:
+    "bg-[var(--pillar-compliance)]/[0.08] text-[var(--pillar-compliance)]",
+};
+
+/* ------------------------------------------------
+   Component — Vertical timeline
+   ------------------------------------------------ */
+function HowItWorks({ steps, className }: HowItWorksProps) {
   return (
     <div
-      className={cn(
-        "w-full",
-        isHorizontal && "flex flex-row items-start",
-        isVertical && "flex flex-col",
-        isResponsive && "flex flex-col md:flex-row md:items-start",
-        className,
-      )}
+      className={cn("relative flex flex-col max-w-[780px] mx-auto", className)}
     >
+      {/* Gradient vertical line */}
+      <div
+        className="absolute left-[27px] sm:left-[47px] top-0 bottom-0 w-0.5 rounded-full opacity-15"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--pillar-privacy), var(--pillar-asset), var(--pillar-formation), var(--pillar-compliance))",
+        }}
+        aria-hidden="true"
+      />
+
       {steps.map((step, index) => {
+        const color = step.color ?? "blue";
+        const colors = circleColors[color];
         const isLast = index === steps.length - 1;
 
         return (
-          <ScrollReveal
-            key={step.number}
-            delay={index * 120}
-            className={cn(
-              isHorizontal && "flex-1",
-              isResponsive && "md:flex-1",
-            )}
-          >
+          <ScrollReveal key={step.number} delay={index * 120}>
             <div
               className={cn(
-                "relative flex",
-                // Horizontal layout
-                isHorizontal && "flex-col items-center text-center",
-                // Vertical layout
-                isVertical && "flex-row items-start gap-4 pb-8 last:pb-0",
-                // Responsive layout
-                isResponsive &&
-                  "flex-row items-start gap-4 pb-8 last:pb-0 md:flex-col md:items-center md:gap-0 md:pb-0 md:text-center",
+                "group relative grid items-start py-9",
+                "grid-cols-[56px_1fr] gap-5 sm:grid-cols-[96px_1fr] sm:gap-8",
+                !isLast && "border-b border-foreground/[0.06]",
               )}
             >
-              {/* Number circle + connector wrapper */}
-              <div
-                className={cn(
-                  "relative flex shrink-0",
-                  isHorizontal && "mb-4 w-full items-center justify-center",
-                  isVertical && "flex-col items-center",
-                  isResponsive &&
-                    "flex-col items-center md:mb-4 md:w-full md:flex-row md:justify-center",
-                )}
-              >
-                {/* Number circle — oversized */}
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-white shadow-card">
-                  <span className="font-display text-heading-sm font-bold">
-                    {step.number}
-                  </span>
+              {/* Number circle */}
+              <div className="flex justify-center">
+                <div
+                  className={cn(
+                    "relative z-10 flex items-center justify-center",
+                    "h-14 w-14 sm:h-[72px] sm:w-[72px]",
+                    "rounded-full border-[2.5px] bg-surface",
+                    "shadow-[0_0_0_8px_var(--surface)]",
+                    "font-display font-extrabold text-xl sm:text-[26px]",
+                    "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    "group-hover:scale-110 group-hover:shadow-[0_0_0_10px_var(--surface),0_12px_32px_-4px_rgba(0,0,0,0.12)]",
+                    colors.border,
+                    colors.bg,
+                    colors.text,
+                  )}
+                >
+                  {step.number}
                 </div>
-
-                {/* Connecting line — horizontal */}
-                {!isLast && (
-                  <>
-                    {/* Line for horizontal / responsive desktop */}
-                    <div
-                      className={cn(
-                        "border-dashed border-primary-300",
-                        isHorizontal &&
-                          "absolute left-[calc(50%+32px)] top-1/2 h-0 w-[calc(100%-64px)] -translate-y-1/2 border-t-2",
-                        isVertical && "mt-1 h-full w-0 border-l-2",
-                        isResponsive &&
-                          "mt-1 h-full w-0 border-l-2 md:mt-0 md:absolute md:left-[calc(50%+32px)] md:top-1/2 md:h-0 md:w-[calc(100%-64px)] md:-translate-y-1/2 md:border-l-0 md:border-t-2",
-                      )}
-                      aria-hidden="true"
-                    />
-                  </>
-                )}
               </div>
 
               {/* Content */}
-              <div
-                className={cn(
-                  isHorizontal && "px-3",
-                  isVertical && "flex-1",
-                  isResponsive && "flex-1 md:mt-4 md:px-3",
-                )}
-              >
-                {/* Optional icon */}
-                {step.icon && (
-                  <div
-                    className={cn(
-                      "mb-2 text-secondary",
-                      isHorizontal && "flex justify-center",
-                      isResponsive && "md:flex md:justify-center",
-                    )}
-                  >
-                    {step.icon}
-                  </div>
-                )}
-
-                <h3 className="text-heading-sm font-display font-semibold text-foreground">
+              <div className="pt-2.5">
+                <h3 className="font-display text-body-lg font-bold text-foreground tracking-[-0.3px] sm:text-[20px]">
                   {step.title}
                 </h3>
-                <p className="mt-1 text-body text-muted">{step.description}</p>
+                <p className="mt-2 text-body-sm text-muted leading-[1.75] max-w-[520px]">
+                  {step.description}
+                </p>
+                {step.tag && (
+                  <span
+                    className={cn(
+                      "mt-3.5 inline-flex font-mono text-caption font-semibold tracking-[0.04em] px-3 py-1.5 rounded-full",
+                      tagColors[color],
+                    )}
+                  >
+                    {step.tag}
+                  </span>
+                )}
               </div>
             </div>
           </ScrollReveal>

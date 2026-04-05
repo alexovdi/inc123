@@ -1,36 +1,25 @@
-"use client";
-
-import { Eye, Scale, ShieldCheck } from "lucide-react";
+import { Eye, AlertCircle, Lock } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 
 const columns = [
   {
     icon: Eye,
-    number: "01",
-    title: "Your Name Is Public",
+    title: "Public Exposure",
     description:
-      "When you form an LLC or corporation, your name, address, and role appear on state records. Anyone — lawsuits, competitors, data brokers — can look it up in seconds.",
-    accent: "text-destructive",
-    accentBg: "bg-destructive/10",
+      "Standard formation puts your name on state filings. Anyone with an internet connection can find your ownership, address, and business details.",
   },
   {
-    icon: Scale,
-    number: "02",
-    title: "That Makes You a Target",
+    icon: AlertCircle,
+    title: "Lawsuit Targeting",
     description:
-      "Visible ownership invites frivolous lawsuits, asset searches, and unwanted solicitation. Business owners with public records are 3x more likely to face nuisance litigation.",
-    accent: "text-warning",
-    accentBg: "bg-warning/10",
+      "Visible ownership makes you a target. Frivolous lawsuits cost $500K+ to defend on average. Privacy is your first line of defense.",
   },
   {
-    icon: ShieldCheck,
-    number: "03",
-    title: "We Fix That",
+    icon: Lock,
+    title: "The Solution",
     description:
-      "Year-round nominees replace your name on every public filing. Offshore records keep your documents outside U.S. jurisdiction. Your ownership stays private — permanently.",
-    accent: "text-success",
-    accentBg: "bg-success/10",
+      "Year-round nominee officers keep your name off public records — not just at formation, but every day. Combine with offshore records storage for complete privacy.",
   },
 ];
 
@@ -41,47 +30,61 @@ export function PrivacyBridge({ className }: { className?: string }) {
         <ScrollReveal>
           <div className="text-center mb-12">
             <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
-              Why This Matters
+              Why It Matters
             </p>
             <h2 className="font-display text-display-sm font-semibold text-foreground max-w-[32ch] mx-auto">
-              Your Name Is on Public Records. It Doesn&rsquo;t Have to Be.
+              Your name is on public records.
+              <br />
+              It doesn&rsquo;t have to be.
             </h2>
+            <p className="mt-4 text-body-lg text-muted max-w-[52ch] mx-auto leading-relaxed">
+              When you form a business, your name, address, and ownership become
+              part of the public record. Anyone can look it up — competitors,
+              litigants, data brokers. There&rsquo;s a better way.
+            </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 max-w-[960px] mx-auto">
           {columns.map((col, index) => (
-            <ScrollReveal key={col.number} delay={index * 120}>
-              <div className="relative flex flex-col items-start gap-4 rounded-card bg-surface border border-border p-6 h-full">
-                {/* Number + Icon */}
-                <div className="flex items-center gap-3 w-full">
-                  <span className="font-mono text-caption font-bold text-muted/40">
-                    {col.number}
-                  </span>
-                  <div
-                    className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-full",
-                      col.accentBg,
-                    )}
-                  >
-                    <col.icon
-                      className={cn("h-5 w-5", col.accent)}
-                      strokeWidth={1.5}
-                    />
-                  </div>
+            <ScrollReveal key={col.title} delay={index * 120}>
+              <div className="text-center px-2">
+                {/* Icon */}
+                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/[0.05]">
+                  <col.icon
+                    className="h-6 w-6 text-secondary"
+                    strokeWidth={1.8}
+                  />
                 </div>
 
-                {/* Content */}
-                <h3 className="font-display text-heading-sm font-semibold text-foreground">
+                {/* Title */}
+                <h3 className="font-display text-body-lg font-bold text-foreground mb-2.5 tracking-[-0.3px]">
                   {col.title}
                 </h3>
-                <p className="text-body-sm text-muted leading-relaxed">
+
+                {/* Description */}
+                <p className="text-body-sm text-muted leading-[1.75]">
                   {col.description}
                 </p>
               </div>
             </ScrollReveal>
           ))}
         </div>
+
+        {/* CTA */}
+        <ScrollReveal delay={400}>
+          <div className="text-center mt-12">
+            <a
+              href="#wizard"
+              className="inline-flex items-center gap-2 text-body font-semibold text-secondary transition-colors hover:text-secondary/80"
+            >
+              Find your privacy package
+              <span className="transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

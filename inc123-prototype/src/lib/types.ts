@@ -134,6 +134,8 @@ export interface Step {
   id: string;
   label: string;
   description?: string;
+  tag?: string;
+  color?: "blue" | "green" | "amber" | "purple";
 }
 
 /** Comparison */

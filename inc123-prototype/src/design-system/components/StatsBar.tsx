@@ -2,9 +2,9 @@ import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 
 const stats = [
-  { value: "25", label: "Years of Specialized Privacy" },
-  { value: "10,000+", label: "Entities Formed" },
-  { value: "2", label: "States (Wyoming & Nevada)" },
+  { value: "25", label: "Years of Specialized Experience" },
+  { value: "Thousands", label: "Entities Formed" },
+  { value: "4", label: "States (WY · NV · CA · FL)" },
   { value: "365", label: "Days of Nominee Coverage" },
 ];
 
