@@ -208,7 +208,7 @@ export const snippets: Record<string, ComponentSnippets> = {
     basic: `<MegaMenu items={navigationItems} />`,
   },
   "mobile-nav": {
-    basic: `<MobileNav items={navItems} isOpen={isOpen} onClose={handleClose} phone="(775) 313-4155" />`,
+    basic: `<MobileNav items={navItems} isOpen={isOpen} onClose={handleClose} phone="1-800-553-0615" />`,
   },
   breadcrumbs: {
     basic: `<Breadcrumbs
@@ -223,7 +223,7 @@ export const snippets: Record<string, ComponentSnippets> = {
   "sticky-mobile-cta": {
     basic: `<StickyMobileCTA
   primaryCTA={{ children: "Get Started — $1,275", onClick: handleClick }}
-  phone="(775) 313-4155"
+  phone="1-800-553-0615"
 />`,
   },
   card: {
@@ -387,7 +387,7 @@ export const snippets: Record<string, ComponentSnippets> = {
   variant="pillar"
   packageShortcut={{ name: "Wyoming Gold LLC", price: "$1,275", period: "/one-time", href: "#" }}
   relatedPages={[{ title: "Anonymous LLC", href: "#" }]}
-  phoneNumber="(775) 313-4155"
+  phoneNumber="1-800-553-0615"
 />`,
   },
   "cross-pillar-cta": {

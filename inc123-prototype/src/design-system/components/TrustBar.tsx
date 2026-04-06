@@ -31,7 +31,7 @@ function TrustBar({ items, className }: TrustBarProps) {
   return (
     <section
       className={cn(
-        "border-y border-border py-10 lg:py-12 bg-surface",
+        "border-y border-border py-10 lg:py-12 bg-primary-50",
         className,
       )}
     >

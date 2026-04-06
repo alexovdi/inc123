@@ -118,7 +118,7 @@ export function StickyMobileCTADemo() {
       </p>
       <StickyMobileCTA
         primaryCTA={{ children: "Get Started — $1,275", onClick: () => {} }}
-        phone="(775) 313-4155"
+        phone="1-800-553-0615"
         showAfterScroll={200}
       />
     </div>

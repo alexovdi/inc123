@@ -57,10 +57,10 @@ export default function NotFound() {
           </RouterLink>{" "}
           or call{" "}
           <a
-            href="tel:+17753134155"
+            href="tel:+18005530615"
             className="font-medium text-secondary hover:text-secondary/80 transition-colors"
           >
-            (775) 313-4155
+            1-800-553-0615
           </a>
         </p>
       </div>

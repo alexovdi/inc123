@@ -61,7 +61,7 @@ export default function AboutPage() {
               label: "Contact Us",
               href: "/contact",
             }}
-            trustSignal="(775) 313-4155 — Call anytime"
+            trustSignal="1-800-553-0615 — Call anytime"
           />
         </div>
       </section>

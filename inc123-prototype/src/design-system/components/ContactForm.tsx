@@ -124,10 +124,10 @@ function ContactForm({ fields, className }: ContactFormProps) {
             Thank you for reaching out. We&apos;ll get back to you within 1
             business day. If your matter is urgent, call us directly at{" "}
             <a
-              href="tel:+17753134155"
+              href="tel:+18005530615"
               className="font-medium text-secondary hover:underline"
             >
-              (775) 313-4155
+              1-800-553-0615
             </a>
             .
           </p>

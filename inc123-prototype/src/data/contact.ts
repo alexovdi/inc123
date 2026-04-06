@@ -1,8 +1,10 @@
 import type { ContactData } from "@/lib/types";
 
 /** Canonical phone number constants — import these instead of hardcoding */
-export const PHONE_DISPLAY = "(775) 313-4155";
-export const PHONE_HREF = "tel:+17753134155";
+export const PHONE_DISPLAY = "1-800-553-0615";
+export const PHONE_HREF = "tel:+18005530615";
+export const PHONE_LOCAL_DISPLAY = "(775) 322-3500";
+export const PHONE_LOCAL_HREF = "tel:+17753223500";
 
 /* ------------------------------------------------
    Trust signals for the contact page
@@ -28,7 +30,7 @@ export const contactData: ContactData = {
       title: "Call Us Directly",
       description:
         "Speak directly with a privacy formation specialist. No phone tree — a real person answers. Monday–Friday, 9:00 AM – 5:00 PM Pacific. After hours? Leave a voicemail and we'll return your call the next business day.",
-      action: { label: "(775) 313-4155", href: "tel:+17753134155" },
+      action: { label: "1-800-553-0615", href: "tel:+18005530615" },
     },
     {
       type: "form",

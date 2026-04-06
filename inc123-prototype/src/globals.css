@@ -13,7 +13,7 @@
      ============================================ */
   :root {
     --primary: #374151;
-    --primary-50: #f9fafb;
+    --primary-50: #f3f4f6;
     --primary-100: #f3f4f6;
     --primary-200: #e5e7eb;
     --primary-300: #d1d5db;
@@ -86,11 +86,11 @@
     --primary-900: #152740;
 
     --secondary: #2563eb;
-    --accent: #d97706;
-    --accent-hover: #b45309;
+    --accent: #b45309;
+    --accent-hover: #92400e;
     --accent-text: #92400e;
     --link: #2563eb;
-    --success: #16a34a;
+    --success: #15803d;
     --destructive: #dc2626;
     --warning: #ea580c;
 
@@ -98,7 +98,7 @@
     --background: #f8fafc;
     --foreground: #0f172a;
     --footer-dark: #0f172a;
-    --muted: #64748b;
+    --muted: #475569;
     --border: #e2e8f0;
 
     /* Pillar colors — brand identity */
@@ -391,6 +391,35 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 

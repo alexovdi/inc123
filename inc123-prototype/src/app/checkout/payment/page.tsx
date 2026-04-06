@@ -253,7 +253,7 @@ export default function CheckoutPaymentPage() {
           </div>
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4 text-secondary" />
-            <span>(775) 313-4155</span>
+            <span>1-800-553-0615</span>
           </div>
         </div>
       </div>

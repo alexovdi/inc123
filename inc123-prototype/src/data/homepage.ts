@@ -25,7 +25,7 @@ export const homepageData: HomepageData = {
       href: "/privacy",
     },
     eyebrow: "Privacy & Asset Protection Specialists",
-    phone: "(775) 313-4155",
+    phone: "1-800-553-0615",
     consultationHref: "/contact",
     stats: [
       { value: "25", unit: "yrs", label: "Specialized Experience" },
@@ -77,7 +77,7 @@ export const homepageData: HomepageData = {
       label: "Choose Your Package",
       description:
         "Select Gold, Silver, or Bronze. Compare features, select your state, and pick the tier that fits your goals.",
-      tag: "Gold recommended for privacy",
+      tag: "Most clients choose Gold",
       color: "blue" as const,
     },
     {
@@ -110,7 +110,7 @@ export const homepageData: HomepageData = {
     description:
       "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox.",
     cta: { label: "Explore Compliance Services →", href: "/compliance" },
-    secondaryCTA: { label: "Call (775) 313-4155 →", href: "tel:+17753134155" },
+    secondaryCTA: { label: "Call 1-800-553-0615 →", href: "tel:+18005530615" },
   },
 };
 
@@ -125,25 +125,25 @@ export const pillarCardOverrides: Record<
     title: "Business Privacy",
     description:
       "Anonymous LLCs, year-round nominee services, offshore records custodian. Real privacy — not 'nominee for a day.'",
-    ctaLabel: "Explore Privacy Solutions →",
+    ctaLabel: "Explore Privacy Solutions",
   },
   asset: {
     title: "Asset Protection",
     description:
       "Charging order protection, holding structures, and multi-entity strategies for individuals with $500K+ in assets.",
-    ctaLabel: "Protect Your Assets →",
+    ctaLabel: "Protect Your Assets",
   },
   formation: {
     title: "Company Formation",
     description:
       "Expert LLC and Corporation formation in Wyoming and Nevada. Everything included — registered agent, EIN, operating agreement, state fees.",
-    ctaLabel: "Start Your Company →",
+    ctaLabel: "Start Your Company",
   },
   compliance: {
     title: "Compliance",
     description:
       "Registered agent, annual reports, corporate minutes — maintained every year. Sign up for a package and we take care of everything.",
-    ctaLabel: "Explore Compliance →",
+    ctaLabel: "Explore Compliance",
   },
 };
 
@@ -271,9 +271,9 @@ export const trustBarItems: TrustBarItem[] = [
     iconName: "Phone",
     colorClass: "text-success",
     bgClass: "bg-success/[0.05]",
-    value: "(775) 313-4155",
+    value: "1-800-553-0615",
     label: "Call us directly",
-    href: "tel:+17753134155",
+    href: "tel:+18005530615",
   },
   {
     iconName: "Check",

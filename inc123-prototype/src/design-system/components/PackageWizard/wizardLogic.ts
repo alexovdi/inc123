@@ -46,7 +46,7 @@ export function getRecommendation(input: RecommendationInput): WizardResult {
       return {
         primary: wizardPackages["nevada-gold"],
         contextNote:
-          "Because you want asset protection, we recommend our Nevada Gold package \u2014 it includes year-round nominees and the strongest charging order protection in the country.",
+          "Nevada Gold includes year-round nominees, charging order protection, and full compliance \u2014 everything you need in one package.",
         alternatives: [
           {
             pkg: wizardPackages["wyoming-gold"],
@@ -65,7 +65,7 @@ export function getRecommendation(input: RecommendationInput): WizardResult {
     return {
       primary: wizardPackages["wyoming-gold"],
       contextNote:
-        "Because you want asset protection, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records.",
+        "Wyoming Gold includes year-round nominees, offshore records storage, and full compliance \u2014 your name never appears on public records.",
       alternatives: [
         {
           pkg: wizardPackages["wyoming-silver"],
@@ -87,12 +87,12 @@ export function getRecommendation(input: RecommendationInput): WizardResult {
       return {
         primary: wizardPackages["wyoming-gold"],
         contextNote:
-          "Because you want privacy, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records.",
+          "Wyoming Gold includes year-round nominees, offshore records storage, and full compliance \u2014 your name never appears on public records.",
         alternatives: [
           {
             pkg: wizardPackages["wyoming-silver"],
             reason:
-              "Same compliance, same virtual office \u2014 without nominee privacy. Save $400.",
+              "Same compliance, same virtual office \u2014 without nominees. Save $400.",
           },
           {
             pkg: wizardPackages["nevada-gold"],
@@ -178,7 +178,7 @@ export function getRecommendation(input: RecommendationInput): WizardResult {
       return {
         primary: wizardPackages["wyoming-gold"],
         contextNote:
-          "Because you want privacy, we recommend our Gold package \u2014 it includes year-round nominees so your personal name never appears on public records. We\u2019ll also help with your state registration.",
+          "Wyoming Gold includes year-round nominees and full compliance \u2014 your name stays off all public records. We\u2019ll also help with your state registration.",
         addonNote:
           "You\u2019ll also need foreign registration in your state. We\u2019ll help you set that up after checkout.",
         alternatives: [
@@ -219,7 +219,8 @@ export function getRecommendation(input: RecommendationInput): WizardResult {
   // Fallback (shouldn't reach here)
   return {
     primary: wizardPackages["wyoming-gold"],
-    contextNote: "Our most popular package for privacy and formation.",
+    contextNote:
+      "Our most popular package \u2014 includes formation, nominees, and full compliance.",
     alternatives: [],
   };
 }

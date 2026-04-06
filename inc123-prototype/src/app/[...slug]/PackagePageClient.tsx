@@ -35,7 +35,7 @@ const trustItems = [
   { icon: "Clock", value: "25+ Years", label: "Trusted Since 2000" },
   { icon: "Users", value: "US-Based", label: "Real People, Real Support" },
   { icon: "ShieldCheck", value: "30-Day", label: "Money-Back Guarantee" },
-  { icon: "Phone", value: "(775) 313-4155", label: "Talk to a Specialist" },
+  { icon: "Phone", value: "1-800-553-0615", label: "Talk to a Specialist" },
   { icon: "Bitcoin", value: "Crypto", label: "Accepted" },
   { icon: "Lock", value: "Secure", label: "Checkout" },
 ];
@@ -351,7 +351,7 @@ export function PackagePageClient({
             label: "Schedule a Consultation",
             href: "/contact",
           }}
-          trustSignal="(775) 313-4155 · Talk to a Specialist"
+          trustSignal="1-800-553-0615 · Talk to a Specialist"
           variant="dark"
           layout="centered"
         />

@@ -39,7 +39,7 @@ export default function PrivacyPillarPage() {
             href: "#packages",
           }}
           trustSnippet={pillar.trustElement}
-          safetyNet="Have questions? Call (775) 313-4155"
+          safetyNet="Have questions? Call 1-800-553-0615"
         />
       }
       sidebar={
@@ -61,7 +61,7 @@ export default function PrivacyPillarPage() {
             title: "Also Relevant: Asset Protection",
             href: "/asset-protection",
           }}
-          phoneNumber="(775) 313-4155"
+          phoneNumber="1-800-553-0615"
         />
       }
     >
@@ -323,7 +323,7 @@ export default function PrivacyPillarPage() {
             consultationCTA={{
               label: "Not sure yet? Schedule a free consultation",
               href: "/contact",
-              phone: "(775) 313-4155",
+              phone: "1-800-553-0615",
             }}
           />
         </section>

@@ -55,7 +55,7 @@ const v3Hero = {
     "Money-Back Guarantee",
   ],
   eyebrow: "Trusted Since 2000 · Privacy-Focused Formation",
-  safetyNet: "Have questions? Call (775) 313-4155",
+  safetyNet: "Have questions? Call 1-800-553-0615",
 };
 
 /* ------------------------------------------------
@@ -333,7 +333,7 @@ const v3ComplianceCallout = {
   description:
     "Registered agent renewals, annual reports, corporate minutes, virtual office upgrades, and domestication services. Ongoing support — not just a mailbox.",
   cta: { label: "Explore Compliance Services →", href: "/compliance" },
-  secondaryCTA: { label: "Call (775) 313-4155 →", href: "tel:+17753134155" },
+  secondaryCTA: { label: "Call 1-800-553-0615 →", href: "tel:+18005530615" },
 };
 
 /* ------------------------------------------------
@@ -775,7 +775,7 @@ export default function HomepageV3Archive() {
                 label: "Schedule a Consultation →",
                 href: "/contact",
               }}
-              trustSignal="(775) 313-4155 — Call anytime"
+              trustSignal="1-800-553-0615 — Call anytime"
             />
           </ScrollReveal>
         </div>
@@ -787,7 +787,7 @@ export default function HomepageV3Archive() {
           children: "Find Your Package",
           href: "#wizard",
         }}
-        phone="(775) 313-4155"
+        phone="1-800-553-0615"
       />
     </>
   );

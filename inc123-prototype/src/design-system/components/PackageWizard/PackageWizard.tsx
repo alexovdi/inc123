@@ -112,7 +112,8 @@ type WizardAction =
   | { type: "SELECT_BM_STATE"; state: WizardOperatingState }
   | { type: "SELECT_PRIVACY"; wantsPrivacy: boolean }
   | { type: "BACK" }
-  | { type: "RESET" };
+  | { type: "RESET" }
+  | { type: "COLLAPSE" };
 
 const initialState: WizardData = {
   currentStep: "start",
@@ -235,6 +236,9 @@ function wizardReducer(data: WizardData, action: WizardAction): WizardData {
 
     case "RESET":
       return { ...initialState, collapsed: false };
+
+    case "COLLAPSE":
+      return { ...initialState, collapsed: true };
 
     default:
       return data;
@@ -482,15 +486,36 @@ export function PackageWizard() {
               Package Finder
             </p>
           </div>
-          {!isResult && (
+          <div className="flex items-center gap-4">
+            {!isResult && (
+              <button
+                type="button"
+                onClick={() => dispatch({ type: "RESET" })}
+                className="text-caption font-medium text-muted transition-colors hover:text-secondary"
+              >
+                Start over
+              </button>
+            )}
             <button
               type="button"
-              onClick={() => dispatch({ type: "RESET" })}
-              className="text-caption font-medium text-muted transition-colors hover:text-secondary"
+              onClick={() => dispatch({ type: "COLLAPSE" })}
+              className="text-muted transition-colors hover:text-foreground"
+              aria-label="Minimize wizard"
             >
-              Start over
+              <svg
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
             </button>
-          )}
+          </div>
         </div>
       </div>
 

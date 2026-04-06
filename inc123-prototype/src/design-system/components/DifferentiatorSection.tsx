@@ -60,7 +60,7 @@ function DifferentiatorSection({
         <ScrollReveal>
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] rounded-3xl overflow-hidden bg-white/[0.06] border border-white/[0.12] mb-4 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_64px_-12px_rgba(0,0,0,0.15)]">
             <div className="p-10 lg:p-12">
-              <div className="font-mono type-display-xl font-semibold text-secondary/30 leading-none tracking-[-3px] mb-3">
+              <div className="font-mono type-display-xl font-semibold text-white/60 leading-none tracking-[-3px] mb-3">
                 365
               </div>
               <h3 className="font-display text-heading font-extrabold text-white mb-3.5">
@@ -86,7 +86,7 @@ function DifferentiatorSection({
                 </p>
               </div>
               <div className="w-full rounded-2xl bg-accent/[0.08] border border-accent/15 p-4 text-center">
-                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-accent mb-2">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/70 mb-2">
                   Incorporate123 Gold
                 </p>
                 <p className="font-mono text-heading font-semibold text-white">
@@ -141,7 +141,7 @@ function DifferentiatorSection({
               </p>
               <p className="font-mono text-heading-lg font-semibold text-white/60 tracking-tight leading-none">
                 $400–$5,000
-                <span className="text-body-sm text-white/55">/yr</span>
+                <span className="text-body-sm text-white/60">/yr</span>
               </p>
               <p className="text-body text-white/60 mt-1.5">
                 For nominee services alone

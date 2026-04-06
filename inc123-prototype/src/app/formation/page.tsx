@@ -60,7 +60,7 @@ export default function FormationPillarPage() {
             title: "Also Relevant: Compliance",
             href: "/compliance",
           }}
-          phoneNumber="(775) 313-4155"
+          phoneNumber="1-800-553-0615"
         />
       }
     >
@@ -330,7 +330,7 @@ export default function FormationPillarPage() {
             consultationCTA={{
               label: "Not sure which package? Schedule a free consultation",
               href: "/contact",
-              phone: "(775) 313-4155",
+              phone: "1-800-553-0615",
             }}
           />
         </section>

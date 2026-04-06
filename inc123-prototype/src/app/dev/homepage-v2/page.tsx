@@ -37,7 +37,7 @@ function OrganizationSchema() {
     description:
       "Privacy-focused business formation specialists offering anonymous LLCs, nominee services, asset protection structures, and ongoing compliance in Wyoming, Nevada, California, and Florida. 25 years of expertise.",
     foundingDate: "2000",
-    telephone: "(775) 313-4155",
+    telephone: "1-800-553-0615",
     email: "info@incorporate123.co",
     address: {
       "@type": "PostalAddress",
@@ -272,7 +272,7 @@ export default function HomePage() {
                 <Icon name="ArrowRight" size="sm" />
               </RouterLink>
               <p className="text-body-sm text-muted">
-                Not sure which package? Call (775) 313-4155 for a free
+                Not sure which package? Call 1-800-553-0615 for a free
                 consultation.
               </p>
             </div>
@@ -437,7 +437,7 @@ export default function HomePage() {
                 label: "Schedule a Consultation →",
                 href: "/contact",
               }}
-              trustSignal="(775) 313-4155 — Call anytime"
+              trustSignal="1-800-553-0615 — Call anytime"
             />
           </ScrollReveal>
         </div>

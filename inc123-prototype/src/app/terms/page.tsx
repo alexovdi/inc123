@@ -207,10 +207,10 @@ export default function TermsPage() {
                 <br />
                 Phone:{" "}
                 <a
-                  href="tel:+17753134155"
+                  href="tel:+18005530615"
                   className="text-secondary hover:underline"
                 >
-                  (775) 313-4155
+                  1-800-553-0615
                 </a>
                 <br />
                 Email:{" "}
@@ -241,7 +241,7 @@ export default function TermsPage() {
               label: "Contact Us",
               href: "/contact",
             }}
-            trustSignal="(775) 313-4155 — Call anytime"
+            trustSignal="1-800-553-0615 — Call anytime"
           />
         </div>
       </section>

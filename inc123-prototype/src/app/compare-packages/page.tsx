@@ -303,8 +303,8 @@ export default function ComparePackagesPage() {
               href: "/contact",
             }}
             secondaryCTA={{
-              label: "Call (775) 313-4155",
-              href: "tel:7753134155",
+              label: "Call 1-800-553-0615",
+              href: "tel:+18005530615",
             }}
             trustSignal="25+ Years of Formation Experience"
           />

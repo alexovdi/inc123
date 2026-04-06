@@ -47,7 +47,7 @@ function PillarCard({
     <a
       href={href}
       className={cn(
-        "group block bg-surface rounded-card border border-border border-t-4 p-6",
+        "group flex flex-col bg-surface rounded-card border border-border border-t-4 p-6 h-full",
         "shadow-card hover:shadow-card-hover hover:-translate-y-1.5",
         "transition-all duration-300 ease-out",
         pillarBorderTopMap[pillar],
@@ -74,7 +74,7 @@ function PillarCard({
 
       {/* Services list */}
       {services.length > 0 && (
-        <ul className="mt-4 space-y-1.5">
+        <ul className="mt-4 space-y-1.5 flex-1">
           {services.map((service) => (
             <li
               key={service}

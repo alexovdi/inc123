@@ -1,6 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
 
-import { Button } from "@/design-system/primitives/Button";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { HomepageHero } from "@/design-system/components/HomepageHero";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
@@ -12,7 +11,6 @@ import { TrustTicker } from "@/design-system/components/TrustTicker";
 import { DifferentiatorSection } from "@/design-system/components/DifferentiatorSection";
 import { TestimonialGrid } from "@/design-system/components/TestimonialGrid";
 import { PackageComparison } from "@/design-system/components/PackageComparison";
-import { TrustBar } from "@/design-system/components/TrustBar";
 import { FinalCTA } from "@/design-system/components/FinalCTA";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
 
@@ -21,9 +19,7 @@ import {
   homepageData,
   pillarCardOverrides,
   homepageTestimonialGrid,
-  trustBarItems,
   differentiatorCards,
-  packageComparisonCards,
 } from "@/data/homepage";
 
 /* ------------------------------------------------
@@ -40,7 +36,7 @@ function OrganizationSchema() {
     description:
       "Privacy-focused business formation specialists offering anonymous LLCs, nominee services, asset protection structures, and ongoing compliance in Wyoming, Nevada, California, and Florida. 25 years of expertise.",
     foundingDate: "2000",
-    telephone: "(775) 313-4155",
+    telephone: "1-800-553-0615",
     email: "info@incorporate123.co",
     address: {
       "@type": "PostalAddress",
@@ -143,7 +139,11 @@ export default function HomePage() {
               {pillars.map((pillar, index) => {
                 const override = pillarCardOverrides[pillar.id];
                 return (
-                  <ScrollReveal key={pillar.id} delay={index * 80}>
+                  <ScrollReveal
+                    key={pillar.id}
+                    delay={index * 80}
+                    className="h-full"
+                  >
                     <PillarCard
                       pillar={pillar.id}
                       icon={pillar.icon}
@@ -157,94 +157,54 @@ export default function HomePage() {
                 );
               })}
             </div>
+
+            {/* Wizard — tucked below pillar cards */}
+            <div className="mt-12" id="wizard">
+              <ScrollReveal>
+                <PackageWizard />
+              </ScrollReveal>
+
+              {/* Explore links */}
+              <ScrollReveal delay={200}>
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+                  <RouterLink
+                    to="/privacy"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-[var(--pillar-privacy)]" />
+                    Explore Privacy
+                  </RouterLink>
+                  <RouterLink
+                    to="/asset-protection"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-[var(--pillar-asset)]" />
+                    Asset Protection
+                  </RouterLink>
+                  <RouterLink
+                    to="/formation"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-[var(--pillar-formation)]" />
+                    Company Formation
+                  </RouterLink>
+                  <RouterLink
+                    to="/compare-packages"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-muted/40" />
+                    Compare All Packages
+                  </RouterLink>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </section>
 
         {/* ==========================================
-            Section 4: Package Wizard — decide
-            — interactive recommendation after exploring
+            Section 5: How It Works — process before pricing
             ========================================== */}
-        <section className="bg-background py-section-y" id="wizard">
-          <div className="mx-auto max-w-content px-container-x">
-            <ScrollReveal>
-              <SectionHeader
-                eyebrow="Guided Recommendation"
-                title="Get a personalized recommendation in 60 seconds"
-                subtitle="Two questions to find your perfect package. No upsells, no hidden fees."
-                className="mb-10"
-              />
-            </ScrollReveal>
-
-            <ScrollReveal delay={100}>
-              <PackageWizard />
-            </ScrollReveal>
-
-            {/* Explore links */}
-            <ScrollReveal delay={200}>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-                <RouterLink
-                  to="/privacy"
-                  className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
-                >
-                  <span className="h-2 w-2 rounded-full bg-[var(--pillar-privacy)]" />
-                  Explore Privacy
-                </RouterLink>
-                <RouterLink
-                  to="/asset-protection"
-                  className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
-                >
-                  <span className="h-2 w-2 rounded-full bg-[var(--pillar-asset)]" />
-                  Asset Protection
-                </RouterLink>
-                <RouterLink
-                  to="/formation"
-                  className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
-                >
-                  <span className="h-2 w-2 rounded-full bg-[var(--pillar-formation)]" />
-                  Company Formation
-                </RouterLink>
-                <RouterLink
-                  to="/compare-packages"
-                  className="inline-flex items-center gap-2 text-body-sm font-medium text-muted transition-colors hover:text-secondary"
-                >
-                  <span className="h-2 w-2 rounded-full bg-muted/40" />
-                  Compare All Packages
-                </RouterLink>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* ==========================================
-            Section 5: Package Comparison — Silver/Gold
-            ========================================== */}
-        <PackageComparison cards={packageComparisonCards} />
-
-        {/* ==========================================
-            Section 6: Differentiators — dark section
-            ========================================== */}
-        <DifferentiatorSection cards={differentiatorCards} />
-
-        {/* ==========================================
-            Section 7: Testimonials — static grid
-            ========================================== */}
-        <TestimonialGrid testimonials={homepageTestimonialGrid} />
-
-        {/* ==========================================
-            Section 8: Trust Bar
-            ========================================== */}
-        <TrustBar items={trustBarItems} />
-
-        {/* ==========================================
-            Section 9: How It Works — vertical timeline
-            ========================================== */}
-        <section
-          className="py-section-y"
-          style={{
-            background:
-              "linear-gradient(180deg, var(--primary-50) 0%, var(--background) 100%)",
-          }}
-        >
+        <section className="py-section-y bg-background">
           <div className="mx-auto max-w-content px-container-x">
             <ScrollReveal>
               <SectionHeader
@@ -264,32 +224,26 @@ export default function HomePage() {
                 color: step.color,
               }))}
             />
-
-            {/* CTA */}
-            <ScrollReveal delay={500}>
-              <div className="text-center mt-14">
-                <Button variant="cta" size="lg" asChild className="rounded-xl">
-                  <RouterLink to="/compare-packages">
-                    View Packages & Pricing →
-                  </RouterLink>
-                </Button>
-                <p className="mt-4 text-body text-muted">
-                  Or{" "}
-                  <RouterLink
-                    to="/contact"
-                    className="text-secondary font-medium underline underline-offset-[3px] decoration-border hover:decoration-secondary"
-                  >
-                    schedule a consultation
-                  </RouterLink>{" "}
-                  to talk it through
-                </p>
-              </div>
-            </ScrollReveal>
           </div>
         </section>
 
         {/* ==========================================
-            Section 10: Final CTA — dark with pricing
+            Section 6: Package Comparison — pricing
+            ========================================== */}
+        <PackageComparison className="bg-primary-50" />
+
+        {/* ==========================================
+            Section 7: Differentiators — "why us"
+            ========================================== */}
+        <DifferentiatorSection cards={differentiatorCards} />
+
+        {/* ==========================================
+            Section 8: Testimonials — social proof
+            ========================================== */}
+        <TestimonialGrid testimonials={homepageTestimonialGrid} />
+
+        {/* ==========================================
+            Section 9: Final CTA — close
             ========================================== */}
         <FinalCTA />
       </main>
@@ -303,7 +257,7 @@ export default function HomePage() {
           children: "Find Your Package",
           href: "#wizard",
         }}
-        phone="(775) 313-4155"
+        phone="1-800-553-0615"
       />
     </>
   );

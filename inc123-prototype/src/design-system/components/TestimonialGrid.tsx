@@ -44,12 +44,12 @@ function TestimonialGrid({ testimonials, className }: TestimonialGridProps) {
           />
         </ScrollReveal>
 
-        <div className="grid gap-5 md:grid-cols-[1fr_1.2fr_1fr] items-start">
+        <div className="grid gap-5 md:grid-cols-[1fr_1.2fr_1fr] items-stretch">
           {testimonials.map((t, index) => (
-            <ScrollReveal key={index} delay={index * 120}>
+            <ScrollReveal key={index} delay={index * 120} className="h-full">
               <div
                 className={cn(
-                  "rounded-card-lg bg-surface border border-border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_72px_-14px_rgba(0,0,0,0.06)] hover:border-transparent focus-within:-translate-y-2 focus-within:shadow-[0_28px_72px_-14px_rgba(0,0,0,0.06)]",
+                  "rounded-card-lg bg-surface border border-border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_72px_-14px_rgba(0,0,0,0.06)] hover:border-transparent focus-within:-translate-y-2 focus-within:shadow-[0_28px_72px_-14px_rgba(0,0,0,0.06)] h-full flex flex-col",
                   t.featured
                     ? "p-10 lg:p-12 border-secondary/[0.08]"
                     : "p-8 lg:p-10",
@@ -78,12 +78,17 @@ function TestimonialGrid({ testimonials, className }: TestimonialGridProps) {
                 {/* Quote */}
                 <p
                   className={cn(
-                    "text-body text-muted leading-relaxed mb-7 quote-accent",
-                    quoteAccentColors[t.color],
+                    "text-body text-muted leading-relaxed mb-7 flex-1",
                     t.featured && "text-body-lg",
                   )}
                 >
+                  <span className="text-heading font-display font-bold text-secondary/30 leading-none">
+                    &ldquo;
+                  </span>
                   {t.quote}
+                  <span className="text-heading font-display font-bold text-secondary/30 leading-none">
+                    &rdquo;
+                  </span>
                 </p>
 
                 {/* Author */}

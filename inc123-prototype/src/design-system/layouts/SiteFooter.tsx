@@ -68,11 +68,10 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
       {/* Comparison links */}
       {col.comparisons && col.comparisons.length > 0 && (
         <div className="mt-3">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-caption font-semibold uppercase tracking-wider text-white/20">
-              Compare
-            </span>
-            <span className="flex-1 h-px bg-white/[0.06]" />
+          <div className="flex items-center gap-2 mb-2 mt-1">
+            <span className="flex-1 h-px bg-white/[0.10]" />
+            <span className="text-caption text-white/50">Compare</span>
+            <span className="flex-1 h-px bg-white/[0.10]" />
           </div>
           <ul className="space-y-2">
             {col.comparisons.map((link) => (
@@ -95,7 +94,7 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
           {col.sections.map((section) => (
             <div key={section.heading || "other"}>
               {section.heading && (
-                <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/25">
+                <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/50">
                   {section.heading}
                 </h4>
               )}
@@ -142,7 +141,7 @@ function FooterAccordionItem({ col }: { col: FooterColumn }) {
         </h3>
         <ChevronDown
           className={cn(
-            "h-4 w-4 text-white/30 transition-transform duration-200",
+            "h-4 w-4 text-white/50 transition-transform duration-200",
             isOpen && "rotate-180",
           )}
           aria-hidden="true"
@@ -189,26 +188,28 @@ export function SiteFooter({
                     123
                   </span>
                 </RouterLink>
-                <p className="mt-1.5 text-body-sm text-white/40">
+                <p className="mt-1.5 text-body-sm text-white/50">
                   {brand.tagline}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3">
-                {brand.ctas.map((cta) => (
-                  <RouterLink
-                    key={cta.href}
-                    to={cta.href}
-                    className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/20 text-body-sm font-medium text-white/70 transition-all hover:border-white/40 hover:text-white"
-                  >
-                    {cta.label}
-                  </RouterLink>
-                ))}
+              <div className="flex flex-wrap items-center gap-5">
                 <a
                   href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
-                  className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/20 text-body-sm font-medium text-white/70 transition-all hover:border-white/40 hover:text-white"
+                  className="text-body-sm font-medium text-white/50 transition-colors hover:text-white"
                 >
                   {company.phone}
                 </a>
+                <div className="flex flex-wrap gap-3">
+                  {brand.ctas.map((cta) => (
+                    <RouterLink
+                      key={cta.href}
+                      to={cta.href}
+                      className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/20 text-body-sm font-medium text-white/70 transition-all hover:border-white/40 hover:text-white"
+                    >
+                      {cta.label}
+                    </RouterLink>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -221,7 +222,7 @@ export function SiteFooter({
         <div className="hidden lg:grid lg:grid-cols-6 gap-6">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="mb-4 text-caption font-semibold uppercase tracking-wider text-white/80">
+              <h3 className="mb-4 text-body-sm font-bold uppercase tracking-wider text-white/80">
                 {col.title}
               </h3>
               <FooterColumnContent col={col} />
@@ -233,7 +234,7 @@ export function SiteFooter({
         <div className="hidden sm:grid sm:grid-cols-3 gap-6 lg:hidden">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="mb-4 text-caption font-semibold uppercase tracking-wider text-white/80">
+              <h3 className="mb-4 text-body-sm font-bold uppercase tracking-wider text-white/80">
                 {col.title}
               </h3>
               <FooterColumnContent col={col} />
@@ -252,35 +253,47 @@ export function SiteFooter({
       {/* Legal Strip */}
       <div className="border-t border-white/[0.08]">
         <div className="mx-auto max-w-wide px-container-x py-6">
-          <div className="flex flex-col items-center gap-4">
-            {/* Copyright + Legal Links */}
-            <div className="flex flex-wrap items-center justify-center gap-3 text-caption text-white/30">
-              <span>
-                &copy; {new Date().getFullYear()} {company.name}
-              </span>
-              <span className="text-white/15">·</span>
-              {legal.map((link, i) => (
-                <span key={link.href} className="flex items-center gap-3">
-                  <RouterLink
-                    to={link.href}
-                    className="text-white/40 transition-colors hover:text-white/70 hover:underline"
-                  >
-                    {link.label}
-                  </RouterLink>
-                  {i < legal.length - 1 && (
-                    <span className="text-white/15">·</span>
-                  )}
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            {/* Left — copyright, legal links, disclaimer */}
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-3 text-caption text-white/50">
+                <span>
+                  &copy; {new Date().getFullYear()} {company.name}
                 </span>
-              ))}
+                <span className="text-white/15">·</span>
+                {legal.map((link, i) => (
+                  <span key={link.href} className="flex items-center gap-3">
+                    <RouterLink
+                      to={link.href}
+                      className="text-white/50 underline underline-offset-2 decoration-white/30 transition-colors hover:text-white/70 hover:decoration-white/50"
+                    >
+                      {link.label}
+                    </RouterLink>
+                    {i < legal.length - 1 && (
+                      <span className="text-white/15">·</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+              <p className="text-caption text-white/50 whitespace-nowrap">
+                Not a law firm, bank, or CPA.{" "}
+                <RouterLink
+                  to="/legal"
+                  className="text-white/50 underline underline-offset-2 decoration-white/30 hover:text-white/70 hover:decoration-white/50 transition-colors"
+                >
+                  Full legal disclaimer
+                </RouterLink>{" "}
+                · All prices in USD · Operated by Fidelity Solutions Ltd
+              </p>
             </div>
 
-            {/* Crypto badges */}
+            {/* Right — crypto badges */}
             {crypto && crypto.length > 0 && (
-              <div className="flex gap-2.5 mt-1">
+              <div className="flex gap-2.5 shrink-0">
                 {crypto.map((symbol) => (
                   <span
                     key={symbol}
-                    className="text-caption font-bold tracking-wide text-white/25 bg-white/[0.05] px-2 py-1 rounded"
+                    className="text-caption font-bold tracking-wide text-white/50 bg-white/[0.05] px-2 py-1 rounded"
                   >
                     {symbol}
                   </span>

@@ -292,7 +292,7 @@ export function TierPageClient({ tier }: TierPageClientProps) {
             label: "Schedule a Consultation",
             href: "/contact",
           }}
-          trustSignal="(775) 313-4155 · Talk to a Specialist"
+          trustSignal="1-800-553-0615 · Talk to a Specialist"
           variant="dark"
           layout="centered"
         />

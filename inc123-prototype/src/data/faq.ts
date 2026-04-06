@@ -510,14 +510,14 @@ export const faqItems: FAQItem[] = [
     id: "faq-43",
     question: "Where are you based?",
     answer:
-      "We're based in Nevada, with close working relationships with the Nevada Secretary of State's office. Contact us by phone at (775) 313-4155 or email during business hours, Monday–Friday, 9:00 AM – 5:00 PM Pacific.",
+      "We're based in Nevada, with close working relationships with the Nevada Secretary of State's office. Contact us by phone at 1-800-553-0615 or email during business hours, Monday–Friday, 9:00 AM – 5:00 PM Pacific.",
     category: "general",
   },
   {
     id: "faq-44",
     question: "Can I call and speak to someone?",
     answer:
-      "Yes. Call (775) 313-4155. A real person answers — no phone tree, no chatbot. We're happy to discuss your needs and recommend the right package before you commit. No pressure, no obligation.",
+      "Yes. Call 1-800-553-0615. A real person answers — no phone tree, no chatbot. We're happy to discuss your needs and recommend the right package before you commit. No pressure, no obligation.",
     category: "general",
   },
   {

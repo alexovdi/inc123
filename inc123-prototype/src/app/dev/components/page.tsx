@@ -1019,7 +1019,7 @@ export default function ComponentShowcase() {
               consultationCTA={{
                 label: "Talk to us instead",
                 href: "#",
-                phone: "(775) 313-4155",
+                phone: "1-800-553-0615",
               }}
             />
           </Section>
@@ -1276,7 +1276,7 @@ export default function ComponentShowcase() {
                   title: "Asset Protection",
                   href: "#",
                 }}
-                phoneNumber="(775) 313-4155"
+                phoneNumber="1-800-553-0615"
               />
             </div>
           </Section>
@@ -1377,7 +1377,7 @@ export default function ComponentShowcase() {
                   children: "Get Started — $1,275",
                   onClick: () => {},
                 }}
-                phone="(775) 313-4155"
+                phone="1-800-553-0615"
                 showAfterScroll={200}
               />
             </div>

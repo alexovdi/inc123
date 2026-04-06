@@ -60,7 +60,7 @@ export default function AssetProtectionPillarPage() {
             title: "Also Relevant: Business Privacy",
             href: "/privacy",
           }}
-          phoneNumber="(775) 313-4155"
+          phoneNumber="1-800-553-0615"
         />
       }
     >
@@ -320,7 +320,7 @@ export default function AssetProtectionPillarPage() {
             consultationCTA={{
               label: "Not sure yet? Schedule a free consultation",
               href: "/contact",
-              phone: "(775) 313-4155",
+              phone: "1-800-553-0615",
             }}
           />
         </section>

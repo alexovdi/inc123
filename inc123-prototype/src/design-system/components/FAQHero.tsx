@@ -17,7 +17,7 @@ export interface FAQHeroProps {
    ------------------------------------------------ */
 function FAQHero({
   headline = "Frequently Asked Questions",
-  subheadline = "Answers to common questions about business privacy, asset protection, LLC formation, compliance, and our services. Can\u2019t find what you\u2019re looking for? Call us at (775) 313-4155.",
+  subheadline = "Answers to common questions about business privacy, asset protection, LLC formation, compliance, and our services. Can\u2019t find what you\u2019re looking for? Call us at 1-800-553-0615.",
   className,
 }: FAQHeroProps) {
   return (

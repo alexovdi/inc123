@@ -194,10 +194,10 @@ export default function FAQPage() {
               <p className="mt-2 text-body text-muted">
                 Try different keywords or call us at{" "}
                 <a
-                  href="tel:+17753134155"
+                  href="tel:+18005530615"
                   className="font-medium text-secondary hover:underline"
                 >
-                  (775) 313-4155
+                  1-800-553-0615
                 </a>
                 .
               </p>
@@ -271,8 +271,8 @@ export default function FAQPage() {
         heading="Still Have Questions?"
         description="Our team has 25 years of experience with Wyoming and Nevada privacy formation. Call us directly — no chatbots, no phone trees."
         primaryCTA={{
-          label: "Call (775) 313-4155",
-          href: "tel:+17753134155",
+          label: "Call 1-800-553-0615",
+          href: "tel:+18005530615",
         }}
         secondaryCTA={{
           label: "Send Us a Message",

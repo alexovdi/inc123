@@ -100,7 +100,7 @@ export const aboutData: AboutData = {
   ],
   office: {
     address: "Reno, Nevada",
-    phone: "(775) 313-4155",
+    phone: "1-800-553-0615",
     email: "info@incorporate123.com",
     hours: "Monday – Friday, 9:00 AM – 5:00 PM Pacific",
     leadLine:

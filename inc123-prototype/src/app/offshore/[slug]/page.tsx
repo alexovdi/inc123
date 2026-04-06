@@ -133,10 +133,10 @@ export default function OffshoreJurisdictionPage() {
             <p className="text-body text-white/60">
               Or call{" "}
               <a
-                href="tel:+17753134155"
+                href="tel:+18005530615"
                 className="font-medium text-white/90 hover:text-white transition-colors"
               >
-                (775) 313-4155
+                1-800-553-0615
               </a>
             </p>
           </div>

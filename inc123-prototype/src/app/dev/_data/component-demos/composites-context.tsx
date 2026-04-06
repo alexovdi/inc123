@@ -36,7 +36,7 @@ export function ContentSidebarDemo() {
             title: "Asset Protection",
             href: "#",
           }}
-          phoneNumber="(775) 313-4155"
+          phoneNumber="1-800-553-0615"
         />
       </div>
       <SpecPanel
@@ -206,7 +206,7 @@ export function DualPackageCTADemo() {
         consultationCTA={{
           label: "Talk to us instead",
           href: "#",
-          phone: "(775) 313-4155",
+          phone: "1-800-553-0615",
         }}
       />
       <SpecPanel

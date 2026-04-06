@@ -6,7 +6,7 @@ import type { SiteNavigation } from "@/lib/types";
    Only exceptions: /offshore/* and /checkout/*
    ------------------------------------------------ */
 export const siteNavigation: SiteNavigation = {
-  phone: "(775) 313-4155",
+  phone: "1-800-553-0615",
   utility: [],
   main: [
     /* ---- Privacy (Blue) ---- */
@@ -431,7 +431,7 @@ export const footerNavigation = {
   company: {
     name: "Incorporate123",
     address: "Reno, Nevada",
-    phone: "(775) 313-4155",
+    phone: "1-800-553-0615",
     email: "info@incorporate123.com",
   },
   crypto: ["BTC", "ETH", "XRP", "LTC", "XMR"],

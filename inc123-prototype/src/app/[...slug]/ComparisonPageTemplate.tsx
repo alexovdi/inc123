@@ -243,7 +243,7 @@ export function ComparisonPageTemplate({
   const consultationCTA = {
     label: "Not sure yet? Schedule a free consultation",
     href: "/contact",
-    phone: "(775) 313-4155",
+    phone: "1-800-553-0615",
   };
 
   return (

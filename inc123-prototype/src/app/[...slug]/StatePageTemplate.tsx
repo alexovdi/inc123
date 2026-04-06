@@ -178,7 +178,7 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
                 }
               : undefined
           }
-          trustSignal="Or call us: (775) 313-4155"
+          trustSignal="Or call us: 1-800-553-0615"
         />
       </div>
     </StateHubLayout>

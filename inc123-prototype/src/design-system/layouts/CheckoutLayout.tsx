@@ -18,7 +18,7 @@ export function CheckoutLayout({
   totalSteps = 4,
   children,
   sidebar,
-  phone = "(775) 313-4155",
+  phone = "1-800-553-0615",
   className,
 }: CheckoutLayoutProps) {
   const steps = [
