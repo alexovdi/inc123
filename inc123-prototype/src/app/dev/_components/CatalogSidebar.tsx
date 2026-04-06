@@ -1,14 +1,11 @@
-"use client";
-
 import { useState } from "react";
-import NextLink from "next/link";
-import { usePathname } from "next/navigation";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import { getComponentsByCategory, registry } from "../_data/component-registry";
 
 export function CatalogSidebar() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const groups = getComponentsByCategory();
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
 
@@ -24,17 +21,17 @@ export function CatalogSidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto py-2">
-        <NextLink
-          href="/dev/components"
+        <RouterLink
+          to="/dev/components"
           className={cn(
             "flex items-center px-4 py-1.5 text-body-sm font-medium transition-colors",
             pathname === "/dev/components"
               ? "bg-secondary/10 text-secondary"
-              : "text-muted hover:text-foreground hover:bg-muted/10"
+              : "text-muted hover:text-foreground hover:bg-muted/10",
           )}
         >
           All Components
-        </NextLink>
+        </RouterLink>
 
         {groups.map((group) => {
           const isCollapsed = collapsed[group.id] ?? false;
@@ -54,7 +51,7 @@ export function CatalogSidebar() {
                 <ChevronDown
                   className={cn(
                     "h-3.5 w-3.5 transition-transform",
-                    isCollapsed && "-rotate-90"
+                    isCollapsed && "-rotate-90",
                   )}
                 />
               </button>
@@ -66,18 +63,18 @@ export function CatalogSidebar() {
                     const isActive = pathname === href;
 
                     return (
-                      <NextLink
+                      <RouterLink
                         key={entry.slug}
-                        href={href}
+                        to={href}
                         className={cn(
                           "block px-4 py-1 pl-6 text-body-sm transition-colors",
                           isActive
                             ? "bg-secondary/10 text-secondary font-medium"
-                            : "text-muted hover:text-foreground hover:bg-muted/5"
+                            : "text-muted hover:text-foreground hover:bg-muted/5",
                         )}
                       >
                         {entry.name}
-                      </NextLink>
+                      </RouterLink>
                     );
                   })}
                 </div>

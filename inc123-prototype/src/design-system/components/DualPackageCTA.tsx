@@ -73,7 +73,7 @@ function DualPackageCTA({
             </div>
 
             {/* Description */}
-            <p className="text-body-sm text-muted mt-3">{pkg.description}</p>
+            <p className="text-body text-muted mt-3">{pkg.description}</p>
 
             {/* CTA button */}
             <Button

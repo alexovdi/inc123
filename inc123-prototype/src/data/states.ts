@@ -221,7 +221,7 @@ export const stateHubs: StateHub[] = [
         icon: "Clock",
         title: "25 Years of NV Expertise",
         description:
-          "Founded in Reno, Nevada. Local experts with direct relationships at the Nevada Secretary of State office.",
+          "Nevada-based since 2000. Local experts with direct relationships at the Nevada Secretary of State office.",
       },
     ],
     intentRoutes: [

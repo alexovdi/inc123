@@ -36,7 +36,7 @@ function FormSection({
           {title}
         </h3>
         {description && (
-          <p className="mt-1 text-body-sm text-muted">{description}</p>
+          <p className="mt-1 text-body text-muted">{description}</p>
         )}
       </div>
 

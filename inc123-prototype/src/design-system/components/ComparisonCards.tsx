@@ -36,7 +36,7 @@ function ComparisonCards({ comparisons, className }: ComparisonCardsProps) {
           <h3 className="text-heading-sm font-display font-semibold text-foreground">
             {item.title}
           </h3>
-          <p className="text-body-sm text-muted mt-2">{item.description}</p>
+          <p className="text-body text-muted mt-2">{item.description}</p>
           <span className="inline-flex items-center gap-1.5 mt-4 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all duration-200">
             Compare
             <Icon

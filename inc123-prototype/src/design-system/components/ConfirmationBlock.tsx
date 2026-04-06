@@ -182,7 +182,7 @@ function ConfirmationBlock({
                     {step.timeline}
                   </Badge>
                 </div>
-                <p className="text-body-sm text-muted">{step.description}</p>
+                <p className="text-body text-muted">{step.description}</p>
               </div>
             </div>
           ))}

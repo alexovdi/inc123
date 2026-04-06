@@ -48,7 +48,7 @@ export function WizardOptionCard({
 
       <div>
         <p className="text-body font-semibold text-foreground">{title}</p>
-        <p className="mt-1 text-body-sm leading-relaxed text-muted">
+        <p className="mt-1 text-body leading-relaxed text-muted">
           {subtitle}
         </p>
       </div>

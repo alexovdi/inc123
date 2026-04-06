@@ -77,7 +77,7 @@ function ComparisonHero({
               <p className="font-display font-semibold text-foreground">
                 Bottom Line: {verdict.winner} Wins
               </p>
-              <p className="text-body-sm text-muted mt-1">{verdict.summary}</p>
+              <p className="text-body text-muted mt-1">{verdict.summary}</p>
             </div>
           </div>
         </div>

@@ -1,7 +1,5 @@
-"use client";
-
 import { useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
 import { AddOnConfigurator } from "@/design-system/components/AddOnConfigurator";
@@ -21,7 +19,7 @@ import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 import type { EntityType } from "@/lib/types";
 
 export default function CheckoutConfigurePage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { state, dispatch } = useCheckout();
 
   // Get available tier definitions for the selected state
@@ -91,7 +89,7 @@ export default function CheckoutConfigurePage() {
   const handleContinue = () => {
     if (canContinue) {
       dispatch({ type: "SET_STEP", step: 2 });
-      router.push("/checkout/details");
+      navigate("/checkout/details");
     }
   };
 
@@ -108,7 +106,7 @@ export default function CheckoutConfigurePage() {
       total={total}
     />
   ) : (
-    <div className="rounded-card border border-border bg-surface p-6 text-center text-body-sm text-muted">
+    <div className="rounded-card border border-border bg-surface p-6 text-center text-body text-muted">
       Select a package to see your order summary.
     </div>
   );
@@ -198,7 +196,7 @@ export default function CheckoutConfigurePage() {
             onSelect={(id) => dispatch({ type: "SET_TIER", tier: id })}
           />
         ) : (
-          <p className="text-body-sm text-muted">
+          <p className="text-body text-muted">
             No packages available for the selected state.
           </p>
         )}
@@ -225,7 +223,7 @@ export default function CheckoutConfigurePage() {
           variant="ghost"
           size="md"
           icon={<ArrowLeft className="h-4 w-4" />}
-          onClick={() => router.back()}
+          onClick={() => navigate(-1)}
         >
           Back to Package Page
         </Button>

@@ -74,7 +74,7 @@ function AudienceSection({ section }: { section: ClusterSection }) {
             <h3 className="text-heading-sm font-display font-semibold text-foreground mb-1.5">
               {item.title}
             </h3>
-            <p className="text-body-sm text-muted leading-relaxed">
+            <p className="text-body text-muted leading-relaxed">
               {item.description}
             </p>
           </div>
@@ -111,7 +111,7 @@ function DifferentiatorSection({ section }: { section: ClusterSection }) {
               <h3 className="text-body font-semibold text-foreground mb-1">
                 {item.title}
               </h3>
-              <p className="text-body-sm text-muted leading-relaxed">
+              <p className="text-body text-muted leading-relaxed">
                 {item.description}
               </p>
             </div>

@@ -1,11 +1,9 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import { CheckoutProvider, resolveCheckoutParams } from "./CheckoutContext";
 
-function CheckoutProviderWrapper({ children }: { children: React.ReactNode }) {
-  const searchParams = useSearchParams();
+function CheckoutProviderWrapper() {
+  const [searchParams] = useSearchParams();
 
   // Resolve both new (?tier=gold&state=wyoming) and legacy (?package=wyoming-gold) formats
   const resolved = resolveCheckoutParams({
@@ -21,19 +19,15 @@ function CheckoutProviderWrapper({ children }: { children: React.ReactNode }) {
       initialStateName={resolved.selectedState}
       initialEntity={resolved.entityType}
     >
-      {children}
+      <Outlet />
     </CheckoutProvider>
   );
 }
 
-export function CheckoutLayoutClient({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function CheckoutLayoutClient() {
   return (
     <Suspense fallback={null}>
-      <CheckoutProviderWrapper>{children}</CheckoutProviderWrapper>
+      <CheckoutProviderWrapper />
     </Suspense>
   );
 }

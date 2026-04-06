@@ -80,7 +80,7 @@ function PackageHero({
 
         {/* Entity type toggle */}
         <div className="mt-6">
-          <p className="text-body-sm font-medium text-foreground mb-2">
+          <p className="text-body font-medium text-foreground mb-2">
             Choose Your Entity Type
           </p>
           <EntityTypeToggle

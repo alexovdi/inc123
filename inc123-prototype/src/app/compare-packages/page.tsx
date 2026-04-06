@@ -133,7 +133,7 @@ export default function ComparePackagesPage() {
 
           {/* State-specific note */}
           {(selectedState === "California" || selectedState === "Florida") && (
-            <p className="mt-6 text-body-sm text-muted text-center max-w-narrow mx-auto">
+            <p className="mt-6 text-body text-muted text-center max-w-narrow mx-auto">
               {selectedState} packages use a Wyoming or Nevada nominee structure
               with {selectedState} foreign registration included. Only Gold tier
               is available.

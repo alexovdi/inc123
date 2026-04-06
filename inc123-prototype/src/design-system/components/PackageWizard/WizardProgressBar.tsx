@@ -41,7 +41,7 @@ export function WizardProgressBar({
             >
               <div
                 className={cn(
-                  "flex h-7 w-7 items-center justify-center rounded-full text-caption font-bold transition-all duration-300",
+                  "flex h-7 w-7 items-center justify-center rounded-full text-body-sm font-bold transition-all duration-300",
                   isDone || isActive
                     ? "bg-secondary text-white"
                     : "bg-border text-muted",
@@ -51,7 +51,7 @@ export function WizardProgressBar({
               </div>
               <span
                 className={cn(
-                  "text-[10px] font-medium transition-all duration-300",
+                  "text-caption font-medium transition-all duration-300",
                   isActive
                     ? "font-bold text-secondary"
                     : isDone

@@ -1,27 +1,16 @@
 import { Eye, AlertCircle, Lock } from "lucide-react";
+import type { ReactNode } from "react";
 import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
+import { privacyBridgeColumns } from "@/data/homepage";
 
-const columns = [
-  {
-    icon: Eye,
-    title: "Public Exposure",
-    description:
-      "Standard formation puts your name on state filings. Anyone with an internet connection can find your ownership, address, and business details.",
-  },
-  {
-    icon: AlertCircle,
-    title: "Lawsuit Targeting",
-    description:
-      "Visible ownership makes you a target. Frivolous lawsuits cost $500K+ to defend on average. Privacy is your first line of defense.",
-  },
-  {
-    icon: Lock,
-    title: "The Solution",
-    description:
-      "Year-round nominee officers keep your name off public records — not just at formation, but every day. Combine with offshore records storage for complete privacy.",
-  },
-];
+const iconMap: Record<string, ReactNode> = {
+  Eye: <Eye className="h-6 w-6 text-secondary" strokeWidth={1.8} />,
+  AlertCircle: (
+    <AlertCircle className="h-6 w-6 text-secondary" strokeWidth={1.8} />
+  ),
+  Lock: <Lock className="h-6 w-6 text-secondary" strokeWidth={1.8} />,
+};
 
 export function PrivacyBridge({ className }: { className?: string }) {
   return (
@@ -32,7 +21,7 @@ export function PrivacyBridge({ className }: { className?: string }) {
             <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
               Why It Matters
             </p>
-            <h2 className="font-display text-display-sm font-semibold text-foreground max-w-[32ch] mx-auto">
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[32ch] mx-auto">
               Your name is on public records.
               <br />
               It doesn&rsquo;t have to be.
@@ -46,15 +35,12 @@ export function PrivacyBridge({ className }: { className?: string }) {
         </ScrollReveal>
 
         <div className="grid gap-8 md:grid-cols-3 max-w-[960px] mx-auto">
-          {columns.map((col, index) => (
+          {privacyBridgeColumns.map((col, index) => (
             <ScrollReveal key={col.title} delay={index * 120}>
               <div className="text-center px-2">
                 {/* Icon */}
                 <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/[0.05]">
-                  <col.icon
-                    className="h-6 w-6 text-secondary"
-                    strokeWidth={1.8}
-                  />
+                  {iconMap[col.iconName]}
                 </div>
 
                 {/* Title */}
@@ -63,7 +49,7 @@ export function PrivacyBridge({ className }: { className?: string }) {
                 </h3>
 
                 {/* Description */}
-                <p className="text-body-sm text-muted leading-[1.75]">
+                <p className="text-body text-muted leading-relaxed">
                   {col.description}
                 </p>
               </div>

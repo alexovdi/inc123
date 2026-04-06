@@ -1,4 +1,5 @@
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { offshoreData } from "@/data/offshore";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { AdvantageGrid } from "@/design-system/components/AdvantageGrid";
@@ -7,46 +8,32 @@ import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import type { ClusterSection } from "@/lib/types";
-import type { Metadata } from "next";
-import Link from "next/link";
-
-/* ------------------------------------------------
-   Static params
-   ------------------------------------------------ */
-export function generateStaticParams() {
-  return offshoreData.jurisdictions.map((j) => ({ slug: j.slug }));
-}
-
-/* ------------------------------------------------
-   Metadata
-   ------------------------------------------------ */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const jurisdiction = offshoreData.jurisdictions.find((j) => j.slug === slug);
-  if (!jurisdiction) return {};
-
-  return {
-    title: `${jurisdiction.name} — Offshore Formation | Incorporate123`,
-    description: jurisdiction.description.slice(0, 160),
-  };
-}
 
 /* ------------------------------------------------
    Page
    ------------------------------------------------ */
-export default async function OffshoreJurisdictionPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export default function OffshoreJurisdictionPage() {
+  const { slug } = useParams<{ slug: string }>();
   const jurisdiction = offshoreData.jurisdictions.find((j) => j.slug === slug);
 
-  if (!jurisdiction) notFound();
+  if (!jurisdiction) {
+    return (
+      <main className="flex min-h-[60vh] flex-col items-center justify-center px-container-x py-section-y text-center">
+        <h1 className="text-display font-display font-bold text-foreground">
+          Jurisdiction Not Found
+        </h1>
+        <p className="mt-4 text-body text-muted">
+          The offshore jurisdiction you requested could not be found.
+        </p>
+        <Link
+          to="/offshore"
+          className="mt-6 text-secondary hover:text-secondary/80 font-medium transition-colors"
+        >
+          Browse all jurisdictions
+        </Link>
+      </main>
+    );
+  }
 
   const otherJurisdictions = offshoreData.jurisdictions.filter(
     (j) => j.slug !== slug,
@@ -61,7 +48,7 @@ export default async function OffshoreJurisdictionPage({
         <div className="max-w-content mx-auto px-container-x">
           <div className="flex items-center gap-2 mb-4">
             <Link
-              href="/offshore"
+              to="/offshore"
               className="text-body-sm text-white/60 hover:text-white/90 transition-colors"
             >
               Offshore Jurisdictions
@@ -141,9 +128,9 @@ export default async function OffshoreJurisdictionPage({
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="cta" size="lg" asChild>
-              <Link href="/contact">Schedule Consultation</Link>
+              <Link to="/contact">Schedule Consultation</Link>
             </Button>
-            <p className="text-body-sm text-white/60">
+            <p className="text-body text-white/60">
               Or call{" "}
               <a
                 href="tel:+17753134155"

@@ -1071,7 +1071,7 @@ export const clusterPages: ClusterContent[] = [
         type: "text",
         title: "What Is a Virtual Office?",
         content:
-          "A virtual office provides a professional business address without the cost of physical office space. Our Reno, Nevada location at 1795 Meadow Wood Lane, Suite 100 gives your business a real street address (not a PO box) that can be used for business cards, website, correspondence, and state filings. Mail is received at our office and forwarded to your designated address.",
+          "A virtual office provides a professional business address without the cost of physical office space. Our Nevada address gives your business a real street address (not a PO box) that can be used for business cards, website, correspondence, and state filings. Mail is received and forwarded to your designated address.",
       },
     ],
     faqs: [
@@ -1482,7 +1482,7 @@ export const clusterPages: ClusterContent[] = [
         type: "text",
         title: "The Nevada Address Advantage",
         content:
-          "Our registered agent service operates from a physical location at 1795 Meadow Wood Lane, Suite 100, Reno, NV. Unlike national services that contract with third parties, we maintain our own Nevada presence. This means reliable document receipt with immediate digital forwarding, a real business address that clients can also use for correspondence (with our Virtual Office add-on), deep knowledge of Nevada compliance requirements, and established relationships with the Nevada Secretary of State's office.",
+          "Our registered agent service operates from our own Nevada office — not contracted through third parties. This means reliable document receipt with immediate digital forwarding, a real business address that clients can also use for correspondence (with our Virtual Office add-on), deep knowledge of Nevada compliance requirements, and established relationships with the Nevada Secretary of State's office.",
       },
       {
         id: "nv-requirements",
@@ -1497,15 +1497,14 @@ export const clusterPages: ClusterContent[] = [
         id: "nvra-faq-1",
         question: "Is this a real physical address?",
         answer:
-          "Yes. Our Nevada location at 1795 Meadow Wood Lane, Suite 100, Reno, NV is a real street address, not a PO box. We have been operating in Nevada for over 25 years.",
+          "Yes. Our Nevada location is a real street address, not a PO box. We have been operating in Nevada for over 25 years.",
         category: "compliance",
       },
       {
         id: "nvra-faq-2",
-        question:
-          "Can I use the Reno address for my business correspondence too?",
+        question: "Can I use your address for my business correspondence too?",
         answer:
-          "Yes — with our Virtual Office add-on ($149/year). This gives you a professional Reno business address for business cards, websites, and correspondence, separate from the registered agent function.",
+          "Yes — with our Virtual Office add-on ($149/year). This gives you a professional Nevada business address for business cards, websites, and correspondence, separate from the registered agent function.",
         category: "compliance",
       },
     ],

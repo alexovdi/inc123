@@ -1,7 +1,4 @@
-"use client";
-
-import NextLink from "next/link";
-import { usePathname } from "next/navigation";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { cn } from "@/design-system/utils/cn";
 
 const navLinks = [
@@ -13,17 +10,17 @@ const navLinks = [
 ];
 
 export function CatalogHeader() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
 
   return (
     <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-border bg-surface px-4">
       <div className="flex items-center gap-3">
-        <NextLink
-          href="/dev"
+        <RouterLink
+          to="/dev"
           className="font-display text-heading-sm font-semibold text-foreground hover:text-secondary transition-colors"
         >
           Inc123 Design System
-        </NextLink>
+        </RouterLink>
         <span className="rounded-pill bg-secondary/10 px-2 py-0.5 text-caption font-medium text-secondary">
           v0.1
         </span>
@@ -37,18 +34,18 @@ export function CatalogHeader() {
               : pathname?.startsWith(link.href) && link.href !== "/";
 
           return (
-            <NextLink
+            <RouterLink
               key={link.href}
-              href={link.href}
+              to={link.href}
               className={cn(
                 "rounded-button px-3 py-1.5 text-body-sm font-medium transition-colors",
                 isActive
                   ? "bg-secondary/10 text-secondary"
-                  : "text-muted hover:text-foreground hover:bg-muted/10"
+                  : "text-muted hover:text-foreground hover:bg-muted/10",
               )}
             >
               {link.label}
-            </NextLink>
+            </RouterLink>
           );
         })}
       </nav>

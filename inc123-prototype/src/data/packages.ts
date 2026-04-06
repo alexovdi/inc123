@@ -40,7 +40,7 @@ const sharedAddOns: PackageAddOn[] = [
     id: "virtual-office",
     name: "Virtual Office Address",
     price: 149,
-    description: "Professional Reno, NV business address with mail forwarding",
+    description: "Professional Nevada business address with mail forwarding",
     tooltip:
       "Separate from registered agent address — used for business correspondence",
   },

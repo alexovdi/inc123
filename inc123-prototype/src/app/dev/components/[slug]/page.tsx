@@ -1,7 +1,5 @@
-"use client";
-
 import React, { Suspense } from "react";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router-dom";
 import { Skeleton } from "@/design-system/primitives/Skeleton";
 import { ComponentPageShell } from "../../_components/ComponentPageShell";
 import { getComponentBySlug } from "../../_data/component-registry";

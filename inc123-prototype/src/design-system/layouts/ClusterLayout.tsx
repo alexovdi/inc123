@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import {
@@ -39,8 +39,8 @@ export function ClusterLayout({
         customHero
       ) : (
         <div className="mx-auto max-w-content px-container-x pt-6 pb-section-y-sm">
-          <NextLink
-            href={pillarHref}
+          <RouterLink
+            to={pillarHref}
             className={cn(
               "mb-4 inline-flex items-center gap-1.5 text-body-sm font-medium transition-colors hover:underline",
               pillarTextMap[pillar],
@@ -48,7 +48,7 @@ export function ClusterLayout({
           >
             <ArrowLeft className="h-4 w-4" />
             Back to {pillarLabel}
-          </NextLink>
+          </RouterLink>
 
           <h1 className="font-display text-display font-bold text-foreground mb-3">
             {title}

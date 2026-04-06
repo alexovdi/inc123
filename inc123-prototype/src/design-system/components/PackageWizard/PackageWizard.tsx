@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { ArrowLeft, Zap } from "lucide-react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { cn } from "@/design-system/utils/cn";
 import {
   type WizardBranch,
@@ -290,7 +290,7 @@ export function PackageWizard() {
             <p className="font-display text-body-lg font-bold text-foreground">
               Find Your Perfect Package in 60 Seconds
             </p>
-            <p className="mt-0.5 text-body-sm text-muted">
+            <p className="mt-0.5 text-body text-muted">
               Answer a few questions &mdash; we&rsquo;ll match you with the
               right package
             </p>
@@ -385,7 +385,7 @@ export function PackageWizard() {
             footer={
               <div className="mt-3 text-center">
                 <Link
-                  href="/packages"
+                  to="/packages"
                   className="text-caption text-muted transition-colors hover:text-secondary"
                 >
                   Looking for a pre-aged company? View shelf companies &rarr;
@@ -450,7 +450,7 @@ export function PackageWizard() {
         {/* Browse all packages escape hatch */}
         <div className="mt-6 text-center">
           <Link
-            href="/packages"
+            to="/packages"
             className="text-body-sm text-muted transition-colors hover:text-secondary"
             data-wizard-escape="true"
           >

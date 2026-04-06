@@ -63,7 +63,7 @@ function ClusterGrid({ clusters, columns = 3, className }: ClusterGridProps) {
           <h3 className="text-heading-sm font-display font-semibold text-foreground">
             {cluster.title}
           </h3>
-          <p className="text-body-sm text-muted mt-2 line-clamp-2">
+          <p className="text-body text-muted mt-2 line-clamp-2">
             {cluster.description}
           </p>
           <span

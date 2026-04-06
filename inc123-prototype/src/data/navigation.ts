@@ -226,7 +226,7 @@ export const siteNavigation: SiteNavigation = {
             {
               title: "Nevada Registered Agent",
               href: "/nevada-registered-agent",
-              description: "Nevada-specific RA service from Reno",
+              description: "Nevada-specific RA service included",
             },
             {
               title: "Annual Reports",
@@ -430,7 +430,7 @@ export const footerNavigation = {
   ],
   company: {
     name: "Incorporate123",
-    address: "1795 Meadow Wood Lane, Suite 100, Reno, NV 89502",
+    address: "Reno, Nevada",
     phone: "(775) 313-4155",
     email: "info@incorporate123.com",
   },

@@ -48,7 +48,7 @@ function AudienceBlocks({
             <h3 className="text-heading-sm font-display font-semibold text-foreground mb-2">
               {audience.title}
             </h3>
-            <p className="text-body-sm text-muted leading-relaxed">
+            <p className="text-body text-muted leading-relaxed">
               {audience.description}
             </p>
           </div>

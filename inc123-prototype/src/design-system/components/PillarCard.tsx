@@ -70,7 +70,7 @@ function PillarCard({
       </h3>
 
       {/* Description */}
-      <p className="text-body-sm text-muted mt-2">{description}</p>
+      <p className="text-body text-muted mt-2">{description}</p>
 
       {/* Services list */}
       {services.length > 0 && (

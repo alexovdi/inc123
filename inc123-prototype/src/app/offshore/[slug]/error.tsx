@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect } from "react";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 
@@ -39,12 +37,12 @@ export default function OffshoreJurisdictionError({
             <Icon name="RotateCcw" size="sm" className="mr-2" />
             Try Again
           </Button>
-          <NextLink href="/offshore">
+          <RouterLink to="/offshore">
             <Button variant="secondary" size="md">
               <Icon name="Globe" size="sm" className="mr-2" />
               All Jurisdictions
             </Button>
-          </NextLink>
+          </RouterLink>
         </div>
       </div>
     </main>

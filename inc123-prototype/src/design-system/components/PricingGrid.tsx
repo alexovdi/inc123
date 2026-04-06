@@ -212,7 +212,7 @@ function PricingGrid({
                 <h3 className="font-display text-heading-sm font-semibold text-foreground">
                   {tier.name}
                 </h3>
-                <p className="text-body-sm text-muted mt-1">
+                <p className="text-body text-muted mt-1">
                   {tier.description}
                 </p>
 

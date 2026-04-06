@@ -98,7 +98,7 @@ function CrossPillarCTA({
       <p
         className={cn(
           "text-muted mt-1",
-          variant === "sidebar-block" ? "text-caption" : "text-body-sm",
+          variant === "sidebar-block" ? "text-caption" : "text-body",
         )}
       >
         {description}

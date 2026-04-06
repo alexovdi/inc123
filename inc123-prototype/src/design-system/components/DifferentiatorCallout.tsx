@@ -36,7 +36,7 @@ function DifferentiatorCallout({
       </div>
 
       {/* Comparison */}
-      <p className="mt-1 text-body-sm text-muted">{comparison}</p>
+      <p className="mt-1 text-body text-muted">{comparison}</p>
 
       {/* Our value */}
       <p className="mt-3 text-body font-medium text-success">{ours}</p>

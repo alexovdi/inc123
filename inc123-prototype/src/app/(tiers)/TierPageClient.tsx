@@ -1,7 +1,5 @@
-"use client";
-
 import { useState, useCallback, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router-dom";
 import { PackageLayout } from "@/design-system/layouts/PackageLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { AddOnConfigurator } from "@/design-system/components/AddOnConfigurator";
@@ -34,7 +32,7 @@ interface TierPageClientProps {
    Component
    ------------------------------------------------ */
 export function TierPageClient({ tier }: TierPageClientProps) {
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const initialState = useMemo(() => {
     const param = searchParams.get("state");
     if (param) {
@@ -159,7 +157,7 @@ export function TierPageClient({ tier }: TierPageClientProps) {
 
         {/* State Selector */}
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-body-sm font-medium text-muted">
+          <span className="text-body font-medium text-muted">
             Formation State:
           </span>
           {ALL_FORMATION_STATES.map(({ name, abbreviation }) => {
@@ -181,7 +179,7 @@ export function TierPageClient({ tier }: TierPageClientProps) {
               >
                 <span className="font-bold">{abbreviation}</span>
                 <span className="hidden sm:inline">{name}</span>
-                {!isAvailable && <span className="text-caption">(N/A)</span>}
+                {!isAvailable && <span className="text-body-sm">(N/A)</span>}
               </button>
             );
           })}

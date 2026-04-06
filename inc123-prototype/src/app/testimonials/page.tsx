@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
 import { testimonials } from "@/data/testimonials";
 import { CTABlock } from "@/design-system/components/CTABlock";
 import { StatsStrip } from "@/design-system/components/StatsStrip";
 import { Icon } from "@/design-system/primitives/Icon";
-
-export const metadata: Metadata = {
-  title:
-    "Client Testimonials — Trusted by Business Owners Nationwide | Incorporate123",
-  description:
-    "See what clients say about Incorporate123. Real reviews from business owners who trust us for privacy-focused LLC formation, nominee services, and asset protection.",
-  alternates: { canonical: "https://incorporate123.co/testimonials" },
-};
 
 const stats = [
   { value: "25+", label: "Years Experience" },
@@ -66,7 +57,7 @@ export default function TestimonialsPage() {
                 {t.rating && <StarRating rating={t.rating} />}
 
                 {/* Quote */}
-                <blockquote className="mt-4 flex-1 text-body-sm italic text-foreground/90 leading-relaxed">
+                <blockquote className="mt-4 flex-1 text-body italic text-foreground/90 leading-relaxed">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
 

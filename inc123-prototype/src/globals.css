@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Font variables — set by fontsource (replaces next/font/google) */
+:root {
+  --font-inter: "Inter Variable", system-ui, sans-serif;
+  --font-outfit: "Outfit Variable", system-ui, sans-serif;
+  --font-jetbrains: "JetBrains Mono Variable", monospace;
+}
+
 @layer base {
   /* ============================================
      Wireframe Theme (default) — greyscale
@@ -17,14 +24,14 @@
     --primary-800: #1f2937;
     --primary-900: #111827;
 
-    --secondary: #1f2937;
-    --accent: #374151;
-    --accent-hover: #111827;
+    --secondary: #6b7280;
+    --accent: #111827;
+    --accent-hover: #030712;
     --accent-text: #1f2937;
     --link: #2563eb;
-    --success: #4b5563;
+    --success: #6b7280;
     --destructive: #374151;
-    --warning: #4b5563;
+    --warning: #6b7280;
 
     --surface: #ffffff;
     --background: #f9fafb;
@@ -46,6 +53,20 @@
     --pillar-compliance: #374151;
     --pillar-compliance-soft: #f3f4f6;
     --pillar-compliance-mid: #d1d5db;
+
+    /* Gradient glows — lighter for wireframe visibility */
+    --gradient-glow-blue: rgba(156, 163, 175, 0.12);
+    --gradient-glow-purple: rgba(156, 163, 175, 0.06);
+    --gradient-glow-amber: rgba(156, 163, 175, 0.05);
+    --gradient-vignette: rgba(17, 24, 39, 0.5);
+    --gradient-orb-blue: rgba(156, 163, 175, 0.08);
+    --gradient-orb-amber: rgba(156, 163, 175, 0.05);
+    --hero-grad-1: #e5e7eb;
+    --hero-grad-2: #d1d5db;
+    --hero-grad-3: #9ca3af;
+    --hero-grad-4: #d1d5db;
+    --hero-grad-5: #e5e7eb;
+    --hero-grad-6: #e5e7eb;
   }
 
   /* ============================================
@@ -93,6 +114,20 @@
     --pillar-compliance: #9333ea;
     --pillar-compliance-soft: #f3e8ff;
     --pillar-compliance-mid: #c084fc;
+
+    /* Gradient glows */
+    --gradient-glow-blue: rgba(37, 99, 235, 0.16);
+    --gradient-glow-purple: rgba(147, 51, 234, 0.06);
+    --gradient-glow-amber: rgba(217, 119, 6, 0.05);
+    --gradient-vignette: rgba(12, 30, 53, 0.7);
+    --gradient-orb-blue: rgba(37, 99, 235, 0.08);
+    --gradient-orb-amber: rgba(217, 119, 6, 0.05);
+    --hero-grad-1: #60a5fa;
+    --hero-grad-2: #818cf8;
+    --hero-grad-3: #c084fc;
+    --hero-grad-4: #f0abfc;
+    --hero-grad-5: #818cf8;
+    --hero-grad-6: #60a5fa;
   }
 }
 
@@ -152,32 +187,32 @@
    * v4 upgrade: fluid sizing eliminates breakpoint overrides
    * Hero line-height 0.92 for editorial density at large sizes
    * Proportional tracking: standard -3% on headings */
-  --font-size-display-xl: clamp(2.75rem, 4vw + 1.25rem, 4.5rem);
-  --font-size-display-xl--line-height: 0.92;
-  --font-size-display-xl--letter-spacing: -0.03em;
-  --font-size-display-lg: clamp(2.25rem, 3.5vw + 1rem, 3.5rem);
-  --font-size-display-lg--line-height: 0.95;
-  --font-size-display-lg--letter-spacing: -0.03em;
-  --font-size-display: clamp(1.75rem, 2.5vw + 0.75rem, 2.5rem);
-  --font-size-display--line-height: 1.1;
-  --font-size-display--letter-spacing: -0.02em;
-  --font-size-display-sm: clamp(1.375rem, 1.5vw + 0.75rem, 2rem);
-  --font-size-display-sm--line-height: 1.15;
-  --font-size-display-sm--letter-spacing: -0.015em;
-  --font-size-heading-lg: clamp(1.5rem, 2vw + 0.5rem, 1.875rem);
-  --font-size-heading-lg--line-height: 1.2;
-  --font-size-heading: 1.5rem;
-  --font-size-heading--line-height: 1.3;
-  --font-size-heading-sm: 1.25rem;
-  --font-size-heading-sm--line-height: 1.4;
-  --font-size-body-lg: 1.125rem;
-  --font-size-body-lg--line-height: 1.6;
-  --font-size-body: 1rem;
-  --font-size-body--line-height: 1.6;
-  --font-size-body-sm: 0.875rem;
-  --font-size-body-sm--line-height: 1.5;
-  --font-size-caption: 0.75rem;
-  --font-size-caption--line-height: 1.5;
+  --text-display-xl: clamp(2.75rem, 4vw + 1.25rem, 4.5rem);
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-lg: clamp(2.25rem, 3.5vw + 1rem, 3.5rem);
+  --text-display-lg--line-height: 0.95;
+  --text-display-lg--letter-spacing: -0.03em;
+  --text-display: clamp(1.75rem, 2.5vw + 0.75rem, 2.5rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-display-sm: clamp(1.375rem, 1.5vw + 0.75rem, 2rem);
+  --text-display-sm--line-height: 1.15;
+  --text-display-sm--letter-spacing: -0.015em;
+  --text-heading-lg: clamp(1.5rem, 2vw + 0.5rem, 1.875rem);
+  --text-heading-lg--line-height: 1.2;
+  --text-heading: 1.5rem;
+  --text-heading--line-height: 1.3;
+  --text-heading-sm: 1.25rem;
+  --text-heading-sm--line-height: 1.4;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
 
   /* Spacing — v4: section gap 120px+ desktop, 80px mobile */
   --spacing-section-y: clamp(5rem, 8vw, 8rem);
@@ -191,6 +226,7 @@
 
   /* Border radius */
   --radius-card: 0.75rem;
+  --radius-card-lg: 1.75rem;
   --radius-button: 0.5rem;
   --radius-pill: 9999px;
 
@@ -209,6 +245,7 @@
   --duration-fast: 150ms;
   --duration-normal: 300ms;
   --duration-entrance: 600ms;
+  --duration-hero: 800ms;
   --stagger-delay: 80ms;
 
   /* Animations */
@@ -264,17 +301,65 @@
 .hero-gradient-text {
   background: linear-gradient(
     135deg,
-    #60a5fa 0%,
-    #818cf8 25%,
-    #c084fc 45%,
-    #f0abfc 65%,
-    #818cf8 85%,
-    #60a5fa 100%
+    var(--hero-grad-1) 0%,
+    var(--hero-grad-2) 25%,
+    var(--hero-grad-3) 45%,
+    var(--hero-grad-4) 65%,
+    var(--hero-grad-5) 85%,
+    var(--hero-grad-6) 100%
   );
   background-size: 400% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Testimonial quote accent — uses ::before instead of border-l per design rules */
+.quote-accent {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.quote-accent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 3px;
+}
+.quote-accent-secondary::before {
+  background: var(--secondary);
+}
+.quote-accent-success::before {
+  background: var(--success);
+}
+.quote-accent-accent::before {
+  background: var(--accent);
+}
+
+/* Scroll offset for sticky header */
+#wizard {
+  scroll-margin-top: 5rem;
+}
+
+/* Type scale utilities — v10 design specs
+ * Unlayered CSS placed before @layer blocks so Tailwind preserves them.
+ * These override base heading font-sizes via cascade priority. */
+.type-display-xl {
+  font-size: clamp(2.375rem, 5vw, 3.75rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+.type-display-lg {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.type-display-sm {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 @keyframes shimmer {
@@ -356,23 +441,23 @@
   }
 
   h1 {
-    font-size: var(--font-size-display);
+    font-size: var(--text-display);
     letter-spacing: -0.01em;
   }
   h2 {
-    font-size: var(--font-size-heading-lg);
+    font-size: var(--text-heading-lg);
   }
   h3 {
-    font-size: var(--font-size-heading);
+    font-size: var(--text-heading);
   }
   h4 {
-    font-size: var(--font-size-heading-sm);
+    font-size: var(--text-heading-sm);
   }
   h5 {
-    font-size: var(--font-size-body-lg);
+    font-size: var(--text-body-lg);
   }
   h6 {
-    font-size: var(--font-size-body);
+    font-size: var(--text-body);
     font-weight: 600;
   }
 }

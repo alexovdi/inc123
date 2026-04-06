@@ -275,7 +275,7 @@ export function ComparisonPageTemplate({
               {comparison.verdict.winner} is the recommended choice for most
               clients
             </WinnerIndicator>
-            <p className="text-body-sm text-muted max-w-narrow mx-auto">
+            <p className="text-body text-muted max-w-narrow mx-auto">
               {comparison.verdict.summary}
             </p>
           </div>

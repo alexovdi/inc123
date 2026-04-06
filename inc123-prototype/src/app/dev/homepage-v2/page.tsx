@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { Clock, Globe, DollarSign, MapPin, Award, Phone } from "lucide-react";
 
 import { Icon } from "@/design-system/primitives/Icon";
@@ -23,18 +22,6 @@ import {
   packageRenewals,
   trustSignalItems,
 } from "@/data/homepage";
-
-/* ------------------------------------------------
-   Metadata
-   ------------------------------------------------ */
-export const metadata: Metadata = {
-  title: "[ARCHIVE v2] Homepage — Wizard + Typography",
-  description:
-    "Privacy-focused business formation specialists. Wyoming & Nevada LLCs with year-round nominee services, offshore records, and all-inclusive pricing. 25 years of expertise from Reno, NV.",
-  alternates: {
-    canonical: "https://incorporate123.co",
-  },
-};
 
 /* ------------------------------------------------
    Organization + LocalBusiness Schema (JSON-LD)
@@ -206,15 +193,15 @@ export default function HomePage() {
           {/* "Already have a company?" link */}
           <ScrollReveal delay={300}>
             <div className="mt-8 text-center">
-              <NextLink
-                href="/compliance"
+              <RouterLink
+                to="/compliance"
                 className="text-body-sm text-muted hover:text-foreground transition-colors"
               >
                 Already have a company?{" "}
                 <span className="text-secondary font-medium">
                   Explore compliance services &rarr;
                 </span>
-              </NextLink>
+              </RouterLink>
             </div>
           </ScrollReveal>
         </div>
@@ -277,13 +264,13 @@ export default function HomePage() {
           {/* Compare All + Consultation Safety Net */}
           <ScrollReveal delay={200}>
             <div className="mt-8 text-center space-y-3">
-              <NextLink
-                href="/compare-packages"
+              <RouterLink
+                to="/compare-packages"
                 className="inline-flex items-center gap-1.5 text-body font-medium text-link hover:text-link/80 transition-colors"
               >
                 Compare All Packages
                 <Icon name="ArrowRight" size="sm" />
-              </NextLink>
+              </RouterLink>
               <p className="text-body-sm text-muted">
                 Not sure which package? Call (775) 313-4155 for a free
                 consultation.

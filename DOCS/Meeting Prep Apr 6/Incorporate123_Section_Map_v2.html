@@ -1,0 +1,3590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Section Map (v2 — April 2026)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #fafaf8;
+        --ink: #18181b;
+        --ink-2: #3f3f46;
+        --ink-3: #71717a;
+        --ink-4: #a1a1aa;
+        --line: #d4d4d8;
+        --card: #ffffff;
+        --prv: #2563eb;
+        --prv-s: #eff6ff;
+        --prv-b: #bfdbfe;
+        --prv-t: #1e40af;
+        --ast: #7c3aed;
+        --ast-s: #f5f3ff;
+        --ast-b: #ddd6fe;
+        --ast-t: #5b21b6;
+        --frm: #059669;
+        --frm-s: #ecfdf5;
+        --frm-b: #a7f3d0;
+        --frm-t: #065f46;
+        --cmp-c: #d97706;
+        --cmp-s: #fffbeb;
+        --cmp-b: #fde68a;
+        --cmp-t: #92400e;
+        --pkg: #e11d48;
+        --pkg-s: #fff1f2;
+        --pkg-b: #fecdd3;
+        --pkg-t: #9f1239;
+        --hub: #0891b2;
+        --hub-s: #ecfeff;
+        --hub-b: #a5f3fc;
+        --hub-t: #155e75;
+        --off: #475569;
+        --off-s: #f8fafc;
+        --off-b: #cbd5e1;
+        --off-t: #1e293b;
+        --utl: #71717a;
+        --utl-s: #fafafa;
+        --utl-b: #e4e4e7;
+        --utl-t: #3f3f46;
+        --chk: #6d28d9;
+        --chk-s: #faf5ff;
+        --chk-b: #ddd6fe;
+        --chk-t: #4c1d95;
+        --cpr: #b45309;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* HEADER */
+      .masthead {
+        padding: 48px 0 40px;
+        text-align: center;
+        background: var(--ink);
+        position: relative;
+        overflow: hidden;
+      }
+      .masthead::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 600px 300px at 20% 50%,
+            rgba(37, 99, 235, 0.08),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 500px 400px at 80% 30%,
+            rgba(124, 58, 237, 0.06),
+            transparent
+          );
+      }
+      .masthead-inner {
+        position: relative;
+        z-index: 1;
+      }
+      .masthead-brand {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .masthead h1 {
+        font-family: "Instrument Serif", serif;
+        font-size: 48px;
+        font-weight: 400;
+        color: #fff;
+        margin: 10px 0 6px;
+        letter-spacing: -1px;
+      }
+      .masthead-sub {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .masthead-stats {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        margin-top: 28px;
+      }
+      .masthead-stat {
+        text-align: center;
+      }
+      .masthead-stat .val {
+        font-family: "Instrument Serif", serif;
+        font-size: 36px;
+        color: #fff;
+        line-height: 1;
+      }
+      .masthead-stat .lbl {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 4px;
+      }
+
+      .canvas {
+        padding: 48px 40px 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* ===== VERTICAL TREE (top to bottom) ===== */
+      .tn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .vconn {
+        height: 28px;
+        width: 2px;
+        flex-shrink: 0;
+      }
+
+      .hkids {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        position: relative;
+        padding-top: 16px;
+      }
+      .hkids::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 2px;
+        background: var(--_c, var(--line));
+      }
+
+      .hkids > .tn,
+      .hkids > .vleaf {
+        position: relative;
+      }
+      .hkids > .tn::before,
+      .hkids > .vleaf::before {
+        content: "";
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 15px;
+        background: var(--_c, var(--line));
+      }
+
+      .vkids {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: relative;
+        padding-top: 16px;
+        align-items: center;
+      }
+      .vkids::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        top: 0;
+        background: var(--_c, var(--line));
+      }
+      .vkids > .vleaf,
+      .vkids > .tn {
+        position: relative;
+      }
+      .vkids > .vleaf::before,
+      .vkids > .tn::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 6px;
+        background: var(--_c, var(--line));
+      }
+
+      .l3conn {
+        height: 16px;
+        width: 2px;
+      }
+
+      /* ===== CARD ===== */
+      .card {
+        border-radius: 11px;
+        padding: 14px 16px;
+        border: 1.5px solid var(--line);
+        background: var(--card);
+        width: 220px;
+        cursor: default;
+        transition:
+          transform 0.12s,
+          box-shadow 0.15s;
+        text-align: left;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .card .badge {
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 3px;
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+      .card .pg-name {
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 1.35;
+        margin-bottom: 2px;
+      }
+      .card .pg-url {
+        font-family: "Geist Mono", monospace;
+        font-size: 9px;
+        color: var(--ink-4);
+        margin-bottom: 7px;
+        display: block;
+      }
+      .card .pg-desc {
+        font-size: 10px;
+        color: var(--ink-3);
+        line-height: 1.5;
+      }
+
+      /* Root */
+      .card.root {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fff;
+        width: 320px;
+        padding: 20px 24px;
+        text-align: center;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.15);
+      }
+      .card.root .pg-name {
+        color: #fff;
+        font-size: 22px;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+      }
+      .card.root .pg-url {
+        color: rgba(255, 255, 255, 0.3);
+        text-align: center;
+      }
+      .s-root {
+        align-items: center;
+      }
+      .card.root .pg-desc {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 11px;
+        text-align: center;
+      }
+      .card.root .badge {
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* L1 */
+      .card.l1 {
+        width: 240px;
+        border-width: 2px;
+        padding: 16px 18px;
+        text-align: center;
+      }
+      .card.l1 .pg-name {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .card.l1 .pg-desc {
+        font-size: 10px;
+        text-align: left;
+      }
+
+      /* L2 leaf */
+      .card.l2 {
+        width: 210px;
+      }
+
+      /* L3 */
+      .card.l3 {
+        width: 200px;
+      }
+
+      /* Comparison dashed */
+      .card.is-cmp {
+        border-style: dashed;
+      }
+      .card.is-cmp .badge {
+        background: var(--cmp-s) !important;
+        color: var(--cpr) !important;
+      }
+
+      /* Template dotted */
+      .card.is-tpl {
+        border-style: dotted;
+      }
+
+      /* ===== SECTION LIST (wireframe sections per page) ===== */
+      .sec-list {
+        margin-top: 8px;
+        padding: 8px 0 0;
+        border-top: 1px solid var(--_c, var(--line));
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        text-align: left;
+      }
+      .sec-list li {
+        font-size: 9.5px;
+        line-height: 1.35;
+        color: var(--ink-2);
+        padding: 4px 8px;
+        background: rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 4px;
+        text-align: left;
+        width: 100%;
+      }
+      .sec-note {
+        color: var(--ink-4);
+        font-style: italic;
+      }
+      /* Root card section list overrides */
+      .card.root .sec-list {
+        border-top-color: rgba(255, 255, 255, 0.15);
+      }
+      .card.root .sec-list li {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .card.root .sec-note {
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      /* ===== COLOR SCOPES ===== */
+      .s-root {
+        --_c: var(--line);
+      }
+      .s-prv {
+        --_c: var(--prv-b);
+      }
+      .s-ast {
+        --_c: var(--ast-b);
+      }
+      .s-frm {
+        --_c: var(--frm-b);
+      }
+      .s-cmp {
+        --_c: var(--cmp-b);
+      }
+      .s-pkg {
+        --_c: var(--pkg-b);
+      }
+      .s-hub {
+        --_c: var(--hub-b);
+      }
+      .s-off {
+        --_c: var(--off-b);
+      }
+      .s-utl {
+        --_c: var(--utl-b);
+      }
+      .s-chk {
+        --_c: var(--chk-b);
+      }
+
+      .s-root > .vconn {
+        background: var(--line);
+      }
+
+      /* L1 card bg */
+      .s-prv > .card {
+        background: var(--prv-s);
+        border-color: var(--prv-b);
+      }
+      .s-prv > .card .badge {
+        background: var(--prv-b);
+        color: var(--prv-t);
+      }
+      .s-ast > .card {
+        background: var(--ast-s);
+        border-color: var(--ast-b);
+      }
+      .s-ast > .card .badge {
+        background: var(--ast-b);
+        color: var(--ast-t);
+      }
+      .s-frm > .card {
+        background: var(--frm-s);
+        border-color: var(--frm-b);
+      }
+      .s-frm > .card .badge {
+        background: var(--frm-b);
+        color: var(--frm-t);
+      }
+      .s-cmp > .card {
+        background: var(--cmp-s);
+        border-color: var(--cmp-b);
+      }
+      .s-cmp > .card .badge {
+        background: var(--cmp-b);
+        color: var(--cmp-t);
+      }
+      .s-pkg > .card {
+        background: var(--pkg-s);
+        border-color: var(--pkg-b);
+      }
+      .s-pkg > .card .badge {
+        background: var(--pkg-b);
+        color: var(--pkg-t);
+      }
+      .s-hub > .card {
+        background: var(--hub-s);
+        border-color: var(--hub-b);
+      }
+      .s-hub > .card .badge {
+        background: var(--hub-b);
+        color: var(--hub-t);
+      }
+      .s-off > .card {
+        background: var(--off-s);
+        border-color: var(--off-b);
+      }
+      .s-off > .card .badge {
+        background: var(--off-b);
+        color: var(--off-t);
+      }
+      .s-utl > .card {
+        background: var(--utl-s);
+        border-color: var(--utl-b);
+      }
+      .s-utl > .card .badge {
+        background: var(--utl-b);
+        color: var(--utl-t);
+      }
+      .s-chk > .card {
+        background: var(--chk-s);
+        border-color: var(--chk-b);
+      }
+      .s-chk > .card .badge {
+        background: var(--chk-b);
+        color: var(--chk-t);
+      }
+
+      /* L2 children */
+      .s-prv .vleaf .card {
+        border-color: var(--prv-b);
+      }
+      .s-prv .vleaf .card .badge {
+        background: var(--prv-s);
+        color: var(--prv-t);
+      }
+      .s-ast .vleaf .card {
+        border-color: var(--ast-b);
+      }
+      .s-ast .vleaf .card .badge {
+        background: var(--ast-s);
+        color: var(--ast-t);
+      }
+      .s-frm .vleaf .card {
+        border-color: var(--frm-b);
+      }
+      .s-frm .vleaf .card .badge {
+        background: var(--frm-s);
+        color: var(--frm-t);
+      }
+      .s-cmp .vleaf .card {
+        border-color: var(--cmp-b);
+      }
+      .s-cmp .vleaf .card .badge {
+        background: var(--cmp-s);
+        color: var(--cmp-t);
+      }
+      .s-pkg .vleaf .card {
+        border-color: var(--pkg-b);
+        background: var(--pkg-s);
+      }
+      .s-pkg .vleaf .card .badge {
+        background: var(--pkg-b);
+        color: var(--pkg-t);
+      }
+      .s-hub .vleaf .card {
+        border-color: var(--hub-b);
+        background: var(--hub-s);
+      }
+      .s-hub .vleaf .card .badge {
+        background: var(--hub-b);
+        color: var(--hub-t);
+      }
+      .s-off .vleaf .card {
+        border-color: var(--off-b);
+        background: var(--off-s);
+      }
+      .s-off .vleaf .card .badge {
+        background: var(--off-b);
+        color: var(--off-t);
+      }
+      .s-utl .vleaf .card,
+      .s-utl .tn:not(.s-utl) > .card {
+        border-color: var(--utl-b);
+        background: var(--utl-s);
+      }
+      .s-utl .vleaf .card .badge {
+        background: var(--utl-b);
+        color: var(--utl-t);
+      }
+      .s-chk .vleaf .card {
+        border-color: var(--chk-b);
+        background: var(--chk-s);
+      }
+      .s-chk .vleaf .card .badge {
+        background: var(--chk-b);
+        color: var(--chk-t);
+      }
+
+      /* Blog sub-tree inside utility */
+      .s-utl .blog-sub .card {
+        border-color: var(--utl-b);
+        background: var(--utl-s);
+      }
+      .s-utl .blog-sub .card .badge {
+        background: var(--utl-b);
+        color: var(--utl-t);
+      }
+      .s-utl .blog-sub .l3conn {
+        background: var(--utl-b);
+      }
+
+      .foot {
+        text-align: center;
+        font-size: 11px;
+        color: var(--ink-4);
+        letter-spacing: 0.5px;
+        padding: 48px 0 16px;
+      }
+
+      @media print {
+        .card:hover {
+          transform: none;
+          box-shadow: none;
+        }
+        body {
+          background: #fff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div class="masthead-brand">Incorporate123</div>
+        <h1>
+          Section Map <span style="font-size: 20px; opacity: 0.4">v2</span>
+        </h1>
+        <p class="masthead-sub">
+          Per-Page Wireframe Sections &mdash; Privacy, Asset Protection &amp;
+          Business Formation
+        </p>
+        <div class="masthead-stats">
+          <div class="masthead-stat">
+            <div class="val">75</div>
+            <div class="lbl">Pages</div>
+          </div>
+          <div class="masthead-stat">
+            <div class="val">~550</div>
+            <div class="lbl">Sections</div>
+          </div>
+          <div class="masthead-stat">
+            <div class="val">9</div>
+            <div class="lbl">Page Types</div>
+          </div>
+          <div class="masthead-stat">
+            <div class="val">10</div>
+            <div class="lbl">Templates</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="canvas">
+      <!-- ROOT -->
+      <div class="tn s-root">
+        <div class="card root">
+          <div class="badge">Home</div>
+          <div class="pg-name">Homepage</div>
+          <span class="pg-url">/</span>
+          <div class="pg-desc">
+            The front door. Four pillar CTAs for intent-based navigation, direct
+            package links for ready-to-buy visitors, trust signals (25 years,
+            Reno office, year-round nominees).
+          </div>
+          <ol class="sec-list">
+            <li>
+              HomepageHero
+              <span class="sec-note">headline, CTAs, trust snippets</span>
+            </li>
+            <li>
+              PackageWizard
+              <span class="sec-note">4-step recommendation tool</span>
+            </li>
+            <li>
+              Pillar Navigation
+              <span class="sec-note">3 PillarCards + compliance link</span>
+            </li>
+            <li>
+              Package Quick Links
+              <span class="sec-note">3 PackagePreviewCards</span>
+            </li>
+            <li>
+              Differentiator Grid
+              <span class="sec-note">6 cards, dark background</span>
+            </li>
+            <li>Testimonials <span class="sec-note">carousel</span></li>
+            <li>Trust Signals Band</li>
+            <li>
+              How It Works <span class="sec-note">steps visualization</span>
+            </li>
+            <li>
+              Compliance Callout
+              <span class="sec-note">dark section, dual CTAs</span>
+            </li>
+            <li>Final CTA Block</li>
+          </ol>
+        </div>
+        <div class="vconn"></div>
+
+        <!-- L1 ROW -->
+        <div class="hkids" id="l1rail">
+          <!-- PRIVACY -->
+          <div class="tn s-prv">
+            <div class="card l1">
+              <div class="badge">Pillar &middot; 10 pages</div>
+              <div class="pg-name">Business Privacy</div>
+              <span class="pg-url">/privacy/</span>
+              <div class="pg-desc">
+                The lead pillar page. Educates visitors on why business
+                ownership privacy matters and what tools exist to keep ownership
+                anonymous.
+              </div>
+              <ol class="sec-list">
+                <li>
+                  PillarHero
+                  <span class="sec-note"
+                    >eyebrow + H1 + CTAs + trust snippet</span
+                  >
+                </li>
+                <li>
+                  &ldquo;What is Business Privacy?&rdquo;
+                  <span class="sec-note">progressive disclosure</span>
+                </li>
+                <li>
+                  &ldquo;Why Privacy Matters&rdquo;
+                  <span class="sec-note">3-4 icon blocks</span>
+                </li>
+                <li>
+                  &ldquo;How We Protect Your Privacy&rdquo;
+                  <span class="sec-note">3 service blocks</span>
+                </li>
+                <li>
+                  Cluster Navigation Grid
+                  <span class="sec-note">cards to cluster pages</span>
+                </li>
+                <li>
+                  Comparison Section
+                  <span class="sec-note">2 comparison cards</span>
+                </li>
+                <li>
+                  DualPackageCTA <span class="sec-note">2 Gold packages</span>
+                </li>
+                <li>Cross-Pillar Callout</li>
+                <li>
+                  FAQ Accordion <span class="sec-note">5-8 questions</span>
+                </li>
+                <li>
+                  &ldquo;Where to Go Next&rdquo;
+                  <span class="sec-note">3 links</span>
+                </li>
+                <li>
+                  Sidebar
+                  <span class="sec-note"
+                    >package shortcuts, related clusters, phone</span
+                  >
+                </li>
+              </ol>
+            </div>
+            <div class="vkids" id="vk-prv">
+              <!-- CLUSTER: Anonymous LLC -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Anonymous LLC</div>
+                  <span class="pg-url">/anonymous-llc/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is an Anonymous LLC?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Anonymous Corporation -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Anonymous Corporation</div>
+                  <span class="pg-url">/anonymous-corporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is an Anonymous Corp?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Nominee Services -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Nominee Services</div>
+                  <span class="pg-url">/nominee-services/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What Are Nominee Services?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How Nominees Work&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">year-round vs formation-day</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Wyoming Privacy -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Wyoming Privacy</div>
+                  <span class="pg-url">/wyoming-privacy/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is Wyoming Privacy?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Nevada Privacy -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Nevada Privacy</div>
+                  <span class="pg-url">/nevada-privacy/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is Nevada Privacy?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: California Private Inc. -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">California Private Inc.</div>
+                  <span class="pg-url">/california-private-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is CA Private Inc.?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note"
+                        >WY formation + CA foreign reg</span
+                      >
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Florida Private Inc. -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Florida Private Inc.</div>
+                  <span class="pg-url">/florida-private-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is FL Private Inc.?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note"
+                        >WY formation + FL foreign reg</span
+                      >
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: Best State for Privacy -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">Best State for Privacy</div>
+                  <span class="pg-url">/best-state-for-privacy/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note">multi-state columns</span>
+                    </li>
+                    <li>
+                      Dual Package CTAs
+                      <span class="sec-note">2 Gold packages</span>
+                    </li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note"
+                        >&ldquo;Choose X If&hellip;&rdquo;</span
+                      >
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: WY vs NV for Privacy -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">WY vs NV for Privacy</div>
+                  <span class="pg-url">/wyoming-vs-nevada-privacy/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note">3-column (Factor | WY | NV)</span>
+                    </li>
+                    <li>
+                      Dual Package CTAs
+                      <span class="sec-note">2 Gold packages</span>
+                    </li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note"
+                        >&ldquo;Choose WY If&hellip;&rdquo; / &ldquo;Choose NV
+                        If&hellip;&rdquo;</span
+                      >
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ASSET PROTECTION -->
+          <div class="tn s-ast">
+            <div class="card l1">
+              <div class="badge">Pillar &middot; 7 pages</div>
+              <div class="pg-name">Asset Protection</div>
+              <span class="pg-url">/asset-protection/</span>
+              <div class="pg-desc">
+                Pillar page on how entity structuring protects personal assets
+                from liabilities. Target: business owners with $500K+ in assets.
+              </div>
+              <ol class="sec-list">
+                <li>
+                  PillarHero
+                  <span class="sec-note"
+                    >eyebrow + H1 + CTAs + trust snippet</span
+                  >
+                </li>
+                <li>
+                  &ldquo;What is Asset Protection?&rdquo;
+                  <span class="sec-note">progressive disclosure</span>
+                </li>
+                <li>
+                  &ldquo;Why AP Matters&rdquo;
+                  <span class="sec-note">3-4 icon blocks</span>
+                </li>
+                <li>
+                  &ldquo;How We Protect Your Assets&rdquo;
+                  <span class="sec-note">3 service blocks</span>
+                </li>
+                <li>
+                  Cluster Navigation Grid
+                  <span class="sec-note">cards to cluster pages</span>
+                </li>
+                <li>
+                  Comparison Section
+                  <span class="sec-note">2 comparison cards</span>
+                </li>
+                <li>
+                  DualPackageCTA <span class="sec-note">2 Gold packages</span>
+                </li>
+                <li>Cross-Pillar Callout</li>
+                <li>
+                  FAQ Accordion <span class="sec-note">5-8 questions</span>
+                </li>
+                <li>
+                  &ldquo;Where to Go Next&rdquo;
+                  <span class="sec-note">3 links</span>
+                </li>
+                <li>
+                  Sidebar
+                  <span class="sec-note"
+                    >package shortcuts, related clusters, phone</span
+                  >
+                </li>
+              </ol>
+            </div>
+            <div class="vkids">
+              <!-- CLUSTER: Nevada Asset Protection -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Nevada Asset Protection</div>
+                  <span class="pg-url">/nevada-asset-protection/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is NV Asset Protection?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Wyoming Asset Protection -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Wyoming Asset Protection</div>
+                  <span class="pg-url">/wyoming-asset-protection/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is WY Asset Protection?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">steps or visual flow</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">single-member LLC protection</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Investment Holding LLC -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Investment Holding LLC</div>
+                  <span class="pg-url">/investment-holding-llc/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a Holding LLC?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">structuring strategies</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Charging Order Protection -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Charging Order Protection</div>
+                  <span class="pg-url">/charging-order-protection/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is Charging Order Protection?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">legal mechanism explained</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">single vs multi-member</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>
+                      &ldquo;Where to Go Next&rdquo;
+                      <span class="sec-note">3 suggestions</span>
+                    </li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: Best State for AP -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">Best State for AP</div>
+                  <span class="pg-url">/best-state-for-asset-protection/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note">multi-state columns</span>
+                    </li>
+                    <li>
+                      Dual Package CTAs
+                      <span class="sec-note">2 Gold packages</span>
+                    </li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note"
+                        >&ldquo;Choose X If&hellip;&rdquo;</span
+                      >
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: WY vs NV for AP -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">WY vs NV for AP</div>
+                  <span class="pg-url"
+                    >/wyoming-vs-nevada-asset-protection/</span
+                  >
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note">3-column (Factor | WY | NV)</span>
+                    </li>
+                    <li>
+                      Dual Package CTAs
+                      <span class="sec-note">2 Gold packages</span>
+                    </li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note"
+                        >&ldquo;Choose WY If&hellip;&rdquo; / &ldquo;Choose NV
+                        If&hellip;&rdquo;</span
+                      >
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORMATION -->
+          <div class="tn s-frm">
+            <div class="card l1">
+              <div class="badge">Pillar &middot; 11 pages</div>
+              <div class="pg-name">Company Formation</div>
+              <span class="pg-url">/formation/</span>
+              <div class="pg-desc">
+                Pillar page covering business entity fundamentals: LLC vs.
+                corporation, state selection, formation process, costs, and
+                timeline.
+              </div>
+              <ol class="sec-list">
+                <li>
+                  PillarHero
+                  <span class="sec-note"
+                    >eyebrow + H1 + CTAs + trust snippet</span
+                  >
+                </li>
+                <li>
+                  &ldquo;What is Company Formation?&rdquo;
+                  <span class="sec-note">progressive disclosure</span>
+                </li>
+                <li>
+                  &ldquo;Why Formation Matters&rdquo;
+                  <span class="sec-note">3-4 icon blocks</span>
+                </li>
+                <li>
+                  &ldquo;How We Form Your Company&rdquo;
+                  <span class="sec-note">3 service blocks</span>
+                </li>
+                <li>
+                  Cluster Navigation Grid
+                  <span class="sec-note">cards to cluster pages</span>
+                </li>
+                <li>
+                  Comparison Section
+                  <span class="sec-note">2 comparison cards</span>
+                </li>
+                <li>
+                  DualPackageCTA <span class="sec-note">2 Gold packages</span>
+                </li>
+                <li>Cross-Pillar Callout</li>
+                <li>
+                  FAQ Accordion <span class="sec-note">5-8 questions</span>
+                </li>
+                <li>
+                  &ldquo;Where to Go Next&rdquo;
+                  <span class="sec-note">3 links</span>
+                </li>
+                <li>
+                  Sidebar
+                  <span class="sec-note"
+                    >package shortcuts, related clusters, phone</span
+                  >
+                </li>
+              </ol>
+            </div>
+            <div class="vkids">
+              <!-- CLUSTER: Wyoming LLC -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Wyoming LLC</div>
+                  <span class="pg-url">/wyoming-llc/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a Wyoming LLC?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">formation process</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Wyoming Corporation -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Wyoming Corporation</div>
+                  <span class="pg-url">/wyoming-corporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a Wyoming Corp?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">formation process</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Nevada LLC -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Nevada LLC</div>
+                  <span class="pg-url">/nevada-llc/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a Nevada LLC?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">formation process</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Nevada Corporation -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Nevada Corporation</div>
+                  <span class="pg-url">/nevada-corporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a Nevada Corp?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">formation process</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Shelf Companies -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Shelf Companies</div>
+                  <span class="pg-url">/shelf-companies/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What Are Shelf Companies?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">purchase process</span>
+                    </li>
+                    <li>
+                      Available Inventory
+                      <span class="sec-note"
+                        >listing with dates &amp; pricing</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">aged entity advantages</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Entity Tax Guide -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Entity Tax Guide</div>
+                  <span class="pg-url">/entity-tax-guide/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;How Entity Type Affects Taxes&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      Tax Comparison Overview
+                      <span class="sec-note">LLC vs S-Corp vs C-Corp</span>
+                    </li>
+                    <li>
+                      State Tax Advantages
+                      <span class="sec-note">WY/NV specifics</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      CPA Consultation Note
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: LLC vs Corporation -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">LLC vs Corporation</div>
+                  <span class="pg-url">/llc-vs-corporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;LLC vs Corporation Overview&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      Side-by-Side Comparison
+                      <span class="sec-note">table format</span>
+                    </li>
+                    <li>Tax Treatment Differences</li>
+                    <li>
+                      &ldquo;Who Needs Which?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: Wyoming vs Nevada -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">Wyoming vs Nevada</div>
+                  <span class="pg-url">/wyoming-vs-nevada/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note">3-column (Factor | WY | NV)</span>
+                    </li>
+                    <li>
+                      Dual Package CTAs
+                      <span class="sec-note">2 Gold packages</span>
+                    </li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note"
+                        >&ldquo;Choose WY If&hellip;&rdquo; / &ldquo;Choose NV
+                        If&hellip;&rdquo;</span
+                      >
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: Shelf vs New Formation -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">Shelf vs New Formation</div>
+                  <span class="pg-url">/shelf-company-vs-new-formation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note"
+                        >3-column (Factor | Shelf | New)</span
+                      >
+                    </li>
+                    <li>
+                      Dual Package CTAs <span class="sec-note">2 packages</span>
+                    </li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note"
+                        >&ldquo;Choose Shelf If&hellip;&rdquo; / &ldquo;Choose
+                        New If&hellip;&rdquo;</span
+                      >
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- COMPARISON: LLC vs S-Corp vs C-Corp Tax -->
+              <div class="vleaf">
+                <div class="card l2 is-cmp">
+                  <div class="badge">Comparison</div>
+                  <div class="pg-name">LLC vs S-Corp vs C-Corp Tax</div>
+                  <span class="pg-url">/llc-vs-scorp-vs-ccorp-tax/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ComparisonHero
+                      <span class="sec-note"
+                        >pillar accent + H1 + quick verdict</span
+                      >
+                    </li>
+                    <li>
+                      Comparison Table
+                      <span class="sec-note">3-column tax comparison</span>
+                    </li>
+                    <li>Dual Package CTAs</li>
+                    <li>
+                      Decision Guide
+                      <span class="sec-note">best-for profiles</span>
+                    </li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Bottom Conversion CTA</li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- COMPLIANCE -->
+          <div class="tn s-cmp">
+            <div class="card l1">
+              <div class="badge">Pillar &middot; 10 pages</div>
+              <div class="pg-name">Compliance</div>
+              <span class="pg-url">/compliance/</span>
+              <div class="pg-desc">
+                Pillar page covering ongoing compliance obligations after
+                formation. Positions Inc123 as a long-term partner, not just a
+                formation service.
+              </div>
+              <ol class="sec-list">
+                <li>
+                  PillarHero
+                  <span class="sec-note"
+                    >eyebrow + H1 + CTAs + trust snippet</span
+                  >
+                </li>
+                <li>
+                  &ldquo;What is Compliance?&rdquo;
+                  <span class="sec-note">progressive disclosure</span>
+                </li>
+                <li>
+                  &ldquo;Why Compliance Matters&rdquo;
+                  <span class="sec-note">3-4 icon blocks</span>
+                </li>
+                <li>
+                  &ldquo;How We Keep You Compliant&rdquo;
+                  <span class="sec-note">3 service blocks</span>
+                </li>
+                <li>
+                  Cluster Navigation Grid
+                  <span class="sec-note">cards to cluster pages</span>
+                </li>
+                <li>
+                  Comparison Section
+                  <span class="sec-note">2 comparison cards</span>
+                </li>
+                <li>
+                  DualPackageCTA <span class="sec-note">2 Gold packages</span>
+                </li>
+                <li>Cross-Pillar Callout</li>
+                <li>
+                  FAQ Accordion <span class="sec-note">5-8 questions</span>
+                </li>
+                <li>
+                  &ldquo;Where to Go Next&rdquo;
+                  <span class="sec-note">3 links</span>
+                </li>
+                <li>
+                  Sidebar
+                  <span class="sec-note"
+                    >package shortcuts, related clusters, phone</span
+                  >
+                </li>
+              </ol>
+            </div>
+            <div class="vkids">
+              <!-- CLUSTER: Registered Agent Services -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Registered Agent Services</div>
+                  <span class="pg-url">/registered-agent/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a Registered Agent?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">service details</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Wyoming Registered Agent -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Wyoming Registered Agent</div>
+                  <span class="pg-url">/wyoming-registered-agent/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a WY Registered Agent?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">Cheyenne presence details</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Nevada Registered Agent -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Nevada Registered Agent</div>
+                  <span class="pg-url">/nevada-registered-agent/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is a NV Registered Agent?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">Reno office details</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Annual Reports -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Annual Reports</div>
+                  <span class="pg-url">/annual-reports/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What Are Annual Reports?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">state-by-state breakdown</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Foreign State Registration -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Foreign State Registration</div>
+                  <span class="pg-url">/foreign-state-registration/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is Foreign Registration?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">qualification process</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Domestication -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Domestication</div>
+                  <span class="pg-url">/domestication/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What is Domestication?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">move process + timeline</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: 2nd-Tier State Filings -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">2nd-Tier State Filings</div>
+                  <span class="pg-url">/second-tier-state-filings/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What Are 2nd-Tier Filings?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">nexus triggers</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Shares & Corporate Records -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Shares &amp; Corporate Records</div>
+                  <span class="pg-url">/shares-corporate-records/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;What Are Corporate Records?&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>
+                      &ldquo;How It Works&rdquo;
+                      <span class="sec-note">record book maintenance</span>
+                    </li>
+                    <li>
+                      State Comparison
+                      <span class="sec-note">responsive table</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      Key Differentiator
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CLUSTER: Tax Filing & Obligations -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Cluster</div>
+                  <div class="pg-name">Tax Filing &amp; Obligations</div>
+                  <span class="pg-url">/tax-obligations/</span>
+                  <ol class="sec-list">
+                    <li>
+                      ClusterHero
+                      <span class="sec-note">pillar accent + H1 + CTAs</span>
+                    </li>
+                    <li>
+                      &ldquo;Post-Formation Tax Obligations&rdquo;
+                      <span class="sec-note">key point + expandable</span>
+                    </li>
+                    <li>Federal Forms by Entity Type</li>
+                    <li>
+                      State-Level Obligations
+                      <span class="sec-note">CA franchise tax, etc.</span>
+                    </li>
+                    <li>
+                      &ldquo;Who Needs This?&rdquo;
+                      <span class="sec-note">4 audience blocks</span>
+                    </li>
+                    <li>
+                      CPA vs Inc123 Scope
+                      <span class="sec-note">highlighted callout</span>
+                    </li>
+                    <li>
+                      &ldquo;The Cost&rdquo;
+                      <span class="sec-note">pricing breakdown</span>
+                    </li>
+                    <li>DualPackageCTA</li>
+                    <li>Cross-Pillar Callout</li>
+                    <li>
+                      FAQ Accordion
+                      <span class="sec-note">10-12 questions</span>
+                    </li>
+                    <li>&ldquo;Where to Go Next&rdquo;</li>
+                    <li>Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PACKAGES -->
+          <div class="tn s-pkg">
+            <div class="card l1">
+              <div class="badge">Packages &middot; 10 pages</div>
+              <div class="pg-name">Conversion Endpoints</div>
+              <span class="pg-url">/compare-packages/</span>
+              <div class="pg-desc">
+                Master comparison table showing all packages side by side. All
+                pillar and cluster content funnels here.
+              </div>
+              <ol class="sec-list">
+                <li>
+                  Hero
+                  <span class="sec-note"
+                    >headline + entity type toggle + trust stats</span
+                  >
+                </li>
+                <li>
+                  State Selector
+                  <span class="sec-note">formation state tabs</span>
+                </li>
+                <li>
+                  Tier Cards Grid
+                  <span class="sec-note">filtered by state + entity</span>
+                </li>
+                <li>Shelf Company Card</li>
+                <li>How It Works <span class="sec-note">4 steps</span></li>
+                <li>FAQ Accordion <span class="sec-note">6 questions</span></li>
+                <li>Final CTA Block</li>
+              </ol>
+            </div>
+            <div class="vkids">
+              <!-- PACKAGE: Wyoming Gold -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Wyoming Gold (Private)</div>
+                  <span class="pg-url">/wyoming-private-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;How Nominees Work&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Wyoming Silver -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Wyoming Silver</div>
+                  <span class="pg-url">/wyoming-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;What Happens After&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Wyoming Bronze (NEW — added per April 1 meeting) -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Wyoming Bronze</div>
+                  <span class="pg-url">/wyoming-basic-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;What is [Entity]?&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Nevada Gold -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Nevada Gold (Private)</div>
+                  <span class="pg-url">/nevada-private-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;How Nominees Work&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Nevada Silver -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Nevada Silver</div>
+                  <span class="pg-url">/nevada-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;What Happens After&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Nevada Bronze -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Nevada Bronze</div>
+                  <span class="pg-url">/nevada-basic-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;What is [Entity]?&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: California Private -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">California Private</div>
+                  <span class="pg-url">/california-private-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;WY + CA Foreign Reg&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Florida Private -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Florida Private</div>
+                  <span class="pg-url">/florida-private-incorporation/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Pricing Comparison Grid
+                      <span class="sec-note">tier cards</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;WY + FL Foreign Reg&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PACKAGE: Shelf Companies -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Package</div>
+                  <div class="pg-name">Shelf Companies</div>
+                  <span class="pg-url">/shelf-companies/</span>
+                  <ol class="sec-list">
+                    <li>
+                      PackageHero
+                      <span class="sec-note"
+                        >tier accent + price + CTAs + guarantee</span
+                      >
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Available Inventory
+                      <span class="sec-note">listing with dates + pricing</span>
+                    </li>
+                    <li>Value Comparison Callout</li>
+                    <li>
+                      Add-On Configurator
+                      <span class="sec-note">checkboxes + running total</span>
+                    </li>
+                    <li>
+                      Progressive Disclosure
+                      <span class="sec-note"
+                        >&ldquo;Why an Aged Entity?&rdquo;</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Also Consider&rdquo;
+                      <span class="sec-note">3 related packages</span>
+                    </li>
+                    <li>Trust &amp; Social Proof</li>
+                    <li>
+                      FAQ Accordion <span class="sec-note">6-8 questions</span>
+                    </li>
+                    <li>Final Conversion CTA</li>
+                    <li>Running Total Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STATE HUBS -->
+          <div class="tn s-hub">
+            <div class="card l1">
+              <div class="badge">State Hubs &middot; 4</div>
+              <div class="pg-name">Geographic Pages</div>
+              <span class="pg-url">&mdash;</span>
+              <div class="pg-desc">
+                Geographic hub pages linking to ALL relevant content for a given
+                state across every pillar. Serves visitors who search by state
+                name.
+              </div>
+            </div>
+            <div class="vkids">
+              <!-- STATE HUB: Wyoming -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">State Hub</div>
+                  <div class="pg-name">Wyoming</div>
+                  <span class="pg-url">/wyoming/</span>
+                  <ol class="sec-list">
+                    <li>
+                      StateHero
+                      <span class="sec-note"
+                        >state facts strip (tax, fees)</span
+                      >
+                    </li>
+                    <li>
+                      Intent Routing Cards
+                      <span class="sec-note"
+                        >2&times;2 pillar grid with key links</span
+                      >
+                    </li>
+                    <li>
+                      Package Quick Links
+                      <span class="sec-note"
+                        >Gold + Silver + Bronze with pricing</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Why Choose Wyoming?&rdquo;
+                      <span class="sec-note">6 advantage blocks</span>
+                    </li>
+                    <li>
+                      &ldquo;All Wyoming Services&rdquo;
+                      <span class="sec-note">4-column grid by pillar</span>
+                    </li>
+                    <li>
+                      State-Specific FAQ
+                      <span class="sec-note">5-6 questions</span>
+                    </li>
+                    <li>Final CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- STATE HUB: Nevada -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">State Hub</div>
+                  <div class="pg-name">Nevada</div>
+                  <span class="pg-url">/nevada/</span>
+                  <ol class="sec-list">
+                    <li>
+                      StateHero
+                      <span class="sec-note"
+                        >state facts strip (tax, fees)</span
+                      >
+                    </li>
+                    <li>
+                      Intent Routing Cards
+                      <span class="sec-note"
+                        >2&times;2 pillar grid with key links</span
+                      >
+                    </li>
+                    <li>
+                      Package Quick Links
+                      <span class="sec-note"
+                        >Gold + Silver + Bronze with pricing</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Why Choose Nevada?&rdquo;
+                      <span class="sec-note">6 advantage blocks</span>
+                    </li>
+                    <li>
+                      &ldquo;All Nevada Services&rdquo;
+                      <span class="sec-note">4-column grid by pillar</span>
+                    </li>
+                    <li>
+                      State-Specific FAQ
+                      <span class="sec-note">5-6 questions</span>
+                    </li>
+                    <li>Final CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- STATE HUB: California -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">State Hub</div>
+                  <div class="pg-name">California</div>
+                  <span class="pg-url">/california/</span>
+                  <ol class="sec-list">
+                    <li>
+                      StateHero
+                      <span class="sec-note"
+                        >state facts strip (tax, fees)</span
+                      >
+                    </li>
+                    <li>
+                      Intent Routing Cards
+                      <span class="sec-note"
+                        >2&times;2 pillar grid with key links</span
+                      >
+                    </li>
+                    <li>
+                      Package Quick Links
+                      <span class="sec-note"
+                        >CA Private package with pricing</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Why Choose California?&rdquo;
+                      <span class="sec-note">6 advantage blocks</span>
+                    </li>
+                    <li>
+                      &ldquo;All California Services&rdquo;
+                      <span class="sec-note">4-column grid by pillar</span>
+                    </li>
+                    <li>
+                      State-Specific FAQ
+                      <span class="sec-note">5-6 questions</span>
+                    </li>
+                    <li>Final CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- STATE HUB: Florida -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">State Hub</div>
+                  <div class="pg-name">Florida</div>
+                  <span class="pg-url">/florida/</span>
+                  <ol class="sec-list">
+                    <li>
+                      StateHero
+                      <span class="sec-note"
+                        >state facts strip (tax, fees)</span
+                      >
+                    </li>
+                    <li>
+                      Intent Routing Cards
+                      <span class="sec-note"
+                        >2&times;2 pillar grid with key links</span
+                      >
+                    </li>
+                    <li>
+                      Package Quick Links
+                      <span class="sec-note"
+                        >FL Private package with pricing</span
+                      >
+                    </li>
+                    <li>
+                      &ldquo;Why Choose Florida?&rdquo;
+                      <span class="sec-note">6 advantage blocks</span>
+                    </li>
+                    <li>
+                      &ldquo;All Florida Services&rdquo;
+                      <span class="sec-note">4-column grid by pillar</span>
+                    </li>
+                    <li>
+                      State-Specific FAQ
+                      <span class="sec-note">5-6 questions</span>
+                    </li>
+                    <li>Final CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OFFSHORE -->
+          <div class="tn s-off">
+            <div class="card l1">
+              <div class="badge">Offshore &middot; 6</div>
+              <div class="pg-name">Offshore Hub</div>
+              <span class="pg-url">/offshore/</span>
+              <div class="pg-desc">
+                Main landing page for international formation services.
+                Positions offshore as legitimate, not tax evasion.
+              </div>
+              <ol class="sec-list">
+                <li>
+                  OffshoreHero
+                  <span class="sec-note">intro to offshore formation</span>
+                </li>
+                <li>
+                  Jurisdiction Cards
+                  <span class="sec-note">grid of available jurisdictions</span>
+                </li>
+                <li>
+                  IRS Compliance Warning
+                  <span class="sec-note">highlighted callout</span>
+                </li>
+                <li>FAQ Accordion</li>
+                <li>CTA Section</li>
+              </ol>
+            </div>
+            <div class="vkids">
+              <!-- OFFSHORE: Nevis -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Offshore</div>
+                  <div class="pg-name">Nevis LLC/Corp</div>
+                  <span class="pg-url">/offshore/nevis/</span>
+                  <ol class="sec-list">
+                    <li>
+                      JurisdictionHero
+                      <span class="sec-note">country-specific</span>
+                    </li>
+                    <li>
+                      &ldquo;Why Nevis?&rdquo;
+                      <span class="sec-note">key advantages</span>
+                    </li>
+                    <li>
+                      Requirements &amp; Process
+                      <span class="sec-note">steps/timeline</span>
+                    </li>
+                    <li>Cost Breakdown</li>
+                    <li>IRS Compliance Note</li>
+                    <li>FAQ Accordion</li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- OFFSHORE: BVI -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Offshore</div>
+                  <div class="pg-name">BVI Company</div>
+                  <span class="pg-url">/offshore/bvi/</span>
+                  <ol class="sec-list">
+                    <li>
+                      JurisdictionHero
+                      <span class="sec-note">country-specific</span>
+                    </li>
+                    <li>
+                      &ldquo;Why BVI?&rdquo;
+                      <span class="sec-note">key advantages</span>
+                    </li>
+                    <li>
+                      Requirements &amp; Process
+                      <span class="sec-note">steps/timeline</span>
+                    </li>
+                    <li>Cost Breakdown</li>
+                    <li>IRS Compliance Note</li>
+                    <li>FAQ Accordion</li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- OFFSHORE: Panama -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Offshore</div>
+                  <div class="pg-name">Panama Foundation</div>
+                  <span class="pg-url">/offshore/panama/</span>
+                  <ol class="sec-list">
+                    <li>
+                      JurisdictionHero
+                      <span class="sec-note">country-specific</span>
+                    </li>
+                    <li>
+                      &ldquo;Why Panama?&rdquo;
+                      <span class="sec-note">key advantages</span>
+                    </li>
+                    <li>
+                      Requirements &amp; Process
+                      <span class="sec-note">steps/timeline</span>
+                    </li>
+                    <li>Cost Breakdown</li>
+                    <li>IRS Compliance Note</li>
+                    <li>FAQ Accordion</li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- OFFSHORE: Hong Kong -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Offshore</div>
+                  <div class="pg-name">Hong Kong Company</div>
+                  <span class="pg-url">/offshore/hong-kong/</span>
+                  <ol class="sec-list">
+                    <li>
+                      JurisdictionHero
+                      <span class="sec-note">country-specific</span>
+                    </li>
+                    <li>
+                      &ldquo;Why Hong Kong?&rdquo;
+                      <span class="sec-note">key advantages</span>
+                    </li>
+                    <li>
+                      Requirements &amp; Process
+                      <span class="sec-note">steps/timeline</span>
+                    </li>
+                    <li>Cost Breakdown</li>
+                    <li>IRS Compliance Note</li>
+                    <li>FAQ Accordion</li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- OFFSHORE: IRS Compliance -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Offshore</div>
+                  <div class="pg-name">IRS Compliance</div>
+                  <span class="pg-url">/offshore/irs-compliance/</span>
+                  <ol class="sec-list">
+                    <li>ComplianceHero</li>
+                    <li>Filing Requirements Overview</li>
+                    <li>
+                      Key Forms &amp; Deadlines
+                      <span class="sec-note">GILTI, PFIC, FBAR, 5471</span>
+                    </li>
+                    <li>Penalties Section</li>
+                    <li>FAQ Accordion</li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- UTILITY -->
+          <div class="tn s-utl">
+            <div class="card l1">
+              <div class="badge">Utility &middot; 10</div>
+              <div class="pg-name">Utility &amp; Support</div>
+              <span class="pg-url">&mdash;</span>
+              <div class="pg-desc">
+                Essential site infrastructure: about, contact, FAQ, blog,
+                testimonials, legal pages, and error handling.
+              </div>
+            </div>
+            <div class="vkids">
+              <!-- UTILITY: About Us -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Utility</div>
+                  <div class="pg-name">About Us</div>
+                  <span class="pg-url">/about/</span>
+                  <ol class="sec-list">
+                    <li>AboutHero</li>
+                    <li>
+                      Founder Bio
+                      <span class="sec-note">photo + bio + contact</span>
+                    </li>
+                    <li>
+                      Company Timeline
+                      <span class="sec-note">8 milestones</span>
+                    </li>
+                    <li>
+                      &ldquo;What Makes Us Different&rdquo;
+                      <span class="sec-note">3 philosophy cards</span>
+                    </li>
+                    <li>
+                      Office Section
+                      <span class="sec-note">address, map, hours</span>
+                    </li>
+                    <li>
+                      &ldquo;By the Numbers&rdquo;
+                      <span class="sec-note">4 stats</span>
+                    </li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- UTILITY: Contact -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Utility</div>
+                  <div class="pg-name">Contact</div>
+                  <span class="pg-url">/contact/</span>
+                  <ol class="sec-list">
+                    <li>ContactHero</li>
+                    <li>
+                      Contact Method Cards
+                      <span class="sec-note">phone, email, office</span>
+                    </li>
+                    <li>
+                      Contact Form <span class="sec-note">multi-field</span>
+                    </li>
+                    <li>Trust Signals</li>
+                    <li>
+                      Quick Link Cards
+                      <span class="sec-note">FAQ, Blog, About, Packages</span>
+                    </li>
+                    <li>Map Placeholder</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- UTILITY: FAQ Hub -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Resource</div>
+                  <div class="pg-name">FAQ Hub</div>
+                  <span class="pg-url">/faq/</span>
+                  <ol class="sec-list">
+                    <li>FAQHero</li>
+                    <li>Search + Category Filters</li>
+                    <li>
+                      FAQ Accordion Sections
+                      <span class="sec-note">grouped by category</span>
+                    </li>
+                    <li>
+                      No Results State <span class="sec-note">phone CTA</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <!-- Blog → Blog Post (L3) -->
+              <div class="tn blog-sub">
+                <div class="card l2">
+                  <div class="badge">Content</div>
+                  <div class="pg-name">Blog</div>
+                  <span class="pg-url">/blog/</span>
+                  <ol class="sec-list">
+                    <li>BlogHero</li>
+                    <li>Featured Post</li>
+                    <li>
+                      Post Grid
+                      <span class="sec-note">cards with thumbnails</span>
+                    </li>
+                    <li>Category Filters</li>
+                    <li>Pagination</li>
+                  </ol>
+                </div>
+                <div class="l3conn"></div>
+                <div class="vleaf">
+                  <div class="card l3 is-tpl">
+                    <div class="badge">Template</div>
+                    <div class="pg-name">Blog Post</div>
+                    <span class="pg-url">/blog/{slug}</span>
+                    <ol class="sec-list">
+                      <li>
+                        Post Header
+                        <span class="sec-note"
+                          >title, date, author, reading time</span
+                        >
+                      </li>
+                      <li>
+                        Post Content
+                        <span class="sec-note">long-form markdown</span>
+                      </li>
+                      <li>Author Bio</li>
+                      <li>Related Posts</li>
+                      <li>CTA Section</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <!-- UTILITY: Testimonials -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Social Proof</div>
+                  <div class="pg-name">Testimonials</div>
+                  <span class="pg-url">/testimonials/</span>
+                  <ol class="sec-list">
+                    <li>TestimonialsHero</li>
+                    <li>
+                      Testimonial Grid <span class="sec-note">full cards</span>
+                    </li>
+                    <li>CTA Section</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- Client Login removed — customer portal deferred to future phase -->
+              <!-- UTILITY: Privacy Policy -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Legal</div>
+                  <div class="pg-name">Privacy Policy</div>
+                  <span class="pg-url">/privacy-policy/</span>
+                  <ol class="sec-list">
+                    <li>Legal Header</li>
+                    <li>
+                      Policy Content
+                      <span class="sec-note">long-form sections</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <!-- UTILITY: Terms of Service -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Legal</div>
+                  <div class="pg-name">Terms of Service</div>
+                  <span class="pg-url">/terms/</span>
+                  <ol class="sec-list">
+                    <li>Legal Header</li>
+                    <li>
+                      Terms Content
+                      <span class="sec-note">long-form sections</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <!-- UTILITY: 404 -->
+              <div class="vleaf">
+                <div class="card l2 is-tpl">
+                  <div class="badge">Error</div>
+                  <div class="pg-name">404 Page</div>
+                  <span class="pg-url">/404</span>
+                  <ol class="sec-list">
+                    <li>
+                      404 Hero
+                      <span class="sec-note">error message + illustration</span>
+                    </li>
+                    <li>
+                      Suggested Links
+                      <span class="sec-note">popular pages</span>
+                    </li>
+                    <li>Search Box</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHECKOUT -->
+          <div class="tn s-chk">
+            <div class="card l1">
+              <div class="badge">Checkout &middot; 4</div>
+              <div class="pg-name">Purchase Flow</div>
+              <span class="pg-url">/checkout/</span>
+              <div class="pg-desc">
+                Multi-step conversion flow with progress indicator, form
+                validation, and order summary persistence across steps.
+              </div>
+            </div>
+            <div class="vkids">
+              <!-- CHECKOUT: Step 1 Configure -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Step 1</div>
+                  <div class="pg-name">Configure</div>
+                  <span class="pg-url">/checkout/configure/</span>
+                  <ol class="sec-list">
+                    <li>Step Progress Indicator</li>
+                    <li>
+                      Formation State Selection
+                      <span class="sec-note">4 state buttons</span>
+                    </li>
+                    <li>
+                      Entity Type Toggle
+                      <span class="sec-note">LLC/Corporation</span>
+                    </li>
+                    <li>
+                      Tier Selection
+                      <span class="sec-note">TierSelectorCards</span>
+                    </li>
+                    <li>
+                      Optional Add-Ons
+                      <span class="sec-note">AddOnConfigurator</span>
+                    </li>
+                    <li>OrderSummary Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CHECKOUT: Step 2 Details -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Step 2</div>
+                  <div class="pg-name">Entity Details</div>
+                  <span class="pg-url">/checkout/details/</span>
+                  <ol class="sec-list">
+                    <li>Step Progress Indicator</li>
+                    <li>
+                      Company Name Fields
+                      <span class="sec-note">1st/2nd/3rd choice</span>
+                    </li>
+                    <li>Members/Officers Info</li>
+                    <li>
+                      Registered Agent <span class="sec-note">pre-filled</span>
+                    </li>
+                    <li>Contact Information</li>
+                    <li>Special Instructions</li>
+                    <li>OrderSummary Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CHECKOUT: Step 3 Payment -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Step 3</div>
+                  <div class="pg-name">Payment</div>
+                  <span class="pg-url">/checkout/payment/</span>
+                  <ol class="sec-list">
+                    <li>Step Progress Indicator</li>
+                    <li>Billing Address Form</li>
+                    <li>Payment Method Selector</li>
+                    <li>Card/Payment Form</li>
+                    <li>Trust Signals</li>
+                    <li>Order Review + Terms</li>
+                    <li>OrderSummary Sidebar</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- CHECKOUT: Step 4 Confirmation -->
+              <div class="vleaf">
+                <div class="card l2">
+                  <div class="badge">Step 4</div>
+                  <div class="pg-name">Confirmation</div>
+                  <span class="pg-url">/checkout/confirmation/</span>
+                  <ol class="sec-list">
+                    <li>Success Icon + Message</li>
+                    <li>Order Number + Date</li>
+                    <li>Full Order Receipt</li>
+                    <li>
+                      &ldquo;What Happens Next&rdquo; Timeline
+                      <span class="sec-note">5 steps</span>
+                    </li>
+                    <li>
+                      Action Buttons
+                      <span class="sec-note">Print, Home, Login</span>
+                    </li>
+                    <li>Cross-sell Suggestion</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /hkids L1 row -->
+      </div>
+      <!-- /root tn -->
+
+      <div class="foot">
+        Incorporate123 &middot; BIT Studios &middot; April 2026 (v2) &middot; 75
+        Pages &middot; ~550 Sections &middot; Wireframe Map &middot;
+        Confidential
+      </div>
+    </div>
+
+    <script>
+      // Measure tree and set body min-width to match
+      requestAnimationFrame(() => {
+        const tree = document.querySelector(".tn.s-root");
+        if (tree) {
+          const w = tree.scrollWidth + 48;
+          document.body.style.minWidth = Math.max(w, window.innerWidth) + "px";
+        }
+      });
+
+      // Calculate horizontal rail: from center of first L1 child to center of last L1 child
+      const hk = document.getElementById("l1rail");
+      if (hk) {
+        const items = Array.from(hk.children).filter((c) =>
+          c.classList.contains("tn"),
+        );
+        if (items.length >= 2) {
+          const hkR = hk.getBoundingClientRect();
+          const fR = items[0].getBoundingClientRect();
+          const lR = items[items.length - 1].getBoundingClientRect();
+          const left = fR.left + fR.width / 2 - hkR.left;
+          const right = hkR.right - (lR.left + lR.width / 2);
+          hk.style.cssText += `--rl:${left}px; --rr:${right}px;`;
+        }
+      }
+      // Apply
+      const s1 = document.createElement("style");
+      s1.textContent =
+        "#l1rail::before { left: var(--rl, 0); right: var(--rr, 0); }";
+      document.head.appendChild(s1);
+
+      // Calculate vertical rails in vkids: from top of first child to top of last child
+      document.querySelectorAll(".vkids").forEach((vk) => {
+        const items = Array.from(vk.children).filter(
+          (c) => c.classList.contains("vleaf") || c.classList.contains("tn"),
+        );
+        if (items.length < 1) return;
+        const vkR = vk.getBoundingClientRect();
+        const fR = items[0].getBoundingClientRect();
+        const lR = items[items.length - 1].getBoundingClientRect();
+        const top = 0;
+        const bottom = vkR.bottom - (lR.top + 20);
+        vk.style.setProperty("--vt", top + "px");
+        vk.style.setProperty("--vb", Math.max(0, bottom) + "px");
+      });
+      const s2 = document.createElement("style");
+      s2.textContent =
+        ".vkids::before { top: var(--vt, 0px); bottom: var(--vb, 20px); }";
+      document.head.appendChild(s2);
+    </script>
+  </body>
+</html>

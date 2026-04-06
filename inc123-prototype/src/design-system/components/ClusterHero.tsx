@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { ArrowLeft, Clock } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import {
@@ -46,8 +46,8 @@ function ClusterHero({
     >
       <div className="mx-auto max-w-content px-container-x pt-6 pb-section-y-sm">
         {/* Back link */}
-        <NextLink
-          href={pillarHref}
+        <RouterLink
+          to={pillarHref}
           className={cn(
             "mb-4 inline-flex items-center gap-1.5 text-body-sm font-medium transition-colors hover:underline",
             pillarTextMap[pillar],
@@ -55,7 +55,7 @@ function ClusterHero({
         >
           <ArrowLeft className="h-4 w-4" />
           Back to {pillarLabel}
-        </NextLink>
+        </RouterLink>
 
         {/* Eyebrow */}
         <p

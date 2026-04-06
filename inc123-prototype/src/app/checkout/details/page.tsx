@@ -1,7 +1,5 @@
-"use client";
-
 import { useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Info } from "lucide-react";
 import { CheckoutLayout } from "@/design-system/layouts/CheckoutLayout";
 import { FormSection } from "@/design-system/components/FormSection";
@@ -13,7 +11,7 @@ import { getTierBySlug } from "@/data/packages";
 import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
 
 export default function CheckoutDetailsPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { state, dispatch } = useCheckout();
 
   // Look up selected tier definition
@@ -59,13 +57,13 @@ export default function CheckoutDetailsPage() {
   const handleContinue = () => {
     if (canContinue) {
       dispatch({ type: "SET_STEP", step: 3 });
-      router.push("/checkout/payment");
+      navigate("/checkout/payment");
     }
   };
 
   const handleBack = () => {
     dispatch({ type: "SET_STEP", step: 1 });
-    router.push("/checkout/configure");
+    navigate("/checkout/configure");
   };
 
   const entityLabel = state.entityType === "llc" ? "LLC" : "Corp";
@@ -175,7 +173,7 @@ export default function CheckoutDetailsPage() {
         {selectedTierDef?.tier === "gold" && (
           <div className="flex gap-3 rounded-card border border-secondary/20 bg-secondary/5 p-4">
             <Info className="h-5 w-5 shrink-0 text-secondary mt-0.5" />
-            <div className="text-body-sm text-foreground">
+            <div className="text-body text-foreground">
               <p className="font-medium mb-1">Your Privacy Is Protected</p>
               <p className="text-muted">
                 A year-round nominee officer will appear on all public state
@@ -194,10 +192,10 @@ export default function CheckoutDetailsPage() {
       >
         <div className="rounded-card border border-border bg-muted/5 p-4">
           <p className="text-body font-medium text-foreground">
-            Incorporate123 — Reno, Nevada
+            Incorporate123
           </p>
           <p className="mt-1 text-body-sm text-muted">
-            5470 Kietzke Ln, Suite 300, Reno, NV 89511
+            Nevada-based registered agent service
           </p>
           <p className="mt-2 text-caption text-muted">
             Registered agent service is included in your package. You don't need

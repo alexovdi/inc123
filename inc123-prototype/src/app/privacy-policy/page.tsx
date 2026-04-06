@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { CTABlock } from "@/design-system/components/CTABlock";
 import { Alert } from "@/design-system/primitives/Alert";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy | Incorporate123",
-  description:
-    "Incorporate123 privacy policy. How we collect, use, and protect your personal information.",
-  alternates: { canonical: "https://incorporate123.co/privacy-policy" },
-};
 
 export default function PrivacyPolicyPage() {
   return (

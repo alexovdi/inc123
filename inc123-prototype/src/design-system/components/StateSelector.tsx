@@ -76,7 +76,7 @@ function StateSelector({
         {heading}
       </h3>
       {description && (
-        <p className="text-body-sm text-muted mt-1">{description}</p>
+        <p className="text-body text-muted mt-1">{description}</p>
       )}
 
       {/* Card buttons for small state lists */}

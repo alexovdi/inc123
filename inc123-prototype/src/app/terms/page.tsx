@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
 import { CTABlock } from "@/design-system/components/CTABlock";
 import { Alert } from "@/design-system/primitives/Alert";
-
-export const metadata: Metadata = {
-  title: "Terms of Service | Incorporate123",
-  description:
-    "Incorporate123 terms of service. Read the terms governing use of our website and business formation services.",
-  alternates: { canonical: "https://incorporate123.co/terms" },
-};
 
 export default function TermsPage() {
   return (

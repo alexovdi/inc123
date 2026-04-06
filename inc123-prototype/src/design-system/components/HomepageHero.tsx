@@ -1,7 +1,6 @@
-"use client";
-
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { Lock, FileText, Shield } from "lucide-react";
 
 /* ------------------------------------------------
@@ -53,24 +52,22 @@ function HeroVisual() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="h-48 w-48 rounded-full bg-secondary/10 blur-3xl" />
         </div>
-        <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08]">
+        <div className="relative flex h-28 w-28 items-center justify-center rounded-full bg-white/[0.06] border border-white/[0.12]">
           <Lock className="h-12 w-12 text-secondary/60" strokeWidth={1.5} />
         </div>
       </div>
 
       {/* Privacy badge — top right */}
       <div
-        className="absolute top-12 right-4 flex items-center gap-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] px-4 py-3 backdrop-blur-sm"
-        style={{
-          animation: "hero-fade-up 800ms var(--ease-out-expo) 600ms both",
-        }}
+        className="absolute top-12 right-4 flex items-center gap-3 rounded-2xl bg-white/[0.07] border border-white/[0.12] px-4 py-3 backdrop-blur-sm animate-hero-fade-up"
+        style={{ animationDelay: "600ms" }}
       >
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10">
           <Lock className="h-5 w-5 text-secondary/80" />
         </div>
         <div>
-          <p className="text-body-sm font-semibold text-white">Privacy</p>
-          <p className="text-caption text-white/40 font-mono">
+          <p className="text-body font-semibold text-white">Privacy</p>
+          <p className="text-caption text-white/55 font-mono">
             Year-round nominees
           </p>
         </div>
@@ -78,33 +75,29 @@ function HeroVisual() {
 
       {/* Formation badge — middle right */}
       <div
-        className="absolute top-1/2 -translate-y-1/4 right-0 flex items-center gap-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] px-4 py-3 backdrop-blur-sm"
-        style={{
-          animation: "hero-fade-up 800ms var(--ease-out-expo) 800ms both",
-        }}
+        className="absolute top-1/2 -translate-y-1/4 right-0 flex items-center gap-3 rounded-2xl bg-white/[0.07] border border-white/[0.12] px-4 py-3 backdrop-blur-sm animate-hero-fade-up"
+        style={{ animationDelay: "800ms" }}
       >
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10">
           <FileText className="h-5 w-5 text-secondary/80" />
         </div>
         <div>
-          <p className="text-body-sm font-semibold text-white">Formation</p>
-          <p className="text-caption text-white/40 font-mono">All-inclusive</p>
+          <p className="text-body font-semibold text-white">Formation</p>
+          <p className="text-caption text-white/55 font-mono">All-inclusive</p>
         </div>
       </div>
 
       {/* Protection badge — bottom left */}
       <div
-        className="absolute bottom-24 left-0 flex items-center gap-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] px-4 py-3 backdrop-blur-sm"
-        style={{
-          animation: "hero-fade-up 800ms var(--ease-out-expo) 1000ms both",
-        }}
+        className="absolute bottom-24 left-0 flex items-center gap-3 rounded-2xl bg-white/[0.07] border border-white/[0.12] px-4 py-3 backdrop-blur-sm animate-hero-fade-up"
+        style={{ animationDelay: "1000ms" }}
       >
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-success/10">
           <Shield className="h-5 w-5 text-success/80" />
         </div>
         <div>
-          <p className="text-body-sm font-semibold text-white">Protection</p>
-          <p className="text-caption text-white/40 font-mono">Charging order</p>
+          <p className="text-body font-semibold text-white">Protection</p>
+          <p className="text-caption text-white/55 font-mono">Charging order</p>
         </div>
       </div>
 
@@ -138,9 +131,9 @@ function HomepageHero({
         className="absolute inset-0"
         style={{
           background: [
-            "radial-gradient(ellipse 70% 50% at 65% 45%, rgba(37,99,235,0.16), transparent 60%)",
-            "radial-gradient(ellipse 50% 60% at 25% 75%, rgba(147,51,234,0.06), transparent 50%)",
-            "radial-gradient(ellipse 40% 40% at 80% 85%, rgba(217,119,6,0.05), transparent 50%)",
+            "radial-gradient(ellipse 70% 50% at 65% 45%, var(--gradient-glow-blue), transparent 60%)",
+            "radial-gradient(ellipse 50% 60% at 25% 75%, var(--gradient-glow-purple), transparent 50%)",
+            "radial-gradient(ellipse 40% 40% at 80% 85%, var(--gradient-glow-amber), transparent 50%)",
           ].join(","),
         }}
       />
@@ -149,16 +142,11 @@ function HomepageHero({
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(12,30,53,0.7))",
+            "radial-gradient(ellipse at 50% 50%, transparent 30%, var(--gradient-vignette))",
         }}
       />
       {/* Grain texture */}
-      <div
-        className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E")`,
-        }}
-      />
+      <GrainOverlay opacity="opacity-[0.35]" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-content px-container-x pt-28 pb-16 lg:pt-40 lg:pb-20">
@@ -168,11 +156,8 @@ function HomepageHero({
             {/* Eyebrow chip */}
             {eyebrow && (
               <div
-                className="inline-flex items-center gap-2.5 rounded-full border border-secondary/10 bg-secondary/[0.06] px-5 py-2.5 mb-9"
-                style={{
-                  animation:
-                    "hero-fade-up 800ms var(--ease-out-expo) 200ms both",
-                }}
+                className="inline-flex items-center gap-2.5 rounded-full border border-secondary/10 bg-secondary/[0.06] px-5 py-2.5 mb-9 animate-hero-fade-up"
+                style={{ animationDelay: "200ms" }}
               >
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary/60 opacity-75" />
@@ -185,12 +170,7 @@ function HomepageHero({
             )}
 
             {/* Headline with gradient highlights */}
-            <h1
-              className="font-display font-black text-white leading-[0.96] tracking-[-0.05em]"
-              style={{
-                fontSize: "clamp(38px, 5vw, 60px)",
-              }}
-            >
+            <h1 className="font-display type-display-xl font-black text-white">
               {headlineLines.map((line, lineIndex) => (
                 <span key={lineIndex}>
                   {lineIndex > 0 && <br />}
@@ -198,13 +178,14 @@ function HomepageHero({
                     <span
                       key={segIndex}
                       className={cn(
-                        "inline-block",
+                        "inline-block animate-hero-fade-up",
                         segment.highlight && "hero-gradient-text",
                       )}
                       style={{
+                        animationDelay: `${lineIndex * 250 + segIndex * 120 + 400}ms`,
                         animation: segment.highlight
-                          ? `hero-fade-up 800ms var(--ease-out-expo) ${lineIndex * 250 + segIndex * 120 + 400}ms both, shimmer 10s ease infinite`
-                          : `hero-fade-up 800ms var(--ease-out-expo) ${lineIndex * 250 + segIndex * 120 + 400}ms both`,
+                          ? `hero-fade-up var(--duration-hero) var(--ease-out-expo) ${lineIndex * 250 + segIndex * 120 + 400}ms both, shimmer 10s ease infinite`
+                          : undefined,
                       }}
                     >
                       {segment.text}
@@ -217,22 +198,16 @@ function HomepageHero({
 
             {/* Subheadline */}
             <p
-              className="mt-8 text-[18px] leading-[1.8] text-white/[0.42] max-w-[480px] tracking-[-0.02em]"
-              style={{
-                animation:
-                  "hero-fade-up 1000ms var(--ease-out-expo) 900ms both",
-              }}
+              className="mt-8 text-body-lg leading-[1.8] text-white/70 max-w-[480px] tracking-[-0.02em] animate-hero-fade-up"
+              style={{ animationDelay: "900ms" }}
             >
               {subheadline}
             </p>
 
             {/* Dual CTAs */}
             <div
-              className="mt-10 flex flex-col gap-3.5 sm:flex-row"
-              style={{
-                animation:
-                  "hero-fade-up 1000ms var(--ease-out-expo) 1100ms both",
-              }}
+              className="mt-10 flex flex-col gap-3.5 sm:flex-row animate-hero-fade-up"
+              style={{ animationDelay: "1100ms" }}
             >
               <Button variant="cta" size="lg" asChild className="rounded-xl">
                 <a href={primaryCTA.href}>{primaryCTA.label}</a>
@@ -250,16 +225,13 @@ function HomepageHero({
             {/* Safety net with links */}
             {phone && (
               <p
-                className="mt-5 text-body-sm text-white/[0.28]"
-                style={{
-                  animation:
-                    "hero-fade-in 1000ms var(--ease-out-expo) 1300ms both",
-                }}
+                className="mt-5 text-body text-white/65 animate-hero-fade-in"
+                style={{ animationDelay: "1300ms" }}
               >
                 Prefer to talk?{" "}
                 <a
                   href={`tel:${phone.replace(/\D/g, "")}`}
-                  className="text-white/[0.48] underline underline-offset-[3px] decoration-white/[0.12] hover:text-white hover:decoration-white transition-all"
+                  className="text-white/65 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
                 >
                   Call {phone}
                 </a>
@@ -268,7 +240,7 @@ function HomepageHero({
                     {" · "}
                     <a
                       href={consultationHref}
-                      className="text-white/[0.48] underline underline-offset-[3px] decoration-white/[0.12] hover:text-white hover:decoration-white transition-all"
+                      className="text-white/65 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
                     >
                       Schedule a consultation
                     </a>
@@ -277,32 +249,37 @@ function HomepageHero({
               </p>
             )}
 
+            {/* Social proof micro-line */}
+            <p
+              className="mt-8 text-body text-white/60 animate-hero-fade-in"
+              style={{ animationDelay: "1400ms" }}
+            >
+              Trusted by thousands of business owners since 2000
+            </p>
+
             {/* Hero Stats Bar */}
             {stats && stats.length > 0 && (
               <div
-                className="mt-16 flex rounded-[20px] bg-white/[0.03] border border-white/[0.04] overflow-hidden"
-                style={{
-                  animation:
-                    "hero-fade-up 1000ms var(--ease-out-expo) 1400ms both",
-                }}
+                className="mt-16 flex rounded-card-lg bg-white/[0.07] border border-white/[0.12] overflow-hidden animate-hero-fade-up"
+                style={{ animationDelay: "1400ms" }}
               >
                 {stats.map((stat, index) => (
                   <div
                     key={stat.label}
                     className={cn(
                       "flex-1 py-5 px-6 text-center",
-                      index > 0 && "border-l border-white/[0.06]",
+                      index > 0 && "border-l border-white/[0.15]",
                     )}
                   >
                     <div className="flex items-baseline justify-center gap-1">
-                      <span className="font-display text-[28px] font-semibold text-white/90 tracking-tight">
+                      <span className="font-display text-heading-lg font-semibold text-white/90 tracking-tight">
                         {stat.value}
                       </span>
-                      <span className="text-body-sm text-white/30">
+                      <span className="text-body-sm text-white/60">
                         {stat.unit}
                       </span>
                     </div>
-                    <p className="mt-1 text-caption text-white/25">
+                    <p className="mt-1 text-caption text-white/55">
                       {stat.label}
                     </p>
                   </div>

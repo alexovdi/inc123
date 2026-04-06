@@ -101,7 +101,7 @@ function PillarHero({
 
         {/* Safety net */}
         {safetyNet && (
-          <p className="text-body-sm text-muted mb-4">{safetyNet}</p>
+          <p className="text-body text-muted mb-4">{safetyNet}</p>
         )}
 
         {/* Trust snippet */}

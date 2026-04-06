@@ -13,16 +13,6 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { pillars } from "@/data/pillars";
 import { packages } from "@/data/packages";
 import { faqItems } from "@/data/faq";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title:
-    "Business Privacy — Anonymous LLCs, Nominee Services & Private Formation | Incorporate123",
-  description:
-    "Protect your business identity with year-round nominee services, offshore records, and anonymous LLC formation in Wyoming and Nevada. All-inclusive Gold packages from $1,275. 25 years of privacy expertise.",
-  alternates: { canonical: "https://incorporate123.co/privacy" },
-};
-
 const pillar = pillars[0]; // privacy
 const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
 const nvGold = packages.find((p) => p.id === "nevada-gold")!;
@@ -237,7 +227,7 @@ export default function PrivacyPillarPage() {
               &ldquo;Year-round nominees, not &lsquo;nominee for a day&rsquo;
               &mdash; your name never appears on any filing, at any time.&rdquo;
             </p>
-            <p className="mt-2 text-body-sm text-muted">
+            <p className="mt-2 text-body text-muted">
               Most providers list a nominee only at formation, then remove them.
               Every Incorporate123 Gold package keeps nominees on{" "}
               <strong>all</strong> public filings, 365 days a year &mdash;

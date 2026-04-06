@@ -13,16 +13,6 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { pillars } from "@/data/pillars";
 import { packages } from "@/data/packages";
 import { faqItems } from "@/data/faq";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title:
-    "Compliance — Registered Agent, Annual Reports & Corporate Minutes | Incorporate123",
-  description:
-    "Keep your LLC or Corporation in good standing with year-round registered agent service, annual report filing, corporate minutes maintenance, and virtual office. Full compliance support from $325/year.",
-  alternates: { canonical: "https://incorporate123.co/compliance" },
-};
-
 const pillar = pillars[3]; // compliance
 const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
 const nvGold = packages.find((p) => p.id === "nevada-gold")!;
@@ -244,7 +234,7 @@ export default function CompliancePillarPage() {
               a registered agent mailbox. We keep your records current so courts
               can&rsquo;t pierce the veil.&rdquo;
             </p>
-            <p className="mt-2 text-body-sm text-muted">
+            <p className="mt-2 text-body text-muted">
               Most providers offer registered agent service and call it
               &ldquo;compliance.&rdquo; Incorporate123 includes annual report
               filing, corporate minute book preparation and maintenance, and
@@ -413,7 +403,7 @@ const complianceServiceDescriptions = [
   "Professional registered agent service in Wyoming and Nevada. We receive legal documents and state correspondence on behalf of your entity — required by law.",
   "Timely preparation and filing of state annual reports. We track deadlines, prepare filings, and ensure your entity stays in good standing.",
   "Professional minute book preparation and maintenance. Proper corporate minutes help preserve your limited liability protection.",
-  "Professional business address in Reno, NV with mail forwarding. Separate from registered agent address — used for business correspondence.",
+  "Professional Nevada business address with mail forwarding. Separate from registered agent address — used for business correspondence.",
   "Register your entity to do business in another state. Required if your LLC operates outside its formation state.",
   "Multi-state filings beyond Wyoming and Nevada. We handle the complexity of operating across state lines — franchise taxes, business licenses, and state-specific requirements.",
   "Share certificates, stock ledgers, and corporate record books. Proper documentation of ownership and governance — essential for investor-ready entities.",

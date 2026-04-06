@@ -76,7 +76,7 @@ function IntentRoutingCard({
       </h3>
 
       {/* Description */}
-      <p className="text-body-sm text-muted mt-2 flex-1">{description}</p>
+      <p className="text-body text-muted mt-2 flex-1">{description}</p>
 
       {/* Key links */}
       <ul className="mt-4 space-y-1.5">

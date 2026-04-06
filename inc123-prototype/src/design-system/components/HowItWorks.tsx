@@ -92,10 +92,10 @@ function HowItWorks({ steps, className }: HowItWorksProps) {
                 <div
                   className={cn(
                     "relative z-10 flex items-center justify-center",
-                    "h-14 w-14 sm:h-[72px] sm:w-[72px]",
-                    "rounded-full border-[2.5px] bg-surface",
+                    "h-14 w-14 sm:h-18 sm:w-18",
+                    "rounded-full border-2 bg-surface",
                     "shadow-[0_0_0_8px_var(--surface)]",
-                    "font-display font-extrabold text-xl sm:text-[26px]",
+                    "font-display font-extrabold text-xl sm:text-heading-lg",
                     "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                     "group-hover:scale-110 group-hover:shadow-[0_0_0_10px_var(--surface),0_12px_32px_-4px_rgba(0,0,0,0.12)]",
                     colors.border,
@@ -112,7 +112,7 @@ function HowItWorks({ steps, className }: HowItWorksProps) {
                 <h3 className="font-display text-body-lg font-bold text-foreground tracking-[-0.3px] sm:text-[20px]">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-body-sm text-muted leading-[1.75] max-w-[520px]">
+                <p className="mt-2 text-body text-muted leading-[1.75] max-w-[520px]">
                   {step.description}
                 </p>
                 {step.tag && (

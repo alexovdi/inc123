@@ -99,7 +99,7 @@ export const aboutData: AboutData = {
     { value: "100%", label: "All-Inclusive Pricing" },
   ],
   office: {
-    address: "1795 Meadow Wood Lane, Suite 100, Reno, NV 89502",
+    address: "Reno, Nevada",
     phone: "(775) 313-4155",
     email: "info@incorporate123.com",
     hours: "Monday – Friday, 9:00 AM – 5:00 PM Pacific",

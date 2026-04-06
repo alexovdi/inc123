@@ -2,15 +2,7 @@ import { offshoreData } from "@/data/offshore";
 import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
-import type { Metadata } from "next";
-import Link from "next/link";
-
-export const metadata: Metadata = {
-  title:
-    "Offshore Privacy & Asset Protection — International Jurisdictions | Incorporate123",
-  description:
-    "Explore offshore entity formation in Nevis, Belize, Cook Islands, Panama, and BVI. International structures that complement domestic Wyoming and Nevada formations for maximum privacy and asset protection.",
-};
+import { Link } from "react-router-dom";
 
 const iconMap: Record<string, string> = {
   nevis: "Shield",
@@ -62,7 +54,7 @@ export default function OffshorePage() {
             {jurisdictions.map((j) => (
               <Link
                 key={j.slug}
-                href={`/offshore/${j.slug}`}
+                to={`/offshore/${j.slug}`}
                 className="group block"
               >
                 <div className="h-full rounded-card border border-border bg-surface shadow-card p-6 transition-shadow hover:shadow-card-hover">
@@ -83,7 +75,7 @@ export default function OffshorePage() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-body-sm text-muted line-clamp-3">
+                  <p className="text-body text-muted line-clamp-3">
                     {j.description.slice(0, 180)}...
                   </p>
                   <div className="mt-4 flex items-center gap-1 text-body-sm font-medium text-secondary">
@@ -126,10 +118,10 @@ export default function OffshorePage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button variant="primary" size="md" asChild>
-                    <Link href="/contact">Schedule Offshore Consultation</Link>
+                    <Link to="/contact">Schedule Offshore Consultation</Link>
                   </Button>
                   <Button variant="secondary" size="md" asChild>
-                    <Link href="/gold?state=wyoming">View Gold Package</Link>
+                    <Link to="/gold?state=wyoming">View Gold Package</Link>
                   </Button>
                 </div>
               </div>
@@ -154,9 +146,9 @@ export default function OffshorePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="cta" size="lg" asChild>
-                <Link href="/contact">Contact for Consultation</Link>
+                <Link to="/contact">Contact for Consultation</Link>
               </Button>
-              <p className="text-body-sm text-muted">
+              <p className="text-body text-muted">
                 Or call{" "}
                 <a
                   href="tel:+17753134155"

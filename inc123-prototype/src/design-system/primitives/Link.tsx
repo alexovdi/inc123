@@ -1,5 +1,5 @@
 import { type ReactNode, type AnchorHTMLAttributes } from "react";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
 import { pillarLinkMap } from "@/design-system/utils/pillarMaps";
@@ -89,9 +89,9 @@ function Link({
   }
 
   return (
-    <NextLink href={href} className={classes} {...props}>
+    <RouterLink to={href} className={classes} {...props}>
       {content}
-    </NextLink>
+    </RouterLink>
   );
 }
 

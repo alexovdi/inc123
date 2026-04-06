@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Check, ArrowRight, RotateCcw, Info } from "lucide-react";
 import { Button } from "@/design-system/primitives/Button";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
@@ -31,7 +31,7 @@ export function WizardRecommendation({
 
         {/* Context note — explains WHY this package was chosen */}
         {contextNote && (
-          <div className="mt-4 rounded-card border border-secondary/20 bg-secondary/5 px-4 py-3 text-body-sm text-foreground text-center">
+          <div className="mt-4 rounded-card border border-secondary/20 bg-secondary/5 px-4 py-3 text-body text-foreground text-center">
             <span className="mr-1.5">&#x1F4A1;</span>
             {contextNote}
           </div>
@@ -47,7 +47,7 @@ export function WizardRecommendation({
           {/* Header bar */}
           <div className="border-b border-secondary/20 bg-secondary/5 px-6 py-4">
             {primary.badge && (
-              <span className="inline-block rounded-pill bg-secondary px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white mb-2">
+              <span className="inline-block rounded-pill bg-secondary px-3 py-0.5 text-caption font-bold uppercase tracking-wider text-white mb-2">
                 {primary.badge}
               </span>
             )}
@@ -86,7 +86,7 @@ export function WizardRecommendation({
                 <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
                   <Check className="h-3 w-3" strokeWidth={3} />
                 </span>
-                <span className="text-body-sm text-foreground">{feature}</span>
+                <span className="text-body text-foreground">{feature}</span>
               </div>
             ))}
           </div>
@@ -95,7 +95,7 @@ export function WizardRecommendation({
           <div className="px-6 pb-6">
             <Button variant="cta" size="lg" className="w-full" asChild>
               <Link
-                href={`${primary.href}${primary.href.includes("?") ? "&" : "?"}ref=wizard`}
+                to={`${primary.href}${primary.href.includes("?") ? "&" : "?"}ref=wizard`}
               >
                 View Full Package Details
                 <ArrowRight className="h-4 w-4" />
@@ -106,7 +106,7 @@ export function WizardRecommendation({
 
         {/* Add-on note (foreign registration etc.) */}
         {addonNote && (
-          <div className="mt-4 flex items-start gap-3 rounded-card border border-border bg-primary-50 px-4 py-3 text-body-sm text-foreground">
+          <div className="mt-4 flex items-start gap-3 rounded-card border border-border bg-primary-50 px-4 py-3 text-body text-foreground">
             <Info className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
             <span>{addonNote}</span>
           </div>
@@ -122,17 +122,17 @@ export function WizardRecommendation({
               {alternatives.map((alt) => (
                 <Link
                   key={alt.pkg.slug}
-                  href={`${alt.pkg.href}${alt.pkg.href.includes("?") ? "&" : "?"}ref=wizard`}
+                  to={`${alt.pkg.href}${alt.pkg.href.includes("?") ? "&" : "?"}ref=wizard`}
                   className={cn(
                     "group flex flex-col rounded-card border border-border bg-surface p-4",
                     "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover hover:border-secondary",
                   )}
                   data-wizard-alt-click={alt.pkg.slug}
                 >
-                  <p className="text-body-sm font-semibold text-foreground">
+                  <p className="text-body font-semibold text-foreground">
                     {alt.pkg.name}
                   </p>
-                  <p className="mt-0.5 text-body-sm text-muted">
+                  <p className="mt-0.5 text-body text-muted">
                     {formatPrice(alt.pkg.prices.llc)} LLC &middot;{" "}
                     {formatPrice(alt.pkg.prices.corp)} Corp
                   </p>

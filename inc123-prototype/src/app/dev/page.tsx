@@ -1,6 +1,4 @@
-"use client";
-
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 
 const colorTokens = [
   { name: "primary", var: "--primary", class: "bg-primary" },
@@ -24,20 +22,22 @@ export default function DevPage() {
           Design System Tokens
         </h1>
         <p className="text-body-lg text-muted mb-12">
-          Toggle between wireframe and brand themes using the button in the bottom-right corner.
+          Toggle between wireframe and brand themes using the button in the
+          bottom-right corner.
         </p>
 
         {/* Quick links */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          <NextLink
-            href="/dev/colors"
+          <RouterLink
+            to="/dev/colors"
             className="group rounded-card border border-border bg-surface p-6 transition-shadow hover:shadow-card-hover"
           >
             <h2 className="font-display text-heading-sm font-semibold text-foreground group-hover:text-secondary transition-colors mb-2">
               Colors
             </h2>
             <p className="text-body-sm text-muted">
-              Semantic colors, pillar palette, primary scale, shadows, and border radius.
+              Semantic colors, pillar palette, primary scale, shadows, and
+              border radius.
             </p>
             {/* Mini color preview */}
             <div className="flex gap-1.5 mt-4">
@@ -45,10 +45,10 @@ export default function DevPage() {
                 <div key={t.name} className={`${t.class} h-6 flex-1 rounded`} />
               ))}
             </div>
-          </NextLink>
+          </RouterLink>
 
-          <NextLink
-            href="/dev/typography"
+          <RouterLink
+            to="/dev/typography"
             className="group rounded-card border border-border bg-surface p-6 transition-shadow hover:shadow-card-hover"
           >
             <h2 className="font-display text-heading-sm font-semibold text-foreground group-hover:text-secondary transition-colors mb-2">
@@ -59,14 +59,18 @@ export default function DevPage() {
             </p>
             {/* Mini type preview */}
             <div className="mt-4 space-y-1">
-              <p className="font-display text-body-lg font-bold text-foreground truncate">Display — Outfit</p>
+              <p className="font-display text-body-lg font-bold text-foreground truncate">
+                Display — Outfit
+              </p>
               <p className="text-body-sm text-muted truncate">Body — Inter</p>
-              <p className="font-mono text-caption text-muted truncate">Mono — JetBrains</p>
+              <p className="font-mono text-caption text-muted truncate">
+                Mono — JetBrains
+              </p>
             </div>
-          </NextLink>
+          </RouterLink>
 
-          <NextLink
-            href="/dev/components"
+          <RouterLink
+            to="/dev/components"
             className="group rounded-card border border-border bg-surface p-6 transition-shadow hover:shadow-card-hover"
           >
             <h2 className="font-display text-heading-sm font-semibold text-foreground group-hover:text-secondary transition-colors mb-2">
@@ -76,13 +80,23 @@ export default function DevPage() {
               62 components across primitives, composites, and layouts.
             </p>
             <div className="mt-4 flex flex-wrap gap-1.5">
-              {["Button", "Card", "Badge", "Input", "Accordion", "PricingGrid"].map((name) => (
-                <span key={name} className="rounded-pill bg-secondary/10 px-2 py-0.5 text-caption text-secondary">
+              {[
+                "Button",
+                "Card",
+                "Badge",
+                "Input",
+                "Accordion",
+                "PricingGrid",
+              ].map((name) => (
+                <span
+                  key={name}
+                  className="rounded-pill bg-secondary/10 px-2 py-0.5 text-caption text-secondary"
+                >
                   {name}
                 </span>
               ))}
             </div>
-          </NextLink>
+          </RouterLink>
         </div>
       </div>
     </div>

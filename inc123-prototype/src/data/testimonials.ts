@@ -3,7 +3,8 @@ import type { Testimonial } from "@/lib/types";
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
-    quote: "I needed complete anonymity for my LLC, and Incorporate123 delivered. The year-round nominee service means my name never appears on any public filing. Competitors only offer nominees at formation — these guys include them permanently.",
+    quote:
+      "I needed complete anonymity for my LLC, and Incorporate123 delivered. The year-round nominee service means my name never appears on any public filing. Competitors only offer nominees at formation — these guys include them permanently.",
     name: "Michael R.",
     businessType: "Real Estate Investor",
     state: "California",
@@ -12,7 +13,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t2",
-    quote: "After comparing five formation companies, Incorporate123 was the only one that included everything in the price. No surprise fees, no annual upsells for basic services. The all-inclusive pricing is exactly what it says.",
+    quote:
+      "After comparing five formation companies, Incorporate123 was the only one that included everything in the price. No surprise fees, no annual upsells for basic services. The all-inclusive pricing is exactly what it says.",
     name: "Sarah K.",
     businessType: "E-Commerce Business Owner",
     state: "Florida",
@@ -21,7 +23,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t3",
-    quote: "I have multiple investment properties and needed proper asset protection. The team at Incorporate123 set up a Wyoming LLC with charging order protection. They explained every detail and made the whole process painless.",
+    quote:
+      "I have multiple investment properties and needed proper asset protection. The team at Incorporate123 set up a Wyoming LLC with charging order protection. They explained every detail and made the whole process painless.",
     name: "David L.",
     businessType: "Property Investor",
     state: "Texas",
@@ -30,7 +33,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t4",
-    quote: "What sold me was the offshore record storage. My corporate documents are stored outside U.S. jurisdiction, which adds a layer of privacy no other formation company offered at this price point.",
+    quote:
+      "What sold me was the offshore record storage. My corporate documents are stored outside U.S. jurisdiction, which adds a layer of privacy no other formation company offered at this price point.",
     name: "Jennifer M.",
     businessType: "Consulting Firm Owner",
     state: "New York",
@@ -39,7 +43,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t5",
-    quote: "I was nervous about forming an LLC online, but the team walked me through every step. Having a real office in Reno with real people answering the phone made all the difference. This isn't some automated filing service.",
+    quote:
+      "I was nervous about forming an LLC online, but the team walked me through every step. Having real people answering the phone made all the difference. This isn't some automated filing service.",
     name: "Robert T.",
     businessType: "Tech Startup Founder",
     state: "Nevada",
@@ -48,7 +53,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t6",
-    quote: "The corporate minutes maintenance alone is worth it. Other companies charge $400-500/year extra for this service. Incorporate123 includes it in every package. I've been a client for three years and couldn't be happier.",
+    quote:
+      "The corporate minutes maintenance alone is worth it. Other companies charge $400-500/year extra for this service. Incorporate123 includes it in every package. I've been a client for three years and couldn't be happier.",
     name: "Amanda C.",
     businessType: "Healthcare Professional",
     state: "Wyoming",
@@ -57,7 +63,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t7",
-    quote: "Being able to pay with cryptocurrency was the deciding factor for me. It aligns perfectly with the privacy-first approach. The whole experience — from ordering to receiving my formation documents — was smooth and professional.",
+    quote:
+      "Being able to pay with cryptocurrency was the deciding factor for me. It aligns perfectly with the privacy-first approach. The whole experience — from ordering to receiving my formation documents — was smooth and professional.",
     name: "Chris W.",
     businessType: "Digital Asset Investor",
     state: "International",

@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
 import { blogPosts } from "@/data/blog";
 import { pillarTagMap } from "@/design-system/utils/pillarMaps";
 import { CTABlock } from "@/design-system/components/CTABlock";
 import { Link } from "@/design-system/primitives/Link";
-
-export const metadata: Metadata = {
-  title:
-    "Blog — Business Privacy, Formation & Asset Protection Insights | Incorporate123",
-  description:
-    "Expert articles on anonymous LLCs, nominee services, asset protection, Wyoming and Nevada business formation, and ongoing compliance. Practical advice from 25 years of experience.",
-  alternates: { canonical: "https://incorporate123.co/blog" },
-};
 
 function formatDate(iso: string): string {
   const date = new Date(iso + "T00:00:00");
@@ -104,7 +95,7 @@ export default function BlogPage() {
           label: "Compare All Packages",
           href: "/packages",
         }}
-        trustSignal="25+ Years of Experience · Reno, NV"
+        trustSignal="25+ Years of Experience · Privacy Specialists"
       />
     </>
   );

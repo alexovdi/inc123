@@ -13,16 +13,6 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { pillars } from "@/data/pillars";
 import { packages } from "@/data/packages";
 import { faqItems } from "@/data/faq";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title:
-    "Company Formation — Wyoming & Nevada LLC and Corporation Formation | Incorporate123",
-  description:
-    "Expert business formation in Wyoming and Nevada. All-inclusive pricing with registered agent, corporate minutes, and annual report filing. 25 years of experience. Packages from $875.",
-  alternates: { canonical: "https://incorporate123.co/formation" },
-};
-
 const pillar = pillars[2]; // formation
 const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
 const wySilver = packages.find((p) => p.id === "wyoming-silver")!;
@@ -173,7 +163,7 @@ export default function FormationPillarPage() {
                   className="text-pillar-formation"
                 />
                 <span className="text-caption text-muted">
-                  Established 2000 in Reno, NV
+                  Established 2000 · 25 Years
                 </span>
               </div>
             </Card>
@@ -245,7 +235,7 @@ export default function FormationPillarPage() {
               registered agent, corporate minutes, annual reports, and seal. No
               hidden fees, no required upsells.&rdquo;
             </p>
-            <p className="mt-2 text-body-sm text-muted">
+            <p className="mt-2 text-body text-muted">
               Most formation providers advertise a low base price, then add fees
               for every essential service. Incorporate123 packages include
               everything you need from day one &mdash; the price you see is the

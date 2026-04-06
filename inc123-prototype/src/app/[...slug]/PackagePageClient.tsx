@@ -33,7 +33,7 @@ interface PackagePageClientProps {
    ------------------------------------------------ */
 const trustItems = [
   { icon: "Clock", value: "25+ Years", label: "Trusted Since 2000" },
-  { icon: "MapPin", value: "Real Office", label: "Reno, Nevada" },
+  { icon: "Users", value: "US-Based", label: "Real People, Real Support" },
   { icon: "ShieldCheck", value: "30-Day", label: "Money-Back Guarantee" },
   { icon: "Phone", value: "(775) 313-4155", label: "Talk to a Specialist" },
   { icon: "Bitcoin", value: "Crypto", label: "Accepted" },

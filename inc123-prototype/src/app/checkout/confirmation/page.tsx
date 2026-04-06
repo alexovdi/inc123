@@ -1,7 +1,5 @@
-"use client";
-
 import { useMemo, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import {
   CheckCircle,
   Printer,
@@ -38,7 +36,7 @@ function formatUSD(amount: number): string {
    Page Component
    ------------------------------------------------ */
 export default function CheckoutConfirmationPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { state } = useCheckout();
 
   // Generate order number client-side only to avoid hydration mismatch
@@ -144,7 +142,7 @@ export default function CheckoutConfirmationPage() {
           </div>
 
           {state.companyDetails.contactEmail && (
-            <p className="mt-4 text-body-sm text-muted border-t border-border pt-4">
+            <p className="mt-4 text-body text-muted border-t border-border pt-4">
               A confirmation email has been sent to{" "}
               <span className="font-medium text-foreground">
                 {state.companyDetails.contactEmail}
@@ -172,7 +170,7 @@ export default function CheckoutConfirmationPage() {
 
         {/* Renewal info */}
         <div className="mb-6 rounded-card border border-border bg-muted/5 p-5 text-center">
-          <p className="text-body-sm text-muted">
+          <p className="text-body text-muted">
             Annual renewal:{" "}
             <span className="font-semibold text-foreground">
               {formatUSD(renewal)}/year
@@ -230,7 +228,7 @@ export default function CheckoutConfirmationPage() {
             size="md"
             icon={<ArrowRight className="h-4 w-4" />}
             iconPosition="right"
-            onClick={() => router.push("/asset-protection")}
+            onClick={() => navigate("/asset-protection")}
           >
             Learn About Asset Protection
           </Button>
@@ -238,7 +236,7 @@ export default function CheckoutConfirmationPage() {
 
         {/* Return home */}
         <div className="mt-8 text-center">
-          <Button variant="ghost" size="md" onClick={() => router.push("/")}>
+          <Button variant="ghost" size="md" onClick={() => navigate("/")}>
             Return to Homepage
           </Button>
         </div>

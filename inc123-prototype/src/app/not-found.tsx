@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 
@@ -21,40 +21,40 @@ export default function NotFound() {
         </p>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[32rem] mx-auto">
-          <NextLink href="/">
+          <RouterLink to="/">
             <Button variant="primary" size="md" className="w-full">
               <Icon name="House" size="sm" className="mr-2" />
               Homepage
             </Button>
-          </NextLink>
-          <NextLink href="/packages">
+          </RouterLink>
+          <RouterLink to="/packages">
             <Button variant="secondary" size="md" className="w-full">
               <Icon name="Package" size="sm" className="mr-2" />
               View Packages
             </Button>
-          </NextLink>
-          <NextLink href="/faq">
+          </RouterLink>
+          <RouterLink to="/faq">
             <Button variant="secondary" size="md" className="w-full">
               <Icon name="CircleHelp" size="sm" className="mr-2" />
               FAQ
             </Button>
-          </NextLink>
-          <NextLink href="/contact">
+          </RouterLink>
+          <RouterLink to="/contact">
             <Button variant="secondary" size="md" className="w-full">
               <Icon name="Phone" size="sm" className="mr-2" />
               Contact Us
             </Button>
-          </NextLink>
+          </RouterLink>
         </div>
 
-        <p className="mt-8 text-body-sm text-muted">
+        <p className="mt-8 text-body text-muted">
           Need help?{" "}
-          <NextLink
-            href="/contact"
+          <RouterLink
+            to="/contact"
             className="font-medium text-secondary hover:text-secondary/80 transition-colors"
           >
             Get in touch
-          </NextLink>{" "}
+          </RouterLink>{" "}
           or call{" "}
           <a
             href="tel:+17753134155"

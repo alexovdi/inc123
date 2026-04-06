@@ -94,7 +94,7 @@ function AddOnRow({ addOn, checked, onToggle }: AddOnRowProps) {
             />
           )}
         </div>
-        <p className="mt-1 text-body-sm text-muted">{addOn.description}</p>
+        <p className="mt-1 text-body text-muted">{addOn.description}</p>
       </div>
     </div>
   );

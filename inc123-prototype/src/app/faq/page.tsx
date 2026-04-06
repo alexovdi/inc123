@@ -278,7 +278,7 @@ export default function FAQPage() {
           label: "Send Us a Message",
           href: "/contact",
         }}
-        trustSignal="25+ Years of Experience in Reno, NV"
+        trustSignal="25+ Years of Experience · Privacy Specialists"
       />
     </>
   );

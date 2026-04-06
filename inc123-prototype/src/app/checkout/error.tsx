@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect } from "react";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/data/contact";
@@ -39,15 +37,15 @@ export default function CheckoutError({
             <Icon name="RotateCcw" size="sm" className="mr-2" />
             Try Again
           </Button>
-          <NextLink href="/packages">
+          <RouterLink to="/packages">
             <Button variant="secondary" size="md">
               <Icon name="Package" size="sm" className="mr-2" />
               Return to Packages
             </Button>
-          </NextLink>
+          </RouterLink>
         </div>
 
-        <p className="mt-8 text-body-sm text-muted">
+        <p className="mt-8 text-body text-muted">
           If this keeps happening, please call{" "}
           <a
             href={PHONE_HREF}

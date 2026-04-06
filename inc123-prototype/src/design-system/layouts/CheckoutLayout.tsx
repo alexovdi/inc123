@@ -1,6 +1,6 @@
 "use client";
 
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { Phone } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 
@@ -33,14 +33,14 @@ export function CheckoutLayout({
       {/* Minimal Header */}
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex max-w-content items-center justify-between px-container-x py-3">
-          <NextLink href="/" className="flex items-center gap-2">
+          <RouterLink to="/" className="flex items-center gap-2">
             <span className="font-display text-heading-sm font-bold text-primary">
               Incorporate
             </span>
             <span className="font-display text-heading-sm font-bold text-secondary">
               123
             </span>
-          </NextLink>
+          </RouterLink>
 
           <a
             href={`tel:${phone.replace(/[^+\d]/g, "")}`}
@@ -66,7 +66,7 @@ export function CheckoutLayout({
                         ? "bg-success text-white"
                         : step.step === currentStep
                           ? "bg-secondary text-white"
-                          : "bg-primary-100 text-muted"
+                          : "bg-primary-100 text-muted",
                     )}
                   >
                     {step.step < currentStep ? "✓" : step.step}
@@ -76,7 +76,7 @@ export function CheckoutLayout({
                       "hidden text-body-sm font-medium sm:inline",
                       step.step === currentStep
                         ? "text-foreground"
-                        : "text-muted"
+                        : "text-muted",
                     )}
                   >
                     {step.label}
@@ -86,9 +86,7 @@ export function CheckoutLayout({
                   <div
                     className={cn(
                       "mx-3 h-px flex-1",
-                      step.step < currentStep
-                        ? "bg-success"
-                        : "bg-border"
+                      step.step < currentStep ? "bg-success" : "bg-border",
                     )}
                   />
                 )}
@@ -101,13 +99,9 @@ export function CheckoutLayout({
       {/* Content */}
       <div className="mx-auto max-w-content px-container-x py-section-y-sm">
         <div className="flex flex-col gap-8 lg:flex-row">
-          <main className="flex-1 min-w-0">
-            {children}
-          </main>
+          <main className="flex-1 min-w-0">{children}</main>
           {sidebar && (
-            <aside className="w-full lg:w-80 shrink-0">
-              {sidebar}
-            </aside>
+            <aside className="w-full lg:w-80 shrink-0">{sidebar}</aside>
           )}
         </div>
       </div>

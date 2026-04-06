@@ -47,7 +47,7 @@ function AdvantageGrid({ items, className }: AdvantageGridProps) {
           </h3>
 
           {/* Description */}
-          <p className="text-body-sm text-muted mt-2">{item.description}</p>
+          <p className="text-body text-muted mt-2">{item.description}</p>
         </div>
       ))}
     </div>

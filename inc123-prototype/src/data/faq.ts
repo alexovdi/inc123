@@ -143,7 +143,7 @@ export const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
     {
       title: "About Incorporate123",
       description:
-        "25 years of business formation and privacy expertise from Reno, Nevada.",
+        "25 years of business formation and privacy expertise. Nevada-based specialists.",
       href: "/about",
     },
     {
@@ -503,14 +503,14 @@ export const faqItems: FAQItem[] = [
     id: "faq-42",
     question: "How long has Incorporate123 been in business?",
     answer:
-      "Since approximately 2000 — over 25 years of specialized experience in business formation and privacy services. We're based in Reno, Nevada, with a physical office minutes from the Nevada Secretary of State. We're real people with decades of experience, not a faceless online service.",
+      "Since approximately 2000 — over 25 years of specialized experience in business formation and privacy services. We're a Nevada-based company with real people and decades of experience, not a faceless online service.",
     category: "general",
   },
   {
     id: "faq-43",
-    question: "Where is your office?",
+    question: "Where are you based?",
     answer:
-      "Kingsbury Executive Suites, 1795 Meadow Wood Lane, Suite 100, Reno, Nevada. Minutes from the Nevada Secretary of State — we hand-deliver filing documents for same-day processing. Walk-ins welcome during business hours, Monday–Friday, 9:00 AM – 5:00 PM Pacific.",
+      "We're based in Nevada, with close working relationships with the Nevada Secretary of State's office. Contact us by phone at (775) 313-4155 or email during business hours, Monday–Friday, 9:00 AM – 5:00 PM Pacific.",
     category: "general",
   },
   {

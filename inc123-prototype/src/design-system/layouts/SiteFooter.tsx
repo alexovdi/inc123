@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import NextLink from "next/link";
-import { Phone, Mail, MapPin, ChevronDown } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 
 interface FooterLink {
@@ -54,12 +54,12 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
         <ul className="space-y-2">
           {col.links.map((link) => (
             <li key={link.href + link.label}>
-              <NextLink
-                href={link.href}
-                className="text-caption text-white/50 transition-colors hover:text-white hover:underline"
+              <RouterLink
+                to={link.href}
+                className="text-body-sm text-white/50 transition-colors hover:text-white hover:underline"
               >
                 {link.label}
-              </NextLink>
+              </RouterLink>
             </li>
           ))}
         </ul>
@@ -69,7 +69,7 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
       {col.comparisons && col.comparisons.length > 0 && (
         <div className="mt-3">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-[9px] font-semibold uppercase tracking-wider text-white/20">
+            <span className="text-caption font-semibold uppercase tracking-wider text-white/20">
               Compare
             </span>
             <span className="flex-1 h-px bg-white/[0.06]" />
@@ -77,12 +77,12 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
           <ul className="space-y-2">
             {col.comparisons.map((link) => (
               <li key={link.href}>
-                <NextLink
-                  href={link.href}
-                  className="text-caption text-white/50 transition-colors hover:text-white hover:underline"
+                <RouterLink
+                  to={link.href}
+                  className="text-body-sm text-white/50 transition-colors hover:text-white hover:underline"
                 >
                   {link.label}
-                </NextLink>
+                </RouterLink>
               </li>
             ))}
           </ul>
@@ -95,7 +95,7 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
           {col.sections.map((section) => (
             <div key={section.heading || "other"}>
               {section.heading && (
-                <h4 className="mb-2 text-[9px] font-semibold uppercase tracking-wider text-white/25">
+                <h4 className="mb-2 text-caption font-semibold uppercase tracking-wider text-white/25">
                   {section.heading}
                 </h4>
               )}
@@ -105,12 +105,12 @@ function FooterColumnContent({ col }: { col: FooterColumn }) {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <NextLink
-                      href={link.href}
-                      className="text-caption text-white/50 transition-colors hover:text-white hover:underline"
+                    <RouterLink
+                      to={link.href}
+                      className="text-body-sm text-white/50 transition-colors hover:text-white hover:underline"
                     >
                       {link.label}
-                    </NextLink>
+                    </RouterLink>
                   </li>
                 ))}
               </ul>
@@ -137,7 +137,7 @@ function FooterAccordionItem({ col }: { col: FooterColumn }) {
         aria-label={`${isOpen ? "Collapse" : "Expand"} ${col.title}`}
         className="flex w-full items-center justify-between py-3 text-left"
       >
-        <h3 className="text-body-sm font-semibold text-white/80">
+        <h3 className="text-caption font-semibold uppercase tracking-wider text-white/80">
           {col.title}
         </h3>
         <ChevronDown
@@ -181,27 +181,27 @@ export function SiteFooter({
           <div className="mx-auto max-w-wide px-container-x py-7">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <NextLink href="/" className="inline-flex items-center gap-1">
+                <RouterLink to="/" className="inline-flex items-center gap-1">
                   <span className="font-display text-[22px] font-bold text-white">
                     incorporate
                   </span>
                   <span className="font-display text-[22px] font-bold text-secondary">
                     123
                   </span>
-                </NextLink>
+                </RouterLink>
                 <p className="mt-1.5 text-body-sm text-white/40">
                   {brand.tagline}
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 {brand.ctas.map((cta) => (
-                  <NextLink
+                  <RouterLink
                     key={cta.href}
-                    href={cta.href}
+                    to={cta.href}
                     className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/20 text-body-sm font-medium text-white/70 transition-all hover:border-white/40 hover:text-white"
                   >
                     {cta.label}
-                  </NextLink>
+                  </RouterLink>
                 ))}
                 <a
                   href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
@@ -221,7 +221,7 @@ export function SiteFooter({
         <div className="hidden lg:grid lg:grid-cols-6 gap-6">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="mb-4 text-body-sm font-bold text-white">
+              <h3 className="mb-4 text-caption font-semibold uppercase tracking-wider text-white/80">
                 {col.title}
               </h3>
               <FooterColumnContent col={col} />
@@ -233,7 +233,7 @@ export function SiteFooter({
         <div className="hidden sm:grid sm:grid-cols-3 gap-6 lg:hidden">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="mb-4 text-body-sm font-bold text-white">
+              <h3 className="mb-4 text-caption font-semibold uppercase tracking-wider text-white/80">
                 {col.title}
               </h3>
               <FooterColumnContent col={col} />
@@ -261,32 +261,17 @@ export function SiteFooter({
               <span className="text-white/15">·</span>
               {legal.map((link, i) => (
                 <span key={link.href} className="flex items-center gap-3">
-                  <NextLink
-                    href={link.href}
+                  <RouterLink
+                    to={link.href}
                     className="text-white/40 transition-colors hover:text-white/70 hover:underline"
                   >
                     {link.label}
-                  </NextLink>
+                  </RouterLink>
                   {i < legal.length - 1 && (
                     <span className="text-white/15">·</span>
                   )}
                 </span>
               ))}
-            </div>
-
-            {/* Address + Phone */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-caption text-white/20">
-              <span className="flex items-start gap-1">
-                <MapPin className="mt-0.5 h-3 w-3 shrink-0" />
-                {company.address}
-              </span>
-              <span className="text-white/10">·</span>
-              <a
-                href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
-                className="transition-colors hover:text-white/40"
-              >
-                {company.phone}
-              </a>
             </div>
 
             {/* Crypto badges */}
@@ -295,7 +280,7 @@ export function SiteFooter({
                 {crypto.map((symbol) => (
                   <span
                     key={symbol}
-                    className="text-[9px] font-bold tracking-wide text-white/25 bg-white/[0.05] px-2 py-1 rounded"
+                    className="text-caption font-bold tracking-wide text-white/25 bg-white/[0.05] px-2 py-1 rounded"
                   >
                     {symbol}
                   </span>

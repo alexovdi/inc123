@@ -78,7 +78,7 @@ function PackagePreviewCard({
       )}
 
       {/* Description */}
-      <p className="text-body-sm text-muted mt-2 flex-1">{tier.description}</p>
+      <p className="text-body text-muted mt-2 flex-1">{tier.description}</p>
 
       {/* CTA */}
       <div className="mt-4">

@@ -1,7 +1,5 @@
-"use client";
-
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   Lock,
@@ -39,7 +37,7 @@ function formatUSD(amount: number): string {
    Page Component
    ------------------------------------------------ */
 export default function CheckoutPaymentPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { state, dispatch } = useCheckout();
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -85,13 +83,13 @@ export default function CheckoutPaymentPage() {
     // Simulate processing delay for prototype
     setTimeout(() => {
       dispatch({ type: "SET_STEP", step: 4 });
-      router.push("/checkout/confirmation");
+      navigate("/checkout/confirmation");
     }, 1500);
   };
 
   const handleBack = () => {
     dispatch({ type: "SET_STEP", step: 2 });
-    router.push("/checkout/details");
+    navigate("/checkout/details");
   };
 
   const entityLabel = state.entityType === "llc" ? "LLC" : "Corp";
@@ -228,7 +226,7 @@ export default function CheckoutPaymentPage() {
                   ),
                 )}
               </div>
-              <p className="text-body-sm text-muted">
+              <p className="text-body text-muted">
                 After placing your order, you&apos;ll receive a wallet address
                 and payment instructions by email. Formation begins upon payment
                 confirmation.

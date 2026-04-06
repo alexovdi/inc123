@@ -53,7 +53,7 @@ function QuickLinkCards({ links, className }: QuickLinkCardsProps) {
                 <h3 className="font-display font-semibold text-body-lg text-foreground group-hover:text-secondary transition-colors">
                   {link.title}
                 </h3>
-                <p className="mt-1 text-body-sm text-muted line-clamp-2">
+                <p className="mt-1 text-body text-muted line-clamp-2">
                   {link.description}
                 </p>
               </div>

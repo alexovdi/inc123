@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
@@ -69,14 +69,14 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
       >
         <div className="mx-auto flex max-w-wide items-center justify-between px-container-x">
           {/* Logo */}
-          <NextLink href="/" className="flex items-center gap-1">
+          <RouterLink to="/" className="flex items-center gap-1">
             <span className="font-display text-heading-sm font-bold text-primary">
               Incorporate
             </span>
             <span className="font-display text-heading-sm font-bold text-secondary">
               123
             </span>
-          </NextLink>
+          </RouterLink>
 
           {/* Desktop Nav */}
           <nav
@@ -93,8 +93,8 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                 }
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <NextLink
-                  href={item.href}
+                <RouterLink
+                  to={item.href}
                   className={cn(
                     "inline-flex items-center gap-1 px-3 py-2 text-body-sm font-medium text-foreground transition-colors hover:text-secondary",
                     activeMenu === item.label && "text-secondary",
@@ -104,7 +104,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                   {(item.children || item.dropdownLinks) && (
                     <ChevronDown className="h-3 w-3 text-muted" />
                   )}
-                </NextLink>
+                </RouterLink>
 
                 {/* Mega Menu Panel (pillar columns) */}
                 {item.children && activeMenu === item.label && (
@@ -119,15 +119,15 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                               pillarAccentBorder[pillar.pillar],
                             )}
                           >
-                            <NextLink
-                              href={pillar.href}
+                            <RouterLink
+                              to={pillar.href}
                               className={cn(
                                 "text-body-sm font-bold mt-2 inline-block",
                                 pillarAccentText[pillar.pillar],
                               )}
                             >
                               {pillar.label}
-                            </NextLink>
+                            </RouterLink>
                             <p className="text-caption text-muted mt-0.5">
                               {pillar.description}
                             </p>
@@ -136,9 +136,9 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                           {/* Cluster links */}
                           <div className="grid grid-cols-2 gap-1.5 mb-2">
                             {pillar.clusters.map((cluster) => (
-                              <NextLink
+                              <RouterLink
                                 key={cluster.href}
-                                href={cluster.href}
+                                to={cluster.href}
                                 className="block rounded-button px-3 py-2 text-body-sm transition-colors hover:bg-primary-50"
                               >
                                 <span className="font-medium text-foreground">
@@ -149,7 +149,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                                     {cluster.description}
                                   </span>
                                 )}
-                              </NextLink>
+                              </RouterLink>
                             ))}
                           </div>
 
@@ -162,13 +162,13 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                                 </p>
                                 <div className="grid grid-cols-2 gap-1.5">
                                   {pillar.comparisons.map((cmp) => (
-                                    <NextLink
+                                    <RouterLink
                                       key={cmp.href}
-                                      href={cmp.href}
+                                      to={cmp.href}
                                       className="block rounded-button px-3 py-1.5 text-caption font-medium text-muted transition-colors hover:bg-primary-50 hover:text-foreground"
                                     >
                                       {cmp.title}
-                                    </NextLink>
+                                    </RouterLink>
                                   ))}
                                 </div>
                               </div>
@@ -176,8 +176,8 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
 
                           {/* Featured link */}
                           {pillar.featuredLink && (
-                            <NextLink
-                              href={pillar.featuredLink.href}
+                            <RouterLink
+                              to={pillar.featuredLink.href}
                               className="block rounded-button bg-primary-50 p-3 text-body-sm transition-colors hover:bg-primary-100"
                             >
                               <span className="font-semibold text-secondary">
@@ -186,20 +186,20 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                               <span className="mt-0.5 block text-caption text-muted">
                                 {pillar.featuredLink.description}
                               </span>
-                            </NextLink>
+                            </RouterLink>
                           )}
 
                           {/* Explore All link */}
                           <div className="mt-2 border-t border-border pt-2">
-                            <NextLink
-                              href={pillar.href}
+                            <RouterLink
+                              to={pillar.href}
                               className={cn(
                                 "text-body-sm font-semibold",
                                 pillarAccentText[pillar.pillar],
                               )}
                             >
                               Explore All {pillar.label} →
-                            </NextLink>
+                            </RouterLink>
                           </div>
                         </div>
                       ))}
@@ -212,13 +212,13 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
                     <div className="w-48 rounded-card bg-surface py-2 shadow-dropdown border border-border">
                       {item.dropdownLinks.map((link) => (
-                        <NextLink
+                        <RouterLink
                           key={link.href}
                           href={link.href}
                           className="block px-4 py-2 text-body-sm text-foreground transition-colors hover:bg-primary-50 hover:text-secondary"
                         >
                           {link.label}
-                        </NextLink>
+                        </RouterLink>
                       ))}
                     </div>
                   </div>
@@ -242,7 +242,9 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
               asChild
               className="border-secondary text-secondary hover:bg-secondary hover:text-white"
             >
-              <NextLink href="/compare-packages">Find Your Package →</NextLink>
+              <RouterLink to="/compare-packages">
+                Find Your Package →
+              </RouterLink>
             </Button>
           </div>
 
@@ -292,12 +294,12 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                 asChild
                 className="border-secondary text-secondary"
               >
-                <NextLink
-                  href="/compare-packages"
+                <RouterLink
+                  to="/compare-packages"
                   onClick={() => setMobileOpen(false)}
                 >
                   Find Your Package →
-                </NextLink>
+                </RouterLink>
               </Button>
               <a
                 href={`tel:${navigation.phone.replace(/[^+\d]/g, "")}`}
@@ -337,13 +339,13 @@ function MobileNavSection({
   // Simple link (no children or dropdown)
   if (!item.children && !item.dropdownLinks) {
     return (
-      <NextLink
-        href={item.href}
+      <RouterLink
+        to={item.href}
         onClick={onNavigate}
         className="block rounded-button px-3 py-3 text-body font-medium text-foreground hover:bg-primary-50"
       >
         {item.label}
-      </NextLink>
+      </RouterLink>
     );
   }
 
@@ -368,14 +370,14 @@ function MobileNavSection({
         {open && (
           <div className="ml-3 space-y-1 pl-3 border-l-2 border-border">
             {item.dropdownLinks.map((link) => (
-              <NextLink
+              <RouterLink
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={onNavigate}
                 className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
               >
                 {link.label}
-              </NextLink>
+              </RouterLink>
             ))}
           </div>
         )}
@@ -413,14 +415,14 @@ function MobileNavSection({
       {open && pillar && (
         <div className="ml-3 space-y-1 pl-3 border-l-2 border-border">
           {pillar.clusters.map((cluster) => (
-            <NextLink
+            <RouterLink
               key={cluster.href}
-              href={cluster.href}
+              to={cluster.href}
               onClick={onNavigate}
               className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
             >
               {cluster.title}
-            </NextLink>
+            </RouterLink>
           ))}
           {pillar.comparisons && pillar.comparisons.length > 0 && (
             <>
@@ -428,19 +430,19 @@ function MobileNavSection({
                 Compare
               </p>
               {pillar.comparisons.map((cmp) => (
-                <NextLink
+                <RouterLink
                   key={cmp.href}
-                  href={cmp.href}
+                  to={cmp.href}
                   onClick={onNavigate}
                   className="block rounded-button px-3 py-2 text-body-sm text-muted hover:text-foreground hover:bg-primary-50"
                 >
                   {cmp.title}
-                </NextLink>
+                </RouterLink>
               ))}
             </>
           )}
-          <NextLink
-            href={pillar.href}
+          <RouterLink
+            to={pillar.href}
             onClick={onNavigate}
             className={cn(
               "block rounded-button px-3 py-2 text-body-sm font-semibold",
@@ -448,7 +450,7 @@ function MobileNavSection({
             )}
           >
             Explore All {pillar.label} →
-          </NextLink>
+          </RouterLink>
         </div>
       )}
     </div>

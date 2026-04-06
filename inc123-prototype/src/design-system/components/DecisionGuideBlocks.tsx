@@ -34,7 +34,7 @@ function DecisionGuideBlocks({ options, className }: DecisionGuideBlocksProps) {
           </h4>
 
           {/* Description */}
-          <p className="text-body-sm text-muted mt-2">{option.description}</p>
+          <p className="text-body text-muted mt-2">{option.description}</p>
 
           {/* Criteria list */}
           <ul className="mt-4 space-y-2.5" role="list">
@@ -45,7 +45,7 @@ function DecisionGuideBlocks({ options, className }: DecisionGuideBlocksProps) {
                   size="sm"
                   className="text-success shrink-0 mt-0.5"
                 />
-                <span className="text-body-sm text-foreground">
+                <span className="text-body text-foreground">
                   {criterion}
                 </span>
               </li>

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { HomepageData } from "@/lib/types";
 import type { CarouselTestimonial } from "@/design-system/components/TestimonialCarousel";
 
@@ -17,7 +18,7 @@ export const homepageData: HomepageData = {
       [{ text: "Public" }, { text: "Records." }],
     ],
     subheadline:
-      "Year-round nominee services and all-inclusive pricing — everything included from day one. Wyoming & Nevada specialists since 2000.",
+      "Year-round nominee services and all-inclusive pricing — everything included from day one. Privacy specialists across 4 states since 2000.",
     primaryCTA: { label: "Find Your Package →", href: "#wizard" },
     secondaryCTA: {
       label: "Learn About Privacy →",
@@ -204,4 +205,259 @@ export const trustSignalItems = [
   { icon: "Phone", value: "(775)", label: "Call Anytime" },
   { icon: "Bitcoin", value: "Crypto", label: "Crypto Payments for Privacy" },
   { icon: "Lock", value: "Secure", label: "Checkout" },
+];
+
+/* ------------------------------------------------
+   Homepage Testimonial Grid — v10 static 3-col
+   ------------------------------------------------ */
+export interface HomepageTestimonialItem {
+  quote: string;
+  initials: string;
+  name: string;
+  role: string;
+  color: "secondary" | "success" | "accent";
+  featured?: boolean;
+}
+
+export const homepageTestimonialGrid: HomepageTestimonialItem[] = [
+  {
+    quote:
+      "We moved our California business to a Wyoming entity with nominee services. Our ownership is completely private and the process was handled start to finish.",
+    initials: "MT",
+    name: "Mark T.",
+    role: "California Business Owner",
+    color: "secondary",
+  },
+  {
+    quote:
+      "After 15 years with another provider, we switched to Incorporate123 for the year-round nominee maintenance. The difference in service level is night and day. We should have made the switch years ago.",
+    initials: "IG",
+    name: "Investment Group",
+    role: "Nevada",
+    color: "success",
+    featured: true,
+  },
+  {
+    quote:
+      "The all-inclusive pricing was what sold us. No hidden fees, no surprise add-ons at checkout — just one clear price for everything we needed.",
+    initials: "SM",
+    name: "Sarah M.",
+    role: "Wyoming LLC Owner",
+    color: "accent",
+  },
+];
+
+/* ------------------------------------------------
+   Trust Bar Items — v10 homepage
+   ------------------------------------------------ */
+export interface TrustBarItem {
+  iconName: string;
+  colorClass: string;
+  bgClass: string;
+  value: string | ReactNode;
+  label: string;
+  href?: string;
+}
+
+export const trustBarItems: TrustBarItem[] = [
+  {
+    iconName: "Award",
+    colorClass: "text-secondary",
+    bgClass: "bg-secondary/[0.05]",
+    value: "Since 2000",
+    label: "25 years trusted",
+  },
+  {
+    iconName: "Phone",
+    colorClass: "text-success",
+    bgClass: "bg-success/[0.05]",
+    value: "(775) 313-4155",
+    label: "Call us directly",
+    href: "tel:+17753134155",
+  },
+  {
+    iconName: "Check",
+    colorClass: "text-accent",
+    bgClass: "bg-accent/[0.05]",
+    value: "30-Day",
+    label: "Money-back guarantee",
+  },
+  {
+    iconName: "Globe",
+    colorClass: "text-[var(--pillar-compliance)]",
+    bgClass: "bg-[var(--pillar-compliance)]/[0.05]",
+    value: "5 Cryptos",
+    label: "Payments accepted",
+  },
+  {
+    iconName: "DollarSign",
+    colorClass: "text-secondary",
+    bgClass: "bg-secondary/[0.05]",
+    value: "All-Inclusive",
+    label: "No hidden fees, ever",
+  },
+];
+
+/* ------------------------------------------------
+   Differentiator Cards — v10 dark section
+   ------------------------------------------------ */
+export interface DifferentiatorCard {
+  iconName: string;
+  title: string;
+  desc: string;
+}
+
+export const differentiatorCards: DifferentiatorCard[] = [
+  {
+    iconName: "Globe",
+    title: "Offshore Records Storage",
+    desc: "Corporate records maintained outside U.S. jurisdiction. Included free in every Gold package since 2012.",
+  },
+  {
+    iconName: "DollarSign",
+    title: "All-Inclusive Pricing",
+    desc: "State fees, agent, operating agreement, EIN — every cost included upfront. No add-ons at checkout.",
+  },
+  {
+    iconName: "Clock",
+    title: "25 Years Specialized",
+    desc: "Wyoming and Nevada entities since 2000. Privacy and asset protection specialists.",
+  },
+  {
+    iconName: "Users",
+    title: "Real Human Experts",
+    desc: "Dedicated specialists who know Wyoming and Nevada entity law. Not a chatbot, not a call center.",
+  },
+  {
+    iconName: "Phone",
+    title: "Crypto Accepted",
+    desc: "Bitcoin, Ethereum, and three more cryptocurrencies accepted for maximum payment privacy.",
+  },
+];
+
+/* ------------------------------------------------
+   Package Comparison — Silver/Gold cards
+   ------------------------------------------------ */
+export interface PackageComparisonCard {
+  tier: string;
+  tierLabel: string;
+  price: string;
+  renewal: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  featured?: boolean;
+  featuredBadge?: string;
+  valueCallout?: string;
+  upsellText?: string;
+  upsellHref?: string;
+}
+
+export const packageComparisonCards: PackageComparisonCard[] = [
+  {
+    tier: "Silver",
+    tierLabel: "Formation",
+    price: "$875",
+    renewal: "$325/yr",
+    features: [
+      "Registered agent included",
+      "Custom operating agreement",
+      "All state filing fees",
+      "EIN filing",
+    ],
+    ctaLabel: "View Silver →",
+    ctaHref: "/wyoming-incorporation",
+    upsellText: "Add privacy for $400 more →",
+    upsellHref: "/compare-packages",
+  },
+  {
+    tier: "Gold",
+    tierLabel: "Privacy",
+    price: "$1,275",
+    renewal: "$525/yr with nominees",
+    features: [
+      "Year-round nominee services",
+      "Offshore records storage",
+      "Full compliance package",
+      "Registered agent included",
+      "Corporate minutes maintenance",
+      "All state filing fees",
+    ],
+    ctaLabel: "Get Started →",
+    ctaHref: "/wyoming-private-incorporation",
+    featured: true,
+    featuredBadge: "Chosen by 70% of Clients",
+    valueCallout: "Includes $2,000+ in Year 1 services",
+    upsellText: "Schedule a consultation",
+    upsellHref: "/contact",
+  },
+];
+
+/* ------------------------------------------------
+   Privacy Bridge columns — "Why It Matters" section
+   ------------------------------------------------ */
+export interface PrivacyBridgeColumn {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+export const privacyBridgeColumns: PrivacyBridgeColumn[] = [
+  {
+    iconName: "Eye",
+    title: "Public Exposure",
+    description:
+      "Standard formation puts your name on state filings. Anyone with an internet connection can find your ownership, address, and business details.",
+  },
+  {
+    iconName: "AlertCircle",
+    title: "Lawsuit Targeting",
+    description:
+      "Visible ownership makes you a target. Frivolous lawsuits cost $500K+ to defend on average. Privacy is your first line of defense.",
+  },
+  {
+    iconName: "Lock",
+    title: "The Solution",
+    description:
+      "Year-round nominee officers keep your name off public records — not just at formation, but every day. Combine with offshore records storage for complete privacy.",
+  },
+];
+
+/* ------------------------------------------------
+   Hero visual badges — floating pillar badges
+   ------------------------------------------------ */
+export interface HeroBadge {
+  iconName: string;
+  title: string;
+  subtitle: string;
+  position: "top-right" | "mid-right" | "bottom-left";
+  colorClass: string;
+  delay: string;
+}
+
+export const heroBadges: HeroBadge[] = [
+  {
+    iconName: "Lock",
+    title: "Privacy",
+    subtitle: "Year-round nominees",
+    position: "top-right",
+    colorClass: "bg-secondary/10 text-secondary/80",
+    delay: "600ms",
+  },
+  {
+    iconName: "FileText",
+    title: "Formation",
+    subtitle: "All-inclusive",
+    position: "mid-right",
+    colorClass: "bg-secondary/10 text-secondary/80",
+    delay: "800ms",
+  },
+  {
+    iconName: "Shield",
+    title: "Protection",
+    subtitle: "Charging order",
+    position: "bottom-left",
+    colorClass: "bg-success/10 text-success/80",
+    delay: "1000ms",
+  },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import {
   tierDefinitions,
   getTierMinPrice,
@@ -230,7 +230,7 @@ export default function PackagesPage() {
 
           {/* State-specific note for CA/FL */}
           {(selectedState === "California" || selectedState === "Florida") && (
-            <p className="mt-6 text-body-sm text-muted text-center max-w-narrow mx-auto">
+            <p className="mt-6 text-body text-muted text-center max-w-narrow mx-auto">
               {selectedState} packages use a Wyoming or Nevada nominee structure
               with {selectedState} foreign registration included. Only Gold tier
               is available for {selectedState}.
@@ -284,7 +284,7 @@ export default function PackagesPage() {
               table.
             </p>
             <Link
-              href="/compare-packages"
+              to="/compare-packages"
               className="mt-6 inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3 text-body font-medium text-white hover:bg-secondary/90 transition-colors"
             >
               Compare All Packages

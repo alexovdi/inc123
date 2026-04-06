@@ -1,63 +1,15 @@
-import { notFound } from "next/navigation";
-import {
-  getPageBySlug,
-  getAllSlugs,
-  type PageEntry,
-} from "@/lib/slug-registry";
+import { useParams } from "react-router-dom";
+import { getPageBySlug, type PageEntry } from "@/lib/slug-registry";
 import { pillarLabelMap } from "@/design-system/utils/pillarMaps";
 import { ClusterPageTemplate } from "./ClusterPageTemplate";
 import { ComparisonPageTemplate } from "./ComparisonPageTemplate";
 import { StatePageTemplate } from "./StatePageTemplate";
-import type { Metadata } from "next";
-
-/* ------------------------------------------------
-   Static params — all flat slugs
-   ------------------------------------------------ */
-export function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug: [slug] }));
-}
+import NotFound from "../not-found";
 
 /* ------------------------------------------------
    Base URL
    ------------------------------------------------ */
 const SITE_URL = "https://incorporate123.co";
-
-/* ------------------------------------------------
-   Metadata
-   ------------------------------------------------ */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string[] }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const flatSlug = slug.join("/");
-  const entry = getPageBySlug(flatSlug);
-  if (!entry) return {};
-
-  const canonical = `${SITE_URL}/${flatSlug}`;
-
-  switch (entry.type) {
-    case "cluster":
-      return {
-        title: `${entry.data.title} — ${pillarLabelMap[entry.data.pillar] ?? entry.data.pillarLabel} | Incorporate123`,
-        description: entry.data.description,
-        alternates: { canonical },
-      };
-    case "comparison":
-      return {
-        title: `${entry.data.title} — Comparison | Incorporate123`,
-        description: entry.data.description,
-        alternates: { canonical },
-      };
-    case "state":
-      return {
-        title: `${entry.data.name} Business Services — LLC Formation, Privacy & Asset Protection | Incorporate123`,
-        description: `Form a ${entry.data.name} LLC or Corporation with 25 years of expert support. Anonymous LLC formation, asset protection, registered agent, and ongoing compliance. All-inclusive packages.`,
-        alternates: { canonical },
-      };
-  }
-}
 
 /* ------------------------------------------------
    BreadcrumbList Schema (JSON-LD)
@@ -118,16 +70,12 @@ function BreadcrumbSchema({ entry, slug }: { entry: PageEntry; slug: string }) {
 /* ------------------------------------------------
    Page Component
    ------------------------------------------------ */
-export default async function CatchAllPage({
-  params,
-}: {
-  params: Promise<{ slug: string[] }>;
-}) {
-  const { slug } = await params;
-  const flatSlug = slug.join("/");
+export default function CatchAllPage() {
+  const params = useParams();
+  const flatSlug = params["*"] ?? "";
   const entry = getPageBySlug(flatSlug);
 
-  if (!entry) notFound();
+  if (!entry) return <NotFound />;
 
   const breadcrumb = <BreadcrumbSchema entry={entry} slug={flatSlug} />;
 

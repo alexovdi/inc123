@@ -13,7 +13,7 @@ import { cn } from "@/design-system/utils/cn";
 
 const items = [
   { icon: Clock, text: "25 Years of Expertise" },
-  { icon: MapPin, text: "Real Office in Reno, NV" },
+  { icon: MapPin, text: "100% US-Based Team" },
   { icon: Shield, text: "Year-Round Nominees Included" },
   { icon: DollarSign, text: "$1,275 All-Inclusive" },
   { icon: Award, text: "Money-Back Guarantee" },

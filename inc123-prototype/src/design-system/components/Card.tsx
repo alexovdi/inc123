@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import NextLink from "next/link";
+import { Link as RouterLink } from "react-router-dom";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
 import { pillarBorderTopMap } from "@/design-system/utils/pillarMaps";
@@ -153,8 +153,8 @@ function Card({
         {/* CTA */}
         {cta && !href && (
           <div className="mt-auto pt-2">
-            <NextLink
-              href={cta.href}
+            <RouterLink
+              to={cta.href}
               className={cn(
                 "inline-flex items-center gap-1 text-body-sm font-medium text-secondary",
                 "hover:text-secondary/80 transition-colors",
@@ -163,7 +163,7 @@ function Card({
             >
               {cta.label}
               <Icon name="ArrowRight" size="xs" />
-            </NextLink>
+            </RouterLink>
           </div>
         )}
       </div>
@@ -203,15 +203,15 @@ function Card({
     }
 
     return (
-      <NextLink
-        href={href}
+      <RouterLink
+        to={href}
         className={cn(
           classes,
           "no-underline block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
         )}
       >
         {content}
-      </NextLink>
+      </RouterLink>
     );
   }
 

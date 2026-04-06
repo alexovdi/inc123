@@ -13,16 +13,6 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { pillars } from "@/data/pillars";
 import { packages } from "@/data/packages";
 import { faqItems } from "@/data/faq";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title:
-    "Asset Protection — Charging Order Protection, Holding Structures & Multi-Entity Strategies | Incorporate123",
-  description:
-    "Protect your assets with Wyoming and Nevada LLCs. Charging order protection, holding structures, and multi-entity strategies for individuals with $500K+ in assets. 25 years of expertise.",
-  alternates: { canonical: "https://incorporate123.co/asset-protection" },
-};
-
 const pillar = pillars[1]; // asset
 const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
 const nvGold = packages.find((p) => p.id === "nevada-gold")!;
@@ -234,7 +224,7 @@ export default function AssetProtectionPillarPage() {
               in the country &mdash; creditors cannot seize LLC assets, force
               distributions, or take over management.&rdquo;
             </p>
-            <p className="mt-2 text-body-sm text-muted">
+            <p className="mt-2 text-body text-muted">
               Unlike states where courts can force LLC dissolution to satisfy a
               judgment, Wyoming statute explicitly limits creditor remedies to a
               charging order. Combined with our multi-entity strategies, your

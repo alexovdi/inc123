@@ -53,7 +53,7 @@ function MoneyBackBadge({
         </span>
 
         {variant === "detailed" && (
-          <p className="text-body-sm text-success/80 mt-1">
+          <p className="text-body text-success/80 mt-1">
             Not satisfied? Get a full refund within 30 days of purchase, no
             questions asked.
           </p>
