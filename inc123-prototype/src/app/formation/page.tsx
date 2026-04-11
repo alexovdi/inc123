@@ -3,12 +3,23 @@ import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackageComparison } from "@/design-system/components/PackageComparison";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
+import { PillarIllustration } from "@/design-system/components/PillarIllustration";
+import { PullQuote } from "@/design-system/components/PullQuote";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
+import { KeyDifferentiators } from "@/design-system/components/KeyDifferentiators";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
+import { FORMATION_FINAL_CTA } from "@/data/pillar-content";
+import {
+  FORMATION_KEY_DIFFS,
+  FORMATION_TRUST_BADGES,
+  FORMATION_TESTIMONIAL,
+} from "@/data/pillar-social-proof";
 
 const formationFaqs = faqItems.filter((f) => f.category === "formation");
 
@@ -37,186 +48,189 @@ export default function FormationPillarPage() {
 
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
-            <ScrollReveal delay={100}>
-              <div>
-                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-4">
-                  Company Formation
-                </p>
+            <div>
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-4">
+                Company Formation
+              </p>
 
-                <h1 className="font-display type-display-lg font-bold text-white">
-                  Expert Formation,{" "}
-                  <span className="text-pillar-formation">All-Inclusive.</span>
-                </h1>
+              <h1 className="font-display type-display-lg font-bold text-white">
+                Expert Formation,{" "}
+                <span className="text-pillar-formation">All-Inclusive.</span>
+              </h1>
 
-                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
-                  Everything you need to start your business, nothing hidden.
-                  State fees, registered agent, EIN, operating agreement — all
-                  included. Wyoming and Nevada. Trusted since 2000.
-                </p>
+              <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                Everything you need to start your business, nothing hidden.
+                State fees, registered agent, EIN, operating agreement — all
+                included. Wyoming and Nevada. Trusted since 2000.
+              </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a href="#packages">
-                    <Button variant="cta" size="lg">
-                      Compare Formation Packages
-                      <Icon
-                        name="ArrowRight"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                  <a href="#how-it-works">
-                    <Button
-                      variant="secondary"
-                      size="lg"
-                      className="border-white/20 text-white hover:bg-white/10"
-                    >
-                      How It Works
-                      <Icon
-                        name="ArrowDown"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                </div>
-
-                <p className="mt-5 text-body-sm text-white/80">
-                  Prefer to talk?{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href="#packages">
+                  <Button variant="cta" size="lg">
+                    Compare Formation Packages
+                    <Icon
+                      name="ArrowRight"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
+                <a href="#how-it-works">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="border-white/20 text-white hover:bg-white/10"
                   >
-                    Call 1-800-553-0615
-                  </a>
-                  {" · "}
-                  <Link
-                    href="/contact"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    Schedule a consultation
-                  </Link>
-                </p>
+                    How It Works
+                    <Icon
+                      name="ArrowDown"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
               </div>
-            </ScrollReveal>
+
+              <p className="mt-5 text-body-sm text-white/80">
+                Prefer to talk?{" "}
+                <a
+                  href="tel:1-800-553-0615"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Call 1-800-553-0615
+                </a>
+                {" · "}
+                <Link
+                  href="/contact"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Schedule a consultation
+                </Link>
+              </p>
+            </div>
 
             {/* Right: Visual — "What's Included" checklist card */}
-            <ScrollReveal delay={600} direction="right">
-              <div className="hidden lg:block relative">
-                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="h-8 w-8 rounded-full bg-pillar-formation/20 flex items-center justify-center">
-                      <Icon
-                        name="Building2"
-                        size="sm"
-                        className="text-pillar-formation"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-body-sm font-semibold text-white">
-                        All-Inclusive Package
-                      </p>
-                      <p className="text-caption text-white/50">
-                        Everything below is included
-                      </p>
-                    </div>
+            <div className="hidden lg:block relative">
+              <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-8 w-8 rounded-full bg-pillar-formation/20 flex items-center justify-center">
+                    <Icon
+                      name="Building2"
+                      size="sm"
+                      className="text-pillar-formation"
+                    />
                   </div>
-                  {/* Included items */}
-                  <div className="space-y-3">
-                    {[
-                      "State Filing Fees",
-                      "Registered Agent (Year-Round)",
-                      "EIN / Tax ID Filing",
-                      "Operating Agreement",
-                      "Corporate Minutes & Seal",
-                      "Annual Report Filing",
-                      "Certificate of Good Standing",
-                    ].map((item) => (
-                      <div key={item} className="flex items-center gap-3">
-                        <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success/20">
-                          <Icon
-                            name="Check"
-                            size="xs"
-                            className="text-success"
-                          />
-                        </div>
-                        <p className="font-mono text-body-sm text-white/80">
-                          {item}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Footer */}
-                  <div className="pt-4 mt-4 border-t border-white/[0.1]">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-pillar-formation animate-pulse" />
-                      <p className="font-mono text-body-sm text-pillar-formation">
-                        $0 hidden fees — what you see is what you pay
-                      </p>
-                    </div>
+                  <div>
+                    <p className="text-body-sm font-semibold text-white">
+                      All-Inclusive Package
+                    </p>
+                    <p className="text-caption text-white/50">
+                      Everything below is included
+                    </p>
                   </div>
                 </div>
-                {/* Decorative shadow layers */}
-                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
-                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+                {/* Included items */}
+                <div className="space-y-3">
+                  {[
+                    "State Filing Fees",
+                    "Registered Agent (Year-Round)",
+                    "EIN / Tax ID Filing",
+                    "Operating Agreement",
+                    "Corporate Minutes & Seal",
+                    "Annual Report Filing",
+                    "Certificate of Good Standing",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success/20">
+                        <Icon name="Check" size="xs" className="text-success" />
+                      </div>
+                      <p className="font-mono text-body-sm text-white/80">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                {/* Footer */}
+                <div className="pt-4 mt-4 border-t border-white/[0.1]">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-pillar-formation animate-pulse" />
+                    <p className="font-mono text-body-sm text-pillar-formation">
+                      $0 hidden fees — what you see is what you pay
+                    </p>
+                  </div>
+                </div>
               </div>
-            </ScrollReveal>
+              {/* Decorative shadow layers */}
+              <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+              <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+            </div>
           </div>
 
           {/* Stats strip */}
-          <ScrollReveal delay={300}>
-            <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
-              {[
-                { value: "25", unit: "yrs", label: "Forming Entities" },
-                { value: "3–5", unit: "days", label: "Formation Timeline" },
-                { value: "$0", unit: "", label: "Hidden Fees" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-display text-heading-lg font-bold text-white">
-                    {stat.value}
-                    {stat.unit && (
-                      <span className="text-body-sm font-normal text-white/70 ml-1">
-                        {stat.unit}
-                      </span>
-                    )}
-                  </p>
-                  <p className="text-caption text-white/70 mt-0.5">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+          <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
+            {[
+              { value: "25", unit: "yrs", label: "Forming Entities" },
+              { value: "3–5", unit: "days", label: "Formation Timeline" },
+              { value: "$0", unit: "", label: "Hidden Fees" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-display text-heading-lg font-bold text-white">
+                  {stat.value}
+                  {stat.unit && (
+                    <span className="text-body-sm font-normal text-white/70 ml-1">
+                      {stat.unit}
+                    </span>
+                  )}
+                </p>
+                <p className="text-caption text-white/70 mt-0.5">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ================================================
           QUICK-PATH SHORTCUT — for informed buyers
           ================================================ */}
-      <section className="py-8 bg-surface border-b border-border">
+      <section className="py-10 bg-surface border-b border-border">
         <div className="mx-auto max-w-content px-container-x">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-            <p className="text-body-sm font-semibold text-muted whitespace-nowrap">
-              Know what you need?
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {QUICK_PATHS.map((pkg) => (
-                <Link
-                  key={pkg.label}
-                  href={pkg.href}
-                  className="!no-underline group"
-                >
-                  <div className="flex items-center gap-2 rounded-card border border-border bg-background px-4 py-2.5 hover:border-secondary/30 hover:shadow-card transition-all">
-                    <span className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
-                      {pkg.label}
-                    </span>
-                    <span className="text-caption text-muted">
-                      from {pkg.price}
-                    </span>
-                  </div>
-                </Link>
-              ))}
+          <div className="rounded-card-lg border border-secondary/20 bg-secondary/[0.03] p-6 md:p-8">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-1">
+                <p className="text-body-lg font-display font-semibold text-foreground">
+                  Know what you need?
+                </p>
+                <p className="mt-1 text-body-sm text-muted">
+                  Skip the reading — jump straight to packages or compare
+                  options.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {QUICK_PATHS.map((pkg) => (
+                  <Link
+                    key={pkg.label}
+                    href={pkg.href}
+                    className="!no-underline group"
+                  >
+                    <div className="flex items-center gap-2 rounded-card border border-border bg-background px-5 py-3 hover:border-secondary/30 hover:shadow-card transition-all">
+                      <span className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                        {pkg.label}
+                      </span>
+                      <span className="text-caption text-muted">
+                        from {pkg.price}
+                      </span>
+                      <Icon
+                        name="ArrowRight"
+                        size="xs"
+                        className="text-muted group-hover:text-secondary transition-colors ml-1"
+                      />
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -278,34 +292,19 @@ export default function FormationPillarPage() {
       </section>
 
       {/* ── Pull quote — visual landmark ── */}
-      <section className="relative bg-primary py-section-y-sm overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
-            $0
-          </span>
-        </div>
-        <div className="relative mx-auto max-w-narrow px-container-x">
-          <ScrollReveal>
-            <blockquote className="text-center">
-              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
-                &ldquo;All-inclusive means all-inclusive. State fees, registered
-                agent, EIN, operating agreement, corporate seal &mdash;{" "}
-                <span className="text-pillar-formation font-bold">
-                  the price you see is the price you pay.
-                </span>
-                &rdquo;
-              </p>
-              <footer className="mt-8 flex items-center justify-center gap-3">
-                <div className="h-px w-8 bg-white/20" />
-                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
-                  The Incorporate123 Difference
-                </p>
-                <div className="h-px w-8 bg-white/20" />
-              </footer>
-            </blockquote>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PullQuote bgText="$0">
+        &ldquo;We include everything other providers charge extra for — state
+        fees, registered agent, EIN, operating agreement. One price,{" "}
+        <span className="text-accent font-bold">nothing hidden</span>.&rdquo;
+      </PullQuote>
+
+      {/* ================================================
+          KEY DIFFERENTIATORS — compact strip
+          ================================================ */}
+      <KeyDifferentiators
+        pillarColor="text-pillar-formation"
+        items={FORMATION_KEY_DIFFS}
+      />
 
       {/* ================================================
           TWO DECISIONS — LLC vs Corp + WY vs NV
@@ -412,7 +411,7 @@ export default function FormationPillarPage() {
       {/* ================================================
           FORMATION STEPS — Editorial numbered blocks
           ================================================ */}
-      <section className="py-section-y-sm bg-primary-50">
+      <section id="formation-steps" className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-3">
@@ -427,6 +426,11 @@ export default function FormationPillarPage() {
               treatment, and privacy.
             </p>
           </ScrollReveal>
+
+          <PillarIllustration
+            pillar="formation"
+            className="mt-10 mb-4 lg:hidden"
+          />
 
           <div className="mt-14 space-y-0">
             {FORMATION_BLOCKS.map((block, i) => (
@@ -759,31 +763,11 @@ export default function FormationPillarPage() {
       {/* ================================================
           S6: SOCIAL PROOF STRIP
           ================================================ */}
-      <section className="py-8 bg-surface border-y border-border">
-        <div className="mx-auto max-w-content px-container-x">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {[
-              { icon: "Shield" as const, text: "25 Years Trusted" },
-              { icon: "FileCheck" as const, text: "All State Fees Included" },
-              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
-              { icon: "Phone" as const, text: "Talk to Real Humans" },
-              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
-            ].map((badge) => (
-              <div
-                key={badge.text}
-                className="flex items-center gap-2 text-body-sm text-muted"
-              >
-                <Icon
-                  name={badge.icon}
-                  size="sm"
-                  className="text-pillar-formation"
-                />
-                {badge.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SocialProofStrip
+        pillarColor="text-pillar-formation"
+        badges={FORMATION_TRUST_BADGES}
+        testimonial={FORMATION_TESTIMONIAL}
+      />
 
       {/* ================================================
           PRIVACY UPSELL BRIDGE
@@ -920,7 +904,7 @@ export default function FormationPillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
-              Continue Learning
+              Explore Formation Resources
             </h2>
             <p className="mt-2 text-body text-muted">
               Entity guides, state comparisons, and formation breakdowns.
@@ -1036,7 +1020,7 @@ export default function FormationPillarPage() {
       {/* ================================================
           CROSS-PILLAR BRIDGE
           ================================================ */}
-      <section className="py-section-y-sm bg-background">
+      <section className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
@@ -1073,58 +1057,12 @@ export default function FormationPillarPage() {
       {/* ================================================
           FINAL CTA — confident close
           ================================================ */}
-      <section className="bg-primary border-t border-white/[0.06]">
-        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
-              {/* Left: Statement */}
-              <div>
-                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
-                  Start your business the right way. All-inclusive, no
-                  surprises.
-                </h2>
-                <p className="mt-4 text-body text-white/75 max-w-[440px]">
-                  Wyoming LLC formation starts at $625 — state fees, registered
-                  agent, EIN, operating agreement, corporate seal, annual
-                  reports, all included. No hidden fees. No annual surprises.
-                </p>
-              </div>
-
-              {/* Right: Actions — stacked for clarity */}
-              <div className="flex flex-col gap-3">
-                <Link href="/compare-packages" className="!no-underline">
-                  <Button
-                    variant="cta"
-                    size="lg"
-                    className="w-full justify-center"
-                  >
-                    Choose Your Formation Package
-                  </Button>
-                </Link>
-                <Link href="/contact" className="!no-underline">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
-                  >
-                    Schedule a Consultation
-                  </Button>
-                </Link>
-                <p className="mt-1 text-center text-body-sm text-white/70">
-                  Or call{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    1-800-553-0615
-                  </a>
-                  {" — real humans, real answers."}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PillarFinalCTA
+        heading={FORMATION_FINAL_CTA.heading}
+        description={FORMATION_FINAL_CTA.description}
+        ctaLabel={FORMATION_FINAL_CTA.ctaLabel}
+        ctaHref={FORMATION_FINAL_CTA.ctaHref}
+      />
     </div>
   );
 }

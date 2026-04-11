@@ -2,13 +2,24 @@ import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { KeyDifferentiators } from "@/design-system/components/KeyDifferentiators";
 import { PackageComparison } from "@/design-system/components/PackageComparison";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
+import { PillarIllustration } from "@/design-system/components/PillarIllustration";
+import { PullQuote } from "@/design-system/components/PullQuote";
+import {
+  PRIVACY_KEY_DIFFS,
+  PRIVACY_TRUST_BADGES,
+  PRIVACY_TESTIMONIAL,
+} from "@/data/pillar-social-proof";
+import { PRIVACY_PULL_QUOTE, PRIVACY_FINAL_CTA } from "@/data/pillar-content";
 
 const privacyFaqs = faqItems.filter((f) => f.category === "privacy");
 
@@ -36,146 +47,142 @@ export default function PrivacyPillarPage() {
           </nav>
 
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
-            {/* Left: Content — single reveal for entire content block */}
-            <ScrollReveal delay={100}>
-              <div>
-                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                  Business Privacy
-                </p>
+            {/* Left: Content */}
+            <div>
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                Business Privacy
+              </p>
 
-                <h1 className="font-display type-display-lg font-bold text-white">
-                  Business Privacy Starts Before Anyone Knows{" "}
-                  <span className="text-white/90">Your Name.</span>
-                </h1>
+              <h1 className="font-display type-display-lg font-bold text-white">
+                Business Privacy Starts Before Anyone Knows{" "}
+                <span className="text-white/90">Your Name.</span>
+              </h1>
 
-                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
-                  Keep your ownership off public records with year-round nominee
-                  services, anonymous entity formation, and offshore records
-                  storage. Wyoming and Nevada. Trusted since 2000.
-                </p>
+              <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                Keep your ownership off public records with year-round nominee
+                services, anonymous entity formation, and protected document
+                custody. Wyoming and Nevada. Trusted since 2000.
+              </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a href="#packages">
-                    <Button variant="cta" size="lg">
-                      Find Your Privacy Package
-                      <Icon
-                        name="ArrowRight"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                  <a href="#framework">
-                    <Button
-                      variant="secondary"
-                      size="lg"
-                      className="border-white/20 text-white hover:bg-white/10"
-                    >
-                      How It Works
-                      <Icon
-                        name="ArrowDown"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                </div>
-
-                <p className="mt-5 text-body-sm text-white/80">
-                  Prefer to talk?{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href="#packages">
+                  <Button variant="cta" size="lg">
+                    Find Your Privacy Package
+                    <Icon
+                      name="ArrowRight"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
+                <a href="#how-it-works">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="border-white/20 text-white hover:bg-white/10"
                   >
-                    Call 1-800-553-0615
-                  </a>
-                  {" · "}
-                  <Link
-                    href="/contact"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    Schedule a consultation
-                  </Link>
-                </p>
+                    How It Works
+                    <Icon
+                      name="ArrowDown"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
               </div>
-            </ScrollReveal>
+
+              <p className="mt-5 text-body-sm text-white/80">
+                Prefer to talk?{" "}
+                <a
+                  href="tel:1-800-553-0615"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Call 1-800-553-0615
+                </a>
+                {" · "}
+                <Link
+                  href="/contact"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Schedule a consultation
+                </Link>
+              </p>
+            </div>
 
             {/* Right: Visual — abstract "redacted filing" */}
-            <ScrollReveal delay={600} direction="right">
-              <div className="hidden lg:block relative">
-                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
-                  {/* Mock filing header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="h-8 w-8 rounded-full bg-secondary/20 flex items-center justify-center">
+            <div className="hidden lg:block relative">
+              <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                {/* Mock filing header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-8 w-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                    <Icon
+                      name="FileText"
+                      size="sm"
+                      className="text-secondary"
+                    />
+                  </div>
+                  <div>
+                    <div className="h-2.5 w-32 rounded-full bg-white/20" />
+                    <div className="h-2 w-24 rounded-full bg-white/10 mt-1.5" />
+                  </div>
+                </div>
+                {/* Mock "exposed" fields */}
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                      Member / Manager
+                    </p>
+                    <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
                       <Icon
-                        name="FileText"
-                        size="sm"
-                        className="text-secondary"
+                        name="ShieldCheck"
+                        size="xs"
+                        className="text-secondary shrink-0"
                       />
-                    </div>
-                    <div>
-                      <div className="h-2.5 w-32 rounded-full bg-white/20" />
-                      <div className="h-2 w-24 rounded-full bg-white/10 mt-1.5" />
+                      <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
+                        NOMINEE PROTECTED
+                      </p>
                     </div>
                   </div>
-                  {/* Mock "exposed" fields */}
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
-                        Member / Manager
-                      </p>
-                      <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
-                        <Icon
-                          name="ShieldCheck"
-                          size="xs"
-                          className="text-secondary shrink-0"
-                        />
-                        <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
-                          NOMINEE PROTECTED
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
-                        Registered Agent
-                      </p>
-                      <p className="font-mono text-body-sm text-white/80">
-                        Incorporate123 Registered Agent
+                  <div>
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                      Registered Agent
+                    </p>
+                    <p className="font-mono text-body-sm text-white/80">
+                      Incorporate123 Registered Agent
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                      Records Location
+                    </p>
+                    <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
+                      <Icon
+                        name="Lock"
+                        size="xs"
+                        className="text-secondary shrink-0"
+                      />
+                      <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
+                        OFFSHORE CUSTODIAN
                       </p>
                     </div>
-                    <div>
-                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
-                        Records Location
+                  </div>
+                  <div className="pt-3 border-t border-white/[0.1]">
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                      Filing Status
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
+                      <p className="font-mono text-body-sm text-success">
+                        Active — Nominees in place 365 days
                       </p>
-                      <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
-                        <Icon
-                          name="Lock"
-                          size="xs"
-                          className="text-secondary shrink-0"
-                        />
-                        <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
-                          OFFSHORE CUSTODIAN
-                        </p>
-                      </div>
-                    </div>
-                    <div className="pt-3 border-t border-white/[0.1]">
-                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
-                        Filing Status
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
-                        <p className="font-mono text-body-sm text-success">
-                          Active — Nominees in place 365 days
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
-                {/* Decorative shadow layers */}
-                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
-                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
               </div>
-            </ScrollReveal>
+              {/* Decorative shadow layers */}
+              <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+              <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+            </div>
           </div>
 
           {/* Stats strip — full width below the split */}
@@ -258,40 +265,27 @@ export default function PrivacyPillarPage() {
       </section>
 
       {/* ── Pull quote — visual landmark ── */}
-      <section className="relative bg-primary py-section-y-sm overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
-            365
-          </span>
-        </div>
-        <div className="relative mx-auto max-w-narrow px-container-x">
-          <ScrollReveal>
-            <blockquote className="text-center">
-              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
-                &ldquo;Most providers offer a nominee for a day. We keep
-                nominees on your filings{" "}
-                <span className="text-accent font-bold">
-                  365&nbsp;days&nbsp;a&nbsp;year
-                </span>
-                &nbsp;— formation, annual reports, amendments,
-                everything.&rdquo;
-              </p>
-              <footer className="mt-8 flex items-center justify-center gap-3">
-                <div className="h-px w-8 bg-white/20" />
-                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
-                  The Incorporate123 Difference
-                </p>
-                <div className="h-px w-8 bg-white/20" />
-              </footer>
-            </blockquote>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PullQuote bgText={PRIVACY_PULL_QUOTE.bgText}>
+        &ldquo;Most providers offer a nominee for a day. We keep nominees on
+        your filings{" "}
+        <span className="text-accent font-bold">
+          365&nbsp;days&nbsp;a&nbsp;year
+        </span>
+        &nbsp;— formation, annual reports, amendments, everything.&rdquo;
+      </PullQuote>
+
+      {/* ================================================
+          KEY DIFFERENTIATORS — compact strip
+          ================================================ */}
+      <KeyDifferentiators
+        pillarColor="text-pillar-privacy"
+        items={PRIVACY_KEY_DIFFS}
+      />
 
       {/* ================================================
           S3: THREE LAYERS — Editorial numbered blocks
           ================================================ */}
-      <section id="framework" className="py-section-y-sm bg-background">
+      <section id="three-layers" className="py-section-y-sm bg-background">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
@@ -305,6 +299,11 @@ export default function PrivacyPillarPage() {
               structure built from three complementary layers.
             </p>
           </ScrollReveal>
+
+          <PillarIllustration
+            pillar="privacy"
+            className="mt-10 mb-4 lg:hidden"
+          />
 
           <div className="mt-14 space-y-0">
             {LAYER_BLOCKS.map((layer, i) => (
@@ -358,7 +357,7 @@ export default function PrivacyPillarPage() {
       {/* ================================================
           S4: HOW IT WORKS — Keep existing (already good)
           ================================================ */}
-      <section className="py-section-y-sm bg-primary-50">
+      <section id="how-it-works" className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <SectionHeader
@@ -547,30 +546,11 @@ export default function PrivacyPillarPage() {
         </div>
       </section>
 
-      {/* ================================================
-          S7: SOCIAL PROOF STRIP
-          ================================================ */}
-      <section className="py-8 bg-surface border-y border-border">
-        <div className="mx-auto max-w-content px-container-x">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {[
-              { icon: "Shield" as const, text: "25 Years Trusted" },
-              { icon: "Users" as const, text: "Dedicated Account Team" },
-              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
-              { icon: "Phone" as const, text: "Talk to Real Humans" },
-              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
-            ].map((badge) => (
-              <div
-                key={badge.text}
-                className="flex items-center gap-2 text-body-sm text-muted"
-              >
-                <Icon name={badge.icon} size="sm" className="text-secondary" />
-                {badge.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SocialProofStrip
+        pillarColor="text-pillar-privacy"
+        badges={PRIVACY_TRUST_BADGES}
+        testimonial={PRIVACY_TESTIMONIAL}
+      />
 
       {/* ================================================
           S8: PACKAGES — Compare
@@ -641,7 +621,7 @@ export default function PrivacyPillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
-              Continue Learning
+              Explore Privacy Services
             </h2>
             <p className="mt-2 text-body text-muted">
               Guides, state comparisons, and service breakdowns.
@@ -757,7 +737,7 @@ export default function PrivacyPillarPage() {
       {/* ================================================
           CROSS-PILLAR BRIDGE
           ================================================ */}
-      <section className="py-section-y-sm bg-background">
+      <section className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
@@ -769,7 +749,7 @@ export default function PrivacyPillarPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto items-stretch">
               <CrossPillarCTA
                 fromPillar="privacy"
                 toPillar="asset"
@@ -786,65 +766,28 @@ export default function PrivacyPillarPage() {
                 href="/compliance"
                 className="h-full"
               />
+              <CrossPillarCTA
+                fromPillar="privacy"
+                toPillar="formation"
+                heading="Need to Form a New Entity? We Handle Everything."
+                description="All-inclusive formation with state fees, registered agent, EIN, and operating agreement. Add privacy services to any package."
+                href="/formation"
+                className="h-full"
+              />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
       {/* ================================================
-          FINAL CTA — confident close, distinct from hero
+          FINAL CTA — confident close
           ================================================ */}
-      <section className="bg-primary border-t border-white/[0.06]">
-        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
-              {/* Left: Statement */}
-              <div>
-                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
-                  Your name never has to appear in public records.
-                </h2>
-                <p className="mt-4 text-body text-white/75 max-w-[440px]">
-                  Wyoming Gold starts at $1,275 — formation, nominees, offshore
-                  records, registered agent, all included. No hidden fees. No
-                  annual surprises.
-                </p>
-              </div>
-
-              {/* Right: Actions — stacked for clarity */}
-              <div className="flex flex-col gap-3">
-                <Link href="/compare-packages" className="!no-underline">
-                  <Button
-                    variant="cta"
-                    size="lg"
-                    className="w-full justify-center"
-                  >
-                    Choose Your Privacy Package
-                  </Button>
-                </Link>
-                <Link href="/contact" className="!no-underline">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
-                  >
-                    Schedule a Consultation
-                  </Button>
-                </Link>
-                <p className="mt-1 text-center text-body-sm text-white/70">
-                  Or call{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    1-800-553-0615
-                  </a>
-                  {" — real humans, real answers."}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PillarFinalCTA
+        heading={PRIVACY_FINAL_CTA.heading}
+        description={PRIVACY_FINAL_CTA.description}
+        ctaLabel={PRIVACY_FINAL_CTA.ctaLabel}
+        ctaHref={PRIVACY_FINAL_CTA.ctaHref}
+      />
     </div>
   );
 }

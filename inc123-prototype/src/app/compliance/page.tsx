@@ -2,13 +2,25 @@ import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { KeyDifferentiators } from "@/design-system/components/KeyDifferentiators";
 import { PackageComparison } from "@/design-system/components/PackageComparison";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
+import { PillarIllustration } from "@/design-system/components/PillarIllustration";
+import { PullQuote } from "@/design-system/components/PullQuote";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
+import { UpsellBridge } from "@/design-system/components/UpsellBridge";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
+import { COMPLIANCE_FINAL_CTA } from "@/data/pillar-content";
+import {
+  COMPLIANCE_KEY_DIFFS,
+  COMPLIANCE_TRUST_BADGES,
+  COMPLIANCE_TESTIMONIAL,
+} from "@/data/pillar-social-proof";
 
 const complianceFaqs = faqItems.filter((f) => f.category === "compliance");
 
@@ -37,130 +49,126 @@ export default function CompliancePillarPage() {
 
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
-            <ScrollReveal delay={100}>
-              <div>
-                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-4">
-                  Compliance
-                </p>
+            <div>
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-4">
+                Compliance
+              </p>
 
-                <h1 className="font-display type-display-lg font-bold text-white">
-                  Keep Your Entity in Good Standing. We Handle{" "}
-                  <span className="text-white/90">the Paperwork.</span>
-                </h1>
+              <h1 className="font-display type-display-lg font-bold text-white">
+                Keep Your Entity in Good Standing. We Handle{" "}
+                <span className="text-white/90">the Paperwork.</span>
+              </h1>
 
-                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
-                  Year-round registered agent, annual reports, and full
-                  corporate minutes maintenance. We keep your entity in good
-                  standing so you can focus on running your business.
-                </p>
+              <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                Year-round registered agent, annual reports, and full corporate
+                minutes maintenance. We keep your entity in good standing so you
+                can focus on running your business.
+              </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a href="#packages">
-                    <Button variant="cta" size="lg">
-                      See Compliance Packages
-                      <Icon
-                        name="ArrowRight"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                  <a href="#how-it-works">
-                    <Button
-                      variant="secondary"
-                      size="lg"
-                      className="border-white/20 text-white hover:bg-white/10"
-                    >
-                      How It Works
-                      <Icon
-                        name="ArrowDown"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                </div>
-
-                <p className="mt-5 text-body-sm text-white/80">
-                  Prefer to talk?{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href="#packages">
+                  <Button variant="cta" size="lg">
+                    See Compliance Packages
+                    <Icon
+                      name="ArrowRight"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
+                <a href="#how-it-works">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="border-white/20 text-white hover:bg-white/10"
                   >
-                    Call 1-800-553-0615
-                  </a>
-                  {" · "}
-                  <Link
-                    href="/contact"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    Schedule a consultation
-                  </Link>
-                </p>
+                    How It Works
+                    <Icon
+                      name="ArrowDown"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
               </div>
-            </ScrollReveal>
+
+              <p className="mt-5 text-body-sm text-white/80">
+                Prefer to talk?{" "}
+                <a
+                  href="tel:1-800-553-0615"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Call 1-800-553-0615
+                </a>
+                {" · "}
+                <Link
+                  href="/contact"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Schedule a consultation
+                </Link>
+              </p>
+            </div>
 
             {/* Right: Visual — "Compliance Dashboard" checklist */}
-            <ScrollReveal delay={600} direction="right">
-              <div className="hidden lg:block relative">
-                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
-                  {/* Mock dashboard header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="h-8 w-8 rounded-full bg-pillar-compliance/20 flex items-center justify-center">
-                      <Icon
-                        name="ClipboardCheck"
-                        size="sm"
-                        className="text-pillar-compliance"
-                      />
-                    </div>
-                    <div>
-                      <div className="h-2.5 w-40 rounded-full bg-white/20" />
-                      <div className="h-2 w-28 rounded-full bg-white/10 mt-1.5" />
-                    </div>
+            <div className="hidden lg:block relative">
+              <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                {/* Mock dashboard header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-8 w-8 rounded-full bg-pillar-compliance/20 flex items-center justify-center">
+                    <Icon
+                      name="ClipboardCheck"
+                      size="sm"
+                      className="text-pillar-compliance"
+                    />
                   </div>
-                  {/* Compliance checklist items */}
-                  <div className="space-y-3">
-                    {[
-                      { label: "Registered Agent", status: "active" },
-                      { label: "Annual Report Filed", status: "active" },
-                      { label: "Corporate Minutes", status: "active" },
-                      { label: "Good Standing", status: "active" },
-                    ].map((item) => (
-                      <div
-                        key={item.label}
-                        className="flex items-center gap-3 rounded bg-success/[0.08] border border-success/[0.15] px-3 py-2.5"
-                      >
-                        <Icon
-                          name="CheckCircle2"
-                          size="xs"
-                          className="text-success shrink-0"
-                        />
-                        <p className="font-mono text-body-sm text-white/80">
-                          {item.label}
-                        </p>
-                        <span className="ml-auto text-caption text-success font-medium uppercase tracking-wider">
-                          Current
-                        </span>
-                      </div>
-                    ))}
-                    <div className="pt-3 border-t border-white/[0.1]">
-                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
-                        Next Deadline
+                  <div>
+                    <div className="h-2.5 w-40 rounded-full bg-white/20" />
+                    <div className="h-2 w-28 rounded-full bg-white/10 mt-1.5" />
+                  </div>
+                </div>
+                {/* Compliance checklist items */}
+                <div className="space-y-3">
+                  {[
+                    { label: "Registered Agent", status: "active" },
+                    { label: "Annual Report Filed", status: "active" },
+                    { label: "Corporate Minutes", status: "active" },
+                    { label: "Good Standing", status: "active" },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-3 rounded bg-success/[0.08] border border-success/[0.15] px-3 py-2.5"
+                    >
+                      <Icon
+                        name="CheckCircle2"
+                        size="xs"
+                        className="text-success shrink-0"
+                      />
+                      <p className="font-mono text-body-sm text-white/80">
+                        {item.label}
                       </p>
-                      <div className="flex items-center gap-2">
-                        <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
-                        <p className="font-mono text-body-sm text-success">
-                          Handled — We track all dates for you
-                        </p>
-                      </div>
+                      <span className="ml-auto text-caption text-success font-medium uppercase tracking-wider">
+                        Current
+                      </span>
+                    </div>
+                  ))}
+                  <div className="pt-3 border-t border-white/[0.1]">
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                      Next Deadline
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
+                      <p className="font-mono text-body-sm text-success">
+                        Handled — We track all dates for you
+                      </p>
                     </div>
                   </div>
                 </div>
-                {/* Decorative shadow layers */}
-                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
-                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
               </div>
-            </ScrollReveal>
+              {/* Decorative shadow layers */}
+              <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+              <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+            </div>
           </div>
 
           {/* Stats strip */}
@@ -187,6 +195,57 @@ export default function CompliancePillarPage() {
               ))}
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          EXISTING ENTITY CALLOUT — hero-area shortcut
+          ================================================ */}
+      <section className="py-6 bg-surface border-b border-border">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="rounded-card-lg border border-pillar-compliance/20 bg-pillar-compliance/[0.03] p-5 md:p-6">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-card-lg bg-pillar-compliance/[0.08]">
+                <Icon
+                  name="Building2"
+                  size="md"
+                  className="text-pillar-compliance"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="text-body font-display font-semibold text-foreground">
+                  Already have a business entity?
+                </p>
+                <p className="mt-0.5 text-body-sm text-muted">
+                  Whether you formed through another provider or want to move
+                  your entity to a more favorable state, we handle the
+                  transition.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/domestication" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="whitespace-nowrap"
+                  >
+                    Domestication
+                    <Icon name="ArrowRight" size="xs" className="ml-1" />
+                  </Button>
+                </Link>
+                <Link href="/foreign-registration" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="whitespace-nowrap"
+                  >
+                    Foreign Registration
+                    <Icon name="ArrowRight" size="xs" className="ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -295,34 +354,19 @@ export default function CompliancePillarPage() {
       </section>
 
       {/* ── Pull quote — visual landmark ── */}
-      <section className="relative bg-primary py-section-y-sm overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
-            100%
-          </span>
-        </div>
-        <div className="relative mx-auto max-w-narrow px-container-x">
-          <ScrollReveal>
-            <blockquote className="text-center">
-              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
-                &ldquo;We don&rsquo;t just give you a registered agent address.
-                We maintain your{" "}
-                <span className="text-accent font-bold">
-                  entire&nbsp;compliance&nbsp;record
-                </span>
-                &nbsp;— minutes, annual reports, filings, everything.&rdquo;
-              </p>
-              <footer className="mt-8 flex items-center justify-center gap-3">
-                <div className="h-px w-8 bg-white/20" />
-                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
-                  The Incorporate123 Difference
-                </p>
-                <div className="h-px w-8 bg-white/20" />
-              </footer>
-            </blockquote>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PullQuote bgText="365">
+        &ldquo;An entity that falls out of good standing loses its liability
+        protection. We make sure that{" "}
+        <span className="text-accent font-bold">never happens</span>.&rdquo;
+      </PullQuote>
+
+      {/* ================================================
+          KEY DIFFERENTIATORS — compact strip
+          ================================================ */}
+      <KeyDifferentiators
+        pillarColor="text-pillar-compliance"
+        items={COMPLIANCE_KEY_DIFFS}
+      />
 
       {/* ================================================
           S3: WHAT WE HANDLE — Editorial numbered blocks
@@ -341,6 +385,11 @@ export default function CompliancePillarPage() {
               full lifecycle of entity maintenance.
             </p>
           </ScrollReveal>
+
+          <PillarIllustration
+            pillar="compliance"
+            className="mt-10 mb-4 lg:hidden"
+          />
 
           <div className="mt-14 space-y-0">
             {COMPLIANCE_BLOCKS.map((block, i) => (
@@ -419,57 +468,6 @@ export default function CompliancePillarPage() {
                   />
                 </Button>
               </a>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ================================================
-          S4b: ALREADY HAVE AN ENTITY?
-          ================================================ */}
-      <section className="py-section-y-sm bg-background">
-        <div className="mx-auto max-w-content px-container-x">
-          <ScrollReveal>
-            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-3">
-              Existing Entity Owners
-            </p>
-            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[32ch]">
-              Already Have a Business Entity? We Can Help.
-            </h2>
-            <p className="mt-4 text-body-lg text-muted max-w-[560px]">
-              Whether you formed through another provider or want to move your
-              entity to a more favorable state, we handle the transition.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {EXISTING_ENTITY_CARDS.map((card) => (
-                <div
-                  key={card.title}
-                  className="bg-surface border border-border rounded-card-lg p-6"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-compliance/[0.06] mb-4">
-                    <Icon
-                      name={card.icon}
-                      size="md"
-                      className="text-pillar-compliance"
-                    />
-                  </div>
-                  <h3 className="font-display text-heading font-semibold text-foreground">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-body text-muted leading-relaxed">
-                    {card.desc}
-                  </p>
-                  <Link
-                    href={card.href}
-                    className="inline-flex items-center gap-1 text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors mt-4"
-                  >
-                    {card.linkText}
-                  </Link>
-                </div>
-              ))}
             </div>
           </ScrollReveal>
         </div>
@@ -640,31 +638,11 @@ export default function CompliancePillarPage() {
       {/* ================================================
           S6: SOCIAL PROOF STRIP
           ================================================ */}
-      <section className="py-8 bg-surface border-y border-border">
-        <div className="mx-auto max-w-content px-container-x">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {[
-              { icon: "Shield" as const, text: "25 Years Trusted" },
-              { icon: "Users" as const, text: "Dedicated Account Team" },
-              { icon: "CheckCircle" as const, text: "Never Missed a Deadline" },
-              { icon: "Phone" as const, text: "Talk to Real Humans" },
-              { icon: "BellRing" as const, text: "Proactive Filing Reminders" },
-            ].map((badge) => (
-              <div
-                key={badge.text}
-                className="flex items-center gap-2 text-body-sm text-muted"
-              >
-                <Icon
-                  name={badge.icon}
-                  size="sm"
-                  className="text-pillar-compliance"
-                />
-                {badge.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SocialProofStrip
+        pillarColor="text-pillar-compliance"
+        badges={COMPLIANCE_TRUST_BADGES}
+        testimonial={COMPLIANCE_TESTIMONIAL}
+      />
 
       {/* ================================================
           S6b: INCLUDED IN RENEWAL
@@ -761,6 +739,20 @@ export default function CompliancePillarPage() {
       </section>
 
       {/* ================================================
+          UPSELL BRIDGE — Formation cross-sell
+          ================================================ */}
+      <UpsellBridge
+        eyebrow="Pair With Formation"
+        heading="Most Clients Combine Formation + Ongoing Compliance."
+        description="Start right and stay right. Formation sets up your entity correctly. Compliance keeps it in good standing year after year. Bundle both for the best value."
+        stat="90%"
+        statLabel="of formation clients add compliance"
+        ctaLabel="See Bundled Packages"
+        ctaHref="#packages"
+        pillarColor="text-pillar-compliance"
+      />
+
+      {/* ================================================
           S7: PACKAGES — Compare
           ================================================ */}
       <div id="packages">
@@ -829,7 +821,7 @@ export default function CompliancePillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
-              Continue Learning
+              Explore Compliance Resources
             </h2>
             <p className="mt-2 text-body text-muted">
               Guides, service details, and state-specific compliance info.
@@ -982,57 +974,12 @@ export default function CompliancePillarPage() {
       {/* ================================================
           FINAL CTA — confident close
           ================================================ */}
-      <section className="bg-primary border-t border-white/[0.06]">
-        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
-              {/* Left: Statement */}
-              <div>
-                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
-                  Never miss a filing deadline again.
-                </h2>
-                <p className="mt-4 text-body text-white/75 max-w-[440px]">
-                  Wyoming compliance from $325/yr &mdash; registered agent,
-                  annual reports, corporate minutes, all included. No hidden
-                  fees. No missed deadlines.
-                </p>
-              </div>
-
-              {/* Right: Actions — stacked for clarity */}
-              <div className="flex flex-col gap-3">
-                <Link href="/compare-packages" className="!no-underline">
-                  <Button
-                    variant="cta"
-                    size="lg"
-                    className="w-full justify-center"
-                  >
-                    Choose Your Compliance Package
-                  </Button>
-                </Link>
-                <Link href="/contact" className="!no-underline">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
-                  >
-                    Schedule a Consultation
-                  </Button>
-                </Link>
-                <p className="mt-1 text-center text-body-sm text-white/70">
-                  Or call{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    1-800-553-0615
-                  </a>
-                  {" — real humans, real answers."}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PillarFinalCTA
+        heading={COMPLIANCE_FINAL_CTA.heading}
+        description={COMPLIANCE_FINAL_CTA.description}
+        ctaLabel={COMPLIANCE_FINAL_CTA.ctaLabel}
+        ctaHref={COMPLIANCE_FINAL_CTA.ctaHref}
+      />
     </div>
   );
 }

@@ -2,13 +2,25 @@ import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { KeyDifferentiators } from "@/design-system/components/KeyDifferentiators";
 import { PackageComparison } from "@/design-system/components/PackageComparison";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
+import { UpsellBridge } from "@/design-system/components/UpsellBridge";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
+import { PillarIllustration } from "@/design-system/components/PillarIllustration";
+import { PullQuote } from "@/design-system/components/PullQuote";
 import { faqItems } from "@/data/faq";
+import { ASSET_FINAL_CTA } from "@/data/pillar-content";
+import {
+  ASSET_KEY_DIFFS,
+  ASSET_TRUST_BADGES,
+  ASSET_TESTIMONIAL,
+} from "@/data/pillar-social-proof";
 
 const assetFaqs = faqItems.filter((f) => f.category === "asset");
 
@@ -37,172 +49,168 @@ export default function AssetProtectionPillarPage() {
 
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
-            <ScrollReveal delay={100}>
-              <div>
-                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-4">
-                  Asset Protection
-                </p>
+            <div>
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-4">
+                Asset Protection
+              </p>
 
-                <h1 className="font-display type-display-lg font-bold text-white">
-                  Protect What You&rsquo;ve{" "}
-                  <span className="text-pillar-asset">Built.</span>
-                </h1>
+              <h1 className="font-display type-display-lg font-bold text-white">
+                Protect What You&rsquo;ve{" "}
+                <span className="text-pillar-asset">Built.</span>
+              </h1>
 
-                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
-                  Defending a single lawsuit costs $30K–$100K — even when you
-                  win. The right LLC structure in the right state keeps
-                  creditors from reaching your assets in the first place.
-                </p>
+              <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                Defending a single lawsuit costs $30K–$100K — even when you win.
+                The right LLC structure in the right state keeps creditors from
+                reaching your assets in the first place.
+              </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a href="#packages">
-                    <Button variant="cta" size="lg">
-                      Find Your Protection Package
-                      <Icon
-                        name="ArrowRight"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                  <a href="#framework">
-                    <Button
-                      variant="secondary"
-                      size="lg"
-                      className="border-white/20 text-white hover:bg-white/10"
-                    >
-                      How It Works
-                      <Icon
-                        name="ArrowDown"
-                        size="sm"
-                        className="ml-2 hidden sm:inline-block"
-                      />
-                    </Button>
-                  </a>
-                </div>
-
-                <p className="mt-5 text-body-sm text-white/80">
-                  Prefer to talk?{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href="#packages">
+                  <Button variant="cta" size="lg">
+                    Find Your Protection Package
+                    <Icon
+                      name="ArrowRight"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
+                <a href="#how-it-works">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="border-white/20 text-white hover:bg-white/10"
                   >
-                    Call 1-800-553-0615
-                  </a>
-                  {" · "}
-                  <Link
-                    href="/contact"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    Schedule a consultation
-                  </Link>
-                </p>
+                    How It Works
+                    <Icon
+                      name="ArrowDown"
+                      size="sm"
+                      className="ml-2 hidden sm:inline-block"
+                    />
+                  </Button>
+                </a>
               </div>
-            </ScrollReveal>
+
+              <p className="mt-5 text-body-sm text-white/80">
+                Prefer to talk?{" "}
+                <a
+                  href="tel:1-800-553-0615"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Call 1-800-553-0615
+                </a>
+                {" · "}
+                <Link
+                  href="/contact"
+                  className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                >
+                  Schedule a consultation
+                </Link>
+              </p>
+            </div>
 
             {/* Right: Visual — "Protected vs Unprotected" asset diagram */}
-            <ScrollReveal delay={600} direction="right">
-              <div className="hidden lg:block relative">
-                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="h-8 w-8 rounded-full bg-pillar-asset/20 flex items-center justify-center">
+            <div className="hidden lg:block relative">
+              <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-8 w-8 rounded-full bg-pillar-asset/20 flex items-center justify-center">
+                    <Icon
+                      name="Shield"
+                      size="sm"
+                      className="text-pillar-asset"
+                    />
+                  </div>
+                  <div>
+                    <div className="h-2.5 w-40 rounded-full bg-white/20" />
+                    <div className="h-2 w-28 rounded-full bg-white/10 mt-1.5" />
+                  </div>
+                </div>
+
+                {/* Unprotected scenario */}
+                <div className="mb-4">
+                  <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
+                    Without Protection
+                  </p>
+                  <div className="rounded bg-red-500/[0.08] border border-red-400/[0.15] px-3 py-2 space-y-1.5">
+                    <div className="flex items-center gap-2 text-body-sm text-white/40">
                       <Icon
-                        name="Shield"
-                        size="sm"
-                        className="text-pillar-asset"
+                        name="X"
+                        size="xs"
+                        className="text-red-400/60 shrink-0"
                       />
+                      Personal assets exposed to lawsuits
                     </div>
-                    <div>
-                      <div className="h-2.5 w-40 rounded-full bg-white/20" />
-                      <div className="h-2 w-28 rounded-full bg-white/10 mt-1.5" />
+                    <div className="flex items-center gap-2 text-body-sm text-white/40">
+                      <Icon
+                        name="X"
+                        size="xs"
+                        className="text-red-400/60 shrink-0"
+                      />
+                      Creditors seize LLC assets directly
                     </div>
-                  </div>
-
-                  {/* Unprotected scenario */}
-                  <div className="mb-4">
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
-                      Without Protection
-                    </p>
-                    <div className="rounded bg-red-500/[0.08] border border-red-400/[0.15] px-3 py-2 space-y-1.5">
-                      <div className="flex items-center gap-2 text-body-sm text-white/40">
-                        <Icon
-                          name="X"
-                          size="xs"
-                          className="text-red-400/60 shrink-0"
-                        />
-                        Personal assets exposed to lawsuits
-                      </div>
-                      <div className="flex items-center gap-2 text-body-sm text-white/40">
-                        <Icon
-                          name="X"
-                          size="xs"
-                          className="text-red-400/60 shrink-0"
-                        />
-                        Creditors seize LLC assets directly
-                      </div>
-                      <div className="flex items-center gap-2 text-body-sm text-white/40">
-                        <Icon
-                          name="X"
-                          size="xs"
-                          className="text-red-400/60 shrink-0"
-                        />
-                        Single entity = single point of failure
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Protected scenario */}
-                  <div className="mb-4">
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
-                      With Wyoming LLC Protection
-                    </p>
-                    <div className="rounded bg-success/[0.08] border border-success/[0.2] px-3 py-2 space-y-1.5">
-                      <div className="flex items-center gap-2 text-body-sm text-white/60">
-                        <Icon
-                          name="Check"
-                          size="xs"
-                          className="text-success shrink-0"
-                        />
-                        Charging order limits creditor remedies
-                      </div>
-                      <div className="flex items-center gap-2 text-body-sm text-white/60">
-                        <Icon
-                          name="Check"
-                          size="xs"
-                          className="text-success shrink-0"
-                        />
-                        Multi-entity isolation per asset class
-                      </div>
-                      <div className="flex items-center gap-2 text-body-sm text-white/60">
-                        <Icon
-                          name="Check"
-                          size="xs"
-                          className="text-success shrink-0"
-                        />
-                        Single-member LLC fully protected
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Status */}
-                  <div className="pt-3 border-t border-white/[0.1]">
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
-                      Protection Status
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
-                      <p className="font-mono text-body-sm text-success">
-                        Active — Charging Order Protected
-                      </p>
+                    <div className="flex items-center gap-2 text-body-sm text-white/40">
+                      <Icon
+                        name="X"
+                        size="xs"
+                        className="text-red-400/60 shrink-0"
+                      />
+                      Single entity = single point of failure
                     </div>
                   </div>
                 </div>
-                {/* Decorative shadow layers */}
-                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
-                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+
+                {/* Protected scenario */}
+                <div className="mb-4">
+                  <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
+                    With Wyoming LLC Protection
+                  </p>
+                  <div className="rounded bg-success/[0.08] border border-success/[0.2] px-3 py-2 space-y-1.5">
+                    <div className="flex items-center gap-2 text-body-sm text-white/60">
+                      <Icon
+                        name="Check"
+                        size="xs"
+                        className="text-success shrink-0"
+                      />
+                      Charging order limits creditor remedies
+                    </div>
+                    <div className="flex items-center gap-2 text-body-sm text-white/60">
+                      <Icon
+                        name="Check"
+                        size="xs"
+                        className="text-success shrink-0"
+                      />
+                      Multi-entity isolation per asset class
+                    </div>
+                    <div className="flex items-center gap-2 text-body-sm text-white/60">
+                      <Icon
+                        name="Check"
+                        size="xs"
+                        className="text-success shrink-0"
+                      />
+                      Single-member LLC fully protected
+                    </div>
+                  </div>
+                </div>
+
+                {/* Status */}
+                <div className="pt-3 border-t border-white/[0.1]">
+                  <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                    Protection Status
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
+                    <p className="font-mono text-body-sm text-success">
+                      Active — Charging Order Protected
+                    </p>
+                  </div>
+                </div>
               </div>
-            </ScrollReveal>
+              {/* Decorative shadow layers */}
+              <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+              <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+            </div>
           </div>
 
           {/* Stats strip */}
@@ -361,40 +369,24 @@ export default function AssetProtectionPillarPage() {
       </section>
 
       {/* ── Pull quote — visual landmark ── */}
-      <section className="relative bg-primary py-section-y-sm overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
-            $0
-          </span>
-        </div>
-        <div className="relative mx-auto max-w-narrow px-container-x">
-          <ScrollReveal>
-            <blockquote className="text-center">
-              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
-                &ldquo;Wyoming is the only state that extends charging order
-                protection to{" "}
-                <span className="text-pillar-asset font-bold">
-                  single-member&nbsp;LLCs
-                </span>
-                &nbsp;— the strongest domestic shield available for individual
-                asset owners.&rdquo;
-              </p>
-              <footer className="mt-8 flex items-center justify-center gap-3">
-                <div className="h-px w-8 bg-white/20" />
-                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
-                  The Wyoming Advantage
-                </p>
-                <div className="h-px w-8 bg-white/20" />
-              </footer>
-            </blockquote>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PullQuote bgText="LLC">
+        &ldquo;Charging order protection means creditors can&rsquo;t seize your
+        LLC&rsquo;s assets — they can only wait for distributions that{" "}
+        <span className="text-accent font-bold">may never come</span>.&rdquo;
+      </PullQuote>
+
+      {/* ================================================
+          KEY DIFFERENTIATORS — compact strip
+          ================================================ */}
+      <KeyDifferentiators
+        pillarColor="text-pillar-asset"
+        items={ASSET_KEY_DIFFS}
+      />
 
       {/* ================================================
           S3: THREE PILLARS OF PROTECTION — Editorial numbered blocks
           ================================================ */}
-      <section id="framework" className="py-section-y-sm bg-background">
+      <section id="three-pillars" className="py-section-y-sm bg-background">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-3">
@@ -409,6 +401,8 @@ export default function AssetProtectionPillarPage() {
               right structure, and the right separation.
             </p>
           </ScrollReveal>
+
+          <PillarIllustration pillar="asset" className="mt-10 mb-4 lg:hidden" />
 
           <div className="mt-14 space-y-0">
             {PROTECTION_BLOCKS.map((block, i) => (
@@ -536,7 +530,7 @@ export default function AssetProtectionPillarPage() {
       {/* ================================================
           HOW IT WORKS
           ================================================ */}
-      <section className="py-section-y-sm bg-background">
+      <section id="how-it-works" className="py-section-y-sm bg-background">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <SectionHeader
@@ -711,31 +705,25 @@ export default function AssetProtectionPillarPage() {
       {/* ================================================
           S7: SOCIAL PROOF STRIP
           ================================================ */}
-      <section className="py-8 bg-surface border-y border-border">
-        <div className="mx-auto max-w-content px-container-x">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {[
-              { icon: "Shield" as const, text: "25 Years Trusted" },
-              { icon: "Users" as const, text: "Dedicated Account Team" },
-              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
-              { icon: "Phone" as const, text: "Talk to Real Humans" },
-              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
-            ].map((badge) => (
-              <div
-                key={badge.text}
-                className="flex items-center gap-2 text-body-sm text-muted"
-              >
-                <Icon
-                  name={badge.icon}
-                  size="sm"
-                  className="text-pillar-asset"
-                />
-                {badge.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SocialProofStrip
+        pillarColor="text-pillar-asset"
+        badges={ASSET_TRUST_BADGES}
+        testimonial={ASSET_TESTIMONIAL}
+      />
+
+      {/* ================================================
+          UPSELL BRIDGE — Privacy cross-sell
+          ================================================ */}
+      <UpsellBridge
+        eyebrow="Complete Your Protection"
+        heading="Combine Privacy + Asset Protection for Total Security."
+        description="Privacy controls who can see your ownership. Asset protection controls what happens in a lawsuit. Most high-value clients combine both for layered defense."
+        stat="85%"
+        statLabel="of Gold clients add privacy services"
+        ctaLabel="See Gold Packages"
+        ctaHref="#packages"
+        pillarColor="text-pillar-asset"
+      />
 
       {/* ================================================
           S8: PACKAGES — Compare
@@ -807,7 +795,7 @@ export default function AssetProtectionPillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
-              Continue Learning
+              Explore Asset Protection
             </h2>
             <p className="mt-2 text-body text-muted">
               In-depth guides on strategies, state comparisons, and structures.
@@ -960,57 +948,12 @@ export default function AssetProtectionPillarPage() {
       {/* ================================================
           FINAL CTA — confident close
           ================================================ */}
-      <section className="bg-primary border-t border-white/[0.06]">
-        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
-              {/* Left: Statement */}
-              <div>
-                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
-                  Your assets don&rsquo;t have to be vulnerable.
-                </h2>
-                <p className="mt-4 text-body text-white/75 max-w-[440px]">
-                  Wyoming Gold starts at $1,275 — charging order protection,
-                  nominee services, registered agent, operating agreement, all
-                  included. No hidden fees.
-                </p>
-              </div>
-
-              {/* Right: Actions */}
-              <div className="flex flex-col gap-3">
-                <Link href="/compare-packages" className="!no-underline">
-                  <Button
-                    variant="cta"
-                    size="lg"
-                    className="w-full justify-center"
-                  >
-                    Choose Your Protection Package
-                  </Button>
-                </Link>
-                <Link href="/contact" className="!no-underline">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
-                  >
-                    Schedule a Consultation
-                  </Button>
-                </Link>
-                <p className="mt-1 text-center text-body-sm text-white/70">
-                  Or call{" "}
-                  <a
-                    href="tel:1-800-553-0615"
-                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-                  >
-                    1-800-553-0615
-                  </a>
-                  {" — real humans, real answers."}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PillarFinalCTA
+        heading={ASSET_FINAL_CTA.heading}
+        description={ASSET_FINAL_CTA.description}
+        ctaLabel={ASSET_FINAL_CTA.ctaLabel}
+        ctaHref={ASSET_FINAL_CTA.ctaHref}
+      />
     </div>
   );
 }
