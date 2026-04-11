@@ -268,7 +268,7 @@ export default function PrivacyPillarPage() {
       <PullQuote bgText={PRIVACY_PULL_QUOTE.bgText}>
         &ldquo;Most providers offer a nominee for a day. We keep nominees on
         your filings{" "}
-        <span className="text-accent font-bold">
+        <span className="text-amber-300 font-bold">
           365&nbsp;days&nbsp;a&nbsp;year
         </span>
         &nbsp;— formation, annual reports, amendments, everything.&rdquo;

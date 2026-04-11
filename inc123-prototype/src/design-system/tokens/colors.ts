@@ -17,7 +17,7 @@ export const brandColors = {
   background: "#f8fafc",
   foreground: "#0f172a",
   "footer-dark": "#0f172a",
-  muted: "#64748b",
+  muted: "#334155",
   border: "#e2e8f0",
 } as const;
 
@@ -41,9 +41,9 @@ export const wireframeColors = {
 export const pillarColors = {
   brand: {
     privacy: { DEFAULT: "#2563eb", soft: "#dbeafe", mid: "#93bbfd" },
-    asset: { DEFAULT: "#16a34a", soft: "#dcfce7", mid: "#86efac" },
-    formation: { DEFAULT: "#d97706", soft: "#fef3c7", mid: "#fcd34d" },
-    compliance: { DEFAULT: "#9333ea", soft: "#f3e8ff", mid: "#c084fc" },
+    asset: { DEFAULT: "#15803d", soft: "#dcfce7", mid: "#86efac" },
+    formation: { DEFAULT: "#a16207", soft: "#fef3c7", mid: "#fcd34d" },
+    compliance: { DEFAULT: "#7e22ce", soft: "#f3e8ff", mid: "#c084fc" },
   },
   wireframe: {
     privacy: { DEFAULT: "#374151", soft: "#f3f4f6", mid: "#d1d5db" },

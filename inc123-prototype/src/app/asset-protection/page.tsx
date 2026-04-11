@@ -372,7 +372,7 @@ export default function AssetProtectionPillarPage() {
       <PullQuote bgText="LLC">
         &ldquo;Charging order protection means creditors can&rsquo;t seize your
         LLC&rsquo;s assets — they can only wait for distributions that{" "}
-        <span className="text-accent font-bold">may never come</span>.&rdquo;
+        <span className="text-amber-300 font-bold">may never come</span>.&rdquo;
       </PullQuote>
 
       {/* ================================================

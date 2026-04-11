@@ -45,7 +45,7 @@ function PullQuote({
             </p>
             <footer className="mt-8 flex items-center justify-center gap-3">
               <div className="h-px w-8 bg-white/20" />
-              <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
+              <p className="text-body-sm text-white/70 font-medium tracking-wide uppercase">
                 {attribution}
               </p>
               <div className="h-px w-8 bg-white/20" />

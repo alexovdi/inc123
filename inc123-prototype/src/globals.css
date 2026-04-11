@@ -98,20 +98,20 @@
     --background: #f8fafc;
     --foreground: #0f172a;
     --footer-dark: #0f172a;
-    --muted: #475569;
+    --muted: #334155;
     --border: #e2e8f0;
 
     /* Pillar colors — brand identity */
     --pillar-privacy: #2563eb;
     --pillar-privacy-soft: #dbeafe;
     --pillar-privacy-mid: #93bbfd;
-    --pillar-asset: #16a34a;
+    --pillar-asset: #15803d;
     --pillar-asset-soft: #dcfce7;
     --pillar-asset-mid: #86efac;
-    --pillar-formation: #d97706;
+    --pillar-formation: #a16207;
     --pillar-formation-soft: #fef3c7;
     --pillar-formation-mid: #fcd34d;
-    --pillar-compliance: #9333ea;
+    --pillar-compliance: #7e22ce;
     --pillar-compliance-soft: #f3e8ff;
     --pillar-compliance-mid: #c084fc;
 

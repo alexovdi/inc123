@@ -357,7 +357,7 @@ export default function CompliancePillarPage() {
       <PullQuote bgText="365">
         &ldquo;An entity that falls out of good standing loses its liability
         protection. We make sure that{" "}
-        <span className="text-accent font-bold">never happens</span>.&rdquo;
+        <span className="text-amber-300 font-bold">never happens</span>.&rdquo;
       </PullQuote>
 
       {/* ================================================

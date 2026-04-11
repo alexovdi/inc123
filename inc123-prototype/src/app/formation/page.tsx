@@ -295,7 +295,7 @@ export default function FormationPillarPage() {
       <PullQuote bgText="$0">
         &ldquo;We include everything other providers charge extra for — state
         fees, registered agent, EIN, operating agreement. One price,{" "}
-        <span className="text-accent font-bold">nothing hidden</span>.&rdquo;
+        <span className="text-amber-300 font-bold">nothing hidden</span>.&rdquo;
       </PullQuote>
 
       {/* ================================================
