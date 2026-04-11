@@ -49,9 +49,9 @@ export default function AssetProtectionPillarPage() {
                 </h1>
 
                 <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
-                  Charging order protection, holding structures, and
-                  multi-entity strategies for individuals with $500K+ in assets.
-                  Wyoming and Nevada. Trusted since 2000.
+                  Defending a single lawsuit costs $30K–$100K — even when you
+                  win. The right LLC structure in the right state keeps
+                  creditors from reaching your assets in the first place.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -209,13 +209,9 @@ export default function AssetProtectionPillarPage() {
           <ScrollReveal delay={300}>
             <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
               {[
-                { value: "$500K", unit: "+", label: "Asset Threshold" },
                 { value: "25", unit: "yrs", label: "Specialized Experience" },
-                {
-                  value: "Charging",
-                  unit: "order",
-                  label: "Protected",
-                },
+                { value: "WY", unit: "& NV", label: "AP Specialists" },
+                { value: "$0", unit: "hidden", label: "All-Inclusive Pricing" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <p className="font-display text-heading-lg font-bold text-white">
@@ -235,7 +231,83 @@ export default function AssetProtectionPillarPage() {
       </section>
 
       {/* ================================================
-          S2: PROBLEM STATEMENT — Asymmetric layout
+          THE DISTINCTION — Privacy vs Asset Protection
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
+              The Critical Distinction
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground text-center max-w-[32ch] mx-auto">
+              Privacy Protects Your Identity.
+              <br className="hidden sm:block" />
+              Asset Protection Protects Your{" "}
+              <span className="text-muted">Wealth.</span>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={150}>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
+              {/* Privacy side */}
+              <div className="rounded-card-lg border border-pillar-privacy/20 bg-pillar-privacy/[0.03] p-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-card bg-pillar-privacy/[0.1] mb-4">
+                  <Icon
+                    name="EyeOff"
+                    size="md"
+                    className="text-pillar-privacy"
+                  />
+                </div>
+                <h3 className="font-display text-body-lg font-semibold text-foreground">
+                  Business Privacy
+                </h3>
+                <p className="text-body-sm text-muted mt-1.5 leading-relaxed">
+                  Controls{" "}
+                  <strong className="text-foreground">who can see</strong> your
+                  ownership. Keeps your name off public filings with nominees
+                  and anonymous formation.
+                </p>
+                <Link
+                  href="/privacy"
+                  className="mt-4 inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
+                >
+                  Explore privacy services →
+                </Link>
+              </div>
+
+              {/* Asset Protection side */}
+              <div className="rounded-card-lg border border-pillar-asset/20 bg-pillar-asset/[0.03] p-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-card bg-pillar-asset/[0.1] mb-4">
+                  <Icon name="Shield" size="md" className="text-pillar-asset" />
+                </div>
+                <h3 className="font-display text-body-lg font-semibold text-foreground">
+                  Asset Protection
+                </h3>
+                <p className="text-body-sm text-muted mt-1.5 leading-relaxed">
+                  Controls{" "}
+                  <strong className="text-foreground">
+                    what creditors can take
+                  </strong>{" "}
+                  in a lawsuit. Uses LLC structures and state law to shield your
+                  wealth.
+                </p>
+                <p className="mt-3 text-caption font-semibold text-pillar-asset uppercase tracking-wider">
+                  You are here
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-8 text-body text-muted text-center max-w-[520px] mx-auto">
+              Most high-value clients implement both. Privacy keeps you from
+              becoming a target. Asset protection ensures you&rsquo;re defended
+              if someone comes looking anyway.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          PROBLEM STATEMENT — Asymmetric layout
           ================================================ */}
       <section className="py-section-y-sm bg-background">
         <div className="mx-auto max-w-content px-container-x">
@@ -388,9 +460,83 @@ export default function AssetProtectionPillarPage() {
       </section>
 
       {/* ================================================
-          S4: HOW IT WORKS
+          STATE COMPARISON SNAPSHOT
           ================================================ */}
       <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+              Compare States
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+              Wyoming vs. Nevada for Asset Protection
+            </h2>
+            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
+              State selection is the first concrete decision. Here&rsquo;s what
+              matters most.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={150}>
+            <div className="mt-10 max-w-[720px]">
+              <div className="overflow-hidden rounded-card-lg border border-border">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="bg-surface border-b border-border">
+                      <th className="px-5 py-3 text-body-sm font-semibold text-foreground">
+                        Factor
+                      </th>
+                      <th className="px-5 py-3 text-body-sm font-semibold text-foreground text-center">
+                        Wyoming
+                      </th>
+                      <th className="px-5 py-3 text-body-sm font-semibold text-foreground text-center">
+                        Nevada
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-body-sm">
+                    {STATE_COMPARISON.map((row, i) => (
+                      <tr
+                        key={row.factor}
+                        className={
+                          i < STATE_COMPARISON.length - 1
+                            ? "border-b border-border"
+                            : ""
+                        }
+                      >
+                        <td className="px-5 py-3 text-muted">{row.factor}</td>
+                        <td className="px-5 py-3 text-center text-foreground">
+                          {row.wy}
+                        </td>
+                        <td className="px-5 py-3 text-center text-foreground">
+                          {row.nv}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-4 text-body-sm text-muted">
+                <strong className="text-foreground">Bottom line:</strong>{" "}
+                Wyoming leads for single-member LLCs. Nevada offers stronger
+                case law and a dedicated business court.{" "}
+                <Link
+                  href="/wyoming-vs-nevada-asset-protection"
+                  className="text-secondary hover:text-secondary/80 font-medium"
+                >
+                  Full comparison →
+                </Link>
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          HOW IT WORKS
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <SectionHeader
@@ -449,7 +595,7 @@ export default function AssetProtectionPillarPage() {
                   <h3 className="font-display text-heading-lg font-semibold text-white">
                     Charging Order Protection — Even for Single-Member LLCs
                   </h3>
-                  <p className="mt-3 text-body text-secondary leading-relaxed max-w-[440px]">
+                  <p className="mt-3 text-body text-white/75 leading-relaxed max-w-[440px]">
                     Wyoming is the only state that explicitly extends charging
                     order protection to single-member LLCs. Most states allow
                     courts to pierce a single-member entity and seize assets
@@ -781,10 +927,10 @@ export default function AssetProtectionPillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
-              Related Services
+              Complete Your Protection
             </p>
             <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
-              Protection Is the Foundation. What Else?
+              Asset Protection Works Best Combined With Privacy.
             </h2>
           </ScrollReveal>
 
@@ -1013,6 +1159,19 @@ const EXPLORE_SERVICES = [
   },
 ];
 
+const STATE_COMPARISON = [
+  {
+    factor: "Charging order (single-member)",
+    wy: "Full protection",
+    nv: "Strong, less tested",
+  },
+  { factor: "State income tax", wy: "None", nv: "None" },
+  { factor: "Annual LLC cost", wy: "$62/yr", nv: "$325/yr" },
+  { factor: "Case law depth", wy: "Growing", nv: "Extensive" },
+  { factor: "Dedicated business court", wy: "No", nv: "Yes" },
+  { factor: "Privacy protections", wy: "Strong", nv: "Strong" },
+];
+
 const EXPLORE_STATES = [
   {
     icon: "MapPin" as const,
@@ -1031,6 +1190,12 @@ const EXPLORE_STATES = [
     title: "Real Estate Protection",
     desc: "Per-property LLC isolation for rental investors",
     href: "/real-estate",
+  },
+  {
+    icon: "Scale" as const,
+    title: "LLC vs. Living Trust",
+    desc: "Living trusts offer zero asset protection — here's why",
+    href: "/llc-vs-living-trust",
   },
 ];
 

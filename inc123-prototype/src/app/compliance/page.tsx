@@ -44,8 +44,8 @@ export default function CompliancePillarPage() {
                 </p>
 
                 <h1 className="font-display type-display-lg font-bold text-white">
-                  Ongoing Support, Not Just{" "}
-                  <span className="text-white/90">a Mailbox.</span>
+                  Keep Your Entity in Good Standing. We Handle{" "}
+                  <span className="text-white/90">the Paperwork.</span>
                 </h1>
 
                 <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
@@ -187,6 +187,53 @@ export default function CompliancePillarPage() {
               ))}
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S1b: PHILOSOPHY — Our Approach
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-3">
+              Our Approach
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[32ch]">
+              Minimum Necessary Compliance. Maximum Protection.
+            </h2>
+            <p className="mt-4 text-body-lg text-muted max-w-[560px]">
+              We handle exactly what your entity needs to stay in good standing
+              &mdash; registered agent, annual reports, corporate records. No
+              unnecessary add-ons, no over-selling. Just the compliance that
+              keeps your protections intact.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {PHILOSOPHY_CARDS.map((card) => (
+              <div
+                key={card.title}
+                className="bg-surface rounded-card border border-border p-6 flex gap-5"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card-lg bg-pillar-compliance/[0.06]">
+                  <Icon
+                    name={card.icon}
+                    size="md"
+                    className="text-pillar-compliance"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-body-lg font-display font-semibold text-foreground">
+                    {card.title}
+                  </h3>
+                  <p className="mt-1 text-body-sm text-muted leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -378,6 +425,57 @@ export default function CompliancePillarPage() {
       </section>
 
       {/* ================================================
+          S4b: ALREADY HAVE AN ENTITY?
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-3">
+              Existing Entity Owners
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[32ch]">
+              Already Have a Business Entity? We Can Help.
+            </h2>
+            <p className="mt-4 text-body-lg text-muted max-w-[560px]">
+              Whether you formed through another provider or want to move your
+              entity to a more favorable state, we handle the transition.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {EXISTING_ENTITY_CARDS.map((card) => (
+                <div
+                  key={card.title}
+                  className="bg-surface border border-border rounded-card-lg p-6"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-compliance/[0.06] mb-4">
+                    <Icon
+                      name={card.icon}
+                      size="md"
+                      className="text-pillar-compliance"
+                    />
+                  </div>
+                  <h3 className="font-display text-heading font-semibold text-foreground">
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-body text-muted leading-relaxed">
+                    {card.desc}
+                  </p>
+                  <Link
+                    href={card.href}
+                    className="inline-flex items-center gap-1 text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors mt-4"
+                  >
+                    {card.linkText}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
           S5: DIFFERENTIATORS — 1 featured + 5 grid (dark)
           ================================================ */}
       <section className="relative py-section-y-sm bg-primary overflow-hidden">
@@ -406,7 +504,7 @@ export default function CompliancePillarPage() {
                   <h3 className="font-display text-heading-lg font-semibold text-white">
                     Full Corporate Minutes Maintenance — Not Just a Mailbox
                   </h3>
-                  <p className="mt-3 text-body text-secondary leading-relaxed max-w-[440px]">
+                  <p className="mt-3 text-body text-white/75 leading-relaxed max-w-[440px]">
                     Most providers call registered agent service
                     &ldquo;compliance.&rdquo; We include annual report filing,
                     corporate minute book preparation and maintenance, and
@@ -418,14 +516,14 @@ export default function CompliancePillarPage() {
                       <p className="font-mono text-heading font-bold text-white">
                         365
                       </p>
-                      <p className="text-caption text-secondary">days/year</p>
+                      <p className="text-caption text-white/70">days/year</p>
                     </div>
                     <div className="h-10 w-px bg-white/[0.1]" />
                     <div>
                       <p className="font-mono text-heading font-bold text-white">
                         $0
                       </p>
-                      <p className="text-caption text-secondary">
+                      <p className="text-caption text-white/70">
                         extra for minutes
                       </p>
                     </div>
@@ -434,7 +532,7 @@ export default function CompliancePillarPage() {
                       <p className="font-mono text-heading font-bold text-white">
                         All
                       </p>
-                      <p className="text-caption text-secondary">
+                      <p className="text-caption text-white/70">
                         filings tracked
                       </p>
                     </div>
@@ -529,7 +627,7 @@ export default function CompliancePillarPage() {
                   <h3 className="font-display text-body font-semibold text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-1.5 text-body-sm text-secondary leading-relaxed">
+                  <p className="mt-1.5 text-body-sm text-white/70 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -548,9 +646,9 @@ export default function CompliancePillarPage() {
             {[
               { icon: "Shield" as const, text: "25 Years Trusted" },
               { icon: "Users" as const, text: "Dedicated Account Team" },
-              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
+              { icon: "CheckCircle" as const, text: "Never Missed a Deadline" },
               { icon: "Phone" as const, text: "Talk to Real Humans" },
-              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
+              { icon: "BellRing" as const, text: "Proactive Filing Reminders" },
             ].map((badge) => (
               <div
                 key={badge.text}
@@ -565,6 +663,100 @@ export default function CompliancePillarPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          S6b: INCLUDED IN RENEWAL
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-3">
+              Already a Client?
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[32ch]">
+              What&rsquo;s Included in Your Annual Renewal
+            </h2>
+            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
+              Your renewal covers all ongoing compliance &mdash; no surprise
+              fees.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <div className="mt-10 rounded-card-lg bg-surface border border-border overflow-hidden">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-border bg-primary-50">
+                    <th className="px-6 py-3.5 text-body-sm font-semibold text-foreground">
+                      Service
+                    </th>
+                    <th className="px-6 py-3.5 text-body-sm font-semibold text-foreground text-center">
+                      Silver
+                    </th>
+                    <th className="px-6 py-3.5 text-body-sm font-semibold text-foreground text-center">
+                      Gold
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {RENEWAL_TABLE.map((row, i) => (
+                    <tr
+                      key={row.service}
+                      className={
+                        i < RENEWAL_TABLE.length - 1
+                          ? "border-b border-border"
+                          : ""
+                      }
+                    >
+                      <td className="px-6 py-3 text-body-sm text-foreground">
+                        {row.service}
+                      </td>
+                      <td className="px-6 py-3 text-body-sm text-center">
+                        {row.silver ? (
+                          <Icon
+                            name="Check"
+                            size="sm"
+                            className="text-success inline-block"
+                            ariaLabel="Included"
+                          />
+                        ) : (
+                          <span className="text-muted">&mdash;</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-3 text-body-sm text-center">
+                        {row.gold ? (
+                          <Icon
+                            name="Check"
+                            size="sm"
+                            className="text-success inline-block"
+                            ariaLabel="Included"
+                          />
+                        ) : (
+                          <span className="text-muted">&mdash;</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mt-4 text-body-sm text-muted text-center">
+              WY Silver: $325/yr &middot; WY Gold: $525/yr &middot; NV Silver:
+              $525/yr &middot; NV Gold: $725/yr
+            </p>
+            <p className="mt-4 text-center text-body-sm text-muted">
+              Questions about your renewal?{" "}
+              <a
+                href="tel:1-800-553-0615"
+                className="text-secondary hover:text-secondary/80 underline underline-offset-4 transition-colors"
+              >
+                Call 1-800-553-0615
+              </a>
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -757,7 +949,7 @@ export default function CompliancePillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
-              Related Services
+              Need More Than Compliance?
             </p>
             <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
               Compliance Is the Foundation. What Else?
@@ -799,10 +991,10 @@ export default function CompliancePillarPage() {
                 <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
                   Never miss a filing deadline again.
                 </h2>
-                <p className="mt-4 text-body text-secondary max-w-[440px]">
-                  Wyoming Silver starts at $625 — registered agent, annual
-                  reports, corporate minutes, virtual office, all included. No
-                  hidden fees. No missed deadlines.
+                <p className="mt-4 text-body text-white/75 max-w-[440px]">
+                  Wyoming compliance from $325/yr &mdash; registered agent,
+                  annual reports, corporate minutes, all included. No hidden
+                  fees. No missed deadlines.
                 </p>
               </div>
 
@@ -848,6 +1040,49 @@ export default function CompliancePillarPage() {
 /* ================================================
    Static data
    ================================================ */
+
+const PHILOSOPHY_CARDS = [
+  {
+    icon: "CheckCircle" as const,
+    title: "What's Required — Done",
+    desc: "Every filing, every deadline, every year. Registered agent, annual reports, corporate records — handled on time.",
+  },
+  {
+    icon: "Shield" as const,
+    title: "Protections Preserved",
+    desc: "Without proper compliance, LLC protections can be voided. Courts can pierce the corporate veil if records aren't maintained.",
+  },
+  {
+    icon: "Calendar" as const,
+    title: "Year-Round — Not Year-End",
+    desc: "We don't scramble at deadline. Your compliance is managed continuously, with proactive reminders and pre-filed reports.",
+  },
+];
+
+const EXISTING_ENTITY_CARDS = [
+  {
+    icon: "ArrowRightLeft" as const,
+    title: "Domestication",
+    desc: "Move your entity to Wyoming or Nevada. Keep your EIN, contracts, and bank accounts intact. Often saves hundreds per year — California's $800 franchise tax vs Wyoming's $62 annual report.",
+    href: "/domestication",
+    linkText: "Learn about domestication \u2192",
+  },
+  {
+    icon: "Globe" as const,
+    title: "Foreign State Registration",
+    desc: "Operate in California, Florida, or any other state while keeping your Wyoming or Nevada entity. We handle the registration and ongoing compliance in both states.",
+    href: "/foreign-registration",
+    linkText: "Learn about foreign registration \u2192",
+  },
+];
+
+const RENEWAL_TABLE = [
+  { service: "Registered Agent", silver: true, gold: true },
+  { service: "Annual Report Filing", silver: true, gold: true },
+  { service: "Corporate Minutes", silver: true, gold: true },
+  { service: "Year-Round Nominees", silver: false, gold: true },
+  { service: "Offshore Records", silver: false, gold: true },
+];
 
 const PROBLEM_CARDS = [
   {
@@ -1021,8 +1256,26 @@ const EXPLORE_STATES = [
   {
     icon: "ArrowRightLeft" as const,
     title: "Domestication",
-    desc: "Move your entity to a new state without dissolving",
+    desc: "Move your entity to a better state",
     href: "/domestication",
+  },
+  {
+    icon: "Globe" as const,
+    title: "Foreign State Registration",
+    desc: "Operate in multiple states legally",
+    href: "/foreign-registration",
+  },
+  {
+    icon: "FileStack" as const,
+    title: "2nd-Tier State Filings",
+    desc: "Additional state compliance requirements",
+    href: "/2nd-tier-state-filings",
+  },
+  {
+    icon: "Receipt" as const,
+    title: "Tax Filing & Obligations",
+    desc: "Entity tax compliance and obligations",
+    href: "/tax-obligations",
   },
 ];
 

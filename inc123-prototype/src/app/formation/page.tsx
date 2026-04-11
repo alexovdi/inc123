@@ -169,7 +169,7 @@ export default function FormationPillarPage() {
             <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
               {[
                 { value: "25", unit: "yrs", label: "Forming Entities" },
-                { value: "2", unit: "states", label: "Wyoming & Nevada" },
+                { value: "3–5", unit: "days", label: "Formation Timeline" },
                 { value: "$0", unit: "", label: "Hidden Fees" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
@@ -192,7 +192,38 @@ export default function FormationPillarPage() {
       </section>
 
       {/* ================================================
-          S2: PROBLEM STATEMENT — Asymmetric layout
+          QUICK-PATH SHORTCUT — for informed buyers
+          ================================================ */}
+      <section className="py-8 bg-surface border-b border-border">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <p className="text-body-sm font-semibold text-muted whitespace-nowrap">
+              Know what you need?
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {QUICK_PATHS.map((pkg) => (
+                <Link
+                  key={pkg.label}
+                  href={pkg.href}
+                  className="!no-underline group"
+                >
+                  <div className="flex items-center gap-2 rounded-card border border-border bg-background px-4 py-2.5 hover:border-secondary/30 hover:shadow-card transition-all">
+                    <span className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                      {pkg.label}
+                    </span>
+                    <span className="text-caption text-muted">
+                      from {pkg.price}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          PROBLEM STATEMENT — Asymmetric layout
           ================================================ */}
       <section className="py-section-y-sm bg-background">
         <div className="mx-auto max-w-content px-container-x">
@@ -277,9 +308,111 @@ export default function FormationPillarPage() {
       </section>
 
       {/* ================================================
-          S3: FORMATION STEPS — Editorial numbered blocks
+          TWO DECISIONS — LLC vs Corp + WY vs NV
           ================================================ */}
       <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
+              Two Decisions
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground text-center max-w-[28ch] mx-auto">
+              Entity Type + State. Everything Else Is Handled.
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={150}>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
+              {/* LLC vs Corp */}
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Icon
+                    name="Building2"
+                    size="md"
+                    className="text-pillar-formation"
+                  />
+                  <h3 className="font-display text-body-lg font-semibold text-foreground">
+                    LLC or Corporation?
+                  </h3>
+                </div>
+                <div className="space-y-3 text-body-sm">
+                  <div>
+                    <p className="font-semibold text-foreground">LLC</p>
+                    <p className="text-muted">
+                      Flexible management, pass-through taxation, simpler
+                      compliance. Best for most small businesses.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Corporation</p>
+                    <p className="text-muted">
+                      Formal structure, stock issuance, better for raising
+                      investment. Required for some industries.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 rounded-card bg-pillar-formation/[0.06] border border-pillar-formation/[0.15] px-3 py-2">
+                  <p className="text-caption font-semibold text-foreground">
+                    85%+ of our clients choose LLC
+                  </p>
+                </div>
+                <Link
+                  href="/llc-vs-corporation"
+                  className="mt-3 inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
+                >
+                  Full LLC vs Corp comparison →
+                </Link>
+              </div>
+
+              {/* WY vs NV */}
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Icon
+                    name="MapPin"
+                    size="md"
+                    className="text-pillar-formation"
+                  />
+                  <h3 className="font-display text-body-lg font-semibold text-foreground">
+                    Wyoming or Nevada?
+                  </h3>
+                </div>
+                <div className="space-y-3 text-body-sm">
+                  <div>
+                    <p className="font-semibold text-foreground">Wyoming</p>
+                    <p className="text-muted">
+                      $62/yr annual report, no state income tax, strongest
+                      single-member LLC protection.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Nevada</p>
+                    <p className="text-muted">
+                      Established case law, dedicated business court, strong
+                      privacy statutes.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 rounded-card bg-pillar-formation/[0.06] border border-pillar-formation/[0.15] px-3 py-2">
+                  <p className="text-caption font-semibold text-foreground">
+                    Wyoming is best for most — 70% of clients
+                  </p>
+                </div>
+                <Link
+                  href="/wyoming-vs-nevada-llc"
+                  className="mt-3 inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
+                >
+                  Full WY vs NV comparison →
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          FORMATION STEPS — Editorial numbered blocks
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-3">
@@ -345,7 +478,76 @@ export default function FormationPillarPage() {
       </section>
 
       {/* ================================================
-          S4: HOW IT WORKS
+          STATE COMPARISON SNAPSHOT
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+              Compare Costs
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+              Wyoming vs. Nevada Formation Costs
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={150}>
+            <div className="mt-10 max-w-[720px]">
+              <div className="overflow-hidden rounded-card-lg border border-border">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="bg-surface border-b border-border">
+                      <th className="px-5 py-3 text-body-sm font-semibold text-foreground">
+                        Cost
+                      </th>
+                      <th className="px-5 py-3 text-body-sm font-semibold text-foreground text-center">
+                        Wyoming
+                      </th>
+                      <th className="px-5 py-3 text-body-sm font-semibold text-foreground text-center">
+                        Nevada
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-body-sm">
+                    {FORMATION_COMPARISON.map((row, i) => (
+                      <tr
+                        key={row.factor}
+                        className={
+                          i < FORMATION_COMPARISON.length - 1
+                            ? "border-b border-border"
+                            : ""
+                        }
+                      >
+                        <td className="px-5 py-3 text-muted">{row.factor}</td>
+                        <td className="px-5 py-3 text-center text-foreground">
+                          {row.wy}
+                        </td>
+                        <td className="px-5 py-3 text-center text-foreground">
+                          {row.nv}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-body-sm text-muted">
+                <strong className="text-foreground">Bottom line:</strong>{" "}
+                Wyoming is significantly cheaper to form and maintain. Nevada
+                offers stronger case law and a dedicated business court.{" "}
+                <Link
+                  href="/wyoming-vs-nevada-llc"
+                  className="text-secondary hover:text-secondary/80 font-medium"
+                >
+                  Full comparison →
+                </Link>
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          HOW IT WORKS
           ================================================ */}
       <section id="how-it-works" className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
@@ -584,7 +786,72 @@ export default function FormationPillarPage() {
       </section>
 
       {/* ================================================
-          S7: PACKAGES — Compare
+          PRIVACY UPSELL BRIDGE
+          ================================================ */}
+      <section className="py-section-y-sm bg-pillar-privacy/[0.03] border-y border-pillar-privacy/[0.1]">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <div className="max-w-[720px] mx-auto">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+                Did You Know?
+              </p>
+              <h2 className="font-display text-heading-lg font-semibold text-foreground">
+                70% of Our Clients Add Privacy to Their Formation.
+              </h2>
+              <p className="mt-3 text-body text-muted leading-relaxed">
+                When you form an LLC or corporation, your name goes on public
+                state filings — visible to anyone who searches. Gold packages
+                include year-round nominee services that keep your name off
+                every document: formation, annual reports, amendments,
+                everything.
+              </p>
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-card bg-surface border border-border p-4 text-center">
+                  <p className="font-display text-heading font-bold text-foreground">
+                    $400
+                  </p>
+                  <p className="text-caption text-muted mt-0.5">
+                    WY privacy upgrade
+                  </p>
+                </div>
+                <div className="rounded-card bg-surface border border-border p-4 text-center">
+                  <p className="font-display text-heading font-bold text-foreground">
+                    $525
+                  </p>
+                  <p className="text-caption text-muted mt-0.5">
+                    NV privacy upgrade
+                  </p>
+                </div>
+                <div className="rounded-card bg-surface border border-border p-4 text-center">
+                  <p className="font-display text-heading font-bold text-foreground">
+                    365
+                  </p>
+                  <p className="text-caption text-muted mt-0.5">
+                    days/yr nominee coverage
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <Link
+                  href="/privacy"
+                  className="text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
+                >
+                  Learn about business privacy →
+                </Link>
+                <Link
+                  href="/compare-packages"
+                  className="text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
+                >
+                  Compare Gold vs Silver →
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          PACKAGES — Compare
           ================================================ */}
       <div id="packages">
         <PackageComparison />
@@ -773,7 +1040,7 @@ export default function FormationPillarPage() {
         <div className="mx-auto max-w-content px-container-x">
           <ScrollReveal>
             <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
-              Related Services
+              Beyond Formation
             </p>
             <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
               Formation Is Step One. What Comes Next?
@@ -784,18 +1051,18 @@ export default function FormationPillarPage() {
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch">
               <CrossPillarCTA
                 fromPillar="formation"
-                toPillar="compliance"
-                heading="Keep Your Entity in Good Standing"
-                description="Registered agent, annual reports, corporate minutes. Ongoing compliance is included in every package and continues with renewals."
-                href="/compliance"
+                toPillar="privacy"
+                heading="Add Privacy to Your Formation"
+                description="70% of clients add privacy. Gold packages include year-round nominees that keep your name off every filing — simpler to include from the start than to add later."
+                href="/privacy"
                 className="h-full"
               />
               <CrossPillarCTA
                 fromPillar="formation"
-                toPillar="privacy"
-                heading="Add Privacy to Your Formation"
-                description="Gold packages include year-round nominees and offshore records storage. Your identity stays private from day one."
-                href="/privacy"
+                toPillar="asset"
+                heading="Protect What You're Building"
+                description="If you have $500K+ in assets, the right LLC structure can shield personal wealth from business lawsuits. Wyoming's charging order protection is the strongest in the country."
+                href="/asset-protection"
                 className="h-full"
               />
             </div>
@@ -817,7 +1084,7 @@ export default function FormationPillarPage() {
                   surprises.
                 </h2>
                 <p className="mt-4 text-body text-white/75 max-w-[440px]">
-                  Wyoming LLC formation starts at $575 — state fees, registered
+                  Wyoming LLC formation starts at $625 — state fees, registered
                   agent, EIN, operating agreement, corporate seal, annual
                   reports, all included. No hidden fees. No annual surprises.
                 </p>
@@ -865,6 +1132,23 @@ export default function FormationPillarPage() {
 /* ================================================
    Static data
    ================================================ */
+
+const QUICK_PATHS = [
+  { label: "Wyoming LLC", price: "$625", href: "/bronze?state=wyoming" },
+  { label: "Wyoming Gold LLC", price: "$1,275", href: "/gold?state=wyoming" },
+  { label: "Nevada LLC", price: "$625", href: "/bronze?state=nevada" },
+  { label: "Shelf Company", price: "varies", href: "/shelf-companies" },
+];
+
+const FORMATION_COMPARISON = [
+  { factor: "LLC formation fee", wy: "$100", nv: "$425" },
+  { factor: "Corp formation fee", wy: "$100", nv: "$75" },
+  { factor: "Annual report", wy: "$62", nv: "$350" },
+  { factor: "Business license", wy: "None", nv: "$350" },
+  { factor: "State income tax", wy: "None", nv: "None" },
+  { factor: "Formation timeline", wy: "3–5 days", nv: "3–5 days" },
+  { factor: "Member disclosure", wy: "Not required", nv: "Not required" },
+];
 
 const PROBLEM_CARDS = [
   {
@@ -1031,6 +1315,12 @@ const EXPLORE_ENTITIES = [
     desc: "How entity type affects your taxes",
     href: "/entity-tax-guide",
   },
+  {
+    icon: "Globe" as const,
+    title: "Foreign State Registration",
+    desc: "Operate in CA, FL, or other states with your WY/NV entity",
+    href: "/foreign-registration",
+  },
 ];
 
 const EXPLORE_COMPARISONS = [
@@ -1043,5 +1333,10 @@ const EXPLORE_COMPARISONS = [
     title: "LLC vs. Corporation",
     desc: "Which entity type is right? Compare flexibility, taxation, and formation requirements.",
     href: "/llc-vs-corporation",
+  },
+  {
+    title: "S-Corp vs. C-Corp Taxation",
+    desc: "How entity election affects self-employment taxes, distributions, and annual filings.",
+    href: "/entity-tax-guide",
   },
 ];
