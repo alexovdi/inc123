@@ -122,6 +122,33 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
       }
     >
       <div className="space-y-16">
+        {/* Table of Contents */}
+        {cluster.sections.length > 2 && (
+          <nav
+            aria-label="Table of contents"
+            className="rounded-card border border-border bg-surface p-5"
+          >
+            <h2 className="text-body font-display font-semibold text-foreground mb-3">
+              In This Guide
+            </h2>
+            <ol className="space-y-1.5">
+              {cluster.sections.map((section, i) => (
+                <li key={section.id}>
+                  <a
+                    href={`#${section.id}`}
+                    className="text-body-sm text-secondary hover:text-secondary/80 transition-colors flex items-baseline gap-2"
+                  >
+                    <span className="text-muted/50 font-mono text-[0.7rem] tabular-nums shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {section.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+
         <LongFormContent sections={cluster.sections} />
 
         {dualPkgs.length >= 2 && (

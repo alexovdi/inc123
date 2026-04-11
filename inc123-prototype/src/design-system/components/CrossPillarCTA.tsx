@@ -13,7 +13,7 @@ import type { PillarName } from "@/design-system/tokens";
    CVA Variants
    ------------------------------------------------ */
 const crossPillarCTAVariants = cva(
-  "rounded-card border border-border border-t-2 transition-colors",
+  "rounded-card border border-border border-t-2 transition-colors flex flex-col",
   {
     variants: {
       variant: {
@@ -108,7 +108,7 @@ function CrossPillarCTA({
         href={href}
         variant="subtle"
         className={cn(
-          "mt-3 inline-flex items-center gap-1.5 font-medium",
+          "mt-auto pt-3 inline-flex items-center gap-1.5 font-medium",
           variant === "sidebar-block" ? "text-body-sm" : "text-body",
           pillarTextMap[toPillar],
         )}

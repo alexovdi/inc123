@@ -1,399 +1,1048 @@
-import { PillarLayout } from "@/design-system/layouts/PillarLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { Card } from "@/design-system/components/Card";
-import { ClusterGrid } from "@/design-system/components/ClusterGrid";
-import { ComparisonCards } from "@/design-system/components/ComparisonCards";
-import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
-import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
-import { PillarHero } from "@/design-system/components/PillarHero";
-import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
-import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { PackageComparison } from "@/design-system/components/PackageComparison";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
-import { pillars } from "@/data/pillars";
-import { packages } from "@/data/packages";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
+import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
-const pillar = pillars[1]; // asset
-const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
-const nvGold = packages.find((p) => p.id === "nevada-gold")!;
+
 const assetFaqs = faqItems.filter((f) => f.category === "asset");
 
 export default function AssetProtectionPillarPage() {
   return (
-    <PillarLayout
-      pillar="asset"
-      title={pillar.tagline}
-      description={pillar.description}
-      customHero={
-        <PillarHero
-          pillar="asset"
-          eyebrow="Asset Protection"
-          headline={pillar.tagline}
-          description={pillar.description}
-          primaryCTA={{
-            label: "Explore Protection Packages",
-            href: "/compare-packages",
-          }}
-          secondaryCTA={{
-            label: "View Gold Packages",
-            href: "#packages",
-          }}
-          trustSnippet={pillar.trustElement}
-        />
-      }
-      sidebar={
-        <ContentSidebar
-          variant="pillar"
-          packageShortcut={{
-            name: "Gold Package",
-            price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-            period: "one-time",
-            href: "/gold?state=wyoming",
-            badge: "Most Popular",
-          }}
-          relatedPages={pillar.clusters.map((c) => ({
-            title: c.title,
-            href: c.href,
-          }))}
-          crossPillarLink={{
-            pillar: "privacy",
-            title: "Also Relevant: Business Privacy",
-            href: "/privacy",
-          }}
-          phoneNumber="1-800-553-0615"
-        />
-      }
-    >
-      <div className="space-y-16">
-        {/* ------------------------------------------------
-            Section 1: What is Asset Protection?
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            What is Asset Protection?
-          </h2>
-          <ProgressiveDisclosure
-            sections={[
-              {
-                id: "what-is-asset-protection",
-                title: "Understanding Asset Protection",
-                summary:
-                  "Asset protection is the legal strategy of structuring your business entities and personal holdings to shield them from lawsuits, creditors, and judgments. The right LLC structure — formed in a state with strong charging order protection — creates a legal barrier between your assets and anyone trying to take them.",
-                content: (
-                  <div className="space-y-4 text-body text-muted">
-                    <p>
-                      When someone wins a lawsuit against you personally, they
-                      can typically go after your personal assets: bank
-                      accounts, real estate, investments. But assets held inside
-                      a properly structured LLC are protected by the
-                      entity&apos;s legal separation from you as an individual.
-                    </p>
-                    <p>
-                      The strength of that protection depends heavily on which
-                      state you form in. Wyoming offers the strongest charging
-                      order protection in the country — meaning a creditor who
-                      wins a judgment against you personally can only receive a
-                      &ldquo;charging order&rdquo; (essentially a lien on
-                      distributions from the LLC). They cannot seize LLC assets,
-                      force distributions, or take over management.
-                    </p>
-                    <p>
-                      Effective asset protection goes beyond a single LLC. Many
-                      clients benefit from multi-entity strategies: a holding
-                      LLC that owns operating LLCs, separating real estate from
-                      business operations, and combining privacy structures with
-                      asset protection for maximum security.
-                    </p>
-                    <p>
-                      The critical rule: asset protection must be set up BEFORE
-                      you need it. Transferring assets after a lawsuit is filed
-                      can be considered fraudulent conveyance. Planning ahead is
-                      always more effective and legally defensible.
-                    </p>
-                  </div>
-                ),
-              },
-            ]}
-          />
-          <div className="mt-4">
-            <a
-              href="/charging-order-protection"
-              className="inline-flex items-center gap-1.5 text-body-sm font-medium text-pillar-asset hover:text-pillar-asset/80 transition-colors"
-            >
-              Learn about Charging Order Protection
-              <Icon name="ArrowRight" size="sm" />
-            </a>
-          </div>
-        </section>
+    <div className="min-h-screen">
+      {/* ================================================
+          S1: HERO — Editorial split layout
+          ================================================ */}
+      <section className="relative overflow-hidden bg-primary">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-pillar-asset/[0.08] blur-[120px]" />
 
-        {/* ------------------------------------------------
-            Section 2: Why Asset Protection Matters
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Why Asset Protection Matters
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card
-              pillar="asset"
-              variant="elevated"
-              title="Shield Against Lawsuits"
-              description="Without proper structure, a single lawsuit can reach everything you own. Asset protection creates legal barriers that keep personal and business assets separate and secure."
+        <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-body-sm">
+            <Link
+              href="/"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
             >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Shield" size="sm" className="text-pillar-asset" />
-                <span className="text-caption text-muted">
-                  Your first line of defense
-                </span>
+              Home
+            </Link>
+            <span className="mx-2 text-white/50">/</span>
+            <span className="text-white/90">Asset Protection</span>
+          </nav>
+
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
+            {/* Left: Content */}
+            <ScrollReveal delay={100}>
+              <div>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-4">
+                  Asset Protection
+                </p>
+
+                <h1 className="font-display type-display-lg font-bold text-white">
+                  Protect What You&rsquo;ve{" "}
+                  <span className="text-pillar-asset">Built.</span>
+                </h1>
+
+                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                  Charging order protection, holding structures, and
+                  multi-entity strategies for individuals with $500K+ in assets.
+                  Wyoming and Nevada. Trusted since 2000.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a href="#packages">
+                    <Button variant="cta" size="lg">
+                      Find Your Protection Package
+                      <Icon
+                        name="ArrowRight"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                  <a href="#framework">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="border-white/20 text-white hover:bg-white/10"
+                    >
+                      How It Works
+                      <Icon
+                        name="ArrowDown"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                </div>
+
+                <p className="mt-5 text-body-sm text-white/80">
+                  Prefer to talk?{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Call 1-800-553-0615
+                  </a>
+                  {" · "}
+                  <Link
+                    href="/contact"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Schedule a consultation
+                  </Link>
+                </p>
               </div>
-            </Card>
-            <Card
-              pillar="asset"
-              variant="elevated"
-              title="Charging Order Protection"
-              description="Wyoming's charging order statutes ensure creditors can only place a lien on distributions — they cannot seize LLC assets, force distributions, or take over management."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Lock" size="sm" className="text-pillar-asset" />
-                <span className="text-caption text-muted">
-                  The gold standard in domestic protection
-                </span>
+            </ScrollReveal>
+
+            {/* Right: Visual — "Protected vs Unprotected" asset diagram */}
+            <ScrollReveal delay={600} direction="right">
+              <div className="hidden lg:block relative">
+                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-8 w-8 rounded-full bg-pillar-asset/20 flex items-center justify-center">
+                      <Icon
+                        name="Shield"
+                        size="sm"
+                        className="text-pillar-asset"
+                      />
+                    </div>
+                    <div>
+                      <div className="h-2.5 w-40 rounded-full bg-white/20" />
+                      <div className="h-2 w-28 rounded-full bg-white/10 mt-1.5" />
+                    </div>
+                  </div>
+
+                  {/* Unprotected scenario */}
+                  <div className="mb-4">
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
+                      Without Protection
+                    </p>
+                    <div className="rounded bg-red-500/[0.08] border border-red-400/[0.15] px-3 py-2 space-y-1.5">
+                      <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <Icon
+                          name="X"
+                          size="xs"
+                          className="text-red-400/60 shrink-0"
+                        />
+                        Personal assets exposed to lawsuits
+                      </div>
+                      <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <Icon
+                          name="X"
+                          size="xs"
+                          className="text-red-400/60 shrink-0"
+                        />
+                        Creditors seize LLC assets directly
+                      </div>
+                      <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <Icon
+                          name="X"
+                          size="xs"
+                          className="text-red-400/60 shrink-0"
+                        />
+                        Single entity = single point of failure
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Protected scenario */}
+                  <div className="mb-4">
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
+                      With Wyoming LLC Protection
+                    </p>
+                    <div className="rounded bg-success/[0.08] border border-success/[0.2] px-3 py-2 space-y-1.5">
+                      <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <Icon
+                          name="Check"
+                          size="xs"
+                          className="text-success shrink-0"
+                        />
+                        Charging order limits creditor remedies
+                      </div>
+                      <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <Icon
+                          name="Check"
+                          size="xs"
+                          className="text-success shrink-0"
+                        />
+                        Multi-entity isolation per asset class
+                      </div>
+                      <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <Icon
+                          name="Check"
+                          size="xs"
+                          className="text-success shrink-0"
+                        />
+                        Single-member LLC fully protected
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Status */}
+                  <div className="pt-3 border-t border-white/[0.1]">
+                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                      Protection Status
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
+                      <p className="font-mono text-body-sm text-success">
+                        Active — Charging Order Protected
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative shadow layers */}
+                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
               </div>
-            </Card>
-            <Card
-              pillar="asset"
-              variant="elevated"
-              title="Separate Business & Personal"
-              description="Holding structures and multi-entity strategies isolate risk. If one entity faces a claim, your other assets remain untouched behind separate legal barriers."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Layers" size="sm" className="text-pillar-asset" />
-                <span className="text-caption text-muted">
-                  Risk compartmentalization
-                </span>
+            </ScrollReveal>
+          </div>
+
+          {/* Stats strip */}
+          <ScrollReveal delay={300}>
+            <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
+              {[
+                { value: "$500K", unit: "+", label: "Asset Threshold" },
+                { value: "25", unit: "yrs", label: "Specialized Experience" },
+                {
+                  value: "Charging",
+                  unit: "order",
+                  label: "Protected",
+                },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="font-display text-heading-lg font-bold text-white">
+                    {stat.value}
+                    <span className="text-body-sm font-normal text-white/70 ml-1">
+                      {stat.unit}
+                    </span>
+                  </p>
+                  <p className="text-caption text-white/70 mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S2: PROBLEM STATEMENT — Asymmetric layout
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+            {/* Left: Headline + description (sticky on scroll) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-3">
+                  The Risk
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Without the Right Structure, Everything You Own Is Exposed.{" "}
+                  <span className="text-muted">One Lawsuit Away.</span>
+                </h2>
+                <p className="mt-4 text-body-lg text-muted max-w-[440px]">
+                  If your assets aren&rsquo;t held inside the right legal
+                  structure, they&rsquo;re fair game in any civil judgment.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Threat cards — stacked vertically */}
+            <ScrollReveal delay={150}>
+              <div className="space-y-4">
+                {THREAT_CARDS.map((card) => (
+                  <div
+                    key={card.title}
+                    className="group bg-surface rounded-card border border-border p-6 flex gap-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card-lg bg-pillar-asset/[0.06] group-hover:bg-pillar-asset/[0.12] transition-colors">
+                      <Icon
+                        name={card.icon}
+                        size="md"
+                        className="text-pillar-asset"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-body-lg font-display font-semibold text-foreground">
+                        {card.title}
+                      </h3>
+                      <p className="mt-1 text-body text-muted leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </Card>
-            <Card
-              pillar="asset"
-              variant="elevated"
-              title="Protect Real Estate & Investments"
-              description="Rental properties and investment portfolios are high-value targets. Separate LLCs for each property or investment class prevent a single claim from reaching everything."
-            >
-              <div className="flex items-center gap-2 mt-1">
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Pull quote — visual landmark ── */}
+      <section className="relative bg-primary py-section-y-sm overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
+            $0
+          </span>
+        </div>
+        <div className="relative mx-auto max-w-narrow px-container-x">
+          <ScrollReveal>
+            <blockquote className="text-center">
+              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
+                &ldquo;Wyoming is the only state that extends charging order
+                protection to{" "}
+                <span className="text-pillar-asset font-bold">
+                  single-member&nbsp;LLCs
+                </span>
+                &nbsp;— the strongest domestic shield available for individual
+                asset owners.&rdquo;
+              </p>
+              <footer className="mt-8 flex items-center justify-center gap-3">
+                <div className="h-px w-8 bg-white/20" />
+                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
+                  The Wyoming Advantage
+                </p>
+                <div className="h-px w-8 bg-white/20" />
+              </footer>
+            </blockquote>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S3: THREE PILLARS OF PROTECTION — Editorial numbered blocks
+          ================================================ */}
+      <section id="framework" className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-3">
+              Understanding Protection
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+              Three Pillars of Asset Protection
+            </h2>
+            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
+              Effective asset protection isn&rsquo;t a single product —
+              it&rsquo;s a multi-layered strategy combining the right state, the
+              right structure, and the right separation.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 space-y-0">
+            {PROTECTION_BLOCKS.map((block, i) => (
+              <ScrollReveal key={block.id}>
+                <div
+                  className={`grid gap-8 lg:grid-cols-[120px_1fr] py-10 ${i < PROTECTION_BLOCKS.length - 1 ? "border-b border-border" : ""}`}
+                >
+                  {/* Large editorial number */}
+                  <div className="hidden lg:block">
+                    <span className="font-mono text-[5rem] font-bold leading-none text-pillar-asset/[0.12]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  {/* Content */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-3 lg:hidden">
+                      <span className="font-mono text-heading-lg font-bold text-pillar-asset/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-heading-lg font-semibold text-foreground">
+                      {block.title}
+                    </h3>
+                    <p className="mt-3 text-body text-muted leading-relaxed max-w-[600px]">
+                      {block.summary}
+                    </p>
+                    {block.keyDistinction && (
+                      <div className="mt-4 rounded-card bg-pillar-asset/[0.04] border border-pillar-asset/[0.12] px-5 py-4">
+                        <p className="text-body-sm font-semibold text-foreground mb-1">
+                          Key Distinction
+                        </p>
+                        <p className="text-body-sm text-muted leading-relaxed">
+                          {block.keyDistinction}
+                        </p>
+                      </div>
+                    )}
+                    <Link
+                      href={block.href}
+                      className="inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors mt-4"
+                    >
+                      {block.linkText}
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          S4: HOW IT WORKS
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="How It Works"
+              title="From Consultation to Fully Protected."
+              subtitle="Four steps. We build the structure. You keep your assets."
+              subtitleMaxWidth="max-w-narrow mx-auto"
+            />
+
+            <div className="mt-12">
+              <HowItWorks steps={PROCESS_STEPS} />
+            </div>
+
+            <div className="mt-10 text-center">
+              <a href="#packages">
+                <Button variant="cta" size="md">
+                  See Protection Packages &amp; Pricing
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S6: DIFFERENTIATORS — 1 featured + 5 grid (dark)
+          ================================================ */}
+      <section className="relative py-section-y-sm bg-primary overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -right-60 top-20 h-[50vw] w-[50vw] rounded-full bg-pillar-asset/[0.06] blur-[120px]" />
+
+        <div className="relative mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Why Incorporate123"
+              title="What Sets Our Asset Protection Apart"
+              dark
+            />
+
+            {/* Featured differentiator — full width hero card */}
+            <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="p-8 lg:p-10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-asset/20 mb-5">
+                    <Icon
+                      name="Shield"
+                      size="lg"
+                      className="text-pillar-asset"
+                    />
+                  </div>
+                  <h3 className="font-display text-heading-lg font-semibold text-white">
+                    Charging Order Protection — Even for Single-Member LLCs
+                  </h3>
+                  <p className="mt-3 text-body text-secondary leading-relaxed max-w-[440px]">
+                    Wyoming is the only state that explicitly extends charging
+                    order protection to single-member LLCs. Most states allow
+                    courts to pierce a single-member entity and seize assets
+                    directly. Wyoming statute closes that loophole.
+                  </p>
+                  <div className="mt-6 flex items-center gap-6">
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        WY
+                      </p>
+                      <p className="text-caption text-white/70">
+                        #1 state for AP
+                      </p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        Single
+                      </p>
+                      <p className="text-caption text-white/70">
+                        member protected
+                      </p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        25
+                      </p>
+                      <p className="text-caption text-white/70">
+                        years experience
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden lg:flex items-center justify-center bg-white/[0.03] p-10">
+                  {/* Multi-entity structure visual */}
+                  <div className="w-full max-w-[280px] space-y-4">
+                    <div className="rounded-card bg-pillar-asset/[0.08] border border-pillar-asset/[0.15] p-4 text-center">
+                      <p className="text-caption font-semibold text-pillar-asset uppercase tracking-wider mb-1">
+                        Holding LLC (Wyoming)
+                      </p>
+                      <p className="text-body-sm text-white/50">
+                        Parent entity — charging order protected
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <div className="h-6 w-px bg-white/20" />
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="rounded-card bg-white/[0.06] border border-white/[0.1] p-2.5 text-center">
+                        <Icon
+                          name="Building2"
+                          size="xs"
+                          className="text-white/40 mx-auto mb-1"
+                        />
+                        <p className="text-caption text-white/50">
+                          Real Estate
+                        </p>
+                      </div>
+                      <div className="rounded-card bg-white/[0.06] border border-white/[0.1] p-2.5 text-center">
+                        <Icon
+                          name="TrendingUp"
+                          size="xs"
+                          className="text-white/40 mx-auto mb-1"
+                        />
+                        <p className="text-caption text-white/50">
+                          Investments
+                        </p>
+                      </div>
+                      <div className="rounded-card bg-white/[0.06] border border-white/[0.1] p-2.5 text-center">
+                        <Icon
+                          name="Briefcase"
+                          size="xs"
+                          className="text-white/40 mx-auto mb-1"
+                        />
+                        <p className="text-caption text-white/50">Operations</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* 5 smaller differentiator cards */}
+          <ScrollReveal delay={150}>
+            <div className="mt-5 flex flex-wrap gap-5">
+              {DIFFERENTIATORS_SMALL.map((item) => (
+                <div
+                  key={item.title}
+                  className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-7 hover:-translate-y-1 transition-all duration-300 hover:bg-white/[0.08]"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-card bg-white/[0.08] border border-white/[0.12] mb-4">
+                    <Icon
+                      name={item.icon}
+                      size="md"
+                      className="text-pillar-asset"
+                    />
+                  </div>
+                  <h3 className="font-display text-body font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-body-sm text-white/70 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S7: SOCIAL PROOF STRIP
+          ================================================ */}
+      <section className="py-8 bg-surface border-y border-border">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              { icon: "Shield" as const, text: "25 Years Trusted" },
+              { icon: "Users" as const, text: "Dedicated Account Team" },
+              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
+              { icon: "Phone" as const, text: "Talk to Real Humans" },
+              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
+            ].map((badge) => (
+              <div
+                key={badge.text}
+                className="flex items-center gap-2 text-body-sm text-muted"
+              >
                 <Icon
-                  name="Building2"
+                  name={badge.icon}
                   size="sm"
                   className="text-pillar-asset"
                 />
-                <span className="text-caption text-muted">
-                  Per-property isolation
-                </span>
+                {badge.text}
               </div>
-            </Card>
-          </div>
-        </section>
-
-        {/* ------------------------------------------------
-            Section 3: How We Protect Your Assets (Services)
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            How Incorporate123 Protects Your Assets
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Proven strategies backed by 25 years of experience forming
-            protective structures in Wyoming and Nevada.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillar.services.map((service, i) => (
-              <Card
-                key={i}
-                pillar="asset"
-                variant="elevated"
-                layout="compact"
-                title={service}
-                description={assetServiceDescriptions[i]}
-              />
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Differentiator Callout */}
-          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-asset bg-pillar-asset/5 p-6">
-            <p className="text-body font-medium text-foreground">
-              &ldquo;Wyoming&rsquo;s charging order protection is the strongest
-              in the country &mdash; creditors cannot seize LLC assets, force
-              distributions, or take over management.&rdquo;
-            </p>
-            <p className="mt-2 text-body text-muted">
-              Unlike states where courts can force LLC dissolution to satisfy a
-              judgment, Wyoming statute explicitly limits creditor remedies to a
-              charging order. Combined with our multi-entity strategies, your
-              assets stay compartmentalized and protected.
-            </p>
-          </aside>
-        </section>
-
-        {/* ------------------------------------------------
-            Section 4: Cluster Navigation Grid
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Explore Asset Protection Topics
-          </h2>
-          <p className="text-body text-muted mb-6">
-            In-depth guides on every aspect of asset protection. Each covers a
-            specific strategy, state, or structure type.
-          </p>
-          <ClusterGrid
-            clusters={pillar.clusters.map((c) => ({
-              title: c.title,
-              href: c.href,
-              description: c.description ?? "",
-              pillar: "asset" as const,
-            }))}
-            columns={3}
-          />
-        </section>
-
-        {/* ------------------------------------------------
-            Section 5: Compare Your Options
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Compare Your Options
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Not sure which state or structure is right for your assets? These
-            guides break it down.
-          </p>
-          <ComparisonCards
-            comparisons={[
-              {
-                title: "Best State for Asset Protection",
-                description:
-                  "A ranked comparison of Wyoming, Nevada, and other states for asset protection. Which state offers the strongest charging order protections?",
-                href: "/best-state-for-asset-protection",
-              },
-              {
-                title: "Wyoming vs Nevada for Asset Protection",
-                description:
-                  "Head-to-head: Wyoming and Nevada's asset protection statutes, charging order laws, and annual costs compared side by side.",
-                href: "/wyoming-vs-nevada-asset-protection",
-              },
-            ]}
-          />
-        </section>
-
-        {/* ------------------------------------------------
-            Section 6: Package CTA Section
-            ------------------------------------------------ */}
-        <section id="packages">
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Asset Protection Packages — All-Inclusive
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Every Gold package includes year-round nominee services, offshore
-            records, registered agent, EIN filing, operating agreement, and
-            state fees. The strongest domestic protection structure available.
-          </p>
-          <DualPackageCTA
-            packages={[
-              {
-                name: wyGold.name,
-                price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: wyGold.description,
-                badge: wyGold.badge,
-                highlighted: true,
-                href: "/gold?state=wyoming",
-              },
-              {
-                name: nvGold.name,
-                price: `$${nvGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: nvGold.description,
-                badge: nvGold.badge,
-                highlighted: true,
-                href: "/gold?state=nevada",
-              },
-            ]}
-            consultationCTA={{
-              label: "Not sure yet? Schedule a free consultation",
-              href: "/contact",
-              phone: "1-800-553-0615",
-            }}
-          />
-        </section>
-
-        {/* ------------------------------------------------
-            Section 7: Cross-Pillar CTA
-            ------------------------------------------------ */}
-        <section>
-          <CrossPillarCTA
-            fromPillar="asset"
-            toPillar="privacy"
-            heading="Asset Protection Secures Your Wealth. Privacy Hides It."
-            description="The strongest asset protection combines legal structure with anonymity. Anonymous LLCs and nominee services ensure potential claimants can't find your assets in the first place."
-            href="/privacy"
-          />
-        </section>
-
-        {/* ------------------------------------------------
-            Section 8: FAQ Accordion
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Frequently Asked Questions
-          </h2>
-          <Accordion type="single" variant="default">
-            {assetFaqs.map((faq) => (
-              <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
-                <p>{faq.answer}</p>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </section>
-
-        {/* ------------------------------------------------
-            Section 9: Where to Go Next
-            ------------------------------------------------ */}
-        <WhereToGoNext
-          suggestions={[
-            {
-              title: "Compare Asset Protection by State",
-              description:
-                "See how Wyoming and Nevada stack up for asset protection structures.",
-              href: "/best-state-for-asset-protection",
-              pillar: "asset",
-            },
-            {
-              title: "See Gold Package Details",
-              description:
-                "Full breakdown of what's included in Wyoming and Nevada Gold packages.",
-              href: "/gold?state=wyoming",
-              pillar: "asset",
-            },
-            {
-              title: "Explore Business Privacy",
-              description:
-                "Anonymous LLCs, nominee services, and offshore record storage.",
-              href: "/privacy",
-              pillar: "privacy",
-            },
-          ]}
-        />
+      {/* ================================================
+          S8: PACKAGES — Compare
+          ================================================ */}
+      <div id="packages">
+        <PackageComparison />
       </div>
-    </PillarLayout>
+
+      {/* ================================================
+          S9: FAQ — Left-aligned header for variety
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            {/* Left: Header (sticky) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-foreground/70 mb-3">
+                  Frequently Asked Questions
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Asset Protection Questions Answered
+                </h2>
+                <p className="mt-3 text-body text-muted">
+                  Quick answers to the most common questions about protecting
+                  your assets.
+                </p>
+                <div className="mt-6 hidden lg:block">
+                  <p className="text-body-sm text-muted">
+                    Still have questions?
+                  </p>
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-2"
+                  >
+                    <Icon name="Phone" size="sm" />
+                    Call 1-800-553-0615
+                  </a>
+                  <br />
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-1"
+                  >
+                    <Icon name="Mail" size="sm" />
+                    Send us a message
+                  </Link>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Accordion */}
+            <ScrollReveal delay={200}>
+              <Accordion type="single" variant="default">
+                {assetFaqs.map((faq) => (
+                  <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
+                    <p>{faq.answer}</p>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          EXPLORE — Continue learning (after FAQ)
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
+              Continue Learning
+            </h2>
+            <p className="mt-2 text-body text-muted">
+              In-depth guides on strategies, state comparisons, and structures.
+            </p>
+          </ScrollReveal>
+
+          {/* Services row — 3 featured cards */}
+          <ScrollReveal delay={100}>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+              {EXPLORE_SERVICES.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="!no-underline group block h-full"
+                >
+                  <div className="h-full rounded-card-lg border border-border bg-surface p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-card bg-pillar-asset/[0.08] mb-4 group-hover:bg-pillar-asset/[0.14] transition-colors">
+                      <Icon
+                        name={item.icon}
+                        size="md"
+                        className="text-pillar-asset"
+                      />
+                    </div>
+                    <h3 className="font-display text-body-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-body-sm text-muted leading-relaxed">
+                      {item.desc}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all">
+                      Read guide
+                      <Icon name="ArrowRight" size="xs" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* State guides + Comparisons — 2 columns */}
+          <ScrollReveal delay={200}>
+            <div className="mt-5 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5">
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  State Guides
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_STATES.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-center gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-pillar-asset/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name={item.icon}
+                        size="sm"
+                        className="text-secondary shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted truncate">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  Compare Options
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_COMPARISONS.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-start gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-pillar-asset/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name="ArrowLeftRight"
+                        size="sm"
+                        className="text-secondary shrink-0 mt-0.5"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted">{item.desc}</p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 mt-1 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          CROSS-PILLAR BRIDGE
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
+              Related Services
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
+              Protection Is the Foundation. What Else?
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch">
+              <CrossPillarCTA
+                fromPillar="asset"
+                toPillar="privacy"
+                heading="Hide What You Own, Not Just Protect It"
+                description="Asset protection controls what happens in a lawsuit. Privacy prevents the lawsuit from finding targets in the first place. Most high-value clients combine both."
+                href="/privacy"
+                className="h-full"
+              />
+              <CrossPillarCTA
+                fromPillar="asset"
+                toPillar="compliance"
+                heading="Protection Requires Ongoing Compliance"
+                description="An LLC that falls out of good standing loses its protection. Registered agent, annual reports, corporate minutes — we handle it all."
+                href="/compliance"
+                className="h-full"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          FINAL CTA — confident close
+          ================================================ */}
+      <section className="bg-primary border-t border-white/[0.06]">
+        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
+          <ScrollReveal>
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
+              {/* Left: Statement */}
+              <div>
+                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
+                  Your assets don&rsquo;t have to be vulnerable.
+                </h2>
+                <p className="mt-4 text-body text-white/75 max-w-[440px]">
+                  Wyoming Gold starts at $1,275 — charging order protection,
+                  nominee services, registered agent, operating agreement, all
+                  included. No hidden fees.
+                </p>
+              </div>
+
+              {/* Right: Actions */}
+              <div className="flex flex-col gap-3">
+                <Link href="/compare-packages" className="!no-underline">
+                  <Button
+                    variant="cta"
+                    size="lg"
+                    className="w-full justify-center"
+                  >
+                    Choose Your Protection Package
+                  </Button>
+                </Link>
+                <Link href="/contact" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
+                  >
+                    Schedule a Consultation
+                  </Button>
+                </Link>
+                <p className="mt-1 text-center text-body-sm text-white/70">
+                  Or call{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    1-800-553-0615
+                  </a>
+                  {" — real humans, real answers."}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </div>
   );
 }
 
-/* ------------------------------------------------
-   Service descriptions (mapped to pillar.services)
-   ------------------------------------------------ */
-const assetServiceDescriptions = [
-  "Wyoming's charging order protection prevents creditors from seizing LLC assets or forcing distributions. The strongest domestic protection available.",
-  "Wyoming's business-friendly statutes and strong charging order laws make it the top choice for asset protection structures.",
-  "Nevada's dedicated business court and close-knit statutes provide an alternative path to strong asset protection.",
-  "Separate investment assets from operational risk with a dedicated holding LLC that owns your operating entities.",
-  "Protect rental properties and real estate investments with per-property LLC isolation strategies.",
+/* ================================================
+   Static data
+   ================================================ */
+
+const THREAT_CARDS = [
+  {
+    icon: "ShieldOff" as const,
+    title: "Personal Liability Exposure",
+    desc: "Without entity separation, a judgment against your business can reach your personal bank accounts, home equity, and investment portfolio.",
+  },
+  {
+    icon: "Gavel" as const,
+    title: "Lawsuit Vulnerability",
+    desc: "Slip-and-fall at a rental property, contract dispute, or disgruntled partner — one lawsuit can trigger asset seizure if your structure is wrong.",
+  },
+  {
+    icon: "Layers" as const,
+    title: "Single Entity Risk",
+    desc: "Holding all assets in one LLC means one claim can reach everything. Multi-entity strategies compartmentalize risk across separate legal barriers.",
+  },
+  {
+    icon: "TriangleAlert" as const,
+    title: "Post-Judgment Exposure",
+    desc: "Setting up protection after a claim is filed can be voided as fraudulent conveyance. The time to protect your assets is before you need to.",
+  },
+];
+
+const PROTECTION_BLOCKS = [
+  {
+    id: "charging-order",
+    title: "Charging Order Protection",
+    summary:
+      "When a creditor wins a judgment against you personally, a charging order is the only remedy they have against your LLC in Wyoming. They cannot seize LLC assets, force distributions, vote your interest, or take over management. They simply wait — and if the LLC never distributes, they never collect.",
+    keyDistinction:
+      "Most states limit charging order protection to multi-member LLCs. Wyoming is the only state that explicitly extends this protection to single-member LLCs — critical for individual asset owners who don't have a partner.",
+    href: "/charging-order-protection",
+    linkText: "How charging order protection works →",
+  },
+  {
+    id: "multi-entity",
+    title: "Multi-Entity Structure",
+    summary:
+      "A holding LLC owns your operating LLCs, each of which holds a separate asset class — real estate in one, investments in another, operations in a third. If one entity faces a claim, the others remain untouched behind separate legal barriers.",
+    keyDistinction:
+      "Single-entity structures create a single point of failure. Our multi-entity approach isolates each asset class so one claim cannot cascade across your portfolio. We've designed these structures for 25 years.",
+    href: "/investment-holding-llc",
+    linkText: "Investment holding LLC explained →",
+  },
+  {
+    id: "state-selection",
+    title: "Strategic State Selection",
+    summary:
+      "Not all states are equal for asset protection. Wyoming offers the strongest charging order statutes, no state income tax, and no public disclosure of members. Nevada provides a dedicated business court and well-tested close-knit statutes. The right state depends on your specific assets and exposure.",
+    keyDistinction:
+      "Forming in your home state is often the worst choice for protection. States like California allow courts to reverse-pierce LLCs. Wyoming and Nevada close those gaps by statute.",
+    href: "/wyoming-asset-protection",
+    linkText: "Compare Wyoming vs. Nevada →",
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    number: 1,
+    title: "Identify Assets & Exposure",
+    description:
+      "We assess your asset profile — real estate, investments, business interests — and identify where your exposure is greatest.",
+    tag: "Assessment",
+    color: "green" as const,
+  },
+  {
+    number: 2,
+    title: "Design Your Structure",
+    description:
+      "Holding LLC, operating LLCs, state selection — we design a multi-entity strategy tailored to your specific assets and risk profile.",
+    tag: "Strategy",
+    color: "blue" as const,
+  },
+  {
+    number: 3,
+    title: "Form & File Everything",
+    description:
+      "We file all entities, transfer titles where needed, set up registered agents, and ensure every document is in place from day one.",
+    tag: "Formation",
+    color: "amber" as const,
+  },
+  {
+    number: 4,
+    title: "Maintain & Protect Year-Round",
+    description:
+      "Annual reports, registered agent, corporate minutes, nominee renewals — all included in your annual renewal. No gaps in protection.",
+    tag: "Compliance",
+    color: "purple" as const,
+  },
+];
+
+const DIFFERENTIATORS_SMALL = [
+  {
+    icon: "Layers" as const,
+    title: "Multi-Entity Strategies",
+    desc: "Custom holding structures that isolate risk across asset classes. Not template formation — real protection architecture.",
+  },
+  {
+    icon: "DollarSign" as const,
+    title: "All-Inclusive Pricing",
+    desc: "$1,275 Gold includes everything — charging order structure, nominees, RA, EIN, operating agreement. No surprise charges.",
+  },
+  {
+    icon: "Clock" as const,
+    title: "25 Years Specialized",
+    desc: "Asset protection and privacy since 2000. Not a general filing service. Focused exclusively on protective structures.",
+  },
+  {
+    icon: "Bitcoin" as const,
+    title: "Crypto Payments",
+    desc: "Bitcoin, Ethereum, XRP, Litecoin, Monero. Privacy from the first transaction.",
+  },
+  {
+    icon: "Headphones" as const,
+    title: "Real People. Real Answers.",
+    desc: "Talk to a protection specialist who knows your case — not a call center. Call anytime.",
+  },
+];
+
+const EXPLORE_SERVICES = [
+  {
+    icon: "Shield" as const,
+    title: "Charging Order Protection",
+    desc: "How Wyoming's charging order statute shields LLC assets from personal creditors — even for single-member LLCs.",
+    href: "/charging-order-protection",
+  },
+  {
+    icon: "Layers" as const,
+    title: "Investment Holding LLC",
+    desc: "Separate investment assets from operational risk with a dedicated holding LLC that owns your operating entities.",
+    href: "/investment-holding-llc",
+  },
+  {
+    icon: "Building2" as const,
+    title: "Real Estate Asset Protection",
+    desc: "Per-property LLC isolation strategies for rental portfolios and real estate investments.",
+    href: "/real-estate",
+  },
+];
+
+const EXPLORE_STATES = [
+  {
+    icon: "MapPin" as const,
+    title: "Wyoming Asset Protection",
+    desc: "Strongest charging order statutes in the country",
+    href: "/wyoming-asset-protection",
+  },
+  {
+    icon: "MapPin" as const,
+    title: "Nevada Asset Protection",
+    desc: "Dedicated business court + close-knit statutes",
+    href: "/nevada-asset-protection",
+  },
+  {
+    icon: "Building" as const,
+    title: "Real Estate Protection",
+    desc: "Per-property LLC isolation for rental investors",
+    href: "/real-estate",
+  },
+];
+
+const EXPLORE_COMPARISONS = [
+  {
+    title: "Best State for Asset Protection",
+    desc: "Ranked comparison of Wyoming, Nevada, and other states for charging order protection and asset shielding.",
+    href: "/best-state-for-asset-protection",
+  },
+  {
+    title: "Wyoming vs. Nevada for Asset Protection",
+    desc: "Head-to-head: charging order statutes, annual costs, and protection strength compared.",
+    href: "/wyoming-vs-nevada-asset-protection",
+  },
 ];

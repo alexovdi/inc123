@@ -1,411 +1,1040 @@
-import { PillarLayout } from "@/design-system/layouts/PillarLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { Card } from "@/design-system/components/Card";
-import { ClusterGrid } from "@/design-system/components/ClusterGrid";
-import { ComparisonCards } from "@/design-system/components/ComparisonCards";
-import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
-import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
-import { PillarHero } from "@/design-system/components/PillarHero";
-import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
-import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { PackageComparison } from "@/design-system/components/PackageComparison";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
-import { pillars } from "@/data/pillars";
-import { packages } from "@/data/packages";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
+import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
-const pillar = pillars[3]; // compliance
-const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
-const nvGold = packages.find((p) => p.id === "nevada-gold")!;
+
 const complianceFaqs = faqItems.filter((f) => f.category === "compliance");
 
 export default function CompliancePillarPage() {
   return (
-    <PillarLayout
-      pillar="compliance"
-      title={pillar.tagline}
-      description={pillar.description}
-      customHero={
-        <PillarHero
-          pillar="compliance"
-          eyebrow="Compliance"
-          headline={pillar.tagline}
-          description={pillar.description}
-          primaryCTA={{
-            label: "Compare Compliance Packages",
-            href: "/compare-packages",
-          }}
-          secondaryCTA={{
-            label: "View Packages",
-            href: "#packages",
-          }}
-          trustSnippet={pillar.trustElement}
-        />
-      }
-      sidebar={
-        <ContentSidebar
-          variant="pillar"
-          packageShortcut={{
-            name: "Gold Package",
-            price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-            period: "one-time",
-            href: "/gold?state=wyoming",
-            badge: "Most Popular",
-          }}
-          relatedPages={pillar.clusters.map((c) => ({
-            title: c.title,
-            href: c.href,
-          }))}
-          crossPillarLink={{
-            pillar: "formation",
-            title: "Also Relevant: Company Formation",
-            href: "/formation",
-          }}
-          phoneNumber="1-800-553-0615"
-        />
-      }
-    >
-      <div className="space-y-16">
-        {/* ------------------------------------------------
-            Section 1: What is Business Compliance?
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            What is Business Compliance?
-          </h2>
-          <ProgressiveDisclosure
-            sections={[
-              {
-                id: "what-is-compliance",
-                title: "Understanding Business Compliance",
-                summary:
-                  "Business compliance means meeting all the ongoing legal requirements to keep your LLC or Corporation in good standing with the state. This includes annual report filing, registered agent service, maintaining corporate minutes, and staying current with state fees. Falling behind on compliance can result in penalties, late fees, or dissolution of your entity.",
-                content: (
-                  <div className="space-y-4 text-body text-muted">
-                    <p>
-                      After your entity is formed, the state requires ongoing
-                      maintenance to keep it active. Every state has different
-                      requirements, but the core obligations include:
-                      maintaining a registered agent, filing annual reports
-                      (Wyoming) or annual lists (Nevada), and keeping corporate
-                      records up to date.
-                    </p>
-                    <p>
-                      Many business owners treat compliance as an afterthought —
-                      until they miss a deadline. Late annual reports can result
-                      in penalty fees, loss of good standing status, and
-                      eventually administrative dissolution. A dissolved entity
-                      loses its liability protection, leaving your personal
-                      assets exposed.
-                    </p>
-                    <p>
-                      Corporate minutes are another critical compliance element.
-                      Courts may &ldquo;pierce the corporate veil&rdquo; — hold
-                      you personally liable for business debts — if you
-                      don&apos;t maintain proper records of business decisions.
-                      Professional minute book maintenance ensures your records
-                      are always current.
-                    </p>
-                    <p>
-                      Our compliance services handle all of this proactively. We
-                      track deadlines, prepare filings, maintain your minute
-                      book, and ensure your entity stays in good standing year
-                      after year. You focus on running your business — we handle
-                      the paperwork.
-                    </p>
+    <div className="min-h-screen">
+      {/* ================================================
+          S1: HERO — Editorial split layout
+          ================================================ */}
+      <section className="relative overflow-hidden bg-primary">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-pillar-compliance/[0.08] blur-[120px]" />
+
+        <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-body-sm">
+            <Link
+              href="/"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
+            >
+              Home
+            </Link>
+            <span className="mx-2 text-white/50">/</span>
+            <span className="text-white/90">Compliance</span>
+          </nav>
+
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
+            {/* Left: Content */}
+            <ScrollReveal delay={100}>
+              <div>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-4">
+                  Compliance
+                </p>
+
+                <h1 className="font-display type-display-lg font-bold text-white">
+                  Ongoing Support, Not Just{" "}
+                  <span className="text-white/90">a Mailbox.</span>
+                </h1>
+
+                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                  Year-round registered agent, annual reports, and full
+                  corporate minutes maintenance. We keep your entity in good
+                  standing so you can focus on running your business.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a href="#packages">
+                    <Button variant="cta" size="lg">
+                      See Compliance Packages
+                      <Icon
+                        name="ArrowRight"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                  <a href="#how-it-works">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="border-white/20 text-white hover:bg-white/10"
+                    >
+                      How It Works
+                      <Icon
+                        name="ArrowDown"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                </div>
+
+                <p className="mt-5 text-body-sm text-white/80">
+                  Prefer to talk?{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Call 1-800-553-0615
+                  </a>
+                  {" · "}
+                  <Link
+                    href="/contact"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Schedule a consultation
+                  </Link>
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Right: Visual — "Compliance Dashboard" checklist */}
+            <ScrollReveal delay={600} direction="right">
+              <div className="hidden lg:block relative">
+                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                  {/* Mock dashboard header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-8 w-8 rounded-full bg-pillar-compliance/20 flex items-center justify-center">
+                      <Icon
+                        name="ClipboardCheck"
+                        size="sm"
+                        className="text-pillar-compliance"
+                      />
+                    </div>
+                    <div>
+                      <div className="h-2.5 w-40 rounded-full bg-white/20" />
+                      <div className="h-2 w-28 rounded-full bg-white/10 mt-1.5" />
+                    </div>
                   </div>
-                ),
-              },
-            ]}
-          />
-          <div className="mt-4">
-            <a
-              href="/registered-agent"
-              className="inline-flex items-center gap-1.5 text-body-sm font-medium text-pillar-compliance hover:text-pillar-compliance/80 transition-colors"
-            >
-              Learn about Registered Agent Service
-              <Icon name="ArrowRight" size="sm" />
-            </a>
+                  {/* Compliance checklist items */}
+                  <div className="space-y-3">
+                    {[
+                      { label: "Registered Agent", status: "active" },
+                      { label: "Annual Report Filed", status: "active" },
+                      { label: "Corporate Minutes", status: "active" },
+                      { label: "Good Standing", status: "active" },
+                    ].map((item) => (
+                      <div
+                        key={item.label}
+                        className="flex items-center gap-3 rounded bg-success/[0.08] border border-success/[0.15] px-3 py-2.5"
+                      >
+                        <Icon
+                          name="CheckCircle2"
+                          size="xs"
+                          className="text-success shrink-0"
+                        />
+                        <p className="font-mono text-body-sm text-white/80">
+                          {item.label}
+                        </p>
+                        <span className="ml-auto text-caption text-success font-medium uppercase tracking-wider">
+                          Current
+                        </span>
+                      </div>
+                    ))}
+                    <div className="pt-3 border-t border-white/[0.1]">
+                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                        Next Deadline
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
+                        <p className="font-mono text-body-sm text-success">
+                          Handled — We track all dates for you
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative shadow layers */}
+                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+              </div>
+            </ScrollReveal>
           </div>
-        </section>
 
-        {/* ------------------------------------------------
-            Section 2: Why Compliance Matters
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Why Compliance Matters
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card
-              pillar="compliance"
-              variant="elevated"
-              title="Protect Your Liability Shield"
-              description="An LLC or Corporation only protects your personal assets if it's properly maintained. Missing filings or lacking corporate minutes gives courts grounds to pierce the corporate veil."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="ShieldCheck"
-                  size="sm"
-                  className="text-pillar-compliance"
-                />
-                <span className="text-caption text-muted">
-                  Good standing = liability protection
-                </span>
+          {/* Stats strip */}
+          <ScrollReveal delay={300}>
+            <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
+              {[
+                { value: "365", unit: "days", label: "Year-Round Coverage" },
+                { value: "$62", unit: "/yr", label: "WY Annual Report Fee" },
+                { value: "All", unit: "", label: "Compliance Included" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="font-display text-heading-lg font-bold text-white">
+                    {stat.value}
+                    {stat.unit && (
+                      <span className="text-body-sm font-normal text-white/70 ml-1">
+                        {stat.unit}
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-caption text-white/70 mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S2: PROBLEM STATEMENT — Asymmetric layout
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+            {/* Left: Headline + description (sticky on scroll) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-3">
+                  The Problem
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Compliance Doesn&rsquo;t Stop After Formation.{" "}
+                  <span className="text-muted">
+                    Most Owners Find Out Too Late.
+                  </span>
+                </h2>
+                <p className="mt-4 text-body-lg text-muted max-w-[440px]">
+                  Every state requires ongoing maintenance to keep your entity
+                  active. Miss a deadline, and you risk penalties, lost good
+                  standing, or dissolution.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Problem cards — stacked vertically */}
+            <ScrollReveal delay={150}>
+              <div className="space-y-4">
+                {PROBLEM_CARDS.map((card) => (
+                  <div
+                    key={card.title}
+                    className="group bg-surface rounded-card border border-border p-6 flex gap-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card-lg bg-pillar-compliance/[0.06] group-hover:bg-pillar-compliance/[0.12] transition-colors">
+                      <Icon
+                        name={card.icon}
+                        size="md"
+                        className="text-pillar-compliance"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-body-lg font-display font-semibold text-foreground">
+                        {card.title}
+                      </h3>
+                      <p className="mt-1 text-body text-muted leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </Card>
-            <Card
-              pillar="compliance"
-              variant="elevated"
-              title="Avoid Penalties & Dissolution"
-              description="States impose late fees, penalties, and can administratively dissolve entities that don't file required reports. Reinstatement is costly and may expose gaps in your protection."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="TriangleAlert"
-                  size="sm"
-                  className="text-pillar-compliance"
-                />
-                <span className="text-caption text-muted">
-                  Prevention is always cheaper than reinstatement
-                </span>
-              </div>
-            </Card>
-            <Card
-              pillar="compliance"
-              variant="elevated"
-              title="Professional Record Keeping"
-              description="Corporate minutes document key business decisions. Professional maintenance ensures your records meet legal standards and support your entity's separate legal identity."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="FileText"
-                  size="sm"
-                  className="text-pillar-compliance"
-                />
-                <span className="text-caption text-muted">
-                  Proper records prevent veil-piercing
-                </span>
-              </div>
-            </Card>
-            <Card
-              pillar="compliance"
-              variant="elevated"
-              title="Multi-State Requirements"
-              description="If your entity operates in a state other than where it was formed, you need foreign registration. We handle the process and ongoing compliance for both states."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Map" size="sm" className="text-pillar-compliance" />
-                <span className="text-caption text-muted">
-                  Home state + operating state compliance
-                </span>
-              </div>
-            </Card>
+            </ScrollReveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 3: Compliance Services
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Our Compliance Services
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Everything you need to keep your entity in good standing — included
-            in Silver and Gold packages, or available as standalone services.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillar.services.map((service, i) => (
-              <Card
-                key={i}
-                pillar="compliance"
-                variant="elevated"
-                layout="compact"
-                title={service}
-                description={complianceServiceDescriptions[i]}
-              />
+      {/* ── Pull quote — visual landmark ── */}
+      <section className="relative bg-primary py-section-y-sm overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
+            100%
+          </span>
+        </div>
+        <div className="relative mx-auto max-w-narrow px-container-x">
+          <ScrollReveal>
+            <blockquote className="text-center">
+              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
+                &ldquo;We don&rsquo;t just give you a registered agent address.
+                We maintain your{" "}
+                <span className="text-accent font-bold">
+                  entire&nbsp;compliance&nbsp;record
+                </span>
+                &nbsp;— minutes, annual reports, filings, everything.&rdquo;
+              </p>
+              <footer className="mt-8 flex items-center justify-center gap-3">
+                <div className="h-px w-8 bg-white/20" />
+                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
+                  The Incorporate123 Difference
+                </p>
+                <div className="h-px w-8 bg-white/20" />
+              </footer>
+            </blockquote>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S3: WHAT WE HANDLE — Editorial numbered blocks
+          ================================================ */}
+      <section id="what-we-handle" className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-3">
+              What&rsquo;s Included
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+              Four Pillars of Full Compliance
+            </h2>
+            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
+              Most providers stop at registered agent service. We handle the
+              full lifecycle of entity maintenance.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 space-y-0">
+            {COMPLIANCE_BLOCKS.map((block, i) => (
+              <ScrollReveal key={block.id}>
+                <div
+                  className={`grid gap-8 lg:grid-cols-[120px_1fr] py-10 ${i < COMPLIANCE_BLOCKS.length - 1 ? "border-b border-border" : ""}`}
+                >
+                  {/* Large editorial number */}
+                  <div className="hidden lg:block">
+                    <span className="font-mono text-[5rem] font-bold leading-none text-pillar-compliance/[0.12]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  {/* Content */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-3 lg:hidden">
+                      <span className="font-mono text-heading-lg font-bold text-pillar-compliance/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-heading-lg font-semibold text-foreground">
+                      {block.title}
+                    </h3>
+                    <p className="mt-3 text-body text-muted leading-relaxed max-w-[600px]">
+                      {block.summary}
+                    </p>
+                    {block.keyDistinction && (
+                      <div className="mt-4 rounded-card bg-pillar-compliance/[0.04] border border-pillar-compliance/[0.12] px-5 py-4">
+                        <p className="text-body-sm font-semibold text-foreground mb-1">
+                          Key Distinction
+                        </p>
+                        <p className="text-body-sm text-muted leading-relaxed">
+                          {block.keyDistinction}
+                        </p>
+                      </div>
+                    )}
+                    <Link
+                      href={block.href}
+                      className="inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors mt-4"
+                    >
+                      {block.linkText}
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Differentiator Callout */}
-          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-compliance bg-pillar-compliance/5 p-6">
-            <p className="text-body font-medium text-foreground">
-              &ldquo;Full corporate minute maintenance included &mdash; not just
-              a registered agent mailbox. We keep your records current so courts
-              can&rsquo;t pierce the veil.&rdquo;
-            </p>
-            <p className="mt-2 text-body text-muted">
-              Most providers offer registered agent service and call it
-              &ldquo;compliance.&rdquo; Incorporate123 includes annual report
-              filing, corporate minute book preparation and maintenance, and
-              proactive deadline tracking &mdash; the full picture.
-            </p>
-          </aside>
-        </section>
+      {/* ================================================
+          S4: HOW IT WORKS
+          ================================================ */}
+      <section id="how-it-works" className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="How It Works"
+              title="From Formation to Full Compliance — Handled."
+              subtitle="Four steps. We manage the deadlines. You run your business."
+              subtitleMaxWidth="max-w-narrow mx-auto"
+            />
 
-        {/* ------------------------------------------------
-            Section 4: Cluster Navigation Grid
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Explore Compliance Topics
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Detailed guides on every compliance service. Understand what&apos;s
-            required and how we handle it for you.
-          </p>
-          <ClusterGrid
-            clusters={pillar.clusters.map((c) => ({
-              title: c.title,
-              href: c.href,
-              description: c.description ?? "",
-              pillar: "compliance" as const,
-            }))}
-            columns={3}
-          />
-        </section>
+            <div className="mt-12">
+              <HowItWorks steps={PROCESS_STEPS} />
+            </div>
 
-        {/* ------------------------------------------------
-            Section 5: Compare Your Options
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Compare Your Options
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Understand what each package tier includes for ongoing compliance.
-          </p>
-          <ComparisonCards
-            comparisons={[
-              {
-                title: "Gold vs Silver Package Comparison",
-                description:
-                  "Compare compliance features across Gold, Silver, and Bronze tiers. See exactly what's included in each package level.",
-                href: "/compare-packages",
-              },
-              {
-                title: "Wyoming vs Nevada Annual Costs",
-                description:
-                  "Compare annual state fees, report requirements, and total renewal costs for Wyoming and Nevada entities.",
-                href: "/wyoming-vs-nevada-llc",
-              },
-            ]}
-          />
-        </section>
+            <div className="mt-10 text-center">
+              <a href="#packages">
+                <Button variant="cta" size="md">
+                  See Compliance Packages &amp; Pricing
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 6: Package CTA Section
-            ------------------------------------------------ */}
-        <section id="packages">
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Compliance Packages — Stay in Good Standing
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Every Silver and Gold package includes registered agent, annual
-            report filing, and corporate minutes. Gold adds privacy features
-            with year-round nominees and offshore records.
-          </p>
-          <DualPackageCTA
-            packages={[
-              {
-                name: wyGold.name,
-                price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: wyGold.description,
-                badge: wyGold.badge,
-                highlighted: true,
-                href: "/gold?state=wyoming",
-              },
-              {
-                name: nvGold.name,
-                price: `$${nvGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: nvGold.description,
-                badge: nvGold.badge,
-                highlighted: true,
-                href: "/gold?state=nevada",
-              },
-            ]}
-            consultationCTA={{
-              label: "Questions about compliance? Schedule a free consultation",
-              href: "/contact",
-              phone: "1-800-553-0615",
-            }}
-          />
-        </section>
+      {/* ================================================
+          S5: DIFFERENTIATORS — 1 featured + 5 grid (dark)
+          ================================================ */}
+      <section className="relative py-section-y-sm bg-primary overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -right-60 top-20 h-[50vw] w-[50vw] rounded-full bg-pillar-compliance/[0.06] blur-[120px]" />
 
-        {/* ------------------------------------------------
-            Section 7: Cross-Pillar CTA
-            ------------------------------------------------ */}
-        <section>
-          <CrossPillarCTA
-            fromPillar="compliance"
-            toPillar="formation"
-            heading="Need to Form a New Entity? We Handle That Too."
-            description="Whether you're starting fresh or adding entities to an existing structure, our formation services include the same compliance support. Form with confidence knowing ongoing maintenance is built in."
-            href="/formation"
-          />
-        </section>
+        <div className="relative mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Why Incorporate123"
+              title="What Sets Our Compliance Services Apart"
+              dark
+            />
 
-        {/* ------------------------------------------------
-            Section 8: FAQ Accordion
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Frequently Asked Questions
-          </h2>
-          <Accordion type="single" variant="default">
-            {complianceFaqs.map((faq) => (
-              <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
-                <p>{faq.answer}</p>
-              </AccordionItem>
+            {/* Featured differentiator — full width hero card */}
+            <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="p-8 lg:p-10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-compliance/20 mb-5">
+                    <Icon
+                      name="FileText"
+                      size="lg"
+                      className="text-pillar-compliance"
+                    />
+                  </div>
+                  <h3 className="font-display text-heading-lg font-semibold text-white">
+                    Full Corporate Minutes Maintenance — Not Just a Mailbox
+                  </h3>
+                  <p className="mt-3 text-body text-secondary leading-relaxed max-w-[440px]">
+                    Most providers call registered agent service
+                    &ldquo;compliance.&rdquo; We include annual report filing,
+                    corporate minute book preparation and maintenance, and
+                    proactive deadline tracking. The full picture, not just a
+                    mailing address.
+                  </p>
+                  <div className="mt-6 flex items-center gap-6">
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        365
+                      </p>
+                      <p className="text-caption text-secondary">days/year</p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        $0
+                      </p>
+                      <p className="text-caption text-secondary">
+                        extra for minutes
+                      </p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        All
+                      </p>
+                      <p className="text-caption text-secondary">
+                        filings tracked
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden lg:flex items-center justify-center bg-white/[0.03] p-10">
+                  {/* VS comparison visual */}
+                  <div className="w-full max-w-[280px] space-y-4">
+                    <div className="rounded-card bg-red-500/[0.08] border border-red-400/[0.15] p-4">
+                      <p className="text-caption font-semibold text-red-400/80 uppercase tracking-wider mb-2">
+                        Others: &ldquo;Registered Agent Only&rdquo;
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-white/20"
+                          />{" "}
+                          Registered agent address
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="X"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          No annual report filing
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="X"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          No corporate minutes
+                        </div>
+                      </div>
+                    </div>
+                    <div className="rounded-card bg-success/[0.08] border border-success/[0.2] p-4">
+                      <p className="text-caption font-semibold text-success uppercase tracking-wider mb-2">
+                        Incorporate123: Full Compliance
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Registered agent service
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Annual report filing
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Corporate minutes maintained
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* 5 smaller differentiator cards */}
+          <ScrollReveal delay={150}>
+            <div className="mt-5 flex flex-wrap gap-5">
+              {DIFFERENTIATORS_SMALL.map((item) => (
+                <div
+                  key={item.title}
+                  className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-7 hover:-translate-y-1 transition-all duration-300 hover:bg-white/[0.08]"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-card bg-white/[0.08] border border-white/[0.12] mb-4">
+                    <Icon
+                      name={item.icon}
+                      size="md"
+                      className="text-pillar-compliance"
+                    />
+                  </div>
+                  <h3 className="font-display text-body font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-body-sm text-secondary leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S6: SOCIAL PROOF STRIP
+          ================================================ */}
+      <section className="py-8 bg-surface border-y border-border">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              { icon: "Shield" as const, text: "25 Years Trusted" },
+              { icon: "Users" as const, text: "Dedicated Account Team" },
+              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
+              { icon: "Phone" as const, text: "Talk to Real Humans" },
+              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
+            ].map((badge) => (
+              <div
+                key={badge.text}
+                className="flex items-center gap-2 text-body-sm text-muted"
+              >
+                <Icon
+                  name={badge.icon}
+                  size="sm"
+                  className="text-pillar-compliance"
+                />
+                {badge.text}
+              </div>
             ))}
-          </Accordion>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 9: Where to Go Next
-            ------------------------------------------------ */}
-        <WhereToGoNext
-          suggestions={[
-            {
-              title: "Compare Package Tiers",
-              description:
-                "See what's included in Gold, Silver, and Bronze packages side by side.",
-              href: "/compare-packages",
-              pillar: "compliance",
-            },
-            {
-              title: "Start a New Company",
-              description:
-                "Wyoming and Nevada formation with compliance built in from day one.",
-              href: "/formation",
-              pillar: "formation",
-            },
-            {
-              title: "Explore Business Privacy",
-              description:
-                "Add anonymous ownership and nominee services to your compliance structure.",
-              href: "/privacy",
-              pillar: "privacy",
-            },
-          ]}
-        />
+      {/* ================================================
+          S7: PACKAGES — Compare
+          ================================================ */}
+      <div id="packages">
+        <PackageComparison />
       </div>
-    </PillarLayout>
+
+      {/* ================================================
+          S8: FAQ — Split layout with sticky left
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            {/* Left: Header (sticky) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-foreground/70 mb-3">
+                  Frequently Asked Questions
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Compliance Questions Answered
+                </h2>
+                <p className="mt-3 text-body text-muted">
+                  Quick answers about ongoing entity maintenance.
+                </p>
+                <div className="mt-6 hidden lg:block">
+                  <p className="text-body-sm text-muted">
+                    Still have questions?
+                  </p>
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-2"
+                  >
+                    <Icon name="Phone" size="sm" />
+                    Call 1-800-553-0615
+                  </a>
+                  <br />
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-1"
+                  >
+                    <Icon name="Mail" size="sm" />
+                    Send us a message
+                  </Link>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Accordion */}
+            <ScrollReveal delay={200}>
+              <Accordion type="single" variant="default">
+                {complianceFaqs.map((faq) => (
+                  <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
+                    <p>{faq.answer}</p>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          EXPLORE — Continue Learning
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
+              Continue Learning
+            </h2>
+            <p className="mt-2 text-body text-muted">
+              Guides, service details, and state-specific compliance info.
+            </p>
+          </ScrollReveal>
+
+          {/* Services row — 3 featured cards */}
+          <ScrollReveal delay={100}>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+              {EXPLORE_SERVICES.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="!no-underline group block h-full"
+                >
+                  <div className="h-full rounded-card-lg border border-border bg-surface p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-card bg-pillar-compliance/[0.08] mb-4 group-hover:bg-pillar-compliance/[0.14] transition-colors">
+                      <Icon
+                        name={item.icon}
+                        size="md"
+                        className="text-pillar-compliance"
+                      />
+                    </div>
+                    <h3 className="font-display text-body-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-body-sm text-muted leading-relaxed">
+                      {item.desc}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all">
+                      Read guide
+                      <Icon name="ArrowRight" size="xs" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* State guides + Comparisons — 2 columns */}
+          <ScrollReveal delay={200}>
+            <div className="mt-5 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5">
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  State-Specific Compliance
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_STATES.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-center gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-pillar-compliance/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name={item.icon}
+                        size="sm"
+                        className="text-secondary shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted truncate">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  Compare Options
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_COMPARISONS.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-start gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-pillar-compliance/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name="ArrowLeftRight"
+                        size="sm"
+                        className="text-secondary shrink-0 mt-0.5"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted">{item.desc}</p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 mt-1 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          CROSS-PILLAR BRIDGE
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
+              Related Services
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
+              Compliance Is the Foundation. What Else?
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch">
+              <CrossPillarCTA
+                fromPillar="compliance"
+                toPillar="formation"
+                heading="Need to Form a New Entity?"
+                description="Wyoming and Nevada formation with full compliance built in from day one. Annual reports, registered agent, corporate minutes — all included."
+                href="/formation"
+                className="h-full"
+              />
+              <CrossPillarCTA
+                fromPillar="compliance"
+                toPillar="privacy"
+                heading="Add Privacy to Your Entity"
+                description="Year-round nominee services keep your name off public records. Combine compliance with genuine anonymity for complete protection."
+                href="/privacy"
+                className="h-full"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          FINAL CTA — confident close
+          ================================================ */}
+      <section className="bg-primary border-t border-white/[0.06]">
+        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
+          <ScrollReveal>
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
+              {/* Left: Statement */}
+              <div>
+                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
+                  Never miss a filing deadline again.
+                </h2>
+                <p className="mt-4 text-body text-secondary max-w-[440px]">
+                  Wyoming Silver starts at $625 — registered agent, annual
+                  reports, corporate minutes, virtual office, all included. No
+                  hidden fees. No missed deadlines.
+                </p>
+              </div>
+
+              {/* Right: Actions — stacked for clarity */}
+              <div className="flex flex-col gap-3">
+                <Link href="/compare-packages" className="!no-underline">
+                  <Button
+                    variant="cta"
+                    size="lg"
+                    className="w-full justify-center"
+                  >
+                    Choose Your Compliance Package
+                  </Button>
+                </Link>
+                <Link href="/contact" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
+                  >
+                    Schedule a Consultation
+                  </Button>
+                </Link>
+                <p className="mt-1 text-center text-body-sm text-white/70">
+                  Or call{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    1-800-553-0615
+                  </a>
+                  {" — real humans, real answers."}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </div>
   );
 }
 
-/* ------------------------------------------------
-   Service descriptions (mapped to pillar.services)
-   ------------------------------------------------ */
-const complianceServiceDescriptions = [
-  "Professional registered agent service in Wyoming and Nevada. We receive legal documents and state correspondence on behalf of your entity — required by law.",
-  "Timely preparation and filing of state annual reports. We track deadlines, prepare filings, and ensure your entity stays in good standing.",
-  "Professional minute book preparation and maintenance. Proper corporate minutes help preserve your limited liability protection.",
-  "Professional Nevada business address with mail forwarding. Separate from registered agent address — used for business correspondence.",
-  "Register your entity to do business in another state. Required if your LLC operates outside its formation state.",
-  "Multi-state filings beyond Wyoming and Nevada. We handle the complexity of operating across state lines — franchise taxes, business licenses, and state-specific requirements.",
-  "Share certificates, stock ledgers, and corporate record books. Proper documentation of ownership and governance — essential for investor-ready entities.",
-  "Ongoing tax filing requirements after formation. EIN obtainment, initial returns, state franchise taxes, and annual obligations — we keep you informed and compliant.",
+/* ================================================
+   Static data
+   ================================================ */
+
+const PROBLEM_CARDS = [
+  {
+    icon: "AlertTriangle" as const,
+    title: "Missed Deadlines & Penalties",
+    desc: "Every state has its own filing deadlines. Miss your Wyoming annual report by even a day and you face $50 penalty fees. Nevada charges $75 plus a $100 penalty. These compound quickly.",
+  },
+  {
+    icon: "ShieldOff" as const,
+    title: "Lost Good Standing",
+    desc: "An entity not in good standing can't enforce contracts, file lawsuits, or maintain its liability protection. Banks may freeze accounts. Business licenses become invalid.",
+  },
+  {
+    icon: "Scale" as const,
+    title: "Corporate Veil Piercing",
+    desc: "Without proper corporate minutes and records, courts can 'pierce the veil' — holding you personally liable for business debts. Proper record-keeping isn't optional, it's your shield.",
+  },
+  {
+    icon: "XCircle" as const,
+    title: "Administrative Dissolution",
+    desc: "States can involuntarily dissolve entities that fail to file. Reinstatement is costly, time-consuming, and creates gaps in your liability protection that can't be retroactively closed.",
+  },
+];
+
+const COMPLIANCE_BLOCKS = [
+  {
+    id: "registered-agent",
+    title: "Registered Agent Service",
+    summary:
+      "Every business entity is required by law to have a registered agent — a person or company authorized to receive legal documents and state correspondence on behalf of your entity. We serve as your registered agent in Wyoming and Nevada, ensuring nothing is missed.",
+    keyDistinction:
+      "Many registered agent services are just a forwarding address. Ours includes actual document review, same-day notification of any legal service, and proactive alerts when state correspondence requires action.",
+    href: "/registered-agent",
+    linkText: "Learn about registered agent service \u2192",
+  },
+  {
+    id: "annual-reports",
+    title: "Annual Report Filing",
+    summary:
+      "States require annual or biennial reports to keep your entity active. Wyoming charges $62/year for LLCs. Nevada requires an annual list at $150. We track every deadline, prepare the filing, and submit on time — every year.",
+    keyDistinction:
+      "We don't just remind you — we prepare and file the report ourselves. No forms to fill out, no deadlines to track, no risk of forgetting. State fees are separate, but the filing service is included in your package.",
+    href: "/annual-reports",
+    linkText: "How annual report filing works \u2192",
+  },
+  {
+    id: "corporate-minutes",
+    title: "Corporate Minutes Maintenance",
+    summary:
+      "Corporate minutes document key business decisions — officer appointments, major contracts, ownership changes. Courts examine these records when determining whether to respect your entity's separate legal identity. No minutes = grounds for veil piercing.",
+    keyDistinction:
+      "This is our biggest differentiator. Most incorporation services don't touch corporate minutes. We prepare and maintain your minute book annually, ensuring your records support your entity's legitimacy if ever challenged in court.",
+    href: "/corporate-minutes",
+    linkText: "Why corporate minutes matter \u2192",
+  },
+  {
+    id: "multi-state",
+    title: "Multi-State Compliance",
+    summary:
+      "If your entity operates outside its formation state, you need foreign registration — plus ongoing compliance in both states. Different deadlines, different forms, different fees. We handle the complexity of operating across state lines.",
+    keyDistinction:
+      "Foreign registration triggers compliance obligations in two states simultaneously. We manage both, tracking each state's unique requirements, deadlines, and fee structures so nothing falls through the cracks.",
+    href: "/foreign-registration",
+    linkText: "Multi-state compliance explained \u2192",
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    number: 1,
+    title: "Choose Your Package",
+    description:
+      "Select Wyoming or Nevada, then choose Bronze, Silver, or Gold based on the level of compliance support you need. Silver and Gold include full compliance.",
+    tag: "Setup",
+    color: "purple" as const,
+  },
+  {
+    number: 2,
+    title: "We Set Up Your Compliance",
+    description:
+      "Registered agent activated, annual report deadlines tracked, corporate minute book created. Everything is in place from day one.",
+    tag: "Activation",
+    color: "blue" as const,
+  },
+  {
+    number: 3,
+    title: "Proactive Filing & Maintenance",
+    description:
+      "When deadlines approach, we prepare and file. Annual reports, state lists, corporate minutes updated. You get notified — but don't have to lift a finger.",
+    tag: "Ongoing",
+    color: "green" as const,
+  },
+  {
+    number: 4,
+    title: "Stay in Good Standing, Every Year",
+    description:
+      "Renewal includes everything: registered agent, annual filings, minute maintenance. No surprise fees, no missed deadlines, no gaps in protection.",
+    tag: "Renewal",
+    color: "amber" as const,
+  },
+];
+
+const DIFFERENTIATORS_SMALL = [
+  {
+    icon: "BookOpen" as const,
+    title: "Full Minute Book Maintenance",
+    desc: "Annual corporate minutes prepared and maintained — not just a template. Your records are court-ready at all times.",
+  },
+  {
+    icon: "DollarSign" as const,
+    title: "All-Inclusive Pricing",
+    desc: "Filing service, registered agent, minutes, deadline tracking — all included in Silver and Gold. State fees are the only extra.",
+  },
+  {
+    icon: "Clock" as const,
+    title: "25 Years of Experience",
+    desc: "Wyoming and Nevada compliance since 2000. We know every state's requirements, quirks, and deadlines inside out.",
+  },
+  {
+    icon: "Bell" as const,
+    title: "Proactive Deadline Tracking",
+    desc: "We don't wait for you to remember. Our system tracks every filing deadline and initiates the process automatically.",
+  },
+  {
+    icon: "Headphones" as const,
+    title: "Real People. Real Answers.",
+    desc: "Talk to a compliance specialist who knows your entity — not a chatbot or call center. Call anytime.",
+  },
+];
+
+const EXPLORE_SERVICES = [
+  {
+    icon: "ClipboardCheck" as const,
+    title: "Registered Agent Service",
+    desc: "Professional registered agent in Wyoming and Nevada. We receive legal documents and state correspondence on your behalf.",
+    href: "/registered-agent",
+  },
+  {
+    icon: "FileText" as const,
+    title: "Corporate Minutes",
+    desc: "Professional minute book preparation and maintenance. Proper records prevent veil piercing and support your entity's legitimacy.",
+    href: "/corporate-minutes",
+  },
+  {
+    icon: "Globe" as const,
+    title: "Foreign Registration",
+    desc: "Register your entity to do business in another state. We handle the process and ongoing compliance for both states.",
+    href: "/foreign-registration",
+  },
+];
+
+const EXPLORE_STATES = [
+  {
+    icon: "MapPin" as const,
+    title: "Wyoming Registered Agent",
+    desc: "Professional registered agent service in Cheyenne, Wyoming",
+    href: "/wyoming-registered-agent",
+  },
+  {
+    icon: "MapPin" as const,
+    title: "Nevada Registered Agent",
+    desc: "In-state registered agent near the Secretary of State",
+    href: "/nevada-registered-agent",
+  },
+  {
+    icon: "FileText" as const,
+    title: "Annual Reports",
+    desc: "State-by-state annual report filing requirements and deadlines",
+    href: "/annual-reports",
+  },
+  {
+    icon: "ArrowRightLeft" as const,
+    title: "Domestication",
+    desc: "Move your entity to a new state without dissolving",
+    href: "/domestication",
+  },
+];
+
+const EXPLORE_COMPARISONS = [
+  {
+    title: "Gold vs Silver Package Comparison",
+    desc: "Compare compliance features across Gold, Silver, and Bronze tiers. See exactly what's included.",
+    href: "/compare-packages",
+  },
+  {
+    title: "Wyoming vs. Nevada Annual Costs",
+    desc: "Annual state fees, report requirements, and total renewal costs compared side by side.",
+    href: "/wyoming-vs-nevada-llc",
+  },
 ];

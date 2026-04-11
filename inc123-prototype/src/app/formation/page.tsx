@@ -1,409 +1,1047 @@
-import { PillarLayout } from "@/design-system/layouts/PillarLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { Card } from "@/design-system/components/Card";
-import { ClusterGrid } from "@/design-system/components/ClusterGrid";
-import { ComparisonCards } from "@/design-system/components/ComparisonCards";
-import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
-import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
-import { PillarHero } from "@/design-system/components/PillarHero";
-import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
-import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { PackageComparison } from "@/design-system/components/PackageComparison";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
-import { pillars } from "@/data/pillars";
-import { packages } from "@/data/packages";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
+import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
-const pillar = pillars[2]; // formation
-const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
-const wySilver = packages.find((p) => p.id === "wyoming-silver")!;
+
 const formationFaqs = faqItems.filter((f) => f.category === "formation");
 
 export default function FormationPillarPage() {
   return (
-    <PillarLayout
-      pillar="formation"
-      title={pillar.tagline}
-      description={pillar.description}
-      customHero={
-        <PillarHero
-          pillar="formation"
-          eyebrow="Company Formation"
-          headline={pillar.tagline}
-          description={pillar.description}
-          primaryCTA={{
-            label: "Compare Formation Packages",
-            href: "/compare-packages",
-          }}
-          secondaryCTA={{
-            label: "View Packages",
-            href: "#packages",
-          }}
-          trustSnippet={pillar.trustElement}
-        />
-      }
-      sidebar={
-        <ContentSidebar
-          variant="pillar"
-          packageShortcut={{
-            name: "Gold Package",
-            price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-            period: "one-time",
-            href: "/gold?state=wyoming",
-            badge: "Most Popular",
-          }}
-          relatedPages={pillar.clusters.map((c) => ({
-            title: c.title,
-            href: c.href,
-          }))}
-          crossPillarLink={{
-            pillar: "compliance",
-            title: "Also Relevant: Compliance",
-            href: "/compliance",
-          }}
-          phoneNumber="1-800-553-0615"
-        />
-      }
-    >
-      <div className="space-y-16">
-        {/* ------------------------------------------------
-            Section 1: What is Company Formation?
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            What is Company Formation?
-          </h2>
-          <ProgressiveDisclosure
-            sections={[
-              {
-                id: "what-is-formation",
-                title: "Understanding Company Formation",
-                summary:
-                  "Company formation is the legal process of creating a new business entity — an LLC or Corporation — registered with a state. The right formation sets up your business for success with proper liability protection, tax advantages, and (with our Gold packages) built-in privacy from day one.",
-                content: (
-                  <div className="space-y-4 text-body text-muted">
-                    <p>
-                      Forming a business entity creates a legal separation
-                      between you and your business. This separation — called
-                      &ldquo;limited liability&rdquo; — means your personal
-                      assets are generally protected from business debts and
-                      lawsuits. It&apos;s the foundation of responsible business
-                      ownership.
-                    </p>
-                    <p>
-                      The formation process involves filing Articles of
-                      Organization (for LLCs) or Articles of Incorporation (for
-                      Corporations) with your chosen state, designating a
-                      registered agent, and preparing governing documents like
-                      an operating agreement or bylaws.
-                    </p>
-                    <p>
-                      Where you form matters significantly. Wyoming and Nevada
-                      are the two most business-friendly states in the U.S.,
-                      offering no state income tax, strong liability
-                      protections, low annual fees (Wyoming) or dedicated
-                      business courts (Nevada), and privacy-friendly statutes.
-                    </p>
-                    <p>
-                      Our all-inclusive packages handle every step: state filing
-                      fees, registered agent, corporate minutes, annual reports,
-                      and — for Gold packages — year-round nominees and offshore
-                      record storage. No hidden fees, no surprise charges.
-                    </p>
+    <div className="min-h-screen">
+      {/* ================================================
+          S1: HERO — Editorial split layout
+          ================================================ */}
+      <section className="relative overflow-hidden bg-primary">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-pillar-formation/[0.08] blur-[120px]" />
+
+        <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-body-sm">
+            <Link
+              href="/"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
+            >
+              Home
+            </Link>
+            <span className="mx-2 text-white/50">/</span>
+            <span className="text-white/90">Company Formation</span>
+          </nav>
+
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
+            {/* Left: Content */}
+            <ScrollReveal delay={100}>
+              <div>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-4">
+                  Company Formation
+                </p>
+
+                <h1 className="font-display type-display-lg font-bold text-white">
+                  Expert Formation,{" "}
+                  <span className="text-pillar-formation">All-Inclusive.</span>
+                </h1>
+
+                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                  Everything you need to start your business, nothing hidden.
+                  State fees, registered agent, EIN, operating agreement — all
+                  included. Wyoming and Nevada. Trusted since 2000.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a href="#packages">
+                    <Button variant="cta" size="lg">
+                      Compare Formation Packages
+                      <Icon
+                        name="ArrowRight"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                  <a href="#how-it-works">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="border-white/20 text-white hover:bg-white/10"
+                    >
+                      How It Works
+                      <Icon
+                        name="ArrowDown"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                </div>
+
+                <p className="mt-5 text-body-sm text-white/80">
+                  Prefer to talk?{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Call 1-800-553-0615
+                  </a>
+                  {" · "}
+                  <Link
+                    href="/contact"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Schedule a consultation
+                  </Link>
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Right: Visual — "What's Included" checklist card */}
+            <ScrollReveal delay={600} direction="right">
+              <div className="hidden lg:block relative">
+                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-8 w-8 rounded-full bg-pillar-formation/20 flex items-center justify-center">
+                      <Icon
+                        name="Building2"
+                        size="sm"
+                        className="text-pillar-formation"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-body-sm font-semibold text-white">
+                        All-Inclusive Package
+                      </p>
+                      <p className="text-caption text-white/50">
+                        Everything below is included
+                      </p>
+                    </div>
                   </div>
-                ),
-              },
-            ]}
-          />
-          <div className="mt-4">
-            <a
-              href="/wyoming-llc"
-              className="inline-flex items-center gap-1.5 text-body-sm font-medium text-pillar-formation hover:text-pillar-formation/80 transition-colors"
-            >
-              Learn about Wyoming LLC Formation
-              <Icon name="ArrowRight" size="sm" />
-            </a>
+                  {/* Included items */}
+                  <div className="space-y-3">
+                    {[
+                      "State Filing Fees",
+                      "Registered Agent (Year-Round)",
+                      "EIN / Tax ID Filing",
+                      "Operating Agreement",
+                      "Corporate Minutes & Seal",
+                      "Annual Report Filing",
+                      "Certificate of Good Standing",
+                    ].map((item) => (
+                      <div key={item} className="flex items-center gap-3">
+                        <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success/20">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />
+                        </div>
+                        <p className="font-mono text-body-sm text-white/80">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Footer */}
+                  <div className="pt-4 mt-4 border-t border-white/[0.1]">
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-pillar-formation animate-pulse" />
+                      <p className="font-mono text-body-sm text-pillar-formation">
+                        $0 hidden fees — what you see is what you pay
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative shadow layers */}
+                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+              </div>
+            </ScrollReveal>
           </div>
-        </section>
 
-        {/* ------------------------------------------------
-            Section 2: Why Choose Incorporate123
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Why Choose Incorporate123 for Formation
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card
-              pillar="formation"
-              variant="elevated"
-              title="Truly All-Inclusive Pricing"
-              description="State filing fees, registered agent, corporate minutes, annual reports, certificate of good standing, and corporate seal — all included. No hidden fees, no surprise charges, no required upsells."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="DollarSign"
-                  size="sm"
-                  className="text-pillar-formation"
-                />
-                <span className="text-caption text-muted">
-                  What you see is what you pay
-                </span>
+          {/* Stats strip */}
+          <ScrollReveal delay={300}>
+            <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
+              {[
+                { value: "25", unit: "yrs", label: "Forming Entities" },
+                { value: "2", unit: "states", label: "Wyoming & Nevada" },
+                { value: "$0", unit: "", label: "Hidden Fees" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="font-display text-heading-lg font-bold text-white">
+                    {stat.value}
+                    {stat.unit && (
+                      <span className="text-body-sm font-normal text-white/70 ml-1">
+                        {stat.unit}
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-caption text-white/70 mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S2: PROBLEM STATEMENT — Asymmetric layout
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+            {/* Left: Headline + description (sticky on scroll) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-3">
+                  The Problem
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Formation Shouldn&rsquo;t Come with Surprises.{" "}
+                  <span className="text-muted">But It Usually Does.</span>
+                </h2>
+                <p className="mt-4 text-body-lg text-muted max-w-[440px]">
+                  Most formation providers advertise a low base price, then
+                  stack on fees for every essential service. The &ldquo;$49
+                  LLC&rdquo; becomes $600+ at checkout.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Problem cards — stacked vertically */}
+            <ScrollReveal delay={150}>
+              <div className="space-y-4">
+                {PROBLEM_CARDS.map((card) => (
+                  <div
+                    key={card.title}
+                    className="group bg-surface rounded-card border border-border p-6 flex gap-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card-lg bg-pillar-formation/[0.06] group-hover:bg-pillar-formation/[0.12] transition-colors">
+                      <Icon
+                        name={card.icon}
+                        size="md"
+                        className="text-pillar-formation"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-body-lg font-display font-semibold text-foreground">
+                        {card.title}
+                      </h3>
+                      <p className="mt-1 text-body text-muted leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </Card>
-            <Card
-              pillar="formation"
-              variant="elevated"
-              title="25 Years of Expertise"
-              description="We've been forming Wyoming and Nevada entities since 2000. We know the nuances of each state's requirements, filing processes, and best practices that only come with decades of experience."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="Award"
-                  size="sm"
-                  className="text-pillar-formation"
-                />
-                <span className="text-caption text-muted">
-                  Established 2000 · 25 Years
-                </span>
-              </div>
-            </Card>
-            <Card
-              pillar="formation"
-              variant="elevated"
-              title="Privacy Built In"
-              description="Gold packages include year-round nominee directors and officers, offshore record storage, and formation in privacy-friendly states. Your identity stays private from day one."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="Shield"
-                  size="sm"
-                  className="text-pillar-formation"
-                />
-                <span className="text-caption text-muted">
-                  Gold packages include full privacy suite
-                </span>
-              </div>
-            </Card>
-            <Card
-              pillar="formation"
-              variant="elevated"
-              title="Ongoing Support, Not Just Filing"
-              description="We don't just file your paperwork and disappear. Every package includes ongoing compliance support: registered agent, annual reports, and corporate minutes maintenance."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="Headphones"
-                  size="sm"
-                  className="text-pillar-formation"
-                />
-                <span className="text-caption text-muted">
-                  Year-round support included
-                </span>
-              </div>
-            </Card>
+            </ScrollReveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 3: Formation Services
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Formation Services
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Every entity type we form in Wyoming and Nevada — LLCs,
-            Corporations, and pre-aged shelf companies.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillar.services.map((service, i) => (
-              <Card
-                key={i}
-                pillar="formation"
-                variant="elevated"
-                layout="compact"
-                title={service}
-                description={formationServiceDescriptions[i]}
-              />
+      {/* ── Pull quote — visual landmark ── */}
+      <section className="relative bg-primary py-section-y-sm overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
+            $0
+          </span>
+        </div>
+        <div className="relative mx-auto max-w-narrow px-container-x">
+          <ScrollReveal>
+            <blockquote className="text-center">
+              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
+                &ldquo;All-inclusive means all-inclusive. State fees, registered
+                agent, EIN, operating agreement, corporate seal &mdash;{" "}
+                <span className="text-pillar-formation font-bold">
+                  the price you see is the price you pay.
+                </span>
+                &rdquo;
+              </p>
+              <footer className="mt-8 flex items-center justify-center gap-3">
+                <div className="h-px w-8 bg-white/20" />
+                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
+                  The Incorporate123 Difference
+                </p>
+                <div className="h-px w-8 bg-white/20" />
+              </footer>
+            </blockquote>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S3: FORMATION STEPS — Editorial numbered blocks
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-3">
+              Understanding Formation
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+              What Goes Into Forming Your Entity
+            </h2>
+            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
+              Entity formation isn&rsquo;t just paperwork — it&rsquo;s a
+              structure that determines your liability protection, tax
+              treatment, and privacy.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 space-y-0">
+            {FORMATION_BLOCKS.map((block, i) => (
+              <ScrollReveal key={block.id}>
+                <div
+                  className={`grid gap-8 lg:grid-cols-[120px_1fr] py-10 ${i < FORMATION_BLOCKS.length - 1 ? "border-b border-border" : ""}`}
+                >
+                  {/* Large editorial number */}
+                  <div className="hidden lg:block">
+                    <span className="font-mono text-[5rem] font-bold leading-none text-pillar-formation/[0.12]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  {/* Content */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-3 lg:hidden">
+                      <span className="font-mono text-heading-lg font-bold text-pillar-formation/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-heading-lg font-semibold text-foreground">
+                      {block.title}
+                    </h3>
+                    <p className="mt-3 text-body text-muted leading-relaxed max-w-[600px]">
+                      {block.summary}
+                    </p>
+                    {block.keyPoint && (
+                      <div className="mt-4 rounded-card bg-pillar-formation/[0.04] border border-pillar-formation/[0.12] px-5 py-4">
+                        <p className="text-body-sm font-semibold text-foreground mb-1">
+                          Key Point
+                        </p>
+                        <p className="text-body-sm text-muted leading-relaxed">
+                          {block.keyPoint}
+                        </p>
+                      </div>
+                    )}
+                    <Link
+                      href={block.href}
+                      className="inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors mt-4"
+                    >
+                      {block.linkText}
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Differentiator Callout */}
-          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-formation bg-pillar-formation/5 p-6">
-            <p className="text-body font-medium text-foreground">
-              &ldquo;All-inclusive means all-inclusive &mdash; state fees,
-              registered agent, corporate minutes, annual reports, and seal. No
-              hidden fees, no required upsells.&rdquo;
-            </p>
-            <p className="mt-2 text-body text-muted">
-              Most formation providers advertise a low base price, then add fees
-              for every essential service. Incorporate123 packages include
-              everything you need from day one &mdash; the price you see is the
-              price you pay.
-            </p>
-          </aside>
-        </section>
+      {/* ================================================
+          S4: HOW IT WORKS
+          ================================================ */}
+      <section id="how-it-works" className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="How It Works"
+              title="From Inquiry to Incorporated — All-Inclusive."
+              subtitle="Four steps. We handle everything. You get a properly formed entity."
+              subtitleMaxWidth="max-w-narrow mx-auto"
+            />
 
-        {/* ------------------------------------------------
-            Section 4: Cluster Navigation Grid
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Explore Formation Topics
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Detailed guides on every entity type and formation state. Find the
-            right structure for your business needs.
-          </p>
-          <ClusterGrid
-            clusters={pillar.clusters.map((c) => ({
-              title: c.title,
-              href: c.href,
-              description: c.description ?? "",
-              pillar: "formation" as const,
-            }))}
-            columns={3}
-          />
-        </section>
+            <div className="mt-12">
+              <HowItWorks steps={PROCESS_STEPS} />
+            </div>
 
-        {/* ------------------------------------------------
-            Section 5: Compare Your Options
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Compare Your Options
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Not sure which state or entity type is right for you? These guides
-            break it down.
-          </p>
-          <ComparisonCards
-            comparisons={[
-              {
-                title: "Wyoming vs Nevada LLC",
-                description:
-                  "Head-to-head comparison of Wyoming and Nevada for LLC formation — costs, privacy, asset protection, and annual fees.",
-                href: "/wyoming-vs-nevada-llc",
-              },
-              {
-                title: "LLC vs Corporation",
-                description:
-                  "Which entity type is right for your business? Compare management flexibility, tax treatment, and formation requirements.",
-                href: "/llc-vs-corporation",
-              },
-            ]}
-          />
-        </section>
+            <div className="mt-10 text-center">
+              <a href="#packages">
+                <Button variant="cta" size="md">
+                  See Formation Packages &amp; Pricing
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 6: Package CTA Section
-            ------------------------------------------------ */}
-        <section id="packages">
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Formation Packages — Start Your Business Right
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Choose Gold for complete privacy and premium services, or Silver for
-            professional formation with compliance essentials. Both are
-            all-inclusive with no hidden fees.
-          </p>
-          <DualPackageCTA
-            packages={[
-              {
-                name: wyGold.name,
-                price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: wyGold.description,
-                badge: wyGold.badge,
-                highlighted: true,
-                href: "/gold?state=wyoming",
-              },
-              {
-                name: wySilver.name,
-                price: `$${wySilver.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: wySilver.description,
-                highlighted: false,
-                href: "/silver?state=wyoming",
-              },
-            ]}
-            consultationCTA={{
-              label: "Not sure which package? Schedule a free consultation",
-              href: "/contact",
-              phone: "1-800-553-0615",
-            }}
-          />
-        </section>
+      {/* ================================================
+          S5: DIFFERENTIATORS — 1 featured + 5 grid (dark)
+          ================================================ */}
+      <section className="relative py-section-y-sm bg-primary overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -right-60 top-20 h-[50vw] w-[50vw] rounded-full bg-pillar-formation/[0.06] blur-[120px]" />
 
-        {/* ------------------------------------------------
-            Section 7: Cross-Pillar CTA
-            ------------------------------------------------ */}
-        <section>
-          <CrossPillarCTA
-            fromPillar="formation"
-            toPillar="privacy"
-            heading="Formation Is Just the Beginning. Privacy Makes It Complete."
-            description="A properly formed LLC protects your liability. Adding privacy features — nominees, offshore records, anonymous ownership — protects your identity. Most business owners benefit from both."
-            href="/privacy"
-          />
-        </section>
+        <div className="relative mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Why Incorporate123"
+              title="What Sets Our Formation Services Apart"
+              dark
+            />
 
-        {/* ------------------------------------------------
-            Section 8: FAQ Accordion
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Frequently Asked Questions
-          </h2>
-          <Accordion type="single" variant="default">
-            {formationFaqs.map((faq) => (
-              <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
-                <p>{faq.answer}</p>
-              </AccordionItem>
+            {/* Featured differentiator — full width hero card */}
+            <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="p-8 lg:p-10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-formation/20 mb-5">
+                    <Icon
+                      name="DollarSign"
+                      size="lg"
+                      className="text-pillar-formation"
+                    />
+                  </div>
+                  <h3 className="font-display text-heading-lg font-semibold text-white">
+                    Truly All-Inclusive Pricing — No Hidden Fees
+                  </h3>
+                  <p className="mt-3 text-body text-white/75 leading-relaxed max-w-[440px]">
+                    Every formation package includes state filing fees,
+                    registered agent, EIN filing, operating agreement, corporate
+                    seal, corporate minutes, annual reports, and certificate of
+                    good standing. Most providers charge extra for each one.
+                  </p>
+                  <div className="mt-6 flex items-center gap-6">
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        $0
+                      </p>
+                      <p className="text-caption text-white/70">hidden fees</p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        All
+                      </p>
+                      <p className="text-caption text-white/70">
+                        fees included
+                      </p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        25
+                      </p>
+                      <p className="text-caption text-white/70">
+                        years trusted
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden lg:flex items-center justify-center bg-white/[0.03] p-10">
+                  {/* VS comparison visual */}
+                  <div className="w-full max-w-[280px] space-y-4">
+                    <div className="rounded-card bg-red-500/[0.08] border border-red-400/[0.15] p-4">
+                      <p className="text-caption font-semibold text-red-400/80 uppercase tracking-wider mb-2">
+                        Others: &ldquo;$49 Formation&rdquo;
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="Plus"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          +$150 state filing fees
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="Plus"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          +$125 registered agent
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="Plus"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          +$70 EIN filing
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="Plus"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          +$35 operating agreement
+                        </div>
+                      </div>
+                    </div>
+                    <div className="rounded-card bg-success/[0.08] border border-success/[0.2] p-4">
+                      <p className="text-caption font-semibold text-success uppercase tracking-wider mb-2">
+                        Incorporate123: One Price
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          State fees included
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Registered agent included
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          EIN + operating agreement
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Seal, minutes, annual reports
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* 5 smaller differentiator cards */}
+          <ScrollReveal delay={150}>
+            <div className="mt-5 flex flex-wrap gap-5">
+              {DIFFERENTIATORS_SMALL.map((item) => (
+                <div
+                  key={item.title}
+                  className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-7 hover:-translate-y-1 transition-all duration-300 hover:bg-white/[0.08]"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-card bg-white/[0.08] border border-white/[0.12] mb-4">
+                    <Icon
+                      name={item.icon}
+                      size="md"
+                      className="text-pillar-formation"
+                    />
+                  </div>
+                  <h3 className="font-display text-body font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-body-sm text-white/70 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S6: SOCIAL PROOF STRIP
+          ================================================ */}
+      <section className="py-8 bg-surface border-y border-border">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              { icon: "Shield" as const, text: "25 Years Trusted" },
+              { icon: "FileCheck" as const, text: "All State Fees Included" },
+              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
+              { icon: "Phone" as const, text: "Talk to Real Humans" },
+              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
+            ].map((badge) => (
+              <div
+                key={badge.text}
+                className="flex items-center gap-2 text-body-sm text-muted"
+              >
+                <Icon
+                  name={badge.icon}
+                  size="sm"
+                  className="text-pillar-formation"
+                />
+                {badge.text}
+              </div>
             ))}
-          </Accordion>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 9: Where to Go Next
-            ------------------------------------------------ */}
-        <WhereToGoNext
-          suggestions={[
-            {
-              title: "Compare Wyoming vs Nevada",
-              description:
-                "Detailed comparison of the two most popular formation states.",
-              href: "/wyoming-vs-nevada-llc",
-              pillar: "formation",
-            },
-            {
-              title: "See Gold Package Details",
-              description:
-                "Full breakdown of what's included in the Wyoming Gold package.",
-              href: "/gold?state=wyoming",
-              pillar: "formation",
-            },
-            {
-              title: "Explore Business Privacy",
-              description:
-                "Anonymous LLCs, nominee services, and offshore record storage.",
-              href: "/privacy",
-              pillar: "privacy",
-            },
-          ]}
-        />
+      {/* ================================================
+          S7: PACKAGES — Compare
+          ================================================ */}
+      <div id="packages">
+        <PackageComparison />
       </div>
-    </PillarLayout>
+
+      {/* ================================================
+          S8: FAQ — Split layout with sticky left header
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            {/* Left: Header (sticky) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-foreground/70 mb-3">
+                  Frequently Asked Questions
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Formation Questions Answered
+                </h2>
+                <p className="mt-3 text-body text-muted">
+                  Quick answers to the most common questions about forming an
+                  LLC or Corporation.
+                </p>
+                <div className="mt-6 hidden lg:block">
+                  <p className="text-body-sm text-muted">
+                    Still have questions?
+                  </p>
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-2"
+                  >
+                    <Icon name="Phone" size="sm" />
+                    Call 1-800-553-0615
+                  </a>
+                  <br />
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-1"
+                  >
+                    <Icon name="Mail" size="sm" />
+                    Send us a message
+                  </Link>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Accordion */}
+            <ScrollReveal delay={200}>
+              <Accordion type="single" variant="default">
+                {formationFaqs.map((faq) => (
+                  <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
+                    <p>{faq.answer}</p>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          EXPLORE — Continue learning
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
+              Continue Learning
+            </h2>
+            <p className="mt-2 text-body text-muted">
+              Entity guides, state comparisons, and formation breakdowns.
+            </p>
+          </ScrollReveal>
+
+          {/* Services row — 3 featured cards */}
+          <ScrollReveal delay={100}>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+              {EXPLORE_SERVICES.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="!no-underline group block h-full"
+                >
+                  <div className="h-full rounded-card-lg border border-border bg-surface p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-card bg-pillar-formation/[0.08] mb-4 group-hover:bg-pillar-formation/[0.14] transition-colors">
+                      <Icon
+                        name={item.icon}
+                        size="md"
+                        className="text-pillar-formation"
+                      />
+                    </div>
+                    <h3 className="font-display text-body-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-body-sm text-muted leading-relaxed">
+                      {item.desc}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all">
+                      Read guide
+                      <Icon name="ArrowRight" size="xs" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* State guides + Comparisons — 2 columns */}
+          <ScrollReveal delay={200}>
+            <div className="mt-5 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5">
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  Entity Type Guides
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_ENTITIES.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-center gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-pillar-formation/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name={item.icon}
+                        size="sm"
+                        className="text-secondary shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted truncate">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  Compare Options
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_COMPARISONS.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-start gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-pillar-formation/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name="ArrowLeftRight"
+                        size="sm"
+                        className="text-secondary shrink-0 mt-0.5"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted">{item.desc}</p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 mt-1 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          CROSS-PILLAR BRIDGE
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
+              Related Services
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
+              Formation Is Step One. What Comes Next?
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch">
+              <CrossPillarCTA
+                fromPillar="formation"
+                toPillar="compliance"
+                heading="Keep Your Entity in Good Standing"
+                description="Registered agent, annual reports, corporate minutes. Ongoing compliance is included in every package and continues with renewals."
+                href="/compliance"
+                className="h-full"
+              />
+              <CrossPillarCTA
+                fromPillar="formation"
+                toPillar="privacy"
+                heading="Add Privacy to Your Formation"
+                description="Gold packages include year-round nominees and offshore records storage. Your identity stays private from day one."
+                href="/privacy"
+                className="h-full"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          FINAL CTA — confident close
+          ================================================ */}
+      <section className="bg-primary border-t border-white/[0.06]">
+        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
+          <ScrollReveal>
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
+              {/* Left: Statement */}
+              <div>
+                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
+                  Start your business the right way. All-inclusive, no
+                  surprises.
+                </h2>
+                <p className="mt-4 text-body text-white/75 max-w-[440px]">
+                  Wyoming LLC formation starts at $575 — state fees, registered
+                  agent, EIN, operating agreement, corporate seal, annual
+                  reports, all included. No hidden fees. No annual surprises.
+                </p>
+              </div>
+
+              {/* Right: Actions — stacked for clarity */}
+              <div className="flex flex-col gap-3">
+                <Link href="/compare-packages" className="!no-underline">
+                  <Button
+                    variant="cta"
+                    size="lg"
+                    className="w-full justify-center"
+                  >
+                    Choose Your Formation Package
+                  </Button>
+                </Link>
+                <Link href="/contact" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
+                  >
+                    Schedule a Consultation
+                  </Button>
+                </Link>
+                <p className="mt-1 text-center text-body-sm text-white/70">
+                  Or call{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    1-800-553-0615
+                  </a>
+                  {" — real humans, real answers."}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </div>
   );
 }
 
-/* ------------------------------------------------
-   Service descriptions (mapped to pillar.services)
-   ------------------------------------------------ */
-const formationServiceDescriptions = [
-  "America's most business-friendly state. No state income tax, lowest annual fees, strongest charging order protection, and privacy-first statutes.",
-  "No state income tax with strong privacy statutes, a dedicated business court, and 25 years of Incorporate123 expertise in Nevada formation.",
-  "Corporate formation with Wyoming's close-knit statutes. Ideal for businesses planning to raise capital or needing a formal board structure.",
-  "Nevada corporate formation with the state's dedicated business court system. Strong liability protection and no state income tax.",
-  "Pre-aged entities with established formation dates. Clean histories, no prior liabilities. Immediate availability for business needs requiring entity age.",
+/* ================================================
+   Static data
+   ================================================ */
+
+const PROBLEM_CARDS = [
+  {
+    icon: "DollarSign" as const,
+    title: "Hidden Fees Everywhere",
+    desc: "Most providers advertise a low base price then charge extra for state fees, registered agent, EIN, operating agreement, and annual reports. The $49 LLC becomes $600+ by checkout.",
+  },
+  {
+    icon: "AlertTriangle" as const,
+    title: "Wrong State, Wrong Entity",
+    desc: "Forming in the wrong state or choosing the wrong entity type can cost you thousands in unnecessary taxes, fees, and compliance burdens. Generic services don't advise — they just file.",
+  },
+  {
+    icon: "Clock" as const,
+    title: "File and Forget",
+    desc: "Many services file your paperwork and disappear. No registered agent renewal, no annual report reminders, no ongoing support. One missed filing can dissolve your entity.",
+  },
+  {
+    icon: "FileSearch" as const,
+    title: "Compliance Gaps",
+    desc: "Without proper corporate minutes, operating agreements, and annual reports, your liability protection can be pierced. A poorly maintained entity is worse than no entity at all.",
+  },
+];
+
+const FORMATION_BLOCKS = [
+  {
+    id: "entity-choice",
+    title: "Choose the Right Entity Type",
+    summary:
+      "LLC or Corporation? The choice determines your management structure, tax treatment, and liability protections. LLCs offer flexibility and pass-through taxation. Corporations suit businesses planning to raise capital or go public.",
+    keyPoint:
+      "Wyoming LLCs are the most popular choice — lowest annual fees ($62/yr), strongest charging order protection, no state income tax, and no public member disclosure. 70% of our clients choose Wyoming.",
+    href: "/wyoming-llc",
+    linkText: "Learn about Wyoming LLCs →",
+  },
+  {
+    id: "state-selection",
+    title: "Pick the Right Formation State",
+    summary:
+      "Where you form matters more than most people realize. Wyoming and Nevada are the two most business-friendly states — no state income tax, strong liability protections, privacy-friendly statutes, and low annual fees.",
+    keyPoint:
+      "You don't need to live in or operate from your formation state. Most clients form in Wyoming for privacy and low costs, then foreign register in their home state if needed.",
+    href: "/wyoming-vs-nevada-llc",
+    linkText: "Compare Wyoming vs. Nevada →",
+  },
+  {
+    id: "all-inclusive",
+    title: "Get Everything Included From Day One",
+    summary:
+      "Our packages include state filing fees, registered agent, EIN, operating agreement, corporate seal, corporate minutes, annual report preparation, and certificate of good standing. No hidden fees, no surprise charges at checkout.",
+    keyPoint:
+      "Gold packages add year-round nominee services, offshore record storage, and virtual office. Silver includes all formation essentials plus virtual office and mail forwarding. Bronze covers formation and compliance basics.",
+    href: "/compare-packages",
+    linkText: "Compare package tiers →",
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    number: 1,
+    title: "Choose Your State & Package",
+    description:
+      "Select Wyoming or Nevada based on your goals. Compare Bronze, Silver, and Gold tiers — all are all-inclusive with no hidden fees.",
+    tag: "Choose",
+    color: "amber" as const,
+  },
+  {
+    number: 2,
+    title: "We Prepare & File Everything",
+    description:
+      "Our team prepares Articles of Organization (LLC) or Incorporation (Corp), files with the state, obtains your EIN, and drafts your operating agreement.",
+    tag: "Formation",
+    color: "blue" as const,
+  },
+  {
+    number: 3,
+    title: "Complete Entity Package Delivered",
+    description:
+      "You receive a complete entity package: filed articles, EIN confirmation, operating agreement, corporate seal, membership certificates, and minute book.",
+    tag: "Delivery",
+    color: "green" as const,
+  },
+  {
+    number: 4,
+    title: "Ongoing Compliance, Handled",
+    description:
+      "Registered agent, annual reports, corporate minutes maintenance — all included in your renewal. Your entity stays in good standing year after year.",
+    tag: "Compliance",
+    color: "purple" as const,
+  },
+];
+
+const DIFFERENTIATORS_SMALL = [
+  {
+    icon: "Clock" as const,
+    title: "25 Years Specialized Experience",
+    desc: "Wyoming and Nevada entity formation since 2000. We know the nuances that only come with decades of hands-on filing.",
+  },
+  {
+    icon: "Shield" as const,
+    title: "Privacy Options Built In",
+    desc: "Gold packages include nominees, offshore records, and anonymous formation. Privacy isn't an upsell — it's a tier.",
+  },
+  {
+    icon: "FileText" as const,
+    title: "Complete Compliance Included",
+    desc: "Registered agent, annual reports, corporate minutes, seal, and good standing certificate. Every package, every year.",
+  },
+  {
+    icon: "Bitcoin" as const,
+    title: "Crypto Payments",
+    desc: "Bitcoin, Ethereum, XRP, Litecoin, Monero. Pay for formation with the currency of your choice.",
+  },
+  {
+    icon: "Headphones" as const,
+    title: "Real People. Real Answers.",
+    desc: "Talk to a formation specialist who knows your case — not a chatbot or call center. Call anytime.",
+  },
+];
+
+const EXPLORE_SERVICES = [
+  {
+    icon: "Building2" as const,
+    title: "Wyoming LLC Formation",
+    desc: "America's most business-friendly state. No state income tax, $62/yr annual fee, strongest charging order protection.",
+    href: "/wyoming-llc",
+  },
+  {
+    icon: "Building" as const,
+    title: "Nevada LLC Formation",
+    desc: "No state income tax, dedicated business court, strong privacy statutes, and 25 years of Incorporate123 Nevada expertise.",
+    href: "/nevada-llc",
+  },
+  {
+    icon: "Archive" as const,
+    title: "Shelf Companies",
+    desc: "Pre-aged entities with established formation dates. Clean histories, no prior liabilities, immediate availability.",
+    href: "/shelf-companies",
+  },
+];
+
+const EXPLORE_ENTITIES = [
+  {
+    icon: "Building2" as const,
+    title: "Wyoming Corporation",
+    desc: "Close-knit statutes ideal for raising capital",
+    href: "/wyoming-corporation",
+  },
+  {
+    icon: "Building" as const,
+    title: "Nevada Corporation",
+    desc: "Dedicated business court + no state income tax",
+    href: "/nevada-corporation",
+  },
+  {
+    icon: "Layers" as const,
+    title: "Series LLC",
+    desc: "Isolated liability cells within a single entity",
+    href: "/series-llc",
+  },
+  {
+    icon: "Calculator" as const,
+    title: "Entity Tax Guide",
+    desc: "How entity type affects your taxes",
+    href: "/entity-tax-guide",
+  },
+];
+
+const EXPLORE_COMPARISONS = [
+  {
+    title: "Wyoming vs. Nevada LLC",
+    desc: "Head-to-head: costs, privacy, asset protection, and annual fees compared.",
+    href: "/wyoming-vs-nevada-llc",
+  },
+  {
+    title: "LLC vs. Corporation",
+    desc: "Which entity type is right? Compare flexibility, taxation, and formation requirements.",
+    href: "/llc-vs-corporation",
+  },
 ];

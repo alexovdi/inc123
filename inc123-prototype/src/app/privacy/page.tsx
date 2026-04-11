@@ -1,401 +1,1034 @@
-import { PillarLayout } from "@/design-system/layouts/PillarLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { Card } from "@/design-system/components/Card";
-import { ClusterGrid } from "@/design-system/components/ClusterGrid";
-import { ComparisonCards } from "@/design-system/components/ComparisonCards";
-import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
-import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
-import { PillarHero } from "@/design-system/components/PillarHero";
-import { ProgressiveDisclosure } from "@/design-system/components/ProgressiveDisclosure";
-import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
+import { HowItWorks } from "@/design-system/components/HowItWorks";
+import { PackageComparison } from "@/design-system/components/PackageComparison";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
-import { pillars } from "@/data/pillars";
-import { packages } from "@/data/packages";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
+import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
-const pillar = pillars[0]; // privacy
-const wyGold = packages.find((p) => p.id === "wyoming-gold")!;
-const nvGold = packages.find((p) => p.id === "nevada-gold")!;
+
 const privacyFaqs = faqItems.filter((f) => f.category === "privacy");
 
 export default function PrivacyPillarPage() {
   return (
-    <PillarLayout
-      pillar="privacy"
-      title={pillar.tagline}
-      description={pillar.description}
-      customHero={
-        <PillarHero
-          pillar="privacy"
-          eyebrow="Business Privacy"
-          headline={pillar.tagline}
-          description={pillar.description}
-          primaryCTA={{
-            label: "Explore Privacy Packages",
-            href: "/compare-packages",
-          }}
-          secondaryCTA={{
-            label: "View Gold Packages",
-            href: "#packages",
-          }}
-          trustSnippet={pillar.trustElement}
-          safetyNet="Have questions? Call 1-800-553-0615"
-        />
-      }
-      sidebar={
-        <ContentSidebar
-          variant="pillar"
-          packageShortcut={{
-            name: "Gold Package",
-            price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-            period: "one-time",
-            href: "/gold?state=wyoming",
-            badge: "Most Popular",
-          }}
-          relatedPages={pillar.clusters.map((c) => ({
-            title: c.title,
-            href: c.href,
-          }))}
-          crossPillarLink={{
-            pillar: "asset",
-            title: "Also Relevant: Asset Protection",
-            href: "/asset-protection",
-          }}
-          phoneNumber="1-800-553-0615"
-        />
-      }
-    >
-      <div className="space-y-16">
-        {/* ------------------------------------------------
-            Section 1: What is Business Privacy?
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            What is Business Privacy?
-          </h2>
-          <ProgressiveDisclosure
-            sections={[
-              {
-                id: "what-is-privacy",
-                title: "Understanding Business Privacy",
-                summary:
-                  "Business privacy means keeping your name off public records associated with your LLC or Corporation. Most states require disclosure of members, managers, or officers — but Wyoming and Nevada offer structures that don't. With the right formation strategy and nominee services, your personal information never appears on any publicly searchable filing.",
-                content: (
-                  <div className="space-y-4 text-body text-muted">
-                    <p>
-                      When you form an LLC or corporation, the state requires
-                      certain information to be filed publicly. This typically
-                      includes the names and addresses of members, managers,
-                      officers, and directors. These filings — Articles of
-                      Organization, annual reports, and registered agent records
-                      — are searchable by anyone.
-                    </p>
-                    <p>
-                      Business privacy addresses this exposure through two
-                      mechanisms: forming in a state that minimizes disclosure
-                      requirements (Wyoming or Nevada), and using nominee
-                      officers and directors whose names appear on public
-                      records instead of yours.
-                    </p>
-                    <p>
-                      The critical difference is between formation-day privacy
-                      and year-round privacy. Many providers offer a
-                      &ldquo;nominee for a day&rdquo; — listing a nominee only
-                      at the moment of filing, then removing them. This means
-                      your name appears on every subsequent annual report and
-                      amendment. Year-round nominee services, like those
-                      included in every Incorporate123 Gold package, keep the
-                      nominee listed on ALL filings throughout the year.
-                    </p>
-                    <p>
-                      Combined with offshore record storage — where your
-                      operating agreement, meeting minutes, and membership
-                      certificates are maintained outside U.S. jurisdiction —
-                      this creates a comprehensive privacy structure that no
-                      budget provider can match.
-                    </p>
+    <div className="min-h-screen">
+      {/* ================================================
+          S1: HERO — Editorial split layout
+          ================================================ */}
+      <section className="relative overflow-hidden bg-primary">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-secondary/[0.08] blur-[120px]" />
+
+        <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
+          {/* Breadcrumb — no animation, just be there */}
+          <nav className="mb-8 text-body-sm">
+            <Link
+              href="/"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
+            >
+              Home
+            </Link>
+            <span className="mx-2 text-white/50">/</span>
+            <span className="text-white/90">Business Privacy</span>
+          </nav>
+
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
+            {/* Left: Content — single reveal for entire content block */}
+            <ScrollReveal delay={100}>
+              <div>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                  Business Privacy
+                </p>
+
+                <h1 className="font-display type-display-lg font-bold text-white">
+                  Business Privacy Starts Before Anyone Knows{" "}
+                  <span className="text-white/90">Your Name.</span>
+                </h1>
+
+                <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
+                  Keep your ownership off public records with year-round nominee
+                  services, anonymous entity formation, and offshore records
+                  storage. Wyoming and Nevada. Trusted since 2000.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a href="#packages">
+                    <Button variant="cta" size="lg">
+                      Find Your Privacy Package
+                      <Icon
+                        name="ArrowRight"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                  <a href="#framework">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="border-white/20 text-white hover:bg-white/10"
+                    >
+                      How It Works
+                      <Icon
+                        name="ArrowDown"
+                        size="sm"
+                        className="ml-2 hidden sm:inline-block"
+                      />
+                    </Button>
+                  </a>
+                </div>
+
+                <p className="mt-5 text-body-sm text-white/80">
+                  Prefer to talk?{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Call 1-800-553-0615
+                  </a>
+                  {" · "}
+                  <Link
+                    href="/contact"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    Schedule a consultation
+                  </Link>
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Right: Visual — abstract "redacted filing" */}
+            <ScrollReveal delay={600} direction="right">
+              <div className="hidden lg:block relative">
+                <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
+                  {/* Mock filing header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-8 w-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                      <Icon
+                        name="FileText"
+                        size="sm"
+                        className="text-secondary"
+                      />
+                    </div>
+                    <div>
+                      <div className="h-2.5 w-32 rounded-full bg-white/20" />
+                      <div className="h-2 w-24 rounded-full bg-white/10 mt-1.5" />
+                    </div>
                   </div>
-                ),
-              },
-            ]}
-          />
-          <div className="mt-4">
-            <a
-              href="/anonymous-llc"
-              className="inline-flex items-center gap-1.5 text-body-sm font-medium text-pillar-privacy hover:text-pillar-privacy/80 transition-colors"
-            >
-              Learn about Anonymous LLCs
-              <Icon name="ArrowRight" size="sm" />
-            </a>
+                  {/* Mock "exposed" fields */}
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                        Member / Manager
+                      </p>
+                      <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
+                        <Icon
+                          name="ShieldCheck"
+                          size="xs"
+                          className="text-secondary shrink-0"
+                        />
+                        <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
+                          NOMINEE PROTECTED
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                        Registered Agent
+                      </p>
+                      <p className="font-mono text-body-sm text-white/80">
+                        Incorporate123 Registered Agent
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                        Records Location
+                      </p>
+                      <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
+                        <Icon
+                          name="Lock"
+                          size="xs"
+                          className="text-secondary shrink-0"
+                        />
+                        <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
+                          OFFSHORE CUSTODIAN
+                        </p>
+                      </div>
+                    </div>
+                    <div className="pt-3 border-t border-white/[0.1]">
+                      <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                        Filing Status
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
+                        <p className="font-mono text-body-sm text-success">
+                          Active — Nominees in place 365 days
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative shadow layers */}
+                <div className="absolute -bottom-3 left-4 right-4 h-12 rounded-card-lg bg-white/[0.03] border border-white/[0.05] -z-10" />
+                <div className="absolute -bottom-6 left-8 right-8 h-12 rounded-card-lg bg-white/[0.02] border border-white/[0.03] -z-20" />
+              </div>
+            </ScrollReveal>
           </div>
-        </section>
 
-        {/* ------------------------------------------------
-            Section 2: Why Business Privacy Matters
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Why Business Privacy Matters
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card
-              pillar="privacy"
-              variant="elevated"
-              title="Protect Against Lawsuits"
-              description="When your name appears on public LLC records, anyone — including litigious parties — can find your business assets. Anonymity is your first line of defense."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Shield" size="sm" className="text-pillar-privacy" />
-                <span className="text-caption text-muted">
-                  Asset visibility invites targeting
-                </span>
+          {/* Stats strip — full width below the split */}
+          <ScrollReveal delay={300}>
+            <div className="mt-12 grid grid-cols-3 gap-4 rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-5">
+              {[
+                { value: "25", unit: "yrs", label: "Specialized Experience" },
+                { value: "4", unit: "states", label: "WY · NV · CA · FL" },
+                { value: "365", unit: "days", label: "Nominee Protection" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="font-display text-heading-lg font-bold text-white">
+                    {stat.value}
+                    <span className="text-body-sm font-normal text-white/70 ml-1">
+                      {stat.unit}
+                    </span>
+                  </p>
+                  <p className="text-caption text-white/70 mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S2: PROBLEM STATEMENT — Asymmetric layout
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+            {/* Left: Headline + description (sticky on scroll) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+                  The Problem
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Your Business Ownership Is Public Record.{" "}
+                  <span className="text-muted">Anyone Can Find It.</span>
+                </h2>
+                <p className="mt-4 text-body-lg text-muted max-w-[440px]">
+                  When you form an LLC or corporation, your name goes into a
+                  state database that anyone can search — for free, in seconds.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Threat cards — stacked vertically */}
+            <ScrollReveal delay={150}>
+              <div className="space-y-4">
+                {THREAT_CARDS.map((card) => (
+                  <div
+                    key={card.title}
+                    className="group bg-surface rounded-card border border-border p-6 flex gap-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card-lg bg-pillar-privacy/[0.06] group-hover:bg-pillar-privacy/[0.12] transition-colors">
+                      <Icon
+                        name={card.icon}
+                        size="md"
+                        className="text-pillar-privacy"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-body-lg font-display font-semibold text-foreground">
+                        {card.title}
+                      </h3>
+                      <p className="mt-1 text-body text-muted leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </Card>
-            <Card
-              pillar="privacy"
-              variant="elevated"
-              title="Keep Competitors in the Dark"
-              description="Competitors use public records to map your business holdings, identify your suppliers, and reverse-engineer your strategy. Privacy stops this at the source."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Eye" size="sm" className="text-pillar-privacy" />
-                <span className="text-caption text-muted">
-                  Competitive intelligence starts with public filings
-                </span>
-              </div>
-            </Card>
-            <Card
-              pillar="privacy"
-              variant="elevated"
-              title="Personal Safety"
-              description="Public figures, high-net-worth individuals, and business owners in controversial industries use anonymous LLCs to keep their personal information out of searchable databases."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon name="Users" size="sm" className="text-pillar-privacy" />
-                <span className="text-caption text-muted">
-                  Your identity is your most valuable asset
-                </span>
-              </div>
-            </Card>
-            <Card
-              pillar="privacy"
-              variant="elevated"
-              title="Data Broker Exposure"
-              description="Public records scrapers and data brokers harvest business ownership information from state filings. Nominee services keep your name off the records they scrape."
-            >
-              <div className="flex items-center gap-2 mt-1">
-                <Icon
-                  name="TriangleAlert"
-                  size="sm"
-                  className="text-pillar-privacy"
-                />
-                <span className="text-caption text-muted">
-                  Your information is only as private as your filings
-                </span>
-              </div>
-            </Card>
+            </ScrollReveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 3: How We Protect Your Privacy (Services)
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            How Incorporate123 Protects Your Privacy
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Services that no budget provider offers and most specialists charge
-            extra for — included in every Gold package.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillar.services.map((service, i) => (
-              <Card
-                key={i}
-                pillar="privacy"
-                variant="elevated"
-                layout="compact"
-                title={service}
-                description={serviceDescriptions[i]}
-              />
+      {/* ── Pull quote — visual landmark ── */}
+      <section className="relative bg-primary py-section-y-sm overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <span className="font-display text-[20rem] font-black text-white/[0.02] leading-none select-none">
+            365
+          </span>
+        </div>
+        <div className="relative mx-auto max-w-narrow px-container-x">
+          <ScrollReveal>
+            <blockquote className="text-center">
+              <p className="font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium text-white leading-[1.3] tracking-tight text-balance">
+                &ldquo;Most providers offer a nominee for a day. We keep
+                nominees on your filings{" "}
+                <span className="text-accent font-bold">
+                  365&nbsp;days&nbsp;a&nbsp;year
+                </span>
+                &nbsp;— formation, annual reports, amendments,
+                everything.&rdquo;
+              </p>
+              <footer className="mt-8 flex items-center justify-center gap-3">
+                <div className="h-px w-8 bg-white/20" />
+                <p className="text-body-sm text-white/60 font-medium tracking-wide uppercase">
+                  The Incorporate123 Difference
+                </p>
+                <div className="h-px w-8 bg-white/20" />
+              </footer>
+            </blockquote>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S3: THREE LAYERS — Editorial numbered blocks
+          ================================================ */}
+      <section id="framework" className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+              Understanding Business Privacy
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+              Three Layers of Business Privacy
+            </h2>
+            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
+              Genuine privacy isn&rsquo;t a single product — it&rsquo;s a
+              structure built from three complementary layers.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 space-y-0">
+            {LAYER_BLOCKS.map((layer, i) => (
+              <ScrollReveal key={layer.id}>
+                <div
+                  className={`grid gap-8 lg:grid-cols-[120px_1fr] py-10 ${i < LAYER_BLOCKS.length - 1 ? "border-b border-border" : ""}`}
+                >
+                  {/* Large editorial number */}
+                  <div className="hidden lg:block">
+                    <span className="font-mono text-[5rem] font-bold leading-none text-pillar-privacy/[0.12]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  {/* Content */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-3 lg:hidden">
+                      <span className="font-mono text-heading-lg font-bold text-pillar-privacy/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-heading-lg font-semibold text-foreground">
+                      {layer.title}
+                    </h3>
+                    <p className="mt-3 text-body text-muted leading-relaxed max-w-[600px]">
+                      {layer.summary}
+                    </p>
+                    {layer.keyDistinction && (
+                      <div className="mt-4 rounded-card bg-pillar-privacy/[0.04] border border-pillar-privacy/[0.12] px-5 py-4">
+                        <p className="text-body-sm font-semibold text-foreground mb-1">
+                          Key Distinction
+                        </p>
+                        <p className="text-body-sm text-muted leading-relaxed">
+                          {layer.keyDistinction}
+                        </p>
+                      </div>
+                    )}
+                    <Link
+                      href={layer.href}
+                      className="inline-flex items-center text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors mt-4"
+                    >
+                      {layer.linkText}
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Differentiator Callout */}
-          <aside className="mt-8 rounded-card border-t-4 border-t-pillar-privacy bg-pillar-privacy/5 p-6">
-            <p className="text-body font-medium text-foreground">
-              &ldquo;Year-round nominees, not &lsquo;nominee for a day&rsquo;
-              &mdash; your name never appears on any filing, at any time.&rdquo;
-            </p>
-            <p className="mt-2 text-body text-muted">
-              Most providers list a nominee only at formation, then remove them.
-              Every Incorporate123 Gold package keeps nominees on{" "}
-              <strong>all</strong> public filings, 365 days a year &mdash;
-              formation, annual reports, and amendments.
-            </p>
-          </aside>
-        </section>
+      {/* ================================================
+          S4: HOW IT WORKS — Keep existing (already good)
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="How It Works"
+              title="From Inquiry to Incorporated — Privately."
+              subtitle="Four steps. We handle the complexity. You get the privacy."
+              subtitleMaxWidth="max-w-narrow mx-auto"
+            />
 
-        {/* ------------------------------------------------
-            Section 4: Cluster Navigation Grid
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Explore Privacy Topics
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Deep-dive guides on every aspect of business privacy. Each covers a
-            specific strategy, state, or service.
-          </p>
-          <ClusterGrid
-            clusters={pillar.clusters.map((c) => ({
-              title: c.title,
-              href: c.href,
-              description: c.description ?? "",
-              pillar: "privacy" as const,
-            }))}
-            columns={3}
-          />
-        </section>
+            <div className="mt-12">
+              <HowItWorks steps={PROCESS_STEPS} />
+            </div>
 
-        {/* ------------------------------------------------
-            Section 5: Compare Your Options
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Compare Your Options
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Not sure which state is right for your privacy needs? These guides
-            break it down.
-          </p>
-          <ComparisonCards
-            comparisons={[
-              {
-                title: "Best State for Privacy",
-                description:
-                  "A ranked comparison of Wyoming, Nevada, and other states for business privacy. Which state offers the strongest anonymity protections?",
-                href: "/best-state-for-privacy",
-              },
-              {
-                title: "Wyoming vs Nevada for Privacy",
-                description:
-                  "Head-to-head: Wyoming and Nevada's privacy statutes, costs, nominee requirements, and annual obligations compared side by side.",
-                href: "/wyoming-vs-nevada-privacy",
-              },
-            ]}
-          />
-        </section>
+            <div className="mt-10 text-center">
+              <a href="#packages">
+                <Button variant="cta" size="md">
+                  See Privacy Packages &amp; Pricing
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 6: Package CTA Section
-            ------------------------------------------------ */}
-        <section id="packages">
-          <h2 className="text-heading font-display font-semibold text-foreground mb-2">
-            Privacy Packages — All-Inclusive, Nothing Hidden
-          </h2>
-          <p className="text-body text-muted mb-6">
-            Every Gold package includes year-round nominee services, offshore
-            nominees, offshore records custodian, registered agent, EIN filing,
-            operating agreement, and state fees. No surprise add-ons.
-          </p>
-          <DualPackageCTA
-            packages={[
-              {
-                name: wyGold.name,
-                price: `$${wyGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: wyGold.description,
-                badge: wyGold.badge,
-                highlighted: true,
-                href: "/gold?state=wyoming",
-              },
-              {
-                name: nvGold.name,
-                price: `$${nvGold.prices.llc.formation.toLocaleString()}`,
-                period: "one-time",
-                description: nvGold.description,
-                badge: nvGold.badge,
-                highlighted: true,
-                href: "/gold?state=nevada",
-              },
-            ]}
-            consultationCTA={{
-              label: "Not sure yet? Schedule a free consultation",
-              href: "/contact",
-              phone: "1-800-553-0615",
-            }}
-          />
-        </section>
+      {/* ================================================
+          S6: DIFFERENTIATORS — 1 featured + 5 grid (dark)
+          ================================================ */}
+      <section className="relative py-section-y-sm bg-primary overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="pointer-events-none absolute -right-60 top-20 h-[50vw] w-[50vw] rounded-full bg-secondary/[0.06] blur-[120px]" />
 
-        {/* ------------------------------------------------
-            Section 7: Cross-Pillar CTA
-            ------------------------------------------------ */}
-        <section>
-          <CrossPillarCTA
-            fromPillar="privacy"
-            toPillar="asset"
-            heading="Hiding Your Name Is Step One. Protecting Your Assets Is Step Two."
-            description="Most privacy-focused business owners also need asset protection. Charging order protection, holding structures, and multi-entity strategies prevent creditors from reaching your assets — even if they find them."
-            href="/asset-protection"
-          />
-        </section>
+        <div className="relative mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Why Incorporate123"
+              title="What Sets Our Privacy Services Apart"
+              dark
+            />
 
-        {/* ------------------------------------------------
-            Section 8: FAQ Accordion
-            ------------------------------------------------ */}
-        <section>
-          <h2 className="text-heading font-display font-semibold text-foreground mb-6">
-            Frequently Asked Questions
-          </h2>
-          <Accordion type="single" variant="default">
-            {privacyFaqs.map((faq) => (
-              <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
-                <p>{faq.answer}</p>
-              </AccordionItem>
+            {/* Featured differentiator — full width hero card */}
+            <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="p-8 lg:p-10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-secondary/20 mb-5">
+                    <Icon
+                      name="Calendar"
+                      size="lg"
+                      className="text-secondary"
+                    />
+                  </div>
+                  <h3 className="font-display text-heading-lg font-semibold text-white">
+                    Year-Round Nominees — Not &ldquo;Nominee for a Day&rdquo;
+                  </h3>
+                  <p className="mt-3 text-body text-white/75 leading-relaxed max-w-[440px]">
+                    Our nominees remain on your filings 365 days a year, every
+                    year. Most services substitute a nominee at formation, then
+                    replace them with your real name within weeks. That defeats
+                    the entire purpose of nominee protection.
+                  </p>
+                  <div className="mt-6 flex items-center gap-6">
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        365
+                      </p>
+                      <p className="text-caption text-white/70">days/year</p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        $0
+                      </p>
+                      <p className="text-caption text-white/70">extra cost</p>
+                    </div>
+                    <div className="h-10 w-px bg-white/[0.1]" />
+                    <div>
+                      <p className="font-mono text-heading font-bold text-white">
+                        All
+                      </p>
+                      <p className="text-caption text-white/70">
+                        filings covered
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden lg:flex items-center justify-center bg-white/[0.03] p-10">
+                  {/* VS comparison visual */}
+                  <div className="w-full max-w-[280px] space-y-4">
+                    <div className="rounded-card bg-red-500/[0.08] border border-red-400/[0.15] p-4">
+                      <p className="text-caption font-semibold text-red-400/80 uppercase tracking-wider mb-2">
+                        Others: &ldquo;Nominee for a Day&rdquo;
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-white/20"
+                          />{" "}
+                          Nominee at formation
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="X"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          Your name on annual reports
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                          <Icon
+                            name="X"
+                            size="xs"
+                            className="text-red-400/60"
+                          />{" "}
+                          Your name on amendments
+                        </div>
+                      </div>
+                    </div>
+                    <div className="rounded-card bg-success/[0.08] border border-success/[0.2] p-4">
+                      <p className="text-caption font-semibold text-success uppercase tracking-wider mb-2">
+                        Incorporate123: Year-Round
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Nominee at formation
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Nominee on annual reports
+                        </div>
+                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                          <Icon
+                            name="Check"
+                            size="xs"
+                            className="text-success"
+                          />{" "}
+                          Nominee on all amendments
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* 5 smaller differentiator cards */}
+          <ScrollReveal delay={150}>
+            <div className="mt-5 flex flex-wrap gap-5">
+              {DIFFERENTIATORS_SMALL.map((item) => (
+                <div
+                  key={item.title}
+                  className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-7 hover:-translate-y-1 transition-all duration-300 hover:bg-white/[0.08]"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-card bg-white/[0.08] border border-white/[0.12] mb-4">
+                    <Icon
+                      name={item.icon}
+                      size="md"
+                      className="text-secondary"
+                    />
+                  </div>
+                  <h3 className="font-display text-body font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-body-sm text-white/70 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          S7: SOCIAL PROOF STRIP
+          ================================================ */}
+      <section className="py-8 bg-surface border-y border-border">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              { icon: "Shield" as const, text: "25 Years Trusted" },
+              { icon: "Users" as const, text: "Dedicated Account Team" },
+              { icon: "Bitcoin" as const, text: "Crypto Accepted" },
+              { icon: "Phone" as const, text: "Talk to Real Humans" },
+              { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
+            ].map((badge) => (
+              <div
+                key={badge.text}
+                className="flex items-center gap-2 text-body-sm text-muted"
+              >
+                <Icon name={badge.icon} size="sm" className="text-secondary" />
+                {badge.text}
+              </div>
             ))}
-          </Accordion>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        {/* ------------------------------------------------
-            Section 9: Where to Go Next
-            ------------------------------------------------ */}
-        <WhereToGoNext
-          suggestions={[
-            {
-              title: "Compare Privacy by State",
-              description:
-                "See how Wyoming, Nevada, and other states stack up for business privacy protections.",
-              href: "/best-state-for-privacy",
-              pillar: "privacy",
-            },
-            {
-              title: "See Gold Package Details",
-              description:
-                "Full breakdown of what's included in Gold packages across all states.",
-              href: "/gold?state=wyoming",
-              pillar: "privacy",
-            },
-            {
-              title: "Explore Asset Protection",
-              description:
-                "Charging order protection, holding structures, and multi-entity strategies.",
-              href: "/asset-protection",
-              pillar: "asset",
-            },
-          ]}
-        />
+      {/* ================================================
+          S8: PACKAGES — Compare
+          ================================================ */}
+      <div id="packages">
+        <PackageComparison />
       </div>
-    </PillarLayout>
+
+      {/* ================================================
+          S9: FAQ — Left-aligned header for variety
+          ================================================ */}
+      <section className="py-section-y-sm bg-primary-50">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            {/* Left: Header (sticky) */}
+            <div className="lg:sticky lg:top-24">
+              <ScrollReveal>
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-foreground/70 mb-3">
+                  Frequently Asked Questions
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground">
+                  Privacy Questions Answered
+                </h2>
+                <p className="mt-3 text-body text-muted">
+                  Quick answers to the most common questions.
+                </p>
+                <div className="mt-6 hidden lg:block">
+                  <p className="text-body-sm text-muted">
+                    Still have questions?
+                  </p>
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-2"
+                  >
+                    <Icon name="Phone" size="sm" />
+                    Call 1-800-553-0615
+                  </a>
+                  <br />
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-1"
+                  >
+                    <Icon name="Mail" size="sm" />
+                    Send us a message
+                  </Link>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right: Accordion */}
+            <ScrollReveal delay={200}>
+              <Accordion type="single" variant="default">
+                {privacyFaqs.map((faq) => (
+                  <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
+                    <p>{faq.answer}</p>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          EXPLORE — Continue learning (after FAQ)
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[24ch]">
+              Continue Learning
+            </h2>
+            <p className="mt-2 text-body text-muted">
+              Guides, state comparisons, and service breakdowns.
+            </p>
+          </ScrollReveal>
+
+          {/* Services row — 3 featured cards */}
+          <ScrollReveal delay={100}>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+              {EXPLORE_SERVICES.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="!no-underline group block h-full"
+                >
+                  <div className="h-full rounded-card-lg border border-border bg-surface p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-card bg-secondary/[0.08] mb-4 group-hover:bg-secondary/[0.14] transition-colors">
+                      <Icon
+                        name={item.icon}
+                        size="md"
+                        className="text-secondary"
+                      />
+                    </div>
+                    <h3 className="font-display text-body-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-body-sm text-muted leading-relaxed">
+                      {item.desc}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-body-sm font-medium text-secondary group-hover:gap-2 transition-all">
+                      Read guide
+                      <Icon name="ArrowRight" size="xs" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* State guides + Comparisons — 2 columns */}
+          <ScrollReveal delay={200}>
+            <div className="mt-5 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5">
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  State Guides
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_STATES.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-center gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-secondary/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name={item.icon}
+                        size="sm"
+                        className="text-secondary shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted truncate">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-card-lg border border-border bg-surface p-6">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-muted mb-4">
+                  Compare Options
+                </p>
+                <div className="space-y-3">
+                  {EXPLORE_COMPARISONS.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="!no-underline group flex items-start gap-3 rounded-card px-3 py-2.5 -mx-3 hover:bg-secondary/[0.04] transition-colors"
+                    >
+                      <Icon
+                        name="ArrowLeftRight"
+                        size="sm"
+                        className="text-secondary shrink-0 mt-0.5"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-body-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                          {item.title}
+                        </p>
+                        <p className="text-caption text-muted">{item.desc}</p>
+                      </div>
+                      <Icon
+                        name="ChevronRight"
+                        size="xs"
+                        className="text-muted/40 shrink-0 mt-1 ml-auto group-hover:text-secondary transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          CROSS-PILLAR BRIDGE
+          ================================================ */}
+      <section className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <ScrollReveal>
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3 text-center">
+              Related Services
+            </p>
+            <h2 className="font-display type-display-sm font-semibold text-foreground text-center">
+              Privacy Is the First Layer. What Else?
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto items-stretch">
+              <CrossPillarCTA
+                fromPillar="privacy"
+                toPillar="asset"
+                heading="Protect Your Assets, Not Just Your Identity"
+                description="Privacy controls who can see your ownership. Asset protection controls what happens in a lawsuit. Most high-value clients combine both."
+                href="/asset-protection"
+                className="h-full"
+              />
+              <CrossPillarCTA
+                fromPillar="privacy"
+                toPillar="compliance"
+                heading="Already Have an Entity? We Handle Compliance."
+                description="Registered agent, annual reports, corporate minutes. Keep your entity in good standing without the paperwork."
+                href="/compliance"
+                className="h-full"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ================================================
+          FINAL CTA — confident close, distinct from hero
+          ================================================ */}
+      <section className="bg-primary border-t border-white/[0.06]">
+        <div className="mx-auto max-w-content px-container-x py-section-y-sm">
+          <ScrollReveal>
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
+              {/* Left: Statement */}
+              <div>
+                <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
+                  Your name never has to appear in public records.
+                </h2>
+                <p className="mt-4 text-body text-white/75 max-w-[440px]">
+                  Wyoming Gold starts at $1,275 — formation, nominees, offshore
+                  records, registered agent, all included. No hidden fees. No
+                  annual surprises.
+                </p>
+              </div>
+
+              {/* Right: Actions — stacked for clarity */}
+              <div className="flex flex-col gap-3">
+                <Link href="/compare-packages" className="!no-underline">
+                  <Button
+                    variant="cta"
+                    size="lg"
+                    className="w-full justify-center"
+                  >
+                    Choose Your Privacy Package
+                  </Button>
+                </Link>
+                <Link href="/contact" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full justify-center border-white/20 text-white hover:bg-white/10"
+                  >
+                    Schedule a Consultation
+                  </Button>
+                </Link>
+                <p className="mt-1 text-center text-body-sm text-white/70">
+                  Or call{" "}
+                  <a
+                    href="tel:1-800-553-0615"
+                    className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+                  >
+                    1-800-553-0615
+                  </a>
+                  {" — real humans, real answers."}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </div>
   );
 }
 
-/* ------------------------------------------------
-   Service descriptions (mapped to pillar.services)
-   ------------------------------------------------ */
-const serviceDescriptions = [
-  "Form an LLC where your name never appears on any publicly searchable state filing. The complete guide to anonymous ownership structures.",
-  "Your nominee serves 365 days a year, every year. Not 'nominee for a day' at formation — continuous privacy protection on every public filing.",
-  "Corporate records maintained by our offshore records custodian, outside U.S. jurisdiction. Not accessible through domestic subpoena processes.",
-  "Privacy-first formation available in Wyoming, Nevada, California, and Florida with nominee structures and foreign registration.",
+/* ================================================
+   Static data
+   ================================================ */
+
+const THREAT_CARDS = [
+  {
+    icon: "ShieldOff" as const,
+    title: "Lawsuit Targeting",
+    desc: "Attorneys search business registries to identify owners with assets worth pursuing. Visible ownership makes you a target.",
+  },
+  {
+    icon: "Eye" as const,
+    title: "Competitive Exposure",
+    desc: "Competitors can see every entity you own, trace your business relationships, and map your operations — all from public filings.",
+  },
+  {
+    icon: "UserSearch" as const,
+    title: "Personal Safety",
+    desc: "Real estate holdings, investment LLCs, and business interests tied to your name create a traceable map of your net worth and address.",
+  },
+  {
+    icon: "FileSearch" as const,
+    title: "Identity & Fraud Risk",
+    desc: "Public records link your full legal name to entity filings, registered agent addresses, and sometimes even your home address.",
+  },
+];
+
+const LAYER_BLOCKS = [
+  {
+    id: "ownership",
+    title: "Ownership Privacy",
+    summary:
+      "Removes your name from public entity filings by substituting nominees — appointed individuals whose names appear on state records instead of yours.",
+    keyDistinction:
+      'Most competitors offer "nominee for a day" — a nominee signs formation documents, then is immediately replaced by you. Year-round nominee services maintain the nominee on all filings, all year, every year.',
+    href: "/nominee-services",
+    linkText: "How nominee services work →",
+  },
+  {
+    id: "records",
+    title: "Records Privacy",
+    summary:
+      "Keeps corporate records — minutes, resolutions, operating agreements — outside the reach of domestic subpoenas by storing them with an offshore custodian.",
+    keyDistinction:
+      "Corporate records are frequently targeted in litigation discovery. Domestic storage means domestic court orders can compel production. Offshore custodian storage adds a jurisdictional barrier that raises the cost and complexity of forced disclosure.",
+    href: "/offshore-privacy",
+    linkText: "Offshore records storage explained →",
+  },
+  {
+    id: "structural",
+    title: "Structural Privacy",
+    summary:
+      "Uses the right entity type in the right state to maximize statutory privacy protections. Wyoming does not require disclosure of members or managers. Nevada offers strong charging order protection plus a dedicated business court.",
+    keyDistinction:
+      "California and Florida require public disclosure on entity filings. The solution: form in Wyoming or Nevada for privacy, then foreign register in your operating state. Privacy protections remain intact.",
+    href: "/wyoming-vs-nevada-privacy",
+    linkText: "Compare Wyoming vs. Nevada →",
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    number: 1,
+    title: "Choose Your State & Package",
+    description:
+      "Select Wyoming or Nevada based on your privacy goals. Gold includes full privacy; Silver provides formation without nominees.",
+    tag: "Privacy",
+    color: "blue" as const,
+  },
+  {
+    number: 2,
+    title: "We File With Nominees in Place",
+    description:
+      "Our team files your entity with nominees on all public documents. Your name never appears in the state filing.",
+    tag: "Formation",
+    color: "amber" as const,
+  },
+  {
+    number: 3,
+    title: "Records Stored Offshore",
+    description:
+      "Operating agreement, minutes, membership certificates transferred to our offshore custodian. Not accessible through domestic subpoena.",
+    tag: "Records",
+    color: "green" as const,
+  },
+  {
+    number: 4,
+    title: "Ongoing Compliance, Handled",
+    description:
+      "Annual reports, registered agent, nominee renewals — all included in your renewal. No surprise fees.",
+    tag: "Compliance",
+    color: "purple" as const,
+  },
+];
+
+const DIFFERENTIATORS_SMALL = [
+  {
+    icon: "Globe" as const,
+    title: "Offshore Records Custodian",
+    desc: "Corporate records stored outside U.S. jurisdiction since 2012. No other domestic incorporation company offers this.",
+  },
+  {
+    icon: "DollarSign" as const,
+    title: "All-Inclusive Pricing",
+    desc: "$1,275 includes everything. Competitors charge $400–$5,000/yr for nominees alone.",
+  },
+  {
+    icon: "Clock" as const,
+    title: "25 Years Specialized",
+    desc: "Privacy and asset protection since 2000. Not a general filing service.",
+  },
+  {
+    icon: "Bitcoin" as const,
+    title: "Crypto Payments",
+    desc: "Bitcoin, Ethereum, XRP, Litecoin, Monero. Privacy from the first transaction.",
+  },
+  {
+    icon: "Headphones" as const,
+    title: "Real People. Real Answers.",
+    desc: "Talk to a privacy specialist who knows your case — not a call center. Call anytime.",
+  },
+];
+
+const EXPLORE_SERVICES = [
+  {
+    icon: "UserX" as const,
+    title: "Anonymous LLC Formation",
+    desc: "Form an LLC with no public ties to your name. Nominees appear on all state filings from day one.",
+    href: "/anonymous-llc",
+  },
+  {
+    icon: "Users" as const,
+    title: "Nominee Services",
+    desc: "Year-round nominee directors and officers listed on all public records — not just at formation.",
+    href: "/nominee-services",
+  },
+  {
+    icon: "Globe" as const,
+    title: "Offshore Privacy",
+    desc: "Corporate records stored outside U.S. jurisdiction. Not reachable by domestic subpoena.",
+    href: "/offshore-privacy",
+  },
+];
+
+const EXPLORE_STATES = [
+  {
+    icon: "MapPin" as const,
+    title: "Wyoming Privacy",
+    desc: "Strongest statutory privacy — no public member disclosure",
+    href: "/wyoming-privacy",
+  },
+  {
+    icon: "MapPin" as const,
+    title: "Nevada Privacy",
+    desc: "Dedicated business court + charging order protections",
+    href: "/nevada-privacy",
+  },
+  {
+    icon: "Building" as const,
+    title: "Private Incorporation",
+    desc: "Privacy-first formation in WY, NV, CA, and FL",
+    href: "/private-incorporation",
+  },
+  {
+    icon: "Building2" as const,
+    title: "Anonymous Corporation",
+    desc: "Corporate structure with full nominee protections",
+    href: "/anonymous-corporation",
+  },
+];
+
+const EXPLORE_COMPARISONS = [
+  {
+    title: "Best State for Business Privacy",
+    desc: "Side-by-side comparison of Wyoming, Nevada, and other states for LLC anonymity.",
+    href: "/best-state-for-privacy",
+  },
+  {
+    title: "Wyoming vs. Nevada for Privacy",
+    desc: "Head-to-head: privacy statutes, costs, and nominee requirements compared.",
+    href: "/wyoming-vs-nevada-privacy",
+  },
 ];

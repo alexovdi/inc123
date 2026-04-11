@@ -123,6 +123,8 @@ export const stateHubs: StateHub[] = [
     contentMap: {
       privacy: [
         { title: "Anonymous LLC", href: "/anonymous-llc" },
+        { title: "Anonymous Corporation", href: "/anonymous-corporation" },
+        { title: "Wyoming Privacy", href: "/wyoming-privacy" },
         { title: "Nominee Services", href: "/nominee-services" },
         { title: "Private Incorporation", href: "/private-incorporation" },
         { title: "Offshore Privacy", href: "/offshore-privacy" },
@@ -140,12 +142,16 @@ export const stateHubs: StateHub[] = [
         { title: "Wyoming LLC", href: "/wyoming-llc" },
         { title: "Wyoming Corporation", href: "/wyoming-corporation" },
         { title: "Shelf Companies", href: "/shelf-companies" },
+        { title: "Series LLC", href: "/series-llc" },
+        { title: "Entity Tax Guide", href: "/entity-tax-guide" },
       ],
       compliance: [
+        { title: "WY Registered Agent", href: "/wyoming-registered-agent" },
         { title: "Registered Agent", href: "/registered-agent" },
         { title: "Annual Reports", href: "/annual-reports" },
         { title: "Corporate Minutes", href: "/corporate-minutes" },
         { title: "Virtual Office", href: "/virtual-office" },
+        { title: "Domestication", href: "/domestication" },
       ],
     },
     packages: ["wyoming-gold", "wyoming-silver"],
@@ -169,6 +175,27 @@ export const stateHubs: StateHub[] = [
         question: "Do I need to live in Wyoming?",
         answer:
           "No. You can form a Wyoming LLC regardless of where you live. If your LLC does business in your home state, you may need to foreign register there ($149 add-on).",
+        category: "formation",
+      },
+      {
+        id: "wy-faq-4",
+        question: "What are Wyoming's annual requirements?",
+        answer:
+          "Wyoming requires an annual report filing ($62 for LLCs, $62 for corporations) and maintenance of a registered agent with a physical Wyoming address. Both are included in our package renewals. There is no franchise tax or state income tax.",
+        category: "compliance",
+      },
+      {
+        id: "wy-faq-5",
+        question: "How long does Wyoming LLC formation take?",
+        answer:
+          "Standard formation takes 5-7 business days. Expedited 24-hour filing is available as an add-on ($150). Once filed, you receive your Articles of Organization, EIN, operating agreement, and corporate record book.",
+        category: "formation",
+      },
+      {
+        id: "wy-faq-6",
+        question: "Can I operate in other states with a Wyoming LLC?",
+        answer:
+          "Yes. You can operate nationwide. If your LLC conducts business in another state, you may need to foreign register there. We offer foreign state registration as an add-on and handle all the filings.",
         category: "formation",
       },
     ],
@@ -294,6 +321,8 @@ export const stateHubs: StateHub[] = [
     contentMap: {
       privacy: [
         { title: "Anonymous LLC", href: "/anonymous-llc" },
+        { title: "Anonymous Corporation", href: "/anonymous-corporation" },
+        { title: "Nevada Privacy", href: "/nevada-privacy" },
         { title: "Nominee Services", href: "/nominee-services" },
         { title: "Private Incorporation", href: "/private-incorporation" },
         { title: "Offshore Privacy", href: "/offshore-privacy" },
@@ -304,17 +333,22 @@ export const stateHubs: StateHub[] = [
           title: "Charging Order Protection",
           href: "/charging-order-protection",
         },
+        { title: "Investment Holding LLC", href: "/investment-holding-llc" },
         { title: "Real Estate AP", href: "/real-estate" },
       ],
       formation: [
         { title: "Nevada LLC", href: "/nevada-llc" },
         { title: "Nevada Corporation", href: "/nevada-corporation" },
+        { title: "Shelf Companies", href: "/shelf-companies" },
+        { title: "Entity Tax Guide", href: "/entity-tax-guide" },
       ],
       compliance: [
+        { title: "NV Registered Agent", href: "/nevada-registered-agent" },
         { title: "Registered Agent", href: "/registered-agent" },
         { title: "Annual Reports", href: "/annual-reports" },
         { title: "Corporate Minutes", href: "/corporate-minutes" },
         { title: "Virtual Office", href: "/virtual-office" },
+        { title: "Domestication", href: "/domestication" },
       ],
     },
     packages: ["nevada-gold", "nevada-silver", "nevada-bronze"],
@@ -338,6 +372,27 @@ export const stateHubs: StateHub[] = [
         question: "Does Nevada have a business license requirement?",
         answer:
           "Yes. All Nevada entities must obtain and maintain a state business license ($200/year). This is included in all our Nevada packages.",
+        category: "compliance",
+      },
+      {
+        id: "nv-faq-4",
+        question: "How long does Nevada LLC formation take?",
+        answer:
+          "Standard formation takes 5-10 business days. Same-day expedited filing is available because our office is near the Nevada Secretary of State — we hand-deliver documents. Expedited filing is $150.",
+        category: "formation",
+      },
+      {
+        id: "nv-faq-5",
+        question: "Do I need to live in Nevada to form an entity there?",
+        answer:
+          "No. You can form a Nevada entity from anywhere. If you operate in your home state, you may need to foreign register there. Nevada is most cost-effective if you actually have a physical presence in the state.",
+        category: "formation",
+      },
+      {
+        id: "nv-faq-6",
+        question: "Does Nevada have a franchise tax?",
+        answer:
+          "Nevada has no corporate income tax and no franchise tax. However, there is a Commerce Tax for businesses with over $4 million in Nevada gross revenue. Most small businesses fall well below this threshold.",
         category: "compliance",
       },
     ],
@@ -461,6 +516,8 @@ export const stateHubs: StateHub[] = [
         { title: "Anonymous LLC", href: "/anonymous-llc" },
         { title: "Private Incorporation", href: "/private-incorporation" },
         { title: "Nominee Services", href: "/nominee-services" },
+        { title: "Wyoming Privacy", href: "/wyoming-privacy" },
+        { title: "Offshore Privacy", href: "/offshore-privacy" },
       ],
       asset: [
         {
@@ -468,14 +525,19 @@ export const stateHubs: StateHub[] = [
           href: "/charging-order-protection",
         },
         { title: "Real Estate AP", href: "/real-estate" },
+        { title: "Investment Holding LLC", href: "/investment-holding-llc" },
       ],
       formation: [
         { title: "Wyoming LLC", href: "/wyoming-llc" },
         { title: "Nevada LLC", href: "/nevada-llc" },
+        { title: "LLC vs Corporation", href: "/llc-vs-corporation" },
+        { title: "Entity Tax Guide", href: "/entity-tax-guide" },
       ],
       compliance: [
         { title: "Registered Agent", href: "/registered-agent" },
         { title: "Foreign Registration", href: "/foreign-registration" },
+        { title: "Annual Reports", href: "/annual-reports" },
+        { title: "Tax Obligations", href: "/tax-obligations" },
       ],
     },
     packages: ["california-private"],
@@ -492,6 +554,34 @@ export const stateHubs: StateHub[] = [
         question: "What is the $800 California franchise tax?",
         answer:
           "All LLCs doing business in California (including foreign-registered LLCs) must pay an $800/year minimum franchise tax to the California Franchise Tax Board. This is a state requirement we help you comply with.",
+        category: "compliance",
+      },
+      {
+        id: "ca-faq-3",
+        question: "Why not just form a California LLC directly?",
+        answer:
+          "California requires public disclosure of managers and members on the Statement of Information. By forming in Wyoming with nominees and then foreign registering in California, your personal identity stays off all public filings while remaining fully compliant in California.",
+        category: "privacy",
+      },
+      {
+        id: "ca-faq-4",
+        question: "What is California foreign registration and do I need it?",
+        answer:
+          "If your business operates in California (has employees, an office, or regularly transacts business there), you must file a foreign registration with the California Secretary of State. This lets your Wyoming or Nevada entity legally operate in California. We handle the entire filing.",
+        category: "compliance",
+      },
+      {
+        id: "ca-faq-5",
+        question: "What does the California Private LLC package include?",
+        answer:
+          "Our California Private LLC ($1,475) includes: Wyoming formation with nominees, California foreign registration, registered agent in both states, EIN, operating agreement, corporate records, offshore record storage, and first-year compliance in both states.",
+        category: "packages",
+      },
+      {
+        id: "ca-faq-6",
+        question: "What are the annual costs for a California Private LLC?",
+        answer:
+          "Annual renewal is $525 for the Wyoming entity (includes nominees and registered agent) plus the $800 California franchise tax. We handle both renewals. Total ongoing cost is approximately $1,325/year all-inclusive.",
         category: "compliance",
       },
     ],
@@ -615,6 +705,8 @@ export const stateHubs: StateHub[] = [
         { title: "Anonymous LLC", href: "/anonymous-llc" },
         { title: "Private Incorporation", href: "/private-incorporation" },
         { title: "Nominee Services", href: "/nominee-services" },
+        { title: "Wyoming Privacy", href: "/wyoming-privacy" },
+        { title: "Offshore Privacy", href: "/offshore-privacy" },
       ],
       asset: [
         {
@@ -622,14 +714,19 @@ export const stateHubs: StateHub[] = [
           href: "/charging-order-protection",
         },
         { title: "Real Estate AP", href: "/real-estate" },
+        { title: "Investment Holding LLC", href: "/investment-holding-llc" },
       ],
       formation: [
         { title: "Wyoming LLC", href: "/wyoming-llc" },
         { title: "Nevada LLC", href: "/nevada-llc" },
+        { title: "LLC vs Corporation", href: "/llc-vs-corporation" },
+        { title: "Entity Tax Guide", href: "/entity-tax-guide" },
       ],
       compliance: [
         { title: "Registered Agent", href: "/registered-agent" },
         { title: "Foreign Registration", href: "/foreign-registration" },
+        { title: "Annual Reports", href: "/annual-reports" },
+        { title: "Tax Obligations", href: "/tax-obligations" },
       ],
     },
     packages: ["florida-private"],
@@ -646,6 +743,34 @@ export const stateHubs: StateHub[] = [
         question: "What are Florida's annual costs?",
         answer:
           "Florida charges $138.75 for the annual report filing. Combined with your formation state's annual fees, our Florida Private LLC renewal is $525/year all-inclusive.",
+        category: "compliance",
+      },
+      {
+        id: "fl-faq-3",
+        question: "Why not just form directly in Florida?",
+        answer:
+          "Florida requires public disclosure of managers and members on annual report filings. By forming in Wyoming with nominees and then foreign registering in Florida, your personal identity stays off all public records while remaining fully compliant.",
+        category: "privacy",
+      },
+      {
+        id: "fl-faq-4",
+        question: "What does the Florida Private LLC package include?",
+        answer:
+          "Our Florida Private LLC ($1,475) includes: Wyoming formation with year-round nominees, Florida foreign registration, registered agent in both states, EIN, operating agreement, corporate records, offshore record storage, and first-year compliance.",
+        category: "packages",
+      },
+      {
+        id: "fl-faq-5",
+        question: "Do I need Florida foreign registration?",
+        answer:
+          "If your business operates in Florida (has employees, an office, or regularly transacts business there), yes. We handle the entire foreign registration filing. If you only hold assets in Florida without active business operations, foreign registration may not be required — contact us to discuss your situation.",
+        category: "compliance",
+      },
+      {
+        id: "fl-faq-6",
+        question: "Is there a Florida franchise tax?",
+        answer:
+          "Florida imposes a corporate income tax (5.5%) on C-Corporations with income over $50,000, but LLCs taxed as partnerships or sole proprietorships are not subject to it. Florida has no personal income tax. Our team helps you understand the tax implications for your specific entity type.",
         category: "compliance",
       },
     ],
