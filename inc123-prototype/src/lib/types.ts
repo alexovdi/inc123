@@ -192,12 +192,55 @@ export interface HomepageData {
 }
 
 /** Cluster Pages */
+export type ClusterSectionType =
+  | "text"
+  | "comparison"
+  | "audience"
+  | "differentiator"
+  | "pricing";
+
+export interface ClusterComparisonRow {
+  label: string;
+  wyoming: string;
+  nevada: string;
+  highlight?: boolean;
+}
+
+export interface ClusterPricingRow {
+  label: string;
+  price: string;
+  note?: string;
+  highlight?: boolean;
+}
+
 export interface ClusterSection {
   id: string;
-  type: "text" | "comparison" | "audience" | "differentiator";
+  type: ClusterSectionType;
   title: string;
   content: string;
+  /** Optional extra detail shown behind a "Read more" toggle */
+  extendedContent?: string;
+  /** Optional bullet list rendered under the paragraph */
+  bullets?: string[];
+  /** Optional key-point callout boxes rendered after the bullets */
+  keyPoints?: Array<{ title: string; description: string; icon?: string }>;
+  /** Audience / differentiator cards */
   items?: Array<{ title: string; description: string; icon?: string }>;
+  /** Wyoming vs Nevada comparison rows (comparison type) */
+  comparisonRows?: ClusterComparisonRow[];
+  /** Pricing breakdown rows (pricing type) */
+  pricingRows?: ClusterPricingRow[];
+  /** Footer note under a pricing table */
+  pricingNote?: string;
+}
+
+export interface ClusterPullQuote {
+  /** The main statement */
+  quote: string;
+  /** Optional attribution line */
+  attribution?: string;
+  /** Optional large decorative background text */
+  bgText?: string;
 }
 
 export interface ClusterContent {
@@ -206,11 +249,16 @@ export interface ClusterContent {
   pillarLabel: string;
   title: string;
   description: string;
-  readingTime: string;
+  /** Optional override — computed from content when omitted */
+  readingTime?: string;
   sections: ClusterSection[];
   faqs: FAQItem[];
   sidebarLinks: Array<{ title: string; href: string }>;
   relatedPackages: string[];
+  /** Optional pull quote rendered between content sections */
+  pullQuote?: ClusterPullQuote;
+  /** Optional custom WhereToGoNext suggestions */
+  suggestions?: Array<{ title: string; description: string; href: string }>;
   crossPillarCTA?: {
     pillar: PillarName;
     title: string;

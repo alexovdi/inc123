@@ -136,7 +136,7 @@ export const stateHubs: StateHub[] = [
         },
         { title: "Wyoming AP", href: "/wyoming-asset-protection" },
         { title: "Investment Holding LLC", href: "/investment-holding-llc" },
-        { title: "Real Estate AP", href: "/real-estate" },
+        { title: "Real Estate AP", href: "/real-estate-asset-protection" },
       ],
       formation: [
         { title: "Wyoming LLC", href: "/wyoming-llc" },
@@ -282,7 +282,7 @@ export const stateHubs: StateHub[] = [
             label: "Charging Order Protection",
             href: "/charging-order-protection",
           },
-          { label: "Real Estate AP", href: "/real-estate" },
+          { label: "Real Estate AP", href: "/real-estate-asset-protection" },
         ],
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
         packageLink: {
@@ -334,7 +334,7 @@ export const stateHubs: StateHub[] = [
           href: "/charging-order-protection",
         },
         { title: "Investment Holding LLC", href: "/investment-holding-llc" },
-        { title: "Real Estate AP", href: "/real-estate" },
+        { title: "Real Estate AP", href: "/real-estate-asset-protection" },
       ],
       formation: [
         { title: "Nevada LLC", href: "/nevada-llc" },
@@ -474,7 +474,7 @@ export const stateHubs: StateHub[] = [
             label: "Charging Order Protection",
             href: "/charging-order-protection",
           },
-          { label: "Real Estate AP", href: "/real-estate" },
+          { label: "Real Estate AP", href: "/real-estate-asset-protection" },
           { label: "Investment Holding LLC", href: "/investment-holding-llc" },
         ],
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
@@ -524,7 +524,7 @@ export const stateHubs: StateHub[] = [
           title: "Charging Order Protection",
           href: "/charging-order-protection",
         },
-        { title: "Real Estate AP", href: "/real-estate" },
+        { title: "Real Estate AP", href: "/real-estate-asset-protection" },
         { title: "Investment Holding LLC", href: "/investment-holding-llc" },
       ],
       formation: [
@@ -663,7 +663,7 @@ export const stateHubs: StateHub[] = [
             label: "Charging Order Protection",
             href: "/charging-order-protection",
           },
-          { label: "Real Estate AP", href: "/real-estate" },
+          { label: "Real Estate AP", href: "/real-estate-asset-protection" },
           { label: "Investment Holding LLC", href: "/investment-holding-llc" },
         ],
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
@@ -713,7 +713,7 @@ export const stateHubs: StateHub[] = [
           title: "Charging Order Protection",
           href: "/charging-order-protection",
         },
-        { title: "Real Estate AP", href: "/real-estate" },
+        { title: "Real Estate AP", href: "/real-estate-asset-protection" },
         { title: "Investment Holding LLC", href: "/investment-holding-llc" },
       ],
       formation: [

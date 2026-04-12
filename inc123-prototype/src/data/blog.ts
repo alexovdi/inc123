@@ -23,7 +23,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "year-round-vs-day-of-nominee-services",
-    title: "Year-Round vs. Day-Of Nominee Services: What's the Real Difference?",
+    title:
+      "Year-Round vs. Day-Of Nominee Services: What's the Real Difference?",
     excerpt:
       "Most formation companies swap out nominees after filing day, leaving your name on the next annual report. We explain why year-round nominee coverage is the only way to maintain genuine privacy — and what to watch out for.",
     category: "privacy",
@@ -63,7 +64,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Asset Protection",
     date: "2025-09-05",
     readTime: "6 min read",
-    href: "/real-estate",
+    href: "/real-estate-asset-protection",
   },
   {
     slug: "shelf-companies-explained",

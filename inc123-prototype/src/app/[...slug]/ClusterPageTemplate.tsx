@@ -2,21 +2,37 @@ import { Link as RouterLink } from "react-router-dom";
 
 import { ClusterLayout } from "@/design-system/layouts/ClusterLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { Badge } from "@/design-system/primitives/Badge";
 import { ClusterHero } from "@/design-system/components/ClusterHero";
 import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
 import { GrainOverlay } from "@/design-system/components/GrainOverlay";
+import { InlineCTAStrip } from "@/design-system/components/InlineCTAStrip";
 import { LongFormContent } from "@/design-system/components/LongFormContent";
+import { PullQuote } from "@/design-system/components/PullQuote";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { Link } from "@/design-system/primitives/Link";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
+import { pillarTextMap } from "@/design-system/utils/pillarMaps";
 import { packages } from "@/data/packages";
+import {
+  ASSET_TESTIMONIAL,
+  ASSET_TRUST_BADGES,
+  COMPLIANCE_TESTIMONIAL,
+  COMPLIANCE_TRUST_BADGES,
+  FORMATION_TESTIMONIAL,
+  FORMATION_TRUST_BADGES,
+  PRIVACY_TESTIMONIAL,
+  PRIVACY_TRUST_BADGES,
+} from "@/data/pillar-social-proof";
 import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
+import { resolveReadingTime } from "@/lib/reading-time";
 import type { ClusterContent } from "@/lib/types";
 import type { PillarName } from "@/design-system/tokens";
 
@@ -25,40 +41,103 @@ import type { PillarName } from "@/design-system/tokens";
    ------------------------------------------------ */
 const pillarConfig: Record<
   string,
-  { label: string; href: string; suggestionContext: string }
+  { label: string; href: string; suggestionContext: string; accent: string }
 > = {
   privacy: {
     label: "Business Privacy",
     href: "/privacy",
     suggestionContext: "your privacy strategy",
+    accent: "text-pillar-privacy",
   },
   asset: {
     label: "Asset Protection",
     href: "/asset-protection",
     suggestionContext: "your asset protection strategy",
+    accent: "text-pillar-asset",
   },
   formation: {
     label: "Company Formation",
     href: "/formation",
     suggestionContext: "your formation needs",
+    accent: "text-pillar-formation",
   },
   compliance: {
     label: "Compliance",
     href: "/compliance",
     suggestionContext: "keeping your entity in good standing",
+    accent: "text-pillar-compliance",
   },
 };
 
 /* ------------------------------------------------
-   Trust signals data
+   Pillar → social proof data
    ------------------------------------------------ */
-const TRUST_SIGNALS = [
-  { icon: "Shield" as const, text: "25 Years Trusted" },
-  { icon: "Users" as const, text: "Dedicated Account Team" },
-  { icon: "Bitcoin" as const, text: "Crypto Accepted" },
-  { icon: "Phone" as const, text: "Talk to Real Humans" },
-  { icon: "RefreshCcw" as const, text: "30-Day Money Back" },
-];
+const pillarSocialProof: Record<
+  PillarName,
+  {
+    badges: typeof PRIVACY_TRUST_BADGES;
+    testimonial: typeof PRIVACY_TESTIMONIAL;
+    accent: string;
+  }
+> = {
+  privacy: {
+    badges: PRIVACY_TRUST_BADGES,
+    testimonial: PRIVACY_TESTIMONIAL,
+    accent: "text-pillar-privacy",
+  },
+  asset: {
+    badges: ASSET_TRUST_BADGES,
+    testimonial: ASSET_TESTIMONIAL,
+    accent: "text-pillar-asset",
+  },
+  formation: {
+    badges: FORMATION_TRUST_BADGES,
+    testimonial: FORMATION_TESTIMONIAL,
+    accent: "text-pillar-formation",
+  },
+  compliance: {
+    badges: COMPLIANCE_TRUST_BADGES,
+    testimonial: COMPLIANCE_TESTIMONIAL,
+    accent: "text-pillar-compliance",
+  },
+};
+
+/* ------------------------------------------------
+   Default cross-pillar CTAs — every cluster gets one
+   ------------------------------------------------ */
+const defaultCrossPillar: Record<
+  PillarName,
+  { pillar: PillarName; title: string; description: string; href: string }
+> = {
+  privacy: {
+    pillar: "asset",
+    title: "Privacy Is the First Layer — Asset Protection Is the Second",
+    description:
+      "Privacy hides your assets. Asset protection keeps them out of reach even when they're found. Most clients need both.",
+    href: "/asset-protection",
+  },
+  asset: {
+    pillar: "privacy",
+    title: "Protect What People Can't Find",
+    description:
+      "Asset protection is stronger when paired with privacy. Anonymous LLCs and nominee services stop disputes before they start.",
+    href: "/privacy",
+  },
+  formation: {
+    pillar: "compliance",
+    title: "Formation Is Day One. Compliance Is Every Year After.",
+    description:
+      "Once your entity exists, annual reports, registered agent renewals, and corporate records begin. We handle all of it.",
+    href: "/compliance",
+  },
+  compliance: {
+    pillar: "formation",
+    title: "Still Choosing an Entity Structure?",
+    description:
+      "Compliance starts with the right foundation. See how Wyoming and Nevada compare and which entity fits your situation.",
+    href: "/formation",
+  },
+};
 
 /* ------------------------------------------------
    Component
@@ -72,29 +151,55 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
     label: cluster.pillarLabel,
     href: `/${cluster.pillar}`,
     suggestionContext: "your business needs",
+    accent: "text-secondary",
   };
 
   /* Resolve related packages */
   const relatedPkgs = cluster.relatedPackages
     .map((id) => packages.find((p) => p.id === id))
-    .filter(Boolean);
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-  const goldPackages = relatedPkgs.filter((p) => p!.tier === "gold");
+  const goldPackages = relatedPkgs.filter((p) => p.tier === "gold");
+  const primaryPkg = goldPackages[0] ?? relatedPkgs[0];
   const dualPkgs = goldPackages.slice(0, 2);
+  const hasDual = dualPkgs.length >= 2;
 
-  /* Build sidebar related pages */
-  const sidebarRelatedPages = cluster.sidebarLinks.map((link) => ({
-    title: link.title,
-    href: link.href,
-  }));
+  /* Reading time — computed if not explicitly set */
+  const readingTime = resolveReadingTime(cluster);
 
-  /* Build suggestions */
-  const suggestions = cluster.sidebarLinks.slice(0, 3).map((link) => ({
-    title: link.title,
-    description: `Learn more about ${link.title.toLowerCase()} and how it relates to ${config.suggestionContext}.`,
-    href: link.href,
-    pillar: cluster.pillar as PillarName,
-  }));
+  /* Build sidebar related pages with current-page highlight */
+  const currentPath = `/${cluster.slug}`;
+  const sidebarHasCurrent = cluster.sidebarLinks.some(
+    (l) => l.href === currentPath,
+  );
+  const sidebarRelatedPages = [
+    ...(sidebarHasCurrent
+      ? []
+      : [{ title: cluster.title, href: currentPath, current: true }]),
+    ...cluster.sidebarLinks.map((link) => ({
+      title: link.title,
+      href: link.href,
+      current: link.href === currentPath,
+    })),
+  ];
+
+  /* Build suggestions — custom or generated */
+  const suggestions = (
+    cluster.suggestions?.length
+      ? cluster.suggestions
+      : cluster.sidebarLinks.slice(0, 3).map((link) => ({
+          title: link.title,
+          description: `Related ${config.label.toLowerCase()} guide — dive deeper into ${link.title.toLowerCase()}.`,
+          href: link.href,
+        }))
+  ).map((s) => ({ ...s, pillar: cluster.pillar as PillarName }));
+
+  /* Cross-pillar CTA — explicit or default */
+  const crossPillarCTA =
+    cluster.crossPillarCTA ?? defaultCrossPillar[cluster.pillar];
+
+  /* Social proof data for this pillar */
+  const socialProof = pillarSocialProof[cluster.pillar];
 
   return (
     <>
@@ -114,30 +219,33 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
             pillarHref={config.href}
             title={cluster.title}
             description={cluster.description}
-            readingTime={cluster.readingTime}
+            readingTime={readingTime}
           />
         }
         sidebar={
           <ContentSidebar
             variant="cluster"
             packageShortcut={
-              goldPackages[0]
+              primaryPkg
                 ? {
-                    name: "Gold Package",
-                    price: `$${goldPackages[0].prices.llc.formation.toLocaleString()}`,
+                    name:
+                      primaryPkg.tier === "gold"
+                        ? "Gold Package"
+                        : primaryPkg.name,
+                    price: `$${primaryPkg.prices.llc.formation.toLocaleString()}`,
                     period: "one-time",
-                    href: resolveLegacyPackageToTierUrl(goldPackages[0].id),
-                    badge: goldPackages[0].badge,
+                    href: resolveLegacyPackageToTierUrl(primaryPkg.id),
+                    badge: primaryPkg.badge,
                   }
                 : undefined
             }
             relatedPages={sidebarRelatedPages}
             crossPillarLink={
-              cluster.crossPillarCTA
+              crossPillarCTA
                 ? {
-                    pillar: cluster.crossPillarCTA.pillar,
-                    title: cluster.crossPillarCTA.title,
-                    href: cluster.crossPillarCTA.href,
+                    pillar: crossPillarCTA.pillar,
+                    title: crossPillarCTA.title,
+                    href: crossPillarCTA.href,
                   }
                 : undefined
             }
@@ -183,41 +291,51 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
           <LongFormContent
             sections={cluster.sections}
             pillar={cluster.pillar}
+            pullQuote={cluster.pullQuote}
           />
         </div>
       </ClusterLayout>
 
       {/* ============================================
           Full-width sections below the sidebar layout
+          — alternating backgrounds for visual rhythm
           ============================================ */}
 
-      {/* Trust Signal Strip */}
-      <section className="py-8 bg-surface border-y border-border">
-        <div className="mx-auto max-w-content px-container-x">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {TRUST_SIGNALS.map((signal) => (
-              <div
-                key={signal.text}
-                className="flex items-center gap-2 text-body-sm text-muted"
-              >
-                <Icon name={signal.icon} size="sm" className="text-secondary" />
-                {signal.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Inline CTA Strip — mid-page conversion between content and trust */}
+      <InlineCTAStrip
+        pillar={cluster.pillar}
+        eyebrow={`Ready to Move Forward?`}
+        heading={`Start Your ${cluster.title} the Right Way`}
+        description={`All-inclusive packages — formation, registered agent, compliance, and privacy services in one transparent price.`}
+        primaryCTA={{
+          label: "Find Your Package",
+          href: "#packages",
+        }}
+        secondaryCTA={{
+          label: "Compare Wyoming vs Nevada",
+          href: "/wyoming-vs-nevada",
+        }}
+        phone="1-800-553-0615"
+      />
 
-      {/* Package CTA */}
-      {dualPkgs.length >= 2 && (
-        <section id="packages" className="py-section-y-sm bg-background">
-          <div className="mx-auto max-w-content px-container-x">
-            <SectionHeader
-              eyebrow="Get Started"
-              title="Ready to Get Started?"
-              subtitle="All-inclusive packages with everything you need — no hidden fees."
-              className="mb-10"
-            />
+      {/* Expanded Social Proof Strip (replaces old 86px trust strip) */}
+      <SocialProofStrip
+        pillarColor={socialProof.accent}
+        badges={socialProof.badges}
+        testimonial={socialProof.testimonial}
+      />
+
+      {/* Package CTA — always rendered, dual or single */}
+      <section id="packages" className="py-section-y-sm bg-background">
+        <div className="mx-auto max-w-content px-container-x">
+          <SectionHeader
+            eyebrow="Get Started"
+            title="Ready to Get Started?"
+            subtitle="All-inclusive packages with everything you need — no hidden fees."
+            className="mb-10"
+          />
+
+          {hasDual ? (
             <DualPackageCTA
               packages={[
                 {
@@ -245,12 +363,37 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
                 phone: "1-800-553-0615",
               }}
             />
-          </div>
-        </section>
-      )}
+          ) : primaryPkg ? (
+            <SinglePackageCTA
+              pkg={{
+                name: primaryPkg.name,
+                price: `$${primaryPkg.prices.llc.formation.toLocaleString()}`,
+                period: "one-time",
+                description: primaryPkg.description,
+                badge: primaryPkg.badge,
+                href: resolveLegacyPackageToTierUrl(primaryPkg.id),
+              }}
+              comparePath="/compare-packages"
+            />
+          ) : (
+            <div className="mx-auto max-w-narrow text-center">
+              <p className="text-body text-muted mb-5">
+                Not sure which package fits? Talk to a specialist — we'll walk
+                you through the options.
+              </p>
+              <RouterLink to="/compare-packages" className="no-underline">
+                <Button variant="cta" size="lg">
+                  View All Packages
+                  <Icon name="ArrowRight" size="sm" className="ml-2" />
+                </Button>
+              </RouterLink>
+            </div>
+          )}
+        </div>
+      </section>
 
-      {/* Cross-Pillar CTA */}
-      {cluster.crossPillarCTA && (
+      {/* Cross-Pillar CTA (always rendered — explicit or default) */}
+      {crossPillarCTA && (
         <section className="py-section-y-sm bg-primary-50">
           <div className="mx-auto max-w-content px-container-x">
             <SectionHeader
@@ -261,10 +404,10 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
             <div className="max-w-[600px] mx-auto">
               <CrossPillarCTA
                 fromPillar={cluster.pillar}
-                toPillar={cluster.crossPillarCTA.pillar}
-                heading={cluster.crossPillarCTA.title}
-                description={cluster.crossPillarCTA.description}
-                href={cluster.crossPillarCTA.href}
+                toPillar={crossPillarCTA.pillar}
+                heading={crossPillarCTA.title}
+                description={crossPillarCTA.description}
+                href={crossPillarCTA.href}
               />
             </div>
           </div>
@@ -329,7 +472,7 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
         </section>
       )}
 
-      {/* Where to Go Next */}
+      {/* Where to Go Next — already has its own section wrapper */}
       {suggestions.length > 0 && (
         <WhereToGoNext suggestions={suggestions} maxItems={3} />
       )}
@@ -343,6 +486,12 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
           <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
             {/* Left: Statement */}
             <div>
+              <p
+                className={cnPillar(pillarTextMap[cluster.pillar])}
+                aria-hidden
+              >
+                {config.label.toUpperCase()}
+              </p>
               <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
                 Ready to take the next step?
               </h2>
@@ -402,3 +551,71 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
 }
 
 ClusterPageTemplate.displayName = "ClusterPageTemplate";
+
+/* ------------------------------------------------
+   Single Package CTA — fallback when only 1 gold exists
+   ------------------------------------------------ */
+interface SinglePackageCTAProps {
+  pkg: {
+    name: string;
+    price: string;
+    period: string;
+    description: string;
+    badge?: string;
+    href: string;
+  };
+  comparePath: string;
+}
+
+function SinglePackageCTA({ pkg, comparePath }: SinglePackageCTAProps) {
+  return (
+    <div className="mx-auto max-w-narrow space-y-6">
+      <div className="rounded-card border-2 border-secondary bg-surface p-6 shadow-card hover:shadow-card-hover transition-shadow">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-heading-sm font-display font-semibold text-foreground">
+            {pkg.name}
+          </h3>
+          {pkg.badge && (
+            <Badge variant="success" size="sm">
+              {pkg.badge}
+            </Badge>
+          )}
+        </div>
+        <div className="flex items-baseline gap-1 mt-3">
+          <span className="text-heading-lg font-mono font-bold text-foreground">
+            {pkg.price}
+          </span>
+          <span className="text-body-sm text-muted">/{pkg.period}</span>
+        </div>
+        <p className="text-body text-muted mt-3">{pkg.description}</p>
+        <Button variant="cta" size="md" fullWidth className="mt-5" asChild>
+          <a href={pkg.href}>Choose {pkg.name}</a>
+        </Button>
+      </div>
+
+      <div className="text-center">
+        <RouterLink
+          to={comparePath}
+          className="inline-flex items-center gap-1.5 text-body-sm font-medium text-secondary hover:text-secondary/80 transition-colors no-underline"
+        >
+          <Icon name="BarChart2" size="sm" />
+          Compare all packages
+        </RouterLink>
+        <p className="mt-1 text-caption text-muted">
+          or call{" "}
+          <a
+            href="tel:1-800-553-0615"
+            className="font-medium text-foreground hover:text-secondary transition-colors"
+          >
+            1-800-553-0615
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* Tiny helper for the final-CTA pillar eyebrow */
+function cnPillar(pillarClass: string) {
+  return `text-body-sm font-semibold uppercase tracking-[0.15em] mb-3 ${pillarClass}`;
+}

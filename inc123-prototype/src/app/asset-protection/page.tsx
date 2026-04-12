@@ -1098,7 +1098,7 @@ const EXPLORE_SERVICES = [
     icon: "Building2" as const,
     title: "Real Estate Asset Protection",
     desc: "Per-property LLC isolation strategies for rental portfolios and real estate investments.",
-    href: "/real-estate",
+    href: "/real-estate-asset-protection",
   },
 ];
 
@@ -1132,7 +1132,7 @@ const EXPLORE_STATES = [
     icon: "Building" as const,
     title: "Real Estate Protection",
     desc: "Per-property LLC isolation for rental investors",
-    href: "/real-estate",
+    href: "/real-estate-asset-protection",
   },
   {
     icon: "Scale" as const,

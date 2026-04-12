@@ -98,7 +98,7 @@ export const pillars: Pillar[] = [
       },
       {
         title: "Real Estate Asset Protection",
-        href: "/real-estate",
+        href: "/real-estate-asset-protection",
         description: "Protect rental properties and real estate investments",
       },
     ],

@@ -150,14 +150,11 @@ export function AppRouter() {
             path="nevada-basic-incorporation"
             element={<Navigate to="/bronze?state=nevada" replace />}
           />
-          <Route
-            path="california-private-incorporation"
-            element={<Navigate to="/gold?state=california" replace />}
-          />
-          <Route
-            path="florida-private-incorporation"
-            element={<Navigate to="/gold?state=florida" replace />}
-          />
+          {/*
+            Note: /california-private-incorporation and /florida-private-incorporation
+            are now educational cluster pages (handled by the catch-all below).
+            The tier pages live at /gold?state=california and /gold?state=florida.
+          */}
           <Route
             path="shelf-company-packages"
             element={<Navigate to="/shelf-companies" replace />}

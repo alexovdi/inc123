@@ -80,7 +80,9 @@ function ClusterHero({
             {pillarLabel}
           </RouterLink>
           <span className="mx-2 text-white/50">/</span>
-          <span className="text-white/90">Guide</span>
+          <span className="text-white/90" aria-current="page">
+            {title}
+          </span>
         </nav>
 
         <div className="max-w-[720px]">
