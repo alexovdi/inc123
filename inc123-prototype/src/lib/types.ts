@@ -226,8 +226,14 @@ export interface ClusterSection {
   keyPoints?: Array<{ title: string; description: string; icon?: string }>;
   /** Audience / differentiator cards */
   items?: Array<{ title: string; description: string; icon?: string }>;
-  /** Wyoming vs Nevada comparison rows (comparison type) */
+  /** Two-column comparison rows (comparison type). Fields are named
+      wyoming/nevada for historical reasons but the columns can be
+      relabeled via `comparisonColumnLabels` for non-WY/NV comparisons. */
   comparisonRows?: ClusterComparisonRow[];
+  /** Override the default "Wyoming" / "Nevada" table headers. Use when
+      the comparison is something other than WY vs NV (e.g. "Private
+      Structure" vs "Direct CA Formation" on CA/FL private clusters). */
+  comparisonColumnLabels?: { left: string; right: string };
   /** Pricing breakdown rows (pricing type) */
   pricingRows?: ClusterPricingRow[];
   /** Footer note under a pricing table */

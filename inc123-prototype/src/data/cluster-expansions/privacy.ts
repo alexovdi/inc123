@@ -520,6 +520,10 @@ export const PRIVACY_EXPANSIONS: ClusterContent[] = [
         title: "Direct CA Formation vs. Private Structure",
         content:
           "Direct California formation is faster and cheaper up front but exposes you permanently on the Statement of Information. The private structure adds Wyoming formation fees but keeps your name out of every California public filing.",
+        comparisonColumnLabels: {
+          left: "Private Structure (WY)",
+          right: "Direct CA Formation",
+        },
         comparisonRows: [
           {
             label: "Public Member Disclosure",
@@ -719,6 +723,10 @@ export const PRIVACY_EXPANSIONS: ClusterContent[] = [
         title: "Florida Private vs. California Private",
         content:
           "Both states use the same two-step structure, but the economics differ significantly. Florida has no state income tax and no $800 annual franchise tax — making it the cheaper ongoing option for clients who can physically operate from either state.",
+        comparisonColumnLabels: {
+          left: "Florida Private",
+          right: "California Private",
+        },
         comparisonRows: [
           {
             label: "Formation Cost",

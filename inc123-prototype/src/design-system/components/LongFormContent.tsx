@@ -217,6 +217,10 @@ function ComparisonSection({
   pillar?: PillarName;
 }) {
   const rows = section.comparisonRows ?? [];
+  const columnLabels = section.comparisonColumnLabels ?? {
+    left: "Wyoming",
+    right: "Nevada",
+  };
 
   return (
     <div>
@@ -242,8 +246,8 @@ function ComparisonSection({
             >
               <tr>
                 <th className="px-5 py-3">Factor</th>
-                <th className="px-5 py-3">Wyoming</th>
-                <th className="px-5 py-3">Nevada</th>
+                <th className="px-5 py-3">{columnLabels.left}</th>
+                <th className="px-5 py-3">{columnLabels.right}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border bg-surface">
