@@ -1,6 +1,8 @@
 import { cn } from "@/design-system/utils/cn";
 import { Icon } from "@/design-system/primitives/Icon";
+import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import type { ClusterSection } from "@/lib/types";
+import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------
    Props
@@ -8,9 +10,37 @@ import type { ClusterSection } from "@/lib/types";
 export interface LongFormContentProps {
   /** Array of content sections to render */
   sections: ClusterSection[];
+  /** Pillar for color-aware styling */
+  pillar?: PillarName;
   /** Additional class names */
   className?: string;
 }
+
+/* ------------------------------------------------
+   Pillar-aware icon background maps
+   ------------------------------------------------ */
+const pillarIconBgMap: Record<PillarName, string> = {
+  privacy: "bg-pillar-privacy/[0.08] group-hover:bg-pillar-privacy/[0.14]",
+  asset: "bg-pillar-asset/[0.08] group-hover:bg-pillar-asset/[0.14]",
+  formation:
+    "bg-pillar-formation/[0.08] group-hover:bg-pillar-formation/[0.14]",
+  compliance:
+    "bg-pillar-compliance/[0.08] group-hover:bg-pillar-compliance/[0.14]",
+};
+
+const pillarIconTextMap: Record<PillarName, string> = {
+  privacy: "text-pillar-privacy",
+  asset: "text-pillar-asset",
+  formation: "text-pillar-formation",
+  compliance: "text-pillar-compliance",
+};
+
+const pillarCalloutMap: Record<PillarName, string> = {
+  privacy: "border-pillar-privacy/20 bg-pillar-privacy/[0.04]",
+  asset: "border-pillar-asset/20 bg-pillar-asset/[0.04]",
+  formation: "border-pillar-formation/20 bg-pillar-formation/[0.04]",
+  compliance: "border-pillar-compliance/20 bg-pillar-compliance/[0.04]",
+};
 
 /* ------------------------------------------------
    Section Renderers
@@ -33,13 +63,26 @@ function TextSection({ section }: { section: ClusterSection }) {
 }
 
 /** Comparison section: highlighted callout box with comparison context */
-function ComparisonSection({ section }: { section: ClusterSection }) {
+function ComparisonSection({
+  section,
+  pillar,
+}: {
+  section: ClusterSection;
+  pillar?: PillarName;
+}) {
   return (
     <div>
       <h2 className="text-heading font-display font-semibold text-foreground mb-4">
         {section.title}
       </h2>
-      <div className="rounded-card border border-secondary/20 bg-primary-50 p-6">
+      <div
+        className={cn(
+          "rounded-card border p-6",
+          pillar
+            ? pillarCalloutMap[pillar]
+            : "border-secondary/20 bg-primary-50",
+        )}
+      >
         <p className="text-body text-muted leading-relaxed">
           {section.content}
         </p>
@@ -49,7 +92,13 @@ function ComparisonSection({ section }: { section: ClusterSection }) {
 }
 
 /** Audience section: icon cards showing who benefits */
-function AudienceSection({ section }: { section: ClusterSection }) {
+function AudienceSection({
+  section,
+  pillar,
+}: {
+  section: ClusterSection;
+  pillar?: PillarName;
+}) {
   return (
     <div>
       <h2 className="text-heading font-display font-semibold text-foreground mb-2">
@@ -62,13 +111,22 @@ function AudienceSection({ section }: { section: ClusterSection }) {
         {section.items?.map((item, index) => (
           <div
             key={index}
-            className="bg-surface rounded-card border border-border p-5"
+            className="group bg-surface rounded-card border border-border p-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
           >
-            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-button bg-secondary/10">
+            <div
+              className={cn(
+                "mb-3 flex h-10 w-10 items-center justify-center rounded-button transition-colors",
+                pillar
+                  ? pillarIconBgMap[pillar]
+                  : "bg-secondary/10 group-hover:bg-secondary/[0.18]",
+              )}
+            >
               <Icon
                 name={item.icon ?? "User"}
                 size="md"
-                className="text-secondary"
+                className={
+                  pillar ? pillarIconTextMap[pillar] : "text-secondary"
+                }
               />
             </div>
             <h3 className="text-heading-sm font-display font-semibold text-foreground mb-1.5">
@@ -85,7 +143,13 @@ function AudienceSection({ section }: { section: ClusterSection }) {
 }
 
 /** Differentiator section: items with icons highlighting advantages */
-function DifferentiatorSection({ section }: { section: ClusterSection }) {
+function DifferentiatorSection({
+  section,
+  pillar,
+}: {
+  section: ClusterSection;
+  pillar?: PillarName;
+}) {
   return (
     <div>
       <h2 className="text-heading font-display font-semibold text-foreground mb-2">
@@ -98,13 +162,20 @@ function DifferentiatorSection({ section }: { section: ClusterSection }) {
         {section.items?.map((item, index) => (
           <div
             key={index}
-            className="flex gap-4 rounded-card border border-border bg-surface p-5"
+            className="group flex gap-4 rounded-card border border-border bg-surface p-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-button bg-success/10">
+            <div
+              className={cn(
+                "flex h-10 w-10 shrink-0 items-center justify-center rounded-button transition-colors",
+                pillar
+                  ? pillarIconBgMap[pillar]
+                  : "bg-success/10 group-hover:bg-success/[0.18]",
+              )}
+            >
               <Icon
                 name={item.icon ?? "CheckCircle"}
                 size="md"
-                className="text-success"
+                className={pillar ? pillarIconTextMap[pillar] : "text-success"}
               />
             </div>
             <div>
@@ -125,10 +196,12 @@ function DifferentiatorSection({ section }: { section: ClusterSection }) {
 /* ------------------------------------------------
    Section type → renderer map
    ------------------------------------------------ */
-const sectionRenderers: Record<
-  ClusterSection["type"],
-  React.FC<{ section: ClusterSection }>
-> = {
+type SectionRenderer = React.FC<{
+  section: ClusterSection;
+  pillar?: PillarName;
+}>;
+
+const sectionRenderers: Record<ClusterSection["type"], SectionRenderer> = {
   text: TextSection,
   comparison: ComparisonSection,
   audience: AudienceSection,
@@ -136,17 +209,23 @@ const sectionRenderers: Record<
 };
 
 /* ------------------------------------------------
-   Main Component (Server Component — no "use client")
+   Main Component
    ------------------------------------------------ */
-function LongFormContent({ sections, className }: LongFormContentProps) {
+function LongFormContent({
+  sections,
+  pillar,
+  className,
+}: LongFormContentProps) {
   return (
     <div className={cn("space-y-12", className)}>
-      {sections.map((section) => {
+      {sections.map((section, i) => {
         const Renderer = sectionRenderers[section.type];
         return (
-          <section key={section.id} id={section.id}>
-            <Renderer section={section} />
-          </section>
+          <ScrollReveal key={section.id} delay={i * 50}>
+            <section id={section.id}>
+              <Renderer section={section} pillar={pillar} />
+            </section>
+          </ScrollReveal>
         );
       })}
     </div>

@@ -1,10 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
-import {
-  pillarBorderMap,
-  pillarTextMap,
-} from "@/design-system/utils/pillarMaps";
 import type { PillarName } from "@/design-system/tokens";
 
 export interface ClusterLayoutProps {
@@ -20,11 +14,6 @@ export interface ClusterLayoutProps {
 }
 
 export function ClusterLayout({
-  pillar,
-  pillarLabel,
-  pillarHref,
-  title,
-  description,
   children,
   sidebar,
   customHero,
@@ -32,30 +21,8 @@ export function ClusterLayout({
 }: ClusterLayoutProps) {
   return (
     <div className={cn("min-h-screen", className)}>
-      {/* Top accent bar */}
-      <div className={cn("border-t-2", pillarBorderMap[pillar])} />
-
-      {customHero ? (
-        customHero
-      ) : (
-        <div className="mx-auto max-w-content px-container-x pt-6 pb-section-y-sm">
-          <RouterLink
-            to={pillarHref}
-            className={cn(
-              "mb-4 inline-flex items-center gap-1.5 text-body-sm font-medium transition-colors hover:underline",
-              pillarTextMap[pillar],
-            )}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to {pillarLabel}
-          </RouterLink>
-
-          <h1 className="font-display text-display font-bold text-foreground mb-3">
-            {title}
-          </h1>
-          <p className="text-body-lg text-muted max-w-narrow">{description}</p>
-        </div>
-      )}
+      {/* Hero — always provided via customHero now (dark hero) */}
+      {customHero}
 
       {/* Content Area */}
       <div className="mx-auto max-w-content px-container-x pb-section-y">
