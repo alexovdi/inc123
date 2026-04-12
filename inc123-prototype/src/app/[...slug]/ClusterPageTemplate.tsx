@@ -103,39 +103,124 @@ const pillarSocialProof: Record<
 };
 
 /* ------------------------------------------------
-   Default cross-pillar CTAs — every cluster gets one
+   Pillar bridges — every cluster surfaces 3 adjacent
+   pillars with pillar-specific framing (no "first layer"
+   template-string fallback).
    ------------------------------------------------ */
-const defaultCrossPillar: Record<
+interface BridgeItem {
+  pillar: PillarName;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const pillarBridges: Record<
   PillarName,
-  { pillar: PillarName; title: string; description: string; href: string }
+  { heading: string; items: BridgeItem[] }
 > = {
   privacy: {
-    pillar: "asset",
-    title: "Privacy Is the First Layer — Asset Protection Is the Second",
-    description:
-      "Privacy hides your assets. Asset protection keeps them out of reach even when they're found. Most clients need both.",
-    href: "/asset-protection",
+    heading: "Privacy Is the First Layer. What's Next?",
+    items: [
+      {
+        pillar: "asset",
+        title: "Asset Protection Is the Second Layer",
+        description:
+          "Privacy hides your assets. Asset protection keeps them out of reach even when they're found. Most clients need both.",
+        href: "/asset-protection",
+      },
+      {
+        pillar: "compliance",
+        title: "Keep Privacy Intact Year After Year",
+        description:
+          "Anonymity only holds up when filings, registered agent, and corporate records are handled correctly.",
+        href: "/compliance",
+      },
+      {
+        pillar: "formation",
+        title: "Choose the Right Entity for Privacy",
+        description:
+          "Wyoming LLC, Nevada LLC, or corporation — your entity choice shapes how well privacy actually works.",
+        href: "/formation",
+      },
+    ],
   },
   asset: {
-    pillar: "privacy",
-    title: "Protect What People Can't Find",
-    description:
-      "Asset protection is stronger when paired with privacy. Anonymous LLCs and nominee services stop disputes before they start.",
-    href: "/privacy",
+    heading: "Asset Protection Works Best as a System",
+    items: [
+      {
+        pillar: "privacy",
+        title: "Protect What People Can't Find",
+        description:
+          "Asset protection is stronger when paired with privacy. Anonymous LLCs stop disputes before they start.",
+        href: "/privacy",
+      },
+      {
+        pillar: "formation",
+        title: "The Right Entity Determines the Protection",
+        description:
+          "Wyoming LLCs, series LLCs, and holding structures offer different charging-order defenses. Choose deliberately.",
+        href: "/formation",
+      },
+      {
+        pillar: "compliance",
+        title: "Protection Fails Without Maintenance",
+        description:
+          "Missed filings and corporate-veil violations unravel years of asset protection. We keep the structure intact.",
+        href: "/compliance",
+      },
+    ],
   },
   formation: {
-    pillar: "compliance",
-    title: "Formation Is Day One. Compliance Is Every Year After.",
-    description:
-      "Once your entity exists, annual reports, registered agent renewals, and corporate records begin. We handle all of it.",
-    href: "/compliance",
+    heading: "Formation Is Step One. What Comes Next?",
+    items: [
+      {
+        pillar: "compliance",
+        title: "Formation Is Day One. Compliance Is Every Year After.",
+        description:
+          "Annual reports, registered agent renewals, corporate records — everything that keeps your entity alive.",
+        href: "/compliance",
+      },
+      {
+        pillar: "privacy",
+        title: "Form Anonymously from Day One",
+        description:
+          "Wyoming and Nevada let you form without disclosing members publicly. Privacy belongs in the foundation.",
+        href: "/privacy",
+      },
+      {
+        pillar: "asset",
+        title: "Build Protection Into the Structure",
+        description:
+          "Charging-order protection, series LLCs, and holding structures start at formation, not later.",
+        href: "/asset-protection",
+      },
+    ],
   },
   compliance: {
-    pillar: "formation",
-    title: "Still Choosing an Entity Structure?",
-    description:
-      "Compliance starts with the right foundation. See how Wyoming and Nevada compare and which entity fits your situation.",
-    href: "/formation",
+    heading: "Compliance Is the Spine. Strengthen the Rest.",
+    items: [
+      {
+        pillar: "formation",
+        title: "Still Choosing an Entity Structure?",
+        description:
+          "Compliance starts with the right foundation. See how Wyoming and Nevada compare and pick deliberately.",
+        href: "/formation",
+      },
+      {
+        pillar: "privacy",
+        title: "Privacy Depends on Clean Filings",
+        description:
+          "One missed annual report and your ownership details end up in public searches. Compliance keeps privacy intact.",
+        href: "/privacy",
+      },
+      {
+        pillar: "asset",
+        title: "Compliance Preserves Protection",
+        description:
+          "Asset protection evaporates the moment the corporate veil is pierced. Compliance is the shield behind the shield.",
+        href: "/asset-protection",
+      },
+    ],
   },
 };
 
@@ -194,9 +279,23 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
         }))
   ).map((s) => ({ ...s, pillar: cluster.pillar as PillarName }));
 
-  /* Cross-pillar CTA — explicit or default */
-  const crossPillarCTA =
-    cluster.crossPillarCTA ?? defaultCrossPillar[cluster.pillar];
+  /* Cross-pillar bridge — default pillar set, with optional
+     cluster-level override replacing the first item. */
+  const defaultBridge = pillarBridges[cluster.pillar];
+  const bridgeItems: BridgeItem[] = cluster.crossPillarCTA
+    ? [
+        {
+          pillar: cluster.crossPillarCTA.pillar,
+          title: cluster.crossPillarCTA.title,
+          description: cluster.crossPillarCTA.description,
+          href: cluster.crossPillarCTA.href,
+        },
+        ...defaultBridge.items.filter(
+          (i) => i.pillar !== cluster.crossPillarCTA!.pillar,
+        ),
+      ].slice(0, 3)
+    : defaultBridge.items;
+  const primaryBridge = bridgeItems[0];
 
   /* Social proof data for this pillar */
   const socialProof = pillarSocialProof[cluster.pillar];
@@ -241,11 +340,11 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
             }
             relatedPages={sidebarRelatedPages}
             crossPillarLink={
-              crossPillarCTA
+              primaryBridge
                 ? {
-                    pillar: crossPillarCTA.pillar,
-                    title: crossPillarCTA.title,
-                    href: crossPillarCTA.href,
+                    pillar: primaryBridge.pillar,
+                    title: primaryBridge.title,
+                    href: primaryBridge.href,
                   }
                 : undefined
             }
@@ -392,23 +491,26 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
         </div>
       </section>
 
-      {/* Cross-Pillar CTA (always rendered — explicit or default) */}
-      {crossPillarCTA && (
+      {/* Cross-Pillar bridge — 3 adjacent pillars in a grid */}
+      {bridgeItems.length > 0 && (
         <section className="py-section-y-sm bg-primary-50">
           <div className="mx-auto max-w-content px-container-x">
             <SectionHeader
               eyebrow="Related Services"
-              title={`${config.label} Is the First Layer. What Else?`}
+              title={defaultBridge.heading}
               className="mb-10"
             />
-            <div className="max-w-[600px] mx-auto">
-              <CrossPillarCTA
-                fromPillar={cluster.pillar}
-                toPillar={crossPillarCTA.pillar}
-                heading={crossPillarCTA.title}
-                description={crossPillarCTA.description}
-                href={crossPillarCTA.href}
-              />
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {bridgeItems.map((item) => (
+                <CrossPillarCTA
+                  key={item.pillar}
+                  fromPillar={cluster.pillar}
+                  toPillar={item.pillar}
+                  heading={item.title}
+                  description={item.description}
+                  href={item.href}
+                />
+              ))}
             </div>
           </div>
         </section>

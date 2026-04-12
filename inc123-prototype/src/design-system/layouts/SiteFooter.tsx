@@ -275,7 +275,7 @@ export function SiteFooter({
                   </span>
                 ))}
               </div>
-              <p className="text-caption text-white/50 whitespace-nowrap">
+              <p className="text-caption text-white/50">
                 Not a law firm, bank, or CPA.{" "}
                 <RouterLink
                   to="/legal"

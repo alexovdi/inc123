@@ -75,7 +75,7 @@ function BulletList({
       {bullets.map((bullet, i) => (
         <li
           key={i}
-          className="flex items-start gap-2.5 text-body text-muted leading-relaxed"
+          className="flex items-start gap-2.5 text-body text-foreground/80 leading-relaxed"
         >
           <Icon
             name="CheckCircle"
@@ -147,7 +147,7 @@ function ExtendedContent({ text }: { text: string }) {
     <div className="mt-4">
       {expanded ? (
         <>
-          <div className="text-body text-muted leading-relaxed whitespace-pre-line">
+          <div className="text-body text-foreground/80 leading-relaxed whitespace-pre-line">
             {text}
           </div>
           <button
@@ -191,7 +191,7 @@ function TextSection({
         {section.title}
       </h2>
       <div className="prose prose-muted max-w-none">
-        <p className="text-body text-muted leading-relaxed">
+        <p className="text-body text-foreground/80 leading-relaxed">
           {section.content}
         </p>
       </div>
@@ -279,7 +279,7 @@ function ComparisonSection({
               : "border-secondary/20 bg-primary-50",
           )}
         >
-          <p className="text-body text-muted leading-relaxed">
+          <p className="text-body text-foreground/80 leading-relaxed">
             {section.content}
           </p>
         </div>
@@ -405,7 +405,7 @@ function AudienceSection({
             <h3 className="text-heading-sm font-display font-semibold text-foreground mb-1.5">
               {item.title}
             </h3>
-            <p className="text-body text-muted leading-relaxed">
+            <p className="text-body text-foreground/80 leading-relaxed">
               {item.description}
             </p>
           </div>
@@ -457,7 +457,7 @@ function DifferentiatorSection({
               <h3 className="text-body font-semibold text-foreground mb-1">
                 {item.title}
               </h3>
-              <p className="text-body text-muted leading-relaxed">
+              <p className="text-body text-foreground/80 leading-relaxed">
                 {item.description}
               </p>
             </div>
@@ -481,7 +481,7 @@ function InlinePullQuote({
   return (
     <figure
       className={cn(
-        "relative my-4 rounded-card-lg border-l-0 border-t-4 px-6 py-8 sm:px-10",
+        "relative my-4 overflow-hidden rounded-card-lg border-l-0 border-t-4 px-6 py-8 sm:px-10",
         pillar
           ? pillarCalloutMap[pillar].replace("border-", "border-t-")
           : "border-t-secondary bg-primary-50",

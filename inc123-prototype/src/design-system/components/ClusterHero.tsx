@@ -33,10 +33,21 @@ export interface ClusterHeroProps {
    Pillar glow colors for the decorative orb
    ------------------------------------------------ */
 const pillarGlowMap: Record<PillarName, string> = {
-  privacy: "bg-secondary/[0.08]",
-  asset: "bg-pillar-asset/[0.08]",
-  formation: "bg-pillar-formation/[0.08]",
-  compliance: "bg-pillar-compliance/[0.08]",
+  privacy: "bg-secondary/[0.18]",
+  asset: "bg-pillar-asset/[0.18]",
+  formation: "bg-pillar-formation/[0.18]",
+  compliance: "bg-pillar-compliance/[0.18]",
+};
+
+/* ------------------------------------------------
+   Pillar-colored bottom accent stripe — differentiates
+   each pillar's cluster hero visually at a glance.
+   ------------------------------------------------ */
+const pillarBorderBottomMap: Record<PillarName, string> = {
+  privacy: "border-b-pillar-privacy",
+  asset: "border-b-pillar-asset",
+  formation: "border-b-pillar-formation",
+  compliance: "border-b-pillar-compliance",
 };
 
 /* ------------------------------------------------
@@ -52,13 +63,25 @@ function ClusterHero({
   className,
 }: ClusterHeroProps) {
   return (
-    <section className={cn("relative overflow-hidden bg-primary", className)}>
+    <section
+      className={cn(
+        "relative overflow-hidden bg-primary border-b-4",
+        pillarBorderBottomMap[pillar],
+        className,
+      )}
+    >
       <GrainOverlay opacity="opacity-[0.03]" />
 
-      {/* Decorative glow */}
+      {/* Decorative glows — pillar-tinted, two orbs for depth */}
       <div
         className={cn(
           "pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full blur-[120px]",
+          pillarGlowMap[pillar],
+        )}
+      />
+      <div
+        className={cn(
+          "pointer-events-none absolute -right-40 bottom-[-20vw] h-[45vw] w-[45vw] rounded-full blur-[140px]",
           pillarGlowMap[pillar],
         )}
       />
