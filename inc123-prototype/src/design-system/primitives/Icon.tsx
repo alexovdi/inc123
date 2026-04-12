@@ -9,6 +9,29 @@ const sizeMap = {
   xl: 32,
 } as const;
 
+/**
+ * Compat aliases for icon names that were renamed upstream in lucide-react.
+ * Keeps existing call sites working without a mass rename across the codebase.
+ */
+const ICON_ALIASES: Record<string, string> = {
+  CheckCircle: "CircleCheck",
+  CheckCircle2: "CircleCheckBig",
+  BarChart2: "ChartBar",
+  BarChart: "ChartBar",
+  AlertTriangle: "TriangleAlert",
+  AlertCircle: "CircleAlert",
+  AlertOctagon: "OctagonAlert",
+  Home: "House",
+  MessageSquare: "MessageCircle",
+  MoreHorizontal: "Ellipsis",
+  MoreVertical: "EllipsisVertical",
+  XCircle: "CircleX",
+  Edit: "Pencil",
+  Edit2: "PenLine",
+  Edit3: "PenTool",
+  Trash: "Trash2",
+};
+
 type IconSize = keyof typeof sizeMap;
 
 export interface IconProps {
@@ -23,14 +46,9 @@ export interface IconProps {
   className?: string;
 }
 
-function Icon({
-  name,
-  size = "md",
-  color,
-  ariaLabel,
-  className,
-}: IconProps) {
-  const LucideIcon = icons[name as keyof typeof icons];
+function Icon({ name, size = "md", color, ariaLabel, className }: IconProps) {
+  const resolvedName = ICON_ALIASES[name] ?? name;
+  const LucideIcon = icons[resolvedName as keyof typeof icons];
 
   if (!LucideIcon) {
     if (process.env.NODE_ENV === "development") {

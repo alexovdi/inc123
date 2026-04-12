@@ -313,7 +313,7 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
         }}
         secondaryCTA={{
           label: "Compare Wyoming vs Nevada",
-          href: "/wyoming-vs-nevada",
+          href: "/wyoming-vs-nevada-llc",
         }}
         phone="1-800-553-0615"
       />
