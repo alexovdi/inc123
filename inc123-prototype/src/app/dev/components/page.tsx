@@ -522,7 +522,7 @@ export default function ComponentShowcase() {
                 items={[
                   { label: "Home", href: "/" },
                   { label: "Packages", href: "/packages" },
-                  { label: "Gold Package", href: "/gold?state=wyoming" },
+                  { label: "Gold Package", href: "/wyoming-gold" },
                 ]}
               />
             </div>
@@ -535,25 +535,21 @@ export default function ComponentShowcase() {
                   number: 1,
                   title: "Choose Your Package",
                   description: "Select the right package for your needs.",
-                  icon: "Package",
                 },
                 {
                   number: 2,
                   title: "Complete Details",
                   description: "Tell us about your new entity.",
-                  icon: "FileText",
                 },
                 {
                   number: 3,
                   title: "We File Everything",
                   description: "We handle all state filings.",
-                  icon: "Send",
                 },
                 {
                   number: 4,
                   title: "Receive Documents",
                   description: "Get your formation docs in 3-5 days.",
-                  icon: "CircleCheck",
                 },
               ]}
             />

@@ -6,160 +6,324 @@ import type {
   EntityType,
 } from "@/lib/types";
 
-const sharedAddOns: PackageAddOn[] = [
+/* ═══════════════════════════════════════════════════════════════════════════
+   CANONICAL SOURCE OF TRUTH
+   Feature matrix locked per David × Alex meeting 2026-04-13.
+   Spreadsheet: DOCS/Meeting Preps/Meeting Prep Apr 6/Incorporate123_Packages_v3.xlsx
+   See:         DOCS/Meeting Preps/Meeting Prep Apr 20/04_Package_Tier_Definitions_v3.md
+
+   Tier logic:
+     Bronze = Formation + Compliance (no VO, no EIN, no nominees)
+     Silver = Bronze + EIN + Virtual Office + Mail Forwarding
+     Gold   = Silver + Year-Round Nominees
+
+   EIN is the ONLY formation-side item that's Silver/Gold-exclusive.
+   Custom Operating Agreement is included in ALL tiers (including Bronze).
+   NV Business License only appears on Nevada packages.
+   CA Private / FL Private are Gold-tier WY formations + foreign registration + foreign RA.
+   Shelf is a separate two-step purchase flow (not a column in the comparison matrix).
+
+   Pricing status: base formation prices are placeholders pending David's Apr 20 confirmation.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ------------------------------------------------
+   Add-Ons & Upgrades
+   ------------------------------------------------ */
+
+/** 3 Government Filing Services — true add-ons per Apr 13 terminology. */
+const governmentFilingAddOns: PackageAddOn[] = [
   {
-    id: "foreign-registration",
-    name: "Foreign Registration",
-    price: 149,
-    description: "Register your entity to do business in another state",
-    tooltip:
-      "Required if your LLC does business in a state other than where it was formed",
-  },
-  {
-    id: "ein",
-    name: "EIN Obtainment",
-    price: 75,
-    description: "We obtain your federal Employer Identification Number",
-    tooltip:
-      "Required for opening a bank account, hiring employees, and filing taxes",
-  },
-  {
-    id: "operating-agreement",
-    name: "Custom Operating Agreement",
-    price: 99,
+    id: "foreign-state-filing",
+    name: "Foreign State Registration Filing",
+    price: 0,
+    priceTBD: true,
     description:
-      "Professionally drafted operating agreement tailored to your entity",
-  },
-  {
-    id: "rush-filing",
-    name: "Rush Filing (24-hour)",
-    price: 199,
-    description: "Expedited state filing within 24 business hours",
-  },
-  {
-    id: "virtual-office",
-    name: "Virtual Office Address",
-    price: 149,
-    description: "Professional Nevada business address with mail forwarding",
+      "Register your WY or NV entity to do business in another state. Available for all 50 US states. Includes both the filing and the registered agent service in the foreign state.",
     tooltip:
-      "Separate from registered agent address — used for business correspondence",
+      "Required when you operate in a state other than where your entity is formed",
+    category: "government-filing",
   },
+  {
+    id: "domestication-filing",
+    name: "Domestication Filing",
+    price: 0,
+    priceTBD: true,
+    description:
+      "Move your existing entity from another state into Wyoming or Nevada while preserving entity history and EIN.",
+    tooltip: "Destination is Wyoming or Nevada only",
+    category: "government-filing",
+  },
+  {
+    id: "dba-filing",
+    name: "Corporate DBA Filing",
+    price: 0,
+    priceTBD: true,
+    description:
+      "File a Doing Business As (fictitious name) for your entity — useful if you market under a different name than your legal entity name.",
+    category: "government-filing",
+  },
+];
+
+/** 3 Service Upgrades — attach to any base package per Apr 13 terminology. */
+const serviceUpgrades: PackageAddOn[] = [
+  {
+    id: "privacy-services-upgrade",
+    name: "Privacy Services Upgrade",
+    price: 0,
+    priceTBD: true,
+    description:
+      "Adds year-round nominee director / manager + officers to your package. Effectively upgrades Bronze or Silver to Gold-level privacy.",
+    tooltip:
+      "Nominees appear on all public filings year-round, not just at formation",
+    category: "service-upgrade",
+  },
+  {
+    id: "executive-vo-upgrade",
+    name: "Executive Virtual Office Upgrade",
+    price: 0,
+    priceTBD: true,
+    description:
+      "Upgrade the basic virtual office that ships with Silver and Gold to an executive-grade VO with enhanced services.",
+    tooltip: "Requires Silver or Gold base package",
+    category: "service-upgrade",
+  },
+  {
+    id: "part-time-private-suite-upgrade",
+    name: "Part-Time Private Suite Upgrade",
+    price: 0,
+    priceTBD: true,
+    description:
+      "Physical part-time private suite access at the Nevada location. Adds a real-world presence on top of any base package.",
+    category: "service-upgrade",
+  },
+];
+
+/**
+ * Crypto payment is a payment method option, not a product add-on.
+ * Kept separately so checkout can surface it as a payment choice.
+ * Rush Filing was removed — not in David's locked Apr 13 add-on list.
+ */
+const otherAddOns: PackageAddOn[] = [
   {
     id: "crypto-payment",
     name: "Cryptocurrency Payment Processing",
     price: 0,
-    description: "Pay with Bitcoin, Ethereum, XRP, Litecoin, or Monero",
-    tooltip:
-      "No additional fee — we accept major cryptocurrencies for maximum privacy",
+    description: "Pay with Bitcoin, Ethereum, XRP, Litecoin, or Monero.",
+    tooltip: "No additional fee — we accept major cryptocurrencies",
+    category: "other",
   },
 ];
 
+/** Combined add-on list attached to every package for the detail page UI. */
+const sharedAddOns: PackageAddOn[] = [
+  ...governmentFilingAddOns,
+  ...serviceUpgrades,
+  ...otherAddOns,
+];
+
+export {
+  governmentFilingAddOns,
+  serviceUpgrades,
+  otherAddOns,
+  sharedAddOns as allAddOns,
+};
+
+/* ------------------------------------------------
+   Feature helpers — build the canonical v3 matrix cleanly
+   ------------------------------------------------ */
+
+// FORMATION — all tiers
+const FEATURE_STATE_FILING_FEES = {
+  name: "State Filing Fees Included",
+  status: "included" as const,
+  tooltip: "All state filing fees are included — no hidden charges",
+};
+const FEATURE_DOC_PREP = {
+  name: "Document Preparation",
+  status: "included" as const,
+};
+const FEATURE_OPERATING_AGREEMENT = {
+  name: "Custom Operating Agreement",
+  status: "included" as const,
+  tooltip: "Professionally drafted operating agreement tailored to your entity",
+};
+const FEATURE_BANK_ACCT_DOCS = {
+  name: "Bank Account Opening Document Package",
+  status: "included" as const,
+  tooltip:
+    "Complete document package to open a business bank account. We do not open the account for you.",
+};
+
+// EIN — Silver & Gold only
+const FEATURE_EIN_INCLUDED = {
+  name: "EIN Obtainment",
+  status: "included" as const,
+  tooltip:
+    "We obtain your federal Employer Identification Number as part of your package",
+};
+const FEATURE_EIN_NOT_INCLUDED = {
+  name: "EIN Obtainment",
+  status: "not-included" as const,
+  tooltip: "Upgrade to Silver or Gold to include EIN obtainment",
+};
+
+// NV-only — Nevada Business License
+const FEATURE_NV_BUSINESS_LICENSE = {
+  name: "NV Business License",
+  status: "included" as const,
+  tooltip: "Initial Nevada state business license — required by Nevada law",
+};
+
+// COMPLIANCE — all tiers
+const FEATURE_INITIAL_STATE_FILINGS = {
+  name: "Initial State Filings and Fees",
+  status: "included" as const,
+};
+const FEATURE_CORP_RECORDS = {
+  name: "Corporate Records & Minutes",
+  status: "included" as const,
+  tooltip:
+    "Professional preparation and maintenance of your corporate minute book",
+};
+const FEATURE_REGISTERED_AGENT = {
+  name: "Registered Agent (1 Year)",
+  status: "included" as const,
+  tooltip: "Professional registered agent service for one full year",
+};
+const FEATURE_OFFSHORE_RECORDS = {
+  name: "Offshore Records Storage",
+  status: "included" as const,
+  tooltip: "Corporate records stored outside U.S. jurisdiction",
+};
+
+// VIRTUAL PRESENCE — Silver & Gold only
+const FEATURE_VO_INCLUDED = {
+  name: "Virtual Office Address",
+  status: "included" as const,
+  tooltip:
+    "Professional business address separate from your registered agent address",
+};
+const FEATURE_VO_NOT_INCLUDED = {
+  name: "Virtual Office Address",
+  status: "not-included" as const,
+  tooltip: "Upgrade to Silver or Gold to include a virtual office address",
+};
+const FEATURE_MAIL_FORWARDING_INCLUDED = {
+  name: "Weekly Mail Forwarding",
+  status: "included" as const,
+};
+const FEATURE_MAIL_FORWARDING_NOT_INCLUDED = {
+  name: "Weekly Mail Forwarding",
+  status: "not-included" as const,
+};
+
+// PRIVACY — Gold only
+const FEATURE_NOMINEE_DIRECTOR_INCLUDED = {
+  name: "Year-Round Nominee Director / Manager",
+  status: "included" as const,
+  tooltip:
+    "Nominee appears on all public filings year-round, not just at formation",
+};
+const FEATURE_NOMINEE_DIRECTOR_NOT_INCLUDED = {
+  name: "Year-Round Nominee Director / Manager",
+  status: "not-included" as const,
+  tooltip: "Upgrade to Gold for year-round nominee privacy",
+};
+const FEATURE_NOMINEE_OFFICERS_INCLUDED = {
+  name: "Year-Round Nominee Officers",
+  status: "included" as const,
+  tooltip: "Nominee officers protect your identity on all corporate filings",
+};
+const FEATURE_NOMINEE_OFFICERS_NOT_INCLUDED = {
+  name: "Year-Round Nominee Officers",
+  status: "not-included" as const,
+};
+
+// CA / FL specific
+const FEATURE_CA_FOREIGN_REG = {
+  name: "CA Foreign State Registration",
+  status: "included" as const,
+  tooltip: "Register your WY-formed entity to do business in California",
+};
+const FEATURE_CA_REGISTERED_AGENT = {
+  name: "CA Registered Agent",
+  status: "included" as const,
+  tooltip: "Registered agent service in California for one full year",
+};
+const FEATURE_FL_FOREIGN_REG = {
+  name: "FL Foreign State Registration",
+  status: "included" as const,
+  tooltip: "Register your WY-formed entity to do business in Florida",
+};
+const FEATURE_FL_REGISTERED_AGENT = {
+  name: "FL Registered Agent",
+  status: "included" as const,
+  tooltip: "Registered agent service in Florida for one full year",
+};
+
+/** Features for Bronze tier (no EIN, no VO, no nominees). */
+const bronzeFeatures = [
+  FEATURE_STATE_FILING_FEES,
+  FEATURE_DOC_PREP,
+  FEATURE_OPERATING_AGREEMENT,
+  FEATURE_BANK_ACCT_DOCS,
+  FEATURE_EIN_NOT_INCLUDED,
+  FEATURE_INITIAL_STATE_FILINGS,
+  FEATURE_CORP_RECORDS,
+  FEATURE_REGISTERED_AGENT,
+  FEATURE_OFFSHORE_RECORDS,
+  FEATURE_VO_NOT_INCLUDED,
+  FEATURE_MAIL_FORWARDING_NOT_INCLUDED,
+  FEATURE_NOMINEE_DIRECTOR_NOT_INCLUDED,
+  FEATURE_NOMINEE_OFFICERS_NOT_INCLUDED,
+];
+
+/** Features for Silver tier (Bronze + EIN + VO + mail forwarding). */
+const silverFeatures = [
+  FEATURE_STATE_FILING_FEES,
+  FEATURE_DOC_PREP,
+  FEATURE_OPERATING_AGREEMENT,
+  FEATURE_BANK_ACCT_DOCS,
+  FEATURE_EIN_INCLUDED,
+  FEATURE_INITIAL_STATE_FILINGS,
+  FEATURE_CORP_RECORDS,
+  FEATURE_REGISTERED_AGENT,
+  FEATURE_OFFSHORE_RECORDS,
+  FEATURE_VO_INCLUDED,
+  FEATURE_MAIL_FORWARDING_INCLUDED,
+  FEATURE_NOMINEE_DIRECTOR_NOT_INCLUDED,
+  FEATURE_NOMINEE_OFFICERS_NOT_INCLUDED,
+];
+
+/** Features for Gold tier (Silver + year-round nominees). */
+const goldFeatures = [
+  FEATURE_STATE_FILING_FEES,
+  FEATURE_DOC_PREP,
+  FEATURE_OPERATING_AGREEMENT,
+  FEATURE_BANK_ACCT_DOCS,
+  FEATURE_EIN_INCLUDED,
+  FEATURE_INITIAL_STATE_FILINGS,
+  FEATURE_CORP_RECORDS,
+  FEATURE_REGISTERED_AGENT,
+  FEATURE_OFFSHORE_RECORDS,
+  FEATURE_VO_INCLUDED,
+  FEATURE_MAIL_FORWARDING_INCLUDED,
+  FEATURE_NOMINEE_DIRECTOR_INCLUDED,
+  FEATURE_NOMINEE_OFFICERS_INCLUDED,
+];
+
+/* ------------------------------------------------
+   Legacy flat packages array (8 core packages + Shelf)
+   Kept for backward compat with existing routes and cards.
+   NOTE: pricing values are placeholders until David confirms on Apr 20.
+   ------------------------------------------------ */
+
 export const packages: PackageTier[] = [
-  // Wyoming
-  {
-    id: "wyoming-gold",
-    flatSlug: "gold?state=wyoming",
-    name: "Wyoming Gold LLC",
-    tier: "gold",
-    state: "Wyoming",
-    prices: {
-      llc: { formation: 1275, renewal: 525 },
-      corp: { formation: 1575, renewal: 625 },
-    },
-    description:
-      "Complete privacy package with year-round nominees, offshore records, and full compliance. Our most popular package.",
-    badge: "Most Popular",
-    highlighted: true,
-    features: [
-      {
-        name: "State Filing Fees Included",
-        status: "included",
-        tooltip:
-          "All Wyoming state filing fees are included — no hidden charges",
-      },
-      {
-        name: "Registered Agent (1 Year)",
-        status: "included",
-        tooltip:
-          "Professional registered agent service in Wyoming for one full year",
-      },
-      {
-        name: "Year-Round Nominee Directors",
-        status: "included",
-        tooltip:
-          "Nominee directors listed on public records year-round, not just at formation",
-      },
-      {
-        name: "Year-Round Nominee Officers",
-        status: "included",
-        tooltip:
-          "Nominee officers protect your identity on all corporate filings",
-      },
-      {
-        name: "Offshore Record Storage",
-        status: "included",
-        tooltip:
-          "Corporate records stored outside U.S. jurisdiction for maximum privacy",
-      },
-      {
-        name: "Corporate Minutes Maintenance",
-        status: "included",
-        tooltip:
-          "Professional preparation and maintenance of your corporate minute book",
-      },
-      {
-        name: "Annual Report Filing",
-        status: "included",
-        tooltip: "We prepare and file your Wyoming annual report each year",
-      },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Corporate Seal", status: "included" },
-      { name: "Custom Operating Agreement", status: "included" },
-    ],
-    addOns: sharedAddOns,
-  },
-  {
-    id: "wyoming-silver",
-    flatSlug: "silver?state=wyoming",
-    name: "Wyoming Silver LLC",
-    tier: "silver",
-    state: "Wyoming",
-    prices: {
-      llc: { formation: 875, renewal: 325 },
-      corp: { formation: 1175, renewal: 425 },
-    },
-    description:
-      "Professional formation with registered agent and compliance essentials. Great starting point for business formation.",
-    features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      {
-        name: "Year-Round Nominee Directors",
-        status: "not-included",
-        tooltip: "Upgrade to Gold for year-round nominee directors",
-      },
-      {
-        name: "Year-Round Nominee Officers",
-        status: "not-included",
-        tooltip: "Upgrade to Gold for year-round nominee officers",
-      },
-      {
-        name: "Offshore Record Storage",
-        status: "not-included",
-        tooltip: "Upgrade to Gold for offshore record storage",
-      },
-      { name: "Corporate Minutes Maintenance", status: "included" },
-      { name: "Annual Report Filing", status: "included" },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Corporate Seal", status: "included" },
-      { name: "Custom Operating Agreement", status: "add-on" },
-    ],
-    addOns: sharedAddOns,
-  },
+  // ── WYOMING ──
   {
     id: "wyoming-bronze",
-    flatSlug: "bronze?state=wyoming",
-    name: "Wyoming Bronze LLC",
+    flatSlug: "wyoming-bronze",
+    name: "Wyoming Bronze",
     tier: "bronze",
     state: "Wyoming",
     prices: {
@@ -167,87 +331,47 @@ export const packages: PackageTier[] = [
       corp: { formation: 625, renewal: 225 },
     },
     description:
-      "Basic formation with registered agent. You manage your own annual compliance.",
-    features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "not-included" },
-      { name: "Year-Round Nominee Officers", status: "not-included" },
-      { name: "Offshore Record Storage", status: "not-included" },
-      { name: "Corporate Minutes Maintenance", status: "not-included" },
-      { name: "Annual Report Filing", status: "not-included" },
-      { name: "Certificate of Good Standing", status: "not-included" },
-      { name: "Custom Operating Agreement", status: "add-on" },
-    ],
-    addOns: sharedAddOns,
-  },
-  // Nevada
-  {
-    id: "nevada-gold",
-    flatSlug: "gold?state=nevada",
-    name: "Nevada Gold LLC",
-    tier: "gold",
-    state: "Nevada",
-    prices: {
-      llc: { formation: 1800, renewal: 525 },
-      corp: { formation: 2100, renewal: 625 },
-    },
-    description:
-      "Premium Nevada formation with full privacy suite. Nominees, offshore records, and complete compliance included.",
-    badge: "Premium",
-    highlighted: true,
-    features: [
-      {
-        name: "State Filing Fees Included",
-        status: "included",
-        tooltip: "All Nevada state filing and business license fees included",
-      },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "included" },
-      { name: "Year-Round Nominee Officers", status: "included" },
-      { name: "Offshore Record Storage", status: "included" },
-      { name: "Corporate Minutes Maintenance", status: "included" },
-      { name: "Annual Report Filing", status: "included" },
-      {
-        name: "Nevada Business License",
-        status: "included",
-        tooltip: "Initial Nevada state business license included",
-      },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Custom Operating Agreement", status: "included" },
-    ],
+      "Wyoming formation with full compliance handling. Everything you need to incorporate and stay in good standing — without virtual office or nominee privacy. The affordable entry point for small businesses.",
+    features: bronzeFeatures,
     addOns: sharedAddOns,
   },
   {
-    id: "nevada-silver",
-    flatSlug: "silver?state=nevada",
-    name: "Nevada Silver LLC",
+    id: "wyoming-silver",
+    flatSlug: "wyoming-silver",
+    name: "Wyoming Silver",
     tier: "silver",
-    state: "Nevada",
+    state: "Wyoming",
     prices: {
-      llc: { formation: 1275, renewal: 325 },
-      corp: { formation: 1575, renewal: 425 },
+      llc: { formation: 875, renewal: 325 },
+      corp: { formation: 1175, renewal: 425 },
     },
     description:
-      "Solid Nevada formation with compliance essentials. Upgrade to Gold for full privacy features.",
-    features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "not-included" },
-      { name: "Year-Round Nominee Officers", status: "not-included" },
-      { name: "Offshore Record Storage", status: "not-included" },
-      { name: "Corporate Minutes Maintenance", status: "included" },
-      { name: "Annual Report Filing", status: "included" },
-      { name: "Nevada Business License", status: "included" },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Custom Operating Agreement", status: "add-on" },
-    ],
+      "Wyoming formation with virtual office, weekly mail forwarding, and EIN included. The mainstream choice for online businesses who want their home address off public records.",
+    features: silverFeatures,
     addOns: sharedAddOns,
   },
+  {
+    id: "wyoming-gold",
+    flatSlug: "wyoming-gold",
+    name: "Wyoming Gold",
+    tier: "gold",
+    state: "Wyoming",
+    prices: {
+      llc: { formation: 1275, renewal: 525 },
+      corp: { formation: 1575, renewal: 625 },
+    },
+    description:
+      "Complete privacy package with year-round nominee directors, managers, and officers. Your name never appears on public records. Our most popular privacy-focused package.",
+    badge: "Most Popular",
+    highlighted: true,
+    features: goldFeatures,
+    addOns: sharedAddOns,
+  },
+  // ── NEVADA ──
   {
     id: "nevada-bronze",
-    flatSlug: "bronze?state=nevada",
-    name: "Nevada Bronze LLC",
+    flatSlug: "nevada-bronze",
+    name: "Nevada Bronze",
     tier: "bronze",
     state: "Nevada",
     prices: {
@@ -255,26 +379,47 @@ export const packages: PackageTier[] = [
       corp: { formation: 899, renewal: 325 },
     },
     description:
-      "Basic Nevada formation at an affordable price. Includes state filing fees and registered agent.",
-    features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "not-included" },
-      { name: "Year-Round Nominee Officers", status: "not-included" },
-      { name: "Offshore Record Storage", status: "not-included" },
-      { name: "Corporate Minutes Maintenance", status: "not-included" },
-      { name: "Annual Report Filing", status: "add-on" },
-      { name: "Nevada Business License", status: "included" },
-      { name: "Certificate of Good Standing", status: "add-on" },
-      { name: "Custom Operating Agreement", status: "add-on" },
-    ],
+      "Nevada formation including the required state business license. Compliance, registered agent, and operating agreement handled. No virtual office or nominees.",
+    features: [...bronzeFeatures, FEATURE_NV_BUSINESS_LICENSE],
     addOns: sharedAddOns,
   },
-  // State-specific privacy packages
+  {
+    id: "nevada-silver",
+    flatSlug: "nevada-silver",
+    name: "Nevada Silver",
+    tier: "silver",
+    state: "Nevada",
+    prices: {
+      llc: { formation: 1275, renewal: 325 },
+      corp: { formation: 1575, renewal: 425 },
+    },
+    description:
+      "Nevada formation with EIN, virtual office, weekly mail forwarding, and business license included. Ideal for businesses with an actual Nevada presence who want professional infrastructure.",
+    features: [...silverFeatures, FEATURE_NV_BUSINESS_LICENSE],
+    addOns: sharedAddOns,
+  },
+  {
+    id: "nevada-gold",
+    flatSlug: "nevada-gold",
+    name: "Nevada Gold",
+    tier: "gold",
+    state: "Nevada",
+    prices: {
+      llc: { formation: 1800, renewal: 525 },
+      corp: { formation: 2100, renewal: 625 },
+    },
+    description:
+      "Premium Nevada formation with year-round nominees, virtual office, EIN, business license, and full compliance. Maximum privacy in a Nevada-formed entity.",
+    badge: "Premium",
+    highlighted: true,
+    features: [...goldFeatures, FEATURE_NV_BUSINESS_LICENSE],
+    addOns: sharedAddOns,
+  },
+  // ── CA & FL Private (Gold-tier WY formations with foreign reg + RA) ──
   {
     id: "california-private",
-    flatSlug: "gold?state=california",
-    name: "California Private LLC",
+    flatSlug: "california-private",
+    name: "California Private",
     tier: "gold",
     state: "California",
     prices: {
@@ -282,29 +427,19 @@ export const packages: PackageTier[] = [
       corp: { formation: 1775, renewal: 625 },
     },
     description:
-      "Privacy-focused California formation. Wyoming or Nevada nominee structure with California foreign registration.",
+      "Wyoming Gold formation pre-bundled with California foreign registration and a California registered agent. Full Gold-tier privacy for California operators — everything in one package.",
     badge: "Privacy",
     features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "included" },
-      { name: "Year-Round Nominee Officers", status: "included" },
-      { name: "Offshore Record Storage", status: "included" },
-      {
-        name: "CA Foreign Registration",
-        status: "included",
-        tooltip: "Register your WY/NV entity to do business in California",
-      },
-      { name: "Annual Report Filing", status: "included" },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Custom Operating Agreement", status: "included" },
+      ...goldFeatures,
+      FEATURE_CA_FOREIGN_REG,
+      FEATURE_CA_REGISTERED_AGENT,
     ],
     addOns: sharedAddOns,
   },
   {
     id: "florida-private",
-    flatSlug: "gold?state=florida",
-    name: "Florida Private LLC",
+    flatSlug: "florida-private",
+    name: "Florida Private",
     tier: "gold",
     state: "Florida",
     prices: {
@@ -312,25 +447,16 @@ export const packages: PackageTier[] = [
       corp: { formation: 1775, renewal: 625 },
     },
     description:
-      "Privacy-focused Florida formation. Wyoming or Nevada nominee structure with Florida foreign registration.",
+      "Wyoming Gold formation pre-bundled with Florida foreign registration and a Florida registered agent. Full Gold-tier privacy for Florida operators — everything in one package.",
     badge: "Privacy",
     features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "included" },
-      { name: "Year-Round Nominee Officers", status: "included" },
-      { name: "Offshore Record Storage", status: "included" },
-      {
-        name: "FL Foreign Registration",
-        status: "included",
-        tooltip: "Register your WY/NV entity to do business in Florida",
-      },
-      { name: "Annual Report Filing", status: "included" },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Custom Operating Agreement", status: "included" },
+      ...goldFeatures,
+      FEATURE_FL_FOREIGN_REG,
+      FEATURE_FL_REGISTERED_AGENT,
     ],
     addOns: sharedAddOns,
   },
+  // ── Shelf — separate two-step flow, not a column in the comparison table ──
   {
     id: "shelf-companies",
     flatSlug: "shelf-companies",
@@ -342,28 +468,21 @@ export const packages: PackageTier[] = [
       corp: { formation: 2800, renewal: 625 },
     },
     description:
-      "Pre-aged entity with established history. Immediate availability for business needs requiring entity age.",
+      "Pre-formed aged entity with established formation date. Choose a shelf entity, then attach Bronze / Silver / Gold tier. Useful when you need entity age for credibility or contracts.",
     badge: "Pre-Aged",
     features: [
       {
-        name: "Pre-Aged Entity (1-5 Years)",
+        name: "Pre-Aged Entity (1–5 years)",
         status: "included",
         tooltip:
-          "Entity with established formation date — age varies by availability",
+          "Formation date predates today — exact age depends on available inventory",
       },
       {
         name: "Clean History Guaranteed",
         status: "included",
         tooltip: "No prior business activity, liens, or liabilities",
       },
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "included" },
-      { name: "Year-Round Nominee Officers", status: "included" },
-      { name: "Offshore Record Storage", status: "included" },
-      { name: "Corporate Minutes Maintenance", status: "included" },
-      { name: "Annual Report Filing", status: "included" },
-      { name: "Custom Operating Agreement", status: "included" },
+      ...goldFeatures,
     ],
     addOns: sharedAddOns,
   },
@@ -379,22 +498,21 @@ export const tierDefinitions: TierDefinition[] = [
     tier: "bronze",
     slug: "bronze",
     name: "Bronze",
-    tagline: "Basic Nevada Formation",
+    tagline: "Formation + Compliance",
     description:
-      "Basic Nevada formation at an affordable price. Includes state filing fees, registered agent, and Nevada business license. Nevada-only per product strategy.",
-    availableStates: ["Nevada"],
-    features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "not-included" },
-      { name: "Year-Round Nominee Officers", status: "not-included" },
-      { name: "Offshore Record Storage", status: "not-included" },
-      { name: "Corporate Minutes Maintenance", status: "not-included" },
-      { name: "Annual Report Filing", status: "add-on" },
-      { name: "Certificate of Good Standing", status: "add-on" },
-      { name: "Custom Operating Agreement", status: "add-on" },
-    ],
+      "Affordable formation with full compliance handling — state filings, registered agent, corporate records, operating agreement, and bank account documents. No virtual office, no EIN, no nominees. The entry point for budget-conscious businesses who already have a physical address.",
+    availableStates: ["Wyoming", "Nevada"],
+    features: bronzeFeatures,
     stateVariants: {
+      Wyoming: {
+        state: "Wyoming",
+        abbreviation: "WY",
+        prices: {
+          llc: { formation: 625, renewal: 225 },
+          corp: { formation: 625, renewal: 225 },
+        },
+        legacyId: "wyoming-bronze",
+      },
       Nevada: {
         state: "Nevada",
         abbreviation: "NV",
@@ -402,13 +520,7 @@ export const tierDefinitions: TierDefinition[] = [
           llc: { formation: 699, renewal: 225 },
           corp: { formation: 899, renewal: 325 },
         },
-        extraFeatures: [
-          {
-            name: "Nevada Business License",
-            status: "included",
-            tooltip: "Initial Nevada state business license included",
-          },
-        ],
+        extraFeatures: [FEATURE_NV_BUSINESS_LICENSE],
         legacyId: "nevada-bronze",
       },
     },
@@ -418,22 +530,11 @@ export const tierDefinitions: TierDefinition[] = [
     tier: "silver",
     slug: "silver",
     name: "Silver",
-    tagline: "Professional Formation",
+    tagline: "Bronze + Virtual Presence",
     description:
-      "Professional formation with registered agent and compliance essentials. Great starting point for business formation.",
+      "Everything in Bronze plus EIN obtainment, a virtual office address, and weekly mail forwarding. The mainstream choice for online businesses who want a real business address that isn't their home.",
     availableStates: ["Wyoming", "Nevada"],
-    features: [
-      { name: "State Filing Fees Included", status: "included" },
-      { name: "Registered Agent (1 Year)", status: "included" },
-      { name: "Year-Round Nominee Directors", status: "not-included" },
-      { name: "Year-Round Nominee Officers", status: "not-included" },
-      { name: "Offshore Record Storage", status: "not-included" },
-      { name: "Corporate Minutes Maintenance", status: "included" },
-      { name: "Annual Report Filing", status: "included" },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Corporate Seal", status: "included" },
-      { name: "Custom Operating Agreement", status: "add-on" },
-    ],
+    features: silverFeatures,
     stateVariants: {
       Wyoming: {
         state: "Wyoming",
@@ -451,13 +552,7 @@ export const tierDefinitions: TierDefinition[] = [
           llc: { formation: 1275, renewal: 325 },
           corp: { formation: 1575, renewal: 425 },
         },
-        extraFeatures: [
-          {
-            name: "Nevada Business License",
-            status: "included",
-            tooltip: "Initial Nevada state business license included",
-          },
-        ],
+        extraFeatures: [FEATURE_NV_BUSINESS_LICENSE],
         legacyId: "nevada-silver",
       },
     },
@@ -467,55 +562,13 @@ export const tierDefinitions: TierDefinition[] = [
     tier: "gold",
     slug: "gold",
     name: "Gold",
-    tagline: "Full Privacy Package",
+    tagline: "Silver + Year-Round Nominee Privacy",
     description:
-      "Complete privacy package with year-round nominees, offshore records, and full compliance. Our most popular package.",
+      "Complete privacy package. Everything in Silver plus year-round nominee director/manager and nominee officers. Your name never appears on public filings. The only feature-level difference from Silver is nominees — that's the privacy decision.",
     badge: "Most Popular",
     highlighted: true,
     availableStates: ["Wyoming", "Nevada", "California", "Florida"],
-    features: [
-      {
-        name: "State Filing Fees Included",
-        status: "included",
-        tooltip: "All state filing fees are included — no hidden charges",
-      },
-      {
-        name: "Registered Agent (1 Year)",
-        status: "included",
-        tooltip: "Professional registered agent service for one full year",
-      },
-      {
-        name: "Year-Round Nominee Directors",
-        status: "included",
-        tooltip:
-          "Nominee directors listed on public records year-round, not just at formation",
-      },
-      {
-        name: "Year-Round Nominee Officers",
-        status: "included",
-        tooltip:
-          "Nominee officers protect your identity on all corporate filings",
-      },
-      {
-        name: "Offshore Record Storage",
-        status: "included",
-        tooltip:
-          "Corporate records stored outside U.S. jurisdiction for maximum privacy",
-      },
-      {
-        name: "Corporate Minutes Maintenance",
-        status: "included",
-        tooltip:
-          "Professional preparation and maintenance of your corporate minute book",
-      },
-      {
-        name: "Annual Report Filing",
-        status: "included",
-        tooltip: "We prepare and file your annual report each year",
-      },
-      { name: "Certificate of Good Standing", status: "included" },
-      { name: "Custom Operating Agreement", status: "included" },
-    ],
+    features: goldFeatures,
     stateVariants: {
       Wyoming: {
         state: "Wyoming",
@@ -525,7 +578,7 @@ export const tierDefinitions: TierDefinition[] = [
           corp: { formation: 1575, renewal: 625 },
         },
         description:
-          "Complete privacy package with year-round nominees, offshore records, and full compliance. Our most popular package.",
+          "Complete privacy package with year-round nominee directors, managers, and officers. Your name never appears on public records. Our most popular privacy-focused package.",
         legacyId: "wyoming-gold",
       },
       Nevada: {
@@ -535,15 +588,9 @@ export const tierDefinitions: TierDefinition[] = [
           llc: { formation: 1800, renewal: 525 },
           corp: { formation: 2100, renewal: 625 },
         },
-        extraFeatures: [
-          {
-            name: "Nevada Business License",
-            status: "included",
-            tooltip: "Initial Nevada state business license included",
-          },
-        ],
+        extraFeatures: [FEATURE_NV_BUSINESS_LICENSE],
         description:
-          "Premium Nevada formation with full privacy suite. Nominees, offshore records, and complete compliance included.",
+          "Premium Nevada formation with year-round nominees, virtual office, EIN, business license, and full compliance. Maximum privacy in a Nevada-formed entity.",
         legacyId: "nevada-gold",
       },
       California: {
@@ -553,15 +600,9 @@ export const tierDefinitions: TierDefinition[] = [
           llc: { formation: 1475, renewal: 525 },
           corp: { formation: 1775, renewal: 625 },
         },
-        extraFeatures: [
-          {
-            name: "CA Foreign Registration",
-            status: "included",
-            tooltip: "Register your WY/NV entity to do business in California",
-          },
-        ],
+        extraFeatures: [FEATURE_CA_FOREIGN_REG, FEATURE_CA_REGISTERED_AGENT],
         description:
-          "Privacy-focused California formation. Wyoming or Nevada nominee structure with California foreign registration.",
+          "Wyoming Gold formation pre-bundled with California foreign registration and a California registered agent. Full Gold-tier privacy for California operators.",
         legacyId: "california-private",
       },
       Florida: {
@@ -571,15 +612,9 @@ export const tierDefinitions: TierDefinition[] = [
           llc: { formation: 1475, renewal: 525 },
           corp: { formation: 1775, renewal: 625 },
         },
-        extraFeatures: [
-          {
-            name: "FL Foreign Registration",
-            status: "included",
-            tooltip: "Register your WY/NV entity to do business in Florida",
-          },
-        ],
+        extraFeatures: [FEATURE_FL_FOREIGN_REG, FEATURE_FL_REGISTERED_AGENT],
         description:
-          "Privacy-focused Florida formation. Wyoming or Nevada nominee structure with Florida foreign registration.",
+          "Wyoming Gold formation pre-bundled with Florida foreign registration and a Florida registered agent. Full Gold-tier privacy for Florida operators.",
         legacyId: "florida-private",
       },
     },
@@ -623,6 +658,30 @@ export function getAvailableTiersForState(state: string): TierDefinition[] {
   return tierDefinitions.filter((t) => t.availableStates.includes(state));
 }
 
+/**
+ * Canonical flat URL for a given (tier, state) combination.
+ * Returns the path only (no protocol/host), e.g. "/wyoming-gold".
+ *
+ * Maps:
+ *  - Wyoming/Nevada + Bronze/Silver/Gold → /{state}-{tier}
+ *  - California + Gold                    → /california-private
+ *  - Florida + Gold                       → /florida-private
+ *
+ * Falls back to /packages if the combination is not a valid published package.
+ */
+export function getPackageUrl(tierSlug: string, state: string): string {
+  const t = tierSlug.toLowerCase();
+  const s = state.toLowerCase();
+  if (s === "california") return "/california-private";
+  if (s === "florida") return "/florida-private";
+  if (s === "wyoming" || s === "nevada") {
+    if (t === "bronze" || t === "silver" || t === "gold") {
+      return `/${s}-${t}`;
+    }
+  }
+  return "/packages";
+}
+
 /** Get the combined features for a tier in a state (canonical + state extras) */
 export function getTierFeaturesForState(
   tier: TierDefinition,
@@ -644,20 +703,65 @@ export const entityOptions = [
   { value: "corp", label: "Corporation" },
 ];
 
-/** Shared feature names for the comparison table, in display order */
+/**
+ * Feature rows for the comparison table, in display order matching the v3 spreadsheet.
+ * Each entry maps 1:1 to a feature name in the tier feature arrays above.
+ */
 export const comparisonFeatures = [
+  // Formation
   "State Filing Fees Included",
-  "Registered Agent (1 Year)",
-  "Year-Round Nominee Directors",
-  "Year-Round Nominee Officers",
-  "Offshore Record Storage",
-  "Corporate Minutes Maintenance",
-  "Annual Report Filing",
-  "Certificate of Good Standing",
+  "Document Preparation",
   "Custom Operating Agreement",
+  "Bank Account Opening Document Package",
+  "EIN Obtainment",
+  // Compliance
+  "Initial State Filings and Fees",
+  "Corporate Records & Minutes",
+  "Registered Agent (1 Year)",
+  "Offshore Records Storage",
+  // Virtual Presence
+  "Virtual Office Address",
+  "Weekly Mail Forwarding",
+  // Privacy
+  "Year-Round Nominee Director / Manager",
+  "Year-Round Nominee Officers",
 ];
 
-/** Ordered tiers for consistent column display */
+/** Grouped feature sections for the comparison table (per v3 spreadsheet layout). */
+export const comparisonFeatureGroups = [
+  {
+    label: "Formation — Included in All Tiers",
+    features: [
+      "State Filing Fees Included",
+      "Document Preparation",
+      "Custom Operating Agreement",
+      "Bank Account Opening Document Package",
+      "EIN Obtainment",
+    ],
+  },
+  {
+    label: "Compliance — Included in All Tiers",
+    features: [
+      "Initial State Filings and Fees",
+      "Corporate Records & Minutes",
+      "Registered Agent (1 Year)",
+      "Offshore Records Storage",
+    ],
+  },
+  {
+    label: "Virtual Presence — Silver & Gold",
+    features: ["Virtual Office Address", "Weekly Mail Forwarding"],
+  },
+  {
+    label: "Privacy — Gold Only",
+    features: [
+      "Year-Round Nominee Director / Manager",
+      "Year-Round Nominee Officers",
+    ],
+  },
+] as const;
+
+/** Ordered tiers for consistent column display (Bronze → Silver → Gold). */
 export const tierOrder: Record<string, number> = {
   bronze: 0,
   silver: 1,

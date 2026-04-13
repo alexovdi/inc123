@@ -1,0 +1,1645 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incorporate123 — Abbreviations Glossary (Print Edition)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ═════════════════════════════════════════════════════════════════════
+   PRINT-FIRST GLOSSARY STYLESHEET
+   Paper: A4 portrait · Body: Crimson Pro serif · Heads: Inter sans · Mono: JetBrains Mono
+   ═════════════════════════════════════════════════════════════════════ */
+
+      @page {
+        size: A4 portrait;
+        margin: 18mm 16mm 20mm 16mm;
+        @bottom-center {
+          content: "Incorporate123 Abbreviations Glossary · " counter(page)
+            " / " counter(pages);
+          font-family: "Inter", sans-serif;
+          font-size: 9pt;
+          color: #888;
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #111;
+        --ink-2: #333;
+        --muted: #666;
+        --muted-2: #999;
+        --line: #d4d4d4;
+        --line-2: #e5e5e5;
+        --accent: #111;
+        --rule: #111;
+      }
+
+      html {
+        background: #f4f4f2;
+      }
+      body {
+        font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
+        font-size: 11pt;
+        line-height: 1.55;
+        color: var(--ink);
+        background: #f4f4f2;
+        -webkit-font-smoothing: antialiased;
+        padding: 0;
+      }
+
+      /* Page container (screen preview mirrors A4 proportions) */
+      .page {
+        max-width: 800px;
+        margin: 30px auto 60px;
+        background: #fff;
+        padding: 48px 56px 64px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+      }
+
+      /* ───── Typography ───── */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        color: var(--ink);
+        letter-spacing: -0.2px;
+      }
+      h1 {
+        font-size: 26pt;
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 4pt;
+      }
+      h2 {
+        font-size: 14pt;
+        margin-top: 22pt;
+        margin-bottom: 10pt;
+        padding-bottom: 5pt;
+        border-bottom: 1.5pt solid var(--rule);
+        page-break-after: avoid;
+      }
+      h3 {
+        font-size: 11pt;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-top: 14pt;
+        margin-bottom: 6pt;
+        page-break-after: avoid;
+      }
+      p {
+        margin-bottom: 8pt;
+      }
+
+      .subtitle {
+        font-family: "Crimson Pro", serif;
+        font-style: italic;
+        font-size: 13pt;
+        color: var(--muted);
+        margin-bottom: 16pt;
+      }
+      .eyebrow {
+        font-family: "Inter", sans-serif;
+        font-size: 9pt;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8pt;
+      }
+
+      /* ───── Title block ───── */
+      .title-block {
+        padding-bottom: 18pt;
+        margin-bottom: 22pt;
+        border-bottom: 3pt double var(--rule);
+      }
+      .title-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16pt;
+        margin-top: 14pt;
+        padding-top: 12pt;
+        border-top: 0.5pt solid var(--line);
+        font-family: "Inter", sans-serif;
+        font-size: 8.5pt;
+      }
+      .title-meta dt {
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2pt;
+      }
+      .title-meta dd {
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+
+      /* ───── Intro note ───── */
+      .intro {
+        padding: 12pt 14pt;
+        background: #f9f9f7;
+        border-left: 3pt solid var(--ink);
+        margin-bottom: 18pt;
+        font-size: 10.5pt;
+        line-height: 1.6;
+        color: var(--ink-2);
+        page-break-inside: avoid;
+      }
+      .intro strong {
+        color: var(--ink);
+      }
+
+      /* ───── Contents / TOC ───── */
+      .toc {
+        padding: 14pt 0;
+        border-top: 0.5pt solid var(--line);
+        border-bottom: 0.5pt solid var(--line);
+        margin-bottom: 20pt;
+        page-break-inside: avoid;
+      }
+      .toc-h {
+        font-family: "Inter", sans-serif;
+        font-size: 9pt;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10pt;
+      }
+      .toc ol {
+        list-style: none;
+        counter-reset: toc;
+        columns: 2;
+        column-gap: 24pt;
+      }
+      .toc li {
+        counter-increment: toc;
+        font-family: "Inter", sans-serif;
+        font-size: 9.5pt;
+        line-height: 1.9;
+        color: var(--ink-2);
+        break-inside: avoid;
+      }
+      .toc li::before {
+        content: counter(toc, decimal-leading-zero) " ";
+        font-family: "JetBrains Mono", monospace;
+        font-size: 8.5pt;
+        font-weight: 700;
+        color: var(--muted-2);
+        margin-right: 4pt;
+      }
+      .toc li strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .toc li em {
+        color: var(--muted);
+        font-style: normal;
+        font-size: 8.5pt;
+      }
+
+      /* ───── Main glossary tables ───── */
+      table.gloss {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 14pt;
+        font-size: 10.5pt;
+        page-break-inside: auto;
+      }
+      table.gloss tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      table.gloss th {
+        font-family: "Inter", sans-serif;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-align: left;
+        padding: 6pt 8pt 4pt 0;
+        border-bottom: 1pt solid var(--rule);
+      }
+      table.gloss th.w-abbr {
+        width: 90pt;
+      }
+      table.gloss th.w-full {
+        width: 150pt;
+      }
+      table.gloss td {
+        vertical-align: top;
+        padding: 6pt 8pt 6pt 0;
+        border-bottom: 0.4pt solid var(--line-2);
+      }
+      table.gloss td.abbr {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 10pt;
+        color: var(--ink);
+        white-space: nowrap;
+        padding-right: 12pt;
+      }
+      table.gloss td.full {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 10pt;
+        padding-right: 12pt;
+      }
+      table.gloss td.ctx {
+        color: var(--ink-2);
+        font-size: 10pt;
+        font-style: italic;
+        line-height: 1.5;
+      }
+      table.gloss tbody tr:last-child td {
+        border-bottom: 0;
+      }
+
+      /* ───── Legal-terms section ───── */
+      .term {
+        break-inside: avoid;
+        margin-bottom: 10pt;
+        padding-bottom: 8pt;
+        border-bottom: 0.4pt solid var(--line-2);
+      }
+      .term:last-child {
+        border-bottom: 0;
+      }
+      .term-name {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 10pt;
+        color: var(--ink);
+        margin-bottom: 3pt;
+      }
+      .term-def {
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: var(--ink-2);
+      }
+
+      /* ───── Two-column layout for dense sections ───── */
+      .cols-2 {
+        columns: 2;
+        column-gap: 22pt;
+        column-rule: 0.4pt solid var(--line-2);
+      }
+      .cols-2 .term {
+        break-inside: avoid;
+      }
+
+      /* ───── Statute table ───── */
+      table.statute {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9.5pt;
+        margin-top: 4pt;
+      }
+      table.statute th {
+        font-family: "Inter", sans-serif;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-align: left;
+        padding: 5pt 0 4pt;
+        border-bottom: 0.8pt solid var(--rule);
+      }
+      table.statute td {
+        vertical-align: top;
+        padding: 5pt 8pt 5pt 0;
+        border-bottom: 0.3pt solid var(--line-2);
+        color: var(--ink-2);
+      }
+      table.statute td.code {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        white-space: nowrap;
+        color: var(--ink);
+        padding-right: 12pt;
+        width: 100pt;
+      }
+
+      /* ───── Footer ───── */
+      .doc-footer {
+        margin-top: 28pt;
+        padding-top: 14pt;
+        border-top: 3pt double var(--rule);
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-size: 8.5pt;
+        color: var(--muted);
+        page-break-inside: avoid;
+      }
+      .doc-footer p {
+        margin-bottom: 3pt;
+      }
+      .doc-footer strong {
+        color: var(--ink);
+      }
+
+      /* ───── Section break hint ───── */
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+
+      /* ───── Print overrides ───── */
+      @media print {
+        html,
+        body {
+          background: #fff !important;
+        }
+        .page {
+          box-shadow: none;
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          border-radius: 0;
+        }
+        h2 {
+          page-break-after: avoid;
+        }
+        .term,
+        .toc,
+        .intro,
+        table.gloss tr,
+        table.statute tr {
+          page-break-inside: avoid;
+        }
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+      @media screen and (max-width: 820px) {
+        .page {
+          padding: 28px 24px;
+          margin: 14px;
+          max-width: 100%;
+        }
+        .cols-2 {
+          columns: 1;
+        }
+        .toc ol {
+          columns: 1;
+        }
+        .title-meta {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- ═══════════════════════════════════════════════════════════════════
+     TITLE BLOCK
+     ═══════════════════════════════════════════════════════════════════ -->
+      <header class="title-block">
+        <p class="eyebrow">Print Edition · v1</p>
+        <h1>Incorporate123 — Abbreviations &amp; Glossary</h1>
+        <p class="subtitle">
+          A reference of every abbreviation, acronym, and domain-specific term
+          used across the Incorporate123 project, compiled for client review and
+          internal onboarding.
+        </p>
+        <dl class="title-meta">
+          <div>
+            <dt>Version</dt>
+            <dd>2026-04-13</dd>
+          </div>
+          <div>
+            <dt>Compiled by</dt>
+            <dd>BIT Studios</dd>
+          </div>
+          <div>
+            <dt>Audience</dt>
+            <dd>Client + project team</dd>
+          </div>
+          <div>
+            <dt>Source</dt>
+            <dd>DOCS/Incorporate123_Glossary.md + prototype scan</dd>
+          </div>
+          <div>
+            <dt>Format</dt>
+            <dd>A4 portrait · Crimson Pro serif</dd>
+          </div>
+          <div>
+            <dt>Print</dt>
+            <dd>File → Print → Save as PDF</dd>
+          </div>
+        </dl>
+      </header>
+
+      <!-- Intro -->
+      <div class="intro">
+        <strong>How to use this document.</strong> Entries are grouped into
+        eleven categories, ordered roughly by conceptual proximity
+        (jurisdictions → entities → tax → legal → operations → privacy → tech →
+        project). Each abbreviation is paired with its full form and a short
+        context note describing how it is used in the Incorporate123 site copy,
+        product, or tooling. The final section lists Nevada statutes frequently
+        cited on pillar and cluster pages.
+      </div>
+
+      <!-- TOC -->
+      <nav class="toc">
+        <div class="toc-h">Contents · 11 sections</div>
+        <ol>
+          <li>
+            <strong>Geography &amp; Jurisdictions</strong> <em>— 7 entries</em>
+          </li>
+          <li><strong>Entity Types</strong> <em>— 6 entries</em></li>
+          <li><strong>Tax &amp; IRS</strong> <em>— 13 entries</em></li>
+          <li><strong>Business Services</strong> <em>— 6 entries</em></li>
+          <li><strong>Privacy &amp; Ownership</strong> <em>— 5 entries</em></li>
+          <li><strong>Cryptocurrency Payments</strong> <em>— 5 entries</em></li>
+          <li>
+            <strong>Web, Tech &amp; Design System</strong> <em>— 22 entries</em>
+          </li>
+          <li>
+            <strong>Project &amp; Documentation</strong> <em>— 9 entries</em>
+          </li>
+          <li><strong>IRS Forms Referenced</strong> <em>— 3 entries</em></li>
+          <li>
+            <strong>Legal &amp; Governance Terms</strong> <em>— full-length</em>
+          </li>
+          <li>
+            <strong>Key Nevada Statutes Cited</strong> <em>— 11 entries</em>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     01 — GEOGRAPHY & JURISDICTIONS
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>01 · Geography &amp; Jurisdictions</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">WY</td>
+            <td class="full">Wyoming</td>
+            <td class="ctx">
+              Primary formation state — strongest privacy, lowest fees,
+              excellent charging-order protection. Wyoming is the recommended
+              default for 70% of clients.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">NV</td>
+            <td class="full">Nevada</td>
+            <td class="ctx">
+              Primary formation state — no corporate income tax, strong veil
+              protection, well-established business courts. Used when clients
+              have actual Nevada presence.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CA</td>
+            <td class="full">California</td>
+            <td class="ctx">
+              Foreign-registration target for brick-and-mortar clients. CA
+              Private package bundles Wyoming formation with California
+              registration.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">FL</td>
+            <td class="full">Florida</td>
+            <td class="ctx">
+              Foreign-registration target. FL Private package mirrors the
+              California pattern for Florida-based businesses.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">US / USA</td>
+            <td class="full">United States</td>
+            <td class="ctx">
+              Primary domestic formation jurisdiction. All tier packages form in
+              the United States.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">BVI</td>
+            <td class="full">British Virgin Islands</td>
+            <td class="ctx">
+              Offshore entity formation jurisdiction referenced on Offshore
+              pages.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">HK</td>
+            <td class="full">Hong Kong</td>
+            <td class="ctx">
+              Incorporate123's offshore operations base, referenced on about and
+              offshore pages.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     02 — ENTITY TYPES
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>02 · Entity Types</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">LLC</td>
+            <td class="full">Limited Liability Company</td>
+            <td class="ctx">
+              Primary entity type offered. Combines liability protection with
+              tax flexibility. Referenced in every tier and every package
+              variant ("Wyoming Gold LLC," "Nevada Silver LLC," etc.).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">Corp / Inc.</td>
+            <td class="full">Corporation / Incorporated</td>
+            <td class="ctx">
+              Formal entity type with shareholders, directors, and officers.
+              Offered as an alternative to LLC on every tier via the entity-type
+              toggle.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">C-Corp</td>
+            <td class="full">C Corporation</td>
+            <td class="ctx">
+              Default corporation tax classification. Taxed at corporate level
+              plus dividends — the classic "double taxation" structure.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">S-Corp</td>
+            <td class="full">S Corporation</td>
+            <td class="ctx">
+              Pass-through tax classification elected via IRS Form 2553.
+              Generally advantageous above ~$80K annual net income.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">DBA</td>
+            <td class="full">Doing Business As</td>
+            <td class="ctx">
+              Fictitious-name filing (also "trade name," "assumed name").
+              Offered as a $50 add-on service.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">IBC</td>
+            <td class="full">International Business Company</td>
+            <td class="ctx">
+              Offshore entity structure, referenced on Offshore pages for BVI,
+              Nevis, Panama formations.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     03 — TAX & IRS
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>03 · Tax &amp; IRS</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">IRS</td>
+            <td class="full">Internal Revenue Service</td>
+            <td class="ctx">
+              US federal tax authority. Referenced throughout tax-related
+              content and compliance clusters.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">EIN</td>
+            <td class="full">Employer Identification Number</td>
+            <td class="ctx">
+              Federal tax ID issued by the IRS. Available as a $75 add-on across
+              all packages. Required to open a bank account, hire employees, or
+              file taxes.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">SSN</td>
+            <td class="full">Social Security Number</td>
+            <td class="ctx">
+              US personal tax ID. Referenced in privacy context — the Douglas
+              County NV advantage avoids SSN exposure via business-license
+              filings.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">ITIN</td>
+            <td class="full">Individual Taxpayer Identification Number</td>
+            <td class="ctx">
+              IRS-issued tax ID for non-resident aliens and others ineligible
+              for an SSN.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CPA</td>
+            <td class="full">Certified Public Accountant</td>
+            <td class="ctx">
+              Tax professional role. Incorporate123 is explicitly "not a CPA
+              firm" (per legal disclaimer in footer).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">FBAR</td>
+            <td class="full">Foreign Bank Account Report</td>
+            <td class="ctx">
+              Tax reporting for foreign financial accounts. Relevant to offshore
+              clients.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">FATCA</td>
+            <td class="full">Foreign Account Tax Compliance Act</td>
+            <td class="ctx">
+              International tax compliance law requiring reporting of US
+              taxpayer foreign holdings.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CFC</td>
+            <td class="full">Controlled Foreign Corporation</td>
+            <td class="ctx">
+              Tax classification for offshore entities controlled by US
+              shareholders.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">GILTI</td>
+            <td class="full">Global Intangible Low-Taxed Income</td>
+            <td class="ctx">
+              TCJA tax rule that substantially reduced offshore formation demand
+              post-2017.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">KYC</td>
+            <td class="full">Know Your Customer</td>
+            <td class="ctx">
+              Compliance / identity verification requirement applied to banking
+              and payment processing.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">AML</td>
+            <td class="full">Anti-Money Laundering</td>
+            <td class="ctx">
+              Regulatory framework. Paired with KYC in banking-related content.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">BOI</td>
+            <td class="full">Beneficial Ownership Information</td>
+            <td class="ctx">
+              Federal reporting requirement under the Corporate Transparency
+              Act. Removed from site per client direction.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">SE</td>
+            <td class="full">Self-Employment</td>
+            <td class="ctx">
+              Tax classification used in S-Corp / LLC comparisons (SE tax =
+              15.3% on net earnings).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     04 — BUSINESS SERVICES
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>04 · Business Services</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">RA</td>
+            <td class="full">Registered Agent</td>
+            <td class="ctx">
+              State-required recipient of legal documents. Included in every
+              tier; cannot be a PO box.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">AP</td>
+            <td class="full">Asset Protection</td>
+            <td class="ctx">
+              One of the four site pillars. Also a wizard branch ("What brings
+              you here? → Asset Protection") that auto-routes to Gold tier.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">BBB</td>
+            <td class="full">Better Business Bureau</td>
+            <td class="ctx">
+              Review platform. Being phased out on-site in favor of G2 and
+              Trustpilot.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CTA</td>
+            <td class="full">Call-to-Action</td>
+            <td class="ctx">
+              Marketing / conversion element. Every section has a primary
+              (amber) and secondary (outline) CTA pattern.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">B&amp;M</td>
+            <td class="full">Brick-and-Mortar</td>
+            <td class="ctx">
+              Wizard business-type option — physical location in a specific
+              state. Triggers the state-selection sub-flow.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">PO Box</td>
+            <td class="full">Post Office Box</td>
+            <td class="ctx">
+              Disallowed for registered-agent addresses. Referenced in
+              compliance requirements.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     05 — PRIVACY & OWNERSHIP
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>05 · Privacy &amp; Ownership</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">BO</td>
+            <td class="full">Beneficial Owner</td>
+            <td class="ctx">
+              The natural person who ultimately owns or benefits from an asset,
+              regardless of legal title. Central concept in anti-privacy
+              legislation.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">UBO</td>
+            <td class="full">Ultimate Beneficial Owner</td>
+            <td class="ctx">
+              Same as BO — common in international / FATCA contexts.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CTA*</td>
+            <td class="full">Corporate Transparency Act</td>
+            <td class="ctx">
+              US federal law mandating BOI reporting. Not to be confused with
+              marketing "CTA" (Call-to-Action).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">NDA</td>
+            <td class="full">Non-Disclosure Agreement</td>
+            <td class="ctx">
+              Privacy-preservation contract occasionally referenced in offshore
+              / consulting content.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">SoP</td>
+            <td class="full">Service of Process</td>
+            <td class="ctx">
+              Legal delivery of lawsuit documents. The reason registered agents
+              exist.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     06 — CRYPTOCURRENCY PAYMENTS
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>06 · Cryptocurrency Payments</h2>
+
+      <p
+        style="
+          font-size: 10pt;
+          color: var(--muted);
+          font-style: italic;
+          margin-bottom: 10pt;
+        "
+      >
+        Accepted at checkout as a differentiator — "crypto accepted" is one of
+        the homepage trust-ticker pills. No additional fee.
+      </p>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">BTC</td>
+            <td class="full">Bitcoin</td>
+            <td class="ctx">
+              First and most-widely-accepted cryptocurrency payment option.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">ETH</td>
+            <td class="full">Ethereum (Ether)</td>
+            <td class="ctx">Second-largest crypto; accepted at checkout.</td>
+          </tr>
+          <tr>
+            <td class="abbr">XRP</td>
+            <td class="full">Ripple</td>
+            <td class="ctx">Accepted payment method.</td>
+          </tr>
+          <tr>
+            <td class="abbr">LTC</td>
+            <td class="full">Litecoin</td>
+            <td class="ctx">Accepted payment method.</td>
+          </tr>
+          <tr>
+            <td class="abbr">XMR</td>
+            <td class="full">Monero</td>
+            <td class="ctx">
+              Privacy-focused crypto. Aligns directly with the brand
+              positioning.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     07 — WEB, TECH & DESIGN SYSTEM
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>07 · Web, Tech &amp; Design System</h2>
+
+      <p
+        style="
+          font-size: 10pt;
+          color: var(--muted);
+          font-style: italic;
+          margin-bottom: 10pt;
+        "
+      >
+        Abbreviations used in the prototype codebase, design system, and
+        technical documentation.
+      </p>
+
+      <h3>Web &amp; Digital Marketing</h3>
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">SEO</td>
+            <td class="full">Search Engine Optimization</td>
+            <td class="ctx">
+              Core digital marketing focus. Every cluster page has SEO-targeted
+              content.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">SERP</td>
+            <td class="full">Search Engine Results Page</td>
+            <td class="ctx">Position targeted by SEO work.</td>
+          </tr>
+          <tr>
+            <td class="abbr">CMS</td>
+            <td class="full">Content Management System</td>
+            <td class="ctx">
+              WordPress in production; Vite prototype stands in during Phase 2.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">GA</td>
+            <td class="full">Google Analytics</td>
+            <td class="ctx">Web traffic tracking tool.</td>
+          </tr>
+          <tr>
+            <td class="abbr">GSC</td>
+            <td class="full">Google Search Console</td>
+            <td class="ctx">Search visibility and indexing monitoring.</td>
+          </tr>
+          <tr>
+            <td class="abbr">CTR</td>
+            <td class="full">Click-Through Rate</td>
+            <td class="ctx">
+              Marketing performance metric on CTAs and SERP listings.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">USP</td>
+            <td class="full">Unique Selling Proposition</td>
+            <td class="ctx">
+              Year-round nominees is the primary USP in competitor comparisons.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Web Standards &amp; Protocols</h3>
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">URL</td>
+            <td class="full">Uniform Resource Locator</td>
+            <td class="ctx">
+              Web address. Flat URL structure is a project convention (no deep
+              nesting except /offshore/* and /checkout/*).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">HTTP / HTTPS</td>
+            <td class="full">HyperText Transfer Protocol (Secure)</td>
+            <td class="ctx">
+              Transport protocols. All prototype routes return HTTP 200 in route
+              smoke tests.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">HTML</td>
+            <td class="full">HyperText Markup Language</td>
+            <td class="ctx">
+              Document markup language. Homepage v10 design reference ships as
+              standalone HTML.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CSS</td>
+            <td class="full">Cascading Style Sheets</td>
+            <td class="ctx">
+              Visual styling language. Tailwind v4 drives this project via
+              @theme inline tokens.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">JSON</td>
+            <td class="full">JavaScript Object Notation</td>
+            <td class="ctx">
+              Data interchange format. Used in data files (src/data/*.ts) and
+              API payloads.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">JSON-LD</td>
+            <td class="full">JSON for Linking Data</td>
+            <td class="ctx">
+              Structured data format. Used on homepage + cluster pages for
+              schema.org Organization, BreadcrumbList, and Article schemas.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">DOM</td>
+            <td class="full">Document Object Model</td>
+            <td class="ctx">
+              The in-browser representation of the page. QA automation walks the
+              DOM to find overflow offenders.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">API</td>
+            <td class="full">Application Programming Interface</td>
+            <td class="ctx">
+              Software integration layer — used generically in tech docs.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CLI</td>
+            <td class="full">Command Line Interface</td>
+            <td class="ctx">
+              Terminal-based tooling. Vite, npm, Playwright, and Claude Code all
+              run via CLI.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Accessibility &amp; Design System</h3>
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">UI</td>
+            <td class="full">User Interface</td>
+            <td class="ctx">
+              The visual / interaction layer. Design system covers UI
+              primitives.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">UX</td>
+            <td class="full">User Experience</td>
+            <td class="ctx">
+              Design discipline and Phase 2 deliverable umbrella.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">DS</td>
+            <td class="full">Design System</td>
+            <td class="ctx">
+              Source of truth for tokens, primitives, composite components, and
+              layouts. Lives under src/design-system/.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">CVA</td>
+            <td class="full">Class Variance Authority</td>
+            <td class="ctx">
+              Library used for every design-system component variant (buttons,
+              cards, badges).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">WCAG</td>
+            <td class="full">Web Content Accessibility Guidelines</td>
+            <td class="ctx">
+              Accessibility standard. Project targets WCAG 2.1 AA (and 2.2 AA
+              where applicable for tap targets).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">a11y</td>
+            <td class="full">Accessibility</td>
+            <td class="ctx">
+              Shorthand numeronym — "a" + 11 letters + "y." Used in audit
+              reports.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">ARIA</td>
+            <td class="full">Accessible Rich Internet Applications</td>
+            <td class="ctx">
+              W3C specification for accessibility attributes (aria-label,
+              aria-disabled, role).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">AA / AAA</td>
+            <td class="full">WCAG Conformance Levels</td>
+            <td class="ctx">
+              AA = minimum for compliance (contrast, tap targets 24×24). AAA =
+              highest level (tap targets 44×44).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">SPA</td>
+            <td class="full">Single-Page Application</td>
+            <td class="ctx">
+              Architecture of the prototype — Vite + React Router 7, no
+              server-side rendering.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">SSR</td>
+            <td class="full">Server-Side Rendering</td>
+            <td class="ctx">
+              Not used in the prototype. WordPress production site uses
+              traditional SSR.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">MCP</td>
+            <td class="full">Model Context Protocol</td>
+            <td class="ctx">
+              Anthropic protocol for connecting tools to Claude. Used in the
+              Playwright QA automation loop.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">TDD / E2E</td>
+            <td class="full">Test-Driven Development / End-to-End</td>
+            <td class="ctx">
+              Testing methodologies. Playwright E2E covers route smoke tests +
+              critical flows.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     08 — PROJECT & DOCUMENTATION
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>08 · Project &amp; Documentation</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Abbr.</th>
+            <th class="w-full">Full form</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">SOW</td>
+            <td class="full">Statement of Work</td>
+            <td class="ctx">
+              Project scope document. Current version:
+              Incorporate123_SOW_Detailed_Final.md ($30K–$35K budget band).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">PRD</td>
+            <td class="full">Product Requirements Document</td>
+            <td class="ctx">
+              Feature-level specification document format used in planning docs.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">RFC</td>
+            <td class="full">Request for Comments</td>
+            <td class="ctx">
+              Design proposal format. Referenced in the agent / planning skills.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">BIT</td>
+            <td class="full">BIT Studios</td>
+            <td class="ctx">
+              Design / development agency executing this project.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">TBD</td>
+            <td class="full">To Be Determined</td>
+            <td class="ctx">
+              Status marker — typically pending David's confirmation at the next
+              meeting.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">QA</td>
+            <td class="full">Quality Assurance</td>
+            <td class="ctx">
+              Design and code review discipline. Four audit docs exist
+              (homepage, pillar, cluster, package pages).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">ETA</td>
+            <td class="full">Estimated Time of Arrival</td>
+            <td class="ctx">Project milestone timing in status updates.</td>
+          </tr>
+          <tr>
+            <td class="abbr">MVP</td>
+            <td class="full">Minimum Viable Product</td>
+            <td class="ctx">
+              Scope framing term. The prototype itself functions as an MVP of
+              the design system.
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">WIP</td>
+            <td class="full">Work In Progress</td>
+            <td class="ctx">Status label. Phase 2 is currently WIP.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     09 — IRS FORMS REFERENCED
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>09 · IRS Forms Referenced</h2>
+
+      <table class="gloss">
+        <thead>
+          <tr>
+            <th class="w-abbr">Form</th>
+            <th class="w-full">Purpose</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="abbr">Form 8832</td>
+            <td class="full">Entity Classification Election</td>
+            <td class="ctx">LLC elects to be taxed as a C-Corporation.</td>
+          </tr>
+          <tr>
+            <td class="abbr">Form 2553</td>
+            <td class="full">S-Corp Election</td>
+            <td class="ctx">
+              Entity elects S-Corporation pass-through taxation (subject to
+              eligibility).
+            </td>
+          </tr>
+          <tr>
+            <td class="abbr">Form 1040-ES</td>
+            <td class="full">Estimated Tax Payments</td>
+            <td class="ctx">
+              Quarterly personal tax payments due April 15 / June 15 / September
+              15 / January 15.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     10 — LEGAL & GOVERNANCE TERMS
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>10 · Legal &amp; Governance Terms</h2>
+
+      <p
+        style="
+          font-size: 10pt;
+          color: var(--muted);
+          font-style: italic;
+          margin-bottom: 12pt;
+        "
+      >
+        Full-word terms (not abbreviations) that appear across the site and
+        require a shared definition. Included here because they are
+        domain-specific and carry legal weight.
+      </p>
+
+      <h3>Entity Formation</h3>
+      <div class="cols-2">
+        <div class="term">
+          <div class="term-name">Articles of Incorporation / Organization</div>
+          <div class="term-def">
+            Foundational legal document filed with the Secretary of State to
+            officially create a Corporation (Articles of Incorporation) or LLC
+            (Articles of Organization).
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Certificate of Authority</div>
+          <div class="term-def">
+            State-issued document confirming an entity is authorized to operate
+            in a given state. Required for foreign-state registration.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Good Standing Certificate</div>
+          <div class="term-def">
+            Official state document certifying an entity's registration is
+            current and all filings / fees are paid. Required for banking and
+            foreign registration.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Shelf Company</div>
+          <div class="term-def">
+            Pre-formed entity that has never conducted business. Used when an
+            older formation date matters (contracts, licensing, business
+            credit).
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Domestication</div>
+          <div class="term-def">
+            Moving an existing entity from one state to another without
+            dissolving and re-forming. Preserves EIN, contracts, and history.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Foreign State Registration</div>
+          <div class="term-def">
+            Registering an entity in a state where it was not formed but
+            conducts business. Required when operations or employees are
+            physically in that state.
+          </div>
+        </div>
+      </div>
+
+      <h3>Ownership &amp; Governance</h3>
+      <div class="cols-2">
+        <div class="term">
+          <div class="term-name">Member / Manager</div>
+          <div class="term-def">
+            Owner of an LLC. A manager-managed LLC delegates operations;
+            member-managed LLCs involve all owners equally.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Nominee (Officer / Director / Manager)</div>
+          <div class="term-def">
+            Person who appears on public state filings in place of the actual
+            owner. Year-round nominee service is the Incorporate123
+            differentiator vs. "nominee for a day."
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Operating Agreement</div>
+          <div class="term-def">
+            Internal LLC governance document specifying ownership, voting
+            rights, profit allocation, and transfer rules.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Bylaws</div>
+          <div class="term-def">
+            Internal corporate governance document specifying board procedures,
+            stockholder rights, and officer duties.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Corporate Minutes</div>
+          <div class="term-def">
+            Formal written records of board or member decisions. Absence can
+            lead to corporate veil piercing.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Membership Interest</div>
+          <div class="term-def">
+            Ownership stake in an LLC — equivalent to shares in a corporation.
+          </div>
+        </div>
+      </div>
+
+      <h3>Tax Classification</h3>
+      <div class="cols-2">
+        <div class="term">
+          <div class="term-name">Pass-Through Taxation</div>
+          <div class="term-def">
+            Income taxed only on the owner's personal return, not at the entity
+            level. Default for LLCs and S-Corps.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Disregarded Entity</div>
+          <div class="term-def">
+            Single-member LLC treated as an extension of the owner for tax
+            purposes. No separate return.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Franchise Tax</div>
+          <div class="term-def">
+            Annual state tax for the privilege of operating. WY ~$62, NV $350+,
+            CA $800 minimum regardless of income.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Phantom Income</div>
+          <div class="term-def">
+            Tax owed on allocated income that was never distributed in cash. Can
+            function as an asset-protection strategy.
+          </div>
+        </div>
+      </div>
+
+      <h3>Liability &amp; Asset Protection</h3>
+      <div class="cols-2">
+        <div class="term">
+          <div class="term-name">Limited Liability</div>
+          <div class="term-def">
+            Legal protection preventing owners from personal liability for
+            entity debts. Core benefit of LLCs and corporations.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Piercing the Corporate Veil</div>
+          <div class="term-def">
+            Court action holding owners personally liable despite the entity.
+            Prevented by proper minutes, separate finances, and timely filings.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Charging Order</div>
+          <div class="term-def">
+            Court order that limits a creditor to LLC distributions only — never
+            entity assets or voting rights. Exclusive remedy in WY and NV.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Holding LLC</div>
+          <div class="term-def">
+            A separate LLC that owns other LLCs or valuable assets. Separates
+            operating liability from asset protection.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Joint and Several Liability</div>
+          <div class="term-def">
+            Doctrine making each defendant liable for the full judgment.
+            Abolished in Nevada — liability is proportional to fault.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Anonymous LLC</div>
+          <div class="term-def">
+            LLC where member / manager names do not appear in public Secretary
+            of State records. Strongest in Wyoming.
+          </div>
+        </div>
+      </div>
+
+      <h3>Services &amp; Compliance</h3>
+      <div class="cols-2">
+        <div class="term">
+          <div class="term-name">Registered Office</div>
+          <div class="term-def">
+            Physical address where the registered agent receives legal documents
+            and maintains required records.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Annual Report / Annual List</div>
+          <div class="term-def">
+            Required yearly filing confirming entity information. Late filing
+            risks administrative dissolution.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Offshore Records Custodian</div>
+          <div class="term-def">
+            Third-party outside US jurisdiction maintaining corporate records.
+            Foreign subpoenas cannot easily compel production.
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-name">Offshore Nominee</div>
+          <div class="term-def">
+            Nominee officer / director based outside the US, beyond the reach of
+            US court subpoena power.
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     11 — NEVADA STATUTES
+     ═══════════════════════════════════════════════════════════════════ -->
+      <h2>11 · Key Nevada Statutes Cited</h2>
+
+      <p
+        style="
+          font-size: 10pt;
+          color: var(--muted);
+          font-style: italic;
+          margin-bottom: 10pt;
+        "
+      >
+        Nevada Revised Statutes (NRS) and Senate Bills frequently cited on
+        pillar, cluster, and FAQ content.
+      </p>
+
+      <table class="statute">
+        <thead>
+          <tr>
+            <th>Statute</th>
+            <th>Subject</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="code">NRS 76.160</td>
+            <td>Confidentiality of registered agent records</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 77.443</td>
+            <td>Fines for registered agent non-compliance</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 78.105</td>
+            <td>Records requirements for corporations</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 78.235</td>
+            <td>Bearer share prohibition</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 78.746</td>
+            <td>Charging order protection for corporations</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 86.241</td>
+            <td>Records requirements for LLCs</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 86.246</td>
+            <td>Secretary of State authority to request records</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 86.371</td>
+            <td>LLC member liability protections</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 86.381</td>
+            <td>Member immunity from service of process</td>
+          </tr>
+          <tr>
+            <td class="code">NRS 86.401</td>
+            <td>Charging order as exclusive remedy for LLC creditors</td>
+          </tr>
+          <tr>
+            <td class="code">SB60 (2013)</td>
+            <td>Updated record-keeping requirements for registered agents</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════ -->
+      <footer class="doc-footer">
+        <p>
+          <strong
+            >Incorporate123 — Abbreviations &amp; Glossary · Print
+            Edition</strong
+          >
+        </p>
+        <p>
+          Compiled by BIT Studios · 2026-04-13 · Source:
+          DOCS/Incorporate123_Glossary.md + prototype codebase scan
+        </p>
+        <p style="margin-top: 8pt; font-style: italic">
+          Not legal, tax, or financial advice. For legal guidance, consult a
+          licensed attorney. For tax questions, consult a CPA or enrolled agent.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

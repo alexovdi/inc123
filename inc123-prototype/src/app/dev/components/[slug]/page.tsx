@@ -8,16 +8,17 @@ import { getSnippets } from "../../_data/component-snippets";
 
 export default function ComponentPage() {
   const { slug } = useParams<{ slug: string }>();
-  const entry = getComponentBySlug(slug);
+  const entry = slug ? getComponentBySlug(slug) : undefined;
 
-  if (!entry) {
+  if (!slug || !entry) {
     return (
       <div className="mx-auto max-w-wide px-container-x py-section-y-sm">
         <h1 className="font-display text-display font-bold text-foreground">
           Component Not Found
         </h1>
         <p className="text-body-lg text-muted mt-2">
-          No component with slug &ldquo;{slug}&rdquo; exists in the registry.
+          No component with slug &ldquo;{slug ?? ""}&rdquo; exists in the
+          registry.
         </p>
       </div>
     );

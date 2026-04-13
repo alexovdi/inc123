@@ -27,6 +27,33 @@ const SilverPage = lazy(() => import("@/app/silver/page"));
 const TermsPage = lazy(() => import("@/app/terms/page"));
 const TestimonialsPage = lazy(() => import("@/app/testimonials/page"));
 
+// Flat package pages (8 canonical per Apr 13 spreadsheet)
+const PackagePagesModule = () => import("@/app/(packages)/PackagePage");
+const WyomingGoldPage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.WyomingGoldPage })),
+);
+const WyomingSilverPage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.WyomingSilverPage })),
+);
+const WyomingBronzePage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.WyomingBronzePage })),
+);
+const NevadaGoldPage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.NevadaGoldPage })),
+);
+const NevadaSilverPage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.NevadaSilverPage })),
+);
+const NevadaBronzePage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.NevadaBronzePage })),
+);
+const CaliforniaPrivatePage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.CaliforniaPrivatePage })),
+);
+const FloridaPrivatePage = lazy(() =>
+  PackagePagesModule().then((m) => ({ default: m.FloridaPrivatePage })),
+);
+
 // Checkout pages
 const CheckoutConfigurePage = lazy(
   () => import("@/app/checkout/configure/page"),
@@ -121,6 +148,19 @@ export function AppRouter() {
           <Route path="terms" element={<TermsPage />} />
           <Route path="testimonials" element={<TestimonialsPage />} />
 
+          {/* Flat package pages (canonical URLs per Apr 13 packages_v3) */}
+          <Route path="wyoming-gold" element={<WyomingGoldPage />} />
+          <Route path="wyoming-silver" element={<WyomingSilverPage />} />
+          <Route path="wyoming-bronze" element={<WyomingBronzePage />} />
+          <Route path="nevada-gold" element={<NevadaGoldPage />} />
+          <Route path="nevada-silver" element={<NevadaSilverPage />} />
+          <Route path="nevada-bronze" element={<NevadaBronzePage />} />
+          <Route
+            path="california-private"
+            element={<CaliforniaPrivatePage />}
+          />
+          <Route path="florida-private" element={<FloridaPrivatePage />} />
+
           {/* Checkout (no header/footer — handled by HeaderFooterWrapper) */}
           <Route path="checkout" element={<CheckoutLayoutWrapper />}>
             <Route path="configure" element={<CheckoutConfigurePage />} />
@@ -129,31 +169,31 @@ export function AppRouter() {
             <Route path="confirmation" element={<CheckoutConfirmationPage />} />
           </Route>
 
-          {/* Legacy redirects */}
+          {/* Legacy redirects — old SEO slugs from pre-migration site */}
           <Route
             path="wyoming-private-incorporation"
-            element={<Navigate to="/gold?state=wyoming" replace />}
+            element={<Navigate to="/wyoming-gold" replace />}
           />
           <Route
             path="wyoming-incorporation"
-            element={<Navigate to="/silver?state=wyoming" replace />}
+            element={<Navigate to="/wyoming-silver" replace />}
           />
           <Route
             path="nevada-private-incorporation"
-            element={<Navigate to="/gold?state=nevada" replace />}
+            element={<Navigate to="/nevada-gold" replace />}
           />
           <Route
             path="nevada-incorporation"
-            element={<Navigate to="/silver?state=nevada" replace />}
+            element={<Navigate to="/nevada-silver" replace />}
           />
           <Route
             path="nevada-basic-incorporation"
-            element={<Navigate to="/bronze?state=nevada" replace />}
+            element={<Navigate to="/nevada-bronze" replace />}
           />
           {/*
             Note: /california-private-incorporation and /florida-private-incorporation
             are now educational cluster pages (handled by the catch-all below).
-            The tier pages live at /gold?state=california and /gold?state=florida.
+            The package pages live at /california-private and /florida-private.
           */}
           <Route
             path="shelf-company-packages"

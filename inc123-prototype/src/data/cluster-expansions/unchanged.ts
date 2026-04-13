@@ -368,7 +368,7 @@ export const WYOMING_PRIVACY: ClusterContent = {
     { title: "Anonymous LLC", href: "/anonymous-llc" },
     { title: "Nominee Services", href: "/nominee-services" },
     { title: "WY vs NV Privacy", href: "/wyoming-vs-nevada-privacy" },
-    { title: "Gold Package", href: "/gold?state=wyoming" },
+    { title: "Gold Package", href: "/wyoming-gold" },
   ],
   relatedPackages: ["wyoming-gold"],
   crossPillarCTA: {
@@ -436,7 +436,7 @@ export const NEVADA_PRIVACY: ClusterContent = {
   sidebarLinks: [
     { title: "Anonymous LLC", href: "/anonymous-llc" },
     { title: "WY vs NV Privacy", href: "/wyoming-vs-nevada-privacy" },
-    { title: "Gold Package", href: "/gold?state=nevada" },
+    { title: "Gold Package", href: "/nevada-gold" },
   ],
   relatedPackages: ["nevada-gold"],
 };

@@ -66,7 +66,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Privacy", href: "/privacy" },
         packageLink: {
           label: "Gold Package — from $1,275",
-          href: "/gold?state=wyoming",
+          href: "/wyoming-gold",
         },
       },
       {
@@ -88,7 +88,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
         packageLink: {
           label: "Gold Package — from $1,275",
-          href: "/gold?state=wyoming",
+          href: "/wyoming-gold",
         },
       },
       {
@@ -104,7 +104,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Formation", href: "/formation" },
         packageLink: {
           label: "Silver Package — from $875",
-          href: "/silver?state=wyoming",
+          href: "/wyoming-silver",
         },
       },
       {
@@ -265,7 +265,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Privacy", href: "/privacy" },
         packageLink: {
           label: "Gold Package — from $1,800",
-          href: "/gold?state=nevada",
+          href: "/nevada-gold",
         },
       },
       {
@@ -287,7 +287,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
         packageLink: {
           label: "Gold Package — from $1,800",
-          href: "/gold?state=nevada",
+          href: "/nevada-gold",
         },
       },
       {
@@ -302,7 +302,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Formation", href: "/formation" },
         packageLink: {
           label: "Silver Package — from $1,275",
-          href: "/silver?state=nevada",
+          href: "/nevada-silver",
         },
       },
       {
@@ -461,7 +461,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Privacy", href: "/privacy" },
         packageLink: {
           label: "Gold Package — from $1,475",
-          href: "/gold?state=california",
+          href: "/california-private",
         },
       },
       {
@@ -480,7 +480,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
         packageLink: {
           label: "Gold Package — from $1,475",
-          href: "/gold?state=california",
+          href: "/california-private",
         },
       },
       {
@@ -495,7 +495,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Formation", href: "/formation" },
         packageLink: {
           label: "Gold Package — from $1,475",
-          href: "/gold?state=california",
+          href: "/california-private",
         },
       },
       {
@@ -650,7 +650,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Privacy", href: "/privacy" },
         packageLink: {
           label: "Gold Package — from $1,475",
-          href: "/gold?state=florida",
+          href: "/florida-private",
         },
       },
       {
@@ -669,7 +669,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Asset Protection", href: "/asset-protection" },
         packageLink: {
           label: "Gold Package — from $1,475",
-          href: "/gold?state=florida",
+          href: "/florida-private",
         },
       },
       {
@@ -684,7 +684,7 @@ export const stateHubs: StateHub[] = [
         cta: { label: "Explore Formation", href: "/formation" },
         packageLink: {
           label: "Gold Package — from $1,475",
-          href: "/gold?state=florida",
+          href: "/florida-private",
         },
       },
       {

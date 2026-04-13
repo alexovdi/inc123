@@ -235,7 +235,7 @@ export default function TermsPage() {
             description="All-inclusive packages with no hidden fees. 25 years of formation expertise."
             primaryCTA={{
               label: "View Packages & Pricing",
-              href: "/gold?state=wyoming",
+              href: "/wyoming-gold",
             }}
             secondaryCTA={{
               label: "Contact Us",

@@ -431,7 +431,7 @@ export const PRIVACY_EXPANSIONS: ClusterContent[] = [
       { title: "Nominee Services", href: "/nominee-services" },
       { title: "Anonymous LLC", href: "/anonymous-llc" },
       { title: "Wyoming Privacy", href: "/wyoming-privacy" },
-      { title: "Gold Package", href: "/gold?state=wyoming" },
+      { title: "Gold Package", href: "/wyoming-gold" },
     ],
     relatedPackages: ["wyoming-gold", "nevada-gold"],
     pullQuote: {

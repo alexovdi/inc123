@@ -160,7 +160,7 @@ export default function OffshoreJurisdictionPage() {
                 title: "Gold Package",
                 description:
                   "The domestic foundation for any offshore structure — year-round nominees, offshore records, and full privacy.",
-                href: "/gold?state=wyoming",
+                href: "/wyoming-gold",
                 pillar: "privacy" as const,
               },
             ]}

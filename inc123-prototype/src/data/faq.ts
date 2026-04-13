@@ -136,7 +136,7 @@ export const relatedGuidesMap: Record<FAQCategory, RelatedGuide[]> = {
       title: "Gold Package \u2014 from $1,275",
       description:
         "Our most popular package with full privacy and asset protection.",
-      href: "/gold?state=wyoming",
+      href: "/wyoming-gold",
     },
   ],
   general: [

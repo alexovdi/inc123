@@ -214,7 +214,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                       {item.dropdownLinks.map((link) => (
                         <RouterLink
                           key={link.href}
-                          href={link.href}
+                          to={link.href}
                           className="block px-4 py-2 text-body-sm text-foreground transition-colors hover:bg-primary-50 hover:text-secondary"
                         >
                           {link.label}

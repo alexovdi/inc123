@@ -100,7 +100,7 @@ export const checkoutTimelineSteps: CheckoutTimelineStep[] = [
   {
     label: "Documents Delivered",
     description:
-      "You receive your formation package: Articles, Certificate of Good Standing, operating agreement, corporate seal, and minute book.",
+      "You receive your formation package: Articles of Organization, custom operating agreement, corporate records & minute book, and your bank account opening document package.",
     duration: "1-2 business days after confirmation",
   },
 ];

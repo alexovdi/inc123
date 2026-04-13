@@ -30,7 +30,7 @@ export default function PrivacyPillarPage() {
           S1: HERO — Editorial split layout
           ================================================ */}
       <section className="relative overflow-hidden bg-primary">
-        <GrainOverlay opacity={0.03} />
+        <GrainOverlay opacity="opacity-[0.03]" />
         <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-secondary/[0.08] blur-[120px]" />
 
         <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
@@ -391,7 +391,7 @@ export default function PrivacyPillarPage() {
           S6: DIFFERENTIATORS — 1 featured + 5 grid (dark)
           ================================================ */}
       <section className="relative py-section-y-sm bg-primary overflow-hidden">
-        <GrainOverlay opacity={0.03} />
+        <GrainOverlay opacity="opacity-[0.03]" />
         <div className="pointer-events-none absolute -right-60 top-20 h-[50vw] w-[50vw] rounded-full bg-secondary/[0.06] blur-[120px]" />
 
         <div className="relative mx-auto max-w-content px-container-x">

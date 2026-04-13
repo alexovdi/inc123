@@ -98,13 +98,13 @@ export function getPackageIdFromSlug(flatSlug: string): string | undefined {
    reference package IDs in their data files
    ------------------------------------------------ */
 const LEGACY_PACKAGE_TO_TIER: Record<string, string> = {
-  "wyoming-gold": "/gold?state=wyoming",
-  "wyoming-silver": "/silver?state=wyoming",
-  "nevada-gold": "/gold?state=nevada",
-  "nevada-silver": "/silver?state=nevada",
-  "nevada-bronze": "/bronze?state=nevada",
-  "california-private": "/gold?state=california",
-  "florida-private": "/gold?state=florida",
+  "wyoming-gold": "/wyoming-gold",
+  "wyoming-silver": "/wyoming-silver",
+  "nevada-gold": "/nevada-gold",
+  "nevada-silver": "/nevada-silver",
+  "nevada-bronze": "/nevada-bronze",
+  "california-private": "/california-private",
+  "florida-private": "/florida-private",
   "shelf-companies": "/shelf-companies",
 };
 

@@ -159,7 +159,7 @@ export const ASSET_EXPANSIONS: ClusterContent[] = [
       { title: "Wyoming Asset Protection", href: "/wyoming-asset-protection" },
       { title: "Investment Holding LLC", href: "/investment-holding-llc" },
       { title: "LLC vs Living Trust", href: "/llc-vs-living-trust" },
-      { title: "Gold Package", href: "/gold?state=wyoming" },
+      { title: "Gold Package", href: "/wyoming-gold" },
     ],
     relatedPackages: ["wyoming-gold"],
     pullQuote: {
@@ -371,7 +371,7 @@ export const ASSET_EXPANSIONS: ClusterContent[] = [
         title: "Wyoming Gold Package",
         description:
           "Flat-rate asset protection package with nominee privacy, virtual office, and custom operating agreement.",
-        href: "/gold?state=wyoming",
+        href: "/wyoming-gold",
       },
       {
         title: "Investment Holding LLC",
@@ -556,7 +556,7 @@ export const ASSET_EXPANSIONS: ClusterContent[] = [
         title: "Nevada Gold Package",
         description:
           "Full-stack Nevada LLC with nominee privacy, registered agent, and business license handling — one flat rate.",
-        href: "/gold?state=nevada",
+        href: "/nevada-gold",
       },
       {
         title: "Charging Order Protection",
@@ -688,7 +688,7 @@ export const ASSET_EXPANSIONS: ClusterContent[] = [
         href: "/real-estate-asset-protection",
       },
       { title: "LLC vs Living Trust", href: "/llc-vs-living-trust" },
-      { title: "Gold Package", href: "/gold?state=wyoming" },
+      { title: "Gold Package", href: "/wyoming-gold" },
     ],
     relatedPackages: ["wyoming-gold"],
     pullQuote: {
@@ -897,7 +897,7 @@ export const ASSET_EXPANSIONS: ClusterContent[] = [
         title: "Wyoming Gold Package",
         description:
           "Full privacy and protection stack for your first (or next) rental property — flat annual rate, no surprise fees.",
-        href: "/gold?state=wyoming",
+        href: "/wyoming-gold",
       },
     ],
   },

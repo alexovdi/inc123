@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import {
   tierDefinitions,
   getTierMinPrice,
   getTierPrice,
+  getPackageUrl,
   ALL_FORMATION_STATES,
   entityOptions,
-  comparisonFeatures,
+  comparisonFeatureGroups,
   tierOrder,
 } from "@/data/packages";
 import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
@@ -206,7 +207,7 @@ export default function ComparePackagesPage() {
                   entityType={entityType === "llc" ? "LLC" : "Corp"}
                   cta={{
                     label: "View Package",
-                    href: `/${tier.slug}?state=${selectedState.toLowerCase()}`,
+                    href: getPackageUrl(tier.slug, selectedState),
                   }}
                 />
               );
@@ -255,7 +256,7 @@ export default function ComparePackagesPage() {
                 </tr>
               </thead>
               <tbody>
-                {comparisonFeatures.map((featureName) => {
+                {comparisonFeatureGroups.map((group) => {
                   const bronzeTier = tierDefinitions.find(
                     (t) => t.tier === "bronze",
                   );
@@ -268,6 +269,7 @@ export default function ComparePackagesPage() {
 
                   const getStatus = (
                     tier: TierDefinition | undefined,
+                    featureName: string,
                   ): string => {
                     if (!tier) return "not-included";
                     const feature = tier.features.find(
@@ -309,23 +311,35 @@ export default function ComparePackagesPage() {
                   };
 
                   return (
-                    <tr
-                      key={featureName}
-                      className="border-b border-border hover:bg-muted/5 transition-colors"
-                    >
-                      <td className="py-3 px-4 text-foreground">
-                        {featureName}
-                      </td>
-                      <td className="py-3 px-4 text-center">
-                        {renderCell(getStatus(bronzeTier))}
-                      </td>
-                      <td className="py-3 px-4 text-center">
-                        {renderCell(getStatus(silverTier))}
-                      </td>
-                      <td className="py-3 px-4 text-center bg-secondary/5">
-                        {renderCell(getStatus(goldTier))}
-                      </td>
-                    </tr>
+                    <React.Fragment key={group.label}>
+                      <tr className="bg-muted/10">
+                        <td
+                          colSpan={4}
+                          className="py-2 px-4 text-body-sm font-semibold uppercase tracking-wide text-muted"
+                        >
+                          {group.label}
+                        </td>
+                      </tr>
+                      {group.features.map((featureName) => (
+                        <tr
+                          key={featureName}
+                          className="border-b border-border hover:bg-muted/5 transition-colors"
+                        >
+                          <td className="py-3 px-4 text-foreground">
+                            {featureName}
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            {renderCell(getStatus(bronzeTier, featureName))}
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            {renderCell(getStatus(silverTier, featureName))}
+                          </td>
+                          <td className="py-3 px-4 text-center bg-secondary/5">
+                            {renderCell(getStatus(goldTier, featureName))}
+                          </td>
+                        </tr>
+                      ))}
+                    </React.Fragment>
                   );
                 })}
               </tbody>

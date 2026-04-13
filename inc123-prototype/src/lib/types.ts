@@ -54,12 +54,23 @@ export interface PackageFeature {
   status: "included" | "not-included" | "add-on";
 }
 
+/**
+ * Add-on category (per Apr 13 decision):
+ *  - "government-filing" → the 3 state filings (Foreign State, Domestication, DBA)
+ *  - "service-upgrade"   → the 3 service upgrades (Privacy, Executive VO, Part-Time Private Suite)
+ *  - "other"             → misc (rush filing, crypto payments, etc.)
+ */
+export type AddOnCategory = "government-filing" | "service-upgrade" | "other";
+
 export interface PackageAddOn {
   id: string;
   name: string;
   price: number;
   description: string;
   tooltip?: string;
+  category?: AddOnCategory;
+  /** Show as "TBD" in UI when price is not yet locked */
+  priceTBD?: boolean;
 }
 
 export interface PackageTier {

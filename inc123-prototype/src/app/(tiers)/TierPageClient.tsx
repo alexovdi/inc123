@@ -17,6 +17,7 @@ import {
   getTierMinPrice,
   getTierFeaturesForState,
   getAvailableTiersForState,
+  getPackageUrl,
   ALL_FORMATION_STATES,
 } from "@/data/packages";
 import type { TierDefinition, EntityType } from "@/lib/types";
@@ -26,14 +27,28 @@ import type { TierDefinition, EntityType } from "@/lib/types";
    ------------------------------------------------ */
 interface TierPageClientProps {
   tier: TierDefinition;
+  /**
+   * Explicit state to display. When provided (e.g. from a flat-URL route like
+   * /wyoming-gold), this takes precedence over any ?state= query param and
+   * over the tier's default first state.
+   */
+  forcedState?: string;
 }
 
 /* ------------------------------------------------
    Component
    ------------------------------------------------ */
-export function TierPageClient({ tier }: TierPageClientProps) {
+export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
   const [searchParams] = useSearchParams();
   const initialState = useMemo(() => {
+    // 1. Explicit prop from flat-URL route wins
+    if (forcedState) {
+      const matched = tier.availableStates.find(
+        (s) => s.toLowerCase() === forcedState.toLowerCase(),
+      );
+      if (matched) return matched;
+    }
+    // 2. Back-compat: ?state= query param still works
     const param = searchParams.get("state");
     if (param) {
       const matched = tier.availableStates.find(
@@ -41,8 +56,9 @@ export function TierPageClient({ tier }: TierPageClientProps) {
       );
       if (matched) return matched;
     }
+    // 3. Default to first available state
     return tier.availableStates[0];
-  }, [searchParams, tier.availableStates]);
+  }, [forcedState, searchParams, tier.availableStates]);
 
   const [selectedState, setSelectedState] = useState(initialState);
   const [entityType, setEntityType] = useState<EntityType>("llc");
@@ -124,7 +140,7 @@ export function TierPageClient({ tier }: TierPageClientProps) {
           name: `${t.name} ${entityType === "llc" ? "LLC" : "Corp"}`,
           state: selectedState,
           price: `$${sv!.prices[entityType].formation.toLocaleString()}`,
-          href: `/${t.slug}?state=${selectedState.toLowerCase()}`,
+          href: getPackageUrl(t.slug, selectedState),
         };
       });
   }, [tier.slug, selectedState, entityType]);

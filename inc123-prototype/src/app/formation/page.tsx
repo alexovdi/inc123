@@ -30,7 +30,7 @@ export default function FormationPillarPage() {
           S1: HERO — Editorial split layout
           ================================================ */}
       <section className="relative overflow-hidden bg-primary">
-        <GrainOverlay opacity={0.03} />
+        <GrainOverlay opacity="opacity-[0.03]" />
         <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-pillar-formation/[0.08] blur-[120px]" />
 
         <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
@@ -134,12 +134,13 @@ export default function FormationPillarPage() {
                 <div className="space-y-3">
                   {[
                     "State Filing Fees",
-                    "Registered Agent (Year-Round)",
-                    "EIN / Tax ID Filing",
-                    "Operating Agreement",
-                    "Corporate Minutes & Seal",
-                    "Annual Report Filing",
-                    "Certificate of Good Standing",
+                    "Document Preparation",
+                    "Custom Operating Agreement",
+                    "Bank Account Opening Document Package",
+                    "Registered Agent (1 Year)",
+                    "Corporate Records & Minutes",
+                    "Initial State Filings and Fees",
+                    "Offshore Records Storage",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success/20">
@@ -587,7 +588,7 @@ export default function FormationPillarPage() {
           S5: DIFFERENTIATORS — 1 featured + 5 grid (dark)
           ================================================ */}
       <section className="relative py-section-y-sm bg-primary overflow-hidden">
-        <GrainOverlay opacity={0.03} />
+        <GrainOverlay opacity="opacity-[0.03]" />
         <div className="pointer-events-none absolute -right-60 top-20 h-[50vw] w-[50vw] rounded-full bg-pillar-formation/[0.06] blur-[120px]" />
 
         <div className="relative mx-auto max-w-content px-container-x">
@@ -1072,9 +1073,9 @@ export default function FormationPillarPage() {
    ================================================ */
 
 const QUICK_PATHS = [
-  { label: "Wyoming LLC", price: "$625", href: "/bronze?state=wyoming" },
-  { label: "Wyoming Gold LLC", price: "$1,275", href: "/gold?state=wyoming" },
-  { label: "Nevada LLC", price: "$625", href: "/bronze?state=nevada" },
+  { label: "Wyoming LLC", price: "$625", href: "/wyoming-bronze" },
+  { label: "Wyoming Gold LLC", price: "$1,275", href: "/wyoming-gold" },
+  { label: "Nevada LLC", price: "$625", href: "/nevada-bronze" },
   { label: "Shelf Company", price: "varies", href: "/shelf-companies" },
 ];
 

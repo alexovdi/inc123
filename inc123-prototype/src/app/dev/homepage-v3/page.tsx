@@ -259,11 +259,11 @@ const homepageTiers = [...tierDefinitions].sort(
 );
 
 const complianceItems = [
-  "Annual Report Filing",
+  "Initial State Filings and Fees",
   "Registered Agent Renewal",
-  "Corporate Minutes Maintenance",
-  "Certificate of Good Standing",
-  "Nominee Service Renewal",
+  "Corporate Records & Minutes",
+  "Offshore Records Storage",
+  "Nominee Service Renewal (Gold)",
 ];
 
 const v3Differentiators = [

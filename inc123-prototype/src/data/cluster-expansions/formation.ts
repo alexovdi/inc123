@@ -59,7 +59,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
         type: "text",
         title: "What's Included in Every Wyoming LLC Package",
         content:
-          "Every Wyoming LLC package is all-inclusive — the price you see covers everything required to form and maintain the entity in its first year. That means the $100 state filing fee, one full year of registered agent service, Articles of Organization preparation and filing, Certificate of Good Standing, corporate seal, and your first annual report filing. Silver adds a Wyoming virtual office with real mail forwarding. Gold adds year-round nominee managers, offshore record storage, and a customized operating agreement drafted by our legal team.",
+          "Every Wyoming LLC package is all-inclusive — the price you see covers everything required to form and maintain the entity in its first year. Bronze includes the $100 state filing fee, one full year of registered agent service, Articles of Organization preparation and filing, a custom operating agreement, corporate records & minutes, a bank account opening document package, and offshore records storage. Silver adds EIN obtainment, a Wyoming virtual office address, and weekly mail forwarding. Gold adds year-round nominee director/manager and nominee officers — your name never appears on public filings.",
         bullets: [
           "State filing fee ($100) included in every tier",
           "Registered agent for 12 months — no first-year upsell",
@@ -164,7 +164,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
         title: "Wyoming Gold Package",
         description:
           "The flagship tier with nominee managers and offshore record storage.",
-        href: "/gold?state=wyoming",
+        href: "/wyoming-gold",
       },
       {
         title: "Charging Order Protection",
@@ -355,7 +355,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
         title: "Nevada Gold Package",
         description:
           "Full-service Nevada formation with nominee managers and office address.",
-        href: "/gold?state=nevada",
+        href: "/nevada-gold",
       },
       {
         title: "Business Court Advantage",
@@ -503,7 +503,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
       {
         title: "Wyoming Gold Package",
         description: "Full-service corporate formation with nominee officers.",
-        href: "/gold?state=wyoming",
+        href: "/wyoming-gold",
       },
     ],
   },
@@ -646,7 +646,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
         title: "Nevada Gold Package",
         description:
           "Full-service corporate formation with nominee officers and office address.",
-        href: "/gold?state=nevada",
+        href: "/nevada-gold",
       },
       {
         title: "Director Indemnification",
@@ -810,7 +810,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
     ],
     sidebarLinks: [
       { title: "Wyoming LLC", href: "/wyoming-llc" },
-      { title: "Gold Package", href: "/gold?state=wyoming" },
+      { title: "Gold Package", href: "/wyoming-gold" },
       { title: "Business Credit Guide", href: "/business-credit" },
     ],
     relatedPackages: ["shelf-companies"],
@@ -830,7 +830,7 @@ export const FORMATION_EXPANSIONS: ClusterContent[] = [
         title: "Wyoming Gold Package",
         description:
           "Layer Gold-tier privacy on top of any shelf entity purchase.",
-        href: "/gold?state=wyoming",
+        href: "/wyoming-gold",
       },
       {
         title: "Shelf Company Inventory",

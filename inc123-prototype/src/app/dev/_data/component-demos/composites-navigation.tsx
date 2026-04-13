@@ -89,7 +89,7 @@ export function BreadcrumbsDemo() {
           items={[
             { label: "Home", href: "/" },
             { label: "Packages", href: "/packages" },
-            { label: "Gold Package", href: "/gold?state=wyoming" },
+            { label: "Gold Package", href: "/wyoming-gold" },
           ]}
         />
       </div>

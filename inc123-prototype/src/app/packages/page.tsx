@@ -6,6 +6,7 @@ import {
   tierDefinitions,
   getTierMinPrice,
   getTierPrice,
+  getPackageUrl,
   ALL_FORMATION_STATES,
 } from "@/data/packages";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
@@ -294,7 +295,7 @@ export default function PackagesPage() {
                   entityType={entityType === "llc" ? "LLC" : "Corp"}
                   cta={{
                     label: "View Details",
-                    href: `/${tier.slug}?state=${selectedState.toLowerCase()}`,
+                    href: getPackageUrl(tier.slug, selectedState),
                   }}
                 />
               );
