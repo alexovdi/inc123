@@ -379,10 +379,10 @@ export const tierDefinitions: TierDefinition[] = [
     tier: "bronze",
     slug: "bronze",
     name: "Bronze",
-    tagline: "Basic Formation",
+    tagline: "Basic Nevada Formation",
     description:
-      "Basic formation at an affordable price. Includes state filing fees and registered agent — a solid starting point.",
-    availableStates: ["Wyoming", "Nevada"],
+      "Basic Nevada formation at an affordable price. Includes state filing fees, registered agent, and Nevada business license. Nevada-only per product strategy.",
+    availableStates: ["Nevada"],
     features: [
       { name: "State Filing Fees Included", status: "included" },
       { name: "Registered Agent (1 Year)", status: "included" },
@@ -395,16 +395,6 @@ export const tierDefinitions: TierDefinition[] = [
       { name: "Custom Operating Agreement", status: "add-on" },
     ],
     stateVariants: {
-      Wyoming: {
-        state: "Wyoming",
-        abbreviation: "WY",
-        prices: {
-          llc: { formation: 625, renewal: 225 },
-          corp: { formation: 625, renewal: 225 },
-        },
-        extraFeatures: [],
-        legacyId: "wyoming-bronze",
-      },
       Nevada: {
         state: "Nevada",
         abbreviation: "NV",

@@ -9,11 +9,18 @@ import {
   ALL_FORMATION_STATES,
 } from "@/data/packages";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { CTABlock } from "@/design-system/components/CTABlock";
 import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
+import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
+import { Link as DSLink } from "@/design-system/primitives/Link";
+import { testimonials } from "@/data/testimonials";
 import type { EntityType, TierDefinition } from "@/lib/types";
 
 const entityOptions = [
@@ -132,45 +139,111 @@ export default function PackagesPage() {
 
   return (
     <div className="space-y-0">
-      {/* Hero */}
-      <section className="bg-primary text-white py-section-y px-container-x">
-        <div className="mx-auto max-w-content text-center">
-          <h1 className="font-display text-display font-bold">
-            All-Inclusive Formation Packages
-          </h1>
-          <p className="mt-4 text-body-lg text-white/80 max-w-narrow mx-auto">
-            Transparent pricing with no hidden fees. Every package includes
-            state filing fees, registered agent, and compliance essentials.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <EntityTypeToggle
-              options={entityOptions}
-              value={entityType}
-              onChange={(v) => setEntityType(v as EntityType)}
-              dark
-            />
-          </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-body-sm text-white/80">
-            {trustStats.map((stat) => (
-              <span key={stat.label} className="flex items-center gap-2">
-                <Icon name={stat.icon} size="sm" className="text-white/70" />
-                {stat.label}
-              </span>
-            ))}
+      {/* Hero — dark, matches pillar/cluster style */}
+      <section className="relative overflow-hidden bg-primary border-b-4 border-b-secondary">
+        <GrainOverlay opacity="opacity-[0.03]" />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-secondary/[0.18] blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 bottom-[-20vw] h-[45vw] w-[45vw] rounded-full bg-secondary/[0.18] blur-[140px]" />
+
+        <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-body-sm" aria-label="Breadcrumb">
+            <DSLink
+              href="/"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
+            >
+              Home
+            </DSLink>
+            <span className="mx-2 text-white/50">/</span>
+            <span className="text-white/90" aria-current="page">
+              Packages
+            </span>
+          </nav>
+
+          <div className="max-w-[760px]">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+              Formation Packages
+            </p>
+            <h1 className="font-display type-display-lg font-bold text-white">
+              All-Inclusive Formation Packages
+            </h1>
+            <p className="mt-6 text-body-lg text-white/80 max-w-[560px]">
+              Transparent pricing with no hidden fees. Every package includes
+              state filing fees, registered agent, and compliance essentials.
+            </p>
+            <div className="mt-8">
+              <EntityTypeToggle
+                options={entityOptions}
+                value={entityType}
+                onChange={(v) => setEntityType(v as EntityType)}
+                dark
+              />
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href="#choose-state">
+                <Button variant="cta" size="lg">
+                  Find Your Package
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+              <DSLink href="/compare-packages" className="!no-underline">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="border-white/20 text-white hover:bg-white/10"
+                >
+                  Compare All Packages
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </DSLink>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-body-sm text-white/80">
+              {trustStats.map((stat) => (
+                <span key={stat.label} className="flex items-center gap-2">
+                  <Icon name={stat.icon} size="sm" className="text-white/70" />
+                  {stat.label}
+                </span>
+              ))}
+            </div>
+            <p className="mt-5 text-body-sm text-white/70">
+              Prefer to talk?{" "}
+              <a
+                href="tel:1-800-553-0615"
+                className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              >
+                Call 1-800-553-0615
+              </a>
+              {" · "}
+              <DSLink
+                href="/contact"
+                className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              >
+                Schedule a consultation
+              </DSLink>
+            </p>
           </div>
         </div>
       </section>
 
-      {/* State Selector */}
-      <section className="py-section-y px-container-x bg-background">
+      {/* State Selector — muted bg for section rhythm */}
+      <section
+        id="choose-state"
+        className="scroll-mt-24 py-section-y px-container-x bg-background"
+      >
         <div className="mx-auto max-w-content">
-          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            Choose Your Formation State
-          </h2>
-          <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            Select a state to see available tiers and pricing. Not all tiers are
-            available in every state.
-          </p>
+          <SectionHeader
+            eyebrow="Choose Your State"
+            title="Pick a Formation State"
+            subtitle="Select a state to see available tiers and pricing. Not all tiers are available in every state."
+          />
 
           {/* State Tabs */}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -239,18 +312,16 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Shelf Company Card */}
-      <section className="py-section-y px-container-x">
+      {/* Alternative Paths — Shelf Company + Compare CTA in one 2-column section */}
+      <section className="py-section-y px-container-x bg-surface">
         <div className="mx-auto max-w-content">
-          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            Shelf Companies
-          </h2>
-          <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            Pre-aged entities with established history. Immediate availability
-            for business needs requiring entity age.
-          </p>
+          <SectionHeader
+            eyebrow="Alternative Paths"
+            title="Other Ways In"
+            subtitle="Pre-aged entities and detailed feature comparisons — for the times when a standard tier isn't the right starting point."
+          />
 
-          <div className="mt-10 grid grid-cols-1 max-w-lg mx-auto">
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             <PackagePreviewCard
               tier={{
                 name: "Shelf Company",
@@ -264,61 +335,65 @@ export default function PackagesPage() {
               }}
               entityType={entityType === "llc" ? "LLC" : "Corp"}
               cta={{
-                label: "View Details",
+                label: "View Shelf Companies",
                 href: "/shelf-companies",
               }}
             />
+
+            <div className="flex flex-col rounded-card-lg border border-border bg-primary-50 p-10 shadow-card">
+              <h3 className="font-display text-heading-sm font-semibold text-foreground">
+                Want a Side-by-Side Feature Breakdown?
+              </h3>
+              <p className="mt-3 text-body text-muted">
+                Compare every feature across Bronze, Silver, and Gold tiers in
+                our detailed comparison table. See exactly what's included,
+                add-on, or not offered.
+              </p>
+              <div className="mt-auto pt-6">
+                <Link
+                  to="/compare-packages"
+                  className="inline-flex items-center gap-2 rounded-button bg-secondary px-6 py-3 text-body font-medium text-white hover:bg-secondary/90 transition-colors"
+                >
+                  Compare All Packages
+                  <Icon name="ArrowRight" size="sm" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Compare CTA */}
-      <section className="px-container-x">
-        <div className="mx-auto max-w-content">
-          <div className="rounded-xl border border-border bg-surface p-8 text-center shadow-card">
-            <h3 className="font-display text-heading-sm font-semibold text-foreground">
-              Want a Side-by-Side Feature Breakdown?
-            </h3>
-            <p className="mt-2 text-body text-muted max-w-narrow mx-auto">
-              Compare every feature across all tiers in our detailed comparison
-              table.
-            </p>
-            <Link
-              to="/compare-packages"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3 text-body font-medium text-white hover:bg-secondary/90 transition-colors"
-            >
-              Compare All Packages
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Social Proof Strip — full-width DS component */}
+      <SocialProofStrip
+        testimonial={{
+          quote: testimonials[0].quote,
+          author: testimonials[0].name,
+          role: testimonials[0].businessType,
+        }}
+      />
 
-      {/* How It Works */}
-      <section className="py-section-y px-container-x">
+      {/* How It Works — muted bg (SocialProofStrip is white) */}
+      <section className="py-section-y px-container-x bg-background">
         <div className="mx-auto max-w-content">
-          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            How It Works
-          </h2>
-          <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            From package selection to receiving your documents — we handle
-            everything.
-          </p>
+          <SectionHeader
+            eyebrow="Process"
+            title="How It Works"
+            subtitle="From package selection to receiving your documents — we handle everything."
+          />
           <div className="mt-10">
             <HowItWorks steps={howItWorksSteps} />
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-section-y px-container-x bg-background">
+      {/* FAQ — white surface */}
+      <section className="py-section-y px-container-x bg-surface">
         <div className="mx-auto max-w-content">
-          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            Frequently Asked Questions
-          </h2>
-          <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            Common questions about our formation packages.
-          </p>
+          <SectionHeader
+            eyebrow="FAQ"
+            title="Frequently Asked Questions"
+            subtitle="Common questions about our formation packages."
+          />
           <div className="mt-10 max-w-narrow mx-auto">
             <Accordion type="single" variant="card">
               {faqItems.map((item) => (
@@ -331,25 +406,25 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-section-y">
-        <div className="mx-auto max-w-content px-container-x">
-          <CTABlock
-            variant="dark"
-            heading="Ready to Get Started?"
-            description="Choose the formation package that fits your business. All-inclusive pricing, no hidden fees, 25+ years of experience."
-            primaryCTA={{
-              label: "Start with Gold",
-              href: "/gold",
-            }}
-            secondaryCTA={{
-              label: "Call 1-800-553-0615",
-              href: "tel:+18005530615",
-            }}
-            trustSignal="25+ Years of Formation Experience"
-          />
-        </div>
-      </section>
+      {/* Final CTA — dark close matching pillar/cluster pages */}
+      <PillarFinalCTA
+        heading="Ready to Get Started?"
+        description="Choose the formation package that fits your business. All-inclusive pricing, no hidden fees, 25+ years of experience."
+        ctaLabel="Start with Gold"
+        ctaHref="/gold"
+      />
+
+      {/* Sticky mobile CTA — persistent entry into the funnel */}
+      <StickyMobileCTA
+        primaryCTA={{
+          children: "Find Your Package",
+          onClick: () => {
+            const el = document.getElementById("choose-state");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          },
+        }}
+        phone="1-800-553-0615"
+      />
     </div>
   );
 }

@@ -10,9 +10,14 @@ import {
   comparisonFeatures,
   tierOrder,
 } from "@/data/packages";
-import { CTABlock } from "@/design-system/components/CTABlock";
 import { EntityTypeToggle } from "@/design-system/components/EntityTypeToggle";
+import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { Button } from "@/design-system/primitives/Button";
+import { Icon } from "@/design-system/primitives/Icon";
+import { Link as DSLink } from "@/design-system/primitives/Link";
 import type { EntityType, TierDefinition } from "@/lib/types";
 
 const orderedTiers = [...tierDefinitions].sort(
@@ -37,37 +42,114 @@ export default function ComparePackagesPage() {
 
   return (
     <div className="space-y-0">
-      {/* Hero */}
-      <section className="bg-primary text-white py-section-y px-container-x">
-        <div className="mx-auto max-w-content text-center">
-          <h1 className="font-display text-display font-bold">
-            Compare All Packages
-          </h1>
-          <p className="mt-4 text-body-lg text-white/80 max-w-narrow mx-auto">
-            Find the right formation package for your business. Compare
-            features, pricing, and privacy levels across all tiers.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <EntityTypeToggle
-              options={entityOptions}
-              value={entityType}
-              onChange={(v) => setEntityType(v as EntityType)}
-              dark
-            />
+      {/* Hero — dark, matches pillar/cluster/package style */}
+      <section className="relative overflow-hidden bg-primary border-b-4 border-b-secondary">
+        <GrainOverlay opacity="opacity-[0.03]" />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[60vw] w-[60vw] rounded-full bg-secondary/[0.18] blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 bottom-[-20vw] h-[45vw] w-[45vw] rounded-full bg-secondary/[0.18] blur-[140px]" />
+
+        <div className="relative mx-auto max-w-content px-container-x py-section-y-sm">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-body-sm" aria-label="Breadcrumb">
+            <DSLink
+              href="/"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
+            >
+              Home
+            </DSLink>
+            <span className="mx-2 text-white/50">/</span>
+            <DSLink
+              href="/packages"
+              className="!text-white/80 !no-underline hover:!text-white transition-colors"
+            >
+              Packages
+            </DSLink>
+            <span className="mx-2 text-white/50">/</span>
+            <span className="text-white/90" aria-current="page">
+              Compare
+            </span>
+          </nav>
+
+          <div className="max-w-[760px]">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+              Package Comparison
+            </p>
+            <h1 className="font-display type-display-lg font-bold text-white">
+              Compare All Packages
+            </h1>
+            <p className="mt-6 text-body-lg text-white/80 max-w-[560px]">
+              Find the right formation package for your business. Compare
+              features, pricing, and privacy levels across Bronze, Silver, and
+              Gold tiers.
+            </p>
+
+            <div className="mt-8">
+              <EntityTypeToggle
+                options={entityOptions}
+                value={entityType}
+                onChange={(v) => setEntityType(v as EntityType)}
+                dark
+              />
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href="#tier-cards">
+                <Button variant="cta" size="lg">
+                  Find Your Package
+                  <Icon
+                    name="ArrowRight"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+              <a href="#feature-comparison">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="border-white/20 text-white hover:bg-white/10"
+                >
+                  View Feature Table
+                  <Icon
+                    name="ArrowDown"
+                    size="sm"
+                    className="ml-2 hidden sm:inline-block"
+                  />
+                </Button>
+              </a>
+            </div>
+
+            <p className="mt-5 text-body-sm text-white/70">
+              Prefer to talk?{" "}
+              <a
+                href="tel:1-800-553-0615"
+                className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              >
+                Call 1-800-553-0615
+              </a>
+              {" · "}
+              <DSLink
+                href="/contact"
+                className="text-white/85 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
+              >
+                Schedule a consultation
+              </DSLink>
+            </p>
           </div>
         </div>
       </section>
 
       {/* State Selector + Tier Cards */}
-      <section className="py-section-y px-container-x bg-background">
+      <section
+        id="tier-cards"
+        className="scroll-mt-24 py-section-y px-container-x bg-background"
+      >
         <div className="mx-auto max-w-content">
-          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            Formation Packages by Tier
-          </h2>
-          <p className="mt-2 text-body text-muted text-center max-w-narrow mx-auto">
-            Showing {entityType === "llc" ? "LLC" : "Corporation"} formation
-            pricing. Select a state below to see available tiers.
-          </p>
+          <SectionHeader
+            eyebrow="By Tier"
+            title="Formation Packages by Tier"
+            subtitle={`Showing ${entityType === "llc" ? "LLC" : "Corporation"} formation pricing. Select a state below to see available tiers.`}
+          />
 
           {/* State Tabs */}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -143,14 +225,16 @@ export default function ComparePackagesPage() {
       </section>
 
       {/* Feature Comparison Table */}
-      <section className="py-section-y px-container-x">
+      <section
+        id="feature-comparison"
+        className="scroll-mt-24 py-section-y px-container-x bg-surface"
+      >
         <div className="mx-auto max-w-content">
-          <h2 className="font-display text-heading-lg font-bold text-foreground text-center">
-            Feature Comparison
-          </h2>
-          <p className="mt-2 text-body text-muted text-center">
-            See which features are included in each package tier.
-          </p>
+          <SectionHeader
+            eyebrow="Side-by-Side"
+            title="Feature Comparison"
+            subtitle="See which features are included in each package tier."
+          />
 
           <div className="mt-10 -mx-container-x px-container-x overflow-x-auto overscroll-x-contain pb-2 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border">
             <table className="w-full min-w-[600px] border-collapse text-body-sm">
@@ -291,25 +375,13 @@ export default function ComparePackagesPage() {
         </div>
       </section>
 
-      {/* CTA Block */}
-      <section className="py-section-y">
-        <div className="mx-auto max-w-content px-container-x">
-          <CTABlock
-            variant="dark"
-            heading="Need Help Choosing?"
-            description="Our formation specialists can help you pick the right package for your business goals, privacy needs, and budget."
-            primaryCTA={{
-              label: "Contact a Specialist",
-              href: "/contact",
-            }}
-            secondaryCTA={{
-              label: "Call 1-800-553-0615",
-              href: "tel:+18005530615",
-            }}
-            trustSignal="25+ Years of Formation Experience"
-          />
-        </div>
-      </section>
+      {/* Final CTA — dark close matching pillar/cluster/package style */}
+      <PillarFinalCTA
+        heading="Need Help Choosing?"
+        description="Our formation specialists can help you pick the right package for your business goals, privacy needs, and budget."
+        ctaLabel="Contact a Specialist"
+        ctaHref="/contact"
+      />
     </div>
   );
 }

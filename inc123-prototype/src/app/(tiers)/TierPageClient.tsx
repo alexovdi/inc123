@@ -4,12 +4,12 @@ import { PackageLayout } from "@/design-system/layouts/PackageLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { AddOnConfigurator } from "@/design-system/components/AddOnConfigurator";
 import { AlsoConsiderCards } from "@/design-system/components/AlsoConsiderCards";
-import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
-import { CTABlock } from "@/design-system/components/CTABlock";
-import { MoneyBackBadge } from "@/design-system/components/MoneyBackBadge";
 import { PackageHero } from "@/design-system/components/PackageHero";
+import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
 import { PricingGrid } from "@/design-system/components/PricingGrid";
 import { RunningTotal } from "@/design-system/components/RunningTotal";
+import { SectionHeader } from "@/design-system/components/SectionHeader";
+import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { faqItems } from "@/data/faq";
 import { testimonials } from "@/data/testimonials";
 import {
@@ -76,6 +76,16 @@ export function TierPageClient({ tier }: TierPageClientProps) {
     : tierDisplayName;
 
   const ctaLabel = `Get Started — $${currentPrice.formation.toLocaleString()}`;
+
+  const stateOptions = useMemo(
+    () =>
+      ALL_FORMATION_STATES.map(({ name, abbreviation }) => ({
+        name,
+        abbreviation,
+        available: tier.availableStates.includes(name),
+      })),
+    [tier.availableStates],
+  );
 
   /* Build pricing grid from all tiers available in selected state */
   const pricingTiers = useMemo(() => {
@@ -144,67 +154,45 @@ export function TierPageClient({ tier }: TierPageClientProps) {
   }, [selectedState, tier.tier]);
 
   return (
-    <PackageLayout packageName={packageName}>
-      <div className="space-y-12 lg:space-y-16">
-        <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Packages", href: "/packages" },
-            { label: `${tier.name} Package`, href: `/${tier.slug}` },
-          ]}
-          pillar="privacy"
-        />
+    <PackageLayout showTrustBar={false}>
+      <PackageHero
+        packageName={packageName}
+        eyebrow={`${tier.name} Package`}
+        prices={
+          variant?.prices ?? tier.stateVariants[tier.availableStates[0]].prices
+        }
+        badge={tier.badge}
+        entityType={entityType}
+        onEntityTypeChange={setEntityType}
+        primaryCTA={{ label: ctaLabel, href: checkoutHref }}
+        secondaryCTA={{
+          label: "Compare Packages",
+          href: "#pricing-grid",
+        }}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Packages", href: "/packages" },
+          { label: `${tier.name} Package` },
+        ]}
+        stateSelector={{
+          states: stateOptions,
+          selected: selectedState,
+          onChange: setSelectedState,
+        }}
+      />
 
-        {/* State Selector */}
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-body font-medium text-muted">
-            Formation State:
-          </span>
-          {ALL_FORMATION_STATES.map(({ name, abbreviation }) => {
-            const isAvailable = tier.availableStates.includes(name);
-            const isSelected = selectedState === name;
-            return (
-              <button
-                key={name}
-                type="button"
-                onClick={() => isAvailable && setSelectedState(name)}
-                disabled={!isAvailable}
-                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-body-sm font-medium transition-colors ${
-                  isSelected
-                    ? "bg-secondary text-white"
-                    : isAvailable
-                      ? "bg-surface border border-border text-foreground hover:bg-primary-50"
-                      : "bg-primary-100 text-muted/50 cursor-not-allowed"
-                }`}
-              >
-                <span className="font-bold">{abbreviation}</span>
-                <span className="hidden sm:inline">{name}</span>
-                {!isAvailable && <span className="text-body-sm">(N/A)</span>}
-              </button>
-            );
-          })}
-        </div>
-
-        <PackageHero
-          packageName={packageName}
-          prices={
-            variant?.prices ??
-            tier.stateVariants[tier.availableStates[0]].prices
-          }
-          badge={tier.badge}
-          entityType={entityType}
-          onEntityTypeChange={setEntityType}
-          primaryCTA={{
-            label: ctaLabel,
-            href: checkoutHref,
-          }}
-          secondaryCTA={{
-            label: "Compare Packages",
-            href: "#pricing-grid",
-          }}
-        />
-
-        <section id="pricing-grid" className="scroll-mt-24">
+      {/* Pricing Grid + Also Consider — white surface */}
+      <section
+        id="pricing-grid"
+        className="scroll-mt-24 bg-surface py-section-y-sm"
+      >
+        <div className="mx-auto max-w-content px-container-x">
+          <SectionHeader
+            eyebrow="Compare Tiers"
+            title={`${selectedState} ${entityType === "llc" ? "LLC" : "Corporation"} Packages`}
+            subtitle="Side-by-side breakdown of every tier available in this state."
+            className="mb-10"
+          />
           <PricingGrid
             tiers={pricingTiers}
             addOns={[]}
@@ -213,90 +201,85 @@ export function TierPageClient({ tier }: TierPageClientProps) {
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
           />
-        </section>
+          {alsoConsiderItems.length > 0 && (
+            <div className="mt-16">
+              <AlsoConsiderCards
+                packages={alsoConsiderItems}
+                heading="Also Consider"
+              />
+            </div>
+          )}
+        </div>
+      </section>
 
-        {alsoConsiderItems.length > 0 && (
-          <section>
-            <AlsoConsiderCards
-              packages={alsoConsiderItems}
-              heading="Also Consider"
-            />
-          </section>
-        )}
-
-        {/* Add-on Configuration Zone */}
-        <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-          <div className="lg:col-span-2" id="addon-configurator">
-            <AddOnConfigurator
-              addOns={tier.addOns}
-              selectedIds={selectedAddOns}
-              onToggle={toggleAddOn}
-              basePrice={currentPrice.formation}
-            />
-          </div>
-
-          <div className="mt-8 lg:mt-0">
-            <RunningTotal
-              tier={{
-                name: packageName,
-                price: currentPrice.formation,
-              }}
-              entityType={entityType === "llc" ? "LLC" : "Corporation"}
-              addOns={runningTotalAddOns}
-              total={grandTotal}
-              checkoutHref={checkoutHref}
-              checkoutLabel={ctaLabel}
-            />
+      {/* Configure Your Package — AddOnConfigurator owns its own heading */}
+      <section className="bg-background py-section-y-sm">
+        <div className="mx-auto max-w-content px-container-x">
+          <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+            <div className="lg:col-span-2" id="addon-configurator">
+              <AddOnConfigurator
+                addOns={tier.addOns}
+                selectedIds={selectedAddOns}
+                onToggle={toggleAddOn}
+                basePrice={currentPrice.formation}
+              />
+            </div>
+            <div className="mt-8 lg:mt-0">
+              <RunningTotal
+                tier={{
+                  name: packageName,
+                  price: currentPrice.formation,
+                }}
+                entityType={entityType === "llc" ? "LLC" : "Corporation"}
+                addOns={runningTotalAddOns}
+                total={grandTotal}
+                checkoutHref={checkoutHref}
+                checkoutLabel={ctaLabel}
+              />
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Social Proof Strip */}
-        <section className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-          <blockquote className="border-l-4 border-secondary pl-6 py-2">
-            <p className="text-body text-foreground italic">
-              &ldquo;{bestTestimonial.quote}&rdquo;
-            </p>
-            <footer className="mt-3 text-body-sm text-muted">
-              — {bestTestimonial.name}, {bestTestimonial.businessType}
-            </footer>
-          </blockquote>
-          <div className="mt-6 lg:mt-0">
-            <MoneyBackBadge variant="standard" className="w-full" />
+      {/* Social Proof Strip — full-width DS component */}
+      <SocialProofStrip
+        testimonial={{
+          quote: bestTestimonial.quote,
+          author: bestTestimonial.name,
+          role: bestTestimonial.businessType,
+        }}
+      />
+
+      {/* FAQ — muted background */}
+      {packageFaqs.length > 0 && (
+        <section className="bg-background py-section-y-sm">
+          <div className="mx-auto max-w-content px-container-x">
+            <SectionHeader
+              eyebrow="FAQ"
+              title="Frequently Asked Questions"
+              subtitle="The most common questions about this package."
+              className="mb-10"
+            />
+            <div className="max-w-narrow mx-auto">
+              <Accordion type="single" variant="card">
+                {packageFaqs.map((faq) => (
+                  <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
+                    <p>{faq.answer}</p>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
         </section>
+      )}
 
-        {/* FAQ — limited to 5 most relevant */}
-        {packageFaqs.length > 0 && (
-          <section>
-            <h2 className="font-display text-heading-lg font-bold text-foreground mb-6">
-              Frequently Asked Questions
-            </h2>
-            <Accordion type="single" variant="default">
-              {packageFaqs.map((faq) => (
-                <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
-                  <p>{faq.answer}</p>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </section>
-        )}
-
-        <CTABlock
-          heading="Ready to Get Started?"
-          description={`${packageName} — $${currentPrice.formation.toLocaleString()} all-inclusive. ${variant?.description ?? tier.description}`}
-          primaryCTA={{
-            label: ctaLabel,
-            href: checkoutHref,
-          }}
-          secondaryCTA={{
-            label: "Schedule a Consultation",
-            href: "/contact",
-          }}
-          trustSignal="1-800-553-0615 · Talk to a Specialist"
-          variant="dark"
-          layout="centered"
-        />
-      </div>
+      {/* Final CTA — dark close matching pillar/cluster pages */}
+      <PillarFinalCTA
+        heading="Ready to Get Started?"
+        description={`${packageName} — $${currentPrice.formation.toLocaleString()} all-inclusive. ${variant?.description ?? tier.description}`}
+        ctaLabel={ctaLabel}
+        ctaHref={checkoutHref}
+      />
     </PackageLayout>
   );
 }

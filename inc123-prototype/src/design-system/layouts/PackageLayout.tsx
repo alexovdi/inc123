@@ -1,33 +1,35 @@
 import { cn } from "@/design-system/utils/cn";
 
 export interface PackageLayoutProps {
-  packageName: string;
+  /** Package display name — reserved for future use (e.g. doc title). */
+  packageName?: string;
+  /** If false, skip the top trust bar (for pages with their own hero) */
+  showTrustBar?: boolean;
   children: React.ReactNode;
   className?: string;
 }
 
 export function PackageLayout({
-  packageName,
+  showTrustBar = true,
   children,
   className,
 }: PackageLayoutProps) {
   return (
     <div className={cn("min-h-screen", className)}>
-      {/* Trust bar */}
-      <div className="bg-primary-50 border-b border-border">
-        <div className="mx-auto flex max-w-wide items-center justify-center gap-6 px-container-x py-2 text-caption text-muted">
-          <span>25+ Years Trusted</span>
-          <span className="hidden sm:inline">·</span>
-          <span className="hidden sm:inline">All-Inclusive Pricing</span>
-          <span className="hidden sm:inline">·</span>
-          <span className="hidden sm:inline">30-Day Money-Back Guarantee</span>
+      {showTrustBar && (
+        <div className="bg-primary-50 border-b border-border">
+          <div className="mx-auto flex max-w-wide items-center justify-center gap-6 px-container-x py-2 text-caption text-muted">
+            <span>25+ Years Trusted</span>
+            <span className="hidden sm:inline">·</span>
+            <span className="hidden sm:inline">All-Inclusive Pricing</span>
+            <span className="hidden sm:inline">·</span>
+            <span className="hidden sm:inline">
+              30-Day Money-Back Guarantee
+            </span>
+          </div>
         </div>
-      </div>
-
-      {/* Full-width content */}
-      <main className="mx-auto max-w-wide px-container-x py-section-y-sm">
-        {children}
-      </main>
+      )}
+      <main>{children}</main>
     </div>
   );
 }
