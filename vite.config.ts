@@ -12,4 +12,8 @@ export default defineConfig({
   },
   root: "inc123-prototype",
   publicDir: "public",
+  build: {
+    outDir: "../dist",
+    emptyOutDir: true,
+  },
 });
