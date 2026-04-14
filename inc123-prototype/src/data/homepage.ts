@@ -407,7 +407,7 @@ export const privacyBridgeColumns: PrivacyBridgeColumn[] = [
     iconName: "Eye",
     title: "Public Exposure",
     description:
-      "Standard formation puts your name on state filings. Anyone with an internet connection can find your ownership, address, and business details.",
+      "Standard formation puts your name on state filings. Anyone with an internet connection can find your address and business details.",
   },
   {
     iconName: "AlertCircle",

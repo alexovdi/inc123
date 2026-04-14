@@ -34,7 +34,7 @@ import type {
 const governmentFilingAddOns: PackageAddOn[] = [
   {
     id: "foreign-state-filing",
-    name: "Foreign State Registration Filing",
+    name: "Foreign State Filing (all 50 states)",
     price: 0,
     priceTBD: true,
     description:
@@ -45,7 +45,7 @@ const governmentFilingAddOns: PackageAddOn[] = [
   },
   {
     id: "domestication-filing",
-    name: "Domestication Filing",
+    name: "Domestication Filing (WY or NV)",
     price: 0,
     priceTBD: true,
     description:
@@ -267,22 +267,24 @@ const FEATURE_NOMINEE_OFFICERS_NOT_INCLUDED = {
 
 // CA / FL specific
 const FEATURE_CA_FOREIGN_REG = {
-  name: "CA Foreign State Registration",
+  name: "CA State Registration Fees",
   status: "included" as const,
-  tooltip: "Register your WY-formed entity to do business in California",
+  tooltip:
+    "California state fees to register your WY-formed entity to do business in California",
 };
 const FEATURE_CA_REGISTERED_AGENT = {
-  name: "CA Registered Agent",
+  name: "CA Registered Agent Fees",
   status: "included" as const,
   tooltip: "Registered agent service in California for one full year",
 };
 const FEATURE_FL_FOREIGN_REG = {
-  name: "FL Foreign State Registration",
+  name: "FL State Registration Fees",
   status: "included" as const,
-  tooltip: "Register your WY-formed entity to do business in Florida",
+  tooltip:
+    "Florida state fees to register your WY-formed entity to do business in Florida",
 };
 const FEATURE_FL_REGISTERED_AGENT = {
-  name: "FL Registered Agent",
+  name: "FL Registered Agent Fees",
   status: "included" as const,
   tooltip: "Registered agent service in Florida for one full year",
 };
@@ -737,6 +739,7 @@ export const comparisonFeatures = [
   // Formation
   "State Filing Fees Included",
   "Document Preparation",
+  "NV Business License",
   "Custom Operating Agreement",
   "Bank Account Opening Document Package",
   "EIN Obtainment",
@@ -751,6 +754,11 @@ export const comparisonFeatures = [
   // Privacy
   "Year-Round Nominee Director / Manager",
   "Year-Round Nominee Officers",
+  // CA / FL Specific
+  "CA State Registration Fees",
+  "CA Registered Agent Fees",
+  "FL State Registration Fees",
+  "FL Registered Agent Fees",
 ];
 
 /** Grouped feature sections for the comparison table (per v3 spreadsheet layout). */
@@ -760,12 +768,17 @@ export const comparisonFeatureGroups = [
     features: [
       "State Filing Fees Included",
       "Document Preparation",
+      "NV Business License",
       "Custom Operating Agreement",
       "Bank Account Opening Document Package",
       "EIN Obtainment",
     ],
   },
   {
+    // NOTE: v3 spreadsheet places "Offshore Records Storage" under the
+    // PRIVACY section header. We keep it under Compliance because it reads
+    // more cleanly there (it's checked across all tiers, not Gold-only).
+    // Flag at next David review if he wants to match the v3 layout exactly.
     label: "Compliance — Included in All Tiers",
     features: [
       "Initial State Filings and Fees",
@@ -783,6 +796,15 @@ export const comparisonFeatureGroups = [
     features: [
       "Year-Round Nominee Director / Manager",
       "Year-Round Nominee Officers",
+    ],
+  },
+  {
+    label: "CA / FL Specific",
+    features: [
+      "CA State Registration Fees",
+      "CA Registered Agent Fees",
+      "FL State Registration Fees",
+      "FL Registered Agent Fees",
     ],
   },
 ] as const;
