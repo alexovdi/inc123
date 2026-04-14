@@ -49,13 +49,15 @@ export default function FormationPillarPage() {
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation mb-4">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-formation-mid mb-4">
                 Company Formation
               </p>
 
               <h1 className="font-display type-display-lg font-bold text-white">
                 Expert Formation,{" "}
-                <span className="text-pillar-formation">All-Inclusive.</span>
+                <span className="text-pillar-formation-mid">
+                  All-Inclusive.
+                </span>
               </h1>
 
               <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">

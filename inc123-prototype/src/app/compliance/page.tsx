@@ -50,7 +50,7 @@ export default function CompliancePillarPage() {
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance mb-4">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-compliance-mid mb-4">
                 Compliance
               </p>
 

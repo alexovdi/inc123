@@ -50,13 +50,13 @@ export default function AssetProtectionPillarPage() {
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset mb-4">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-pillar-asset-mid mb-4">
                 Asset Protection
               </p>
 
               <h1 className="font-display type-display-lg font-bold text-white">
                 Protect What You&rsquo;ve{" "}
-                <span className="text-pillar-asset">Built.</span>
+                <span className="text-pillar-asset-mid">Built.</span>
               </h1>
 
               <p className="mt-6 text-body-lg text-white/80 max-w-[480px]">
