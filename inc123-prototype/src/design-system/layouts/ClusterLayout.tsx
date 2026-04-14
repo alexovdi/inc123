@@ -24,8 +24,10 @@ export function ClusterLayout({
       {/* Hero — always provided via customHero now (dark hero) */}
       {customHero}
 
-      {/* Content Area */}
-      <div className="mx-auto max-w-content px-container-x pb-section-y">
+      {/* Content Area — pt creates breathing room between the dark hero and
+          the first content cards. Without it, In This Guide + sidebar slam
+          directly against the hero's bottom edge. */}
+      <div className="mx-auto max-w-content px-container-x pt-section-y-sm pb-section-y">
         <div
           className={cn("flex gap-12", sidebar ? "flex-col lg:flex-row" : "")}
         >
