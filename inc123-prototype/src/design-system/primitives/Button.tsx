@@ -6,7 +6,7 @@ import { pillarButtonMap } from "@/design-system/utils/pillarMaps";
 import type { PillarName } from "@/design-system/tokens";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-button font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-button font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
