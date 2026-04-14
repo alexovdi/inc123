@@ -112,7 +112,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {icon && iconPosition === "left" && !loading && (
           <span className="shrink-0">{icon}</span>
         )}
-        <span className={cn(loading && "invisible")}>{children}</span>
+        <span
+          className={cn(
+            "inline-flex items-center gap-2",
+            loading && "invisible",
+          )}
+        >
+          {children}
+        </span>
         {icon && iconPosition === "right" && !loading && (
           <span className="shrink-0">{icon}</span>
         )}
