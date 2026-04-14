@@ -6,15 +6,14 @@ import {
 } from "react-router-dom";
 import { PackageLayout } from "@/design-system/layouts/PackageLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { AddOnConfigurator } from "@/design-system/components/AddOnConfigurator";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackageHero } from "@/design-system/components/PackageHero";
 import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
 import { PricingGrid } from "@/design-system/components/PricingGrid";
-import { RunningTotal } from "@/design-system/components/RunningTotal";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
+import { UpgradesPreview } from "@/design-system/components/UpgradesPreview";
 import { Icon } from "@/design-system/primitives/Icon";
 import { testimonials } from "@/data/testimonials";
 import {
@@ -22,6 +21,7 @@ import {
   getTierFeaturesForState,
   getAvailableTiersForState,
   getPackageUrl,
+  getAddOnsForContext,
   ALL_FORMATION_STATES,
 } from "@/data/packages";
 import {
@@ -184,13 +184,6 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
 
   const [selectedState, setSelectedState] = useState(initialState);
   const [entityType, setEntityType] = useState<EntityType>("llc");
-  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
-
-  const toggleAddOn = useCallback((id: string) => {
-    setSelectedAddOns((prev) =>
-      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id],
-    );
-  }, []);
 
   /* -- URL contract: clicking a state chip on a flat-URL page navigates -- */
   const handleStateChange = useCallback(
@@ -209,16 +202,29 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
     ? variant.prices[entityType]
     : { formation: getTierMinPrice(tier, entityType), renewal: 0 };
 
-  const addOnTotal = useMemo(
-    () =>
-      selectedAddOns.reduce((sum, id) => {
-        const addOn = tier.addOns.find((a) => a.id === id);
-        return sum + (addOn?.price ?? 0);
-      }, 0),
-    [selectedAddOns, tier.addOns],
+  /* -- Upgrades filtered for this (tier, state) context ----------------- */
+  const availableUpgrades = useMemo(
+    () => getAddOnsForContext(tier.slug, selectedState),
+    [tier.slug, selectedState],
   );
 
-  const grandTotal = currentPrice.formation + addOnTotal;
+  const upgradesContextNote = useMemo(() => {
+    const hasNevadaOnly = availableUpgrades.some((u) =>
+      u.appliesTo?.states?.includes("Nevada"),
+    );
+    const parts: string[] = [];
+    if (tier.slug === "gold") {
+      parts.push(
+        "Year-round nominee privacy is already included in Gold, so the Privacy Services Upgrade isn't listed below.",
+      );
+    }
+    if (selectedState !== "Nevada" && !hasNevadaOnly) {
+      parts.push(
+        "Executive VO and Part-Time Private Suite are Nevada-only physical products and aren't available on this package.",
+      );
+    }
+    return parts.join(" ") || undefined;
+  }, [tier.slug, selectedState, availableUpgrades]);
 
   const tierDisplayName = `${tier.name} ${entityType === "llc" ? "LLC" : "Corporation"}`;
   const packageName = variant
@@ -272,18 +278,6 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
       };
     });
   }, [selectedState, entityType, tier.slug]);
-
-  const runningTotalAddOns = useMemo(
-    () =>
-      selectedAddOns
-        .map((id) => {
-          const addOn = tier.addOns.find((a) => a.id === id);
-          if (!addOn) return null;
-          return { name: addOn.name, price: addOn.price };
-        })
-        .filter(Boolean) as { name: string; price: number }[],
-    [selectedAddOns, tier.addOns],
-  );
 
   const checkoutHref = `/checkout/configure?tier=${tier.slug}&state=${selectedState.toLowerCase()}&entity=${entityType}`;
 
@@ -511,38 +505,20 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
         </div>
       </section>
 
-      {/* 8. CONFIGURE — add-ons + running total (single CTA in RunningTotal only) */}
+      {/* 8. OPTIONAL UPGRADES — read-only preview; selection happens at checkout */}
       <section className="bg-surface py-section-y-sm">
         <div className="mx-auto max-w-content px-container-x">
           <SectionHeader
-            eyebrow="Configure"
-            title="Add government filings or upgrades"
-            subtitle="Optional. The base package above is complete on its own."
+            eyebrow="Optional Upgrades"
+            title="What you can add at checkout"
+            subtitle={`Only upgrades compatible with ${tier.name} in ${selectedState} are shown — nothing redundant, nothing unavailable.`}
             className="mb-10"
           />
-          <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-            <div className="lg:col-span-2" id="addon-configurator">
-              <AddOnConfigurator
-                addOns={tier.addOns}
-                selectedIds={selectedAddOns}
-                onToggle={toggleAddOn}
-                basePrice={currentPrice.formation}
-              />
-            </div>
-            <div className="mt-8 lg:mt-0">
-              <RunningTotal
-                tier={{
-                  name: packageName,
-                  price: currentPrice.formation,
-                }}
-                entityType={entityType === "llc" ? "LLC" : "Corporation"}
-                addOns={runningTotalAddOns}
-                total={grandTotal}
-                checkoutHref={checkoutHref}
-                checkoutLabel={ctaLabel}
-              />
-            </div>
-          </div>
+          <UpgradesPreview
+            upgrades={availableUpgrades}
+            checkoutHref={checkoutHref}
+            contextNote={upgradesContextNote}
+          />
         </div>
       </section>
 

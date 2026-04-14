@@ -71,6 +71,17 @@ export interface PackageAddOn {
   category?: AddOnCategory;
   /** Show as "TBD" in UI when price is not yet locked */
   priceTBD?: boolean;
+  /**
+   * Restrict where this upgrade may be offered.
+   * - `tiers` — only on these tier slugs (e.g. hide Privacy Upgrade on Gold where nominees are already included)
+   * - `states` — only in these formation states (e.g. Executive VO and Part-Time Private Suite are Nevada-only physical products)
+   * Both are allowlists. Omitting either means "all".
+   * See Apr 13 meeting transcript and legacy Incorporate123_Packages.xlsx "Current Packages" sheet.
+   */
+  appliesTo?: {
+    tiers?: TierLevel[];
+    states?: string[];
+  };
 }
 
 export interface PackageTier {

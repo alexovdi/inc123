@@ -64,7 +64,15 @@ const governmentFilingAddOns: PackageAddOn[] = [
   },
 ];
 
-/** 3 Service Upgrades — attach to any base package per Apr 13 terminology. */
+/**
+ * 3 Service Upgrades — attach to compatible base packages per Apr 13 terminology.
+ *
+ * Eligibility rules derive from the legacy 15-package lineup:
+ *   - Executive VO existed ONLY on NV Silver Exec / NV Gold Exec (physical Reno product) → NV Silver/Gold.
+ *   - Part-Time Private Suite existed ONLY on NV Silver MAX / NV Gold MAX → NV Silver/Gold.
+ *   - Privacy Services replaced the legacy Bronze+ / non-nominee tiers → Bronze & Silver only
+ *     (hidden on Gold, where year-round nominees are already included).
+ */
 const serviceUpgrades: PackageAddOn[] = [
   {
     id: "privacy-services-upgrade",
@@ -72,10 +80,14 @@ const serviceUpgrades: PackageAddOn[] = [
     price: 0,
     priceTBD: true,
     description:
-      "Adds year-round nominee director / manager + officers to your package. Effectively upgrades Bronze or Silver to Gold-level privacy.",
+      "Adds year-round nominee director / manager + officers. Effectively takes Bronze or Silver to Gold-level privacy.",
     tooltip:
       "Nominees appear on all public filings year-round, not just at formation",
     category: "service-upgrade",
+    appliesTo: {
+      // Gold already includes year-round nominees — hide to avoid redundant purchase.
+      tiers: ["bronze", "silver"],
+    },
   },
   {
     id: "executive-vo-upgrade",
@@ -83,9 +95,14 @@ const serviceUpgrades: PackageAddOn[] = [
     price: 0,
     priceTBD: true,
     description:
-      "Upgrade the basic virtual office that ships with Silver and Gold to an executive-grade VO with enhanced services.",
-    tooltip: "Requires Silver or Gold base package",
+      "Upgrade the basic virtual office that ships with Silver and Gold to an executive-grade VO at the Reno office.",
+    tooltip:
+      "Nevada only — requires a base VO (Silver or Gold). Wyoming packages are not eligible.",
     category: "service-upgrade",
+    appliesTo: {
+      tiers: ["silver", "gold"],
+      states: ["Nevada"],
+    },
   },
   {
     id: "part-time-private-suite-upgrade",
@@ -93,40 +110,49 @@ const serviceUpgrades: PackageAddOn[] = [
     price: 0,
     priceTBD: true,
     description:
-      "Physical part-time private suite access at the Nevada location. Adds a real-world presence on top of any base package.",
+      "Physical part-time private suite access at the Reno, Nevada office. Adds real-world presence on top of Silver or Gold.",
+    tooltip: "Nevada only — the suite is a physical product at our Reno office",
     category: "service-upgrade",
+    appliesTo: {
+      tiers: ["silver", "gold"],
+      states: ["Nevada"],
+    },
   },
 ];
 
 /**
- * Crypto payment is a payment method option, not a product add-on.
- * Kept separately so checkout can surface it as a payment choice.
- * Rush Filing was removed — not in David's locked Apr 13 add-on list.
+ * Combined upgrade inventory attached to every package.
+ * Order matters for UI rendering: government filings first, then service upgrades.
+ * Crypto payment was removed — it's a checkout payment method, not a product upgrade.
+ * Rush Filing was removed — not in David's locked Apr 13 list.
  */
-const otherAddOns: PackageAddOn[] = [
-  {
-    id: "crypto-payment",
-    name: "Cryptocurrency Payment Processing",
-    price: 0,
-    description: "Pay with Bitcoin, Ethereum, XRP, Litecoin, or Monero.",
-    tooltip: "No additional fee — we accept major cryptocurrencies",
-    category: "other",
-  },
-];
-
-/** Combined add-on list attached to every package for the detail page UI. */
 const sharedAddOns: PackageAddOn[] = [
   ...governmentFilingAddOns,
   ...serviceUpgrades,
-  ...otherAddOns,
 ];
 
-export {
-  governmentFilingAddOns,
-  serviceUpgrades,
-  otherAddOns,
-  sharedAddOns as allAddOns,
-};
+export { governmentFilingAddOns, serviceUpgrades, sharedAddOns as allAddOns };
+
+/**
+ * Filter the shared upgrade inventory for a given (tier, state) context.
+ * Used on package detail pages and in /checkout/configure so both surfaces
+ * show the same, properly gated upgrade list.
+ *
+ * @param tierSlug - Target tier ("bronze" | "silver" | "gold")
+ * @param stateName - Formation state ("Wyoming", "Nevada", "California", "Florida")
+ */
+export function getAddOnsForContext(
+  tierSlug: TierLevel,
+  stateName: string,
+): PackageAddOn[] {
+  return sharedAddOns.filter((addOn) => {
+    if (!addOn.appliesTo) return true;
+    const { tiers, states } = addOn.appliesTo;
+    if (tiers && !tiers.includes(tierSlug)) return false;
+    if (states && !states.includes(stateName)) return false;
+    return true;
+  });
+}
 
 /* ------------------------------------------------
    Feature helpers — build the canonical v3 matrix cleanly

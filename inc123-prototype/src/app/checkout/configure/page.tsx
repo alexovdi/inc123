@@ -13,6 +13,7 @@ import {
   getTierPrice,
   getAvailableTiersForState,
   getTierFeaturesForState,
+  getAddOnsForContext,
 } from "@/data/packages";
 import { FORMATION_STATES } from "@/data/checkout";
 import { useCheckout, getCheckoutPrice } from "../CheckoutContext";
@@ -66,19 +67,36 @@ export default function CheckoutConfigurePage() {
   const pricing = getCheckoutPrice(state);
   const basePrice = pricing?.formation ?? 0;
 
-  // Get add-ons for the selected tier (or first available tier)
-  const availableAddOns =
-    selectedTierDef?.addOns ?? availableTiers[0]?.addOns ?? [];
+  // Upgrades filtered by (tier, state) — matches the detail-page preview exactly.
+  // Gates out Privacy Services Upgrade on Gold (redundant) and NV-only office
+  // upgrades outside Nevada. See packages.ts :: getAddOnsForContext.
+  const availableAddOns = useMemo(
+    () =>
+      selectedTierDef
+        ? getAddOnsForContext(selectedTierDef.slug, state.selectedState)
+        : [],
+    [selectedTierDef, state.selectedState],
+  );
 
-  const addOnTotal = state.selectedAddOns.reduce((sum, id) => {
+  // If a previously selected add-on becomes incompatible after changing tier
+  // or state, silently drop it from the total instead of charging for it.
+  const validSelectedAddOnIds = useMemo(
+    () =>
+      state.selectedAddOns.filter((id) =>
+        availableAddOns.some((a) => a.id === id),
+      ),
+    [state.selectedAddOns, availableAddOns],
+  );
+
+  const addOnTotal = validSelectedAddOnIds.reduce((sum, id) => {
     const addOn = availableAddOns.find((a) => a.id === id);
     return sum + (addOn?.price ?? 0);
   }, 0);
 
   const total = basePrice + addOnTotal;
 
-  // Selected add-on details for OrderSummary
-  const selectedAddOnDetails = state.selectedAddOns
+  // Selected add-on details for OrderSummary (only the ones still valid)
+  const selectedAddOnDetails = validSelectedAddOnIds
     .map((id) => availableAddOns.find((a) => a.id === id))
     .filter(Boolean)
     .map((a) => ({ name: a!.name, price: a!.price }));
@@ -210,7 +228,7 @@ export default function CheckoutConfigurePage() {
         >
           <AddOnConfigurator
             addOns={availableAddOns}
-            selectedIds={state.selectedAddOns}
+            selectedIds={validSelectedAddOnIds}
             onToggle={(id) => dispatch({ type: "TOGGLE_ADDON", addonId: id })}
             basePrice={basePrice}
           />
