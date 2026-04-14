@@ -240,11 +240,9 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
               variant="secondary"
               size="sm"
               asChild
-              className="border-secondary text-secondary hover:bg-secondary hover:text-white"
+              className="border-secondary text-secondary hover:bg-secondary hover:text-white whitespace-nowrap"
             >
-              <RouterLink to="/compare-packages">
-                Find Your Package →
-              </RouterLink>
+              <RouterLink to="/compare-packages">Find Your Package</RouterLink>
             </Button>
           </div>
 
@@ -298,7 +296,7 @@ export function SiteHeader({ navigation, className }: SiteHeaderProps) {
                   to="/compare-packages"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Find Your Package →
+                  Find Your Package
                 </RouterLink>
               </Button>
               <a

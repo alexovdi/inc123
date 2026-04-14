@@ -253,7 +253,7 @@ function PackageHero({
                 </span>
                 <span className="text-body text-white/60">all in</span>
               </div>
-              <div className="mt-3 flex flex-wrap items-center gap-2">
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
                 {badge && (
                   <span
                     className="inline-flex items-center rounded-pill px-3 py-1 text-body-sm font-semibold text-primary"
@@ -262,16 +262,9 @@ function PackageHero({
                     {badge}
                   </span>
                 )}
-                <Badge
-                  variant="default"
-                  size="sm"
-                  className="bg-white/[0.08] text-white/90 border-white/20"
-                >
-                  Formation + first year
-                </Badge>
-                <span className="text-body-sm text-white/60">
-                  · ${currentPrice.renewal.toLocaleString()}/yr renewal · no
-                  hidden fees
+                <span className="text-body-sm text-white/70">
+                  One-time formation fee · then $
+                  {currentPrice.renewal.toLocaleString()}/year
                 </span>
               </div>
             </div>
@@ -330,24 +323,6 @@ function PackageHero({
                 ))}
               </div>
             )}
-
-            {/* Phone line */}
-            <p className="mt-5 text-body text-white/80">
-              Prefer to talk?{" "}
-              <a
-                href="tel:1-800-553-0615"
-                className="text-white underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors font-medium"
-              >
-                Call 1-800-553-0615
-              </a>
-              {" · "}
-              <Link
-                href="/contact"
-                className="text-white/90 underline underline-offset-4 decoration-white/40 hover:text-white transition-colors"
-              >
-                Schedule a consultation
-              </Link>
-            </p>
           </div>
 
           {/* RIGHT — hero visual */}

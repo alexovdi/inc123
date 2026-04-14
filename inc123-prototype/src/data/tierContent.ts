@@ -78,10 +78,10 @@ export const tierContent: Record<string, TierContentCore> = {
     ],
     decisionGuide: {
       bronze:
-        "You already have a professional business address and you'll pull your own EIN. Skip the features you don't need and save a few hundred dollars.",
+        "Fits if you already have a commercial address and you'll pull your own EIN. Formation, compliance, registered agent — nothing you don't need.",
       silver:
-        "You want to keep your home address off public records and you'd rather we handle the EIN. Silver is the mainstream pick for online businesses.",
-      gold: "You want your name off public filings — year round, not just at formation. Gold is the only tier that adds nominee directors, managers, and officers.",
+        "If the virtual office in Silver is more than you need — you already work from a real commercial address — Bronze strips back to formation and compliance and saves the Silver premium.",
+      gold: "If year-round nominees are overkill — a holding entity you won't list publicly, or a second LLC where privacy isn't the driver — Bronze handles formation and compliance without the Gold premium.",
     },
     deliverables: [
       {
@@ -159,10 +159,10 @@ export const tierContent: Record<string, TierContentCore> = {
     ],
     decisionGuide: {
       bronze:
-        "You already have a commercial address. You're fine pulling your own EIN. Bronze saves you a few hundred dollars.",
+        "If Bronze feels too bare — most online operators don't have a commercial address to use — Silver adds a real virtual office, mail forwarding, and EIN. That's the usual next step up.",
       silver:
-        "You want your home address off the public record and you want us to handle the EIN. Silver is our most recommended tier — it solves the real problem most online operators have.",
-      gold: "You want total name-off-the-record privacy. Gold adds year-round nominees on every public filing, not just a different mailing address.",
+        "The mainstream pick. Virtual office, EIN, weekly mail forwarding — everything an online business needs to stop using a home address, without paying for nominees you may not need.",
+      gold: "If nominees aren't the reason you're here — you just want a professional address and don't mind your name on filings — Silver covers that for considerably less than Gold.",
     },
     deliverables: [
       {
@@ -249,10 +249,10 @@ export const tierContent: Record<string, TierContentCore> = {
     ],
     decisionGuide: {
       bronze:
-        "You have a commercial address already and you're not worried about privacy. Bronze covers the formation essentials only.",
+        "Bronze files the entity but your name still appears on public records. If privacy is even part of why you're forming, Gold is the only tier that actually hides it — year-round, not just day one.",
       silver:
-        "You want a non-residential business address and the EIN handled, but privacy isn't the driver. Silver is the mainstream pick.",
-      gold: "Privacy is the reason you're here. Gold is the only tier that puts a nominee on public filings year-round — not just at formation. If your name being off the record matters, Gold is the only answer.",
+        "Silver hides your home address. Gold hides your name entirely — a real-person nominee signs every annual report and amendment, not just the articles. That's the actual privacy mechanism.",
+      gold: "Privacy is the reason you're here. Gold is the only tier that puts a nominee on public filings year-round — not just at formation. If keeping your name off the record matters, Gold is the only answer.",
     },
     deliverables: [
       {
@@ -718,6 +718,67 @@ export const tierStateContext: Record<
 };
 
 /* ------------------------------------------------
+   Package identity overrides
+   Some packages (CA Private, FL Private) use the Gold tier mechanically
+   but brand themselves as "Private" — they are bundled Gold + foreign
+   registration convenience products, not raw Gold. These overrides let
+   the hero, H1, eyebrow, promise, and final CTA speak in Private voice
+   instead of inheriting Gold copy verbatim.
+   ------------------------------------------------ */
+
+export interface PackageIdentity {
+  /** Replaces `${tier.name} ${entityLabel}` — e.g. "California Private LLC" */
+  displayTierName: string;
+  eyebrow: string;
+  heroTagline: string;
+  promiseHeading: string;
+  promiseBody: string;
+  audience?: string[];
+  finalCtaHeading: string;
+  finalCtaDescription: string;
+}
+
+/** Keyed by `${tierSlug}:${state}` — e.g. "gold:California". */
+export const packageIdentity: Record<string, PackageIdentity> = {
+  "gold:California": {
+    displayTierName: "California Private",
+    eyebrow: "Private package — Wyoming Gold + California foreign registration",
+    heroTagline: "Run your business in California without your name on sunbiz.",
+    promiseHeading:
+      "California Private is Gold where it counts, California where it has to be.",
+    promiseBody:
+      "California publishes owner and officer names on the Statement of Information — there is no legal way to keep your name off a CA direct formation. California Private forms your entity in Wyoming (where disclosure isn't required), adds year-round nominees on every Wyoming filing, and bundles the California foreign registration + CA registered agent so you can legally operate in-state. The WY entity is the real one; only the foreign registration touches California.",
+    audience: [
+      "California residents who want privacy and still owe the $800 franchise tax",
+      "Real estate and investment operators tired of their name on CA public records",
+      "Professionals whose business name is searchable on sunbiz and regrettable",
+      "Founders of politically or reputationally sensitive ventures",
+    ],
+    finalCtaHeading: "California residency, Wyoming privacy.",
+    finalCtaDescription:
+      "Wyoming Gold on the entity side, California foreign registration on the operating side — all in one package, all with nominees.",
+  },
+  "gold:Florida": {
+    displayTierName: "Florida Private",
+    eyebrow: "Private package — Wyoming Gold + Florida foreign registration",
+    heroTagline: "Operate in Florida without your name on sunbiz.org.",
+    promiseHeading:
+      "Florida Private keeps your name off sunbiz the only way that actually works.",
+    promiseBody:
+      "Florida publishes owner and officer names on sunbiz.org — there's no switch to turn off. Florida Private forms the entity in Wyoming (where disclosure isn't required), keeps year-round nominees on every Wyoming filing, and adds the Florida foreign registration + FL registered agent so you can operate in-state legally. Only the foreign registration touches Florida, and it lists the WY entity — which is itself anchored on nominees.",
+    audience: [
+      "Florida-based operators who want privacy and don't need tax arbitrage",
+      "Real estate investors and syndicators whose LLCs get searched on sunbiz",
+      "Professionals whose business registration shouldn't match their personal brand",
+      "Founders of reputationally sensitive or politically visible ventures",
+    ],
+    finalCtaHeading: "Florida operations, Wyoming privacy.",
+    finalCtaDescription:
+      "Wyoming Gold where the entity lives, Florida foreign registration where it operates — one package, nominees on every filing.",
+  },
+};
+
+/* ------------------------------------------------
    Selectors
    ------------------------------------------------ */
 
@@ -730,4 +791,11 @@ export function getTierStateContext(
   state: string,
 ): StateContextCopy | undefined {
   return tierStateContext[tierSlug]?.[state];
+}
+
+export function getPackageIdentity(
+  tierSlug: string,
+  state: string,
+): PackageIdentity | undefined {
+  return packageIdentity[`${tierSlug}:${state}`];
 }

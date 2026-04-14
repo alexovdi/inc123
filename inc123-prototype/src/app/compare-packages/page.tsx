@@ -239,18 +239,24 @@ export default function ComparePackagesPage() {
 
           <div className="mt-10 -mx-container-x px-container-x overflow-x-auto overscroll-x-contain pb-2 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border">
             <table className="w-full min-w-[600px] border-collapse text-body-sm">
+              <colgroup>
+                <col className="w-1/2" />
+                <col className="w-1/6" />
+                <col className="w-1/6" />
+                <col className="w-1/6" />
+              </colgroup>
               <thead>
-                <tr className="border-b-2 border-border">
-                  <th className="py-3 px-4 text-left font-semibold text-foreground">
+                <tr className="border-b-2 border-foreground">
+                  <th className="py-4 px-4 text-left text-body font-semibold text-foreground">
                     Feature
                   </th>
-                  <th className="py-3 px-4 text-center font-semibold text-foreground">
+                  <th className="py-4 px-4 text-center text-body font-semibold text-foreground">
                     Bronze
                   </th>
-                  <th className="py-3 px-4 text-center font-semibold text-foreground">
+                  <th className="py-4 px-4 text-center text-body font-semibold text-foreground">
                     Silver
                   </th>
-                  <th className="py-3 px-4 text-center font-semibold text-secondary">
+                  <th className="py-4 px-4 text-center text-body font-semibold text-secondary">
                     Gold
                   </th>
                 </tr>
@@ -283,7 +289,7 @@ export default function ComparePackagesPage() {
                       case "included":
                         return (
                           <span
-                            className="text-success font-medium"
+                            className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-success/10 text-success"
                             aria-label="Included"
                           >
                             &#10003;
@@ -292,7 +298,7 @@ export default function ComparePackagesPage() {
                       case "add-on":
                         return (
                           <span
-                            className="text-warning font-medium"
+                            className="inline-flex items-center rounded-pill bg-warning/10 px-2.5 py-1 text-caption font-semibold uppercase tracking-wide text-warning"
                             aria-label="Available as add-on"
                           >
                             Add-on
@@ -301,7 +307,7 @@ export default function ComparePackagesPage() {
                       default:
                         return (
                           <span
-                            className="text-muted"
+                            className="text-muted/50"
                             aria-label="Not included"
                           >
                             &mdash;
@@ -312,18 +318,20 @@ export default function ComparePackagesPage() {
 
                   return (
                     <React.Fragment key={group.label}>
-                      <tr className="bg-muted/10">
+                      <tr>
                         <td
                           colSpan={4}
-                          className="py-2 px-4 text-body-sm font-semibold uppercase tracking-wide text-muted"
+                          className="bg-background border-y border-border py-3 px-4 text-caption font-bold uppercase tracking-[0.12em] text-foreground"
                         >
                           {group.label}
                         </td>
                       </tr>
-                      {group.features.map((featureName) => (
+                      {group.features.map((featureName, idx) => (
                         <tr
                           key={featureName}
-                          className="border-b border-border hover:bg-muted/5 transition-colors"
+                          className={`border-b border-border/60 hover:bg-muted/[0.04] transition-colors ${
+                            idx % 2 === 1 ? "bg-muted/[0.02]" : ""
+                          }`}
                         >
                           <td className="py-3 px-4 text-foreground">
                             {featureName}
@@ -346,36 +354,51 @@ export default function ComparePackagesPage() {
             </table>
           </div>
 
-          {/* Pricing row below the table */}
-          <div className="mt-6 -mx-container-x px-container-x overflow-x-auto overscroll-x-contain pb-2">
-            <table className="w-full min-w-[600px] border-collapse text-body-sm">
+          {/* Pricing footer — prominent, matches table column widths */}
+          <div className="mt-8 -mx-container-x px-container-x overflow-x-auto overscroll-x-contain pb-2">
+            <table className="w-full min-w-[600px] border-collapse">
+              <colgroup>
+                <col className="w-1/2" />
+                <col className="w-1/6" />
+                <col className="w-1/6" />
+                <col className="w-1/6" />
+              </colgroup>
               <tbody>
-                <tr className="border-t-2 border-border">
-                  <td className="py-3 px-4 font-semibold text-foreground">
-                    Starting From
+                <tr className="border-t-2 border-foreground">
+                  <td className="py-5 px-4 align-middle text-body-sm font-semibold uppercase tracking-[0.12em] text-muted">
+                    Starting from
                   </td>
                   {orderedTiers.map((tier) => {
                     const minPrice = getTierMinPrice(tier, entityType);
                     return (
                       <td
                         key={tier.slug}
-                        className={`py-3 px-4 text-center font-mono font-bold text-foreground ${tier.tier === "gold" ? "bg-secondary/5" : ""}`}
+                        className={`py-5 px-4 text-center align-middle ${
+                          tier.tier === "gold" ? "bg-secondary/5" : ""
+                        }`}
                       >
-                        ${minPrice.toLocaleString()}
+                        <span className="font-mono text-heading-sm font-bold text-foreground">
+                          ${minPrice.toLocaleString()}
+                        </span>
                       </td>
                     );
                   })}
                 </tr>
                 <tr>
-                  <td className="py-2 px-4" />
+                  <td className="py-4 px-4" />
                   {orderedTiers.map((tier) => (
-                    <td key={tier.slug} className="py-2 px-4 text-center">
+                    <td
+                      key={tier.slug}
+                      className={`py-4 px-3 text-center ${
+                        tier.tier === "gold" ? "bg-secondary/5" : ""
+                      }`}
+                    >
                       <a
                         href={`/${tier.slug}`}
-                        className={`inline-flex items-center justify-center rounded-lg px-4 py-2 text-body-sm font-medium transition-colors ${
+                        className={`inline-flex w-full items-center justify-center rounded-button px-4 py-3 text-body-sm font-semibold transition-colors ${
                           tier.highlighted
                             ? "bg-accent text-white hover:bg-accent/90"
-                            : "bg-secondary/10 text-secondary hover:bg-secondary/20"
+                            : "bg-foreground text-white hover:bg-foreground/90"
                         }`}
                       >
                         View {tier.name}

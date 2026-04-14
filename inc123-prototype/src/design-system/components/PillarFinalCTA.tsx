@@ -46,26 +46,28 @@ function PillarFinalCTA({
             </div>
 
             {/* Right: Actions */}
-            <div className="flex flex-col gap-3">
-              <Link href={ctaHref} className="!no-underline">
-                <Button
-                  variant="cta"
-                  size="lg"
-                  className="w-full justify-center"
-                >
-                  {ctaLabel}
-                </Button>
-              </Link>
-              <Link href="/contact" className="!no-underline">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="w-full justify-center border-white/20 text-white hover:bg-white/10"
-                >
-                  Schedule a Consultation
-                </Button>
-              </Link>
-              <p className="mt-1 text-center text-body-sm text-white/70">
+            <div className="flex flex-col gap-4 lg:items-end">
+              <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-nowrap lg:justify-end">
+                <Link href={ctaHref} className="!no-underline">
+                  <Button
+                    variant="cta"
+                    size="lg"
+                    className="w-full justify-center sm:w-auto whitespace-nowrap"
+                  >
+                    {ctaLabel}
+                  </Button>
+                </Link>
+                <Link href="/contact" className="!no-underline">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full justify-center sm:w-auto whitespace-nowrap border-white/20 text-white hover:bg-white/10"
+                  >
+                    Schedule a Consultation
+                  </Button>
+                </Link>
+              </div>
+              <p className="text-body-sm text-white/70 lg:text-right">
                 Or call{" "}
                 <a
                   href="tel:1-800-553-0615"

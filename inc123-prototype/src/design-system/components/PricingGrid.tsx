@@ -58,6 +58,14 @@ export interface PricingGridProps {
   addOns?: PricingAddOn[];
   /** Callback when a tier is selected */
   onTierSelect: (selection: TierSelection) => void;
+  /**
+   * Compact mode: only show the top N features on every card and link to a
+   * full comparison page. Used on package detail pages so the decision grid
+   * stays decision-oriented instead of devolving into a feature dump.
+   */
+  maxFeatures?: number;
+  /** Link used in compact mode for the "See full comparison" CTA. */
+  compareHref?: string;
   /** Additional class names */
   className?: string;
 }
@@ -116,8 +124,11 @@ function PricingGrid({
   entityToggle,
   addOns,
   onTierSelect,
+  maxFeatures,
+  compareHref,
   className,
 }: PricingGridProps) {
+  const compact = typeof maxFeatures === "number";
   const [entityType, setEntityType] = useState(entityToggle?.default ?? "llc");
   const [selectedAddOns, setSelectedAddOns] = useState<Record<string, boolean>>(
     {},
@@ -177,18 +188,23 @@ function PricingGrid({
       )}
 
       {/* Tier columns — Gold-first on mobile via CSS order */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         {tiers.map((tier, index) => {
           const isExpanded = !!expandedTiers[tier.id];
-          const hasMoreFeatures = tier.features.length > MOBILE_FEATURE_LIMIT;
+          const visibleFeatures = compact
+            ? tier.features.slice(0, maxFeatures)
+            : tier.features;
+          const hasMoreFeatures = compact
+            ? tier.features.length > (maxFeatures ?? 0)
+            : tier.features.length > MOBILE_FEATURE_LIMIT;
 
           return (
             <div
               key={tier.id}
               className={cn(
-                "flex flex-col bg-surface rounded-card border p-6 transition-shadow",
+                "relative flex flex-col bg-surface rounded-card border p-6 transition-shadow",
                 tier.highlighted
-                  ? "border-secondary shadow-card-hover md:scale-105 md:z-10 relative"
+                  ? "border-secondary shadow-card-hover md:z-10"
                   : "border-border shadow-card",
                 /* Mobile: highlighted (Gold) tier appears first */
                 tier.highlighted ? "order-first" : "order-none",
@@ -198,26 +214,30 @@ function PricingGrid({
                 index === 2 && "md:order-3",
               )}
             >
-              {/* Header */}
-              <div className="text-center mb-6">
-                {tier.badge && (
+              {/* Badge — absolutely positioned so it overlaps top edge and
+                  doesn't push card height out of alignment with siblings. */}
+              {tier.badge && (
+                <div className="absolute left-1/2 -top-3 -translate-x-1/2">
                   <Badge
                     variant={tier.highlighted ? "info" : "default"}
                     size="sm"
-                    className="mb-2"
                   >
                     {tier.badge}
                   </Badge>
-                )}
+                </div>
+              )}
+
+              {/* Header */}
+              <div className="text-center mb-6">
                 <h3 className="font-display text-heading-sm font-semibold text-foreground">
                   {tier.name}
                 </h3>
-                <p className="text-body text-muted mt-1">
+                <p className="mt-2 text-body-sm text-muted">
                   {tier.description}
                 </p>
 
                 {/* Price */}
-                <div className="mt-4">
+                <div className="mt-5">
                   <span className="font-mono text-heading-lg font-bold text-foreground">
                     ${tier.price.toLocaleString()}
                   </span>
@@ -227,15 +247,14 @@ function PricingGrid({
                 </div>
               </div>
 
-              {/* Features — collapsed to first 5 on mobile, all visible on desktop */}
-              <ul className="flex-1 space-y-3 mb-6">
-                {tier.features.map((feature, fi) => (
+              {/* Features */}
+              <ul className={cn("space-y-3 mb-6", compact ? "" : "flex-1")}>
+                {visibleFeatures.map((feature, fi) => (
                   <li
                     key={fi}
                     className={cn(
                       "flex items-start",
-                      /* On mobile: hide features beyond the limit unless expanded */
-                      fi >= MOBILE_FEATURE_LIMIT && !isExpanded
+                      !compact && fi >= MOBILE_FEATURE_LIMIT && !isExpanded
                         ? "hidden md:flex"
                         : "flex",
                     )}
@@ -245,8 +264,19 @@ function PricingGrid({
                 ))}
               </ul>
 
-              {/* "See all features" toggle — mobile only */}
-              {hasMoreFeatures && (
+              {/* Compact mode: link out to full comparison */}
+              {compact && hasMoreFeatures && compareHref && (
+                <a
+                  href={compareHref}
+                  className="mb-5 inline-flex items-center gap-1 text-body-sm font-medium text-secondary hover:gap-2 transition-all"
+                >
+                  See full feature comparison
+                  <Icon name="ArrowRight" size="sm" className="shrink-0" />
+                </a>
+              )}
+
+              {/* Non-compact mobile expand toggle */}
+              {!compact && hasMoreFeatures && (
                 <button
                   type="button"
                   onClick={() => toggleFeatureExpand(tier.id)}
@@ -262,6 +292,9 @@ function PricingGrid({
                   />
                 </button>
               )}
+
+              {/* Spacer to keep the CTA pinned to the bottom in compact mode */}
+              {compact && <div className="flex-1" />}
 
               {/* CTA */}
               <Button

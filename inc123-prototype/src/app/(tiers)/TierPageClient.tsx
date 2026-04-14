@@ -27,6 +27,7 @@ import {
 import {
   getTierContent,
   getTierStateContext,
+  getPackageIdentity,
   type HeroVisualVariant,
   type MetallicAccent,
 } from "@/data/tierContent";
@@ -226,25 +227,55 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
     return parts.join(" ") || undefined;
   }, [tier.slug, selectedState, availableUpgrades]);
 
-  const tierDisplayName = `${tier.name} ${entityType === "llc" ? "LLC" : "Corporation"}`;
-  const packageName = variant
-    ? `${selectedState} ${tierDisplayName}`
-    : tierDisplayName;
+  /* -- Package identity override (CA Private, FL Private) --------------- */
+  const identity = getPackageIdentity(tier.slug, selectedState);
+
+  const entityLabel = entityType === "llc" ? "LLC" : "Corporation";
+  /** Short name used in section headers: "Gold" or "California Private". */
+  const shortName = identity ? identity.displayTierName : tier.name;
+  const tierDisplayName = `${shortName} ${entityLabel}`;
+  const packageName = identity
+    ? tierDisplayName
+    : variant
+      ? `${selectedState} ${tierDisplayName}`
+      : tierDisplayName;
 
   const ctaLabel = `Get Started — $${currentPrice.formation.toLocaleString()}`;
 
+  /**
+   * Only show states this tier is actually available in — we used to render
+   * disabled "(N/A)" chips for unreachable combinations but they added noise
+   * without teaching anything useful. The user can reach other tiers via the
+   * decision grid below if they want to switch.
+   */
   const stateOptions = useMemo(
     () =>
-      ALL_FORMATION_STATES.map(({ name, abbreviation }) => ({
+      ALL_FORMATION_STATES.filter(({ name }) =>
+        tier.availableStates.includes(name),
+      ).map(({ name, abbreviation }) => ({
         name,
         abbreviation,
-        available: tier.availableStates.includes(name),
+        available: true,
       })),
     [tier.availableStates],
   );
 
-  /* -- Content: tier-level + state-level -------------------------------- */
-  const content = getTierContent(tier.slug);
+  /* -- Content: tier-level, with package-identity overrides for CA/FL --- */
+  const baseContent = getTierContent(tier.slug);
+  const content = useMemo(() => {
+    if (!baseContent) return baseContent;
+    if (!identity) return baseContent;
+    return {
+      ...baseContent,
+      eyebrow: identity.eyebrow,
+      heroTagline: identity.heroTagline,
+      promiseHeading: identity.promiseHeading,
+      promiseBody: identity.promiseBody,
+      audience: identity.audience ?? baseContent.audience,
+      finalCtaHeading: identity.finalCtaHeading,
+      finalCtaDescription: identity.finalCtaDescription,
+    };
+  }, [baseContent, identity]);
   const stateContext = getTierStateContext(tier.slug, selectedState);
 
   const heroVisual: HeroVisualVariant =
@@ -252,7 +283,24 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
 
   const metallic: MetallicAccent = content?.metallic ?? "silver";
 
-  /* -- Pricing grid: all tiers in selected state with decision guide ----- */
+  /* -- Pricing grid: all tiers in selected state with decision guide -----
+     For the compact decision grid we don't dump the full feature matrix —
+     we surface the 3–4 features that *define* each tier. Priority order
+     puts tier-distinctive features first so Bronze/Silver/Gold actually
+     look different at a glance. */
+  const DECISION_FEATURE_PRIORITY = [
+    "Year-Round Nominee Director / Manager",
+    "Year-Round Nominee Officers",
+    "Virtual Office Address",
+    "Weekly Mail Forwarding",
+    "EIN Obtainment",
+    "NV Business License",
+    "Custom Operating Agreement",
+    "Registered Agent (1 Year)",
+    "Offshore Records Storage",
+    "State Filing Fees Included",
+  ];
+
   const pricingTiers = useMemo(() => {
     const available = getAvailableTiersForState(selectedState);
     const tierOrder = { bronze: 0, silver: 1, gold: 2 };
@@ -266,13 +314,26 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
         tierCopy && tier.slug in tierCopy.decisionGuide
           ? tierCopy.decisionGuide[tier.slug as "bronze" | "silver" | "gold"]
           : (sv?.description ?? t.description);
+
+      const allFeatures = getTierFeaturesForState(t, selectedState);
+      const includedFeatures = allFeatures.filter(
+        (f) => f.status === "included",
+      );
+      const ordered = [...includedFeatures].sort((a, b) => {
+        const ai = DECISION_FEATURE_PRIORITY.indexOf(a.name);
+        const bi = DECISION_FEATURE_PRIORITY.indexOf(b.name);
+        const aRank = ai === -1 ? 999 : ai;
+        const bRank = bi === -1 ? 999 : bi;
+        return aRank - bRank;
+      });
+
       return {
         id: t.slug,
         name: `${t.name}`,
         price,
         period: "one-time",
         description: decisionText,
-        features: getTierFeaturesForState(t, selectedState),
+        features: ordered,
         badge: t.badge,
         highlighted: t.slug === tier.slug,
       };
@@ -297,10 +358,18 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
 
   return (
     <PackageLayout showTrustBar={false}>
+      {/* 0. PRICING TBD BANNER — remove after Apr 20 pricing confirmation */}
+      <div className="bg-accent/10 border-b border-accent/30">
+        <div className="mx-auto max-w-content px-container-x py-2 text-center text-body-sm text-foreground">
+          <span className="font-semibold">Prototype pricing</span> — all figures
+          on this page are placeholders pending final confirmation on April 20.
+        </div>
+      </div>
+
       {/* 1. HERO */}
       <PackageHero
         packageName={packageName}
-        eyebrow={content?.eyebrow ?? `${tier.name} Package`}
+        eyebrow={content?.eyebrow ?? `${shortName} Package`}
         tagline={content?.heroTagline}
         prices={
           variant?.prices ?? tier.stateVariants[tier.availableStates[0]].prices
@@ -317,7 +386,7 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
           { label: "Home", href: "/" },
           { label: "Packages", href: "/packages" },
           { label: selectedState, href: "/packages" },
-          { label: `${tier.name} Package` },
+          { label: `${shortName} Package` },
         ]}
         stateSelector={{
           states: stateOptions,
@@ -326,7 +395,7 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
         }}
         heroVisual={heroVisual}
         metallic={metallic}
-        tierName={tier.name}
+        tierName={identity ? "Private" : tier.name}
         stateAbbreviation={variant?.abbreviation}
         stateName={selectedState}
         trustStats={[
@@ -360,44 +429,44 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
       {content && (
         <section className="bg-background py-section-y-sm">
           <div className="mx-auto max-w-content px-container-x">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-20">
-              <div>
+            <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-[96px]">
+              <div className="max-w-[620px]">
                 <p
-                  className="text-body-sm font-semibold uppercase tracking-[0.18em] mb-3"
+                  className="text-body-sm font-semibold uppercase tracking-[0.18em] mb-4"
                   style={{ color: metallicInk }}
                 >
                   The Promise
                 </p>
-                <h2 className="font-display text-display-sm font-bold text-foreground leading-tight">
+                <h2 className="font-display text-display-sm font-bold text-foreground leading-[1.1]">
                   {content.promiseHeading}
                 </h2>
-                <p className="mt-5 text-body-lg text-muted max-w-[560px]">
+                <p className="mt-6 text-body-lg text-muted leading-relaxed">
                   {content.promiseBody}
                 </p>
               </div>
               <div
-                className="rounded-card-lg border p-8"
+                className="rounded-card-lg border p-8 lg:self-start"
                 style={{
                   background: metallicSoft,
                   borderColor: `var(--tier-${metallic}-mid)`,
                 }}
               >
                 <p
-                  className="text-body-sm font-semibold uppercase tracking-wider mb-4"
+                  className="text-body-sm font-semibold uppercase tracking-wider mb-5"
                   style={{ color: metallicInk }}
                 >
                   Built for
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {content.audience.map((line) => (
                     <li
                       key={line}
-                      className="flex gap-3 text-body text-foreground"
+                      className="flex items-baseline gap-3 text-body text-foreground leading-snug"
                     >
                       <Icon
                         name="Check"
                         size="sm"
-                        className="mt-1 shrink-0"
+                        className="relative top-[3px] shrink-0"
                         color={metallicVar}
                       />
                       <span>{line}</span>
@@ -440,16 +509,17 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
         <div className="mx-auto max-w-content px-container-x">
           <SectionHeader
             eyebrow="Decision Guide"
-            title={`Why ${tier.name}? How it compares.`}
-            subtitle={`Every card shows "choose this if" logic — not a feature dump. ${tier.name} is highlighted.`}
+            title={`Why ${shortName}? How it compares.`}
+            subtitle={`Every card shows "choose this if" logic — not a feature dump. ${shortName} is highlighted.`}
             className="mb-10"
           />
           <PricingGrid
             tiers={pricingTiers}
             addOns={[]}
+            maxFeatures={4}
+            compareHref="/compare-packages"
             onTierSelect={() => {
-              const el = document.getElementById("addon-configurator");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
+              navigate(checkoutHref);
             }}
           />
         </div>
@@ -461,7 +531,7 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
           <div className="mx-auto max-w-content px-container-x">
             <SectionHeader
               eyebrow="What You'll Receive"
-              title={`Inside the ${tier.name} package`}
+              title={`Inside the ${shortName} package`}
               subtitle="Every item below is handled for you. No DIY gaps, no hidden gotchas."
               className="mb-10"
             />
@@ -511,7 +581,7 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
           <SectionHeader
             eyebrow="Optional Upgrades"
             title="What you can add at checkout"
-            subtitle={`Only upgrades compatible with ${tier.name} in ${selectedState} are shown — nothing redundant, nothing unavailable.`}
+            subtitle={`Only upgrades compatible with ${shortName} in ${selectedState} are shown — nothing redundant, nothing unavailable.`}
             className="mb-10"
           />
           <UpgradesPreview
@@ -572,7 +642,11 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
           <div className="mx-auto max-w-content px-container-x">
             <SectionHeader
               eyebrow="FAQ"
-              title={`${tier.name} in ${selectedState} — common questions`}
+              title={
+                identity
+                  ? `${shortName} — common questions`
+                  : `${tier.name} in ${selectedState} — common questions`
+              }
               subtitle="Specific to this tier and state. Not a generic pool."
               className="mb-10"
             />
@@ -599,12 +673,12 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
               subtitle="Every card links to a guide, comparison, or pillar page with more depth."
               className="mb-10"
             />
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3 items-stretch">
               {stateContext.crossLinks.map((link) => (
                 <RouterLink
                   key={link.href}
                   to={link.href}
-                  className="group flex flex-col rounded-card-lg border border-border bg-background p-6 transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                  className="group flex h-full flex-col rounded-card-lg border border-border bg-background p-6 transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
                 >
                   <span
                     className="text-caption font-semibold uppercase tracking-wider"
@@ -614,10 +688,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                     {link.kind === "cluster" && "Guide"}
                     {link.kind === "comparison" && "Comparison"}
                   </span>
-                  <h3 className="mt-3 font-display text-heading-sm font-semibold text-foreground">
+                  <h3 className="mt-3 font-display text-heading-sm font-semibold text-foreground min-h-[3.25rem]">
                     {link.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-body-sm text-muted">
+                  <p className="mt-2 flex-1 text-body-sm text-muted line-clamp-3">
                     {link.description}
                   </p>
                   <span

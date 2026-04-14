@@ -19,7 +19,13 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="fixed bottom-4 right-4 z-[60] rounded-pill bg-foreground px-3 py-1.5 text-xs font-medium text-surface shadow-dropdown transition-colors hover:opacity-90 max-lg:bottom-20 max-lg:right-2 max-sm:opacity-70 max-sm:hover:opacity-100"
+      aria-label={
+        theme === "wireframe"
+          ? "Switch to brand theme"
+          : "Switch to wireframe theme"
+      }
+      title={theme === "wireframe" ? "Switch to Brand" : "Switch to Wireframe"}
+      className="fixed right-4 top-20 z-[60] rounded-pill bg-foreground/85 px-3 py-1.5 text-xs font-medium text-surface shadow-dropdown backdrop-blur transition-all hover:bg-foreground hover:opacity-100 opacity-60 max-sm:hidden"
     >
       {theme === "wireframe" ? "Switch to Brand" : "Switch to Wireframe"}
     </button>
