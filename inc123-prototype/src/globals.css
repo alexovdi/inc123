@@ -54,6 +54,20 @@
     --pillar-compliance-soft: #f3f4f6;
     --pillar-compliance-mid: #d1d5db;
 
+    /* Tier metallics — restrained warm/cool greys in wireframe theme */
+    --tier-gold: #57534e;
+    --tier-gold-soft: #f5f5f4;
+    --tier-gold-mid: #d6d3d1;
+    --tier-gold-ink: #78716c;
+    --tier-silver: #64748b;
+    --tier-silver-soft: #f1f5f9;
+    --tier-silver-mid: #cbd5e1;
+    --tier-silver-ink: #94a3b8;
+    --tier-bronze: #44403c;
+    --tier-bronze-soft: #fafaf9;
+    --tier-bronze-mid: #d6d3d1;
+    --tier-bronze-ink: #78716c;
+
     /* Gradient glows — lighter for wireframe visibility */
     --gradient-glow-blue: rgba(156, 163, 175, 0.12);
     --gradient-glow-purple: rgba(156, 163, 175, 0.06);
@@ -114,6 +128,20 @@
     --pillar-compliance: #7e22ce;
     --pillar-compliance-soft: #f3e8ff;
     --pillar-compliance-mid: #c084fc;
+
+    /* Tier metallics — restrained premium metals for brand theme */
+    --tier-gold: #b08a3e;
+    --tier-gold-soft: #fdf6e3;
+    --tier-gold-mid: #e2c572;
+    --tier-gold-ink: #d4a845;
+    --tier-silver: #64748b;
+    --tier-silver-soft: #f1f5f9;
+    --tier-silver-mid: #cbd5e1;
+    --tier-silver-ink: #94a3b8;
+    --tier-bronze: #9a5b2d;
+    --tier-bronze-soft: #fbf1e8;
+    --tier-bronze-mid: #d9a574;
+    --tier-bronze-ink: #b87333;
 
     /* Gradient glows */
     --gradient-glow-blue: rgba(37, 99, 235, 0.16);
@@ -177,6 +205,20 @@
   --color-pillar-compliance: var(--pillar-compliance);
   --color-pillar-compliance-soft: var(--pillar-compliance-soft);
   --color-pillar-compliance-mid: var(--pillar-compliance-mid);
+
+  /* Tier metallic accents */
+  --color-tier-gold: var(--tier-gold);
+  --color-tier-gold-soft: var(--tier-gold-soft);
+  --color-tier-gold-mid: var(--tier-gold-mid);
+  --color-tier-gold-ink: var(--tier-gold-ink);
+  --color-tier-silver: var(--tier-silver);
+  --color-tier-silver-soft: var(--tier-silver-soft);
+  --color-tier-silver-mid: var(--tier-silver-mid);
+  --color-tier-silver-ink: var(--tier-silver-ink);
+  --color-tier-bronze: var(--tier-bronze);
+  --color-tier-bronze-soft: var(--tier-bronze-soft);
+  --color-tier-bronze-mid: var(--tier-bronze-mid);
+  --color-tier-bronze-ink: var(--tier-bronze-ink);
 
   /* Fonts */
   --font-sans: var(--font-inter), system-ui, sans-serif;

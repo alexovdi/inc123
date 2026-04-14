@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { getTierBySlug } from "@/data/packages";
 import { TierPageClient } from "../(tiers)/TierPageClient";
 import type { TierLevel } from "@/lib/types";
@@ -24,11 +23,7 @@ export function PackagePage({
       </div>
     );
   }
-  return (
-    <Suspense>
-      <TierPageClient tier={tier} forcedState={state} />
-    </Suspense>
-  );
+  return <TierPageClient tier={tier} forcedState={state} />;
 }
 
 /* ------------------------------------------------
