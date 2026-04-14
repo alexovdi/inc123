@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
-import { pillarTextMap } from "@/design-system/utils/pillarMaps";
+import { pillarTextOnDarkMap } from "@/design-system/utils/pillarMaps";
 import { Badge } from "@/design-system/primitives/Badge";
 import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
@@ -113,7 +113,7 @@ function ClusterHero({
           <p
             className={cn(
               "text-body-sm font-semibold uppercase tracking-[0.15em] mb-4",
-              pillarTextMap[pillar],
+              pillarTextOnDarkMap[pillar],
             )}
           >
             {pillarLabel} &middot; Guide

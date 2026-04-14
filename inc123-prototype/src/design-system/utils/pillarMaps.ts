@@ -21,6 +21,23 @@ export const pillarTextMap: Record<PillarName, string> = {
   compliance: "text-pillar-compliance",
 };
 
+/**
+ * Text color for pillar-colored text on DARK backgrounds.
+ *
+ * The default `pillarTextMap` resolves to `#374151` in wireframe theme,
+ * which is visually indistinguishable from the navy hero background.
+ * Use this map instead when the text sits on `bg-primary` or any other
+ * dark surface. In wireframe, `-mid` resolves to `#d1d5db` (light gray);
+ * in brand theme, `-mid` is a light tint of the pillar hue — both
+ * readable on dark.
+ */
+export const pillarTextOnDarkMap: Record<PillarName, string> = {
+  privacy: "text-pillar-privacy-mid",
+  asset: "text-pillar-asset-mid",
+  formation: "text-pillar-formation-mid",
+  compliance: "text-pillar-compliance-mid",
+};
+
 /** Soft background: bg-pillar-*-soft */
 export const pillarSoftBgMap: Record<PillarName, string> = {
   privacy: "bg-pillar-privacy-soft",
