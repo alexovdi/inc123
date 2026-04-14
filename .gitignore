@@ -48,3 +48,4 @@ next-env.d.ts
 # audit screenshots
 audit-*.png
 inc123-prototype/audit-*.png
+audit/
