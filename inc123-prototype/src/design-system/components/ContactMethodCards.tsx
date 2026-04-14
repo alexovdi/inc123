@@ -71,7 +71,12 @@ function ContactMethodCards({ methods, className }: ContactMethodCardsProps) {
                         className="inline-flex items-center gap-1.5 text-body font-medium text-secondary hover:underline"
                       >
                         {method.action.label}
-                        <Icon name="ArrowDown" size="sm" />
+                        <Icon
+                          name={
+                            method.type === "email" ? "ArrowRight" : "ArrowDown"
+                          }
+                          size="sm"
+                        />
                       </a>
                     )}
                   </div>

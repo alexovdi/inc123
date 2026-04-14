@@ -41,11 +41,15 @@ export const contactData: ContactData = {
       action: { label: "Scroll to Form", href: "#contact-form" },
     },
     {
-      type: "office",
-      icon: "MapPin",
-      title: "Our Mailing Address",
+      type: "email",
+      icon: "AtSign",
+      title: "Email Us Directly",
       description:
-        "1795 Meadow Wood Lane, Suite 100, Reno, NV 89502. Call ahead to schedule a dedicated consultation with one of our privacy formation specialists.",
+        "Prefer written correspondence? Email info@incorporate123.com with a description of your situation. We respond within 1 business day — and every inbound is read by a real person, not a bot.",
+      action: {
+        label: "info@incorporate123.com",
+        href: "mailto:info@incorporate123.com",
+      },
     },
   ],
   formFields: [

@@ -1,7 +1,6 @@
 import { ContactForm } from "@/design-system/components/ContactForm";
 import { ContactHero } from "@/design-system/components/ContactHero";
 import { ContactMethodCards } from "@/design-system/components/ContactMethodCards";
-import { MapPlaceholder } from "@/design-system/components/MapPlaceholder";
 import { QuickLinkCards } from "@/design-system/components/QuickLinkCards";
 import { TrustSignals } from "@/design-system/components/TrustSignals";
 import { contactData, contactTrustItems } from "@/data/contact";
@@ -33,12 +32,6 @@ export default function ContactPage() {
 
       {/* 5. Quick Link Cards */}
       <QuickLinkCards links={quickLinks} />
-
-      {/* 6. Map Placeholder */}
-      <MapPlaceholder
-        address="1795 Meadow Wood Lane, Suite 100, Reno, NV 89502"
-        className="bg-background"
-      />
     </div>
   );
 }

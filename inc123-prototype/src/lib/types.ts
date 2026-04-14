@@ -381,7 +381,7 @@ export interface AboutData {
 
 /** Contact Page */
 export interface ContactMethod {
-  type: "phone" | "form" | "office";
+  type: "phone" | "form" | "email";
   icon: string;
   title: string;
   description: string;
