@@ -100,6 +100,7 @@ export function getPackageIdFromSlug(flatSlug: string): string | undefined {
 const LEGACY_PACKAGE_TO_TIER: Record<string, string> = {
   "wyoming-gold": "/wyoming-gold",
   "wyoming-silver": "/wyoming-silver",
+  "wyoming-bronze": "/wyoming-bronze",
   "nevada-gold": "/nevada-gold",
   "nevada-silver": "/nevada-silver",
   "nevada-bronze": "/nevada-bronze",

@@ -334,6 +334,33 @@ export interface IntentRoute {
   packageLink?: { label: string; href: string };
 }
 
+/** Section 6 — compact state comparison table (WY vs NV, CA direct vs WY+foreign, etc.) */
+export interface StateComparisonRow {
+  label: string;
+  tooltip?: string;
+  values: Record<string, string>;
+}
+
+export interface StateComparisonColumn {
+  id: string;
+  title: string;
+  subtitle?: string;
+  badge?: string;
+}
+
+export interface StateComparison {
+  eyebrow: string;
+  title: string;
+  columns: StateComparisonColumn[];
+  rows: StateComparisonRow[];
+  /** Column id to visually highlight as the recommended choice */
+  highlightColumnId: string;
+  /** Short recommendation paragraph below the table */
+  summary: string;
+  /** Deep-link CTAs to full comparison / other hub pages */
+  ctas: Array<{ label: string; href: string }>;
+}
+
 export interface StateHub {
   slug: string;
   name: string;
@@ -345,6 +372,8 @@ export interface StateHub {
   contentMap: Record<PillarName, Array<{ title: string; href: string }>>;
   packages: string[];
   faqs: FAQItem[];
+  /** Optional Section 6 comparison block (WY vs NV, CA problem/solution, etc.) */
+  comparison?: StateComparison;
 }
 
 /** About Page */
