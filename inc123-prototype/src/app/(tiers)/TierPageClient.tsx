@@ -6,15 +6,23 @@ import {
 } from "react-router-dom";
 import { PackageLayout } from "@/design-system/layouts/PackageLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { AlsoConsider } from "@/design-system/components/AlsoConsider";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackageHero } from "@/design-system/components/PackageHero";
+import { PackageValueCompare } from "@/design-system/components/PackageValueCompare";
 import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
 import { PricingGrid } from "@/design-system/components/PricingGrid";
+import { ProductSchema } from "@/design-system/components/ProductSchema";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
 import { UpgradesPreview } from "@/design-system/components/UpgradesPreview";
 import { Icon } from "@/design-system/primitives/Icon";
+import {
+  getAlsoConsider,
+  getTransactionalFaqs,
+  getValueComparison,
+} from "@/data/packageEnhancements";
 import { testimonials } from "@/data/testimonials";
 import {
   getTierMinPrice,
@@ -356,8 +364,51 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
   const metallicSoft = `var(--tier-${metallic}-soft)`;
   const metallicInk = `var(--tier-${metallic}-ink)`;
 
+  /* -- Package enhancements: transactional FAQs, alternatives, value compare */
+  const transactionalFaqs = useMemo(
+    () =>
+      getTransactionalFaqs({
+        tier: tier.slug,
+        state: selectedState,
+        renewal: currentPrice.renewal,
+      }),
+    [tier.slug, selectedState, currentPrice.renewal],
+  );
+
+  const alsoConsiderItems = useMemo(
+    () => getAlsoConsider(tier.slug, selectedState),
+    [tier.slug, selectedState],
+  );
+
+  const valueCompare = useMemo(
+    () =>
+      getValueComparison(
+        tier.slug,
+        selectedState,
+        currentPrice.formation,
+        currentPrice.renewal,
+      ),
+    [tier.slug, selectedState, currentPrice.formation, currentPrice.renewal],
+  );
+
+  /* -- Product JSON-LD schema fields -------------------------------------- */
+  const productSchemaDescription = `${packageName} — all-inclusive ${entityLabel} formation${
+    tier.slug === "gold"
+      ? " with year-round nominee services and offshore records storage"
+      : tier.slug === "silver"
+        ? " with virtual office, EIN, and weekly mail forwarding"
+        : " with registered agent, state fees, and compliance included"
+  }.`;
+
   return (
     <PackageLayout showTrustBar={false}>
+      {/* Product JSON-LD for SEO rich snippets */}
+      <ProductSchema
+        name={packageName}
+        description={productSchemaDescription}
+        price={currentPrice.formation}
+      />
+
       {/* 0. PRICING TBD BANNER — remove after Apr 20 pricing confirmation */}
       <div className="bg-accent/10 border-b border-accent/30">
         <div className="mx-auto max-w-content px-container-x py-2 text-center text-body-sm text-foreground">
@@ -562,6 +613,28 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
         </section>
       )}
 
+      {/* 6b. VALUE COMPARE — Gold tier only; price vs assembled elsewhere */}
+      {valueCompare && (
+        <section className="bg-background py-section-y-sm">
+          <div className="mx-auto max-w-content px-container-x">
+            <SectionHeader
+              eyebrow="Value Comparison"
+              title={valueCompare.heading}
+              subtitle="What the same services would cost if you sourced them separately from different providers."
+              className="mb-10"
+            />
+            <PackageValueCompare
+              ourTotal={valueCompare.ourTotal}
+              ourRenewal={valueCompare.ourRenewal}
+              theirTotalLow={valueCompare.theirTotalLow}
+              theirTotalHigh={valueCompare.theirTotalHigh}
+              lines={valueCompare.lines}
+              bottomLine={valueCompare.bottomLine}
+            />
+          </div>
+        </section>
+      )}
+
       {/* 7. HOW IT WORKS — tier-specific process */}
       <section className="bg-background py-section-y-sm">
         <div className="mx-auto max-w-content px-container-x">
@@ -636,7 +709,7 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
         }}
       />
 
-      {/* 11. FAQ — state × tier specific */}
+      {/* 11. FAQ — state × tier specific (educational) + transactional (buying objections) */}
       {stateContext && stateContext.faqs.length > 0 && (
         <section className="bg-background py-section-y-sm">
           <div className="mx-auto max-w-content px-container-x">
@@ -652,13 +725,28 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
             />
             <div className="mx-auto max-w-narrow">
               <Accordion type="single" variant="card">
-                {stateContext.faqs.map((faq) => (
+                {[...stateContext.faqs, ...transactionalFaqs].map((faq) => (
                   <AccordionItem key={faq.id} id={faq.id} title={faq.question}>
                     <p className="text-body text-muted">{faq.answer}</p>
                   </AccordionItem>
                 ))}
               </Accordion>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* 11b. ALSO CONSIDER — package-to-package alternatives */}
+      {alsoConsiderItems.length > 0 && (
+        <section className="bg-surface py-section-y-sm">
+          <div className="mx-auto max-w-content px-container-x">
+            <SectionHeader
+              eyebrow="Also Consider"
+              title="Not quite the right package?"
+              subtitle="These are the alternatives most often chosen instead. One click away."
+              className="mb-10"
+            />
+            <AlsoConsider items={alsoConsiderItems} />
           </div>
         </section>
       )}

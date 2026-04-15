@@ -90,6 +90,17 @@ export {
   type ValueComparisonCalloutProps,
 } from "./ValueComparisonCallout";
 export {
+  PackageValueCompare,
+  type PackageValueCompareProps,
+  type PackageValueCompareLine,
+} from "./PackageValueCompare";
+export { ProductSchema, type ProductSchemaProps } from "./ProductSchema";
+export {
+  AlsoConsider as AlsoConsiderAlternatives,
+  type AlsoConsiderProps,
+  type AlsoConsiderItem,
+} from "./AlsoConsider";
+export {
   AlsoConsiderCards,
   type AlsoConsiderCardsProps,
   type AlsoConsiderPackage,
