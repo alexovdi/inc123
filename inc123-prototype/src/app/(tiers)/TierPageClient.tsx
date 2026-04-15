@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { PackageLayout } from "@/design-system/layouts/PackageLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
-import { AlsoConsider } from "@/design-system/components/AlsoConsider";
 import { HowItWorks } from "@/design-system/components/HowItWorks";
 import { PackageHero } from "@/design-system/components/PackageHero";
 import { PackageValueCompare } from "@/design-system/components/PackageValueCompare";
@@ -19,7 +18,6 @@ import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
 import { UpgradesPreview } from "@/design-system/components/UpgradesPreview";
 import { Icon } from "@/design-system/primitives/Icon";
 import {
-  getAlsoConsider,
   getTransactionalFaqs,
   getValueComparison,
 } from "@/data/packageEnhancements";
@@ -375,11 +373,6 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
     [tier.slug, selectedState, currentPrice.renewal],
   );
 
-  const alsoConsiderItems = useMemo(
-    () => getAlsoConsider(tier.slug, selectedState),
-    [tier.slug, selectedState],
-  );
-
   const valueCompare = useMemo(
     () =>
       getValueComparison(
@@ -732,21 +725,6 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                 ))}
               </Accordion>
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* 11b. ALSO CONSIDER — package-to-package alternatives */}
-      {alsoConsiderItems.length > 0 && (
-        <section className="bg-surface py-section-y-sm">
-          <div className="mx-auto max-w-content px-container-x">
-            <SectionHeader
-              eyebrow="Also Consider"
-              title="Not quite the right package?"
-              subtitle="These are the alternatives most often chosen instead. One click away."
-              className="mb-10"
-            />
-            <AlsoConsider items={alsoConsiderItems} />
           </div>
         </section>
       )}

@@ -4,8 +4,7 @@ import { test, expect } from "@playwright/test";
  * Ad-hoc verification for package page enhancements:
  *   1. Product JSON-LD schema on all 8 package pages
  *   2. Transactional FAQs merged into the FAQ accordion
- *   3. Also Consider section with 3 package alternatives
- *   4. Value Comparison Callout — Gold tier only
+ *   3. Value Comparison Callout — Gold tier only
  *
  * Runs against whatever PLAYWRIGHT_BASE_URL points at (defaults to
  * playwright.config.ts baseURL).
@@ -78,16 +77,6 @@ test.describe("Package page enhancements", () => {
       expect(pageText).toMatch(/annual renewal/i);
       expect(pageText).toMatch(/refund policy/i);
       expect(pageText).toMatch(/cryptocurrency/i);
-    });
-
-    test(`${pkg.path} — Also Consider section with 3 alternatives`, async ({
-      page,
-    }) => {
-      await page.goto(pkg.path);
-      const alsoConsiderHeading = page.getByRole("heading", {
-        name: /Not quite the right package/i,
-      });
-      await expect(alsoConsiderHeading).toBeVisible();
     });
   }
 
