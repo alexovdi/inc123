@@ -1,11 +1,20 @@
+export type BlogCategory =
+  | "privacy"
+  | "asset"
+  | "formation"
+  | "compliance"
+  | "general";
+
 export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  category: "privacy" | "asset" | "formation" | "compliance";
+  category: BlogCategory;
   categoryLabel: string;
   date: string; // ISO date
   readTime: string;
+  author: string;
+  featured?: boolean;
   href: string; // links to existing cluster page
 }
 
@@ -19,6 +28,8 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Business Privacy",
     date: "2025-11-15",
     readTime: "5 min read",
+    author: "David",
+    featured: true,
     href: "/anonymous-llc",
   },
   {
@@ -31,6 +42,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Business Privacy",
     date: "2025-10-28",
     readTime: "6 min read",
+    author: "David",
     href: "/nominee-services",
   },
   {
@@ -42,6 +54,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Asset Protection",
     date: "2025-10-12",
     readTime: "7 min read",
+    author: "David",
     href: "/charging-order-protection",
   },
   {
@@ -53,6 +66,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Company Formation",
     date: "2025-09-20",
     readTime: "8 min read",
+    author: "David",
     href: "/wyoming-vs-nevada-llc",
   },
   {
@@ -64,6 +78,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Asset Protection",
     date: "2025-09-05",
     readTime: "6 min read",
+    author: "David",
     href: "/real-estate-asset-protection",
   },
   {
@@ -75,6 +90,7 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Company Formation",
     date: "2025-08-02",
     readTime: "5 min read",
+    author: "David",
     href: "/shelf-companies",
   },
   {
@@ -86,6 +102,23 @@ export const blogPosts: BlogPost[] = [
     categoryLabel: "Company Formation",
     date: "2025-07-14",
     readTime: "7 min read",
+    author: "David",
     href: "/incorporate123-vs-competitors",
   },
 ];
+
+export const blogCategoryOrder: BlogCategory[] = [
+  "privacy",
+  "asset",
+  "formation",
+  "compliance",
+  "general",
+];
+
+export const blogCategoryLabels: Record<BlogCategory, string> = {
+  privacy: "Business Privacy",
+  asset: "Asset Protection",
+  formation: "Company Formation",
+  compliance: "Compliance",
+  general: "General",
+};

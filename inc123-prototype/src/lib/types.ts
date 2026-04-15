@@ -126,6 +126,13 @@ export interface TierDefinition {
 }
 
 /** Testimonials */
+export type TestimonialCategory =
+  | "privacy"
+  | "asset"
+  | "formation"
+  | "compliance"
+  | "offshore";
+
 export interface Testimonial {
   id: string;
   quote: string;
@@ -134,6 +141,9 @@ export interface Testimonial {
   state: string;
   serviceUsed: string;
   rating?: number;
+  category?: TestimonialCategory;
+  clientSince?: string;
+  featured?: boolean;
 }
 
 /** FAQ */
@@ -389,6 +399,10 @@ export interface AboutData {
     headline: string;
     subheadline: string;
   };
+  story?: {
+    heading: string;
+    paragraphs: string[];
+  };
   founder: {
     name: string;
     title: string;
@@ -399,6 +413,7 @@ export interface AboutData {
   timeline: TimelineMilestone[];
   philosophy: Array<{ title: string; description: string; icon: string }>;
   stats: Array<{ value: string; label: string }>;
+  differentiators?: string[];
   office: {
     address: string;
     phone: string;

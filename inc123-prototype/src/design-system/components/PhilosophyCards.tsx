@@ -31,8 +31,15 @@ function PhilosophyCards({ cards, className }: PhilosophyCardsProps) {
           </h2>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards grid — adapts to 3 or 4 cards */}
+        <div
+          className={cn(
+            "grid grid-cols-1 gap-6",
+            cards.length === 4
+              ? "md:grid-cols-2 lg:grid-cols-4"
+              : "md:grid-cols-3",
+          )}
+        >
           {cards.map((card) => (
             <article
               key={card.title}

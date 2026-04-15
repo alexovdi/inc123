@@ -3,14 +3,23 @@ import type { AboutData } from "@/lib/types";
 export const aboutData: AboutData = {
   hero: {
     eyebrow: "About Incorporate123",
-    headline: "25 Years of Privacy Expertise — Real People, Real Results",
+    headline:
+      "Privacy, Asset Protection & Business Formation Specialists Since 2000.",
     subheadline:
-      "Since 2000, we've specialized exclusively in Wyoming and Nevada privacy formation, asset protection, and nominee services. Not a filing mill. Not a call center. A team of specialists who know your name and answer your phone.",
+      "We're not a $0 filing service. We're not an attorney-led $2,750 consultation firm. We're the 25-year specialists who fill the space between — genuine privacy expertise at transparent, all-inclusive pricing.",
+  },
+  story: {
+    heading: "Our Story",
+    paragraphs: [
+      "Incorporate123 was founded in 2000 in Reno, Nevada as a focused incorporation company. In the early years, we filed Nevada LLCs and corporations for clients who wanted the state's privacy protections and favorable business climate. We were small, direct, and obsessive about getting every detail right — a reputation that traveled by word of mouth long before the company had a website worth mentioning.",
+      "The privacy landscape shifted after 2001. Record-keeping requirements expanded, informal information-sharing between agencies accelerated, and clients who had never worried about public disclosure suddenly wanted real privacy infrastructure. We responded by building what became our core capability: year-round nominee services, offshore records custody, and operational discipline around minimum-necessary compliance. We added Wyoming in 2003 when its statutes became the clearest privacy environment in the country, and the two-state specialization — Wyoming and Nevada — has defined our focus ever since.",
+      "Today, Incorporate123 sits between the filing mills and the law firms: cheaper than an attorney engagement, deeper than a form-filler, and more transparent than both. Every price is on the website. Every package is all-inclusive. A real person answers the phone. After 25 years, the things that made the company work in 2000 still make it work now.",
+    ],
   },
   founder: {
-    name: "Our Team",
+    name: "David & Team",
     title: "Privacy Formation Specialists",
-    location: "United States",
+    location: "Reno, Nevada",
     bio: [
       "When you call Incorporate123, a privacy specialist answers. Not a receptionist, not a phone tree, not a chatbot — someone who understands your situation. That direct access is what separates Incorporate123 from every budget filing mill and every consultation-gated premium firm. You can call to ask a question, discuss a complex structure, or just talk through your options before committing.",
       "Over 25 years, our team has built the nominee service infrastructure, offshore records custodian capability, and direct relationships with the Wyoming and Nevada Secretary of State offices that make Incorporate123's privacy services possible. This isn't surface-level knowledge of 50 states — it's 25 years of depth in two states.",
@@ -18,8 +27,8 @@ export const aboutData: AboutData = {
     ],
     trustTags: [
       "25 years in business",
-      "12,847 entities formed",
       "Direct access — no call center",
+      "Privacy specialists, not generalists",
     ],
   },
   timeline: [
@@ -27,13 +36,13 @@ export const aboutData: AboutData = {
       year: "2000",
       title: "Founded in Reno, Nevada",
       description:
-        "Incorporate123 launched from Kingsbury Executive Suites, focusing on Nevada incorporation.",
+        "Incorporate123 launched as a focused Nevada incorporation company, specializing in LLCs and corporations for privacy-conscious owners.",
     },
     {
       year: "2003",
       title: "Expanded to Wyoming",
       description:
-        "Wyoming's privacy statutes and lower fees made it a natural complement to Nevada formations.",
+        "Wyoming's privacy statutes and lower fees made it a natural complement to Nevada formations. Two-state specialization begins.",
     },
     {
       year: "~2005",
@@ -49,15 +58,15 @@ export const aboutData: AboutData = {
     },
     {
       year: "~2012",
-      title: "Offshore Nominees Included Free",
+      title: "Offshore Records Custody",
       description:
-        "Offshore nominee directors became a free inclusion in Gold packages — no other company does this.",
+        "Offshore custodian capability built — corporate records maintained outside U.S. jurisdictional reach for clients who require it.",
     },
     {
       year: "~2015",
       title: "Cryptocurrency Accepted",
       description:
-        "Bitcoin, Ethereum, and others accepted — aligning with privacy-conscious clients.",
+        "Bitcoin, Ethereum, and others accepted — aligning payment options with privacy-conscious clients.",
     },
     {
       year: "~2020",
@@ -74,29 +83,46 @@ export const aboutData: AboutData = {
   ],
   philosophy: [
     {
-      title: "Specialists, Not Generalists",
+      title: "Privacy Is a Right, Not a Product Feature",
       description:
-        "We don't cover 50 states. We don't sell $0 formations. Wyoming and Nevada only — 25 years of depth in two states beats surface knowledge of fifty.",
-      icon: "Target",
+        "Every person has the right to keep their business ownership private. We built our company around making that possible — not as an upsell, but as the default for anyone who wants it.",
+      icon: "Lock",
     },
     {
-      title: "Transparent, Not Gated",
+      title: "Minimum Necessary Compliance",
       description:
-        "Every price is on the website. You can order now or call to discuss — your choice. We never hide pricing behind a 'free consultation' that's really a sales pitch.",
-      icon: "Eye",
+        "We handle what the state requires — no more. We don't sell unnecessary filings, fabricate compliance needs, or create urgency around obligations that don't exist.",
+      icon: "ClipboardCheck",
     },
     {
-      title: "Real People, Not Automation",
+      title: "Transparent, All-Inclusive Pricing",
       description:
-        "When you call, a real person answers. Your formation is handled by specialists who know your name. This is what premium service actually means.",
-      icon: "Headphones",
+        "The price you see is the price you pay. State fees, registered agent, EIN, operating agreement — included. No surprise add-ons at checkout. No auto-renewing subscriptions you didn't authorize.",
+      icon: "DollarSign",
+    },
+    {
+      title: "Real Humans, Always",
+      description:
+        "When you call, a person answers. When you email, a person replies. We are not an automated form processor. We are specialists who know Wyoming and Nevada entity law.",
+      icon: "Phone",
     },
   ],
   stats: [
     { value: "25", label: "Years in Business" },
+    { value: "4", label: "U.S. States Supported" },
     { value: "12,847", label: "Entities Formed" },
-    { value: "2", label: "Specialty States" },
+    // PENDING DAVID: Verify entity count is accurate and defensible.
+    { value: "$525", label: "Gold Renewal / Year" },
+    { value: "4", label: "Offshore Jurisdictions" },
     { value: "100%", label: "All-Inclusive Pricing" },
+  ],
+  differentiators: [
+    "Year-round nominee services (not ‘nominee for a day’)",
+    "Offshore records custodian capability",
+    "All-inclusive pricing — no hidden add-ons",
+    "25 years of specialized Wyoming & Nevada experience",
+    "Real office, real people — direct phone access",
+    "Cryptocurrency accepted (BTC, ETH, XRP, LTC, XMR)",
   ],
   office: {
     address: "Reno, Nevada",

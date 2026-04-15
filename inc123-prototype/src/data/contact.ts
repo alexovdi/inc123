@@ -139,25 +139,34 @@ export const contactData: ContactData = {
   ],
   quickLinks: [
     {
+      icon: "EyeOff",
+      title: "Business Privacy",
+      description: "Keep your ownership private — nominees, anonymous LLCs.",
+      href: "/privacy",
+    },
+    {
+      icon: "Shield",
+      title: "Asset Protection",
+      description: "Protect your personal assets from business liability.",
+      href: "/asset-protection",
+    },
+    {
+      icon: "Building2",
+      title: "Formation",
+      description: "Form your Wyoming or Nevada LLC or corporation.",
+      href: "/formation",
+    },
+    {
       icon: "Package",
       title: "Compare Packages",
-      description:
-        "See all formation packages side by side with transparent pricing.",
+      description: "See all formation packages side by side with pricing.",
       href: "/compare-packages",
     },
     {
       icon: "CircleQuestionMark",
       title: "FAQ",
-      description:
-        "Answers to common questions about privacy, formation, and compliance.",
+      description: "Common questions on privacy, formation, and compliance.",
       href: "/faq",
-    },
-    {
-      icon: "Shield",
-      title: "Anonymous LLC Guide",
-      description:
-        "Learn how anonymous LLCs work and why Wyoming leads the way.",
-      href: "/anonymous-llc",
     },
   ],
 };

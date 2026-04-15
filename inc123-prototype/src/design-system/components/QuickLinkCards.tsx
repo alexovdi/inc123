@@ -18,25 +18,35 @@ export interface QuickLink {
 export interface QuickLinkCardsProps {
   /** Array of quick link items */
   links: QuickLink[];
+  /** Optional heading override */
+  title?: string;
   className?: string;
 }
 
 /* -------------------------------------------------- */
 /*  Component                                          */
 /* -------------------------------------------------- */
-function QuickLinkCards({ links, className }: QuickLinkCardsProps) {
+function QuickLinkCards({
+  links,
+  title = "You Might Also Find These Helpful",
+  className,
+}: QuickLinkCardsProps) {
+  // Use 3-column grid when 5+ links (balances the layout better)
+  const gridCols =
+    links.length >= 5 ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2";
+
   return (
     <section className={cn("py-section-y px-container-x", className)}>
       <div className="mx-auto max-w-content">
         {/* Section header */}
         <div className="text-center mb-10">
           <h2 className="font-display font-bold text-heading-lg text-foreground">
-            You Might Also Find These Helpful
+            {title}
           </h2>
         </div>
 
-        {/* Cards grid — 2x2 on desktop, 1-col on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Cards grid — adapts to item count */}
+        <div className={cn("grid grid-cols-1 gap-5", gridCols)}>
           {links.map((link) => (
             <a
               key={link.href}

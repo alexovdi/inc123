@@ -1,11 +1,16 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
 import { CategoryFilterPills } from "@/design-system/components/CategoryFilterPills";
 import type { CategoryFilterItem } from "@/design-system/components/CategoryFilterPills";
-import { CTABlock } from "@/design-system/components/CTABlock";
 import { FAQHero } from "@/design-system/components/FAQHero";
+import {
+  FAQCategoryGrid,
+  type FAQCategoryCardItem,
+} from "@/design-system/components/FAQCategoryGrid";
 import { RelatedGuides } from "@/design-system/components/RelatedGuides";
 import { SearchInput } from "@/design-system/components/SearchInput";
 import {
@@ -23,8 +28,16 @@ import { cn } from "@/design-system/utils/cn";
    Page component
    ------------------------------------------------ */
 export default function FAQPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const initialQuery = searchParams.get("q") ?? "";
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [activeCategory, setActiveCategory] = useState("all");
+
+  // Keep search in sync if the URL query changes (e.g., redirected from 404 page)
+  useEffect(() => {
+    const q = searchParams.get("q") ?? "";
+    setSearchQuery(q);
+  }, [searchParams]);
 
   // Memoize grouped FAQs by category
   const faqsByCategory = useMemo(() => {
@@ -144,10 +157,99 @@ export default function FAQPage() {
     return `${filteredFaqs.length} of ${total} questions`;
   }, [isSearching, activeCategory, filteredFaqs.length, faqsByCategory]);
 
+  // Set page title
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title =
+      "FAQ — Privacy, Formation, Asset Protection & Compliance | Incorporate123";
+    return () => {
+      document.title = previousTitle;
+    };
+  }, []);
+
+  // Build category grid cards (6 total — 4 pillars + Packages + General)
+  const categoryGridItems: FAQCategoryCardItem[] = [
+    {
+      id: "privacy",
+      title: "Business Privacy",
+      description:
+        "Anonymous LLCs, nominee services, ownership disclosure, state privacy laws.",
+      count: faqsByCategory.privacy.length,
+      href: "/privacy#faq",
+      icon: "EyeOff",
+      pillar: "privacy",
+    },
+    {
+      id: "asset",
+      title: "Asset Protection",
+      description:
+        "Charging orders, LLC vs trust, entity separation, real estate protection.",
+      count: faqsByCategory.asset.length,
+      href: "/asset-protection#faq",
+      icon: "Shield",
+      pillar: "asset",
+    },
+    {
+      id: "formation",
+      title: "Company Formation",
+      description:
+        "LLC vs corporation, state selection, formation timeline and costs.",
+      count: faqsByCategory.formation.length,
+      href: "/formation#faq",
+      icon: "Building2",
+      pillar: "formation",
+    },
+    {
+      id: "compliance",
+      title: "Compliance",
+      description:
+        "Registered agent, annual reports, foreign registration, corporate records.",
+      count: faqsByCategory.compliance.length,
+      href: "/compliance#faq",
+      icon: "ClipboardCheck",
+      pillar: "compliance",
+    },
+    {
+      id: "packages",
+      title: "Packages & Pricing",
+      description:
+        "Package contents, what's included, payment methods, refund policy, renewal.",
+      count: faqsByCategory.packages.length,
+      href: "#category-packages",
+      icon: "Package",
+      pillar: "neutral",
+    },
+    {
+      id: "general",
+      title: "General",
+      description:
+        "Company background, how we're different, getting started, account management.",
+      count: faqsByCategory.general.length,
+      href: "#category-general",
+      icon: "Info",
+      pillar: "neutral",
+    },
+  ];
+
   return (
     <>
+      {/* Breadcrumb */}
+      <div className="bg-primary-50 px-container-x pt-6">
+        <div className="mx-auto max-w-content">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "FAQ", href: "/faq" },
+            ]}
+          />
+        </div>
+      </div>
+
       {/* 1. FAQ Hero */}
       <FAQHero />
+
+      {/* 2. Category Navigation Grid — 6 cards */}
+      <FAQCategoryGrid categories={categoryGridItems} />
 
       {/* 2. Search + Filters section */}
       <section className="bg-primary-50 pb-8 px-container-x">
@@ -225,7 +327,11 @@ export default function FAQPage() {
                 const guides = relatedGuidesMap[cat];
 
                 return (
-                  <div key={cat}>
+                  <div
+                    key={cat}
+                    id={`category-${cat}`}
+                    className="scroll-mt-24"
+                  >
                     {/* Category heading */}
                     <div
                       className={cn(
@@ -266,20 +372,81 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
-      <CTABlock
-        heading="Still Have Questions?"
-        description="Our team has 25 years of experience with Wyoming and Nevada privacy formation. Call us directly — no chatbots, no phone trees."
-        primaryCTA={{
-          label: "Call 1-800-553-0615",
-          href: "tel:+18005530615",
-        }}
-        secondaryCTA={{
-          label: "Send Us a Message",
-          href: "/contact",
-        }}
-        trustSignal="25+ Years of Experience · Privacy Specialists"
-      />
+      {/* 5. Can't Find It? — Contact + pillar links */}
+      <section className="bg-background py-section-y px-container-x">
+        <div className="mx-auto max-w-content">
+          <div className="mx-auto max-w-narrow text-center">
+            <h2 className="font-display text-heading-lg font-bold text-foreground">
+              Can&rsquo;t Find What You&rsquo;re Looking For?
+            </h2>
+            <p className="mt-3 text-body text-muted">
+              Call us directly or browse topics by pillar. A privacy specialist
+              answers — no chatbots, no phone trees.
+            </p>
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a
+                href="tel:+18005530615"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-white shadow-lg hover:bg-accent/90"
+              >
+                Call 1-800-553-0615
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-6 py-3 font-semibold text-foreground hover:bg-muted/10"
+              >
+                Send Us a Message
+              </a>
+            </div>
+          </div>
+
+          <ul className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
+            <li>
+              <a
+                href="/privacy"
+                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-privacy hover:shadow-card-hover"
+              >
+                <span className="font-medium text-foreground">
+                  Browse Business Privacy topics
+                </span>
+                <span className="text-pillar-privacy">&rarr;</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/asset-protection"
+                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-asset hover:shadow-card-hover"
+              >
+                <span className="font-medium text-foreground">
+                  Browse Asset Protection topics
+                </span>
+                <span className="text-pillar-asset">&rarr;</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/formation"
+                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-formation hover:shadow-card-hover"
+              >
+                <span className="font-medium text-foreground">
+                  Browse Formation topics
+                </span>
+                <span className="text-pillar-formation">&rarr;</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/compliance"
+                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-compliance hover:shadow-card-hover"
+              >
+                <span className="font-medium text-foreground">
+                  Browse Compliance topics
+                </span>
+                <span className="text-pillar-compliance">&rarr;</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </>
   );
 }

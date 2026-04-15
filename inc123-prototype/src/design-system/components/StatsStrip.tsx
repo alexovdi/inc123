@@ -24,19 +24,26 @@ function StatsStrip({ stats, className }: StatsStripProps) {
     <section
       className={cn(
         "bg-primary text-white py-section-y-sm px-container-x",
-        className
+        className,
       )}
     >
       <div className="mx-auto max-w-content">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        <div
+          className={cn(
+            "grid grid-cols-2 gap-8 md:gap-4",
+            stats.length >= 6
+              ? "md:grid-cols-3 lg:grid-cols-6"
+              : stats.length === 5
+                ? "md:grid-cols-5"
+                : "md:grid-cols-4",
+          )}
+        >
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="font-display font-bold text-heading-lg md:text-display text-white">
                 {stat.value}
               </p>
-              <p className="mt-1 text-body-sm text-white/70">
-                {stat.label}
-              </p>
+              <p className="mt-1 text-body-sm text-white/70">{stat.label}</p>
             </div>
           ))}
         </div>

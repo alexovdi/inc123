@@ -225,6 +225,11 @@ export {
   type AddOnConfiguratorProps,
 } from "./AddOnConfigurator";
 export { FAQHero, type FAQHeroProps } from "./FAQHero";
+export {
+  FAQCategoryGrid,
+  type FAQCategoryGridProps,
+  type FAQCategoryCardItem,
+} from "./FAQCategoryGrid";
 export { SearchInput, type SearchInputProps } from "./SearchInput";
 export {
   RelatedGuides,
@@ -248,6 +253,11 @@ export {
 } from "./PhilosophyCards";
 export { OfficeSection, type OfficeSectionProps } from "./OfficeSection";
 export { StatsStrip, type StatsStripProps, type StatItem } from "./StatsStrip";
+export { AboutStory, type AboutStoryProps } from "./AboutStory";
+export {
+  DifferentiatorsSummary,
+  type DifferentiatorsSummaryProps,
+} from "./DifferentiatorsSummary";
 export { ContactHero, type ContactHeroProps } from "./ContactHero";
 export {
   ContactMethodCards,
