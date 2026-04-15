@@ -22,6 +22,10 @@ dist/
 
 # testing
 coverage/
+test-results/
+playwright-report/
+inc123-prototype/test-results/
+inc123-prototype/playwright-report/
 
 # debug
 npm-debug.log*
