@@ -458,21 +458,36 @@ export default function AssetProtectionPillarPage() {
           ================================================ */}
       <section className="py-section-y-sm bg-primary-50">
         <div className="mx-auto max-w-content px-container-x">
-          <ScrollReveal>
-            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
-              Compare States
-            </p>
-            <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
-              Wyoming vs. Nevada for Asset Protection
-            </h2>
-            <p className="mt-3 text-body-lg text-muted max-w-[520px]">
-              State selection is the first concrete decision. Here&rsquo;s what
-              matters most.
-            </p>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+            {/* Left column — header + bottom line */}
+            <ScrollReveal>
+              <div className="lg:sticky lg:top-24">
+                <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+                  Compare States
+                </p>
+                <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[28ch]">
+                  Wyoming vs. Nevada for Asset Protection
+                </h2>
+                <p className="mt-3 text-body text-muted">
+                  State selection is the first concrete decision. Here&rsquo;s
+                  what matters most.
+                </p>
+                <p className="mt-6 text-body-sm text-muted">
+                  <strong className="text-foreground">Bottom line:</strong>{" "}
+                  Wyoming leads for single-member LLCs. Nevada offers stronger
+                  case law and a dedicated business court.
+                </p>
+                <Link
+                  href="/wyoming-vs-nevada-asset-protection"
+                  className="mt-4 inline-block text-body-sm font-medium text-secondary hover:underline"
+                >
+                  Full comparison &rarr;
+                </Link>
+              </div>
+            </ScrollReveal>
 
-          <ScrollReveal delay={150}>
-            <div className="mt-10 max-w-[720px]">
+            {/* Right column — table (2/3 width) */}
+            <ScrollReveal delay={150}>
               <div className="overflow-hidden rounded-card-lg border border-border">
                 <table className="w-full text-left">
                   <thead>
@@ -510,20 +525,8 @@ export default function AssetProtectionPillarPage() {
                   </tbody>
                 </table>
               </div>
-
-              <p className="mt-4 text-body-sm text-muted">
-                <strong className="text-foreground">Bottom line:</strong>{" "}
-                Wyoming leads for single-member LLCs. Nevada offers stronger
-                case law and a dedicated business court.{" "}
-                <Link
-                  href="/wyoming-vs-nevada-asset-protection"
-                  className="text-secondary hover:text-secondary/80 font-medium"
-                >
-                  Full comparison →
-                </Link>
-              </p>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
