@@ -19,6 +19,9 @@ const FAQPage = lazy(() => import("@/app/faq/page"));
 const FormationPage = lazy(() => import("@/app/formation/page"));
 const GoldPage = lazy(() => import("@/app/gold/page"));
 const OffshorePage = lazy(() => import("@/app/offshore/page"));
+const OffshoreIrsCompliancePage = lazy(
+  () => import("@/app/offshore/irs-compliance/page"),
+);
 const OffshoreSlugPage = lazy(() => import("@/app/offshore/[slug]/page"));
 const PackagesPage = lazy(() => import("@/app/packages/page"));
 const PrivacyPage = lazy(() => import("@/app/privacy/page"));
@@ -140,6 +143,10 @@ export function AppRouter() {
           <Route path="formation" element={<FormationPage />} />
           <Route path="gold" element={<GoldPage />} />
           <Route path="offshore" element={<OffshorePage />} />
+          <Route
+            path="offshore/irs-compliance"
+            element={<OffshoreIrsCompliancePage />}
+          />
           <Route path="offshore/:slug" element={<OffshoreSlugPage />} />
           <Route path="packages" element={<PackagesPage />} />
           <Route path="privacy" element={<PrivacyPage />} />

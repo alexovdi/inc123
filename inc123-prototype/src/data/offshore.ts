@@ -2,42 +2,250 @@ import type { OffshoreData } from "@/lib/types";
 
 export const offshoreData: OffshoreData = {
   hub: {
-    headline: "Offshore Privacy & Asset Protection",
+    headline:
+      "International Formation Services. Nevis · BVI · Panama · Hong Kong.",
     subheadline:
-      "Beyond domestic structures — international jurisdictions for maximum privacy",
+      "For clients who need structures beyond domestic Wyoming and Nevada entities.",
     description:
-      "For clients who need protection beyond what Wyoming or Nevada can offer, offshore entities provide an additional layer of privacy, asset protection, and legal insulation. These structures complement — not replace — domestic formations. A properly structured offshore entity works alongside your Wyoming LLC or Nevada Corporation to create a multi-jurisdictional shield that is significantly harder to penetrate than any single domestic entity.",
+      "International LLCs, corporations, foundations, and asset protection trusts — formed and managed through our network of registered agents and corporate service providers in each jurisdiction. 25 years of experience. Offshore services since 2000.",
+    hubFaqs: [
+      {
+        id: "off-hub-faq-legality",
+        question: "Is offshore entity formation legal?",
+        answer:
+          "Yes. Forming entities in international jurisdictions is entirely legal and widely practiced by multinational corporations, investment funds, and high-net-worth individuals. What is NOT legal is using offshore structures to evade taxes, launder money, or hide assets from legitimate legal obligations. U.S. persons who own offshore entities must comply with IRS reporting requirements (FBAR, Form 5471/8865, GILTI, FATCA). We help you form the entity; your CPA ensures tax compliance.",
+      },
+      {
+        id: "off-hub-faq-cost",
+        question: "How much do offshore structures cost?",
+        answer:
+          "Formation costs range from approximately $2,060 (Nevis LLC) to over $3,200 (BVI IBC). Annual renewals run $1,535–$1,950 per year depending on jurisdiction. International packages include government registration fees, registered agent and office service, offshore secretary, nominee director or manager, and KYC administration. Bank account opening assistance is available for an additional $500. All pricing is discussed during your consultation.",
+      },
+      {
+        id: "off-hub-faq-necessity",
+        question: "Do I need an offshore structure, or is domestic sufficient?",
+        answer:
+          "Most clients don't need an offshore entity. A Wyoming Gold package with year-round nominees and offshore records custodian provides excellent privacy and asset protection for the vast majority of situations. Offshore entities are appropriate when you need jurisdictional separation (assets outside U.S. court reach), international operational presence, or specific asset protection features such as the Nevis $100,000 plaintiff bond requirement. We'll help you determine whether a domestic structure is sufficient during your consultation.",
+      },
+      {
+        id: "off-hub-faq-banking",
+        question: "Can I open a bank account with an offshore entity?",
+        answer:
+          "Yes, but the process is more involved than domestic banking. International banks require extensive KYC (Know Your Customer) documentation, and processing can take 4–8 weeks. We provide bank account opening assistance ($500) and guide you through the documentation requirements. Note that U.S. persons must report foreign accounts exceeding $10,000 in aggregate value via FBAR.",
+      },
+      {
+        id: "off-hub-faq-timeline",
+        question: "What is the formation timeline for offshore entities?",
+        answer:
+          "Typical formation takes 2–4 weeks depending on jurisdiction and the complexity of KYC documentation. Nevis and BVI are generally faster (2–3 weeks); Panama and Hong Kong may take 3–4 weeks due to additional compliance requirements. Rush processing may be available in some jurisdictions.",
+      },
+      {
+        id: "off-hub-faq-domestic-interaction",
+        question: "How do offshore entities interact with my domestic LLC?",
+        answer:
+          "The most common structure is a domestic LLC (Wyoming or Nevada) with an offshore component providing additional privacy or asset protection. For example, a Nevis LLC can hold assets with strong jurisdictional protections while your Wyoming LLC handles domestic operations. Your corporate records can be maintained by our offshore custodian (included in Gold packages). More complex structures involving trusts or multi-entity arrangements should be designed with input from an international tax attorney.",
+      },
+      {
+        id: "off-hub-faq-inclusions",
+        question: "What is included in the international formation package?",
+        answer:
+          "Standard international packages include Certificate of Incorporation or Formation, government registration fees, registered agent and registered office in the jurisdiction, offshore company secretary, offshore nominee director or manager, IRS pass-through election assistance (for U.S. persons), KYC administration ($150), and the option for offshore bank account opening ($500 additional). Specific inclusions vary by jurisdiction — see each jurisdiction page for details.",
+      },
+      {
+        id: "off-hub-faq-gilti",
+        question: "Has GILTI changed the value of offshore structures?",
+        answer:
+          "Significantly. The Tax Cuts and Jobs Act of 2017 introduced GILTI (Global Intangible Low-Taxed Income), which taxes U.S. shareholders on certain income of controlled foreign corporations even when that income is not distributed. This has reduced the tax deferral benefits that previously made offshore structures attractive for many U.S. persons. Offshore structures still provide valid benefits for asset protection, jurisdictional separation, and international operations — but the tax advantages have narrowed. Consult your CPA about GILTI's impact on your specific situation.",
+      },
+    ],
   },
   jurisdictions: [
     {
       slug: "nevis",
-      name: "Nevis LLC",
+      name: "Nevis",
+      region: "St. Kitts and Nevis",
+      entityType: "LLC & Corporation",
+      primary: true,
+      startingPrice: "$2,060",
+      annualRenewal: "$1,535/yr",
+      timeline: "2–3 weeks",
+      tagline:
+        "$100,000 plaintiff bond. 1-year fraudulent-transfer SOL. Foreign judgments not recognized.",
+      heroTagline:
+        "The strongest offshore asset protection in the world. $100,000 plaintiff bond. 1-year fraudulent-transfer SOL. No recognition of foreign judgments.",
+      stats: [
+        { label: "Plaintiff Bond", value: "$100,000" },
+        { label: "Fraudulent Transfer SOL", value: "1 Year" },
+        { label: "Foreign Judgments", value: "Not Recognized" },
+      ],
       description:
         "The strongest offshore asset protection jurisdiction. Nevis imposes a 1-year statute of limitations on fraudulent transfer claims, does not recognize or domesticate foreign judgments, and requires a creditor to post a $100,000 bond before even filing suit. Combined with a Wyoming holding LLC, this creates a structure that is prohibitively expensive for most creditors to challenge.",
       advantages: [
         {
-          icon: "Shield",
+          icon: "Gavel",
+          title: "$100,000 Plaintiff Bond Requirement",
+          description:
+            "Before filing suit against a Nevis LLC or corporation, the plaintiff must post a $100,000 bond with the Nevis court. This bond is forfeited if the plaintiff loses. This single provision eliminates the vast majority of speculative and frivolous lawsuits — a plaintiff must be confident enough to risk $100,000 before proceedings begin.",
+        },
+        {
+          icon: "Clock",
           title: "1-Year Statute of Limitations",
           description:
-            "Creditors have only one year from the date of transfer to challenge it — the shortest window of any jurisdiction worldwide.",
+            "In the United States, fraudulent transfer claims can be filed 4–6 years after the transfer. In Nevis, the statute of limitations is 1 year. Once that window closes, the transfer is essentially beyond challenge. For asset protection planning, this dramatically reduces the window of vulnerability.",
         },
         {
-          icon: "Ban",
-          title: "No Domestication of Judgments",
+          icon: "Shield",
+          title: "No Recognition of Foreign Judgments",
           description:
-            "Foreign court judgments cannot be enforced in Nevis. A creditor must re-litigate from scratch under Nevis law.",
+            "A U.S. court judgment cannot be enforced directly in Nevis. A plaintiff who wins in the United States must re-litigate the entire case from scratch in Nevis courts, under Nevis law, after posting the $100,000 bond. The cost and complexity deter all but the most determined litigants.",
         },
         {
-          icon: "DollarSign",
-          title: "$100,000 Bond Requirement",
+          icon: "Lock",
+          title: "Charging Order as Sole Remedy",
           description:
-            "Before filing any claim, a creditor must post a $100,000 cash bond with the Nevis court — a powerful deterrent.",
+            "Similar to Wyoming's domestic protection, Nevis limits a creditor's remedy against an LLC member's interest to a charging order. The creditor cannot seize LLC assets, force liquidation, or take over management. Applies to both single-member and multi-member Nevis LLCs.",
         },
         {
           icon: "Scale",
           title: "Beyond Reasonable Doubt Standard",
           description:
-            "Fraudulent transfer claims must be proven beyond a reasonable doubt — a criminal standard applied to civil claims.",
+            "Fraudulent transfer claims against a Nevis entity must be proven beyond a reasonable doubt — a criminal standard applied to civil claims. Combined with the bond and SOL, this is the highest evidentiary bar in any major asset protection jurisdiction.",
+        },
+        {
+          icon: "FileText",
+          title: "Purpose-Built LLC Legislation",
+          description:
+            "The Nevis Limited Liability Company Ordinance of 1995 was drafted specifically to create a favorable legal framework for international LLC formation and asset protection. Unlike jurisdictions that adapted existing corporate law, Nevis built its LLC statute from the ground up with asset protection as a primary design objective.",
+        },
+      ],
+      entityTypes: [
+        {
+          id: "llc",
+          name: "Nevis LLC",
+          framework: "Nevis LLC Ordinance of 1995",
+          features: [
+            "Flexible management structure — no board required",
+            "Charging order as sole creditor remedy",
+            "No minimum capital requirements",
+            "Member names not on public record",
+            "Pass-through taxation available for U.S. persons (Form 8832)",
+          ],
+          formationCost: "$2,060",
+          annualRenewal: "$1,535/yr",
+          bestFor: "Asset protection, holding structures, privacy",
+          recommended: true,
+        },
+        {
+          id: "corp",
+          name: "Nevis Corporation",
+          framework: "Nevis Business Corporation Ordinance",
+          features: [
+            "Board of directors required (nominee directors available)",
+            "Bearer shares prohibited (converted to registered shares)",
+            "No minimum capital requirements",
+            "Shareholder names not on public record",
+            "Standard corporate formality",
+          ],
+          formationCost: "$2,290",
+          annualRenewal: "$1,535/yr",
+          bestFor:
+            "International trade, multi-shareholder structures, businesses requiring corporate formality",
+        },
+      ],
+      entityRecommendation:
+        "For most asset protection and privacy purposes, a Nevis LLC is the better choice. It provides the same $100,000 bond protection and fraudulent transfer limitations as a corporation, with simpler management and pass-through taxation for U.S. persons.",
+      kycRequirements: [
+        "Certified copy of passport (notarized)",
+        "Copy of driver's license or government-issued ID",
+        "Proof of residential address (utility bill or bank statement, dated within 3 months)",
+        "Professional reference letter (from attorney, CPA, or banker)",
+        "Brief description of intended business activity",
+      ],
+      formationSteps: [
+        {
+          title: "Consultation & Engagement",
+          description:
+            "We discuss your goals, recommend LLC or Corporation, and confirm Nevis is the appropriate jurisdiction. You provide KYC documentation.",
+        },
+        {
+          title: "KYC Review & Entity Preparation",
+          description:
+            "Our Nevis registered agent reviews your KYC documentation. Entity formation documents are prepared — Articles of Organization (LLC) or Articles of Incorporation (Corp).",
+        },
+        {
+          title: "Government Filing",
+          description:
+            "Formation documents are filed with the Nevis Registrar of Companies. Government registration fees are included in your formation package.",
+        },
+        {
+          title: "Nominee Appointment & Records",
+          description:
+            "Offshore nominee director or manager is appointed. Corporate records (operating agreement or bylaws, resolutions, certificates) are prepared and maintained by our offshore custodian.",
+        },
+        {
+          title: "Banking (Optional)",
+          description:
+            "Offshore bank account opening assistance is available for an additional $500. The nominee director facilitates account opening. Bank processing takes an additional 4–8 weeks after formation.",
+        },
+      ],
+      pricing: {
+        inclusions: [
+          "Government registration fees",
+          "Registered agent and registered office in Nevis",
+          "Offshore company secretary",
+          "Offshore nominee director or manager",
+          "Certificate of Incorporation or Formation",
+          "Operating agreement (LLC) or bylaws (Corp)",
+          "Membership certificates (LLC) or stock certificates (Corp)",
+          "IRS pass-through election assistance (Form 8832, U.S. persons)",
+          "KYC administration and compliance review",
+        ],
+        additionalCosts: [
+          {
+            label: "Offshore bank account opening assistance (optional)",
+            price: "$500",
+          },
+          {
+            label: "KYC administration fee (per beneficial owner)",
+            // PENDING DAVID: Per beneficial owner or per entity? OFF-06.
+            price: "$150",
+          },
+          {
+            label:
+              "Annual IRS reporting (Form 5471/8865) — handled by your CPA",
+            price: "Not included",
+          },
+        ],
+        renewalInclusions: [
+          "Government annual fees",
+          "Registered agent and registered office renewal",
+          "Nominee director or manager maintenance",
+          "Corporate records maintenance",
+          "Good standing certificate (upon request)",
+        ],
+      },
+      combinedStructures: [
+        {
+          title: "Wyoming LLC + Nevis LLC",
+          description:
+            "Most common combination for asset protection. Your Wyoming LLC handles domestic operations with nominee services. The Nevis LLC holds high-value assets requiring the strongest possible protection. A U.S. creditor must navigate both Wyoming's charging order protection AND Nevis's $100,000 bond requirement.",
+          link: { label: "Wyoming Gold Package", href: "/wyoming-gold" },
+        },
+        {
+          title: "Domestic Holding LLC + Nevis Asset Entity",
+          description:
+            "The domestic holding LLC (WY or NV) holds operating interests. The Nevis LLC holds investment assets, intellectual property, or other high-value assets that benefit from jurisdictional separation. Creditors targeting the domestic entity cannot reach assets held in the Nevis entity.",
+          link: {
+            label: "Investment Holding LLC",
+            href: "/investment-holding-llc",
+          },
+        },
+        {
+          title: "Nevis LLC + Offshore Trust",
+          description:
+            // PENDING DAVID: Bahamas Dynasty Trust — confirm active offering (OFF-17).
+            "For maximum protection and estate planning. A Bahamas Dynasty Trust (no rule against perpetuities) holds the membership interest of the Nevis LLC. The trust provides estate planning benefits; the Nevis LLC provides asset protection. The most sophisticated structure available.",
+          link: { label: "Discuss trust structures", href: "/contact" },
         },
       ],
       sections: [
@@ -82,25 +290,61 @@ export const offshoreData: OffshoreData = {
       ],
       faqs: [
         {
-          id: "nevis-faq-1",
-          question: "Is a Nevis LLC legal for U.S. residents?",
+          id: "nevis-faq-bond",
+          question: "What is the $100,000 plaintiff bond requirement?",
           answer:
-            "Yes. U.S. residents can legally own and operate a Nevis LLC. You must report the entity to the IRS (Form 8858) and disclose foreign bank accounts (FBAR) if applicable. The structure is legal — the key is proper tax compliance and reporting.",
+            "Under Nevis law, any person or entity wishing to file a lawsuit against a Nevis LLC or corporation must first post a $100,000 bond with the Nevis court. This bond is forfeited if the plaintiff loses the case. The requirement applies to all civil suits, including those originating from foreign judgments. The effect is to deter speculative litigation — a plaintiff must have a high-confidence case to risk $100,000 before proceedings begin.",
           category: "offshore",
         },
         {
-          id: "nevis-faq-2",
-          question: "How long does it take to form a Nevis LLC?",
-          answer:
-            "Formation typically takes 5-10 business days once all documentation is submitted. Rush processing is available for an additional fee.",
-          category: "offshore",
-        },
-        {
-          id: "nevis-faq-3",
+          id: "nevis-faq-repatriate",
           question:
-            "Can a U.S. court force me to repatriate assets from a Nevis LLC?",
+            "Can a U.S. court force me to repatriate assets held in a Nevis entity?",
           answer:
-            "A U.S. court can order you to repatriate assets, but if the Nevis LLC operating agreement contains a duress clause — which ours do — the manager in Nevis is instructed to refuse distributions made under court compulsion. This creates a legal standoff that typically results in negotiated settlements at a fraction of the original claim.",
+            "U.S. courts can issue orders directing a U.S. person to repatriate assets. However, the enforceability of such orders against a Nevis entity depends on whether the entity is structured with independent management (nominee directors) and whether the U.S. person retains sufficient control to comply. Proper structuring with nominee management creates a defensible position. This is a complex legal area — we recommend discussing specific scenarios with an asset protection attorney.",
+          category: "offshore",
+        },
+        {
+          id: "nevis-faq-comparison",
+          question:
+            "How does Nevis compare to other offshore jurisdictions for asset protection?",
+          answer:
+            "Nevis offers the strongest combination of asset protection features for U.S.-based clients: the plaintiff bond ($100K, unique to Nevis), the short fraudulent transfer statute (1 year vs. 2+ years in Cook Islands, BVI, etc.), and sole-remedy charging order protection. The Cook Islands have a longer track record and their own strong protections, but Nevis's plaintiff bond requirement is unmatched. BVI is better suited for international trade and holding companies. Panama foundations serve estate planning. Hong Kong serves Asia-Pacific operations.",
+          category: "offshore",
+        },
+        {
+          id: "nevis-faq-remote",
+          question: "Do I need to visit Nevis to form an entity there?",
+          answer:
+            "No. The entire formation process is handled remotely. KYC documentation is submitted electronically (with certified or notarized copies). Our Nevis registered agent handles all filings with the Registrar of Companies. You do not need to travel to Nevis at any point.",
+          category: "offshore",
+        },
+        {
+          id: "nevis-faq-banking",
+          question: "Can I open a Nevis bank account?",
+          answer:
+            "Yes. We provide offshore bank account opening assistance ($500) through banking relationships in the Caribbean region. The nominee director facilitates the account opening, and account access is released to authorized signatories upon approval. Processing typically takes 4–8 weeks due to enhanced compliance requirements for international accounts. U.S. persons must report foreign accounts exceeding $10,000 aggregate value (FBAR requirement).",
+          category: "offshore",
+        },
+        {
+          id: "nevis-faq-ordinance",
+          question: "What is the Nevis LLC Ordinance of 1995?",
+          answer:
+            "The Nevis Limited Liability Company Ordinance of 1995 is the legislation that governs LLC formation in the Federation of St. Kitts and Nevis. It was specifically designed to create a favorable legal framework for international LLC formation and asset protection. Key provisions include charging order as sole creditor remedy, the $100,000 plaintiff bond requirement, and the 1-year statute of limitations on fraudulent transfer claims.",
+          category: "offshore",
+        },
+        {
+          id: "nevis-faq-maintenance",
+          question: "How do I maintain a Nevis entity on an ongoing basis?",
+          answer:
+            "Annual renewal ($1,535/yr) covers government fees, registered agent and office maintenance, nominee director continuation, and corporate records maintenance. You do not need to file annual reports with the Nevis government in the same way as U.S. entities. However, U.S. persons must file annual IRS informational returns (Form 5471 or 8865) — your CPA handles these.",
+          category: "offshore",
+        },
+        {
+          id: "nevis-faq-tax",
+          question: "Is a Nevis entity subject to Nevis taxes?",
+          answer:
+            "No. Nevis does not impose income tax, capital gains tax, or withholding tax on entities formed under the LLC Ordinance or IBC provisions that do not conduct business within St. Kitts and Nevis. However, U.S. persons who own Nevis entities are subject to U.S. federal taxation on worldwide income, including GILTI provisions for controlled foreign corporations. Nevis tax neutrality does not eliminate U.S. tax obligations.",
           category: "offshore",
         },
       ],
@@ -108,7 +352,16 @@ export const offshoreData: OffshoreData = {
     },
     {
       slug: "belize",
-      name: "Belize IBC",
+      name: "Belize",
+      region: "Belize",
+      entityType: "International Business Company",
+      // PENDING DAVID: Is Belize still actively offered? Spec (enhanced) lists only Nevis/BVI/Panama/HK.
+      // Keeping in prototype until David confirms; OFF-15 in pricing tracker.
+      primary: false,
+      startingPrice: "PENDING DAVID",
+      annualRenewal: "PENDING DAVID",
+      timeline: "2–3 weeks",
+      tagline: "Zero foreign-source taxation and criminal privacy statutes.",
       description:
         "Belize International Business Companies (IBCs) offer zero local taxation on foreign-sourced income, robust privacy statutes that criminalize unauthorized disclosure of ownership information, and compatibility with asset protection trusts. The IBC Act was modernized in 2000 and provides a cost-effective offshore structure for international business operations.",
       advantages: [
@@ -184,7 +437,17 @@ export const offshoreData: OffshoreData = {
     },
     {
       slug: "cook-islands",
-      name: "Cook Islands Trust",
+      name: "Cook Islands",
+      region: "Cook Islands",
+      entityType: "International Trust",
+      // PENDING DAVID: Cook Islands Trust not in enhanced offshore hub spec.
+      // Keeping in prototype until David confirms; pricing in tracker OFF-09/10.
+      primary: false,
+      startingPrice: "PENDING DAVID",
+      annualRenewal: "PENDING DAVID",
+      timeline: "3–5 weeks",
+      tagline:
+        "Gold-standard asset protection trust — shortest SOL + foreign judgment bar.",
       description:
         "The Cook Islands International Trust is widely regarded as the gold standard for asset protection trusts. The International Trusts Act of 1984 (amended multiple times) was specifically designed to protect trust assets from foreign creditors. The Cook Islands does not recognize foreign judgments against trust assets, imposes a shortened statute of limitations on fraudulent transfer claims, and places the burden of proof on the creditor — beyond a reasonable doubt.",
       advantages: [
@@ -280,7 +543,16 @@ export const offshoreData: OffshoreData = {
     },
     {
       slug: "panama",
-      name: "Panama Corporation",
+      name: "Panama",
+      region: "Republic of Panama",
+      entityType: "Corporation / Private Interest Foundation",
+      primary: true,
+      // PENDING DAVID: Panama formation + renewal pricing. Spec flags as TBD. See OFF-11/12.
+      startingPrice: "PENDING DAVID",
+      annualRenewal: "PENDING DAVID",
+      timeline: "3–4 weeks",
+      tagline:
+        "Territorial tax system, no foreign-source income tax, strong banking tradition.",
       description:
         "Panama offers a well-established corporate framework with no taxation on foreign-sourced income, historically strong bank secrecy laws, and a legal system based on the civil law tradition. Panama corporations are widely used for international business operations, real estate holding, and as components of multi-jurisdictional asset protection structures.",
       advantages: [
@@ -364,7 +636,16 @@ export const offshoreData: OffshoreData = {
     },
     {
       slug: "british-virgin-islands",
-      name: "BVI Company",
+      name: "British Virgin Islands",
+      region: "BVI",
+      entityType: "Business Company (IBC)",
+      primary: true,
+      // PENDING DAVID: BVI formation + renewal pricing. Spec references $3,200 / $1,950 as indicative only. OFF-07/08.
+      startingPrice: "$3,200",
+      annualRenewal: "$1,950/yr",
+      timeline: "2–3 weeks",
+      tagline:
+        "World's most-used offshore jurisdiction. Zero taxation, minimal reporting, global acceptance.",
       description:
         "The British Virgin Islands is the most popular offshore jurisdiction in the world, with over 400,000 active companies. BVI Business Companies (BCs) offer zero taxation, minimal reporting requirements, low formation and maintenance costs, and extraordinary flexibility in corporate structure. The BVI is the pragmatic choice for international business — proven, well-understood, and cost-effective.",
       advantages: [
@@ -453,6 +734,107 @@ export const offshoreData: OffshoreData = {
           question: "Can a BVI company open a U.S. bank account?",
           answer:
             "Yes, though it requires additional documentation including a certificate of good standing, articles of incorporation, and beneficial ownership declaration. We assist with the banking introduction process as part of our offshore formation services.",
+          category: "offshore",
+        },
+      ],
+      relatedPackages: ["wyoming-gold"],
+    },
+    {
+      slug: "hong-kong",
+      name: "Hong Kong",
+      region: "Hong Kong SAR",
+      entityType: "Limited Company",
+      primary: true,
+      // PENDING DAVID: Hong Kong formation + renewal pricing. New jurisdiction per spec. OFF-13/14.
+      startingPrice: "PENDING DAVID",
+      annualRenewal: "PENDING DAVID",
+      timeline: "3–4 weeks",
+      tagline:
+        "China market access, favorable tax (8.25% / 16.5%), globally recognized corporate structure.",
+      description:
+        "Hong Kong Limited Company formation provides access to mainland China markets, favorable tax treatment on profits (8.25% on the first HKD 2 million and 16.5% thereafter), a globally recognized corporate structure, and one of the world's strongest international banking infrastructures. Hong Kong is widely used for international trade, intellectual property holding, and as a gateway to Asian markets.",
+      advantages: [
+        {
+          icon: "Globe",
+          title: "China & Asia Market Access",
+          description:
+            "Hong Kong is the primary gateway for international businesses operating in or trading with mainland China and the broader Asia-Pacific region.",
+        },
+        {
+          icon: "Banknote",
+          title: "Favorable Two-Tier Tax Rate",
+          description:
+            "Profits tax is 8.25% on the first HKD 2 million of assessable profits and 16.5% thereafter. No capital gains tax, no withholding tax on dividends.",
+        },
+        {
+          icon: "Building2",
+          title: "World-Class Banking Infrastructure",
+          description:
+            "Hong Kong's banking sector is globally respected and widely accepted by international counterparties. Account opening processes are well-established.",
+        },
+        {
+          icon: "ShieldCheck",
+          title: "Common Law Legal System",
+          description:
+            "Hong Kong retains a common law legal system with independent judiciary, providing contractual certainty and predictable dispute resolution.",
+        },
+      ],
+      sections: [
+        {
+          id: "how-hong-kong-works",
+          type: "text",
+          title: "How a Hong Kong Limited Company Works",
+          content:
+            "A Hong Kong private company limited by shares is formed under the Companies Ordinance (Cap. 622). It requires at least one director (of any nationality), one shareholder, a company secretary (resident in Hong Kong), and a registered office address in Hong Kong. There is no minimum share capital requirement. The company is subject to Hong Kong profits tax only on profits arising in or derived from Hong Kong — foreign-source income is generally not taxed. Annual compliance includes audited financial statements, profits tax returns, and an Annual Return filing with the Companies Registry.",
+        },
+        {
+          id: "hong-kong-use-cases",
+          type: "audience",
+          title: "Common Uses for Hong Kong Companies",
+          content:
+            "Hong Kong companies serve a range of international business purposes:",
+          items: [
+            {
+              title: "China & Asia Trade Entities",
+              description:
+                "Businesses importing from or exporting to mainland China use Hong Kong companies as the contracting party with stronger legal protection than mainland entities.",
+            },
+            {
+              title: "International Holding Companies",
+              description:
+                "Hong Kong's favorable tax treaties with 40+ countries make it a preferred location for regional holding company structures.",
+            },
+            {
+              title: "Intellectual Property & Licensing",
+              description:
+                "IP held in Hong Kong benefits from the territorial tax system and common-law contract enforcement.",
+            },
+          ],
+        },
+      ],
+      faqs: [
+        {
+          id: "hk-faq-1",
+          question:
+            "Is Hong Kong still a reliable jurisdiction given recent political changes?",
+          answer:
+            "Hong Kong retains its common law legal system, independent judiciary, and distinct tax framework as part of the One Country Two Systems arrangement. For standard commercial use — international trade, holding companies, licensing — Hong Kong remains widely used and accepted. We recommend consulting counsel for specific political-risk-sensitive situations.",
+          category: "offshore",
+        },
+        {
+          id: "hk-faq-2",
+          question:
+            "Does a Hong Kong company need to file audited financial statements?",
+          answer:
+            "Yes. All Hong Kong limited companies must prepare audited financial statements annually and file profits tax returns with the Inland Revenue Department. This is a key differentiator from jurisdictions like BVI or Nevis that have minimal annual reporting.",
+          category: "offshore",
+        },
+        {
+          id: "hk-faq-3",
+          question:
+            "How does the territorial tax system work for foreign income?",
+          answer:
+            "Hong Kong only taxes profits arising in or derived from Hong Kong. Income from activities conducted entirely outside Hong Kong is generally considered offshore-sourced and not subject to Hong Kong profits tax. The classification depends on facts and circumstances and typically requires an offshore claim to be filed with and approved by the Inland Revenue Department.",
           category: "offshore",
         },
       ],

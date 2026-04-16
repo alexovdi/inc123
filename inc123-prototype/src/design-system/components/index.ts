@@ -258,6 +258,19 @@ export {
   DifferentiatorsSummary,
   type DifferentiatorsSummaryProps,
 } from "./DifferentiatorsSummary";
+export {
+  JurisdictionStatStrip,
+  EntityComparison,
+  FormationProcess,
+  CostBreakdown,
+  CombinedStructures,
+  ComplianceWarning,
+  type JurisdictionStatStripProps,
+  type EntityComparisonProps,
+  type FormationProcessProps,
+  type CostBreakdownProps,
+  type CombinedStructuresProps,
+} from "./JurisdictionSections";
 export { ContactHero, type ContactHeroProps } from "./ContactHero";
 export {
   ContactMethodCards,

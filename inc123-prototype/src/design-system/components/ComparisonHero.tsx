@@ -4,6 +4,10 @@ import {
   pillarBorderSoftMap,
   pillarSoftBgMap,
 } from "@/design-system/utils/pillarMaps";
+import {
+  Breadcrumbs,
+  type BreadcrumbItem,
+} from "@/design-system/components/Breadcrumbs";
 import { Icon } from "@/design-system/primitives/Icon";
 import type { PillarName } from "@/design-system/tokens";
 
@@ -22,6 +26,8 @@ export interface ComparisonHeroProps {
     winner: string;
     summary: string;
   };
+  /** Optional breadcrumb trail (Home > Pillar > Comparison) */
+  breadcrumbs?: BreadcrumbItem[];
   /** Additional class names */
   className?: string;
 }
@@ -34,11 +40,17 @@ function ComparisonHero({
   title,
   description,
   verdict,
+  breadcrumbs,
   className,
 }: ComparisonHeroProps) {
   return (
     <section className={cn("bg-primary-50", className)}>
       <div className="mx-auto max-w-wide px-container-x py-section-y-sm">
+        {/* Breadcrumbs */}
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <Breadcrumbs items={breadcrumbs} pillar={pillar} className="mb-4" />
+        )}
+
         {/* Eyebrow */}
         <p
           className={cn(

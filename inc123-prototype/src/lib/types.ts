@@ -321,6 +321,14 @@ export interface ComparisonPage {
   };
   relatedPackages: string[];
   faqs: FAQItem[];
+  /** Optional legal/tax disclaimer rendered prominently above the table */
+  disclaimer?: string;
+  /** Optional parent pillar breadcrumb override — defaults derived from pillar */
+  breadcrumbParent?: { label: string; href: string };
+  /** Optional SEO title override */
+  seoTitle?: string;
+  /** Optional SEO meta description */
+  seoMetaDescription?: string;
 }
 
 /** State Hub Pages */
@@ -493,11 +501,79 @@ export interface CheckoutTimelineStep {
 }
 
 /** Offshore Jurisdictions */
+export interface JurisdictionEntityType {
+  /** Entity type key, e.g. "llc" */
+  id: string;
+  /** Display label, e.g. "Nevis LLC" */
+  name: string;
+  /** Statutory framework reference */
+  framework?: string;
+  /** 4-6 bullet features for the comparison column */
+  features: string[];
+  /** Formation cost, display string, e.g. "$2,060" */
+  formationCost: string;
+  /** Annual renewal, display string, e.g. "$1,535/yr" */
+  annualRenewal: string;
+  /** Best-for label */
+  bestFor: string;
+  /** Marks this as the recommended entity type */
+  recommended?: boolean;
+}
+
+export interface JurisdictionFormationStep {
+  title: string;
+  description: string;
+}
+
+export interface JurisdictionCombinedStructure {
+  title: string;
+  description: string;
+  link?: { label: string; href: string };
+}
+
+export interface JurisdictionPricing {
+  inclusions: string[];
+  additionalCosts: Array<{ label: string; price: string }>;
+  renewalInclusions: string[];
+}
+
 export interface OffshoreJurisdiction {
   slug: string;
   name: string;
+  /** Jurisdiction country/region label, e.g. "St. Kitts and Nevis" */
+  region?: string;
+  /** Entity type label for hub card subtitle, e.g. "LLC & Corporation" */
+  entityType?: string;
+  /** Short tagline for hub card (1 sentence key advantage) */
+  tagline?: string;
   description: string;
+  /** Starting formation cost — display string like "$2,060" */
+  startingPrice?: string;
+  /** Annual renewal cost — display string like "$1,535/yr" */
+  annualRenewal?: string;
+  /** Formation timeline, e.g. "2–3 weeks" */
+  timeline?: string;
+  /** Whether this jurisdiction is in the primary spec set (Nevis/BVI/Panama/HK) */
+  primary?: boolean;
+  /** Note for prototype display, e.g. "Pricing pending David confirmation" */
+  pricingNote?: string;
+  /** Jurisdiction hero tagline — short, appears under H1 */
+  heroTagline?: string;
+  /** 3-item stat strip for the hero */
+  stats?: Array<{ label: string; value: string }>;
   advantages: Array<{ icon: string; title: string; description: string }>;
+  /** Entity types available (used for LLC vs. Corp comparison section) */
+  entityTypes?: JurisdictionEntityType[];
+  /** Recommendation text shown below the entity comparison */
+  entityRecommendation?: string;
+  /** KYC documents required for formation */
+  kycRequirements?: string[];
+  /** Ordered formation process steps */
+  formationSteps?: JurisdictionFormationStep[];
+  /** Detailed pricing breakdown */
+  pricing?: JurisdictionPricing;
+  /** Combined-structure patterns linking to domestic offerings */
+  combinedStructures?: JurisdictionCombinedStructure[];
   sections: Array<{
     id: string;
     type: "text" | "comparison" | "audience" | "differentiator";
@@ -519,6 +595,8 @@ export interface OffshoreData {
     headline: string;
     subheadline: string;
     description: string;
+    /** Hub-level FAQ items (rendered on /offshore/ itself) */
+    hubFaqs?: Array<{ id: string; question: string; answer: string }>;
   };
   jurisdictions: OffshoreJurisdiction[];
 }

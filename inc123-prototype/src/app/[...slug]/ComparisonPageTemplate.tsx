@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { ComparisonLayout } from "@/design-system/layouts/ComparisonLayout";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
+import { Alert } from "@/design-system/primitives/Alert";
 import { ComparisonHero } from "@/design-system/components/ComparisonHero";
 import { ComparisonTable } from "@/design-system/components/ComparisonTable";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
@@ -11,6 +13,20 @@ import { WinnerIndicator } from "@/design-system/components/WinnerIndicator";
 import { packages } from "@/data/packages";
 import { resolveLegacyPackageToTierUrl } from "@/lib/slug-registry";
 import type { ComparisonPage } from "@/lib/types";
+import type { PillarName } from "@/design-system/tokens";
+
+/* ------------------------------------------------
+   Pillar label/href defaults for breadcrumb
+   ------------------------------------------------ */
+const pillarBreadcrumbDefaults: Record<
+  PillarName,
+  { label: string; href: string }
+> = {
+  privacy: { label: "Business Privacy", href: "/privacy" },
+  asset: { label: "Asset Protection", href: "/asset-protection" },
+  formation: { label: "Company Formation", href: "/formation" },
+  compliance: { label: "Compliance", href: "/compliance" },
+};
 
 /* ------------------------------------------------
    Helper: resolve packages for DualPackageCTA
@@ -204,6 +220,25 @@ export function ComparisonPageTemplate({
 }: ComparisonPageTemplateProps) {
   const dualPackages = buildDualPackageItems(comparison.relatedPackages);
 
+  // Set page title
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title =
+      comparison.seoTitle ?? `${comparison.title} | Incorporate123`;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [comparison.seoTitle, comparison.title]);
+
+  // Build breadcrumb trail
+  const parent =
+    comparison.breadcrumbParent ?? pillarBreadcrumbDefaults[comparison.pillar];
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    parent,
+    { label: comparison.title, href: `/${comparison.slug}` },
+  ];
+
   const tableColumns = comparison.columns.map((col) => ({
     id: col.id,
     title: col.title,
@@ -220,6 +255,30 @@ export function ComparisonPageTemplate({
   const highlightColumn = comparison.columns.find((c) => c.badge)?.id;
   const crossPillar = crossPillarConfig[comparison.pillar];
   const suggestions = whereToGoSuggestions[comparison.pillar] ?? [];
+
+  // Schema — FAQPage + BreadcrumbList
+  const faqPageSchema =
+    comparison.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: comparison.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
+        }
+      : null;
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: b.label,
+      item: `https://incorporate123.com${b.href}`,
+    })),
+  };
 
   const decisionOptions = [
     {
@@ -257,10 +316,31 @@ export function ComparisonPageTemplate({
           title={comparison.title}
           description={comparison.description}
           verdict={comparison.verdict}
+          breadcrumbs={breadcrumbs}
         />
       }
     >
+      {/* Schema markup */}
+      {faqPageSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       <div className="space-y-16">
+        {comparison.disclaimer && (
+          <Alert
+            variant="warning"
+            title="Not Legal or Tax Advice"
+            description={comparison.disclaimer}
+          />
+        )}
+
         <section>
           <ComparisonTable
             columns={tableColumns}
