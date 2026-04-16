@@ -60,7 +60,7 @@ function DifferentiatorSection({
         <ScrollReveal>
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] rounded-3xl overflow-hidden bg-white/[0.06] border border-white/[0.12] mb-4 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_64px_-12px_rgba(0,0,0,0.15)]">
             <div className="p-10 lg:p-12">
-              <div className="font-mono type-display-xl font-semibold text-white/60 leading-none tracking-[-3px] mb-3">
+              <div className="font-mono type-display-xl font-semibold text-white/70 leading-none tracking-[-3px] mb-3">
                 365
               </div>
               <h3 className="font-display text-heading font-extrabold text-white mb-3.5">
@@ -75,13 +75,13 @@ function DifferentiatorSection({
             </div>
             <div className="flex flex-col items-center justify-center gap-4 p-10 lg:p-12 bg-white/[0.03]">
               <div className="w-full rounded-2xl bg-white/[0.06] border border-white/[0.12] p-4 text-center">
-                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/65 mb-2">
+                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/75 mb-2">
                   Competitors charge
                 </p>
-                <p className="font-mono text-heading font-semibold text-white/60 line-through decoration-white/40">
+                <p className="font-mono text-heading font-semibold text-white/70 line-through decoration-white/40">
                   $400–$5,000/yr
                 </p>
-                <p className="text-caption text-white/60 mt-1">
+                <p className="text-caption text-white/70 mt-1">
                   For nominee services alone
                 </p>
               </div>
@@ -92,7 +92,7 @@ function DifferentiatorSection({
                 <p className="font-mono text-heading font-semibold text-white">
                   Included
                 </p>
-                <p className="text-caption text-white/65 mt-1">
+                <p className="text-caption text-white/75 mt-1">
                   Plus offshore records, agent, EIN, all fees
                 </p>
               </div>
@@ -136,28 +136,28 @@ function DifferentiatorSection({
         <ScrollReveal delay={400}>
           <div className="mt-6 grid grid-cols-[1fr_auto_1fr] gap-5 items-center rounded-card-lg bg-accent/[0.05] border border-accent/[0.10] p-8 sm:px-10">
             <div className="text-center">
-              <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/65 mb-2">
+              <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/75 mb-2">
                 Competitors
               </p>
-              <p className="font-mono text-heading-lg font-semibold text-white/60 tracking-tight leading-none">
+              <p className="font-mono text-heading-lg font-semibold text-white/70 tracking-tight leading-none">
                 $400–$5,000
-                <span className="text-body-sm text-white/60">/yr</span>
+                <span className="text-body-sm text-white/70">/yr</span>
               </p>
-              <p className="text-body text-white/60 mt-1.5">
+              <p className="text-body text-white/70 mt-1.5">
                 For nominee services alone
               </p>
             </div>
-            <div className="font-display text-caption font-extrabold uppercase tracking-[0.15em] text-white/60">
+            <div className="font-display text-caption font-extrabold uppercase tracking-[0.15em] text-white/70">
               VS
             </div>
             <div className="text-center">
-              <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/65 mb-2">
+              <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/75 mb-2">
                 Incorporate123 Gold
               </p>
               <p className="font-mono text-heading-lg font-semibold text-white tracking-tight leading-none">
                 $1,275
               </p>
-              <p className="text-body text-white/65 mt-1.5">
+              <p className="text-body text-white/75 mt-1.5">
                 All-inclusive — nominees + 5 more services
               </p>
             </div>

@@ -29,7 +29,7 @@ export function JurisdictionStatStrip({
     <dl className={cn("mt-8 grid gap-4 sm:grid-cols-3", className)}>
       {stats.map((stat) => (
         <div key={stat.label}>
-          <dt className="text-body-sm text-white/60">{stat.label}</dt>
+          <dt className="text-body-sm text-white/70">{stat.label}</dt>
           <dd className="mt-1 font-display text-heading-sm font-bold text-white">
             {stat.value}
           </dd>

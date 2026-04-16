@@ -169,7 +169,7 @@ export default function OffshoreJurisdictionPage() {
             className="mb-6 [&_a]:text-white/70 [&_a:hover]:text-white [&_span[aria-current]]:text-white"
           />
           {jurisdiction.region && jurisdiction.region !== jurisdiction.name && (
-            <p className="mb-3 text-body-sm font-semibold uppercase tracking-wider text-white/60">
+            <p className="mb-3 text-body-sm font-semibold uppercase tracking-wider text-white/70">
               {jurisdiction.region}
             </p>
           )}
@@ -382,7 +382,7 @@ export default function OffshoreJurisdictionPage() {
             </a>
           </div>
           <div className="mx-auto mt-10 max-w-2xl border-t border-white/10 pt-8">
-            <p className="text-body-sm text-white/60">
+            <p className="text-body-sm text-white/70">
               Decided offshore isn&rsquo;t necessary? Most clients achieve
               strong privacy and asset protection with a domestic Wyoming Gold
               package.

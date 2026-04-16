@@ -42,7 +42,7 @@ export default function FormationPillarPage() {
             >
               Home
             </Link>
-            <span className="mx-2 text-white/50">/</span>
+            <span className="mx-2 text-white/70">/</span>
             <span className="text-white/90">Company Formation</span>
           </nav>
 
@@ -127,7 +127,7 @@ export default function FormationPillarPage() {
                     <p className="text-body-sm font-semibold text-white">
                       All-Inclusive Package
                     </p>
-                    <p className="text-caption text-white/50">
+                    <p className="text-caption text-white/70">
                       Everything below is included
                     </p>
                   </div>
@@ -656,7 +656,7 @@ export default function FormationPillarPage() {
                         Others: &ldquo;$49 Formation&rdquo;
                       </p>
                       <div className="space-y-1.5">
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Plus"
                             size="xs"
@@ -664,7 +664,7 @@ export default function FormationPillarPage() {
                           />{" "}
                           +$150 state filing fees
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Plus"
                             size="xs"
@@ -672,7 +672,7 @@ export default function FormationPillarPage() {
                           />{" "}
                           +$125 registered agent
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Plus"
                             size="xs"
@@ -680,7 +680,7 @@ export default function FormationPillarPage() {
                           />{" "}
                           +$70 EIN filing
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Plus"
                             size="xs"
@@ -695,7 +695,7 @@ export default function FormationPillarPage() {
                         Incorporate123: One Price
                       </p>
                       <div className="space-y-1.5">
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -703,7 +703,7 @@ export default function FormationPillarPage() {
                           />{" "}
                           State fees included
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -711,7 +711,7 @@ export default function FormationPillarPage() {
                           />{" "}
                           Registered agent included
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -719,7 +719,7 @@ export default function FormationPillarPage() {
                           />{" "}
                           EIN + operating agreement
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"

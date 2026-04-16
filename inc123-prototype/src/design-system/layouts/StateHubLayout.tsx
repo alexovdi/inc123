@@ -21,7 +21,7 @@ export function StateHubLayout({
       ) : (
         <div className="bg-primary text-white">
           <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-            <p className="text-body-sm font-semibold uppercase tracking-wider text-white/60 mb-2">
+            <p className="text-body-sm font-semibold uppercase tracking-wider text-white/70 mb-2">
               State Hub
             </p>
             <h1 className="font-display text-display-xl font-extrabold mb-3">

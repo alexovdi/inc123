@@ -43,7 +43,7 @@ export default function CompliancePillarPage() {
             >
               Home
             </Link>
-            <span className="mx-2 text-white/50">/</span>
+            <span className="mx-2 text-white/70">/</span>
             <span className="text-white/90">Compliance</span>
           </nav>
 
@@ -153,7 +153,7 @@ export default function CompliancePillarPage() {
                     </div>
                   ))}
                   <div className="pt-3 border-t border-white/[0.1]">
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
                       Next Deadline
                     </p>
                     <div className="flex items-center gap-2">
@@ -544,7 +544,7 @@ export default function CompliancePillarPage() {
                         Others: &ldquo;Registered Agent Only&rdquo;
                       </p>
                       <div className="space-y-1.5">
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -552,7 +552,7 @@ export default function CompliancePillarPage() {
                           />{" "}
                           Registered agent address
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="X"
                             size="xs"
@@ -560,7 +560,7 @@ export default function CompliancePillarPage() {
                           />{" "}
                           No annual report filing
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="X"
                             size="xs"
@@ -575,7 +575,7 @@ export default function CompliancePillarPage() {
                         Incorporate123: Full Compliance
                       </p>
                       <div className="space-y-1.5">
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -583,7 +583,7 @@ export default function CompliancePillarPage() {
                           />{" "}
                           Registered agent service
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -591,7 +591,7 @@ export default function CompliancePillarPage() {
                           />{" "}
                           Annual report filing
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"

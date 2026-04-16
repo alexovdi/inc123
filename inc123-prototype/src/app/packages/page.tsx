@@ -153,7 +153,7 @@ export default function PackagesPage() {
             >
               Home
             </DSLink>
-            <span className="mx-2 text-white/50">/</span>
+            <span className="mx-2 text-white/70">/</span>
             <span className="text-white/90" aria-current="page">
               Packages
             </span>

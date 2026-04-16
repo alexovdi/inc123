@@ -25,7 +25,7 @@ export function ThemeToggle() {
           : "Switch to wireframe theme"
       }
       title={theme === "wireframe" ? "Switch to Brand" : "Switch to Wireframe"}
-      className="fixed right-4 top-20 z-[60] rounded-pill bg-foreground/85 px-3 py-1.5 text-xs font-medium text-surface shadow-dropdown backdrop-blur transition-all hover:bg-foreground hover:opacity-100 opacity-60 max-sm:hidden"
+      className="fixed right-4 top-20 z-[60] rounded-pill bg-foreground/70 px-3 py-1.5 text-xs font-medium text-surface shadow-dropdown backdrop-blur transition-all hover:bg-foreground max-sm:hidden"
     >
       {theme === "wireframe" ? "Switch to Brand" : "Switch to Wireframe"}
     </button>

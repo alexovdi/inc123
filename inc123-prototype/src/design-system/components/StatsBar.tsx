@@ -19,7 +19,7 @@ export function StatsBar({ className }: { className?: string }) {
                 <span className="font-display text-display-lg font-medium text-white tracking-tight">
                   {stat.value}
                 </span>
-                <span className="mt-1 text-body-sm text-white/60">
+                <span className="mt-1 text-body-sm text-white/70">
                   {stat.label}
                 </span>
               </div>

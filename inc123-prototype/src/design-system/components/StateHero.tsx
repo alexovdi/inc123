@@ -27,7 +27,7 @@ function StateHero({ stateName, subtitle, facts, className }: StateHeroProps) {
     <section className={cn("bg-primary text-white", className)}>
       <div className="mx-auto max-w-content px-container-x py-section-y">
         {/* Eyebrow */}
-        <p className="text-body-sm font-semibold uppercase tracking-wider text-white/60 mb-3">
+        <p className="text-body-sm font-semibold uppercase tracking-wider text-white/70 mb-3">
           State Guide
         </p>
 
@@ -49,7 +49,7 @@ function StateHero({ stateName, subtitle, facts, className }: StateHeroProps) {
               role="listitem"
               className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2.5"
             >
-              <span className="text-body-sm font-medium text-white/60">
+              <span className="text-body-sm font-medium text-white/70">
                 {fact.label}:
               </span>
               <span className="text-body-sm font-semibold text-white">

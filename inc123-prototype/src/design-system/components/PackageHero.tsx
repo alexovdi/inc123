@@ -128,7 +128,7 @@ function PackageHero({
               return (
                 <span key={`${crumb.label}-${i}`} className="flex items-center">
                   {i > 0 && (
-                    <span className="mx-1 text-white/50" aria-hidden="true">
+                    <span className="mx-1 text-white/70" aria-hidden="true">
                       /
                     </span>
                   )}
@@ -191,7 +191,7 @@ function PackageHero({
               <div className="mt-8">
                 <p
                   id="state-selector-label"
-                  className="text-body-sm uppercase tracking-wider text-white/55 mb-3"
+                  className="text-body-sm uppercase tracking-wider text-white/70 mb-3"
                 >
                   {stateSelector.label ?? "Formation State"}
                 </p>
@@ -224,7 +224,7 @@ function PackageHero({
                             ? "bg-white text-primary"
                             : state.available
                               ? "bg-white/[0.08] border border-white/20 text-white/90 hover:bg-white/[0.14]"
-                              : "bg-white/[0.04] border border-white/10 text-white/55 cursor-not-allowed",
+                              : "bg-white/[0.04] border border-white/10 text-white/70 cursor-not-allowed",
                         )}
                       >
                         <span className="font-bold">{state.abbreviation}</span>
@@ -251,7 +251,7 @@ function PackageHero({
                 >
                   ${currentPrice.formation.toLocaleString()}
                 </span>
-                <span className="text-body text-white/60">all in</span>
+                <span className="text-body text-white/70">all in</span>
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
                 {badge && (
@@ -271,7 +271,7 @@ function PackageHero({
 
             {/* Entity type toggle */}
             <div className="mt-8">
-              <p className="text-body-sm uppercase tracking-wider text-white/55 mb-2">
+              <p className="text-body-sm uppercase tracking-wider text-white/70 mb-2">
                 Entity Type
               </p>
               <EntityTypeToggle

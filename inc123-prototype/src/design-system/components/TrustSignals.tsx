@@ -248,7 +248,7 @@ function TrustSignals({
               className={cn(
                 isCompact ? "text-caption" : "text-body-sm",
                 isDark
-                  ? "text-white/60"
+                  ? "text-white/70"
                   : isSubtle
                     ? "text-muted/70"
                     : "text-muted",

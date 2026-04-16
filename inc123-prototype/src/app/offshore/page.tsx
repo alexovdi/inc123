@@ -242,19 +242,19 @@ export default function OffshorePage() {
 
           <dl className="mt-10 grid max-w-2xl grid-cols-1 gap-4 text-body-sm sm:grid-cols-3">
             <div>
-              <dt className="text-white/60">Jurisdictions</dt>
+              <dt className="text-white/70">Jurisdictions</dt>
               <dd className="font-mono text-heading-sm font-bold text-white">
                 4 Primary
               </dd>
             </div>
             <div>
-              <dt className="text-white/60">Experience</dt>
+              <dt className="text-white/70">Experience</dt>
               <dd className="font-mono text-heading-sm font-bold text-white">
                 25 Years
               </dd>
             </div>
             <div>
-              <dt className="text-white/60">Offshore Services Since</dt>
+              <dt className="text-white/70">Offshore Services Since</dt>
               <dd className="font-mono text-heading-sm font-bold text-white">
                 2000
               </dd>
@@ -658,7 +658,7 @@ export default function OffshorePage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-2xl border-t border-white/10 pt-8">
-            <p className="text-body-sm text-white/60">
+            <p className="text-body-sm text-white/70">
               Interested in domestic services instead? Most clients start here.
             </p>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-body-sm">

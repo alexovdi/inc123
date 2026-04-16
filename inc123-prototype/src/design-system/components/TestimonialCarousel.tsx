@@ -40,6 +40,7 @@ function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
   return (
     <div
       className="flex items-center gap-0.5"
+      role="img"
       aria-label={`${rating} out of ${max} stars`}
     >
       {Array.from({ length: max }, (_, i) => (

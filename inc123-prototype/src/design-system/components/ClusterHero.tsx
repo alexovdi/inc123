@@ -95,14 +95,14 @@ function ClusterHero({
           >
             Home
           </Link>
-          <span className="mx-2 text-white/50">/</span>
+          <span className="mx-2 text-white/70">/</span>
           <RouterLink
             to={pillarHref}
             className="text-white/80 no-underline hover:text-white transition-colors"
           >
             {pillarLabel}
           </RouterLink>
-          <span className="mx-2 text-white/50">/</span>
+          <span className="mx-2 text-white/70">/</span>
           <span className="text-white/90" aria-current="page">
             {title}
           </span>

@@ -64,7 +64,7 @@ function ComplianceCallout({
             <span
               className={cn(
                 "text-body-sm font-semibold uppercase tracking-[0.15em]",
-                isDark ? "text-white/60" : "text-pillar-compliance",
+                isDark ? "text-white/70" : "text-pillar-compliance",
               )}
             >
               Compliance

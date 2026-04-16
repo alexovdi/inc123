@@ -346,7 +346,7 @@ function HomepageHero({
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/60 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-white/80" />
                 </span>
-                <span className="text-caption font-semibold tracking-[0.14em] uppercase text-white/60">
+                <span className="text-caption font-semibold tracking-[0.14em] uppercase text-white/70">
                   {eyebrow}
                 </span>
               </div>
@@ -408,13 +408,13 @@ function HomepageHero({
             {/* Safety net with links */}
             {phone && (
               <p
-                className="mt-5 text-body text-white/65 animate-hero-fade-in"
+                className="mt-5 text-body text-white/75 animate-hero-fade-in"
                 style={{ animationDelay: "1300ms" }}
               >
                 Prefer to talk?{" "}
                 <a
                   href={`tel:${phone.replace(/\D/g, "")}`}
-                  className="text-white/65 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
+                  className="text-white/75 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
                 >
                   Call {phone}
                 </a>
@@ -423,7 +423,7 @@ function HomepageHero({
                     {" · "}
                     <a
                       href={consultationHref}
-                      className="text-white/65 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
+                      className="text-white/75 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
                     >
                       Schedule a consultation
                     </a>
@@ -450,11 +450,11 @@ function HomepageHero({
                       <span className="font-display text-heading-lg font-semibold text-white/90 tracking-tight">
                         {stat.value}
                       </span>
-                      <span className="text-body-sm text-white/60">
+                      <span className="text-body-sm text-white/70">
                         {stat.unit}
                       </span>
                     </div>
-                    <p className="mt-1 text-caption text-white/60">
+                    <p className="mt-1 text-caption text-white/70">
                       {stat.label}
                     </p>
                   </div>

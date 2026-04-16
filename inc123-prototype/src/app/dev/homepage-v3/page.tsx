@@ -160,7 +160,7 @@ function V3HomepageHero() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
           <div className="flex-1 lg:basis-2/3">
             <p
-              className="text-body-sm font-medium text-white/60 mb-3 tracking-[0.15em] uppercase"
+              className="text-body-sm font-medium text-white/70 mb-3 tracking-[0.15em] uppercase"
               style={{
                 animation: "hero-fade-up 600ms var(--ease-out-expo) 100ms both",
               }}
@@ -203,7 +203,7 @@ function V3HomepageHero() {
             </div>
             {safetyNet && (
               <p
-                className="mt-4 text-body-sm text-white/50"
+                className="mt-4 text-body-sm text-white/70"
                 style={{
                   animation:
                     "hero-fade-in 600ms var(--ease-out-expo) 500ms both",
@@ -221,10 +221,10 @@ function V3HomepageHero() {
               {trustSnippets.map((snippet) => (
                 <div
                   key={snippet}
-                  className="flex items-center gap-2 text-body-sm text-white/60"
+                  className="flex items-center gap-2 text-body-sm text-white/70"
                 >
                   <CheckCircle
-                    className="h-4 w-4 shrink-0 text-white/40"
+                    className="h-4 w-4 shrink-0 text-white/70"
                     aria-hidden="true"
                   />
                   <span>{snippet}</span>
@@ -439,7 +439,7 @@ function V3StatsBar({ className }: { className?: string }) {
                 <span className="font-display text-display-lg font-medium text-white tracking-tight">
                   {stat.value}
                 </span>
-                <span className="mt-1 text-body-sm text-white/60">
+                <span className="mt-1 text-body-sm text-white/70">
                   {stat.label}
                 </span>
               </div>
@@ -737,7 +737,7 @@ export default function HomepageV3Archive() {
               </div>
               <div className="mt-8 lg:mt-0 lg:basis-1/3">
                 <div className="rounded-card bg-white/5 p-6">
-                  <p className="text-caption font-semibold text-white/50 uppercase tracking-[0.15em] mb-4">
+                  <p className="text-caption font-semibold text-white/70 uppercase tracking-[0.15em] mb-4">
                     We Handle
                   </p>
                   <ul className="space-y-3">

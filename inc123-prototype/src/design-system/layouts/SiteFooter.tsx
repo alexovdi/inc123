@@ -184,7 +184,7 @@ export function SiteFooter({
                   <span className="font-display text-[22px] font-bold text-white">
                     incorporate
                   </span>
-                  <span className="font-display text-[22px] font-bold text-secondary">
+                  <span className="font-display text-[22px] font-bold text-primary-400">
                     123
                   </span>
                 </RouterLink>

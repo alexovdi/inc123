@@ -43,7 +43,7 @@ export default function AssetProtectionPillarPage() {
             >
               Home
             </Link>
-            <span className="mx-2 text-white/50">/</span>
+            <span className="mx-2 text-white/70">/</span>
             <span className="text-white/90">Asset Protection</span>
           </nav>
 
@@ -130,11 +130,11 @@ export default function AssetProtectionPillarPage() {
 
                 {/* Unprotected scenario */}
                 <div className="mb-4">
-                  <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
+                  <p className="text-caption text-white/70 uppercase tracking-wider mb-2">
                     Without Protection
                   </p>
                   <div className="rounded bg-red-500/[0.08] border border-red-400/[0.15] px-3 py-2 space-y-1.5">
-                    <div className="flex items-center gap-2 text-body-sm text-white/40">
+                    <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
                         name="X"
                         size="xs"
@@ -142,7 +142,7 @@ export default function AssetProtectionPillarPage() {
                       />
                       Personal assets exposed to lawsuits
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm text-white/40">
+                    <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
                         name="X"
                         size="xs"
@@ -150,7 +150,7 @@ export default function AssetProtectionPillarPage() {
                       />
                       Creditors seize LLC assets directly
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm text-white/40">
+                    <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
                         name="X"
                         size="xs"
@@ -163,11 +163,11 @@ export default function AssetProtectionPillarPage() {
 
                 {/* Protected scenario */}
                 <div className="mb-4">
-                  <p className="text-caption text-white/60 uppercase tracking-wider mb-2">
+                  <p className="text-caption text-white/70 uppercase tracking-wider mb-2">
                     With Wyoming LLC Protection
                   </p>
                   <div className="rounded bg-success/[0.08] border border-success/[0.2] px-3 py-2 space-y-1.5">
-                    <div className="flex items-center gap-2 text-body-sm text-white/60">
+                    <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
                         name="Check"
                         size="xs"
@@ -175,7 +175,7 @@ export default function AssetProtectionPillarPage() {
                       />
                       Charging order limits creditor remedies
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm text-white/60">
+                    <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
                         name="Check"
                         size="xs"
@@ -183,7 +183,7 @@ export default function AssetProtectionPillarPage() {
                       />
                       Multi-entity isolation per asset class
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm text-white/60">
+                    <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
                         name="Check"
                         size="xs"
@@ -196,7 +196,7 @@ export default function AssetProtectionPillarPage() {
 
                 {/* Status */}
                 <div className="pt-3 border-t border-white/[0.1]">
-                  <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                  <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
                     Protection Status
                   </p>
                   <div className="flex items-center gap-2">
@@ -631,7 +631,7 @@ export default function AssetProtectionPillarPage() {
                       <p className="text-caption font-semibold text-pillar-asset uppercase tracking-wider mb-1">
                         Holding LLC (Wyoming)
                       </p>
-                      <p className="text-body-sm text-white/50">
+                      <p className="text-body-sm text-white/70">
                         Parent entity — charging order protected
                       </p>
                     </div>
@@ -643,9 +643,9 @@ export default function AssetProtectionPillarPage() {
                         <Icon
                           name="Building2"
                           size="xs"
-                          className="text-white/40 mx-auto mb-1"
+                          className="text-white/70 mx-auto mb-1"
                         />
-                        <p className="text-caption text-white/50">
+                        <p className="text-caption text-white/70">
                           Real Estate
                         </p>
                       </div>
@@ -653,9 +653,9 @@ export default function AssetProtectionPillarPage() {
                         <Icon
                           name="TrendingUp"
                           size="xs"
-                          className="text-white/40 mx-auto mb-1"
+                          className="text-white/70 mx-auto mb-1"
                         />
-                        <p className="text-caption text-white/50">
+                        <p className="text-caption text-white/70">
                           Investments
                         </p>
                       </div>
@@ -663,9 +663,9 @@ export default function AssetProtectionPillarPage() {
                         <Icon
                           name="Briefcase"
                           size="xs"
-                          className="text-white/40 mx-auto mb-1"
+                          className="text-white/70 mx-auto mb-1"
                         />
-                        <p className="text-caption text-white/50">Operations</p>
+                        <p className="text-caption text-white/70">Operations</p>
                       </div>
                     </div>
                   </div>

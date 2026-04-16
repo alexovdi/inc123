@@ -68,7 +68,7 @@ function DifferentiatorGrid({
                 <span>{item.label}</span>
                 {item.tooltip && (
                   <span
-                    className="cursor-help text-white/60"
+                    className="cursor-help text-white/70"
                     title={item.tooltip}
                   >
                     <CircleHelp className="h-4 w-4" aria-hidden="true" />
@@ -90,7 +90,7 @@ function DifferentiatorGrid({
               {/* Competitor value */}
               <div className="flex items-center justify-center gap-2">
                 <X
-                  className="h-4 w-4 shrink-0 text-white/60"
+                  className="h-4 w-4 shrink-0 text-white/70"
                   aria-hidden="true"
                 />
                 <span className="text-body-sm text-white/70">
@@ -114,7 +114,7 @@ function DifferentiatorGrid({
               <span>{item.label}</span>
               {item.tooltip && (
                 <span
-                  className="cursor-help text-white/60"
+                  className="cursor-help text-white/70"
                   title={item.tooltip}
                 >
                   <CircleHelp className="h-4 w-4" aria-hidden="true" />
@@ -136,7 +136,7 @@ function DifferentiatorGrid({
               </div>
               <div className="flex items-center gap-2">
                 <X
-                  className="h-4 w-4 shrink-0 text-white/60"
+                  className="h-4 w-4 shrink-0 text-white/70"
                   aria-hidden="true"
                 />
                 <span className="text-body-sm text-white/70">

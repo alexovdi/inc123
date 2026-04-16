@@ -42,7 +42,7 @@ export default function PrivacyPillarPage() {
             >
               Home
             </Link>
-            <span className="mx-2 text-white/50">/</span>
+            <span className="mx-2 text-white/70">/</span>
             <span className="text-white/90">Business Privacy</span>
           </nav>
 
@@ -129,7 +129,7 @@ export default function PrivacyPillarPage() {
                 {/* Mock "exposed" fields */}
                 <div className="space-y-4">
                   <div>
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
                       Member / Manager
                     </p>
                     <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
@@ -144,7 +144,7 @@ export default function PrivacyPillarPage() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
                       Registered Agent
                     </p>
                     <p className="font-mono text-body-sm text-white/80">
@@ -152,7 +152,7 @@ export default function PrivacyPillarPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
                       Records Location
                     </p>
                     <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
@@ -167,7 +167,7 @@ export default function PrivacyPillarPage() {
                     </div>
                   </div>
                   <div className="pt-3 border-t border-white/[0.1]">
-                    <p className="text-caption text-white/60 uppercase tracking-wider mb-1">
+                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
                       Filing Status
                     </p>
                     <div className="flex items-center gap-2">
@@ -455,7 +455,7 @@ export default function PrivacyPillarPage() {
                         Others: &ldquo;Nominee for a Day&rdquo;
                       </p>
                       <div className="space-y-1.5">
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -463,7 +463,7 @@ export default function PrivacyPillarPage() {
                           />{" "}
                           Nominee at formation
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="X"
                             size="xs"
@@ -471,7 +471,7 @@ export default function PrivacyPillarPage() {
                           />{" "}
                           Your name on annual reports
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/40">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="X"
                             size="xs"
@@ -486,7 +486,7 @@ export default function PrivacyPillarPage() {
                         Incorporate123: Year-Round
                       </p>
                       <div className="space-y-1.5">
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -494,7 +494,7 @@ export default function PrivacyPillarPage() {
                           />{" "}
                           Nominee at formation
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"
@@ -502,7 +502,7 @@ export default function PrivacyPillarPage() {
                           />{" "}
                           Nominee on annual reports
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm text-white/60">
+                        <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
                             name="Check"
                             size="xs"

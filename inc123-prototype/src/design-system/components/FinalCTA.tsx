@@ -78,11 +78,11 @@ function FinalCTA({ className }: FinalCTAProps) {
             </Button>
           </div>
 
-          <p className="mt-6 text-body text-white/60">
+          <p className="mt-6 text-body text-white/70">
             Or call us directly —{" "}
             <a
               href="tel:+18005530615"
-              className="text-white/65 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
+              className="text-white/75 underline underline-offset-[3px] decoration-white/30 hover:text-white hover:decoration-white transition-all"
             >
               1-800-553-0615
             </a>
