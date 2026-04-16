@@ -539,7 +539,7 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
                   </p>
                   <a
                     href="tel:1-800-553-0615"
-                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-2"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:underline hover:underline-offset-2 mt-2"
                   >
                     <Icon name="Phone" size="sm" />
                     Call 1-800-553-0615
@@ -547,7 +547,8 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
                   <br />
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 text-body-sm font-medium text-secondary hover:text-secondary/80 mt-1"
+                    variant="subtle"
+                    className="inline-flex items-center gap-2 text-body-sm font-medium mt-1"
                   >
                     <Icon name="Mail" size="sm" />
                     Send us a message
@@ -632,7 +633,6 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
                 >
                   1-800-553-0615
                 </a>
-                {" — real humans, real answers."}
               </p>
             </div>
           </div>

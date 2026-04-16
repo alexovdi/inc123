@@ -49,7 +49,7 @@ export default function PrivacyPillarPage() {
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-white/70 mb-4">
                 Business Privacy
               </p>
 
@@ -114,11 +114,11 @@ export default function PrivacyPillarPage() {
               <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
                 {/* Mock filing header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                  <div className="h-8 w-8 rounded-full bg-white/[0.12] flex items-center justify-center">
                     <Icon
                       name="FileText"
                       size="sm"
-                      className="text-secondary"
+                      className="text-white/70"
                     />
                   </div>
                   <div>
@@ -136,9 +136,9 @@ export default function PrivacyPillarPage() {
                       <Icon
                         name="ShieldCheck"
                         size="xs"
-                        className="text-secondary shrink-0"
+                        className="text-white/70 shrink-0"
                       />
-                      <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
+                      <p className="font-mono text-body-sm font-semibold text-white/70 tracking-wide">
                         NOMINEE PROTECTED
                       </p>
                     </div>
@@ -159,9 +159,9 @@ export default function PrivacyPillarPage() {
                       <Icon
                         name="Lock"
                         size="xs"
-                        className="text-secondary shrink-0"
+                        className="text-white/70 shrink-0"
                       />
-                      <p className="font-mono text-body-sm font-semibold text-secondary tracking-wide">
+                      <p className="font-mono text-body-sm font-semibold text-white/70 tracking-wide">
                         OFFSHORE CUSTODIAN
                       </p>
                     </div>
@@ -406,11 +406,11 @@ export default function PrivacyPillarPage() {
             <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
               <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="p-8 lg:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-secondary/20 mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-white/[0.12] mb-5">
                     <Icon
                       name="Calendar"
                       size="lg"
-                      className="text-secondary"
+                      className="text-white/70"
                     />
                   </div>
                   <h3 className="font-display text-heading-lg font-semibold text-white">
@@ -530,7 +530,7 @@ export default function PrivacyPillarPage() {
                     <Icon
                       name={item.icon}
                       size="md"
-                      className="text-secondary"
+                      className="text-white/70"
                     />
                   </div>
                   <h3 className="font-display text-body font-semibold text-white">

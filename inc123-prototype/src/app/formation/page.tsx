@@ -116,11 +116,11 @@ export default function FormationPillarPage() {
               <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-8 rounded-full bg-pillar-formation/20 flex items-center justify-center">
+                  <div className="h-8 w-8 rounded-full bg-white/[0.12] flex items-center justify-center">
                     <Icon
                       name="Building2"
                       size="sm"
-                      className="text-pillar-formation"
+                      className="text-pillar-formation-mid"
                     />
                   </div>
                   <div>
@@ -158,7 +158,7 @@ export default function FormationPillarPage() {
                 <div className="pt-4 mt-4 border-t border-white/[0.1]">
                   <div className="flex items-center gap-2">
                     <div className="h-2 w-2 rounded-full bg-pillar-formation animate-pulse" />
-                    <p className="font-mono text-body-sm text-pillar-formation">
+                    <p className="font-mono text-body-sm text-pillar-formation-mid">
                       $0 hidden fees — what you see is what you pay
                     </p>
                   </div>
@@ -201,8 +201,8 @@ export default function FormationPillarPage() {
       <section className="py-10 bg-surface border-b border-border">
         <div className="mx-auto max-w-content px-container-x">
           <div className="rounded-card-lg border border-secondary/20 bg-secondary/[0.03] p-6 md:p-8">
-            <div className="flex flex-col md:flex-row md:items-center gap-6">
-              <div className="flex-1">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 items-center">
+              <div>
                 <p className="text-body-lg font-display font-semibold text-foreground">
                   Know what you need?
                 </p>
@@ -609,11 +609,11 @@ export default function FormationPillarPage() {
             <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
               <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="p-8 lg:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-formation/20 mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-white/[0.12] mb-5">
                     <Icon
                       name="DollarSign"
                       size="lg"
-                      className="text-pillar-formation"
+                      className="text-pillar-formation-mid"
                     />
                   </div>
                   <h3 className="font-display text-heading-lg font-semibold text-white">

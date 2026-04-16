@@ -166,14 +166,14 @@ function ComparisonTable({
               <tr
                 key={ri}
                 className={cn(
-                  ri % 2 === 0 ? "bg-primary/[0.02]" : "bg-transparent",
+                  ri % 2 === 0 ? "bg-primary-50/50" : "bg-background",
                 )}
               >
                 {/* Row label (sticky on mobile) */}
                 <td
                   className={cn(
                     "sticky left-0 z-10 p-4 text-body-sm font-medium text-foreground border-b border-border/50",
-                    ri % 2 === 0 ? "bg-primary/[0.02]" : "bg-background",
+                    ri % 2 === 0 ? "bg-primary-50/50" : "bg-background",
                   )}
                 >
                   {row.tooltip ? (

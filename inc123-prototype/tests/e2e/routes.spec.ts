@@ -30,7 +30,7 @@ const ALL_ROUTES = [
   "/wyoming-asset-protection",
   "/nevada-asset-protection",
   "/investment-holding-llc",
-  "/real-estate",
+  "/real-estate-asset-protection",
 
   // Formation clusters (flat)
   "/wyoming-llc",

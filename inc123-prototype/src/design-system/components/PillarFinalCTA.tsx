@@ -34,7 +34,7 @@ function PillarFinalCTA({
     >
       <div className="mx-auto max-w-content px-container-x py-section-y-sm">
         <ScrollReveal>
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-center">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:items-start">
             {/* Left: Statement */}
             <div>
               <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold text-white leading-[1.15] tracking-tight">
@@ -75,7 +75,6 @@ function PillarFinalCTA({
                 >
                   1-800-553-0615
                 </a>
-                {" — real humans, real answers."}
               </p>
             </div>
           </div>

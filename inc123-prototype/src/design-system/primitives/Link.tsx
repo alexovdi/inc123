@@ -15,7 +15,7 @@ const linkVariants = cva(
           "text-link no-underline hover:underline hover:underline-offset-2",
         nav: "text-foreground no-underline font-medium hover:text-link",
         breadcrumb:
-          "text-muted no-underline text-body-sm hover:text-foreground",
+          "text-muted no-underline text-body-sm hover:text-foreground hover:underline hover:underline-offset-2",
       },
     },
     defaultVariants: {

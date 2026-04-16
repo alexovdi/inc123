@@ -1,5 +1,5 @@
-import { type FormEvent, useEffect, useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { Icon } from "@/design-system/primitives/Icon";
 import { cn } from "@/design-system/utils/cn";
 
@@ -65,9 +65,6 @@ const PILLAR_ICON_BG: Record<Pillar, string> = {
 };
 
 export default function NotFound() {
-  const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-
   useEffect(() => {
     // Set page title + robots meta (noindex, follow)
     const previousTitle = document.title;
@@ -107,16 +104,6 @@ export default function NotFound() {
     };
   }, []);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const trimmed = query.trim();
-    if (trimmed) {
-      navigate(`/faq?q=${encodeURIComponent(trimmed)}`);
-    } else {
-      navigate("/faq");
-    }
-  };
-
   return (
     <main className="bg-background px-container-x py-section-y">
       <div className="mx-auto max-w-content">
@@ -135,32 +122,9 @@ export default function NotFound() {
           </p>
           <p className="mx-auto mt-6 max-w-xl text-body text-muted">
             The page you&rsquo;re looking for may have moved during our recent
-            site update. Try searching below, or choose from our most popular
-            pages.
+            site update. Choose from our most popular pages, or explore by
+            pillar.
           </p>
-
-          {/* Search Box */}
-          <form onSubmit={handleSubmit} className="mx-auto mt-8 max-w-xl">
-            <div className="flex items-stretch gap-2 rounded-button border border-border bg-surface p-1.5 shadow-card focus-within:ring-2 focus-within:ring-secondary">
-              <div className="flex items-center pl-3 text-muted">
-                <Icon name="Search" size="md" />
-              </div>
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search for a service, state, or topic..."
-                aria-label="Search the site"
-                className="flex-1 bg-transparent px-2 py-3 text-body-lg text-foreground placeholder:text-muted/60 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-2.5 font-semibold text-white hover:bg-secondary/90"
-              >
-                Search
-              </button>
-            </div>
-          </form>
         </div>
 
         {/* Pillar Grid */}

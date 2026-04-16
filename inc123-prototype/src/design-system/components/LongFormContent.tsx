@@ -130,7 +130,7 @@ function KeyPointsGrid({
             <p className="text-body-sm font-semibold text-foreground mb-0.5">
               {point.title}
             </p>
-            <p className="text-caption text-muted leading-snug">
+            <p className="text-body-sm text-muted leading-snug">
               {point.description}
             </p>
           </div>

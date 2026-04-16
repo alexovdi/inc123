@@ -115,11 +115,11 @@ export default function AssetProtectionPillarPage() {
               <div className="rounded-card-lg bg-white/[0.06] border border-white/[0.1] p-8 backdrop-blur-sm">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-8 rounded-full bg-pillar-asset/20 flex items-center justify-center">
+                  <div className="h-8 w-8 rounded-full bg-white/[0.12] flex items-center justify-center">
                     <Icon
                       name="Shield"
                       size="sm"
-                      className="text-pillar-asset"
+                      className="text-pillar-asset-mid"
                     />
                   </div>
                   <div>
@@ -582,11 +582,11 @@ export default function AssetProtectionPillarPage() {
             <div className="mt-12 rounded-card-lg bg-white/[0.06] border border-white/[0.1] overflow-hidden">
               <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="p-8 lg:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-pillar-asset/20 mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-white/[0.12] mb-5">
                     <Icon
                       name="Shield"
                       size="lg"
-                      className="text-pillar-asset"
+                      className="text-pillar-asset-mid"
                     />
                   </div>
                   <h3 className="font-display text-heading-lg font-semibold text-white">
@@ -631,7 +631,7 @@ export default function AssetProtectionPillarPage() {
                   {/* Multi-entity structure visual */}
                   <div className="w-full max-w-[280px] space-y-4">
                     <div className="rounded-card bg-pillar-asset/[0.08] border border-pillar-asset/[0.15] p-4 text-center">
-                      <p className="text-caption font-semibold text-pillar-asset uppercase tracking-wider mb-1">
+                      <p className="text-caption font-semibold text-pillar-asset-mid uppercase tracking-wider mb-1">
                         Holding LLC (Wyoming)
                       </p>
                       <p className="text-body-sm text-white/70">
@@ -689,7 +689,7 @@ export default function AssetProtectionPillarPage() {
                     <Icon
                       name={item.icon}
                       size="md"
-                      className="text-pillar-asset"
+                      className="text-pillar-asset-mid"
                     />
                   </div>
                   <h3 className="font-display text-body font-semibold text-white">
@@ -709,7 +709,7 @@ export default function AssetProtectionPillarPage() {
           S7: SOCIAL PROOF STRIP
           ================================================ */}
       <SocialProofStrip
-        pillarColor="text-pillar-asset"
+        pillarColor="text-pillar-asset-mid"
         badges={ASSET_TRUST_BADGES}
         testimonial={ASSET_TESTIMONIAL}
       />
@@ -725,7 +725,7 @@ export default function AssetProtectionPillarPage() {
         statLabel="of Gold clients add privacy services"
         ctaLabel="See Gold Packages"
         ctaHref="#packages"
-        pillarColor="text-pillar-asset"
+        pillarColor="text-pillar-asset-mid"
       />
 
       {/* ================================================
