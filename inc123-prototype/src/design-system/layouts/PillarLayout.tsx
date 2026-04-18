@@ -1,3 +1,4 @@
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { cn } from "@/design-system/utils/cn";
 import {
   pillarAccentMap,
@@ -34,16 +35,14 @@ export function PillarLayout({
       ) : (
         <div className={cn("border-t-4", pillarAccentMap[pillar])}>
           <div className="mx-auto max-w-content px-container-x py-section-y-sm">
-            <p
-              className={cn(
-                "text-body-sm font-semibold uppercase tracking-wider mb-2",
-                pillarTextMap[pillar],
-              )}
+            <Eyebrow
+              tone="inherit"
+              className={cn("mb-2", pillarTextMap[pillar])}
             >
               {pillar === "asset"
                 ? "Asset Protection"
                 : pillar.charAt(0).toUpperCase() + pillar.slice(1)}
-            </p>
+            </Eyebrow>
             <h1 className="font-display text-display-lg font-bold text-foreground mb-3">
               {title}
             </h1>

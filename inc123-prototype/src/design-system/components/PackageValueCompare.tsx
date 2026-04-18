@@ -1,4 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
@@ -48,9 +49,9 @@ function PackageValueCompare({
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
         {/* LEFT — Our package */}
         <div>
-          <p className="text-caption font-semibold uppercase tracking-wider text-secondary mb-3">
+          <Eyebrow size="sm" className="mb-3">
             Incorporate123
-          </p>
+          </Eyebrow>
           <div className="flex items-baseline gap-2">
             <span className="font-mono text-display-sm font-bold text-foreground">
               {ourTotal}
@@ -87,9 +88,9 @@ function PackageValueCompare({
 
         {/* RIGHT — Assembled elsewhere */}
         <div className="lg:border-l lg:border-border lg:pl-12">
-          <p className="text-caption font-semibold uppercase tracking-wider text-muted mb-3">
+          <Eyebrow size="sm" tone="muted" className="mb-3">
             Assembled elsewhere
-          </p>
+          </Eyebrow>
           <div className="flex items-baseline gap-2">
             <span className="font-mono text-display-sm font-bold text-muted">
               {theirTotalLow}

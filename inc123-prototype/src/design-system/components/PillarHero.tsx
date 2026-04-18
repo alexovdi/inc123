@@ -4,6 +4,7 @@ import {
   pillarBgMap,
   pillarBorderMap,
 } from "@/design-system/utils/pillarMaps";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import type { PillarName } from "@/design-system/tokens";
 
@@ -49,14 +50,9 @@ function PillarHero({
     <section className={cn("w-full", className)}>
       <div className="mx-auto max-w-content px-container-x py-section-y-sm">
         {/* Eyebrow */}
-        <p
-          className={cn(
-            "text-body-sm font-semibold uppercase tracking-wider mb-3",
-            pillarTextMap[pillar],
-          )}
-        >
+        <Eyebrow tone="inherit" className={cn("mb-3", pillarTextMap[pillar])}>
           {eyebrow}
-        </p>
+        </Eyebrow>
 
         {/* Headline */}
         <h1 className="font-display text-display-lg font-bold text-foreground mb-4 max-w-narrow">
@@ -100,9 +96,7 @@ function PillarHero({
         </div>
 
         {/* Safety net */}
-        {safetyNet && (
-          <p className="text-body text-muted mb-4">{safetyNet}</p>
-        )}
+        {safetyNet && <p className="text-body text-muted mb-4">{safetyNet}</p>}
 
         {/* Trust snippet */}
         <div className="flex items-center gap-2 text-body-sm text-muted">

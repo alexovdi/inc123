@@ -16,6 +16,7 @@ import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
 import { UpgradesPreview } from "@/design-system/components/UpgradesPreview";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import {
   getTransactionalFaqs,
@@ -495,12 +496,13 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                   borderColor: `var(--tier-${metallic}-mid)`,
                 }}
               >
-                <p
-                  className="text-body-sm font-semibold uppercase tracking-wider mb-5"
+                <Eyebrow
+                  tone="inherit"
+                  className="mb-5"
                   style={{ color: metallicInk }}
                 >
                   Built for
-                </p>
+                </Eyebrow>
                 <ul className="space-y-4">
                   {content.audience.map((line) => (
                     <li

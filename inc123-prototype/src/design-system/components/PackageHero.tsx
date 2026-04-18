@@ -2,6 +2,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { cn } from "@/design-system/utils/cn";
 import { Badge } from "@/design-system/primitives/Badge";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { Link } from "@/design-system/primitives/Link";
 import { GrainOverlay } from "./GrainOverlay";
@@ -189,12 +190,13 @@ function PackageHero({
             {/* State selector chips */}
             {stateSelector && stateSelector.states.length > 0 && (
               <div className="mt-8">
-                <p
+                <Eyebrow
                   id="state-selector-label"
-                  className="text-body-sm uppercase tracking-wider text-white/70 mb-3"
+                  tone="onDark"
+                  className="mb-3"
                 >
                   {stateSelector.label ?? "Formation State"}
-                </p>
+                </Eyebrow>
                 <div
                   className="flex flex-wrap gap-2"
                   role="radiogroup"
@@ -271,9 +273,9 @@ function PackageHero({
 
             {/* Entity type toggle */}
             <div className="mt-8">
-              <p className="text-body-sm uppercase tracking-wider text-white/70 mb-2">
+              <Eyebrow tone="onDark" className="mb-2">
                 Entity Type
-              </p>
+              </Eyebrow>
               <EntityTypeToggle
                 dark
                 options={[

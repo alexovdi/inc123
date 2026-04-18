@@ -1,3 +1,4 @@
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { cn } from "@/design-system/utils/cn";
 import { pillarTextMap } from "@/design-system/utils/pillarMaps";
 import type { PillarName } from "@/design-system/tokens";
@@ -30,14 +31,12 @@ export function ComparisonLayout({
         <div className="bg-primary-50">
           <div className="mx-auto max-w-wide px-container-x py-section-y-sm">
             {pillar && (
-              <p
-                className={cn(
-                  "text-body-sm font-semibold uppercase tracking-wider mb-2",
-                  pillarTextMap[pillar],
-                )}
+              <Eyebrow
+                tone="inherit"
+                className={cn("mb-2", pillarTextMap[pillar])}
               >
                 Comparison
-              </p>
+              </Eyebrow>
             )}
             <h1 className="font-display text-display-lg font-bold text-foreground mb-3">
               {title}

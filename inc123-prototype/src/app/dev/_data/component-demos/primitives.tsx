@@ -6,6 +6,7 @@ import { Badge } from "@/design-system/primitives/Badge";
 import { Button } from "@/design-system/primitives/Button";
 import { Checkbox } from "@/design-system/primitives/Checkbox";
 import { Divider } from "@/design-system/primitives/Divider";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { Input } from "@/design-system/primitives/Input";
 import { Link } from "@/design-system/primitives/Link";
@@ -1333,6 +1334,70 @@ export function SkeletonDemo() {
           { label: "Image", value: "w-full aspect-video rounded-card" },
           { label: "Avatar", value: "rounded-full (40×40 default)" },
           { label: "Card", value: "w-full rounded-card (h-48 default)" },
+        ]}
+      />
+    </div>
+  );
+}
+
+/* ================================================================
+   EYEBROW
+   ================================================================ */
+export function EyebrowDemo() {
+  return (
+    <div className="space-y-8">
+      <DemoSection title="Sizes">
+        <div className="space-y-4">
+          <Eyebrow size="md">Default (md) — text-body-sm</Eyebrow>
+          <Eyebrow size="sm">Small (sm) — text-caption</Eyebrow>
+        </div>
+      </DemoSection>
+
+      <DemoSection title="Tones">
+        <div className="space-y-3">
+          <Eyebrow tone="secondary">Secondary (default)</Eyebrow>
+          <Eyebrow tone="accent">Accent</Eyebrow>
+          <Eyebrow tone="muted">Muted</Eyebrow>
+          <Eyebrow tone="success">Success</Eyebrow>
+        </div>
+      </DemoSection>
+
+      <DemoSection title="On dark surface">
+        <div className="space-y-3 bg-primary p-6 rounded-card">
+          <Eyebrow tone="onDark">On Dark (default)</Eyebrow>
+          <Eyebrow tone="onDarkStrong">On Dark Strong</Eyebrow>
+        </div>
+      </DemoSection>
+
+      <DemoSection title="Inherit tone — for pillar colors via className">
+        <div className="space-y-3">
+          <Eyebrow tone="inherit" className="text-pillar-privacy">
+            Business Privacy
+          </Eyebrow>
+          <Eyebrow tone="inherit" className="text-pillar-asset">
+            Asset Protection
+          </Eyebrow>
+          <Eyebrow tone="inherit" className="text-pillar-formation">
+            Company Formation
+          </Eyebrow>
+          <Eyebrow tone="inherit" className="text-pillar-compliance">
+            Compliance
+          </Eyebrow>
+        </div>
+      </DemoSection>
+
+      <SpecPanel
+        title="Eyebrow Specifications"
+        items={[
+          { label: "Base", value: "font-semibold uppercase tracking-[0.15em]" },
+          { label: "Size md", value: "text-body-sm (0.875rem)" },
+          { label: "Size sm", value: "text-caption (0.75rem)" },
+          {
+            label: "Tones",
+            value:
+              "secondary, accent, muted, success, onDark, onDarkStrong, inherit",
+          },
+          { label: "Element", value: "<p>" },
         ]}
       />
     </div>

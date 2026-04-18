@@ -1,3 +1,4 @@
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { cn } from "@/design-system/utils/cn";
 
 export interface AboutStoryProps {
@@ -11,9 +12,7 @@ function AboutStory({ heading, paragraphs, className }: AboutStoryProps) {
     <section className={cn("py-section-y px-container-x", className)}>
       <div className="mx-auto max-w-content">
         <div className="mx-auto max-w-narrow">
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
-            Since 2000
-          </p>
+          <Eyebrow>Since 2000</Eyebrow>
           <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
             {heading}
           </h2>

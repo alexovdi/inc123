@@ -10,6 +10,7 @@ import { IntentRoutingCard } from "@/design-system/components/IntentRoutingCard"
 import { PackagePreviewCard } from "@/design-system/components/PackagePreviewCard";
 import { StateHero } from "@/design-system/components/StateHero";
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import type { StateHub } from "@/lib/types";
 
 /* ------------------------------------------------
@@ -50,9 +51,9 @@ function StateComparisonSection({
   return (
     <section>
       <div className="text-center mb-10">
-        <p className="text-body-sm font-semibold uppercase tracking-wider text-muted mb-3">
+        <Eyebrow tone="muted" className="mb-3">
           {comparison.eyebrow}
-        </p>
+        </Eyebrow>
         <h2 className="font-display text-heading-lg font-bold text-foreground">
           {comparison.title}
         </h2>
@@ -132,9 +133,9 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
           {/* Section 2 — Intent Routing Cards */}
           <section>
             <div className="text-center mb-10">
-              <p className="text-body-sm font-semibold uppercase tracking-wider text-muted mb-3">
+              <Eyebrow tone="muted" className="mb-3">
                 What do you need in {state.name}?
-              </p>
+              </Eyebrow>
               <h2 className="font-display text-heading-lg font-bold text-foreground">
                 Choose Your Starting Point
               </h2>
@@ -163,9 +164,9 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
           {statePackages.length > 0 && (
             <section>
               <div className="text-center mb-10">
-                <p className="text-body-sm font-semibold uppercase tracking-wider text-muted mb-3">
+                <Eyebrow tone="muted" className="mb-3">
                   {state.name} Packages
-                </p>
+                </Eyebrow>
                 <h2 className="font-display text-heading-lg font-bold text-foreground">
                   {state.name} Formation — All-Inclusive Pricing
                 </h2>
@@ -218,9 +219,9 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
           {/* Section 4 — Why Choose [State] */}
           <section>
             <div className="text-center mb-10">
-              <p className="text-body-sm font-semibold uppercase tracking-wider text-muted mb-3">
+              <Eyebrow tone="muted" className="mb-3">
                 Why {state.name}
-              </p>
+              </Eyebrow>
               <h2 className="font-display text-heading-lg font-bold text-foreground">
                 Why Choose {state.name}?
               </h2>
@@ -232,9 +233,9 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
           {/* Section 5 — All [State] Services */}
           <section>
             <div className="text-center mb-10">
-              <p className="text-body-sm font-semibold uppercase tracking-wider text-muted mb-3">
+              <Eyebrow tone="muted" className="mb-3">
                 All {state.name} Services
-              </p>
+              </Eyebrow>
               <h2 className="font-display text-heading-lg font-bold text-foreground">
                 Everything We Offer for {state.name} Entities
               </h2>
@@ -252,9 +253,9 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
           {state.faqs.length > 0 && (
             <section>
               <div className="text-center mb-10">
-                <p className="text-body-sm font-semibold uppercase tracking-wider text-muted mb-3">
+                <Eyebrow tone="muted" className="mb-3">
                   Frequently Asked Questions
-                </p>
+                </Eyebrow>
                 <h2 className="font-display text-heading-lg font-bold text-foreground">
                   {state.name} FAQ
                 </h2>

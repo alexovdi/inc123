@@ -8,6 +8,7 @@ import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { UpsellBridge } from "@/design-system/components/UpsellBridge";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
@@ -130,9 +131,9 @@ export default function AssetProtectionPillarPage() {
 
                 {/* Unprotected scenario */}
                 <div className="mb-4">
-                  <p className="text-caption text-white/70 uppercase tracking-wider mb-2">
+                  <Eyebrow size="sm" tone="onDark" className="mb-2">
                     Without Protection
-                  </p>
+                  </Eyebrow>
                   <div className="rounded bg-red-500/[0.08] border border-red-400/[0.15] px-3 py-2 space-y-1.5">
                     <div className="flex items-center gap-2 text-body-sm text-white/70">
                       <Icon
@@ -163,9 +164,9 @@ export default function AssetProtectionPillarPage() {
 
                 {/* Protected scenario */}
                 <div className="mb-4">
-                  <p className="text-caption text-white/70 uppercase tracking-wider mb-2">
+                  <Eyebrow size="sm" tone="onDark" className="mb-2">
                     With Wyoming LLC Protection
-                  </p>
+                  </Eyebrow>
                   <div className="rounded bg-pillar-asset/[0.08] border border-pillar-asset-mid/[0.25] px-3 py-2 space-y-1.5">
                     <div className="flex items-center gap-2 text-body-sm text-white/85">
                       <Icon
@@ -196,9 +197,9 @@ export default function AssetProtectionPillarPage() {
 
                 {/* Status */}
                 <div className="pt-3 border-t border-white/[0.1]">
-                  <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
+                  <Eyebrow size="sm" tone="onDark" className="mb-1">
                     Protection Status
-                  </p>
+                  </Eyebrow>
                   <div className="flex items-center gap-2">
                     <div className="h-2 w-2 rounded-full bg-pillar-asset-mid animate-pulse" />
                     <p className="font-mono text-body-sm text-pillar-asset-mid">
@@ -299,9 +300,13 @@ export default function AssetProtectionPillarPage() {
                   in a lawsuit. Uses LLC structures and state law to shield your
                   wealth.
                 </p>
-                <p className="mt-3 text-caption font-semibold text-pillar-asset uppercase tracking-wider">
+                <Eyebrow
+                  size="sm"
+                  tone="inherit"
+                  className="mt-3 text-pillar-asset"
+                >
                   You are here
-                </p>
+                </Eyebrow>
               </div>
             </div>
 
@@ -631,9 +636,13 @@ export default function AssetProtectionPillarPage() {
                   {/* Multi-entity structure visual */}
                   <div className="w-full max-w-[280px] space-y-4">
                     <div className="rounded-card bg-pillar-asset/[0.08] border border-pillar-asset/[0.15] p-4 text-center">
-                      <p className="text-caption font-semibold text-pillar-asset-mid uppercase tracking-wider mb-1">
+                      <Eyebrow
+                        size="sm"
+                        tone="inherit"
+                        className="mb-1 text-pillar-asset-mid"
+                      >
                         Holding LLC (Wyoming)
-                      </p>
+                      </Eyebrow>
                       <p className="text-body-sm text-white/70">
                         Parent entity — charging order protected
                       </p>

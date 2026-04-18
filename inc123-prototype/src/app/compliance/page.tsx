@@ -11,6 +11,7 @@ import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { UpsellBridge } from "@/design-system/components/UpsellBridge";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
@@ -153,9 +154,9 @@ export default function CompliancePillarPage() {
                     </div>
                   ))}
                   <div className="pt-3 border-t border-white/[0.1]">
-                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
+                    <Eyebrow size="sm" tone="onDark" className="mb-1">
                       Next Deadline
-                    </p>
+                    </Eyebrow>
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
                       <p className="font-mono text-body-sm text-success">
@@ -540,9 +541,13 @@ export default function CompliancePillarPage() {
                   {/* VS comparison visual */}
                   <div className="w-full max-w-[280px] space-y-4">
                     <div className="rounded-card bg-red-500/[0.08] border border-red-400/[0.15] p-4">
-                      <p className="text-caption font-semibold text-red-400/80 uppercase tracking-wider mb-2">
+                      <Eyebrow
+                        size="sm"
+                        tone="inherit"
+                        className="mb-2 text-red-400/80"
+                      >
                         Others: &ldquo;Registered Agent Only&rdquo;
-                      </p>
+                      </Eyebrow>
                       <div className="space-y-1.5">
                         <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
@@ -571,9 +576,9 @@ export default function CompliancePillarPage() {
                       </div>
                     </div>
                     <div className="rounded-card bg-success/[0.08] border border-success/[0.2] p-4">
-                      <p className="text-caption font-semibold text-success uppercase tracking-wider mb-2">
+                      <Eyebrow size="sm" tone="success" className="mb-2">
                         Incorporate123: Full Compliance
-                      </p>
+                      </Eyebrow>
                       <div className="space-y-1.5">
                         <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon

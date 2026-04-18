@@ -10,6 +10,7 @@ import type {
   JurisdictionPricing,
 } from "@/lib/types";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { cn } from "@/design-system/utils/cn";
 
@@ -59,9 +60,7 @@ export function EntityComparison({
     <section className="bg-surface py-section-y px-container-x">
       <div className="mx-auto max-w-content">
         <div className="mb-8">
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
-            Entity Options
-          </p>
+          <Eyebrow>Entity Options</Eyebrow>
           <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
             {jurisdictionName} — Entity Comparison
           </h2>
@@ -181,9 +180,7 @@ export function FormationProcess({
     <section className="bg-background py-section-y px-container-x">
       <div className="mx-auto max-w-content">
         <div className="mx-auto max-w-narrow">
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
-            Formation Process
-          </p>
+          <Eyebrow>Formation Process</Eyebrow>
           <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
             How {jurisdictionName} Formation Works
           </h2>
@@ -289,9 +286,7 @@ export function CostBreakdown({
     <section className="bg-surface py-section-y px-container-x">
       <div className="mx-auto max-w-content">
         <div className="mx-auto max-w-narrow">
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
-            Pricing
-          </p>
+          <Eyebrow>Pricing</Eyebrow>
           <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
             {jurisdictionName} — All-Inclusive Pricing
           </h2>
@@ -426,9 +421,7 @@ export function CombinedStructures({
     <section className="bg-background py-section-y px-container-x">
       <div className="mx-auto max-w-content">
         <div className="mx-auto max-w-narrow">
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
-            Combined Structures
-          </p>
+          <Eyebrow>Combined Structures</Eyebrow>
           <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
             How {jurisdictionName} Works Alongside Your Domestic Entity
           </h2>
@@ -476,9 +469,7 @@ export function ComplianceWarning() {
     <section className="bg-surface py-section-y px-container-x">
       <div className="mx-auto max-w-content">
         <div className="mx-auto max-w-narrow rounded-card border-t-4 border-accent bg-background p-6 shadow-card md:p-8">
-          <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-accent">
-            U.S. Tax Obligations
-          </p>
+          <Eyebrow tone="accent">U.S. Tax Obligations</Eyebrow>
           <h2 className="mt-2 font-display text-heading-sm font-bold text-foreground">
             If you are a U.S. citizen, resident, or green card holder, owning
             this entity triggers federal reporting requirements:

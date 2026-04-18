@@ -7,6 +7,7 @@ import { PackageComparison } from "@/design-system/components/PackageComparison"
 import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
@@ -115,11 +116,7 @@ export default function PrivacyPillarPage() {
                 {/* Mock filing header */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-8 w-8 rounded-full bg-white/[0.12] flex items-center justify-center">
-                    <Icon
-                      name="FileText"
-                      size="sm"
-                      className="text-white/70"
-                    />
+                    <Icon name="FileText" size="sm" className="text-white/70" />
                   </div>
                   <div>
                     <div className="h-2.5 w-32 rounded-full bg-white/20" />
@@ -129,9 +126,9 @@ export default function PrivacyPillarPage() {
                 {/* Mock "exposed" fields */}
                 <div className="space-y-4">
                   <div>
-                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
+                    <Eyebrow size="sm" tone="onDark" className="mb-1">
                       Member / Manager
-                    </p>
+                    </Eyebrow>
                     <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
                       <Icon
                         name="ShieldCheck"
@@ -144,17 +141,17 @@ export default function PrivacyPillarPage() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
+                    <Eyebrow size="sm" tone="onDark" className="mb-1">
                       Registered Agent
-                    </p>
+                    </Eyebrow>
                     <p className="font-mono text-body-sm text-white/80">
                       Incorporate123 Registered Agent
                     </p>
                   </div>
                   <div>
-                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
+                    <Eyebrow size="sm" tone="onDark" className="mb-1">
                       Records Location
-                    </p>
+                    </Eyebrow>
                     <div className="flex items-center gap-2 rounded bg-secondary/[0.15] border border-secondary/20 px-3 py-2">
                       <Icon
                         name="Lock"
@@ -167,9 +164,9 @@ export default function PrivacyPillarPage() {
                     </div>
                   </div>
                   <div className="pt-3 border-t border-white/[0.1]">
-                    <p className="text-caption text-white/70 uppercase tracking-wider mb-1">
+                    <Eyebrow size="sm" tone="onDark" className="mb-1">
                       Filing Status
-                    </p>
+                    </Eyebrow>
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
                       <p className="font-mono text-body-sm text-success">
@@ -407,11 +404,7 @@ export default function PrivacyPillarPage() {
               <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="p-8 lg:p-10">
                   <div className="flex h-12 w-12 items-center justify-center rounded-card-lg bg-white/[0.12] mb-5">
-                    <Icon
-                      name="Calendar"
-                      size="lg"
-                      className="text-white/70"
-                    />
+                    <Icon name="Calendar" size="lg" className="text-white/70" />
                   </div>
                   <h3 className="font-display text-heading-lg font-semibold text-white">
                     Year-Round Nominees — Not &ldquo;Nominee for a Day&rdquo;
@@ -451,9 +444,13 @@ export default function PrivacyPillarPage() {
                   {/* VS comparison visual */}
                   <div className="w-full max-w-[280px] space-y-4">
                     <div className="rounded-card bg-red-500/[0.08] border border-red-400/[0.15] p-4">
-                      <p className="text-caption font-semibold text-red-400/80 uppercase tracking-wider mb-2">
+                      <Eyebrow
+                        size="sm"
+                        tone="inherit"
+                        className="mb-2 text-red-400/80"
+                      >
                         Others: &ldquo;Nominee for a Day&rdquo;
-                      </p>
+                      </Eyebrow>
                       <div className="space-y-1.5">
                         <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
@@ -482,9 +479,9 @@ export default function PrivacyPillarPage() {
                       </div>
                     </div>
                     <div className="rounded-card bg-success/[0.08] border border-success/[0.2] p-4">
-                      <p className="text-caption font-semibold text-success uppercase tracking-wider mb-2">
+                      <Eyebrow size="sm" tone="success" className="mb-2">
                         Incorporate123: Year-Round
-                      </p>
+                      </Eyebrow>
                       <div className="space-y-1.5">
                         <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon

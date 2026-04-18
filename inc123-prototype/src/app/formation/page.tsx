@@ -10,6 +10,7 @@ import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { SocialProofStrip } from "@/design-system/components/SocialProofStrip";
 import { KeyDifferentiators } from "@/design-system/components/KeyDifferentiators";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
@@ -656,9 +657,13 @@ export default function FormationPillarPage() {
                   {/* VS comparison visual */}
                   <div className="w-full max-w-[280px] space-y-4">
                     <div className="rounded-card bg-red-500/[0.08] border border-red-400/[0.15] p-4">
-                      <p className="text-caption font-semibold text-red-400/80 uppercase tracking-wider mb-2">
+                      <Eyebrow
+                        size="sm"
+                        tone="inherit"
+                        className="mb-2 text-red-400/80"
+                      >
                         Others: &ldquo;$49 Formation&rdquo;
-                      </p>
+                      </Eyebrow>
                       <div className="space-y-1.5">
                         <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon
@@ -695,9 +700,9 @@ export default function FormationPillarPage() {
                       </div>
                     </div>
                     <div className="rounded-card bg-success/[0.08] border border-success/[0.2] p-4">
-                      <p className="text-caption font-semibold text-success uppercase tracking-wider mb-2">
+                      <Eyebrow size="sm" tone="success" className="mb-2">
                         Incorporate123: One Price
-                      </p>
+                      </Eyebrow>
                       <div className="space-y-1.5">
                         <div className="flex items-center gap-2 text-body-sm text-white/70">
                           <Icon

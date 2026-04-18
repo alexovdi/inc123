@@ -112,6 +112,13 @@ export const registry: ComponentEntry[] = [
     description: "Contextual feedback messages with variants.",
   },
   {
+    slug: "eyebrow",
+    name: "Eyebrow",
+    category: "primitives",
+    description:
+      "Section label above headings. Sizes sm/md, tones for light/dark surfaces and pillar colors.",
+  },
+  {
     slug: "skeleton",
     name: "Skeleton",
     category: "primitives",

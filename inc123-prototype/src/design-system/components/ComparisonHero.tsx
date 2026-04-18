@@ -8,6 +8,7 @@ import {
   Breadcrumbs,
   type BreadcrumbItem,
 } from "@/design-system/components/Breadcrumbs";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import type { PillarName } from "@/design-system/tokens";
 
@@ -52,14 +53,9 @@ function ComparisonHero({
         )}
 
         {/* Eyebrow */}
-        <p
-          className={cn(
-            "text-body-sm font-semibold uppercase tracking-wider mb-2",
-            pillarTextMap[pillar],
-          )}
-        >
+        <Eyebrow tone="inherit" className={cn("mb-2", pillarTextMap[pillar])}>
           Comparison
-        </p>
+        </Eyebrow>
 
         {/* Title */}
         <h1 className="font-display text-display-lg font-bold text-foreground mb-3">

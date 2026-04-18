@@ -1,4 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 
 /* -------------------------------------------------- */
@@ -30,9 +31,7 @@ function AboutHero({
       <div className="mx-auto max-w-content flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
         {/* Text — 60% on desktop */}
         <div className="lg:w-[60%]">
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary mb-3">
-            {eyebrow}
-          </p>
+          <Eyebrow className="mb-3">{eyebrow}</Eyebrow>
           <h1 className="font-display font-bold text-heading-lg md:text-display text-foreground">
             {headline}
           </h1>

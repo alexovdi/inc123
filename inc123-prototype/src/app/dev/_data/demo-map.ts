@@ -68,6 +68,7 @@ const demoMap: Record<string, DemoLoader> = {
   textarea: p("TextareaDemo"),
   tooltip: p("TooltipDemo"),
   alert: p("AlertDemo"),
+  eyebrow: p("EyebrowDemo"),
   skeleton: p("SkeletonDemo"),
 
   // Navigation

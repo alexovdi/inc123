@@ -1,3 +1,4 @@
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { cn } from "@/design-system/utils/cn";
 
 /* ------------------------------------------------
@@ -27,9 +28,9 @@ function StateHero({ stateName, subtitle, facts, className }: StateHeroProps) {
     <section className={cn("bg-primary text-white", className)}>
       <div className="mx-auto max-w-content px-container-x py-section-y">
         {/* Eyebrow */}
-        <p className="text-body-sm font-semibold uppercase tracking-wider text-white/70 mb-3">
+        <Eyebrow tone="onDark" className="mb-3">
           State Guide
-        </p>
+        </Eyebrow>
 
         {/* H1 */}
         <h1 className="font-display text-display-xl font-extrabold mb-4">
@@ -42,7 +43,11 @@ function StateHero({ stateName, subtitle, facts, className }: StateHeroProps) {
         </p>
 
         {/* Facts strip */}
-        <div className="flex flex-wrap gap-3" role="list" aria-label={`${stateName} key facts`}>
+        <div
+          className="flex flex-wrap gap-3"
+          role="list"
+          aria-label={`${stateName} key facts`}
+        >
           {facts.map((fact) => (
             <div
               key={fact.label}

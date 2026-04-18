@@ -1,3 +1,4 @@
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { cn } from "@/design-system/utils/cn";
 
 /* -------------------------------------------------- */
@@ -26,19 +27,15 @@ function ContactHero({
     <section
       className={cn(
         "bg-primary-50 py-section-y px-container-x text-center",
-        className
+        className,
       )}
     >
       <div className="mx-auto max-w-narrow">
-        <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary mb-3">
-          {eyebrow}
-        </p>
+        <Eyebrow className="mb-3">{eyebrow}</Eyebrow>
         <h1 className="font-display font-bold text-heading-lg md:text-display text-foreground">
           {headline}
         </h1>
-        <p className="mt-4 text-body-lg text-muted">
-          {subheadline}
-        </p>
+        <p className="mt-4 text-body-lg text-muted">{subheadline}</p>
       </div>
     </section>
   );

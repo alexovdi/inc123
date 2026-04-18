@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
 import { tierDefinitions, ALL_FORMATION_STATES } from "@/data/packages";
@@ -184,14 +185,13 @@ function PackageComparison({ className }: PackageComparisonProps) {
                   </span>
                 )}
 
-                <p
-                  className={cn(
-                    "text-caption font-semibold uppercase tracking-wider",
-                    card.featured ? "text-secondary" : "text-muted",
-                  )}
+                <Eyebrow
+                  size="sm"
+                  tone="inherit"
+                  className={card.featured ? "text-secondary" : "text-muted"}
                 >
                   {card.tier}
-                </p>
+                </Eyebrow>
                 <div className="mt-4 flex items-baseline gap-1">
                   <span className="font-mono text-display font-semibold text-foreground tracking-tight">
                     {card.price}
