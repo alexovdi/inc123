@@ -399,7 +399,7 @@ export default function FAQPage() {
             </div>
           </div>
 
-          <ul className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
+          <ul className="mx-auto mt-10 grid max-w-narrow grid-cols-1 gap-3 sm:grid-cols-2">
             <li>
               <a
                 href="/privacy"

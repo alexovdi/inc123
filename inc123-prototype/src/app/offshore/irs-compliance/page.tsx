@@ -59,10 +59,7 @@ export default function IrsCompliancePage() {
       <Schema />
 
       {/* Hero */}
-      <section
-        className="py-section-y px-container-x text-white"
-        style={{ backgroundColor: "#1a1a2e" }}
-      >
+      <section className="bg-offshore-dark py-section-y px-container-x text-white">
         <div className="mx-auto max-w-content">
           <Breadcrumbs
             items={[
@@ -75,13 +72,13 @@ export default function IrsCompliancePage() {
             ]}
             className="mb-6 [&_a]:text-white/70 [&_a:hover]:text-white [&_span[aria-current]]:text-white"
           />
-          <p className="mb-3 text-body-sm font-semibold uppercase tracking-wider text-white/70">
+          <p className="mb-3 text-body-sm font-semibold uppercase tracking-[0.15em] text-white/70">
             U.S. Tax Obligations
           </p>
           <h1 className="font-display text-display font-bold">
             IRS Compliance for Offshore Entities
           </h1>
-          <p className="mt-4 max-w-3xl text-heading-sm text-white/80">
+          <p className="mt-4 max-w-narrow text-heading-sm text-white/80">
             Honest, specific disclosure of reporting requirements for U.S.
             persons with international structures.
           </p>
@@ -91,7 +88,7 @@ export default function IrsCompliancePage() {
       {/* Content */}
       <article className="py-section-y px-container-x">
         <div className="mx-auto max-w-content">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-narrow">
             <Alert
               variant="warning"
               title="This page is informational, not legal or tax advice"
@@ -295,15 +292,12 @@ export default function IrsCompliancePage() {
       </article>
 
       {/* CTA */}
-      <section
-        className="py-section-y px-container-x text-white"
-        style={{ backgroundColor: "#1a1a2e" }}
-      >
+      <section className="bg-offshore-dark py-section-y px-container-x text-white">
         <div className="mx-auto max-w-content text-center">
-          <h2 className="mx-auto max-w-3xl font-display text-heading-lg font-bold">
+          <h2 className="mx-auto max-w-narrow font-display text-heading-lg font-bold">
             Ready to Discuss Your Offshore Structure?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-body text-white/80">
+          <p className="mx-auto mt-4 max-w-narrow text-body text-white/80">
             Consult your CPA about tax treatment. Contact us about formation.
             We&rsquo;ll coordinate with your tax advisor to ensure the structure
             we build fits your overall plan.

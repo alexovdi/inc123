@@ -40,6 +40,9 @@
     --muted: #4b5563;
     --border: #7d8694;
 
+    /* Offshore dark — distinct from primary for offshore/international surfaces */
+    --offshore-dark: #1f2937;
+
     /* Pillar colors — dark grey in wireframe for adequate contrast */
     --pillar-privacy: #374151;
     --pillar-privacy-soft: #f3f4f6;
@@ -115,6 +118,9 @@
     --muted: #334155;
     --border: #e2e8f0;
 
+    /* Offshore dark — distinct charcoal-indigo for offshore/international surfaces */
+    --offshore-dark: #1a1a2e;
+
     /* Pillar colors — brand identity */
     --pillar-privacy: #2563eb;
     --pillar-privacy-soft: #dbeafe;
@@ -189,6 +195,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-footer-dark: var(--footer-dark);
+  --color-offshore-dark: var(--offshore-dark);
   --color-muted: var(--muted);
   --color-border: var(--border);
 

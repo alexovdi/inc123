@@ -241,7 +241,7 @@ export default function TestimonialsPage() {
             </p>
 
             {/* Anonymization message */}
-            <aside className="mx-auto mt-6 inline-flex max-w-2xl items-center gap-3 rounded-lg border border-white/20 bg-white/10 px-5 py-3">
+            <aside className="mx-auto mt-6 inline-flex max-w-narrow items-center gap-3 rounded-lg border border-white/20 bg-white/10 px-5 py-3">
               <Icon name="Lock" size="md" className="text-white shrink-0" />
               <p className="text-body-sm text-white/90 text-left">
                 Client names are withheld at their request &mdash; because
@@ -257,7 +257,7 @@ export default function TestimonialsPage() {
         <section className="py-section-y px-container-x bg-background">
           <div className="mx-auto max-w-content">
             <div className="text-center mb-10">
-              <p className="text-body-sm font-semibold uppercase tracking-wider text-accent mb-2">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-accent mb-2">
                 Featured
               </p>
               <h2 className="font-display text-heading-lg font-bold text-foreground">
@@ -328,7 +328,7 @@ export default function TestimonialsPage() {
             <h3 className="font-display text-heading-sm font-semibold text-foreground">
               Trustpilot Reviews &mdash; Coming Post-Launch
             </h3>
-            <p className="mx-auto mt-2 max-w-xl text-body text-muted">
+            <p className="mx-auto mt-2 max-w-narrow text-body text-muted">
               We&rsquo;re building a Trustpilot review program post-launch. Once
               active, live reviews from verified clients will appear here.
             </p>

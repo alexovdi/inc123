@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
       {/* Content */}
       <article className="py-section-y">
         <div className="mx-auto max-w-content px-container-x">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-narrow">
             <Alert
               variant="warning"
               title="Prototype Notice"

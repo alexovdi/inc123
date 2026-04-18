@@ -148,7 +148,7 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
           >
             {post.categoryLabel}
           </span>
-          <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+          <span className="text-body-sm font-semibold uppercase tracking-[0.15em] text-accent">
             ★ Featured
           </span>
         </div>
@@ -300,7 +300,7 @@ export default function BlogPage() {
             ]}
             className="mb-4 [&_a]:text-white/70 [&_a:hover]:text-white [&_span[aria-current]]:text-white"
           />
-          <div className="max-w-3xl">
+          <div className="max-w-narrow">
             <h1 className="font-display text-display font-bold">
               Blog — Privacy, Formation &amp; Asset Protection Insights
             </h1>

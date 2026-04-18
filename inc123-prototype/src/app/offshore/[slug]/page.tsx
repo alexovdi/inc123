@@ -152,10 +152,7 @@ export default function OffshoreJurisdictionPage() {
       {/* ------------------------------------------------
           Hero
           ------------------------------------------------ */}
-      <section
-        className="py-section-y text-white"
-        style={{ backgroundColor: "#1a1a2e" }}
-      >
+      <section className="bg-offshore-dark py-section-y text-white">
         <div className="mx-auto max-w-content px-container-x">
           <Breadcrumbs
             items={[
@@ -169,7 +166,7 @@ export default function OffshoreJurisdictionPage() {
             className="mb-6 [&_a]:text-white/70 [&_a:hover]:text-white [&_span[aria-current]]:text-white"
           />
           {jurisdiction.region && jurisdiction.region !== jurisdiction.name && (
-            <p className="mb-3 text-body-sm font-semibold uppercase tracking-wider text-white/70">
+            <p className="mb-3 text-body-sm font-semibold uppercase tracking-[0.15em] text-white/70">
               {jurisdiction.region}
             </p>
           )}
@@ -182,11 +179,11 @@ export default function OffshoreJurisdictionPage() {
             )}
           </h1>
           {jurisdiction.heroTagline && (
-            <p className="mt-4 max-w-3xl text-heading-sm text-white/80">
+            <p className="mt-4 max-w-narrow text-heading-sm text-white/80">
               {jurisdiction.heroTagline}
             </p>
           )}
-          <p className="mt-4 max-w-3xl text-body text-white/70">
+          <p className="mt-4 max-w-narrow text-body text-white/70">
             {jurisdiction.description}
           </p>
 
@@ -212,7 +209,7 @@ export default function OffshoreJurisdictionPage() {
       <section className="py-section-y px-container-x">
         <div className="mx-auto max-w-content">
           <div className="mb-10">
-            <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary">
               Why {jurisdiction.name}
             </p>
             <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
@@ -280,8 +277,8 @@ export default function OffshoreJurisdictionPage() {
       {jurisdiction.faqs.length > 0 && (
         <section className="bg-background py-section-y px-container-x">
           <div className="mx-auto max-w-content">
-            <div className="mx-auto max-w-3xl">
-              <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
+            <div className="mx-auto max-w-narrow">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary">
                 Frequently Asked Questions
               </p>
               <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
@@ -351,15 +348,12 @@ export default function OffshoreJurisdictionPage() {
       {/* ------------------------------------------------
           Consultation CTA
           ------------------------------------------------ */}
-      <section
-        className="py-section-y px-container-x text-white"
-        style={{ backgroundColor: "#1a1a2e" }}
-      >
+      <section className="bg-offshore-dark py-section-y px-container-x text-white">
         <div className="mx-auto max-w-content text-center">
-          <h2 className="mx-auto max-w-3xl font-display text-heading-lg font-bold">
+          <h2 className="mx-auto max-w-narrow font-display text-heading-lg font-bold">
             Ready to Discuss {jurisdiction.name} Formation?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-body text-white/80">
+          <p className="mx-auto mt-4 max-w-narrow text-body text-white/80">
             Every offshore engagement begins with a consultation. We discuss
             your goals, confirm {jurisdiction.name} is the right jurisdiction,
             and outline the formation process, documentation requirements,
@@ -381,7 +375,7 @@ export default function OffshoreJurisdictionPage() {
               Call 1-800-553-0615
             </a>
           </div>
-          <div className="mx-auto mt-10 max-w-2xl border-t border-white/10 pt-8">
+          <div className="mx-auto mt-10 max-w-narrow border-t border-white/10 pt-8">
             <p className="text-body-sm text-white/70">
               Decided offshore isn&rsquo;t necessary? Most clients achieve
               strong privacy and asset protection with a domestic Wyoming Gold

@@ -203,12 +203,9 @@ export default function OffshorePage() {
       <OffshoreSchema />
 
       {/* ------------------------------------------------
-          Hero — distinct deep-gray (NOT pillar navy)
+          Hero — offshore-dark (distinct from pillar navy)
           ------------------------------------------------ */}
-      <section
-        className="py-section-y text-white"
-        style={{ backgroundColor: "#1a1a2e" }}
-      >
+      <section className="bg-offshore-dark py-section-y text-white">
         <div className="mx-auto max-w-content px-container-x">
           <Breadcrumbs
             items={[
@@ -217,16 +214,16 @@ export default function OffshorePage() {
             ]}
             className="mb-6 [&_a]:text-white/70 [&_a:hover]:text-white [&_span[aria-current]]:text-white"
           />
-          <p className="mb-3 text-body-sm font-semibold uppercase tracking-wider text-white/70">
+          <p className="mb-3 text-body-sm font-semibold uppercase tracking-[0.15em] text-white/70">
             International Services
           </p>
           <h1 className="font-display text-display font-bold">
             {hub.headline}
           </h1>
-          <p className="mt-4 max-w-3xl text-heading-sm text-white/80">
+          <p className="mt-4 max-w-narrow text-heading-sm text-white/80">
             {hub.subheadline}
           </p>
-          <p className="mt-4 max-w-3xl text-body text-white/70">
+          <p className="mt-4 max-w-narrow text-body text-white/70">
             {hub.description}
           </p>
 
@@ -240,7 +237,7 @@ export default function OffshorePage() {
             </Link>
           </div>
 
-          <dl className="mt-10 grid max-w-2xl grid-cols-1 gap-4 text-body-sm sm:grid-cols-3">
+          <dl className="mt-10 grid max-w-narrow grid-cols-1 gap-4 text-body-sm sm:grid-cols-3">
             <div>
               <dt className="text-white/70">Jurisdictions</dt>
               <dd className="font-mono text-heading-sm font-bold text-white">
@@ -268,8 +265,8 @@ export default function OffshorePage() {
           ------------------------------------------------ */}
       <section className="bg-surface py-section-y px-container-x">
         <div className="mx-auto max-w-content">
-          <div className="mx-auto max-w-3xl">
-            <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
+          <div className="mx-auto max-w-narrow">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary">
               About Offshore Structures
             </p>
             <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
@@ -316,8 +313,8 @@ export default function OffshorePage() {
           ------------------------------------------------ */}
       <section className="bg-background py-section-y px-container-x">
         <div className="mx-auto max-w-content">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
+          <div className="mb-10 max-w-narrow">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary">
               Available Jurisdictions
             </p>
             <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
@@ -377,8 +374,8 @@ export default function OffshorePage() {
           ------------------------------------------------ */}
       <section className="bg-surface py-section-y px-container-x">
         <div className="mx-auto max-w-content">
-          <div className="mx-auto max-w-3xl">
-            <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
+          <div className="mx-auto max-w-narrow">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary">
               Domestic + International
             </p>
             <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
@@ -464,8 +461,8 @@ export default function OffshorePage() {
             </article>
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl">
-            <p className="rounded-lg border-l-0 border-border bg-muted/5 p-5 text-body italic leading-relaxed text-muted">
+          <div className="mx-auto mt-10 max-w-narrow">
+            <p className="rounded-lg border border-border bg-muted/5 p-5 text-body italic leading-relaxed text-muted">
               Not sure if you need an offshore structure? Most clients
               don&rsquo;t. Our domestic Gold packages include offshore records
               custodian &mdash; that&rsquo;s sufficient for the vast majority of
@@ -481,17 +478,14 @@ export default function OffshorePage() {
           ------------------------------------------------ */}
       <section className="bg-background py-section-y px-container-x">
         <div className="mx-auto max-w-content">
-          <div
-            className="rounded-card border-l-4 border-accent bg-surface p-8 shadow-card md:p-10"
-            style={{ borderLeftColor: "#d97706" }}
-          >
-            <p className="text-body-sm font-semibold uppercase tracking-wider text-accent">
+          <div className="rounded-card border-t-4 border-accent bg-surface p-8 shadow-card md:p-10">
+            <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-accent">
               U.S. Tax Obligations
             </p>
             <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
               If You&rsquo;re a U.S. Person, You Have Reporting Obligations.
             </h2>
-            <p className="mt-4 max-w-3xl text-body leading-relaxed text-muted">
+            <p className="mt-4 max-w-narrow text-body leading-relaxed text-muted">
               U.S. citizens, residents, and green card holders who own or
               control offshore entities must comply with several IRS reporting
               requirements. Failure to comply can result in significant
@@ -597,8 +591,8 @@ export default function OffshorePage() {
       {hubFaqs.length > 0 && (
         <section className="bg-surface py-section-y px-container-x">
           <div className="mx-auto max-w-content">
-            <div className="mx-auto max-w-3xl">
-              <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
+            <div className="mx-auto max-w-narrow">
+              <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-secondary">
                 Frequently Asked Questions
               </p>
               <h2 className="mt-2 font-display text-heading-lg font-bold text-foreground">
@@ -625,15 +619,12 @@ export default function OffshorePage() {
       {/* ------------------------------------------------
           Consultation CTA — distinct charcoal, outline buttons
           ------------------------------------------------ */}
-      <section
-        className="py-section-y px-container-x text-white"
-        style={{ backgroundColor: "#1a1a2e" }}
-      >
+      <section className="bg-offshore-dark py-section-y px-container-x text-white">
         <div className="mx-auto max-w-content text-center">
-          <h2 className="mx-auto max-w-3xl font-display text-heading-lg font-bold">
+          <h2 className="mx-auto max-w-narrow font-display text-heading-lg font-bold">
             International Structures Require a Conversation.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-body text-white/80">
+          <p className="mx-auto mt-4 max-w-narrow text-body text-white/80">
             Every offshore engagement begins with a consultation. We discuss
             your goals, recommend the appropriate jurisdiction and entity type,
             and outline the formation process, timeline, and costs. There is no
@@ -657,7 +648,7 @@ export default function OffshorePage() {
             </a>
           </div>
 
-          <div className="mx-auto mt-10 max-w-2xl border-t border-white/10 pt-8">
+          <div className="mx-auto mt-10 max-w-narrow border-t border-white/10 pt-8">
             <p className="text-body-sm text-white/70">
               Interested in domestic services instead? Most clients start here.
             </p>
