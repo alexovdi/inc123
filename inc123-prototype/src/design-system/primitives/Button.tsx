@@ -17,6 +17,10 @@ const buttonVariants = cva(
         ghost:
           "bg-transparent text-foreground hover:bg-muted/10 active:bg-muted/20",
         cta: "bg-accent text-white hover:bg-accent-hover active:bg-accent-hover/90 shadow-card hover:shadow-card-hover hover:scale-[1.02] active:scale-[0.98]",
+        "outline-on-dark":
+          "bg-transparent text-white border-2 border-white/80 hover:bg-white/10 active:bg-white/20",
+        "outline-on-dark-muted":
+          "bg-transparent text-white/90 border-2 border-white/40 hover:border-white/80 hover:text-white",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 active:bg-destructive/80",
       },

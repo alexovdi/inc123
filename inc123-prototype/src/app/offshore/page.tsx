@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { offshoreData } from "@/data/offshore";
 import { Accordion, AccordionItem } from "@/design-system/components/Accordion";
 import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { cn } from "@/design-system/utils/cn";
 
@@ -228,13 +229,17 @@ export default function OffshorePage() {
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/80 bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            <Button
+              variant="outline-on-dark"
+              size="lg"
+              icon={<Icon name="ArrowRight" size="sm" />}
+              iconPosition="right"
+              asChild
             >
-              Schedule a Consultation About Offshore Structures
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
+              <Link to="/contact">
+                Schedule a Consultation About Offshore Structures
+              </Link>
+            </Button>
           </div>
 
           <dl className="mt-10 grid max-w-narrow grid-cols-1 gap-4 text-body-sm sm:grid-cols-3">
@@ -632,20 +637,23 @@ export default function OffshorePage() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/80 bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            <Button
+              variant="outline-on-dark"
+              size="lg"
+              icon={<Icon name="ArrowRight" size="sm" />}
+              iconPosition="right"
+              asChild
             >
-              Schedule a Consultation
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
-            <a
-              href="tel:+18005530615"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/40 bg-transparent px-6 py-3 font-semibold text-white/90 transition-colors hover:border-white/80 hover:text-white"
+              <Link to="/contact">Schedule a Consultation</Link>
+            </Button>
+            <Button
+              variant="outline-on-dark-muted"
+              size="lg"
+              icon={<Icon name="Phone" size="sm" />}
+              asChild
             >
-              <Icon name="Phone" size="sm" />
-              Call 1-800-553-0615
-            </a>
+              <a href="tel:+18005530615">Call 1-800-553-0615</a>
+            </Button>
           </div>
 
           <div className="mx-auto mt-10 max-w-narrow border-t border-white/10 pt-8">

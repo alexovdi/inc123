@@ -12,6 +12,7 @@ import {
   FormationProcess,
   JurisdictionStatStrip,
 } from "@/design-system/components/JurisdictionSections";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 
 /* ------------------------------------------------
@@ -192,13 +193,17 @@ export default function OffshoreJurisdictionPage() {
           )}
 
           <div className="mt-8">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/80 bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            <Button
+              variant="outline-on-dark"
+              size="lg"
+              icon={<Icon name="ArrowRight" size="sm" />}
+              iconPosition="right"
+              asChild
             >
-              Schedule a Consultation About {jurisdiction.name}
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
+              <Link to="/contact">
+                Schedule a Consultation About {jurisdiction.name}
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -360,20 +365,23 @@ export default function OffshoreJurisdictionPage() {
             timeline, and costs.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/80 bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            <Button
+              variant="outline-on-dark"
+              size="lg"
+              icon={<Icon name="ArrowRight" size="sm" />}
+              iconPosition="right"
+              asChild
             >
-              Schedule a Consultation
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
-            <a
-              href="tel:+18005530615"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/40 bg-transparent px-6 py-3 font-semibold text-white/90 transition-colors hover:border-white/80 hover:text-white"
+              <Link to="/contact">Schedule a Consultation</Link>
+            </Button>
+            <Button
+              variant="outline-on-dark-muted"
+              size="lg"
+              icon={<Icon name="Phone" size="sm" />}
+              asChild
             >
-              <Icon name="Phone" size="sm" />
-              Call 1-800-553-0615
-            </a>
+              <a href="tel:+18005530615">Call 1-800-553-0615</a>
+            </Button>
           </div>
           <div className="mx-auto mt-10 max-w-narrow border-t border-white/10 pt-8">
             <p className="text-body-sm text-white/70">

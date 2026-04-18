@@ -15,6 +15,7 @@ import {
 } from "@/design-system/components/CategoryFilterPills";
 import { Icon } from "@/design-system/primitives/Icon";
 import { Link } from "@/design-system/primitives/Link";
+import { PillarLinkCard } from "@/design-system/components/PillarLinkCard";
 import {
   pillarTagMap,
   pillarTextMap,
@@ -399,56 +400,36 @@ export default function BlogPage() {
           </div>
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <li>
-              <Link
+              <PillarLinkCard
+                pillar="privacy"
                 href="/privacy"
-                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-privacy bg-surface p-5 hover:shadow-card-hover"
-              >
-                <span className="font-display font-semibold text-foreground no-underline">
-                  Business Privacy
-                </span>
-                <span className="mt-1 text-body-sm text-muted no-underline">
-                  Anonymous LLCs and nominee services
-                </span>
-              </Link>
+                title="Business Privacy"
+                description="Anonymous LLCs and nominee services"
+              />
             </li>
             <li>
-              <Link
+              <PillarLinkCard
+                pillar="asset"
                 href="/asset-protection"
-                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-asset bg-surface p-5 hover:shadow-card-hover"
-              >
-                <span className="font-display font-semibold text-foreground">
-                  Asset Protection
-                </span>
-                <span className="mt-1 text-body-sm text-muted">
-                  Charging orders and LLC structuring
-                </span>
-              </Link>
+                title="Asset Protection"
+                description="Charging orders and LLC structuring"
+              />
             </li>
             <li>
-              <Link
+              <PillarLinkCard
+                pillar="formation"
                 href="/formation"
-                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-formation bg-surface p-5 hover:shadow-card-hover"
-              >
-                <span className="font-display font-semibold text-foreground">
-                  Company Formation
-                </span>
-                <span className="mt-1 text-body-sm text-muted">
-                  Wyoming and Nevada LLC formation
-                </span>
-              </Link>
+                title="Company Formation"
+                description="Wyoming and Nevada LLC formation"
+              />
             </li>
             <li>
-              <Link
+              <PillarLinkCard
+                pillar="compliance"
                 href="/compliance"
-                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-compliance bg-surface p-5 hover:shadow-card-hover"
-              >
-                <span className="font-display font-semibold text-foreground">
-                  Compliance
-                </span>
-                <span className="mt-1 text-body-sm text-muted">
-                  Registered agent and annual reports
-                </span>
-              </Link>
+                title="Compliance"
+                description="Registered agent and annual reports"
+              />
             </li>
           </ul>
         </div>

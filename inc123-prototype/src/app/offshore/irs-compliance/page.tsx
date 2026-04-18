@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumbs } from "@/design-system/components/Breadcrumbs";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { Alert } from "@/design-system/primitives/Alert";
 
@@ -303,19 +304,18 @@ export default function IrsCompliancePage() {
             we build fits your overall plan.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/80 bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            <Button
+              variant="outline-on-dark"
+              size="lg"
+              icon={<Icon name="ArrowRight" size="sm" />}
+              iconPosition="right"
+              asChild
             >
-              Schedule a Consultation
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
-            <Link
-              to="/offshore"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/40 bg-transparent px-6 py-3 font-semibold text-white/90 transition-colors hover:border-white/80 hover:text-white"
-            >
-              Back to Offshore Hub
-            </Link>
+              <Link to="/contact">Schedule a Consultation</Link>
+            </Button>
+            <Button variant="outline-on-dark-muted" size="lg" asChild>
+              <Link to="/offshore">Back to Offshore Hub</Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -11,6 +11,7 @@ import {
   FAQCategoryGrid,
   type FAQCategoryCardItem,
 } from "@/design-system/components/FAQCategoryGrid";
+import { PillarLinkCard } from "@/design-system/components/PillarLinkCard";
 import { RelatedGuides } from "@/design-system/components/RelatedGuides";
 import { SearchInput } from "@/design-system/components/SearchInput";
 import {
@@ -401,48 +402,36 @@ export default function FAQPage() {
 
           <ul className="mx-auto mt-10 grid max-w-narrow grid-cols-1 gap-3 sm:grid-cols-2">
             <li>
-              <a
+              <PillarLinkCard
+                pillar="privacy"
                 href="/privacy"
-                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-privacy hover:shadow-card-hover"
-              >
-                <span className="font-medium text-foreground">
-                  Browse Business Privacy topics
-                </span>
-                <span className="text-pillar-privacy">&rarr;</span>
-              </a>
+                title="Browse Business Privacy topics"
+                variant="compact"
+              />
             </li>
             <li>
-              <a
+              <PillarLinkCard
+                pillar="asset"
                 href="/asset-protection"
-                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-asset hover:shadow-card-hover"
-              >
-                <span className="font-medium text-foreground">
-                  Browse Asset Protection topics
-                </span>
-                <span className="text-pillar-asset">&rarr;</span>
-              </a>
+                title="Browse Asset Protection topics"
+                variant="compact"
+              />
             </li>
             <li>
-              <a
+              <PillarLinkCard
+                pillar="formation"
                 href="/formation"
-                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-formation hover:shadow-card-hover"
-              >
-                <span className="font-medium text-foreground">
-                  Browse Formation topics
-                </span>
-                <span className="text-pillar-formation">&rarr;</span>
-              </a>
+                title="Browse Formation topics"
+                variant="compact"
+              />
             </li>
             <li>
-              <a
+              <PillarLinkCard
+                pillar="compliance"
                 href="/compliance"
-                className="flex items-center justify-between rounded-card border border-border bg-surface p-4 hover:border-pillar-compliance hover:shadow-card-hover"
-              >
-                <span className="font-medium text-foreground">
-                  Browse Compliance topics
-                </span>
-                <span className="text-pillar-compliance">&rarr;</span>
-              </a>
+                title="Browse Compliance topics"
+                variant="compact"
+              />
             </li>
           </ul>
         </div>

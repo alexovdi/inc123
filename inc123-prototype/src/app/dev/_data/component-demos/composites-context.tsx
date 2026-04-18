@@ -6,6 +6,7 @@ import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
 import { PillarCard } from "@/design-system/components/PillarCard";
+import { PillarLinkCard } from "@/design-system/components/PillarLinkCard";
 import { StateSelector } from "@/design-system/components/StateSelector";
 import { WhereToGoNext } from "@/design-system/components/WhereToGoNext";
 import { DemoSection } from "../../_components/DemoSection";
@@ -386,6 +387,102 @@ export function StateSelectorDemo() {
             label: "State label",
             value: "font-display text-heading-sm font-semibold",
           },
+        ]}
+      />
+    </div>
+  );
+}
+
+export function PillarLinkCardDemo() {
+  return (
+    <div className="space-y-10">
+      <DemoSection title="Featured variant — top-border accent, title + description">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <li>
+            <PillarLinkCard
+              pillar="privacy"
+              href="#"
+              title="Business Privacy"
+              description="Anonymous LLCs and nominee services"
+            />
+          </li>
+          <li>
+            <PillarLinkCard
+              pillar="asset"
+              href="#"
+              title="Asset Protection"
+              description="Charging orders and LLC structuring"
+            />
+          </li>
+          <li>
+            <PillarLinkCard
+              pillar="formation"
+              href="#"
+              title="Company Formation"
+              description="Wyoming and Nevada LLC formation"
+            />
+          </li>
+          <li>
+            <PillarLinkCard
+              pillar="compliance"
+              href="#"
+              title="Compliance"
+              description="Registered agent and annual reports"
+            />
+          </li>
+        </ul>
+      </DemoSection>
+
+      <DemoSection title="Compact variant — hover-border accent, title + arrow">
+        <ul className="mx-auto grid max-w-narrow grid-cols-1 gap-3 sm:grid-cols-2">
+          <li>
+            <PillarLinkCard
+              pillar="privacy"
+              href="#"
+              title="Browse Business Privacy topics"
+              variant="compact"
+            />
+          </li>
+          <li>
+            <PillarLinkCard
+              pillar="asset"
+              href="#"
+              title="Browse Asset Protection topics"
+              variant="compact"
+            />
+          </li>
+          <li>
+            <PillarLinkCard
+              pillar="formation"
+              href="#"
+              title="Browse Formation topics"
+              variant="compact"
+            />
+          </li>
+          <li>
+            <PillarLinkCard
+              pillar="compliance"
+              href="#"
+              title="Browse Compliance topics"
+              variant="compact"
+            />
+          </li>
+        </ul>
+      </DemoSection>
+
+      <SpecPanel
+        title="PillarLinkCard Specifications"
+        items={[
+          {
+            label: "Featured",
+            value: "border-t-4 border-t-pillar-{pillar}, p-5, font-display",
+          },
+          {
+            label: "Compact",
+            value: "hover:border-pillar-{pillar}, p-4, arrow indicator",
+          },
+          { label: "Shared", value: "rounded-card bg-surface, no-underline" },
+          { label: "Hover", value: "shadow-card-hover" },
         ]}
       />
     </div>
