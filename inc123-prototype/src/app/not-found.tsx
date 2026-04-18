@@ -107,7 +107,7 @@ export default function NotFound() {
   return (
     <main className="bg-background px-container-x py-section-y">
       <div className="mx-auto max-w-content">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-narrow text-center">
           {/* Icon */}
           <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary-100">
             <Icon name="SearchX" size="xl" className="text-primary-600" />
@@ -120,7 +120,7 @@ export default function NotFound() {
           <p className="mt-3 font-display text-heading-lg font-semibold text-muted">
             But We Can Help You Find What You Need.
           </p>
-          <p className="mx-auto mt-6 max-w-xl text-body text-muted">
+          <p className="mx-auto mt-6 max-w-[36rem] text-body text-muted">
             The page you&rsquo;re looking for may have moved during our recent
             site update. Choose from our most popular pages, or explore by
             pillar.
@@ -132,7 +132,7 @@ export default function NotFound() {
           <h2 className="text-center font-display text-heading-lg font-bold text-foreground">
             Start With a Topic
           </h2>
-          <ul className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mx-auto mt-8 grid max-w-wide grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {PILLAR_LINKS.map((link) => (
               <li key={link.pillar}>
                 <RouterLink
@@ -163,7 +163,7 @@ export default function NotFound() {
         </div>
 
         {/* Popular Pages */}
-        <div className="mx-auto mt-16 max-w-3xl">
+        <div className="mx-auto mt-16 max-w-narrow">
           <h2 className="text-center font-display text-heading-lg font-bold text-foreground">
             Popular Pages
           </h2>
@@ -183,11 +183,11 @@ export default function NotFound() {
         </div>
 
         {/* Contact CTA */}
-        <div className="mx-auto mt-16 max-w-3xl rounded-card border border-border bg-surface p-8">
+        <div className="mx-auto mt-16 max-w-narrow rounded-card border border-border bg-surface p-8">
           <h2 className="text-center font-display text-heading-lg font-bold text-foreground">
             Still can&rsquo;t find what you&rsquo;re looking for?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-body text-muted">
+          <p className="mx-auto mt-3 max-w-[36rem] text-center text-body text-muted">
             If you reached this page from a bookmark or external link, the page
             may have been moved. Let us know and we&rsquo;ll help you find it.
           </p>

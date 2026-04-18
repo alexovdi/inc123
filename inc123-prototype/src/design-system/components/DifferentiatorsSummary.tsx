@@ -22,7 +22,7 @@ function DifferentiatorsSummary({
             {heading}
           </h2>
         </div>
-        <ul className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+        <ul className="mx-auto grid max-w-narrow gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <li
               key={item}

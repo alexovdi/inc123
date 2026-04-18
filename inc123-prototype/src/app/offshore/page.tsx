@@ -579,13 +579,18 @@ export default function OffshorePage() {
               forming any offshore entity.
             </p>
 
-            <Link
-              to="/offshore/irs-compliance"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg border-2 border-accent bg-transparent px-5 py-3 font-semibold text-accent transition-colors hover:bg-accent/10"
+            <Button
+              variant="outline-accent"
+              size="lg"
+              className="mt-6"
+              icon={<Icon name="ArrowRight" size="sm" />}
+              iconPosition="right"
+              asChild
             >
-              Full IRS Compliance Guide
-              <Icon name="ArrowRight" size="sm" />
-            </Link>
+              <Link to="/offshore/irs-compliance">
+                Full IRS Compliance Guide
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

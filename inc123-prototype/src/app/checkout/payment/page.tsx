@@ -185,10 +185,10 @@ export default function CheckoutPaymentPage() {
           {state.paymentMethod === "paypal" && (
             <div className="rounded-card border border-border bg-muted/5 p-8 text-center">
               <div className="mb-4">
-                <span className="text-heading font-display font-bold text-[#003087]">
+                <span className="text-heading font-display font-bold text-paypal-navy">
                   Pay
                 </span>
-                <span className="text-heading font-display font-bold text-[#009CDE]">
+                <span className="text-heading font-display font-bold text-paypal-blue">
                   Pal
                 </span>
               </div>
@@ -198,7 +198,7 @@ export default function CheckoutPaymentPage() {
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-[#FFC439] text-[#003087] hover:bg-[#F0B72A]"
+                className="bg-paypal-gold text-paypal-navy hover:bg-paypal-gold-hover"
               >
                 Pay with PayPal
               </Button>

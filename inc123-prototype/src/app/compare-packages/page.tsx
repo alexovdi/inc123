@@ -178,7 +178,7 @@ export default function ComparePackagesPage() {
           <div
             className={`mt-10 grid gap-6 ${
               visibleTiers.length === 1
-                ? "grid-cols-1 max-w-lg mx-auto"
+                ? "grid-cols-1 max-w-[32rem] mx-auto"
                 : visibleTiers.length === 2
                   ? "grid-cols-1 sm:grid-cols-2 max-w-[48rem] mx-auto"
                   : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"

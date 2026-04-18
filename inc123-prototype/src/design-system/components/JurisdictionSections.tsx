@@ -9,6 +9,7 @@ import type {
   JurisdictionFormationStep,
   JurisdictionPricing,
 } from "@/lib/types";
+import { Button } from "@/design-system/primitives/Button";
 import { Icon } from "@/design-system/primitives/Icon";
 import { cn } from "@/design-system/utils/cn";
 
@@ -146,7 +147,7 @@ export function EntityComparison({
         </div>
 
         {recommendation && (
-          <aside className="mx-auto mt-8 max-w-3xl rounded-lg border border-secondary/30 bg-secondary/5 p-5">
+          <aside className="mx-auto mt-8 max-w-narrow rounded-lg border border-secondary/30 bg-secondary/5 p-5">
             <p className="text-body italic leading-relaxed text-foreground">
               {recommendation}
             </p>
@@ -179,7 +180,7 @@ export function FormationProcess({
   return (
     <section className="bg-background py-section-y px-container-x">
       <div className="mx-auto max-w-content">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-narrow">
           <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
             Formation Process
           </p>
@@ -287,7 +288,7 @@ export function CostBreakdown({
   return (
     <section className="bg-surface py-section-y px-container-x">
       <div className="mx-auto max-w-content">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-narrow">
           <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
             Pricing
           </p>
@@ -424,7 +425,7 @@ export function CombinedStructures({
   return (
     <section className="bg-background py-section-y px-container-x">
       <div className="mx-auto max-w-content">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-narrow">
           <p className="text-body-sm font-semibold uppercase tracking-wider text-secondary">
             Combined Structures
           </p>
@@ -474,11 +475,8 @@ export function ComplianceWarning() {
   return (
     <section className="bg-surface py-section-y px-container-x">
       <div className="mx-auto max-w-content">
-        <div
-          className="mx-auto max-w-3xl rounded-card border-l-4 border-accent bg-background p-6 shadow-card md:p-8"
-          style={{ borderLeftColor: "#d97706" }}
-        >
-          <p className="text-body-sm font-semibold uppercase tracking-wider text-accent">
+        <div className="mx-auto max-w-narrow rounded-card border-t-4 border-accent bg-background p-6 shadow-card md:p-8">
+          <p className="text-body-sm font-semibold uppercase tracking-[0.15em] text-accent">
             U.S. Tax Obligations
           </p>
           <h2 className="mt-2 font-display text-heading-sm font-bold text-foreground">
@@ -536,13 +534,16 @@ export function ComplianceWarning() {
             recommend consulting a CPA or international tax attorney before
             proceeding.
           </p>
-          <Link
-            to="/offshore/irs-compliance"
-            className="mt-5 inline-flex items-center gap-2 rounded-lg border-2 border-accent bg-transparent px-5 py-2.5 font-semibold text-accent transition-colors hover:bg-accent/10"
+          <Button
+            variant="outline-accent"
+            size="md"
+            className="mt-5"
+            icon={<Icon name="ArrowRight" size="sm" />}
+            iconPosition="right"
+            asChild
           >
-            Full IRS Compliance Guide
-            <Icon name="ArrowRight" size="sm" />
-          </Link>
+            <Link to="/offshore/irs-compliance">Full IRS Compliance Guide</Link>
+          </Button>
         </div>
       </div>
     </section>

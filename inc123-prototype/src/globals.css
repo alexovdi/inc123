@@ -43,6 +43,12 @@
     /* Offshore dark — distinct from primary for offshore/international surfaces */
     --offshore-dark: #1f2937;
 
+    /* PayPal brand colors — theme-agnostic, used only in payment surfaces */
+    --brand-paypal-navy: #003087;
+    --brand-paypal-blue: #009cde;
+    --brand-paypal-gold: #ffc439;
+    --brand-paypal-gold-hover: #f0b72a;
+
     /* Pillar colors — dark grey in wireframe for adequate contrast */
     --pillar-privacy: #374151;
     --pillar-privacy-soft: #f3f4f6;
@@ -196,6 +202,10 @@
   --color-foreground: var(--foreground);
   --color-footer-dark: var(--footer-dark);
   --color-offshore-dark: var(--offshore-dark);
+  --color-paypal-navy: var(--brand-paypal-navy);
+  --color-paypal-blue: var(--brand-paypal-blue);
+  --color-paypal-gold: var(--brand-paypal-gold);
+  --color-paypal-gold-hover: var(--brand-paypal-gold-hover);
   --color-muted: var(--muted);
   --color-border: var(--border);
 
@@ -489,6 +499,20 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 

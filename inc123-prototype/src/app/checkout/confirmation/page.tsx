@@ -91,7 +91,7 @@ export default function CheckoutConfirmationPage() {
 
   return (
     <CheckoutLayout currentStep={4}>
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-narrow">
         {/* Success header with animation */}
         <div className="mb-10 text-center">
           <div className="mb-4 flex justify-center">
@@ -241,23 +241,6 @@ export default function CheckoutConfirmationPage() {
           </Button>
         </div>
       </div>
-
-      {/* Inline CSS animation for the success checkmark */}
-      <style>{`
-        @keyframes scaleIn {
-          0% {
-            transform: scale(0);
-            opacity: 0;
-          }
-          60% {
-            transform: scale(1.1);
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-      `}</style>
     </CheckoutLayout>
   );
 }

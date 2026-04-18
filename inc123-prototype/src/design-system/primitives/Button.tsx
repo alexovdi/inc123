@@ -17,6 +17,8 @@ const buttonVariants = cva(
         ghost:
           "bg-transparent text-foreground hover:bg-muted/10 active:bg-muted/20",
         cta: "bg-accent text-white hover:bg-accent-hover active:bg-accent-hover/90 shadow-card hover:shadow-card-hover hover:scale-[1.02] active:scale-[0.98]",
+        "outline-accent":
+          "bg-transparent text-accent border-2 border-accent hover:bg-accent/10 active:bg-accent/20",
         "outline-on-dark":
           "bg-transparent text-white border-2 border-white/80 hover:bg-white/10 active:bg-white/20",
         "outline-on-dark-muted":
