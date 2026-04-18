@@ -166,28 +166,28 @@ export default function AssetProtectionPillarPage() {
                   <p className="text-caption text-white/70 uppercase tracking-wider mb-2">
                     With Wyoming LLC Protection
                   </p>
-                  <div className="rounded bg-success/[0.08] border border-success/[0.2] px-3 py-2 space-y-1.5">
-                    <div className="flex items-center gap-2 text-body-sm text-white/70">
+                  <div className="rounded bg-pillar-asset/[0.08] border border-pillar-asset-mid/[0.25] px-3 py-2 space-y-1.5">
+                    <div className="flex items-center gap-2 text-body-sm text-white/85">
                       <Icon
                         name="Check"
                         size="xs"
-                        className="text-success shrink-0"
+                        className="text-pillar-asset-mid shrink-0"
                       />
                       Charging order limits creditor remedies
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm text-white/70">
+                    <div className="flex items-center gap-2 text-body-sm text-white/85">
                       <Icon
                         name="Check"
                         size="xs"
-                        className="text-success shrink-0"
+                        className="text-pillar-asset-mid shrink-0"
                       />
                       Multi-entity isolation per asset class
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm text-white/70">
+                    <div className="flex items-center gap-2 text-body-sm text-white/85">
                       <Icon
                         name="Check"
                         size="xs"
-                        className="text-success shrink-0"
+                        className="text-pillar-asset-mid shrink-0"
                       />
                       Single-member LLC fully protected
                     </div>
@@ -200,8 +200,8 @@ export default function AssetProtectionPillarPage() {
                     Protection Status
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
-                    <p className="font-mono text-body-sm text-success">
+                    <div className="h-2 w-2 rounded-full bg-pillar-asset-mid animate-pulse" />
+                    <p className="font-mono text-body-sm text-pillar-asset-mid">
                       Active — Charging Order Protected
                     </p>
                   </div>

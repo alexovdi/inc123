@@ -19,7 +19,7 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { Link } from "@/design-system/primitives/Link";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
-import { pillarTextMap } from "@/design-system/utils/pillarMaps";
+import { pillarTextOnDarkMap } from "@/design-system/utils/pillarMaps";
 import { packages } from "@/data/packages";
 import {
   ASSET_TESTIMONIAL,
@@ -590,7 +590,7 @@ export function ClusterPageTemplate({ cluster }: ClusterPageTemplateProps) {
             {/* Left: Statement */}
             <div>
               <p
-                className={cnPillar(pillarTextMap[cluster.pillar])}
+                className={cnPillar(pillarTextOnDarkMap[cluster.pillar])}
                 aria-hidden
               >
                 {config.label.toUpperCase()}

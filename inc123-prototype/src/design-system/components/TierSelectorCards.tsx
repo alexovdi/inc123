@@ -82,10 +82,10 @@ function TierSelectorCards({
           >
             {/* Badge */}
             {tier.badge && (
-              <div className="absolute -top-3 right-4">
-                <Badge variant="warning" size="sm">
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 z-10">
+                <span className="inline-flex items-center rounded-pill bg-accent px-3 py-0.5 text-caption font-semibold text-white shadow-card whitespace-nowrap">
                   {tier.badge}
-                </Badge>
+                </span>
               </div>
             )}
 

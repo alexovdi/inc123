@@ -50,8 +50,8 @@ function CategoryFilterPills({
   return (
     <div
       className={cn(
-        "flex flex-wrap gap-2",
-        className
+        "flex flex-wrap items-center justify-center gap-x-2 gap-y-2",
+        className,
       )}
       role="tablist"
       aria-label="Filter categories"
@@ -76,7 +76,7 @@ function CategoryFilterPills({
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
               isActive
                 ? activeClass
-                : "bg-primary-50 text-foreground hover:bg-primary-100"
+                : "bg-primary-50 text-foreground hover:bg-primary-100",
             )}
           >
             {category.label}
@@ -84,7 +84,7 @@ function CategoryFilterPills({
               <span
                 className={cn(
                   "text-caption",
-                  isActive ? "opacity-80" : "text-muted"
+                  isActive ? "opacity-80" : "text-muted",
                 )}
               >
                 ({category.count})

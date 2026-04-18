@@ -262,7 +262,29 @@ export default function CheckoutPaymentPage() {
       <div className="mt-8 space-y-6">
         {/* Terms checkbox */}
         <Checkbox
-          label="I agree to the Terms of Service and Privacy Policy. Your information is encrypted and your privacy is our priority."
+          label={
+            <>
+              I agree to the{" "}
+              <a
+                href="/terms"
+                className="font-medium text-secondary underline underline-offset-2 hover:text-secondary/80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms of Service
+              </a>{" "}
+              and{" "}
+              <a
+                href="/privacy-policy"
+                className="font-medium text-secondary underline underline-offset-2 hover:text-secondary/80"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Privacy Policy
+              </a>
+              . Your information is encrypted and your privacy is our priority.
+            </>
+          }
           description="By placing your order, you agree to our terms and authorize the charge shown above."
           checked={termsAccepted}
           onChange={setTermsAccepted}

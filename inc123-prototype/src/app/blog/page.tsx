@@ -401,12 +401,12 @@ export default function BlogPage() {
             <li>
               <Link
                 href="/privacy"
-                className="flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-privacy bg-surface p-5 hover:shadow-card-hover"
+                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-privacy bg-surface p-5 hover:shadow-card-hover"
               >
-                <span className="font-display font-semibold text-foreground">
+                <span className="font-display font-semibold text-foreground no-underline">
                   Business Privacy
                 </span>
-                <span className="mt-1 text-body-sm text-muted">
+                <span className="mt-1 text-body-sm text-muted no-underline">
                   Anonymous LLCs and nominee services
                 </span>
               </Link>
@@ -414,7 +414,7 @@ export default function BlogPage() {
             <li>
               <Link
                 href="/asset-protection"
-                className="flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-asset bg-surface p-5 hover:shadow-card-hover"
+                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-asset bg-surface p-5 hover:shadow-card-hover"
               >
                 <span className="font-display font-semibold text-foreground">
                   Asset Protection
@@ -427,7 +427,7 @@ export default function BlogPage() {
             <li>
               <Link
                 href="/formation"
-                className="flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-formation bg-surface p-5 hover:shadow-card-hover"
+                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-formation bg-surface p-5 hover:shadow-card-hover"
               >
                 <span className="font-display font-semibold text-foreground">
                   Company Formation
@@ -440,7 +440,7 @@ export default function BlogPage() {
             <li>
               <Link
                 href="/compliance"
-                className="flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-compliance bg-surface p-5 hover:shadow-card-hover"
+                className="!no-underline flex h-full flex-col rounded-card border border-border border-t-4 border-t-pillar-compliance bg-surface p-5 hover:shadow-card-hover"
               >
                 <span className="font-display font-semibold text-foreground">
                   Compliance

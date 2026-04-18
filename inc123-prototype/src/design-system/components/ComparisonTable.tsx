@@ -179,14 +179,18 @@ function ComparisonTable({
                   {row.tooltip ? (
                     <Tooltip
                       trigger={
-                        <span className="inline-flex items-center gap-1.5 cursor-help border-b border-dashed border-muted/50">
-                          {row.label}
-                          <Icon name="Info" size="xs" className="text-muted" />
+                        <span className="cursor-help underline decoration-dashed decoration-muted/50 underline-offset-4">
+                          {row.label}{" "}
+                          <Icon
+                            name="Info"
+                            size="xs"
+                            className="inline-block align-middle text-muted"
+                          />
                         </span>
                       }
                       content={row.tooltip}
                       position="top"
-                      size="sm"
+                      size="md"
                     />
                   ) : (
                     row.label

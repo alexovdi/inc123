@@ -175,7 +175,15 @@ export function StatePageTemplate({ state }: StatePageTemplateProps) {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div
+                className={
+                  statePackages.length === 1
+                    ? "mx-auto max-w-[22rem]"
+                    : statePackages.length === 2
+                      ? "mx-auto grid max-w-narrow grid-cols-1 gap-6 sm:grid-cols-2"
+                      : "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                }
+              >
                 {statePackages.map((pkg) => (
                   <PackagePreviewCard
                     key={pkg.id}

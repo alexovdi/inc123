@@ -1,6 +1,6 @@
 "use client";
 
-import { type InputHTMLAttributes, useId } from "react";
+import { type InputHTMLAttributes, type ReactNode, useId } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Check } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
@@ -30,7 +30,7 @@ const checkboxBoxVariants = cva(
       checked: false,
       disabled: false,
     },
-  }
+  },
 );
 
 const checkIconVariants = cva("text-white", {
@@ -46,15 +46,14 @@ const checkIconVariants = cva("text-white", {
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
-export interface CheckboxProps
-  extends Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    "size" | "type" | "checked" | "onChange"
-  > {
-  /** Label text next to the checkbox */
-  label: string;
+export interface CheckboxProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "size" | "type" | "checked" | "onChange"
+> {
+  /** Label text next to the checkbox — accepts inline rich content (e.g. links) */
+  label: ReactNode;
   /** Optional sub-label / description beneath the label */
-  description?: string;
+  description?: ReactNode;
   /** Controlled checked state */
   checked?: boolean;
   /** Change handler */
@@ -103,7 +102,7 @@ function Checkbox({
         <div
           className={cn(
             checkboxBoxVariants({ size, checked, disabled }),
-            "peer-focus-visible:ring-2 peer-focus-visible:ring-secondary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-surface"
+            "peer-focus-visible:ring-2 peer-focus-visible:ring-secondary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-surface",
           )}
           aria-hidden="true"
         >
@@ -120,7 +119,7 @@ function Checkbox({
           className={cn(
             "font-sans text-foreground select-none",
             size === "sm" ? "text-body-sm" : "text-body",
-            disabled && "cursor-not-allowed opacity-50"
+            disabled && "cursor-not-allowed opacity-50",
           )}
         >
           {label}
@@ -130,7 +129,7 @@ function Checkbox({
             id={`${id}-desc`}
             className={cn(
               "mt-0.5 font-sans text-muted",
-              size === "sm" ? "text-caption" : "text-body-sm"
+              size === "sm" ? "text-caption" : "text-body-sm",
             )}
           >
             {description}

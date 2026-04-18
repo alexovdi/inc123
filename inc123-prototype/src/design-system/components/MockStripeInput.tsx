@@ -49,22 +49,16 @@ function MockStripeInput({ className }: MockStripeInputProps) {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setCardNumber(formatCardNumber(e.target.value));
     },
-    []
+    [],
   );
 
-  const handleExpiry = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setExpiry(formatExpiry(e.target.value));
-    },
-    []
-  );
+  const handleExpiry = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setExpiry(formatExpiry(e.target.value));
+  }, []);
 
-  const handleCVC = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setCVC(formatCVC(e.target.value));
-    },
-    []
-  );
+  const handleCVC = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setCVC(formatCVC(e.target.value));
+  }, []);
 
   const inputBase =
     "w-full rounded-button border border-border bg-surface px-4 py-3 text-body text-foreground font-sans placeholder:text-muted/60 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface";
@@ -111,9 +105,17 @@ function MockStripeInput({ className }: MockStripeInputProps) {
             placeholder="4242 4242 4242 4242"
             value={cardNumber}
             onChange={handleCardNumber}
-            className={cn(inputBase, "pl-10")}
+            className={cn(inputBase, "pl-10 pr-28")}
             autoComplete="cc-number"
           />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1.5 pr-3 text-caption font-semibold tracking-wide text-muted/70"
+            aria-hidden="true"
+          >
+            <span>VISA</span>
+            <span>MC</span>
+            <span>AMEX</span>
+          </div>
         </div>
       </div>
 

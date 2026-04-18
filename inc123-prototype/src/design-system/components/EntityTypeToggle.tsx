@@ -41,7 +41,7 @@ function EntityTypeToggle({
         onChange(optionValue);
       }
     },
-    [onChange]
+    [onChange],
   );
 
   return (
@@ -51,7 +51,7 @@ function EntityTypeToggle({
         dark
           ? "bg-white/10 border border-white/20"
           : "bg-muted/10 border border-border",
-        className
+        className,
       )}
       role="radiogroup"
       aria-label="Entity type"
@@ -70,10 +70,12 @@ function EntityTypeToggle({
             className={cn(
               "relative px-5 py-2 text-body-sm font-medium rounded-pill transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
               isActive
-                ? "bg-secondary text-white shadow-sm"
+                ? dark
+                  ? "bg-white text-primary shadow-sm"
+                  : "bg-foreground text-surface shadow-sm"
                 : dark
-                  ? "bg-transparent text-white/90 hover:bg-white/10"
-                  : "bg-transparent text-foreground hover:bg-primary/5"
+                  ? "bg-transparent text-white/80 hover:bg-white/10"
+                  : "bg-transparent text-muted hover:bg-primary/5",
             )}
           >
             {option.label}
