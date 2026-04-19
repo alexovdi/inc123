@@ -15,7 +15,7 @@ const ctaBlockVariants = cva("rounded-card py-section-y-sm px-container-x", {
     variant: {
       default: "bg-primary-50 text-foreground",
       dark: "bg-primary text-white",
-      pillar: "", // Applied dynamically via pillarBgMap
+      pillar: "text-foreground", // bg applied via pillarSoftBgMap at call site
     },
     layout: {
       centered: "text-center",
@@ -27,6 +27,78 @@ const ctaBlockVariants = cva("rounded-card py-section-y-sm px-container-x", {
     layout: "centered",
   },
 });
+
+const containerVariants = cva("mx-auto max-w-content", {
+  variants: {
+    layout: {
+      centered: "flex flex-col items-center",
+      split:
+        "flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12",
+    },
+  },
+  defaultVariants: { layout: "centered" },
+});
+
+const textBlockVariants = cva("", {
+  variants: {
+    layout: {
+      centered: "max-w-narrow",
+      split: "flex-1",
+    },
+  },
+  defaultVariants: { layout: "centered" },
+});
+
+const headingVariants = cva("font-display font-bold text-display", {
+  variants: {
+    tone: {
+      default: "text-foreground",
+      dark: "text-white",
+      pillar: "", // pillar text color applied via pillarTextMap at call site
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const descriptionVariants = cva("mt-3 text-body-lg", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      dark: "text-white/80",
+      pillar: "text-muted",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const trustSignalVariants = cva("text-body-sm font-medium", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      dark: "text-white/80",
+      pillar: "text-muted",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const buttonGroupVariants = cva("flex gap-3", {
+  variants: {
+    layout: {
+      centered: "flex-col sm:flex-row justify-center mt-6",
+      split: "flex-col sm:flex-row lg:flex-col lg:shrink-0 mt-6 lg:mt-0",
+    },
+  },
+  defaultVariants: { layout: "centered" },
+});
+
+/** Override applied to cta Button when variant="dark" — flips white-on-dark. */
+const primaryButtonDarkOverride =
+  "bg-white text-foreground hover:bg-white/90 active:bg-white/80";
+
+/** Override applied to secondary Button when variant="dark". */
+const secondaryButtonDarkOverride =
+  "border-white/60 text-white bg-white/10 hover:bg-white/20";
 
 /* -------------------------------------------------- */
 /*  Props                                              */
@@ -52,6 +124,9 @@ export interface CTABlockProps extends VariantProps<typeof ctaBlockVariants> {
   className?: string;
 }
 
+type CTATone = "default" | "dark" | "pillar";
+type CTALayout = "centered" | "split";
+
 /* -------------------------------------------------- */
 /*  Component                                          */
 /* -------------------------------------------------- */
@@ -66,78 +141,48 @@ function CTABlock({
   trustSignal,
   className,
 }: CTABlockProps) {
-  const isDark = variant === "dark";
-  const isPillar = variant === "pillar";
-  const isSplit = layout === "split";
-  const isCentered = layout === "centered" || !layout;
+  const tone: CTATone = (variant ?? "default") as CTATone;
+  const resolvedLayout: CTALayout = (layout ?? "centered") as CTALayout;
+  const isDark = tone === "dark";
+  const isPillar = tone === "pillar";
+  const isSplit = resolvedLayout === "split";
+  const isCentered = resolvedLayout === "centered";
 
   return (
     <section
       className={cn(
-        ctaBlockVariants({ variant: isPillar ? "default" : variant, layout }),
+        ctaBlockVariants({ variant: tone, layout: resolvedLayout }),
         isPillar && pillar && pillarSoftBgMap[pillar],
-        isPillar && "text-foreground",
         className,
       )}
     >
-      <div
-        className={cn(
-          "mx-auto max-w-content",
-          isSplit
-            ? "flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12"
-            : "flex flex-col items-center",
-        )}
-      >
+      <div className={containerVariants({ layout: resolvedLayout })}>
         {/* Text block */}
-        <div className={cn(isSplit ? "flex-1" : "max-w-narrow")}>
+        <div className={textBlockVariants({ layout: resolvedLayout })}>
           <h2
             className={cn(
-              "font-display font-bold text-display",
-              isDark && "text-white",
+              headingVariants({ tone }),
               isPillar && pillar && pillarTextMap[pillar],
-              !isDark && !isPillar && "text-foreground",
             )}
           >
             {heading}
           </h2>
-          <p
-            className={cn(
-              "mt-3 text-body-lg",
-              isDark ? "text-white/80" : "text-muted",
-            )}
-          >
-            {description}
-          </p>
+          <p className={descriptionVariants({ tone })}>{description}</p>
 
           {/* Trust signal — shown below text on centered, or inline on split */}
           {trustSignal && isCentered && (
-            <p
-              className={cn(
-                "mt-4 text-body-sm font-medium",
-                isDark ? "text-white/80" : "text-muted",
-              )}
-            >
+            <p className={cn("mt-4", trustSignalVariants({ tone }))}>
               {trustSignal}
             </p>
           )}
         </div>
 
         {/* Buttons */}
-        <div
-          className={cn(
-            "flex gap-3",
-            isCentered
-              ? "flex-col sm:flex-row justify-center mt-6"
-              : "flex-col sm:flex-row lg:flex-col lg:shrink-0 mt-6 lg:mt-0",
-          )}
-        >
+        <div className={buttonGroupVariants({ layout: resolvedLayout })}>
           <Button
             variant="cta"
             size="lg"
-            className={cn(
-              isDark &&
-                "bg-white text-foreground hover:bg-white/90 active:bg-white/80",
-            )}
+            className={cn(isDark && primaryButtonDarkOverride)}
             asChild
           >
             <a href={primaryCTA.href}>{primaryCTA.label}</a>
@@ -145,12 +190,9 @@ function CTABlock({
 
           {secondaryCTA && (
             <Button
-              variant={isDark ? "secondary" : "secondary"}
+              variant="secondary"
               size="lg"
-              className={cn(
-                isDark &&
-                  "border-white/60 text-white bg-white/10 hover:bg-white/20",
-              )}
+              className={cn(isDark && secondaryButtonDarkOverride)}
               asChild
             >
               <a href={secondaryCTA.href}>{secondaryCTA.label}</a>
@@ -160,12 +202,7 @@ function CTABlock({
 
         {/* Trust signal — shown below buttons on split layout */}
         {trustSignal && isSplit && (
-          <p
-            className={cn(
-              "text-body-sm font-medium lg:hidden mt-4",
-              isDark ? "text-white/80" : "text-muted",
-            )}
-          >
+          <p className={cn("lg:hidden mt-4", trustSignalVariants({ tone }))}>
             {trustSignal}
           </p>
         )}

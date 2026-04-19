@@ -43,6 +43,30 @@ const checkIconVariants = cva("text-white", {
   defaultVariants: { size: "md" },
 });
 
+const labelVariants = cva("font-sans text-foreground select-none", {
+  variants: {
+    size: {
+      sm: "text-body-sm",
+      md: "text-body",
+    },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+      false: "",
+    },
+  },
+  defaultVariants: { size: "md", disabled: false },
+});
+
+const descriptionVariants = cva("mt-0.5 font-sans text-muted", {
+  variants: {
+    size: {
+      sm: "text-caption",
+      md: "text-body-sm",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
@@ -114,24 +138,11 @@ function Checkbox({
 
       {/* Label & description */}
       <div className="flex flex-col">
-        <label
-          htmlFor={id}
-          className={cn(
-            "font-sans text-foreground select-none",
-            size === "sm" ? "text-body-sm" : "text-body",
-            disabled && "cursor-not-allowed opacity-50",
-          )}
-        >
+        <label htmlFor={id} className={labelVariants({ size, disabled })}>
           {label}
         </label>
         {description && (
-          <p
-            id={`${id}-desc`}
-            className={cn(
-              "mt-0.5 font-sans text-muted",
-              size === "sm" ? "text-caption" : "text-body-sm",
-            )}
-          >
+          <p id={`${id}-desc`} className={descriptionVariants({ size })}>
             {description}
           </p>
         )}

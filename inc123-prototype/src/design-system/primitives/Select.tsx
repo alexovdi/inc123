@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  type SelectHTMLAttributes,
-  forwardRef,
-  useId,
-} from "react";
+import { type SelectHTMLAttributes, forwardRef, useId } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/design-system/utils/cn";
@@ -31,7 +27,7 @@ const selectVariants = cva(
       size: "md",
       state: "default",
     },
-  }
+  },
 );
 
 const labelVariants = cva("block font-sans font-medium text-foreground", {
@@ -45,6 +41,41 @@ const labelVariants = cva("block font-sans font-medium text-foreground", {
   defaultVariants: { size: "md" },
 });
 
+const chevronSlotVariants = cva(
+  "pointer-events-none absolute inset-y-0 right-0 flex items-center text-muted",
+  {
+    variants: {
+      size: {
+        sm: "pr-2.5",
+        md: "pr-3",
+        lg: "pr-4",
+      },
+    },
+    defaultVariants: { size: "md" },
+  },
+);
+
+const chevronIconVariants = cva("", {
+  variants: {
+    size: {
+      sm: "h-4 w-4",
+      md: "h-5 w-5",
+      lg: "h-5 w-5",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+const helperTextVariants = cva("mt-1.5 text-caption font-sans", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      error: "text-destructive",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
@@ -54,7 +85,8 @@ export interface SelectOption {
 }
 
 export interface SelectProps
-  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size">,
+  extends
+    Omit<SelectHTMLAttributes<HTMLSelectElement>, "size">,
     VariantProps<typeof selectVariants> {
   /** Label rendered above the select */
   label?: string;
@@ -92,17 +124,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       id: externalId,
       ...props
     },
-    ref
+    ref,
   ) => {
     const autoId = useId();
     const id = externalId ?? autoId;
     const helperId = `${id}-helper`;
 
-    const resolvedState = disabled
-      ? "disabled"
-      : error
-        ? "error"
-        : "default";
+    const resolvedState = disabled ? "disabled" : error ? "error" : "default";
 
     return (
       <div className={cn("flex flex-col", className)}>
@@ -127,7 +155,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             required={required}
             aria-invalid={!!error}
             aria-describedby={error || helperText ? helperId : undefined}
-            className={cn(selectVariants({ size, state: resolvedState }))}
+            className={selectVariants({ size, state: resolvedState })}
             {...props}
           >
             {placeholder && (
@@ -143,22 +171,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           </select>
 
           {/* Custom chevron */}
-          <span
-            className={cn(
-              "pointer-events-none absolute inset-y-0 right-0 flex items-center text-muted",
-              size === "sm" && "pr-2.5",
-              size === "md" && "pr-3",
-              size === "lg" && "pr-4"
-            )}
-            aria-hidden="true"
-          >
-            <ChevronDown
-              className={cn(
-                size === "sm" && "h-4 w-4",
-                size === "md" && "h-5 w-5",
-                size === "lg" && "h-5 w-5"
-              )}
-            />
+          <span className={chevronSlotVariants({ size })} aria-hidden="true">
+            <ChevronDown className={chevronIconVariants({ size })} />
           </span>
         </div>
 
@@ -166,17 +180,16 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {(error || helperText) && (
           <p
             id={helperId}
-            className={cn(
-              "mt-1.5 text-caption font-sans",
-              error ? "text-destructive" : "text-muted"
-            )}
+            className={helperTextVariants({
+              tone: error ? "error" : "default",
+            })}
           >
             {error ?? helperText}
           </p>
         )}
       </div>
     );
-  }
+  },
 );
 
 Select.displayName = "Select";

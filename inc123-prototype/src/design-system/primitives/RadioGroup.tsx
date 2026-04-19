@@ -39,7 +39,7 @@ const radioCircleVariants = cva(
       selected: false,
       disabled: false,
     },
-  }
+  },
 );
 
 const radioDotVariants = cva("rounded-full bg-secondary", {
@@ -47,6 +47,40 @@ const radioDotVariants = cva("rounded-full bg-secondary", {
     size: {
       sm: "h-2 w-2",
       md: "h-2.5 w-2.5",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+const legendVariants = cva("mb-2 font-sans font-medium text-foreground", {
+  variants: {
+    size: {
+      sm: "text-body-sm",
+      md: "text-body",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+const labelVariants = cva("font-sans text-foreground select-none", {
+  variants: {
+    size: {
+      sm: "text-body-sm",
+      md: "text-body",
+    },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+      false: "",
+    },
+  },
+  defaultVariants: { size: "md", disabled: false },
+});
+
+const descriptionVariants = cva("mt-0.5 font-sans text-muted", {
+  variants: {
+    size: {
+      sm: "text-caption",
+      md: "text-body-sm",
     },
   },
   defaultVariants: { size: "md" },
@@ -61,7 +95,9 @@ export interface RadioOption {
   description?: string;
 }
 
-export interface RadioGroupProps extends VariantProps<typeof radioGroupVariants> {
+export interface RadioGroupProps extends VariantProps<
+  typeof radioGroupVariants
+> {
   /** Group label */
   label?: string;
   /** Radio options */
@@ -105,13 +141,7 @@ function RadioGroup({
     >
       {/* Group label */}
       {label && (
-        <legend
-          id={`${groupId}-label`}
-          className={cn(
-            "mb-2 font-sans font-medium text-foreground",
-            size === "sm" ? "text-body-sm" : "text-body"
-          )}
-        >
+        <legend id={`${groupId}-label`} className={legendVariants({ size })}>
           {label}
         </legend>
       )}
@@ -148,13 +178,11 @@ function RadioGroup({
                       selected: isSelected,
                       disabled,
                     }),
-                    "peer-focus-visible:ring-2 peer-focus-visible:ring-secondary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-surface"
+                    "peer-focus-visible:ring-2 peer-focus-visible:ring-secondary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-surface",
                   )}
                   aria-hidden="true"
                 >
-                  {isSelected && (
-                    <div className={radioDotVariants({ size })} />
-                  )}
+                  {isSelected && <div className={radioDotVariants({ size })} />}
                 </div>
               </div>
 
@@ -162,21 +190,14 @@ function RadioGroup({
               <div className="flex flex-col">
                 <label
                   htmlFor={optionId}
-                  className={cn(
-                    "font-sans text-foreground select-none",
-                    size === "sm" ? "text-body-sm" : "text-body",
-                    disabled && "cursor-not-allowed opacity-50"
-                  )}
+                  className={labelVariants({ size, disabled })}
                 >
                   {option.label}
                 </label>
                 {option.description && (
                   <p
                     id={`${optionId}-desc`}
-                    className={cn(
-                      "mt-0.5 font-sans text-muted",
-                      size === "sm" ? "text-caption" : "text-body-sm"
-                    )}
+                    className={descriptionVariants({ size })}
                   >
                     {option.description}
                   </p>

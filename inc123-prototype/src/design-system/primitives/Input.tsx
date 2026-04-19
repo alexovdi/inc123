@@ -13,7 +13,12 @@ import { cn } from "@/design-system/utils/cn";
    CVA Variants
    ------------------------------------------------ */
 const inputVariants = cva(
-  "w-full rounded-button border bg-surface font-sans text-foreground placeholder:text-muted/60 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface disabled:cursor-not-allowed disabled:opacity-50",
+  [
+    "w-full rounded-button border bg-surface font-sans text-foreground",
+    "placeholder:text-muted/60 transition-colors",
+    "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface",
+    "disabled:cursor-not-allowed disabled:opacity-50",
+  ],
   {
     variants: {
       size: {
@@ -27,12 +32,22 @@ const inputVariants = cva(
         success: "border-success focus:ring-success",
         disabled: "border-border",
       },
+      withIcon: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      { size: "sm", withIcon: true, class: "pl-8" },
+      { size: "md", withIcon: true, class: "pl-10" },
+      { size: "lg", withIcon: true, class: "pl-12" },
+    ],
     defaultVariants: {
       size: "md",
       state: "default",
+      withIcon: false,
     },
-  }
+  },
 );
 
 const labelVariants = cva("block font-sans font-medium text-foreground", {
@@ -46,11 +61,36 @@ const labelVariants = cva("block font-sans font-medium text-foreground", {
   defaultVariants: { size: "md" },
 });
 
+const iconSlotVariants = cva(
+  "pointer-events-none absolute inset-y-0 left-0 flex items-center text-muted",
+  {
+    variants: {
+      size: {
+        sm: "pl-2.5",
+        md: "pl-3",
+        lg: "pl-4",
+      },
+    },
+    defaultVariants: { size: "md" },
+  },
+);
+
+const helperTextVariants = cva("mt-1.5 text-caption font-sans", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      error: "text-destructive",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
 export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">,
+  extends
+    Omit<InputHTMLAttributes<HTMLInputElement>, "size">,
     VariantProps<typeof inputVariants> {
   /** Label rendered above the input */
   label?: string;
@@ -72,6 +112,8 @@ export interface InputProps
   className?: string;
 }
 
+type InputState = "default" | "error" | "success" | "disabled";
+
 /* ------------------------------------------------
    Component
    ------------------------------------------------ */
@@ -91,18 +133,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       id: externalId,
       ...props
     },
-    ref
+    ref,
   ) => {
     const autoId = useId();
     const id = externalId ?? autoId;
     const helperId = `${id}-helper`;
 
-    const resolvedState = disabled
+    const resolvedState: InputState = disabled
       ? "disabled"
       : error
         ? "error"
-        : (props as { state?: "default" | "error" | "success" | "disabled" })
-              .state ?? "default";
+        : ((props as { state?: InputState }).state ?? "default");
 
     return (
       <div className={cn("flex flex-col", className)}>
@@ -121,15 +162,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {/* Input wrapper (for icon positioning) */}
         <div className="relative">
           {icon && (
-            <span
-              className={cn(
-                "pointer-events-none absolute inset-y-0 left-0 flex items-center text-muted",
-                size === "sm" && "pl-2.5",
-                size === "md" && "pl-3",
-                size === "lg" && "pl-4"
-              )}
-              aria-hidden="true"
-            >
+            <span className={iconSlotVariants({ size })} aria-hidden="true">
               {icon}
             </span>
           )}
@@ -143,12 +176,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder={placeholder}
             aria-invalid={!!error}
             aria-describedby={error || helperText ? helperId : undefined}
-            className={cn(
-              inputVariants({ size, state: resolvedState as "default" | "error" | "success" | "disabled" }),
-              icon && size === "sm" && "pl-8",
-              icon && size === "md" && "pl-10",
-              icon && size === "lg" && "pl-12"
-            )}
+            className={inputVariants({
+              size,
+              state: resolvedState,
+              withIcon: !!icon,
+            })}
             {...props}
           />
         </div>
@@ -157,17 +189,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {(error || helperText) && (
           <p
             id={helperId}
-            className={cn(
-              "mt-1.5 text-caption font-sans",
-              error ? "text-destructive" : "text-muted"
-            )}
+            className={helperTextVariants({
+              tone: error ? "error" : "default",
+            })}
           >
             {error ?? helperText}
           </p>
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
