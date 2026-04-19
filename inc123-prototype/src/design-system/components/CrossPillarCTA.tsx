@@ -10,7 +10,9 @@ import { Link } from "@/design-system/primitives/Link";
 import type { PillarName } from "@/design-system/tokens";
 
 /* ------------------------------------------------
-   CVA Variants
+   CVA Variants — one per slot, all keyed by `variant`
+   so the container prop drives typography across heading,
+   description, and link simultaneously.
    ------------------------------------------------ */
 const crossPillarCTAVariants = cva(
   "rounded-card border border-border border-t-2 transition-colors flex flex-col",
@@ -25,6 +27,42 @@ const crossPillarCTAVariants = cva(
     defaultVariants: {
       variant: "callout-box",
     },
+  },
+);
+
+const headingVariants = cva("text-foreground font-semibold", {
+  variants: {
+    variant: {
+      "callout-box": "text-heading-sm font-display",
+      "sidebar-block": "text-body-sm",
+      "upgrade-prompt": "text-heading-sm font-display",
+    },
+  },
+  defaultVariants: { variant: "callout-box" },
+});
+
+const descriptionVariants = cva("text-muted mt-1", {
+  variants: {
+    variant: {
+      "callout-box": "text-body",
+      "sidebar-block": "text-caption",
+      "upgrade-prompt": "text-body",
+    },
+  },
+  defaultVariants: { variant: "callout-box" },
+});
+
+const linkSizeVariants = cva(
+  "mt-auto pt-3 inline-flex items-center gap-1.5 font-medium",
+  {
+    variants: {
+      variant: {
+        "callout-box": "text-body",
+        "sidebar-block": "text-body-sm",
+        "upgrade-prompt": "text-body",
+      },
+    },
+    defaultVariants: { variant: "callout-box" },
   },
 );
 
@@ -84,34 +122,14 @@ function CrossPillarCTA({
         </p>
       )}
 
-      <h3
-        className={cn(
-          variant === "sidebar-block"
-            ? "text-body-sm font-semibold"
-            : "text-heading-sm font-display font-semibold",
-          "text-foreground",
-        )}
-      >
-        {heading}
-      </h3>
+      <h3 className={headingVariants({ variant })}>{heading}</h3>
 
-      <p
-        className={cn(
-          "text-muted mt-1",
-          variant === "sidebar-block" ? "text-caption" : "text-body",
-        )}
-      >
-        {description}
-      </p>
+      <p className={descriptionVariants({ variant })}>{description}</p>
 
       <Link
         href={href}
         variant="subtle"
-        className={cn(
-          "mt-auto pt-3 inline-flex items-center gap-1.5 font-medium",
-          variant === "sidebar-block" ? "text-body-sm" : "text-body",
-          pillarTextMap[toPillar],
-        )}
+        className={cn(linkSizeVariants({ variant }), pillarTextMap[toPillar])}
         icon={<Icon name="ArrowRight" size="sm" />}
         iconPosition="right"
       >

@@ -140,6 +140,62 @@ const itemVariants = cva("flex flex-col items-center text-center gap-1.5", {
   },
 });
 
+/* Slot-level color variants — replaces three nested isDark/isSubtle ternaries
+   inside the JSX. Keyed by `variant` so the single prop drives all slots. */
+const iconColorVariants = cva("shrink-0", {
+  variants: {
+    variant: {
+      light: "text-secondary",
+      dark: "text-white/80",
+      subtle: "text-muted",
+    },
+  },
+  defaultVariants: { variant: "light" },
+});
+
+const valueColorVariants = cva("font-display font-bold", {
+  variants: {
+    variant: {
+      light: "text-foreground",
+      dark: "text-white",
+      // NOTE: subtle and light intentionally render the same foreground color.
+      // Previously this was `isSubtle ? "text-foreground" : "text-foreground"`
+      // — the equality is now explicit here instead of hidden in a ternary.
+      subtle: "text-foreground",
+    },
+    size: {
+      compact: "text-body",
+      full: "text-heading-lg",
+    },
+  },
+  defaultVariants: { variant: "light", size: "full" },
+});
+
+const labelColorVariants = cva("", {
+  variants: {
+    variant: {
+      light: "text-muted",
+      dark: "text-white/70",
+      subtle: "text-muted/70",
+    },
+    size: {
+      compact: "text-caption",
+      full: "text-body-sm",
+    },
+  },
+  defaultVariants: { variant: "light", size: "full" },
+});
+
+const valueWrapperVariants = cva("", {
+  variants: {
+    layout: {
+      compact: "flex items-baseline gap-1.5",
+      stacked: "flex flex-col",
+    },
+  },
+  defaultVariants: { layout: "stacked" },
+});
+
 /* -------------------------------------------------- */
 /*  Props                                              */
 /* -------------------------------------------------- */
@@ -160,8 +216,8 @@ function TrustSignals({
   className,
 }: TrustSignalsProps) {
   const isCompact = layout === "compact";
-  const isDark = variant === "dark";
-  const isSubtle = variant === "subtle";
+  const resolvedVariant = variant ?? "light";
+  const sizeKey = isCompact ? "compact" : "full";
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -208,16 +264,7 @@ function TrustSignals({
           role="listitem"
         >
           {/* Icon */}
-          <div
-            className={cn(
-              "shrink-0",
-              isDark
-                ? "text-white/80"
-                : isSubtle
-                  ? "text-muted"
-                  : "text-secondary",
-            )}
-          >
+          <div className={iconColorVariants({ variant: resolvedVariant })}>
             <Icon
               name={item.icon}
               size={isCompact ? "sm" : "lg"}
@@ -227,32 +274,23 @@ function TrustSignals({
 
           {/* Value + Label */}
           <div
-            className={cn(
-              isCompact ? "flex items-baseline gap-1.5" : "flex flex-col",
-            )}
+            className={valueWrapperVariants({
+              layout: isCompact ? "compact" : "stacked",
+            })}
           >
             <span
-              className={cn(
-                "font-display font-bold",
-                isCompact ? "text-body" : "text-heading-lg",
-                isDark
-                  ? "text-white"
-                  : isSubtle
-                    ? "text-foreground"
-                    : "text-foreground",
-              )}
+              className={valueColorVariants({
+                variant: resolvedVariant,
+                size: sizeKey,
+              })}
             >
               <AnimatedValue value={item.value} isVisible={isVisible} />
             </span>
             <span
-              className={cn(
-                isCompact ? "text-caption" : "text-body-sm",
-                isDark
-                  ? "text-white/70"
-                  : isSubtle
-                    ? "text-muted/70"
-                    : "text-muted",
-              )}
+              className={labelColorVariants({
+                variant: resolvedVariant,
+                size: sizeKey,
+              })}
             >
               {item.label}
             </span>
