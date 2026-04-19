@@ -540,3 +540,10 @@ export function ComplianceWarning() {
     </section>
   );
 }
+
+JurisdictionStatStrip.displayName = "JurisdictionStatStrip";
+EntityComparison.displayName = "EntityComparison";
+FormationProcess.displayName = "FormationProcess";
+CostBreakdown.displayName = "CostBreakdown";
+CombinedStructures.displayName = "CombinedStructures";
+ComplianceWarning.displayName = "ComplianceWarning";
