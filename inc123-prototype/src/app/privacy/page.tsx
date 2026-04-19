@@ -12,6 +12,10 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
+import {
+  ALL_FORMATION_STATES,
+  getPackageComparisonCards,
+} from "@/data/packages";
 import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
 import { PillarIllustration } from "@/design-system/components/PillarIllustration";
 import { PullQuote } from "@/design-system/components/PullQuote";
@@ -553,7 +557,10 @@ export default function PrivacyPillarPage() {
           S8: PACKAGES — Compare
           ================================================ */}
       <div id="packages">
-        <PackageComparison />
+        <PackageComparison
+          states={ALL_FORMATION_STATES}
+          getCards={getPackageComparisonCards}
+        />
       </div>
 
       {/* ================================================

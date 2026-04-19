@@ -7,124 +7,23 @@ import { Button } from "@/design-system/primitives/Button";
 import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
-import { tierDefinitions, ALL_FORMATION_STATES } from "@/data/packages";
+import type { PackageTierCardData, FormationStateOption } from "@/lib/types";
 
-/* ------------------------------------------------
-   Types
-   ------------------------------------------------ */
-type StateName = (typeof ALL_FORMATION_STATES)[number]["name"];
-
-interface CardData {
-  tier: string;
-  tierLabel: string;
-  price: string;
-  renewal: string;
-  features: string[];
-  ctaLabel: string;
-  ctaHref: string;
-  featured?: boolean;
-  featuredBadge?: string;
-  valueCallout?: string;
-  upsellText?: string;
-  upsellHref?: string;
-}
-
-/* ------------------------------------------------
-   Build cards for selected state
-   ------------------------------------------------ */
-function getCardsForState(state: StateName): CardData[] {
-  const bronzeTier = tierDefinitions.find((t) => t.tier === "bronze");
-  const silverTier = tierDefinitions.find((t) => t.tier === "silver");
-  const goldTier = tierDefinitions.find((t) => t.tier === "gold");
-
-  const bronzeVariant = bronzeTier?.stateVariants[state];
-  const silverVariant = silverTier?.stateVariants[state];
-  const goldVariant = goldTier?.stateVariants[state];
-
-  const isPrivateState = state === "California" || state === "Florida";
-  const stateAbbr =
-    ALL_FORMATION_STATES.find((s) => s.name === state)?.abbreviation ?? "";
-  const stateLower = state.toLowerCase();
-
-  const cards: CardData[] = [];
-
-  if (bronzeVariant) {
-    cards.push({
-      tier: "Bronze",
-      tierLabel: "",
-      price: `$${bronzeVariant.prices.llc.formation.toLocaleString()}`,
-      renewal: `$${bronzeVariant.prices.llc.renewal}/yr`,
-      features: [
-        "State filing fees included",
-        "Registered agent (1 year)",
-        ...(state === "Nevada" ? ["Nevada business license"] : []),
-      ],
-      ctaLabel: "Get Started →",
-      ctaHref: `/${stateLower}-incorporation?tier=bronze`,
-    });
-  }
-
-  if (silverVariant) {
-    cards.push({
-      tier: "Silver",
-      tierLabel: "",
-      price: `$${silverVariant.prices.llc.formation.toLocaleString()}`,
-      renewal: `$${silverVariant.prices.llc.renewal}/yr`,
-      features: [
-        "Registered agent included",
-        "Custom operating agreement",
-        "Corporate minutes maintenance",
-        "All state filing fees",
-        "EIN filing",
-        ...(state === "Nevada" ? ["Nevada business license"] : []),
-      ],
-      ctaLabel: "Get Started →",
-      ctaHref: `/${stateLower}-incorporation`,
-    });
-  }
-
-  if (goldVariant) {
-    cards.push({
-      tier: "Gold",
-      tierLabel: "",
-      price: `$${goldVariant.prices.llc.formation.toLocaleString()}`,
-      renewal: `$${goldVariant.prices.llc.renewal}/yr with nominees`,
-      features: [
-        "Year-round nominee services",
-        "Offshore records storage",
-        "Full compliance package",
-        "Registered agent included",
-        "Corporate minutes maintenance",
-        "All state filing fees",
-        ...(isPrivateState
-          ? [`${stateAbbr} foreign registration included`]
-          : []),
-      ],
-      ctaLabel: "Get Started →",
-      ctaHref: `/${stateLower}-private-incorporation`,
-      featured: true,
-      featuredBadge: "Chosen by 70% of Clients",
-      valueCallout: "Includes $2,000+ in Year 1 services",
-    });
-  }
-
-  return cards;
-}
-
-/* ------------------------------------------------
-   Props
-   ------------------------------------------------ */
 interface PackageComparisonProps {
+  states: readonly FormationStateOption[];
+  getCards: (state: string) => PackageTierCardData[];
   className?: string;
 }
 
-/* ------------------------------------------------
-   Component
-   ------------------------------------------------ */
-function PackageComparison({ className }: PackageComparisonProps) {
-  const [selectedState, setSelectedState] = useState<StateName>("Wyoming");
+function PackageComparison({
+  states,
+  getCards,
+  className,
+}: PackageComparisonProps) {
+  const defaultState = states[0]?.name ?? "";
+  const [selectedState, setSelectedState] = useState<string>(defaultState);
 
-  const cards = getCardsForState(selectedState);
+  const cards = getCards(selectedState);
 
   const gridCols =
     cards.length === 3
@@ -149,11 +48,11 @@ function PackageComparison({ className }: PackageComparisonProps) {
         <ScrollReveal>
           <div className="flex items-center justify-center mb-12">
             <div className="inline-flex items-center rounded-full border border-border bg-surface p-1 gap-0.5">
-              {ALL_FORMATION_STATES.map(({ name }) => (
+              {states.map(({ name }) => (
                 <button
                   key={name}
                   type="button"
-                  onClick={() => setSelectedState(name as StateName)}
+                  onClick={() => setSelectedState(name)}
                   className={cn(
                     "rounded-full px-4 py-2 text-body-sm font-medium transition-all",
                     selectedState === name

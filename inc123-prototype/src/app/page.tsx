@@ -20,7 +20,12 @@ import {
   pillarCardOverrides,
   homepageTestimonialGrid,
   differentiatorCards,
+  privacyBridgeColumns,
 } from "@/data/homepage";
+import {
+  ALL_FORMATION_STATES,
+  getPackageComparisonCards,
+} from "@/data/packages";
 
 /* ------------------------------------------------
    Organization + LocalBusiness Schema (JSON-LD)
@@ -117,7 +122,10 @@ export default function HomePage() {
             Section 2: "Why Privacy Matters" Bridge
             — teaches the PROBLEM before selling
             ========================================== */}
-        <PrivacyBridge className="bg-background" />
+        <PrivacyBridge
+          className="bg-background"
+          columns={privacyBridgeColumns}
+        />
 
         {/* ==========================================
             Section 3: Pillar Navigation — explore first
@@ -230,7 +238,11 @@ export default function HomePage() {
         {/* ==========================================
             Section 6: Package Comparison — pricing
             ========================================== */}
-        <PackageComparison className="bg-primary-50" />
+        <PackageComparison
+          className="bg-primary-50"
+          states={ALL_FORMATION_STATES}
+          getCards={getPackageComparisonCards}
+        />
 
         {/* ==========================================
             Section 7: Differentiators — "why us"

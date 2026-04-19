@@ -16,6 +16,10 @@ import { PillarFinalCTA } from "@/design-system/components/PillarFinalCTA";
 import { PillarIllustration } from "@/design-system/components/PillarIllustration";
 import { PullQuote } from "@/design-system/components/PullQuote";
 import { faqItems } from "@/data/faq";
+import {
+  ALL_FORMATION_STATES,
+  getPackageComparisonCards,
+} from "@/data/packages";
 import { ASSET_FINAL_CTA } from "@/data/pillar-content";
 import {
   ASSET_KEY_DIFFS,
@@ -741,7 +745,10 @@ export default function AssetProtectionPillarPage() {
           S8: PACKAGES — Compare
           ================================================ */}
       <div id="packages">
-        <PackageComparison />
+        <PackageComparison
+          states={ALL_FORMATION_STATES}
+          getCards={getPackageComparisonCards}
+        />
       </div>
 
       {/* ================================================

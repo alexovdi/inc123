@@ -2,7 +2,8 @@ import { Eye, AlertCircle, Lock } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
-import { privacyBridgeColumns } from "@/data/homepage";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
+import type { PrivacyBridgeColumn } from "@/lib/types";
 
 const iconMap: Record<string, ReactNode> = {
   Eye: <Eye className="h-6 w-6 text-secondary" strokeWidth={1.8} />,
@@ -12,15 +13,20 @@ const iconMap: Record<string, ReactNode> = {
   Lock: <Lock className="h-6 w-6 text-secondary" strokeWidth={1.8} />,
 };
 
-export function PrivacyBridge({ className }: { className?: string }) {
+interface PrivacyBridgeProps {
+  columns: PrivacyBridgeColumn[];
+  className?: string;
+}
+
+export function PrivacyBridge({ columns, className }: PrivacyBridgeProps) {
   return (
     <section className={cn("py-section-y", className)}>
       <div className="mx-auto max-w-content px-container-x">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <p className="text-body-sm font-semibold text-secondary uppercase tracking-[0.15em] mb-2">
+            <Eyebrow tone="secondary" className="mb-2">
               Why It Matters
-            </p>
+            </Eyebrow>
             <h2 className="font-display type-display-sm font-semibold text-foreground max-w-[32ch] mx-auto">
               Your name is on public records.
               <br />
@@ -35,7 +41,7 @@ export function PrivacyBridge({ className }: { className?: string }) {
         </ScrollReveal>
 
         <div className="grid gap-8 md:grid-cols-3 max-w-[960px] mx-auto">
-          {privacyBridgeColumns.map((col, index) => (
+          {columns.map((col, index) => (
             <ScrollReveal key={col.title} delay={index * 120}>
               <div className="text-center px-2">
                 {/* Icon */}

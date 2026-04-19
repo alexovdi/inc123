@@ -635,6 +635,35 @@ export interface DifferentiatorCard {
   desc: string;
 }
 
+/** Homepage v10 — Privacy Bridge */
+export interface PrivacyBridgeColumn {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+/** Package comparison — per-tier card shape rendered by PackageComparison */
+export interface PackageTierCardData {
+  tier: string;
+  tierLabel: string;
+  price: string;
+  renewal: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  featured?: boolean;
+  featuredBadge?: string;
+  valueCallout?: string;
+  upsellText?: string;
+  upsellHref?: string;
+}
+
+/** Formation state option for the PackageComparison state toggle */
+export interface FormationStateOption {
+  name: string;
+  abbreviation: string;
+}
+
 /** Tier page visual variants */
 export type MetallicAccent = "gold" | "silver" | "bronze";
 export type HeroVisualVariant = "docs" | "shield" | "seal";

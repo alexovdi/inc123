@@ -16,6 +16,10 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
+import {
+  ALL_FORMATION_STATES,
+  getPackageComparisonCards,
+} from "@/data/packages";
 import { COMPLIANCE_FINAL_CTA } from "@/data/pillar-content";
 import {
   COMPLIANCE_KEY_DIFFS,
@@ -761,7 +765,10 @@ export default function CompliancePillarPage() {
           S7: PACKAGES — Compare
           ================================================ */}
       <div id="packages">
-        <PackageComparison />
+        <PackageComparison
+          states={ALL_FORMATION_STATES}
+          getCards={getPackageComparisonCards}
+        />
       </div>
 
       {/* ================================================

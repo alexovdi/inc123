@@ -4,6 +4,7 @@ import type {
   TierDefinition,
   TierLevel,
   EntityType,
+  PackageTierCardData,
 } from "@/lib/types";
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -823,3 +824,91 @@ export const ALL_FORMATION_STATES = [
   { name: "California", abbreviation: "CA" },
   { name: "Florida", abbreviation: "FL" },
 ] as const;
+
+type FormationStateName = (typeof ALL_FORMATION_STATES)[number]["name"];
+
+/**
+ * Build the per-state card set rendered by PackageComparison.
+ * Kept in the data layer so the design-system component stays isolated
+ * from domain data (tierDefinitions, ALL_FORMATION_STATES).
+ */
+export function getPackageComparisonCards(
+  state: FormationStateName,
+): PackageTierCardData[] {
+  const bronzeTier = tierDefinitions.find((t) => t.tier === "bronze");
+  const silverTier = tierDefinitions.find((t) => t.tier === "silver");
+  const goldTier = tierDefinitions.find((t) => t.tier === "gold");
+
+  const bronzeVariant = bronzeTier?.stateVariants[state];
+  const silverVariant = silverTier?.stateVariants[state];
+  const goldVariant = goldTier?.stateVariants[state];
+
+  const isPrivateState = state === "California" || state === "Florida";
+  const stateAbbr =
+    ALL_FORMATION_STATES.find((s) => s.name === state)?.abbreviation ?? "";
+  const stateLower = state.toLowerCase();
+
+  const cards: PackageTierCardData[] = [];
+
+  if (bronzeVariant) {
+    cards.push({
+      tier: "Bronze",
+      tierLabel: "",
+      price: `$${bronzeVariant.prices.llc.formation.toLocaleString()}`,
+      renewal: `$${bronzeVariant.prices.llc.renewal}/yr`,
+      features: [
+        "State filing fees included",
+        "Registered agent (1 year)",
+        ...(state === "Nevada" ? ["Nevada business license"] : []),
+      ],
+      ctaLabel: "Get Started →",
+      ctaHref: `/${stateLower}-incorporation?tier=bronze`,
+    });
+  }
+
+  if (silverVariant) {
+    cards.push({
+      tier: "Silver",
+      tierLabel: "",
+      price: `$${silverVariant.prices.llc.formation.toLocaleString()}`,
+      renewal: `$${silverVariant.prices.llc.renewal}/yr`,
+      features: [
+        "Registered agent included",
+        "Custom operating agreement",
+        "Corporate minutes maintenance",
+        "All state filing fees",
+        "EIN filing",
+        ...(state === "Nevada" ? ["Nevada business license"] : []),
+      ],
+      ctaLabel: "Get Started →",
+      ctaHref: `/${stateLower}-incorporation`,
+    });
+  }
+
+  if (goldVariant) {
+    cards.push({
+      tier: "Gold",
+      tierLabel: "",
+      price: `$${goldVariant.prices.llc.formation.toLocaleString()}`,
+      renewal: `$${goldVariant.prices.llc.renewal}/yr with nominees`,
+      features: [
+        "Year-round nominee services",
+        "Offshore records storage",
+        "Full compliance package",
+        "Registered agent included",
+        "Corporate minutes maintenance",
+        "All state filing fees",
+        ...(isPrivateState
+          ? [`${stateAbbr} foreign registration included`]
+          : []),
+      ],
+      ctaLabel: "Get Started →",
+      ctaHref: `/${stateLower}-private-incorporation`,
+      featured: true,
+      featuredBadge: "Chosen by 70% of Clients",
+      valueCallout: "Includes $2,000+ in Year 1 services",
+    });
+  }
+
+  return cards;
+}

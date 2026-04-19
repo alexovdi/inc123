@@ -3,6 +3,7 @@ import type {
   HomepageTestimonialItem,
   TrustBarItem,
   DifferentiatorCard,
+  PrivacyBridgeColumn,
 } from "@/lib/types";
 import type { CarouselTestimonial } from "@/design-system/components/TestimonialCarousel";
 
@@ -10,6 +11,7 @@ export type {
   HomepageTestimonialItem,
   TrustBarItem,
   DifferentiatorCard,
+  PrivacyBridgeColumn,
 } from "@/lib/types";
 
 /* ------------------------------------------------
@@ -381,12 +383,6 @@ export const packageComparisonCards: PackageComparisonCard[] = [
 /* ------------------------------------------------
    Privacy Bridge columns — "Why It Matters" section
    ------------------------------------------------ */
-export interface PrivacyBridgeColumn {
-  iconName: string;
-  title: string;
-  description: string;
-}
-
 export const privacyBridgeColumns: PrivacyBridgeColumn[] = [
   {
     iconName: "Eye",

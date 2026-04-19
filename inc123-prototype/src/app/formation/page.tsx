@@ -15,6 +15,10 @@ import { Icon } from "@/design-system/primitives/Icon";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { Link } from "@/design-system/primitives/Link";
 import { faqItems } from "@/data/faq";
+import {
+  ALL_FORMATION_STATES,
+  getPackageComparisonCards,
+} from "@/data/packages";
 import { FORMATION_FINAL_CTA } from "@/data/pillar-content";
 import {
   FORMATION_KEY_DIFFS,
@@ -850,7 +854,10 @@ export default function FormationPillarPage() {
           PACKAGES — Compare
           ================================================ */}
       <div id="packages">
-        <PackageComparison />
+        <PackageComparison
+          states={ALL_FORMATION_STATES}
+          getCards={getPackageComparisonCards}
+        />
       </div>
 
       {/* ================================================
