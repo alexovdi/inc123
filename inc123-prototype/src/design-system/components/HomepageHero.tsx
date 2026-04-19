@@ -43,6 +43,12 @@ function HeroCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Read particle color from CSS custom property (theme-agnostic on dark hero)
+    const particleRgb =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--hero-particle-rgb")
+        .trim() || "96,165,250";
+
     let W = 0;
     let H = 0;
 
@@ -75,7 +81,7 @@ function HeroCanvas() {
       draw() {
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx!.fillStyle = `rgba(96,165,250,${this.a})`;
+        ctx!.fillStyle = `rgba(${particleRgb},${this.a})`;
         ctx!.fill();
       }
     }
@@ -95,7 +101,7 @@ function HeroCanvas() {
             ctx!.beginPath();
             ctx!.moveTo(particles[i].x, particles[i].y);
             ctx!.lineTo(particles[j].x, particles[j].y);
-            ctx!.strokeStyle = `rgba(96,165,250,${0.06 * (1 - d / 160)})`;
+            ctx!.strokeStyle = `rgba(${particleRgb},${0.06 * (1 - d / 160)})`;
             ctx!.lineWidth = 0.5;
             ctx!.stroke();
           }

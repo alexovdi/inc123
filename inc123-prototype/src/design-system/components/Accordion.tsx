@@ -44,6 +44,19 @@ const accordionItemVariants = cva("", {
   },
 });
 
+const accordionContentVariants = cva("text-body text-muted", {
+  variants: {
+    variant: {
+      default: "px-4 pb-4",
+      flush: "pb-4",
+      card: "px-4 pb-4",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
 const accordionTriggerVariants = cva(
   "flex w-full items-center justify-between gap-3 text-left font-medium text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed disabled:opacity-50",
   {
@@ -304,15 +317,7 @@ function AccordionItem({
           visibility: isOpen ? "visible" : "hidden",
         }}
       >
-        <div
-          ref={contentRef}
-          className={cn(
-            "text-body text-muted",
-            variant === "default" && "px-4 pb-4",
-            variant === "flush" && "pb-4",
-            variant === "card" && "px-4 pb-4",
-          )}
-        >
+        <div ref={contentRef} className={accordionContentVariants({ variant })}>
           {children}
         </div>
       </div>

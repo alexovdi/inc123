@@ -49,6 +49,12 @@
     --brand-paypal-gold: #ffc439;
     --brand-paypal-gold-hover: #f0b72a;
 
+    /* Hero canvas particle color — theme-agnostic because the homepage hero
+       always renders on bg-primary (dark). Uses blue-400 for editorial tone.
+       Format: "R,G,B" triplet (rgb channels only) so canvas draws can
+       compose alpha per particle. */
+    --hero-particle-rgb: 96, 165, 250;
+
     /* Pillar colors — dark grey in wireframe for adequate contrast */
     --pillar-privacy: #374151;
     --pillar-privacy-soft: #f3f4f6;
