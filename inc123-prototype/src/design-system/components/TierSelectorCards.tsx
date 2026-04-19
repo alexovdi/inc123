@@ -1,8 +1,61 @@
 "use client";
 
+import { cva } from "class-variance-authority";
+
 import { cn } from "@/design-system/utils/cn";
-import { Badge } from "@/design-system/primitives/Badge";
 import { Icon } from "@/design-system/primitives/Icon";
+
+/* ------------------------------------------------
+   Variants
+   ------------------------------------------------ */
+const cardVariants = cva(
+  [
+    "relative flex flex-col rounded-card border-2 p-5 text-left transition-all duration-200",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
+  ],
+  {
+    variants: {
+      selected: { true: "", false: "" },
+      highlighted: { true: "", false: "" },
+    },
+    compoundVariants: [
+      // Selected wins over highlighted/default
+      {
+        selected: true,
+        class: "border-secondary bg-secondary/5 shadow-card-hover",
+      },
+      {
+        selected: false,
+        highlighted: true,
+        class:
+          "border-secondary/40 bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
+      },
+      {
+        selected: false,
+        highlighted: false,
+        class:
+          "border-border bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
+      },
+    ],
+    defaultVariants: { selected: false, highlighted: false },
+  },
+);
+
+const radioIndicatorVariants = cva(
+  [
+    "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2",
+    "transition-colors",
+  ],
+  {
+    variants: {
+      selected: {
+        true: "border-secondary bg-secondary",
+        false: "border-border bg-surface",
+      },
+    },
+    defaultVariants: { selected: false },
+  },
+);
 
 /* ------------------------------------------------
    Props
@@ -70,15 +123,10 @@ function TierSelectorCards({
             role="radio"
             aria-checked={isSelected}
             onClick={() => onSelect(tier.id)}
-            className={cn(
-              "relative flex flex-col rounded-card border-2 p-5 text-left transition-all duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
-              isSelected
-                ? "border-secondary bg-secondary/5 shadow-card-hover"
-                : tier.highlighted
-                  ? "border-secondary/40 bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5"
-                  : "border-border bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
-            )}
+            className={cardVariants({
+              selected: isSelected,
+              highlighted: tier.highlighted ?? false,
+            })}
           >
             {/* Badge */}
             {tier.badge && (
@@ -97,12 +145,7 @@ function TierSelectorCards({
                 </h4>
               </div>
               <div
-                className={cn(
-                  "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors",
-                  isSelected
-                    ? "border-secondary bg-secondary"
-                    : "border-border bg-surface",
-                )}
+                className={radioIndicatorVariants({ selected: isSelected })}
                 aria-hidden="true"
               >
                 {isSelected && (

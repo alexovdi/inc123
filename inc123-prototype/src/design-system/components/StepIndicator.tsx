@@ -1,7 +1,90 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { cva } from "class-variance-authority";
+
 import { cn } from "@/design-system/utils/cn";
+
+type StepState = "completed" | "current" | "upcoming";
+
+/* ------------------------------------------------
+   Variants
+   ------------------------------------------------ */
+const desktopCircleVariants = cva(
+  [
+    "relative flex h-10 w-10 shrink-0 items-center justify-center",
+    "rounded-full text-body-sm font-semibold transition-colors",
+  ],
+  {
+    variants: {
+      state: {
+        completed:
+          "bg-success text-white hover:bg-success/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+        current: "bg-secondary text-white animate-pulse cursor-default",
+        upcoming: "bg-primary-200 text-muted cursor-default",
+      },
+      clickable: {
+        true: "cursor-pointer",
+        false: "cursor-default",
+      },
+    },
+    defaultVariants: { state: "upcoming", clickable: false },
+  },
+);
+
+const desktopLabelVariants = cva("block text-body-sm font-medium", {
+  variants: {
+    state: {
+      completed: "text-success",
+      current: "text-secondary",
+      upcoming: "text-muted",
+    },
+  },
+  defaultVariants: { state: "upcoming" },
+});
+
+const connectingLineVariants = cva(
+  "h-0.5 w-full rounded-pill transition-colors",
+  {
+    variants: {
+      state: {
+        completed: "bg-success",
+        current: "bg-border",
+        upcoming: "bg-border",
+      },
+    },
+    defaultVariants: { state: "upcoming" },
+  },
+);
+
+const mobileDotVariants = cva(
+  "flex items-center justify-center rounded-full transition-all",
+  {
+    variants: {
+      state: {
+        completed: "h-6 w-6 bg-success text-white",
+        current: "h-8 w-8 bg-secondary text-white animate-pulse",
+        upcoming: "h-6 w-6 bg-primary-200",
+      },
+      clickable: {
+        true: "cursor-pointer",
+        false: "cursor-default",
+      },
+    },
+    defaultVariants: { state: "upcoming", clickable: false },
+  },
+);
+
+const mobileLineVariants = cva("h-0.5 w-4 rounded-pill", {
+  variants: {
+    state: {
+      completed: "bg-success",
+      current: "bg-border",
+      upcoming: "bg-border",
+    },
+  },
+  defaultVariants: { state: "upcoming" },
+});
 
 /* ------------------------------------------------
    Types
@@ -40,10 +123,10 @@ function StepIndicator({
 }: StepIndicatorProps) {
   const completedSet = new Set(completedSteps);
 
-  const getStepState = (stepId: string) => {
-    if (completedSet.has(stepId)) return "completed" as const;
-    if (stepId === currentStep) return "current" as const;
-    return "upcoming" as const;
+  const getStepState = (stepId: string): StepState => {
+    if (completedSet.has(stepId)) return "completed";
+    if (stepId === currentStep) return "current";
+    return "upcoming";
   };
 
   const currentStepData = steps.find((s) => s.id === currentStep);
@@ -66,18 +149,14 @@ function StepIndicator({
                   <button
                     type="button"
                     disabled={!isClickable}
-                    onClick={isClickable ? () => onStepClick(step.id) : undefined}
+                    onClick={
+                      isClickable ? () => onStepClick(step.id) : undefined
+                    }
                     aria-current={state === "current" ? "step" : undefined}
-                    className={cn(
-                      "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-body-sm font-semibold transition-colors",
-                      state === "completed" &&
-                        "bg-success text-white cursor-pointer hover:bg-success/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
-                      state === "current" &&
-                        "bg-secondary text-white animate-pulse cursor-default",
-                      state === "upcoming" &&
-                        "bg-primary-200 text-muted cursor-default",
-                      !isClickable && "cursor-default"
-                    )}
+                    className={desktopCircleVariants({
+                      state,
+                      clickable: isClickable,
+                    })}
                   >
                     {state === "completed" ? (
                       <Check className="h-5 w-5" aria-hidden="true" />
@@ -88,14 +167,7 @@ function StepIndicator({
 
                   {/* Label + description */}
                   <div className="mt-2 text-center">
-                    <span
-                      className={cn(
-                        "block text-body-sm font-medium",
-                        state === "completed" && "text-success",
-                        state === "current" && "text-secondary",
-                        state === "upcoming" && "text-muted"
-                      )}
-                    >
+                    <span className={desktopLabelVariants({ state })}>
                       {step.label}
                     </span>
                     {step.description && (
@@ -110,14 +182,7 @@ function StepIndicator({
                 {!isLast && (
                   <div className="mt-5 flex flex-1 items-center px-2">
                     <div
-                      className={cn(
-                        "h-0.5 w-full rounded-pill transition-colors",
-                        // Line is filled if both the current and next step are completed,
-                        // or if the current step is completed (leading into current/upcoming)
-                        state === "completed"
-                          ? "bg-success"
-                          : "bg-border"
-                      )}
+                      className={connectingLineVariants({ state })}
                       aria-hidden="true"
                     />
                   </div>
@@ -162,16 +227,10 @@ function StepIndicator({
                     }
                     aria-label={`${step.label}${state === "completed" ? " (completed)" : state === "current" ? " (current)" : ""}`}
                     aria-current={state === "current" ? "step" : undefined}
-                    className={cn(
-                      "flex items-center justify-center rounded-full transition-all",
-                      state === "completed" &&
-                        "h-6 w-6 bg-success text-white cursor-pointer",
-                      state === "current" &&
-                        "h-8 w-8 bg-secondary text-white animate-pulse",
-                      state === "upcoming" &&
-                        "h-6 w-6 bg-primary-200",
-                      !isClickable && state !== "current" && "cursor-default"
-                    )}
+                    className={mobileDotVariants({
+                      state,
+                      clickable: isClickable,
+                    })}
                   >
                     {state === "completed" && (
                       <Check className="h-3 w-3" aria-hidden="true" />
@@ -181,10 +240,7 @@ function StepIndicator({
                   {/* Mini connecting line */}
                   {!isLast && (
                     <div
-                      className={cn(
-                        "h-0.5 w-4 rounded-pill",
-                        state === "completed" ? "bg-success" : "bg-border"
-                      )}
+                      className={mobileLineVariants({ state })}
                       aria-hidden="true"
                     />
                   )}
@@ -195,8 +251,7 @@ function StepIndicator({
 
           {/* Step count */}
           <span className="text-caption text-muted">
-            Step{" "}
-            {steps.findIndex((s) => s.id === currentStep) + 1} of{" "}
+            Step {steps.findIndex((s) => s.id === currentStep) + 1} of{" "}
             {steps.length}
           </span>
         </div>

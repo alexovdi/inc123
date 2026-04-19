@@ -1,6 +1,101 @@
+import { cva, type VariantProps } from "class-variance-authority";
+import { ClipboardCheck } from "lucide-react";
+
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
-import { ClipboardCheck } from "lucide-react";
+
+/* ------------------------------------------------
+   Variants — one cva() per slot, all keyed by `tone`
+   so the single `variant` prop drives the full callout.
+   ------------------------------------------------ */
+const sectionVariants = cva("p-8 sm:p-10 lg:p-12", {
+  variants: {
+    tone: {
+      default:
+        "rounded-card bg-pillar-compliance-soft border border-pillar-compliance-mid/30",
+      dark: "bg-primary",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const iconBubbleVariants = cva(
+  "flex h-10 w-10 items-center justify-center rounded-card",
+  {
+    variants: {
+      tone: {
+        default: "bg-pillar-compliance/10",
+        dark: "bg-white/10",
+      },
+    },
+    defaultVariants: { tone: "default" },
+  },
+);
+
+const iconVariants = cva("h-5 w-5", {
+  variants: {
+    tone: {
+      default: "text-pillar-compliance",
+      dark: "text-white/80",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const eyebrowVariants = cva(
+  "text-body-sm font-semibold uppercase tracking-[0.15em]",
+  {
+    variants: {
+      tone: {
+        default: "text-pillar-compliance",
+        dark: "text-white/70",
+      },
+    },
+    defaultVariants: { tone: "default" },
+  },
+);
+
+const headlineVariants = cva("font-display text-heading-lg font-bold", {
+  variants: {
+    tone: {
+      default: "text-foreground",
+      dark: "text-white",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const descriptionVariants = cva("mt-3 text-body-lg max-w-narrow", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      dark: "text-white/70",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const decorativeIconVariants = cva("h-32 w-32", {
+  variants: {
+    tone: {
+      default: "text-pillar-compliance/20",
+      dark: "text-white/20",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const secondaryButtonVariants = cva("", {
+  variants: {
+    tone: {
+      default: "",
+      dark: "text-white/70 hover:text-white hover:bg-white/10",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+type CalloutTone = NonNullable<VariantProps<typeof sectionVariants>["tone"]>;
 
 /* ------------------------------------------------
    Props
@@ -14,7 +109,7 @@ export interface ComplianceCalloutProps {
   cta: { label: string; href: string };
   /** Override the default "Client Login" secondary CTA */
   secondaryCTA?: { label: string; href: string };
-  /** Use dark bg variant (full-width dark treatment) */
+  /** Visual variant — `dark` renders a full-width dark treatment */
   variant?: "default" | "dark";
   /** Additional class names */
   className?: string;
@@ -31,63 +126,27 @@ function ComplianceCallout({
   variant = "default",
   className,
 }: ComplianceCalloutProps) {
-  const isDark = variant === "dark";
+  const tone: CalloutTone = variant;
+  const isDark = tone === "dark";
 
   return (
-    <section
-      className={cn(
-        "p-8 sm:p-10 lg:p-12",
-        isDark
-          ? "bg-primary"
-          : "rounded-card bg-pillar-compliance-soft border border-pillar-compliance-mid/30",
-        className,
-      )}
-    >
+    <section className={cn(sectionVariants({ tone }), className)}>
       <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
         {/* Text content */}
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-4">
-            <div
-              className={cn(
-                "flex h-10 w-10 items-center justify-center rounded-card",
-                isDark ? "bg-white/10" : "bg-pillar-compliance/10",
-              )}
-            >
+            <div className={iconBubbleVariants({ tone })}>
               <ClipboardCheck
-                className={cn(
-                  "h-5 w-5",
-                  isDark ? "text-white/80" : "text-pillar-compliance",
-                )}
+                className={iconVariants({ tone })}
                 aria-hidden="true"
               />
             </div>
-            <span
-              className={cn(
-                "text-body-sm font-semibold uppercase tracking-[0.15em]",
-                isDark ? "text-white/70" : "text-pillar-compliance",
-              )}
-            >
-              Compliance
-            </span>
+            <span className={eyebrowVariants({ tone })}>Compliance</span>
           </div>
 
-          <h2
-            className={cn(
-              "font-display text-heading-lg font-bold",
-              isDark ? "text-white" : "text-foreground",
-            )}
-          >
-            {headline}
-          </h2>
+          <h2 className={headlineVariants({ tone })}>{headline}</h2>
 
-          <p
-            className={cn(
-              "mt-3 text-body-lg max-w-narrow",
-              isDark ? "text-white/70" : "text-muted",
-            )}
-          >
-            {description}
-          </p>
+          <p className={descriptionVariants({ tone })}>{description}</p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             {isDark ? (
@@ -103,11 +162,7 @@ function ComplianceCallout({
               variant="ghost"
               size="lg"
               asChild
-              className={
-                isDark
-                  ? "text-white/70 hover:text-white hover:bg-white/10"
-                  : undefined
-              }
+              className={secondaryButtonVariants({ tone })}
             >
               <a href={secondaryCTA?.href ?? "/contact"}>
                 {secondaryCTA?.label ?? "Talk to Our Team"}
@@ -121,12 +176,7 @@ function ComplianceCallout({
           className="hidden lg:flex lg:basis-1/4 items-center justify-center"
           aria-hidden="true"
         >
-          <ClipboardCheck
-            className={cn(
-              "h-32 w-32",
-              isDark ? "text-white/20" : "text-pillar-compliance/20",
-            )}
-          />
+          <ClipboardCheck className={decorativeIconVariants({ tone })} />
         </div>
       </div>
     </section>
