@@ -5,8 +5,8 @@
    and never falls back to auto-generated placeholder strings.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-export type MetallicAccent = "gold" | "silver" | "bronze";
-export type HeroVisualVariant = "docs" | "shield" | "seal";
+export type { MetallicAccent, HeroVisualVariant } from "@/lib/types";
+import type { MetallicAccent, HeroVisualVariant } from "@/lib/types";
 
 export interface TierDeliverable {
   icon: string;

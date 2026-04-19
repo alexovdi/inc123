@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
-import type { HomepageTestimonialItem } from "@/data/homepage";
+import type { HomepageTestimonialItem } from "@/lib/types";
 
 /* ------------------------------------------------
    Color maps

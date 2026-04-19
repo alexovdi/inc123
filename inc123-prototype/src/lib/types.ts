@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { PillarName } from "@/design-system/tokens";
 
 /** Navigation */
@@ -600,3 +601,40 @@ export interface OffshoreData {
   };
   jurisdictions: OffshoreJurisdiction[];
 }
+
+/** Homepage v10 — Testimonial Grid */
+export interface HomepageTestimonialItem {
+  quote: string;
+  initials: string;
+  name: string;
+  role: string;
+  color: "secondary" | "success" | "accent";
+  featured?: boolean;
+}
+
+/** Homepage v10 — Trust Bar */
+export type TrustBarAccent =
+  | "secondary"
+  | "success"
+  | "accent"
+  | "pillar-compliance";
+
+export interface TrustBarItem {
+  iconName: string;
+  /** Semantic accent key — resolved to Tailwind classes by the TrustBar component */
+  accent: TrustBarAccent;
+  value: string | ReactNode;
+  label: string;
+  href?: string;
+}
+
+/** Homepage v10 — Differentiator Cards */
+export interface DifferentiatorCard {
+  iconName: string;
+  title: string;
+  desc: string;
+}
+
+/** Tier page visual variants */
+export type MetallicAccent = "gold" | "silver" | "bronze";
+export type HeroVisualVariant = "docs" | "shield" | "seal";

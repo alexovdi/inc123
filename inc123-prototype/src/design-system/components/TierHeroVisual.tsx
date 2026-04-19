@@ -1,5 +1,5 @@
 import { cn } from "@/design-system/utils/cn";
-import type { HeroVisualVariant, MetallicAccent } from "@/data/tierContent";
+import type { HeroVisualVariant, MetallicAccent } from "@/lib/types";
 
 /* ------------------------------------------------
    Tier hero visual — three variants

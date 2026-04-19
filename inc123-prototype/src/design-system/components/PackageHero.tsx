@@ -9,7 +9,7 @@ import { GrainOverlay } from "./GrainOverlay";
 import { EntityTypeToggle } from "./EntityTypeToggle";
 import { TierHeroVisual } from "./TierHeroVisual";
 import type { EntityType } from "@/lib/types";
-import type { HeroVisualVariant, MetallicAccent } from "@/data/tierContent";
+import type { HeroVisualVariant, MetallicAccent } from "@/lib/types";
 
 /* ------------------------------------------------
    Types

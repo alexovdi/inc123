@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/design-system/utils/cn";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
-import type { TrustBarItem } from "@/data/homepage";
+import type { TrustBarAccent, TrustBarItem } from "@/lib/types";
 
 /* ------------------------------------------------
    Icon resolver
@@ -14,6 +14,19 @@ const iconMap: Record<string, (className: string) => ReactNode> = {
   Check: (c) => <Check className={c} strokeWidth={2.5} />,
   Globe: (c) => <Globe className={c} />,
   DollarSign: (c) => <DollarSign className={c} />,
+};
+
+/* ------------------------------------------------
+   Accent color resolver — semantic key → Tailwind classes
+   ------------------------------------------------ */
+const accentMap: Record<TrustBarAccent, { text: string; bg: string }> = {
+  secondary: { text: "text-secondary", bg: "bg-secondary/[0.05]" },
+  success: { text: "text-success", bg: "bg-success/[0.05]" },
+  accent: { text: "text-accent", bg: "bg-accent/[0.05]" },
+  "pillar-compliance": {
+    text: "text-pillar-compliance",
+    bg: "bg-pillar-compliance/[0.05]",
+  },
 };
 
 /* ------------------------------------------------
@@ -40,6 +53,7 @@ function TrustBar({ items, className }: TrustBarProps) {
           <div className="flex flex-wrap justify-center gap-6 lg:gap-0 lg:divide-x lg:divide-border">
             {items.map((item, i) => {
               const renderIcon = iconMap[item.iconName];
+              const accent = accentMap[item.accent];
               return (
                 <div
                   key={i}
@@ -48,10 +62,10 @@ function TrustBar({ items, className }: TrustBarProps) {
                   <div
                     className={cn(
                       "flex h-10 w-10 items-center justify-center rounded-xl mb-2.5",
-                      item.bgClass,
+                      accent.bg,
                     )}
                   >
-                    {renderIcon?.(cn("h-5 w-5", item.colorClass))}
+                    {renderIcon?.(cn("h-5 w-5", accent.text))}
                   </div>
                   <p className="font-display text-body font-bold text-foreground">
                     {item.href ? (

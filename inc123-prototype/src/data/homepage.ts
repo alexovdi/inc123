@@ -1,6 +1,16 @@
-import type { ReactNode } from "react";
-import type { HomepageData } from "@/lib/types";
+import type {
+  HomepageData,
+  HomepageTestimonialItem,
+  TrustBarItem,
+  DifferentiatorCard,
+} from "@/lib/types";
 import type { CarouselTestimonial } from "@/design-system/components/TestimonialCarousel";
+
+export type {
+  HomepageTestimonialItem,
+  TrustBarItem,
+  DifferentiatorCard,
+} from "@/lib/types";
 
 /* ------------------------------------------------
    Homepage Data — v10 design aligned
@@ -209,16 +219,8 @@ export const trustSignalItems = [
 
 /* ------------------------------------------------
    Homepage Testimonial Grid — v10 static 3-col
+   Type HomepageTestimonialItem is defined in @/lib/types.
    ------------------------------------------------ */
-export interface HomepageTestimonialItem {
-  quote: string;
-  initials: string;
-  name: string;
-  role: string;
-  color: "secondary" | "success" | "accent";
-  featured?: boolean;
-}
-
 export const homepageTestimonialGrid: HomepageTestimonialItem[] = [
   {
     quote:
@@ -249,50 +251,38 @@ export const homepageTestimonialGrid: HomepageTestimonialItem[] = [
 
 /* ------------------------------------------------
    Trust Bar Items — v10 homepage
+   Type TrustBarItem is defined in @/lib/types. Data carries semantic
+   "accent" keys; the TrustBar component resolves them to Tailwind classes.
    ------------------------------------------------ */
-export interface TrustBarItem {
-  iconName: string;
-  colorClass: string;
-  bgClass: string;
-  value: string | ReactNode;
-  label: string;
-  href?: string;
-}
-
 export const trustBarItems: TrustBarItem[] = [
   {
     iconName: "Award",
-    colorClass: "text-secondary",
-    bgClass: "bg-secondary/[0.05]",
+    accent: "secondary",
     value: "Since 2000",
     label: "25 years trusted",
   },
   {
     iconName: "Phone",
-    colorClass: "text-success",
-    bgClass: "bg-success/[0.05]",
+    accent: "success",
     value: "1-800-553-0615",
     label: "Call us directly",
     href: "tel:+18005530615",
   },
   {
     iconName: "Check",
-    colorClass: "text-accent",
-    bgClass: "bg-accent/[0.05]",
+    accent: "accent",
     value: "30-Day",
     label: "Money-back guarantee",
   },
   {
     iconName: "Globe",
-    colorClass: "text-[var(--pillar-compliance)]",
-    bgClass: "bg-[var(--pillar-compliance)]/[0.05]",
+    accent: "pillar-compliance",
     value: "5 Cryptos",
     label: "Payments accepted",
   },
   {
     iconName: "DollarSign",
-    colorClass: "text-secondary",
-    bgClass: "bg-secondary/[0.05]",
+    accent: "secondary",
     value: "All-Inclusive",
     label: "No hidden fees, ever",
   },
@@ -300,13 +290,8 @@ export const trustBarItems: TrustBarItem[] = [
 
 /* ------------------------------------------------
    Differentiator Cards — v10 dark section
+   Type DifferentiatorCard is defined in @/lib/types.
    ------------------------------------------------ */
-export interface DifferentiatorCard {
-  iconName: string;
-  title: string;
-  desc: string;
-}
-
 export const differentiatorCards: DifferentiatorCard[] = [
   {
     iconName: "Globe",

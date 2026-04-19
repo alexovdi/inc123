@@ -4,10 +4,11 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/design-system/utils/cn";
 import { Button } from "@/design-system/primitives/Button";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { ScrollReveal } from "@/design-system/primitives/ScrollReveal";
 import { GrainOverlay } from "@/design-system/components/GrainOverlay";
 import { SectionHeader } from "@/design-system/components/SectionHeader";
-import type { DifferentiatorCard } from "@/data/homepage";
+import type { DifferentiatorCard } from "@/lib/types";
 
 /* ------------------------------------------------
    Icon resolver
@@ -75,9 +76,13 @@ function DifferentiatorSection({
             </div>
             <div className="flex flex-col items-center justify-center gap-4 p-10 lg:p-12 bg-white/[0.03]">
               <div className="w-full rounded-2xl bg-white/[0.06] border border-white/[0.12] p-4 text-center">
-                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/75 mb-2">
+                <Eyebrow
+                  size="sm"
+                  tone="inherit"
+                  className="mb-2 text-white/75"
+                >
                   Competitors charge
-                </p>
+                </Eyebrow>
                 <p className="font-mono text-heading font-semibold text-white/70 line-through decoration-white/40">
                   $400–$5,000/yr
                 </p>
@@ -86,9 +91,9 @@ function DifferentiatorSection({
                 </p>
               </div>
               <div className="w-full rounded-2xl bg-accent/[0.08] border border-accent/15 p-4 text-center">
-                <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/70 mb-2">
+                <Eyebrow size="sm" tone="onDark" className="mb-2">
                   Incorporate123 Gold
-                </p>
+                </Eyebrow>
                 <p className="font-mono text-heading font-semibold text-white">
                   Included
                 </p>
@@ -136,9 +141,9 @@ function DifferentiatorSection({
         <ScrollReveal delay={400}>
           <div className="mt-6 grid grid-cols-[1fr_auto_1fr] gap-5 items-center rounded-card-lg bg-accent/[0.05] border border-accent/[0.10] p-8 sm:px-10">
             <div className="text-center">
-              <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/75 mb-2">
+              <Eyebrow size="sm" tone="inherit" className="mb-2 text-white/75">
                 Competitors
-              </p>
+              </Eyebrow>
               <p className="font-mono text-heading-lg font-semibold text-white/70 tracking-tight leading-none">
                 $400–$5,000
                 <span className="text-body-sm text-white/70">/yr</span>
@@ -151,9 +156,9 @@ function DifferentiatorSection({
               VS
             </div>
             <div className="text-center">
-              <p className="text-caption font-semibold uppercase tracking-[0.1em] text-white/75 mb-2">
+              <Eyebrow size="sm" tone="inherit" className="mb-2 text-white/75">
                 Incorporate123 Gold
-              </p>
+              </Eyebrow>
               <p className="font-mono text-heading-lg font-semibold text-white tracking-tight leading-none">
                 $1,275
               </p>
