@@ -326,6 +326,13 @@ export const registry: ComponentEntry[] = [
       "Pillar-accented link card. Featured (top-border + description) or compact (hover-border + arrow).",
   },
   {
+    slug: "jurisdiction-card",
+    name: "JurisdictionCard",
+    category: "composites-context",
+    description:
+      "Offshore jurisdiction hub card — icon, name, region, tagline, description, pricing + timeline.",
+  },
+  {
     slug: "state-selector",
     name: "StateSelector",
     category: "composites-context",

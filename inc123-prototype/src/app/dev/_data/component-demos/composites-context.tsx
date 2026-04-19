@@ -5,6 +5,7 @@ import { ComparisonCards } from "@/design-system/components/ComparisonCards";
 import { ContentSidebar } from "@/design-system/components/ContentSidebar";
 import { CrossPillarCTA } from "@/design-system/components/CrossPillarCTA";
 import { DualPackageCTA } from "@/design-system/components/DualPackageCTA";
+import { JurisdictionCard } from "@/design-system/components/JurisdictionCard";
 import { PillarCard } from "@/design-system/components/PillarCard";
 import { PillarLinkCard } from "@/design-system/components/PillarLinkCard";
 import { StateSelector } from "@/design-system/components/StateSelector";
@@ -483,6 +484,63 @@ export function PillarLinkCardDemo() {
           },
           { label: "Shared", value: "rounded-card bg-surface, no-underline" },
           { label: "Hover", value: "shadow-card-hover" },
+        ]}
+      />
+    </div>
+  );
+}
+
+export function JurisdictionCardDemo() {
+  return (
+    <div className="space-y-8">
+      <StateGrid>
+        <JurisdictionCard
+          jurisdiction={{
+            slug: "nevis",
+            name: "Nevis",
+            region: "St. Kitts and Nevis",
+            entityType: "LLC & International Business Corporation",
+            tagline:
+              "Maximum asset protection — 2-year statute of limitations on creditor claims.",
+            description:
+              "Nevis LLCs offer the strongest charging order protection available anywhere. A creditor's sole remedy is a charging order with a 2-year statute of limitations, after which it expires without collection rights.",
+            startingPrice: "$2,060",
+            annualRenewal: "$1,535/yr",
+            timeline: "2–3 weeks",
+          }}
+        />
+        <JurisdictionCard
+          jurisdiction={{
+            slug: "belize",
+            name: "Belize",
+            region: "Belize",
+            entityType: "IBC",
+            tagline: "English common law jurisdiction with fast formation.",
+            description:
+              "Belize IBCs combine English common law familiarity with fast formation timelines and flexible corporate governance requirements.",
+            startingPrice: "PENDING DAVID",
+            annualRenewal: "PENDING DAVID",
+            timeline: "1–2 weeks",
+          }}
+        />
+      </StateGrid>
+      <SpecPanel
+        title="JurisdictionCard Specifications"
+        items={[
+          { label: "Layout", value: "flex-col full-height, rounded-card" },
+          {
+            label: "Icon bubble",
+            value: "h-12 w-12 bg-primary/10 text-primary",
+          },
+          {
+            label: "Description",
+            value: "first 220 chars + ellipsis fallback",
+          },
+          {
+            label: "PENDING DAVID pricing",
+            value: "text-accent (otherwise text-foreground font-mono)",
+          },
+          { label: "Hover", value: "-translate-y-0.5 shadow-card-hover" },
         ]}
       />
     </div>

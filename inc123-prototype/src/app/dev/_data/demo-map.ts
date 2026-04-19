@@ -110,6 +110,7 @@ const demoMap: Record<string, DemoLoader> = {
   "dual-package-cta": cx("DualPackageCTADemo"),
   "pillar-card": cx("PillarCardDemo"),
   "pillar-link-card": cx("PillarLinkCardDemo"),
+  "jurisdiction-card": cx("JurisdictionCardDemo"),
   "state-selector": cx("StateSelectorDemo"),
   "where-to-go-next": cx("WhereToGoNextDemo"),
 
