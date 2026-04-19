@@ -18,6 +18,13 @@ import { StickyMobileCTA } from "@/design-system/components/StickyMobileCTA";
 import { UpgradesPreview } from "@/design-system/components/UpgradesPreview";
 import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
+import { cn } from "@/design-system/utils/cn";
+import {
+  tierBgSoft,
+  tierBorderMid,
+  tierTextAccent,
+  tierTextInk,
+} from "@/design-system/utils/tierMaps";
 import {
   getTransactionalFaqs,
   getValueComparison,
@@ -359,9 +366,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
     return matching ?? testimonials[0];
   }, [selectedState, tier.tier]);
 
-  const metallicVar = `var(--tier-${metallic})`;
-  const metallicSoft = `var(--tier-${metallic}-soft)`;
-  const metallicInk = `var(--tier-${metallic}-ink)`;
+  const tierInkClass = tierTextInk[metallic];
+  const tierAccentClass = tierTextAccent[metallic];
+  const tierSoftBgClass = tierBgSoft[metallic];
+  const tierMidBorderClass = tierBorderMid[metallic];
 
   /* -- Package enhancements: transactional FAQs, alternatives, value compare */
   const transactionalFaqs = useMemo(
@@ -454,17 +462,17 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
       <section className="border-b border-border bg-surface py-6">
         <div className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-x-10 gap-y-3 px-container-x text-body-sm text-muted">
           <span className="flex items-center gap-2">
-            <Icon name="Calendar" size="sm" color={metallicInk} />
+            <Icon name="Calendar" size="sm" className={tierInkClass} />
             Founded 1999 · 40,000+ entities formed
           </span>
           <span className="hidden sm:inline text-border">·</span>
           <span className="flex items-center gap-2">
-            <Icon name="ShieldCheck" size="sm" color={metallicInk} />
+            <Icon name="ShieldCheck" size="sm" className={tierInkClass} />
             Money-back guarantee on every filing
           </span>
           <span className="hidden sm:inline text-border">·</span>
           <span className="flex items-center gap-2">
-            <Icon name="Lock" size="sm" color={metallicInk} />
+            <Icon name="Lock" size="sm" className={tierInkClass} />
             Privacy is our only business
           </span>
         </div>
@@ -477,8 +485,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
             <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-[96px]">
               <div className="max-w-[620px]">
                 <p
-                  className="text-body-sm font-semibold uppercase tracking-[0.18em] mb-4"
-                  style={{ color: metallicInk }}
+                  className={cn(
+                    "text-body-sm font-semibold uppercase tracking-[0.18em] mb-4",
+                    tierInkClass,
+                  )}
                 >
                   The Promise
                 </p>
@@ -490,17 +500,13 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                 </p>
               </div>
               <div
-                className="rounded-card-lg border p-8 lg:self-start"
-                style={{
-                  background: metallicSoft,
-                  borderColor: `var(--tier-${metallic}-mid)`,
-                }}
+                className={cn(
+                  "rounded-card-lg border p-8 lg:self-start",
+                  tierSoftBgClass,
+                  tierMidBorderClass,
+                )}
               >
-                <Eyebrow
-                  tone="inherit"
-                  className="mb-5"
-                  style={{ color: metallicInk }}
-                >
+                <Eyebrow tone="inherit" className={cn("mb-5", tierInkClass)}>
                   Built for
                 </Eyebrow>
                 <ul className="space-y-4">
@@ -512,8 +518,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                       <Icon
                         name="Check"
                         size="sm"
-                        className="relative top-[3px] shrink-0"
-                        color={metallicVar}
+                        className={cn(
+                          "relative top-[3px] shrink-0",
+                          tierAccentClass,
+                        )}
                       />
                       <span>{line}</span>
                     </li>
@@ -531,8 +539,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
           <div className="mx-auto max-w-content px-container-x">
             <div className="max-w-narrow">
               <p
-                className="text-body-sm font-semibold uppercase tracking-[0.18em] mb-3"
-                style={{ color: metallicInk }}
+                className={cn(
+                  "text-body-sm font-semibold uppercase tracking-[0.18em] mb-3",
+                  tierInkClass,
+                )}
               >
                 State Context
               </p>
@@ -588,10 +598,16 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                   className="flex gap-4 rounded-card-lg border border-border bg-surface p-6 transition-colors hover:bg-background"
                 >
                   <div
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
-                    style={{ background: metallicSoft }}
+                    className={cn(
+                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-full",
+                      tierSoftBgClass,
+                    )}
                   >
-                    <Icon name={item.icon} size="md" color={metallicVar} />
+                    <Icon
+                      name={item.icon}
+                      size="md"
+                      className={tierAccentClass}
+                    />
                   </div>
                   <div>
                     <h3 className="font-display text-heading-sm font-semibold text-foreground">
@@ -677,10 +693,12 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                   className="flex gap-4 rounded-card-lg border border-border bg-surface p-6"
                 >
                   <div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-                    style={{ background: metallicSoft }}
+                    className={cn(
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
+                      tierSoftBgClass,
+                    )}
                   >
-                    <Icon name="Info" size="sm" color={metallicInk} />
+                    <Icon name="Info" size="sm" className={tierInkClass} />
                   </div>
                   <div>
                     <h3 className="font-display text-heading-sm font-semibold text-foreground">
@@ -749,8 +767,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                   className="group flex h-full flex-col rounded-card-lg border border-border bg-background p-6 transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
                 >
                   <span
-                    className="text-caption font-semibold uppercase tracking-wider"
-                    style={{ color: metallicInk }}
+                    className={cn(
+                      "text-caption font-semibold uppercase tracking-wider",
+                      tierInkClass,
+                    )}
                   >
                     {link.kind === "pillar" && "Pillar"}
                     {link.kind === "cluster" && "Guide"}
@@ -763,8 +783,10 @@ export function TierPageClient({ tier, forcedState }: TierPageClientProps) {
                     {link.description}
                   </p>
                   <span
-                    className="mt-5 inline-flex items-center gap-1 text-body-sm font-medium group-hover:gap-2 transition-all"
-                    style={{ color: metallicVar }}
+                    className={cn(
+                      "mt-5 inline-flex items-center gap-1 text-body-sm font-medium group-hover:gap-2 transition-all",
+                      tierAccentClass,
+                    )}
                   >
                     Read
                     <Icon name="ArrowRight" size="sm" />
