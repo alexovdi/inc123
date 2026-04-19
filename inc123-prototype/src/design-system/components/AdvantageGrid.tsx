@@ -1,5 +1,6 @@
 import { cn } from "@/design-system/utils/cn";
 import { Icon } from "@/design-system/primitives/Icon";
+import { Panel } from "@/design-system/primitives/Panel";
 
 /* ------------------------------------------------
    Types
@@ -32,9 +33,10 @@ function AdvantageGrid({ items, className }: AdvantageGridProps) {
       )}
     >
       {items.map((item) => (
-        <div
+        <Panel
           key={item.title}
-          className="flex flex-col rounded-card border border-border bg-surface p-6 transition-shadow hover:shadow-card"
+          padding="lg"
+          className="flex flex-col transition-shadow hover:shadow-card"
         >
           {/* Icon */}
           <div className="inline-flex items-center justify-center w-10 h-10 rounded-card bg-background">
@@ -48,7 +50,7 @@ function AdvantageGrid({ items, className }: AdvantageGridProps) {
 
           {/* Description */}
           <p className="text-body text-muted mt-2">{item.description}</p>
-        </div>
+        </Panel>
       ))}
     </div>
   );

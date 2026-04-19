@@ -17,4 +17,5 @@ export { RadioGroup, type RadioGroupProps } from "./RadioGroup";
 export { Textarea, type TextareaProps } from "./Textarea";
 export { Tooltip, type TooltipProps } from "./Tooltip";
 export { Alert, type AlertProps } from "./Alert";
+export { Panel, panelVariants, type PanelProps } from "./Panel";
 export { ScrollReveal, type ScrollRevealProps } from "./ScrollReveal";

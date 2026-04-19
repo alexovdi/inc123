@@ -119,6 +119,13 @@ export const registry: ComponentEntry[] = [
       "Section label above headings. Sizes sm/md, tones for light/dark surfaces and pillar colors.",
   },
   {
+    slug: "panel",
+    name: "Panel",
+    category: "primitives",
+    description:
+      "Surface container — rounded-card + bg-surface + border, with variant/padding/overflow. Use when Card is too opinionated.",
+  },
+  {
     slug: "skeleton",
     name: "Skeleton",
     category: "primitives",

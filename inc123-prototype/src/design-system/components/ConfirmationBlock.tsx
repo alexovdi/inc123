@@ -1,8 +1,8 @@
-import { cn } from "@/design-system/utils/cn";
 import { Badge } from "@/design-system/primitives/Badge";
 import { Button } from "@/design-system/primitives/Button";
 import { Divider } from "@/design-system/primitives/Divider";
 import { Icon } from "@/design-system/primitives/Icon";
+import { Panel } from "@/design-system/primitives/Panel";
 
 /* ------------------------------------------------
    Props
@@ -79,12 +79,7 @@ function ConfirmationBlock({
   className,
 }: ConfirmationBlockProps) {
   return (
-    <div
-      className={cn(
-        "bg-surface rounded-card border border-border overflow-hidden",
-        className,
-      )}
-    >
+    <Panel overflow="hidden" className={className}>
       {/* Success header */}
       <div className="bg-success/10 border-b border-success/20 px-6 py-8 text-center">
         <div className="flex justify-center mb-3">
@@ -202,7 +197,7 @@ function ConfirmationBlock({
           Print Receipt
         </Button>
       </div>
-    </div>
+    </Panel>
   );
 }
 

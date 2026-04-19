@@ -10,6 +10,7 @@ import { Eyebrow } from "@/design-system/primitives/Eyebrow";
 import { Icon } from "@/design-system/primitives/Icon";
 import { Input } from "@/design-system/primitives/Input";
 import { Link } from "@/design-system/primitives/Link";
+import { Panel } from "@/design-system/primitives/Panel";
 import { RadioGroup } from "@/design-system/primitives/RadioGroup";
 import { Select } from "@/design-system/primitives/Select";
 import { Skeleton } from "@/design-system/primitives/Skeleton";
@@ -1398,6 +1399,94 @@ export function EyebrowDemo() {
               "secondary, accent, muted, success, onDark, onDarkStrong, inherit",
           },
           { label: "Element", value: "<p>" },
+        ]}
+      />
+    </div>
+  );
+}
+
+/* ================================================================
+   PANEL
+   ================================================================ */
+export function PanelDemo() {
+  return (
+    <div className="space-y-8">
+      <DemoSection title="Variants">
+        <StateGrid>
+          <Panel padding="lg">
+            <span className="text-body font-semibold text-foreground">
+              default
+            </span>
+            <p className="text-body-sm text-muted mt-1">
+              border + surface, no shadow.
+            </p>
+          </Panel>
+          <Panel variant="elevated" padding="lg">
+            <span className="text-body font-semibold text-foreground">
+              elevated
+            </span>
+            <p className="text-body-sm text-muted mt-1">
+              shadow-card added. Static.
+            </p>
+          </Panel>
+          <Panel variant="interactive" padding="lg">
+            <span className="text-body font-semibold text-foreground">
+              interactive
+            </span>
+            <p className="text-body-sm text-muted mt-1">
+              Hover lifts + shadow-card-hover.
+            </p>
+          </Panel>
+          <Panel variant="featured" padding="lg">
+            <span className="text-body font-semibold text-foreground">
+              featured
+            </span>
+            <p className="text-body-sm text-muted mt-1">
+              border-2 border-secondary.
+            </p>
+          </Panel>
+          <Panel variant="flat" padding="lg">
+            <span className="text-body font-semibold text-foreground">
+              flat
+            </span>
+            <p className="text-body-sm text-muted mt-1">
+              No border or shadow; just bg-surface.
+            </p>
+          </Panel>
+        </StateGrid>
+      </DemoSection>
+
+      <DemoSection title="Padding scale">
+        <div className="space-y-3">
+          {(["none", "sm", "md", "lg", "xl"] as const).map((size) => (
+            <Panel key={size} padding={size}>
+              <div className="text-body-sm text-muted">
+                padding="{size}"{" "}
+                {size === "none" && "— inner content sets its own spacing"}
+              </div>
+            </Panel>
+          ))}
+        </div>
+      </DemoSection>
+
+      <SpecPanel
+        title="Panel Specifications"
+        items={[
+          { label: "Base", value: "rounded-card bg-surface text-foreground" },
+          {
+            label: "Variants",
+            value: "default, elevated, interactive, featured, flat",
+          },
+          {
+            label: "Padding",
+            value: "none, sm (p-4), md (p-5), lg (p-6), xl (p-8)",
+          },
+          { label: "Overflow", value: "visible (default), hidden" },
+          {
+            label: "Composition",
+            value:
+              "Use panelVariants() directly when you need <a>, <button>, or custom element",
+          },
         ]}
       />
     </div>
