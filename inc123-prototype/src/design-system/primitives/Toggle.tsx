@@ -25,8 +25,18 @@ const toggleTrackVariants = cva(
       size: "md",
       checked: false,
     },
-  }
+  },
 );
+
+const toggleLabelVariants = cva("text-body-sm", {
+  variants: {
+    active: {
+      true: "text-foreground font-medium",
+      false: "text-muted",
+    },
+  },
+  defaultVariants: { active: false },
+});
 
 const toggleThumbVariants = cva(
   "pointer-events-none block rounded-full bg-white shadow-card transition-transform",
@@ -54,11 +64,13 @@ const toggleThumbVariants = cva(
       size: "md",
       checked: false,
     },
-  }
+  },
 );
 
-export interface ToggleProps
-  extends Omit<VariantProps<typeof toggleTrackVariants>, "checked" | "disabled"> {
+export interface ToggleProps extends Omit<
+  VariantProps<typeof toggleTrackVariants>,
+  "checked" | "disabled"
+> {
   /** Labels displayed beside the toggle */
   labels?: { on: string; off: string };
   /** Controlled checked state */
@@ -87,23 +99,16 @@ function Toggle({
       className={cn(
         "inline-flex items-center gap-2 select-none",
         disabled && "cursor-not-allowed",
-        className
+        className,
       )}
     >
       {labels && (
-        <span
-          className={cn(
-            "text-body-sm",
-            !checked ? "text-foreground font-medium" : "text-muted"
-          )}
-        >
+        <span className={toggleLabelVariants({ active: !checked })}>
           {labels.off}
         </span>
       )}
 
-      <span
-        className={toggleTrackVariants({ size, checked, disabled })}
-      >
+      <span className={toggleTrackVariants({ size, checked, disabled })}>
         <input
           type="checkbox"
           className="sr-only"
@@ -118,12 +123,7 @@ function Toggle({
       </span>
 
       {labels && (
-        <span
-          className={cn(
-            "text-body-sm",
-            checked ? "text-foreground font-medium" : "text-muted"
-          )}
-        >
+        <span className={toggleLabelVariants({ active: checked })}>
           {labels.on}
         </span>
       )}

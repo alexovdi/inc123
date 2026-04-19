@@ -1,4 +1,30 @@
+import { cva } from "class-variance-authority";
+
 import { cn } from "@/design-system/utils/cn";
+import { Eyebrow } from "@/design-system/primitives/Eyebrow";
+
+/* -------------------------------------------------- */
+/*  CVA variants — slot-level, keyed by `tone`         */
+/* -------------------------------------------------- */
+const titleVariants = cva("font-display type-display-sm font-semibold", {
+  variants: {
+    tone: {
+      light: "text-foreground",
+      dark: "text-white font-medium",
+    },
+  },
+  defaultVariants: { tone: "light" },
+});
+
+const subtitleVariants = cva("mt-3 text-body-lg", {
+  variants: {
+    tone: {
+      light: "text-muted",
+      dark: "text-white/70",
+    },
+  },
+  defaultVariants: { tone: "light" },
+});
 
 interface SectionHeaderProps {
   eyebrow: string;
@@ -19,32 +45,16 @@ function SectionHeader({
   subtitleMaxWidth,
   className,
 }: SectionHeaderProps) {
+  const tone = dark ? "dark" : "light";
+
   return (
     <div className={cn("text-center", className)}>
-      <p
-        className={cn(
-          "text-body-sm font-semibold uppercase tracking-[0.15em] mb-2",
-          dark ? "text-white/70" : "text-secondary",
-        )}
-      >
+      <Eyebrow tone={dark ? "onDark" : "secondary"} className="mb-2">
         {eyebrow}
-      </p>
-      <h2
-        className={cn(
-          "font-display type-display-sm font-semibold",
-          dark ? "text-white font-medium" : "text-foreground",
-        )}
-      >
-        {title}
-      </h2>
+      </Eyebrow>
+      <h2 className={titleVariants({ tone })}>{title}</h2>
       {subtitle && (
-        <p
-          className={cn(
-            "mt-3 text-body-lg",
-            dark ? "text-white/70" : "text-muted",
-            subtitleMaxWidth,
-          )}
-        >
+        <p className={cn(subtitleVariants({ tone }), subtitleMaxWidth)}>
           {subtitle}
         </p>
       )}

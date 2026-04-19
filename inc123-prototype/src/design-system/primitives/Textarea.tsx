@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  type TextareaHTMLAttributes,
-  forwardRef,
-  useId,
-} from "react";
+import { type TextareaHTMLAttributes, forwardRef, useId } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/design-system/utils/cn";
 
@@ -31,7 +27,7 @@ const textareaVariants = cva(
       size: "md",
       state: "default",
     },
-  }
+  },
 );
 
 const labelVariants = cva("block font-sans font-medium text-foreground", {
@@ -45,11 +41,32 @@ const labelVariants = cva("block font-sans font-medium text-foreground", {
   defaultVariants: { size: "md" },
 });
 
+const helperTextVariants = cva("text-caption font-sans", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      error: "text-destructive",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
+const counterVariants = cva("shrink-0 text-caption font-sans tabular-nums", {
+  variants: {
+    tone: {
+      default: "text-muted",
+      limit: "text-destructive",
+    },
+  },
+  defaultVariants: { tone: "default" },
+});
+
 /* ------------------------------------------------
    Props
    ------------------------------------------------ */
 export interface TextareaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
+  extends
+    Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
     VariantProps<typeof textareaVariants> {
   /** Label rendered above the textarea */
   label?: string;
@@ -93,21 +110,16 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange,
       ...props
     },
-    ref
+    ref,
   ) => {
     const autoId = useId();
     const id = externalId ?? autoId;
     const helperId = `${id}-helper`;
 
-    const resolvedState = disabled
-      ? "disabled"
-      : error
-        ? "error"
-        : "default";
+    const resolvedState = disabled ? "disabled" : error ? "error" : "default";
 
     // Character count: use value if controlled, otherwise track via uncontrolled
-    const charCount =
-      typeof value === "string" ? value.length : undefined;
+    const charCount = typeof value === "string" ? value.length : undefined;
 
     return (
       <div className={cn("flex flex-col", className)}>
@@ -137,20 +149,19 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           value={value}
           defaultValue={defaultValue}
           onChange={onChange}
-          className={cn(textareaVariants({ size, state: resolvedState }))}
+          className={textareaVariants({ size, state: resolvedState })}
           {...props}
         />
 
         {/* Footer row: helper/error text + character count */}
         <div className="mt-1.5 flex items-start justify-between gap-2">
           {/* Helper / Error text */}
-          {(error || helperText) ? (
+          {error || helperText ? (
             <p
               id={helperId}
-              className={cn(
-                "text-caption font-sans",
-                error ? "text-destructive" : "text-muted"
-              )}
+              className={helperTextVariants({
+                tone: error ? "error" : "default",
+              })}
             >
               {error ?? helperText}
             </p>
@@ -161,10 +172,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {/* Character count */}
           {maxLength != null && charCount != null && (
             <span
-              className={cn(
-                "shrink-0 text-caption font-sans tabular-nums",
-                charCount >= maxLength ? "text-destructive" : "text-muted"
-              )}
+              className={counterVariants({
+                tone: charCount >= maxLength ? "limit" : "default",
+              })}
               aria-live="polite"
             >
               {charCount}/{maxLength}
@@ -173,7 +183,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = "Textarea";
